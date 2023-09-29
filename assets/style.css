@@ -75,7 +75,6 @@ html {
 /* Header part ---------------------- */
 .header {
     display: flex;
-
     height: var(--headerHeigh);
     background-color: #587E60;
     position: fixed;
@@ -87,16 +86,26 @@ html {
 
 #nav {}
 
-#nav>li {
+#nav .logo {
+    width: 200px;
+}
+
+#nav .near-logo {
+    position: absolute;
+    top: 0;
+    left: 30%;
+}
+
+#nav li {
 
     display: inline-block;
     position: relative;
-
 }
 
-#nav>li a {
+#nav li a {
     display: block;
     text-decoration: none;
+    font-weight: bold;
     color: #4A403B;
     text-transform: uppercase;
     /* font-size: 1rem; */
@@ -137,8 +146,14 @@ html {
     align-items: center;
     justify-content: center;
     height: var(--headerHeigh);
-    width: 62px;
+    width: 150px;
     right: 0;
+}
+
+.header .search-bt div {
+    color: #4A403B;
+    font-weight: bold;
+
 }
 
 .header .search-bt:hover {
@@ -147,39 +162,208 @@ html {
     cursor: pointer;
 }
 
+
 .header .fa-solid {
     color: #fff;
 }
 
+
+
+
 /* Slider part --------------------- */
 .slider {
-    display: flex;
-    margin-top: var(--headerHeigh);
-    width: 100%;
-    padding-top: 50%;
-    background: url(https://www.w3schools.com/w3images/chicago.jpg) top /cover no-repeat;
-    position: relative;
-    justify-content: center;
-}
-
-.slider .text-in-picture {
     display: block;
+    margin-top: var(--headerHeigh); 
+    width: 100%;
+    padding-top: 5%;
+    background-color: #fff;
+    /* background: url() top /cover no-repeat; */
+    position: relative;
+    justify-content: space-between; 
+}
+.conchim {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.conchim img{
+    margin: 10px 40px;
+    width: 60%;
+    align-items: center;
+    border-radius: 20px;
+}
+
+/* table------------- */
+.t-body {
+    margin-left: 10%;
+    height: 45%;
+    width: 45%;
+    min-height: 100vh;
+    background-color:#E4E9E1;
+    display: flex;
+    align-items: center;
+    border-radius: 20px;
+  }
+  
+  .t-main {
+    width: 40rem;
+    height: 43rem;
+    background-color: #ffffff;
+    -webkit-box-shadow: 0px 5px 15px 8px #e4e7fb;
+    box-shadow: 0px 5px 15px 8px #e4e7fb;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 0.5rem;
+  }
+
+
+#t-header {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 2.5rem 2rem;
+  }
+  
+  .share {
+    width: 4.5rem;
+    height: 3rem;
+    background-color: #f55e77;
+    border: 0;
+    border-bottom: 0.2rem solid #c0506a;
+    border-radius: 2rem;
+    cursor: pointer;
+  }
+  
+  .share:active {
+    border-bottom: 0;
+  }
+  
+  .share i {
     color: #fff;
-    position: absolute;
-    bottom: 47px;
-}
+    font-size: 2rem;
+  }
+  
+  .slider h1 {
+    font-family: "Rubik", sans-serif;
+    font-size: 1rem;
+    color: #141a39;
+    text-transform: uppercase;
+    cursor: default;
+  }
+  
+  #leaderboard {
+    width: 100%;
+    position: relative;
+  }
+  
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    table-layout: fixed;
+    color: #141a39;
+    cursor: default;
+  }
+  
+  tr {
+    transition: all 0.2s ease-in-out;
+    border-radius: 0.2rem;
+  }
+  
+  tr:not(:first-child):hover {
+    background-color: #fff;
+    transform: scale(1.1);
+    -webkit-box-shadow: 0px 5px 15px 8px #e4e7fb;
+    box-shadow: 0px 5px 15px 8px #e4e7fb;
+  }
+  
+  tr:nth-child(odd) {
+    background-color: #f9f9f9;
+  }
+  
+  tr:nth-child(1) {
+    color: #fff;
+  }
+  
+  td {
+    height: 7rem;
+    font-family: "Rubik", sans-serif;
+    font-size: 1rem;
+    padding: 1rem 2rem;
+    position: relative;
+  }
+  th {
+    height: 7rem;
+    font-family: "Rubik", sans-serif;
+    font-size: 1rem;
+    padding: 1rem 2rem;
+    position: relative;
+  }
+  
 
-.slider .text-in-picture div {
-    margin-top: 15px;
+  .number {
+    width: 1rem;
+    font-size: 2.2rem;
     font-weight: bold;
-}
+    text-align: left;
+  }
+  
+  .name {
+    text-align: left;
+    font-size: 0.9rem;
+  }
+  
+  .points {
+    /* font-weight: bold; */
+    font-size: 1rem;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+  }
+  
+  .points:first-child {
+    width: 10rem;
+  }
+  
+  .gold-medal {
+    height: 6rem;
+    margin-left: rem;
+  }
+  
+  .ribbon {
+    width: 42rem;
+    height: 8rem;
+    top: -0.5rem;
+    background-color:#587E60 ;
+    position: absolute;
+    left: -1rem;
+    -webkit-box-shadow: 0px 15px 11px -6px #7a7a7d;
+    box-shadow: 0px 15px 11px -6px #7a7a7d;
+  }
+  
 
-.slider .text-in-picture h3 {
-    margin: 10px 0px;
-    font-size: 24px;
-    font-weight: normal;
-    text-align: center;
-}
+  
+  
+  @media (max-width: 740px) {
+      * {
+        font-size: 70%;
+      }
+  }
+  
+  @media (max-width: 500px) {
+      * {
+        font-size: 55%;
+      }
+  }
+  
+  @media (max-width: 390px) {
+      * {
+        font-size: 45%;
+      }
+  }
+/* end table---------- */
+
 
 /* Content part ---------------------*/
 /* About section */
@@ -441,6 +625,7 @@ input.form-submit-btn {
 .footer a {
     color: rgba(0, 0, 0, 0.6);
 }
+
 .footer p {
     color: rgba(0, 0, 0, 0.6);
     text-align: center;
@@ -450,11 +635,12 @@ input.form-submit-btn {
     .team-section div {
         display: block;
     }
+
     .locations {
         width: 100%;
         margin-bottom: 16px;
     }
-    
+
     .mobile-form {
         float: none;
         width: 100%;
