@@ -146,6 +146,21 @@ h6,
     z-index: -1;
 }
 
+/* medal */
+.medal1 {
+    color:  #febd18;
+}
+
+.medal2 {
+    color: #e0e0e0;
+
+}
+.medal3 {
+    color: #ff9539;
+
+}
+
+
 .team-item img {
     transition: .5s;
 }
