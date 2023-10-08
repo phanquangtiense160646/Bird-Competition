@@ -1,0 +1,78 @@
+
+.gradient-custom-2 {
+    /* fallback for old browsers */
+    background: #fbc2eb;
+    background-size: 100% auto;
+
+    /* Chrome 10-25, Safari 5.1-6 */
+    background: -webkit-linear-gradient(to right, rgba(253, 183, 119, 1), rgba(253, 127, 44, 1));
+
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background: linear-gradient(to right, rgba(253, 183, 119, 1), rgba(253, 127, 44, 1))
+}
+
+.box {
+    width: 30%;
+    height: 200px;
+
+}
+
+.box img {
+    width: 100%;
+    /* takes the 100 % width of its container (.box div)*/
+    height: 100%;
+    /* takes the 100 % height of its container (.box div)*/
+
+    padding: 0 15;
+
+}
+
+
+/* Container needed to position the button. Adjust the width as needed */
+.box {
+    position: relative;
+}
+
+
+/* Style the button and place it in the middle of the container/image */
+.box .btn {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    background-color: rgb(253, 147, 70);
+    color: white;
+    font-size: 16px;
+    padding: 12px 24px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    display: none;
+}
+
+.box .btn:hover {
+    background-color: rgb(244, 117, 26);
+}
+
+.imghover {
+    position:absolute;
+    
+    top: 0;
+    left: 15;
+    right: 15;
+    bottom: 0;
+}
+
+.imghover:hover{
+    background: rgba(21, 21, 22, 0.7);
+}
+
+.box:hover .btn {
+    display: block;
+}
+
+.birdname{
+    font-family: 'Raleway', sans-serif;
+    
+}
