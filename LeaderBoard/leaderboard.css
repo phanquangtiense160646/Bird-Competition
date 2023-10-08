@@ -1,9 +1,9 @@
 html {
     --black: #21252a;
     --grey-1: #343A40;
-    --grey-2: #495057;
+    --silver-dark: #495057;
     --grey-3: #868E96;
-    --grey-4: #ADB5BD;
+    --silver: #ADB5BD;
     --grey-5: #CED4DA;
     --grey-6: #DEE2E6;
     --grey-7: #E9ECEF;
@@ -15,7 +15,7 @@ html {
     --gold-dark: #a3862c;
     --bronze: #c99355;
     --bronze-dark: #80582c;
-    --theme_color: #fb5b21;
+    --primary: #fb5b21;
 }
 html {
     box-sizing: border-box;
@@ -32,6 +32,12 @@ body {
     color: var(--black);
     /* background: var(--black); */
 }
+
+.bg-hero {
+    background: linear-gradient(rgba(34, 36, 41, .8), rgba(34, 36, 41, .8)), url(/FE/img/chaomao-bg.jpg) top center no-repeat;
+    background-size: cover;
+}
+
 .list {
     width: 100%;
     max-width: 600px;
@@ -39,6 +45,23 @@ body {
     border-radius: .4rem;
     box-shadow: 0px 12px 25px rgba(0, 0, 0, 0.1), 0px 5px 12px rgba(0, 0, 0, 0.07);
 }
+
+.view-more_bt {
+    font-size: smaller;
+    color: #868E96;
+    margin-left: 75%;
+    border-radius: 15%;
+}
+
+.view-ur-bird_bt {
+    margin-left: 45%;
+    border-radius: 15%;
+}
+
+.dropdown-rank-list {
+    margin-left: 75%;
+}
+
 @media screen and (max-width: 800px) {
     .list {
         margin: 0 auto;
@@ -92,14 +115,18 @@ body {
 .list__row:first-of-type .list__cell:first-of-type {
     background: var(--gold);
     color: var(--gold-dark);
+    width: 40px;
+
 }
 .list__row:nth-of-type(2) {
-    color: var(--grey-2);
+    color: var(--silver-dark);
     background: var(--grey-9);
 }
 .list__row:nth-of-type(2) .list__cell:first-of-type {
-    background: var(--grey-4);
-    color: var(--grey-2);
+    background: var(--silver);
+    color: var(--silver-dark);
+    width: 40px;
+
 }
 .list__row:nth-of-type(3) {
     color: var(--bronze-dark);
@@ -108,6 +135,8 @@ body {
 .list__row:nth-of-type(3) .list__cell:first-of-type {
     background: var(--bronze);
     color: var(--bronze-dark);
+    width: 40px;
+
 }
 .list__cell {
     padding: 1rem;
@@ -116,6 +145,8 @@ body {
     text-align: center;
     padding: 1rem .2rem;
     background: var(--grey-5);
+    width: 40px;
+
 }
 .overlay {
     position: fixed;
@@ -162,7 +193,7 @@ body {
 .sidebar__title {
     font-size: 1.5rem;
     font-weight: 700;
-    color: var(--theme_color);
+    color: var(--primary);
 }
 .button {
     font-family: inherit;
@@ -212,10 +243,10 @@ body {
 }
 .driver__table {
     width: 100%;
-    color: var(--grey-2);
+    color: var(--silver-dark);
 }
 .driver__table small {
-    color: var(--grey-4);
+    color: var(--silver);
 }
 .driver__table td {
     padding: .3rem .6rem .3rem 0;
