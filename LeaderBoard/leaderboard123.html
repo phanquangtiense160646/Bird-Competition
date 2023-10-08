@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leaderboard</title>
+    <link href="leaderboard.css" rel="stylesheet">
+<!-- Header style -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Rubik&display=swap" rel="stylesheet"> 
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+    <link href="lib/flaticon/font/flaticon.css" rel="stylesheet">
+    <link href="/FE/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/FE/css/style.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Header Start -->
+    <div class="container-fluid bg-dark px-0">
+        <div class="row gx-0">
+            <div class="col-lg-3 bg-dark d-none d-lg-block">
+                
+                    
+                <a href="/FE/index.html" class="navbar-brand w-100 h-100 m-0 p-0 d-flex align-items-center justify-content-center">
+                    <img src="/FE/img/finallogo.png" style="width: 100px; margin-right: -40px; margin-bottom:50px;">
+                    <h1 class="m-0 display-4 text-primary text-uppercase">BIRDFIGHTER</h1>
+                </a>
+
+                
+                
+            </div>
+            <div class="col-lg-9">
+                <div class="row gx-0 bg-secondary d-none d-lg-flex">
+                    <div class="col-lg-7 px-5 text-start">
+                        <div class="h-100 d-inline-flex align-items-center py-2 me-4">
+                            <i class="fa fa-envelope text-primary me-2"></i>
+                            <h6 class="mb-0">birdfight@compe.com</h6>
+                        </div>
+                        <div class="h-100 d-inline-flex align-items-center py-2">
+                            <i class="fa fa-phone-alt text-primary me-2"></i>
+                            <h6 class="mb-0">+123 321 333</h6>
+                        </div>
+                    </div>
+                    <div class="col-lg-5 px-5 text-end">
+                        <div class="d-inline-flex align-items-center py-2">
+                            <a class="btn btn-light btn-square rounded-circle me-2" href="">
+                                <i class="fab fa-facebook-f"></i>
+                            </a>
+                            <a class="btn btn-light btn-square rounded-circle me-2" href="">
+                                <i class="fab fa-twitter"></i>
+                            </a>
+                            <a class="btn btn-light btn-square rounded-circle me-2" href="">
+                                <i class="fab fa-linkedin-in"></i>
+                            </a>
+                            <a class="btn btn-light btn-square rounded-circle me-2" href="">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                            <a class="btn btn-light btn-square rounded-circle" href="">
+                                <i class="fab fa-youtube"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <nav class="navbar navbar-expand-lg bg-dark navbar-dark p-3 p-lg-0 px-lg-5">
+                    
+                    <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
+                        <div class="navbar-nav mr-auto py-0">
+                            <a href="/FE/index.html" class="nav-item nav-link active">Home</a>
+                            <a href="about.html" class="nav-item nav-link">About</a>
+                            <a href="class.html" class="nav-item nav-link">Schedule</a>
+                            <a href="/LeaderBoard/leaderboard.html" class="nav-item nav-link">Scoreboard</a>
+                            <div class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
+                                <div class="dropdown-menu rounded-0 m-0">
+                                    <a href="blog.html" class="dropdown-item">News</a>
+                                    <a href="detail.html" class="dropdown-item">Blog Detail</a>
+                                    <a href="testimonial.html" class="dropdown-item">Testimonial</a>
+                                </div>
+                            </div>
+                            <a href="contact.html" class="nav-item nav-link">Contact</a>
+                        </div>
+                        <a href="/Login/Login.html" class="btn btn-primary py-md-3 px-md-5 d-none d-lg-block">Join Us</a>
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </div>
+    <!-- Header End -->
+
+    <div class="wrapper">
+        <div class="list">
+            <div class="list__header">
+                <h1>Bảng xếp hạng</h1>
+            </div>
+            <div class="list__body">
+                <table class="list__table">
+                    <tbody>
+                        <!-- Loop -->
+                        <tr class="list__row" data-image="FE/img/thuanphuong.jpg" data-nationality="chào mào chiến" data-dob="2500" data-country="thuanphu">
+                            <td class="list__cell">
+                                <span class="list__value"></span>
+                            </td>
+                            <td class="list__cell">
+                                <span class="list__value">Chào mào chiến</span>
+                                <small class="list__label">Chim</small>
+                            </td>
+                            <td class="list__cell">
+                                <span class="list__value">ThuanThien</span>
+                                <small class="list__label">Trainer</small>
+                            </td>
+                            <td class="list__cell">
+                                <span class="list__value">2198</span>
+                                <small class="list__label">Điểm</small>
+                            </td>
+                        </tr>
+                        <!-- row -->
+                        <tr class="list__row" data-image="FE/img/hinh-anh-chim-chao-mao.jpg" data-nationality="chào mào chiến" data-dob="2500" data-country="thuanphu">
+                            <td class="list__cell">
+                                <span class="list__value"></span>
+                            </td>
+                            <td class="list__cell">
+                                <span class="list__value">Arow</span>
+                                <small class="list__label">Chim</small>
+                            </td>
+                            <td class="list__cell">
+                                <span class="list__value">Huy Ln</span>
+                                <small class="list__label">Trainer</small>
+                            </td>
+                            <td class="list__cell">
+                                <span class="list__value">2180</span>
+                                <small class="list__label">Điểm</small>
+                            </td>
+                        </tr>
+                        <!-- row -->
+                        <tr class="list__row" data-image="FE/img/thuanphuong.jpg" data-nationality="chào mào chiến" data-dob="2500" data-country="thuanphu">
+                            <td class="list__cell">
+                                <span class="list__value"></span>
+                            </td>
+                            <td class="list__cell">
+                                <span class="list__value">Senu</span>
+                                <small class="list__label">Chim</small>
+                            </td>
+                            <td class="list__cell">
+                                <span class="list__value">Danh Tran</span>
+                                <small class="list__label">Trainer</small>
+                            </td>
+                            <td class="list__cell">
+                                <span class="list__value">2178</span>
+                                <small class="list__label">Điểm</small>
+                            </td>
+                        </tr>
+                        <!-- row -->
+                        <tr class="list__row" data-image="FE/img/thuanphuong.jpg" data-nationality="134" data-dob="67" data-country="2">
+                            <td class="list__cell">
+                                <span class="list__value"></span>
+                            </td>
+                            <td class="list__cell">
+                                <span class="list__value">Icarus</span>
+                                <small class="list__label">Chim</small>
+                            </td>
+                            <td class="list__cell">
+                                <span class="list__value">Huy Du Ki</span>
+                                <small class="list__label">Trainer</small>
+                            </td>
+                            <td class="list__cell">
+                                <span class="list__value">2120</span>
+                                <small class="list__label">Điểm</small>
+                            </td>
+                        </tr>
+                        <!-- row -->
+                        <tr class="list__row" data-image="FE/img/thuanphuong.jpg" data-nationality="chào mào chiến" data-dob="2500" data-country="thuanphu">
+                            <td class="list__cell">
+                                <span class="list__value"></span>
+                            </td>
+                            <td class="list__cell">
+                                <span class="list__value">Hắc điểu</span>
+                                <small class="list__label">Chim</small>
+                            </td>
+                            <td class="list__cell">
+                                <span class="list__value">Hurry Khang</span>
+                                <small class="list__label">Trainer</small>
+                            </td>
+                            <td class="list__cell">
+                                <span class="list__value">2011</span>
+                                <small class="list__label">Điểm</small>
+                            </td>
+                        </tr>
+                        <!-- End of loop -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="overlay"></div>
+    </div>
+    <div class="sidebar">
+        <div class="sidebar__header">
+            <div class="sidebar__title">Thông tin chim</div>
+            <button class="button button--close">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <circle cx="12" cy="12" r="10" />
+                    <line x1="15" y1="9" x2="9" y2="15" />
+                    <line x1="9" y1="9" x2="15" y2="15" />
+                </svg>
+            </button>
+        </div>
+        <div class="sidebar__body">
+
+
+        </div>
+    </div>
+
+    <script src="leaderboard.js"></script>
+</body>
+</html>

@@ -3,13 +3,13 @@
 
 <head>
     <meta charset="utf-8">
-    <title>GYMSTER - Gym HTML Template</title>
+    <title>Leaderboard</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="Free HTML Templates" name="keywords">
     <meta content="Free HTML Templates" name="description">
 
     <!-- Favicon -->
-    <link href="img/favicon.ico" rel="icon">
+    <link href="/FE/img/favicon.ico" rel="icon">
 
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -24,10 +24,11 @@
     <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
 
     <!-- Customized Bootstrap Stylesheet -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="/FE/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Template Stylesheet -->
-    <link href="css/style.css" rel="stylesheet">
+    <link href="/FE/css/style.css" rel="stylesheet">
+    <link href="leaderboard.css" rel="stylesheet">
 </head>
 
 <body>
@@ -37,8 +38,8 @@
             <div class="col-lg-3 bg-dark d-none d-lg-block">
                 
                     
-                <a href="index.html" class="navbar-brand w-100 h-100 m-0 p-0 d-flex align-items-center justify-content-center">
-                    <img src="img/finallogo.png" style="width: 100px; margin-right: -40px; margin-bottom:50px;">
+                <a href="/FE/index.html" class="navbar-brand w-100 h-100 m-0 p-0 d-flex align-items-center justify-content-center">
+                    <img src="/FE/img/finallogo.png" style="width: 100px; margin-right: -40px; margin-bottom:50px;">
                     <h1 class="m-0 display-4 text-primary text-uppercase">BIRDFIGHTER</h1>
                 </a>
 
@@ -84,10 +85,10 @@
                     </button>
                     <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
                         <div class="navbar-nav mr-auto py-0">
-                            <a href="index.html" class="nav-item nav-link">Home</a>
+                            <a href="/FE/index.html" class="nav-item nav-link">Home</a>
                             <a href="about.html" class="nav-item nav-link">About</a>
                             <a href="class.html" class="nav-item nav-link">Schedule</a>
-                            <a href="team.html" class="nav-item nav-link active">Scoreboard</a>
+                            <a href="/LeaderBoard/team.html" class="nav-item nav-link active">Scoreboard</a>
                             <div class="nav-item dropdown">
                                 <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
                                 <div class="dropdown-menu rounded-0 m-0">
@@ -111,9 +112,9 @@
     <div class="container-fluid bg-primary p-5 bg-hero mb-5">
         <div class="row py-5">
             <div class="col-12 text-center">
-                <h1 class="display-2 text-uppercase text-white mb-md-4">Trainers</h1>
-                <a href="" class="btn btn-primary py-md-3 px-md-5 me-3">Home</a>
-                <a href="" class="btn btn-light py-md-3 px-md-5">Trainers</a>
+                <h1 class="display-2 text-uppercase text-white mb-md-4">Leaderboard</h1>
+                <a href="/FE/index.html" class="btn btn-primary py-md-3 px-md-5 me-3">Home</a>
+                <a href="#board" class="btn btn-light py-md-3 px-md-5">Leaderboard</a>
             </div>
         </div>
     </div>
@@ -238,6 +239,132 @@
         </div>
     </div>
     <!-- Team End -->
+
+    <!-- Leaderboard start -->
+    <div class="wrapper" id="board">
+        <div class="list">
+            <div class="list__header">
+                <h1>Bảng xếp hạng</h1>
+            </div>
+            <div class="list__body">
+                <table class="list__table">
+                    <tbody>
+                        <!-- Loop -->
+                        <tr class="list__row" data-image="FE/img/thuanphuong.jpg" data-nationality="chào mào chiến" data-dob="2500" data-country="thuanphu">
+                            <td class="list__cell">
+                                <span class="list__value"></span>
+                            </td>
+                            <td class="list__cell">
+                                <span class="list__value">Chào mào chiến</span>
+                                <small class="list__label">Chim</small>
+                            </td>
+                            <td class="list__cell">
+                                <span class="list__value">ThuanThien</span>
+                                <small class="list__label">Trainer</small>
+                            </td>
+                            <td class="list__cell">
+                                <span class="list__value">2198</span>
+                                <small class="list__label">Điểm</small>
+                            </td>
+                        </tr>
+                        <!-- row -->
+                        <tr class="list__row" data-image="FE/img/hinh-anh-chim-chao-mao.jpg" data-nationality="chào mào chiến" data-dob="2500" data-country="thuanphu">
+                            <td class="list__cell">
+                                <span class="list__value"></span>
+                            </td>
+                            <td class="list__cell">
+                                <span class="list__value">Arow</span>
+                                <small class="list__label">Chim</small>
+                            </td>
+                            <td class="list__cell">
+                                <span class="list__value">Huy Ln</span>
+                                <small class="list__label">Trainer</small>
+                            </td>
+                            <td class="list__cell">
+                                <span class="list__value">2180</span>
+                                <small class="list__label">Điểm</small>
+                            </td>
+                        </tr>
+                        <!-- row -->
+                        <tr class="list__row" data-image="FE/img/thuanphuong.jpg" data-nationality="chào mào chiến" data-dob="2500" data-country="thuanphu">
+                            <td class="list__cell">
+                                <span class="list__value"></span>
+                            </td>
+                            <td class="list__cell">
+                                <span class="list__value">Senu</span>
+                                <small class="list__label">Chim</small>
+                            </td>
+                            <td class="list__cell">
+                                <span class="list__value">Danh Tran</span>
+                                <small class="list__label">Trainer</small>
+                            </td>
+                            <td class="list__cell">
+                                <span class="list__value">2178</span>
+                                <small class="list__label">Điểm</small>
+                            </td>
+                        </tr>
+                        <!-- row -->
+                        <tr class="list__row" data-image="FE/img/thuanphuong.jpg" data-nationality="134" data-dob="67" data-country="2">
+                            <td class="list__cell">
+                                <span class="list__value"></span>
+                            </td>
+                            <td class="list__cell">
+                                <span class="list__value">Icarus</span>
+                                <small class="list__label">Chim</small>
+                            </td>
+                            <td class="list__cell">
+                                <span class="list__value">Huy Du Ki</span>
+                                <small class="list__label">Trainer</small>
+                            </td>
+                            <td class="list__cell">
+                                <span class="list__value">2120</span>
+                                <small class="list__label">Điểm</small>
+                            </td>
+                        </tr>
+                        <!-- row -->
+                        <tr class="list__row" data-image="FE/img/thuanphuong.jpg" data-nationality="chào mào chiến" data-dob="2500" data-country="thuanphu">
+                            <td class="list__cell">
+                                <span class="list__value"></span>
+                            </td>
+                            <td class="list__cell">
+                                <span class="list__value">Hắc điểu</span>
+                                <small class="list__label">Chim</small>
+                            </td>
+                            <td class="list__cell">
+                                <span class="list__value">Hurry Khang</span>
+                                <small class="list__label">Trainer</small>
+                            </td>
+                            <td class="list__cell">
+                                <span class="list__value">2011</span>
+                                <small class="list__label">Điểm</small>
+                            </td>
+                        </tr>
+                        <!-- End of loop -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="overlay"></div>
+    </div>
+    <div class="sidebar">
+        <div class="sidebar__header">
+            <div class="sidebar__title">Thông tin chim</div>
+            <button class="button button--close">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <circle cx="12" cy="12" r="10" />
+                    <line x1="15" y1="9" x2="9" y2="15" />
+                    <line x1="9" y1="9" x2="15" y2="15" />
+                </svg>
+            </button>
+        </div>
+        <div class="sidebar__body">
+
+
+        </div>
+    </div>
+
+    <script src="leaderboard.js"></script>
+    <!-- Leaderboard end -->
     
 
     <!-- Footer Start -->
