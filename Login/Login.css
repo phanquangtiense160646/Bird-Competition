@@ -16,8 +16,15 @@ body {
     /* background-position:center; */
     background-size: 1080px 720px;
 
+    background-image: url('/FE/img/chaomao-bg (1).jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+
 }
 
+.sign-in_button {
+    color: white;
+}
 
 #logreg-forms {
     width: 412px;
