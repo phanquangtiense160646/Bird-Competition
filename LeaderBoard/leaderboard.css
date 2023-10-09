@@ -112,6 +112,7 @@ body {
     color: var(--gold-dark);
     background: var(--grey-9);
 }
+/* Ô thứ hạng #1 */
 .list__row:first-of-type .list__cell:first-of-type {
     background: var(--gold);
     color: var(--gold-dark);
@@ -122,6 +123,7 @@ body {
     color: var(--silver-dark);
     background: var(--grey-9);
 }
+/* Ô thứ hạng #2 */
 .list__row:nth-of-type(2) .list__cell:first-of-type {
     background: var(--silver);
     color: var(--silver-dark);
@@ -132,22 +134,27 @@ body {
     color: var(--bronze-dark);
     background: var(--grey-9);
 }
+
+/* Ô thứ hạng #3 */
 .list__row:nth-of-type(3) .list__cell:first-of-type {
     background: var(--bronze);
-    color: var(--bronze-dark);
+    color: var(--bronze-dark) ;
     width: 40px;
 
 }
 .list__cell {
     padding: 1rem;
+    /* color: black; */
+    background: var(--grey-9);
 }
 .list__cell:first-of-type {
+   
     text-align: center;
     padding: 1rem .2rem;
     background: var(--grey-5);
     width: 40px;
-
 }
+
 .overlay {
     position: fixed;
     top: 0;
