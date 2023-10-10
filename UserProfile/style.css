@@ -143,6 +143,42 @@ table{
     border: 1px;
 }
 
+.profile-pic {
+    height: 130px;
+    width: 150px;
+    background-size: cover;
+    background-position: center;
+    background-blend-mode: multiply;
+    vertical-align: middle;
+    text-align: center;
+    color: transparent;
+    transition: all .3s ease;
+    text-decoration: none;
+    cursor: pointer;
+    z-index: 1;
+    
+}
+.profile-pic img:hover {
+    background-color: rgba(0, 0, 0, 0.5);
+    color: #fff;
+    transition: all .3s ease;
+    text-decoration: none;
+    z-index:555555 !important;
+}
+
+
+.profile-pic span {
+    display: inline-block;
+    padding-top: 4.5em;
+    padding-bottom: 4.5em;
+}
+
+form input[type="file"] {
+          display: none;
+          cursor: pointer;
+ }
+
+
 
 
 
