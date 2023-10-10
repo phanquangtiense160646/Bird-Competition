@@ -230,10 +230,15 @@ h6,
 
 .blog-item img {
     transition: .5s;
+    
 }
 
 .blog-item:hover img {
     transform: scale(1.2);
+}
+
+.blog-item {
+    height: 100%;
 }
 
 @media (min-width: 991.98px) {
@@ -241,3 +246,5 @@ h6,
         background: var(--primary);
     }
 }
+
+
