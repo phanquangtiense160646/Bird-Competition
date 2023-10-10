@@ -32,9 +32,9 @@ tableRow.forEach(tableRow => {
 		const trainer = this.querySelector(".list__cell:nth-of-type(3) .list__value").innerHTML;
 		const birdPoint = this.querySelector(".list__cell:nth-of-type(4) .list__value").innerHTML;
 		const driverImage = this.dataset.image;
-		const win = this.dataset.nationality;
-		const lose = this.dataset.dob;
-		const tie = this.dataset.country;
+		const win = this.dataset.win;
+		const lose = this.dataset.lose;
+		const tie = this.dataset.tie;
 		
 		const newDriver = document.createElement('div');
 		newDriver.classList = 'driver';
