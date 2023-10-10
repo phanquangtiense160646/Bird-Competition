@@ -56,3 +56,16 @@
     
 })(jQuery);
 
+// script.js
+function openPopup() {
+    document.querySelector('.registration-popup').style.display = 'block';
+}
+
+function closePopup() {
+    document.querySelector('.registration-popup').style.display = 'none';
+}
+
+
+function goBack() {
+    window.history.back();
+}
