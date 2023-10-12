@@ -19,13 +19,11 @@
 
                 <div class="edit-pic">
                   <form action="upload.php" method="post" enctype="multipart/form-data">
-                    <label for="fileToUpload" class=" mt-4 mb-2" >
+                    <label for="fileToUpload" class=" mt-4 mb-2">
                       <div class="profile-pic">
                         <img
-                        src="https://scontent.fsgn2-5.fna.fbcdn.net/v/t39.30808-1/331044364_1135565673791935_1693572774874518896_n.jpg?stp=c0.0.241.240a_dst-jpg_p240x240&_nc_cat=104&ccb=1-7&_nc_sid=fe8171&_nc_ohc=TXcwpKt4QK0AX_9toxW&_nc_ht=scontent.fsgn2-5.fna&_nc_e2o=s&oh=00_AfD0Xd7axgyl8Ex23jGXKvXEQGNbysWHsZ3zx9ymtvlsdQ&oe=652637DB"
-                        class="img-fluid img-thumbnail mb-2"
-                        style="width: 150px; margin-left: 10px;"
-                        >
+                          src="https://scontent.fsgn2-5.fna.fbcdn.net/v/t39.30808-1/331044364_1135565673791935_1693572774874518896_n.jpg?stp=c0.0.241.240a_dst-jpg_p240x240&_nc_cat=104&ccb=1-7&_nc_sid=fe8171&_nc_ohc=TXcwpKt4QK0AX_9toxW&_nc_ht=scontent.fsgn2-5.fna&_nc_e2o=s&oh=00_AfD0Xd7axgyl8Ex23jGXKvXEQGNbysWHsZ3zx9ymtvlsdQ&oe=652637DB"
+                          class="img-fluid img-thumbnail mb-2" style="width: 150px; margin-left: 10px;">
                         <span class="glyphicon glyphicon-camera"></span>
                         <span>Change Image</span>
                       </div>
@@ -33,19 +31,18 @@
                     <input type="File" name="fileToUpload" id="fileToUpload">
                   </form>
                 </div>
-                
-
 
                 <!-- <img
                   src="https://scontent.fsgn2-5.fna.fbcdn.net/v/t39.30808-1/331044364_1135565673791935_1693572774874518896_n.jpg?stp=c0.0.241.240a_dst-jpg_p240x240&_nc_cat=104&ccb=1-7&_nc_sid=fe8171&_nc_ohc=TXcwpKt4QK0AX_9toxW&_nc_ht=scontent.fsgn2-5.fna&_nc_e2o=s&oh=00_AfD0Xd7axgyl8Ex23jGXKvXEQGNbysWHsZ3zx9ymtvlsdQ&oe=652637DB"
                   alt="Generic placeholder image" class="img-fluid img-thumbnail mt-4 mb-2"
                   style="width: 150px; z-index: 1; margin-left: 10px;"> -->
+                <form action="userprofile.html">
+                  <button class="btn btn-outline-dark" data-mdb-ripple-color="dark"
+                    style="margin-left: 17px;">
+                    View Profile
+                  </button>
+                </form>
 
-
-                <button type="button" class="btn btn-outline-dark" data-mdb-ripple-color="dark"
-                  style="z-index: 1; margin-left: 17px;">
-                  View Profile
-                </button>
 
 
                 <input id="file" type="file" onchange="loadFile(event)" />
@@ -106,13 +103,13 @@
                                   placeholder="Enter your last name" value="Nhật Huy">
                               </div>
                             </div>
-                            <!-- Form Row        -->
+                            <!-- Form Row-->
                             <div class="row gx-3 mb-3">
                               <!-- Form Group (organization name)-->
                               <div class="col-md-6">
-                                <label class="small mb-1" for="inputOrgName"></label>
+                                <label class="small mb-1" for="inputOrgName">Information</label>
                                 <input class="form-control" id="inputOrgName" type="text"
-                                  placeholder="Enter your organization name" value="Start Bootstrap">
+                                  placeholder="Enter your organization name" value="Info">
                               </div>
                               <!-- Form Group (location)-->
                               <div class="col-md-6">
@@ -130,17 +127,13 @@
                             <!-- Form Row-->
                             <div class="row gx-3 mb-3">
                               <!-- Form Group (phone number)-->
-                              <div class="col-md-6">
+                              <div class="col-md-12">
                                 <label class="small mb-1" for="inputPhone">Phone number</label>
                                 <input class="form-control" id="inputPhone" type="tel"
                                   placeholder="Enter your phone number" value="555-123-4567">
                               </div>
-                              <!-- Form Group (birthday)-->
-                              <div class="col-md-6">
-                                <label class="small mb-1" for="inputBirthday">Birthday</label>
-                                <input class="form-control" id="inputBirthday" type="text" name="birthday"
-                                  placeholder="Enter your birthday" value="06/10/1988">
-                              </div>
+                              
+                              
                             </div>
                             <!-- Save changes button-->
                             <button class="btn btn-primary" type="button">Save changes</button>
