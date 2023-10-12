@@ -1,0 +1,76 @@
+html {
+    --black: #21252a;
+    --grey-1: #343A40;
+    --silver-dark: #495057;
+    --grey-3: #868E96;
+    --silver: #ADB5BD;
+    --grey-5: #CED4DA;
+    --grey-6: #DEE2E6;
+    --grey-7: #E9ECEF;
+    --grey-8: #F1F3F5;
+    --grey-9: #F8F9FA;
+    --trans-black: rgba(33, 37, 42, .9);
+    --red: #e10600;
+    --gold: #ffda65;
+    --gold-dark: #a3862c;
+    --bronze: #c99355;
+    --bronze-dark: #80582c;
+    --primary: #fb5b21;
+}
+html {
+    box-sizing: border-box;
+}
+
+@media screen and (max-width: 800px) {
+    .list {
+        margin: 0 auto;
+    }
+}
+
+.button {
+    font-family: inherit;
+    border: 0;
+    background: transparent;
+    cursor: pointer;
+}
+.button:focus, .button:active {
+    outline: 0;
+}
+.button--close {
+    padding: 0;
+    margin: 0;
+    height: auto;
+    line-height: 1;
+    color: var(--grey-5);
+}
+.button--close:hover {
+    color: var(--grey--4);
+}
+
+@keyframes fade {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+        left: 0;
+    }
+}
+
+.schedule-detail {
+    background-color: #DEE2E6;
+}
+
+.update-form {
+    background-color: #DEE2E6;
+    border-radius: 5%;
+}
+
+    .schedule-header, .schedule-body {
+        padding: 1rem;
+    }
+
+.schedule-header {
+    display: flex;
+    justify-content: space-between;
+}
