@@ -69,3 +69,9 @@ function closePopup() {
 function goBack() {
     window.history.back();
 }
+
+
+function customNavigate() {
+    window.location.href = "index.html";
+  }
+  
