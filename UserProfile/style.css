@@ -1,4 +1,3 @@
-
 .gradient-custom-2 {
     /* fallback for old browsers */
     background: #fbc2eb;
@@ -56,15 +55,15 @@
 }
 
 .imghover {
-    position:absolute;
-    
+    position: absolute;
+
     top: 0;
     left: 15;
     right: 15;
     bottom: 0;
 }
 
-.imghover:hover{
+.imghover:hover {
     background: rgba(21, 21, 22, 0.7);
 }
 
@@ -72,12 +71,12 @@
     display: block;
 }
 
-.birdname{
+.birdname {
     font-family: 'Raleway', sans-serif;
-    
+
 }
 
-.dialog{
+.dialog {
     position: fixed;
     display: flex;
     top: 0;
@@ -85,61 +84,62 @@
     left: 0;
     bottom: 0;
     align-items: center;
-    justify-content:center ;
+    justify-content: center;
     visibility: hidden;
     opacity: 0;
     transition: opacity linear 0.2s;
     z-index: 10;
 }
 
-.overlay{
-    background-color: rgba(0,0,0,0);
-    
+.overlay {
+    background-color: rgba(0, 0, 0, 0);
+
 }
 
-.dialog:target{
+.dialog:target {
     visibility: visible;
     opacity: 1;
 }
-.dialog-body{
- max-width: 1100px;
- min-width: 500px;
- 
- position: relative;
- padding: 16px;
- background-color: #fff;
+
+.dialog-body {
+    max-width: 1100px;
+    min-width: 500px;
+
+    position: relative;
+    padding: 16px;
+    background-color: #fff;
 }
 
-.dialog-content-header{
+.dialog-content-header {
     color: #fb5b21;
-    font-size: 1.5rem; 
+    font-size: 1.5rem;
     font-weight: 800;
 }
 
-.dialog-content-body{
+.dialog-content-body {
     font-size: 20px;
-    text-align:left;
+    text-align: left;
 }
 
-.dialog-close-btn{
+.dialog-close-btn {
     position: absolute;
     right: 20px;
     top: 10px;
 }
 
-.overlay-close{
-    position:absolute;
+.overlay-close {
+    position: absolute;
     width: 100%;
     height: 100%;
 }
 
-td{
+td {
     text-align: left;
     padding-right: 50px;
     padding-top: 20px;
 }
 
-table{
+table {
     border: 1px;
 }
 
@@ -156,28 +156,26 @@ table{
     text-decoration: none;
     cursor: pointer;
     z-index: 1;
-    
+
+
 }
+
 .profile-pic img:hover {
     background-color: rgba(0, 0, 0, 0.5);
     color: #fff;
     transition: all .3s ease;
     text-decoration: none;
-    z-index:555555 !important;
+    z-index: 555555 !important;
 }
 
 
-.profile-pic span {
+/* .profile-pic span {
     display: inline-block;
     padding-top: 4.5em;
     padding-bottom: 4.5em;
-}
+} */
 
 form input[type="file"] {
-          display: none;
-          cursor: pointer;
- }
-
-
-
-
+    display: none;
+    cursor: pointer;
+}
