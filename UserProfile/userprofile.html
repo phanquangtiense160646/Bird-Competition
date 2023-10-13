@@ -4,7 +4,7 @@
   <script src="/FE/js/main.js"></script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>User Profile</title>
   <link href="/FE/img/favicon.ico" rel="icon">
 
   <!-- Google Web Fonts -->
@@ -44,13 +44,13 @@
 <body>
   <div class="container-fluid bg-dark px-0">
     <div class="row gx-0">
-      <div class="col-lg-3 bg-dark d-none d-lg-block">
-
-
-        <a href="index.html" class="navbar-brand w-100 h-100 m-0 p-0 d-flex align-items-center justify-content-center">
-          <img src="/FE/img/finallogo.png" style="width: 100px; margin-right: -40px; margin-bottom:50px;">
-          <h1 class="m-0 display-4 text-primary text-uppercase">BIRDFIGHTER</h1>
-        </a>
+        <div class="col-lg-3 bg-dark d-none d-lg-block">
+            
+                
+            <a href="/FE/index.html" class="navbar-brand w-100 h-100 m-0 p-0 d-flex align-items-center justify-content-center">
+                <img src="/FE/img/finallogo.png" style="width: 100px; margin-right: -40px; margin-bottom:50px;">
+                <h1 class="m-0 display-4 text-primary text-uppercase">BIRDFIGHTER</h1>
+            </a>
 
 
 
@@ -97,8 +97,8 @@
               <a href="/FE/index.html" class="nav-item nav-link active">Home</a>
               <a href="/FE/about.html" class="nav-item nav-link">Hội Viên</a>
               <a href="/FE/class.html" class="nav-item nav-link">Lịch Thi Đấu</a>
-              <a href="/FE/leaderboard.html" class="nav-item nav-link">Bảng Xếp Hạng</a>
-              <div class="nav-item dropdown" >
+              <a href="/FE/team.html" class="nav-item nav-link">Bảng Xếp Hạng</a>
+              <div class="nav-item dropdown">
                 <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
                 <div class="dropdown-menu rounded-0 m-0">
                     <!-- <a href="blog.html" class="dropdown-item">News</a> -->
@@ -114,7 +114,9 @@
         </nav>
       </div>
     </div>
-  </div>
+</div>
+
+
   <section class="h-25 gradient-custom-2">
     <div class="container py-5 h-100">
       <div class="row d-flex justify-content-center align-items-center h-100">
@@ -133,9 +135,7 @@
                     Edit profile
                   </button>
                 </form>
-
-
-
+          
               </div>
 
               <div class="ms-3" style="margin-top: 130px; margin-left: 30px;">
@@ -222,10 +222,15 @@
               </div>
             </div>
           </div>
+          <div class="d-flex justify-content-center">
+            <a href="/FE/index.html" class="btn btn-outline-dark btn-primary" data-mdb-ripple-color="dark"
+            style="z-index: 0; margin-left: 17px; margin-top: 30px; margin-bottom: 40px;">Đăng xuất</a> 
+          </div>
         </div>
       </div>
     </div>
   </section>
+
 
 
   <!-- Dialog -->
@@ -366,6 +371,7 @@
       <a href="#close-dialog" class="dialog-close-btn">&times;</a>
 
 
+      
 </body>
  
 </html>
