@@ -34,10 +34,15 @@
 
     <!-- Template Stylesheet -->
     <link href="css/style.css" rel="stylesheet">
+<<<<<<< HEAD
     <link href="/MatchResult/matchResult.css" rel="stylesheet">
   
     <script src="https://kit.fontawesome.com/96a8e8f111.js" crossorigin="anonymous"></script>
 
+=======
+    <link href="/Schedule/Schedule.css" rel="stylesheet">
+    
+>>>>>>> 3a01607ddbe378f48fe9ee0f92e0456225f6b6c9
 </head>
 
 <body>
@@ -94,16 +99,16 @@
                     </button>
                     <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
                         <div class="navbar-nav mr-auto py-0">
-                            <a href="index.html" class="nav-item nav-link ">Home</a>
-                            <a href="about.html" class="nav-item nav-link">Hội viên</a>
-                            <a href="class.html" class="nav-item nav-link">Lịch thi đấu</a>
+                            <a href="postlogin.html" class="nav-item nav-link">Home</a>
                             <a href="leaderboard.html" class="nav-item nav-link">Bảng xếp hạng</a>
+                            <a href="schedule.html" class="nav-item nav-link">Lịch thi đấu</a>
+                            <a href="memberShip.html" class="nav-item nav-link">Hội viên</a>
                             <div class="nav-item dropdown">
                                 <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
                                 <div class="dropdown-menu rounded-0 m-0">
-                                    <a href="blog.html" class="dropdown-item">News</a>
-                                    <a href="detail.html" class="dropdown-item">Luật thi đấu</a>
-                                    <a href="testimonial.html" class="dropdown-item">Feedback</a>
+                                    <a href="news.html" class="dropdown-item">News</a>
+                                    <a href="rules.html" class="dropdown-item">Luật thi đấu</a>
+                                    <a href="feedback.html" class="dropdown-item">Feedback</a>
                                 </div>
                             </div>
                             <a href="contact.html" class="nav-item nav-link">Liên Hệ</a>
@@ -192,7 +197,7 @@
     </div>
     <div id="schedule" class="schedule-overlay">
         <div class="update-form col-lg-3 col-md-4 col-sm-6">
-            <div class="schedule-header">
+            <div class="schedule-header" style="padding: 1rem;">
                 <div class="text-primary">Kết quả trận đấu</div>
                 <div class="button--close" style="color: white;"><i class="fa-regular fa-circle-xmark"></i></div>
             </div>
@@ -217,7 +222,7 @@
                 body.innerHTML = '';
 
                 const newDriver = document.createElement('div');
-                newDriver.classList = 'schedule-detail';
+                newDriver.classList = 'update-result';
 
                 var date, time, place, tOC, tOB, registerNumber;
 
