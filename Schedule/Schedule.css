@@ -57,18 +57,26 @@ html {
     }
 }
 
-.schedule-detail {
+.schedule-detail, .shedule-form {
+    background-color: black;
+}
+
+.update-result, .update-form {
     background-color: #DEE2E6;
 }
 
 .update-form {
-    background-color: #DEE2E6;
     border-radius: 5%;
 }
 
-    .schedule-header, .schedule-body {
+.shedule-form {
+    border-radius: 5%;
+}
+
+
+.schedule-header, .schedule-body {
         padding: 1rem;
-    }
+}
 
 .schedule-header {
     display: flex;
