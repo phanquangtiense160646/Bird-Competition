@@ -129,13 +129,59 @@
                   alt="Generic placeholder image" class="img-fluid img-thumbnail mt-4 mb-2"
                   style="width: 150px; z-index: 1; margin-left: 10px;">
 
+
+
+          <!-- <div style="display: flex; align-items: center;">
+
+
+                  
                 <form action="#editprofile-dialog" style="z-index: 1;">
                   <button class="btn btn-outline-dark btn-primary" data-mdb-ripple-color="dark"
-                    style="z-index: 0; margin-left: 17px;">
+                  style="z-index: 0; margin-left: 10px; min-width: 140px;">
                     Edit profile
                   </button>
                 </form>
+
+
+
+                <button class="btn btn-outline-dark btn-primary" data-mdb-ripple-color="dark" style="z-index: 0; margin-right: 10px; min-width: 150px; position: relative; top: -8px;"  id="addBirdButton">
+                  Add new bird
+              </button>
           
+              <script>
+                  document.getElementById('addBirdButton').addEventListener('click', function() {
+                      window.location.href = 'addnewbird.html'; // Thay đổi đường dẫn thành trang mà bạn muốn chuyển đến
+                  });
+              </script>
+
+          </div> -->
+
+
+
+          <div style="display: flex; align-items: center;">
+
+            <form action="#editprofile-dialog" style="z-index: 1; margin-right: 17px;">
+              <button class="btn btn-outline-dark btn-primary" data-mdb-ripple-color="dark" style="z-index: 0; min-width: 150px;position: relative; top: 8px;margin-left: 10px;">
+                Edit profile
+              </button>
+            </form>
+          
+            <button class="btn btn-outline-dark btn-primary" data-mdb-ripple-color="dark" style="z-index: 0; min-width: 150px;" id="addBirdButton">
+              Add new bird
+            </button>
+          
+            <script>
+              document.getElementById('addBirdButton').addEventListener('click', function() {
+                window.location.href = 'addnewbird.html'; // Thay đổi đường dẫn thành trang mà bạn muốn chuyển đến
+              });
+            </script>
+          
+          </div>
+          
+
+
+          
+
               </div>
 
               <div class="ms-3" style="margin-top: 130px; margin-left: 30px;">
@@ -369,6 +415,9 @@
     <a href="#close-dialog" class="overlay-close"></a>
     <div id="close-dialog" class="dialog-body">
       <a href="#close-dialog" class="dialog-close-btn">&times;</a>
+
+
+
 
 
       
