@@ -256,10 +256,19 @@
                             <!-- Save changes button-->
 
                             <div class="d-flex justify-content-between">
-                              <button class="btn btn-outline-dark" data-mdb-ripple-color="dark"
-                                onclick="customNavigate()">
+                              <button class="btn btn-outline-dark" data-mdb-ripple-color="dark" onclick="customNavigate()">
                                 Back
-                              </button>
+                            </button>
+                            
+                            <script>
+                                function customNavigate() {
+                                    window.history.back();
+                                }
+                            </script>
+
+
+
+
                               <button class="btn btn-outline-dark" data-mdb-ripple-color="dark">
                                 Add
                               </button>
@@ -278,7 +287,7 @@
                 </div>
   </section>
 
-  <script src="addbird.js"></script>
+  <script src="/UserProfile/addbird.js"></script>
 
 </body>
 
