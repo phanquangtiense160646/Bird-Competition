@@ -180,6 +180,10 @@ form input[type="file"] {
     cursor: pointer;
 }
 
+.upcoming-match-box{
+    display: flex;
+    
+}
 
 
 

@@ -1,4 +1,6 @@
 
   function customNavigate() {
-    window.location.href = "index.html";
+    window.location.href = "userprofile.html";
   }  
+
+

@@ -150,9 +150,9 @@
                   <form action="upload.php" method="post" enctype="multipart/form-data">
                     <label for="fileToUpload" class=" mt-4 mb-2">
                       <div class="profile-pic">
-                        <img
-                          src="https://images.dolenglish.vn/rs:auto:::0/w:1440/q:70/aHR0cHM6Ly9zdWlqbTljbG91b2JqLnZjZG4uY2xvdWQvUFVCTElDL01FRElBLzFiNTFmNjI4LWNmNTktNDg5MS1iZGIyLWQ3M2MwODcxOGIwMi5qcGc="
-                          class="img-fluid img-thumbnail mb-2" style="width: 150px; height: 140px; margin-left: 10px;">
+                        <img 
+                          src="birdprofileimg.jpg"
+                          class="img-fluid img-thumbnail mb-2" style="width: 100%; height: 140px; margin-left: 10px;">
                         <span class="glyphicon glyphicon-camera"></span>
                         <span>Change Image</span>
                       </div>
@@ -183,26 +183,26 @@
               </div>
             </div>
             <div class="p-4 text-black" style="background-color: #f8f9fa;">
-              <!-- <div class="d-flex justify-content-end text-center py-1">
+              <div class="d-flex justify-content-end text-center py-1">
                 <div>
-                  <p class="mb-1 h5">100</p>
+                  <p class="mb-1 h5">10</p>
                   <p class="small text-muted mb-0">Total Match</p>
                 </div>
                 <div class="px-3">
-                  <p class="mb-1 h5">51</p>
-                  <p class="small text-muted mb-0">Win</p>
+                  <p class="mb-1 h5">6-4</p>
+                  <p class="small text-muted mb-0">W-L</p>
                 </div>
                 <div>
-                  <p class="mb-1 h5">49</p>
-                  <p class="small text-muted mb-0">Lose</p>
+                  <p class="mb-1 h5">60%</p>
+                  <p class="small text-muted mb-0">Winrate</p>
                 </div>
-              </div> -->
+              </div>
             </div>
             <div class="card-body p-4 text-black">
               <div class="mb-5">
 
                 <span class="centered-text">
-                  <p class="lead fw-normal mb-1">Add New Bird</p>
+                  <p class="lead fw-normal mb-1">Bird Profile</p>
                 </span>
 
 
@@ -213,28 +213,28 @@
                     <div class="col-xl-12 border-bottom">
                       <!-- Account details card-->
                       <div class="card mb-4">
-                        <div class="card-header">New Bird Details</div>
+                        <div class="card-header"></div>
                         <div class="card-body">
                           <form>
                             <!-- Form Group (birdname)-->
                             <div class="mb-3">
                               <label class="small mb-1" for="inputBirdname">Tên chim</label>
-                              <input class="form-control" id="inputBirdname" type="text" placeholder="Nhập tên chim"
-                                value="">
+                              <input class="form-control" id="inputBirdname" type="text"
+                                value="Chào Mào Lửa">
                             </div>
                             <!-- Form Row-->
                             <div class="row gx-3 mb-3">
                               <!-- Form Group (Species)-->
                               <div class="col-md-6">
                                 <label class="small mb-1" for="inputSpecies">Loài chim</label>
-                                <input class="form-control" id="inputSpecies" type="text" placeholder="Nhập giống chim"
-                                  value="">
+                                <input class="form-control" id="inputSpecies" type="text" 
+                                  value="Chào Mào">
                               </div>
                               <!-- Form Group (BirdAge)-->
                               <div class="col-md-6">
                                 <label class="small mb-1" for="inputBirdAge">Độ tuổi</label>
-                                <input class="form-control" id="inputBirdAge" type="text" placeholder="Nhập tuổi chim"
-                                  value="">
+                                <input class="form-control" id="inputBirdAge" type="text" 
+                                  value="1">
                               </div>
                             </div>
                             <!-- Form Row        -->
@@ -243,19 +243,19 @@
                               <div class="col-md-6">
                                 <label class="small mb-1" for="inputGender">Giới tính</label>
                                 <input class="form-control" id="inputGender" type="text"
-                                  placeholder="Nhập giới tính chim " value="">
+                                  value="Đực">
                               </div>
                               <!-- Form Group (HealStatus)-->
                               <div class="col-md-6">
                                 <label class="small mb-1" for="inputHealStatus">Tình trạng sức khỏe</label>
                                 <input class="form-control" id="inputHealStatus" type="text"
-                                  placeholder="Nhập tình trạng sức khỏe" value="">
+                                   value="Bình Thường">
                               </div>
                             </div>
                             <!-- Form Group (CompetitionHistory)-->
                             <div class="mb-3">
-                              <label class="small mb-1" for="inputCompetitionHistory">Lịch sử thi đấu (nếu có)</label>
-                              <input class="form-control" id="inputCompetitionHistory" type="text"
+                              <label class="small mb-1" for="inputCompetitionHistory">Được Thêm Vào Ngày</label>
+                              <input class="form-control" id="inputCompetitionHistory" type="date"
                                 placeholder="Nhập lịch sử đấu" value="">
                             </div>
 
@@ -263,34 +263,10 @@
                             <div class="mb-3">
                               <label class="small mb-1" for="inputOtherInfo">Thông tin khác (nếu có)</label>
                               <input class="form-control" id="inputOtherInfo" type="text"
-                                placeholder="Nhập thông tin khác" value="">
+                                placeholder="Thông tin khác" value="">
                             </div>
 
                             <!-- Save changes button-->
-
-                            <div class="d-flex justify-content-between">
-                              <button class="btn btn-outline-dark" data-mdb-ripple-color="dark" onclick="customNavigate()">
-                                Back
-                            </button>
-                            
-                            <script>
-                                function customNavigate() {
-                                    window.history.back();
-                                }
-                            </script>
-
-
-
-
-                              <button class="btn btn-outline-dark" data-mdb-ripple-color="dark">
-                                Add
-                              </button>
-                            </div>
-
-
-
-
-
 
                           </form>
                         </div>
