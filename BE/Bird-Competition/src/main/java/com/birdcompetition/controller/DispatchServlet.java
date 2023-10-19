@@ -27,8 +27,13 @@ public class DispatchServlet extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         String url = "index.html";
+        String button = request.getParameter("btAction");
         try {
- 
+             if (button == null) {
+                 
+             }else if (button.equals("")) {
+                 
+             }
         }finally {
             RequestDispatcher rd = request.getRequestDispatcher(url);
             rd.forward(request, response);
