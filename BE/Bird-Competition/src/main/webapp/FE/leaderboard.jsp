@@ -130,12 +130,21 @@
         </div>
         <!-- Hero End -->
 
+        
+        <form action="DispatchServlet" class="d-flex justify-content-center">
+            <button type="submit" value="LeaderBoard" name="btAction">Load</button> 
+        </form>
+         
+        <c:set var="leaderboard" value="${requestScope.LEADER_BOARD}" />
+        
         <!-- Top Bird Start -->
         <div class="container-fluid p-5">
             <div class="mb-5 text-center">
                 <h5 class="text-primary text-uppercase">Top 3 chim có điểm cao nhất</h5>
                 <h1 class="display-3 text-uppercase mb-0">Top Chim</h1>
             </div>
+                   
+                     
             <div class="row g-5">
                 <div class="col-lg-4 col-md-6">
                     <div class="team-item position-relative">
@@ -143,13 +152,13 @@
                             <img class="img-fluid w-100" src="FE/img/daddyHuy.jpg" alt="">
                             <div class="team-overlay">
                                 <div class="align-items-center justify-content-start">
-                                    <h6 class="text-uppercase text-light mb-3"> Điểm: 2180</h6>
-                                    <h6 class="text-uppercase text-light mb-3"> Tỉ lệ thắng: 	67%</h6>
+                                    <h6 class="text-uppercase text-light mb-3"> Điểm: ${leaderboard[1].point}</h6>
+                                    <h6 class="text-uppercase text-light mb-3"> Tỉ lệ thắng: ${leaderboard[1].calWinRate()}%</h6>
                                 </div>
                             </div>
                         </div>
                         <div class="position-absolute start-0 bottom-0 w-100 rounded-bottom text-center p-4" style="background: rgba(173, 181, 189, .9);">
-                            <h5 class="text-uppercase text-light">Arow</h5>
+                            <h5 class="text-uppercase text-light">${leaderboard[1].birdName}</h5>
                             <p class="text-uppercase text-white m-0">Top 2</p>
                             <p class="text-uppercase text-white m-0">Trainner: Huy Ln</p>
 
@@ -163,13 +172,13 @@
                             <img class="img-fluid w-100" src="FE/img/thuanDam.jpg" alt="">
                             <div class="team-overlay">
                                 <div class="align-items-center justify-content-start">
-                                    <h6 class="text-uppercase text-light mb-3"> Điểm: 2198</h6>
-                                    <h6 class="text-uppercase text-light mb-3"> Tỉ lệ thắng: 	64%</h6>
+                                    <h6 class="text-uppercase text-light mb-3"> Điểm: ${leaderboard[0].point}</h6>
+                                    <h6 class="text-uppercase text-light mb-3"> Tỉ lệ thắng: ${leaderboard[0].calWinRate()}%</h6>
                                 </div>
                             </div>
                         </div>
                         <div class="position-absolute start-0 bottom-0 w-100 rounded-bottom text-center p-4" style="background: rgba(255, 218, 101, .9);">
-                            <h5 class="text-uppercase text-light">Chào mào chiến</h5>
+                            <h5 class="text-uppercase text-light">${leaderboard[0].birdName}</h5>
                             <p class="text-uppercase text-white m-0">Top 1</p>
                             <p class="text-uppercase text-white m-0">Trainner: ThuanThien</p>
 
@@ -182,13 +191,14 @@
                             <img class="img-fluid w-100" src="FE/img/eDanh.jpg" alt="">
                             <div class="team-overlay">
                                 <div class="align-items-center justify-content-start">
-                                    <h6 class="text-uppercase text-light mb-3"> Điểm: 2178</h6>
-                                    <h6 class="text-uppercase text-light mb-3"> Tỉ lệ thắng: 	55%</h6>
+                                    <h6 class="text-uppercase text-light mb-3"> Điểm: ${leaderboard[2].point}</h6>
+                                    
+                                    <h6 class="text-uppercase text-light mb-3"> Tỉ lệ thắng: ${leaderboard[2].calWinRate()}%</h6>
                                 </div>
                             </div>
                         </div>
                         <div class="position-absolute start-0 bottom-0 w-100 rounded-bottom text-center p-4" style="background: rgba(201, 147, 85, .9);">
-                            <h5 class="text-uppercase text-light">Senu</h5>
+                            <h5 class="text-uppercase text-light">${leaderboard[2].birdName}</h5>
                             <p class="text-uppercase text-white m-0">Top 3</p>
                             <p class="text-uppercase text-white m-0">Trainner: Danh Tran</p>
 
@@ -212,11 +222,9 @@
         </div>
 
 
-        <form action="DispatchServlet" class="d-flex justify-content-center">
-            <button type="submit" value="LeaderBoard" name="btAction">Leaderboard</button> 
-        </form>
-        <c:set var="leaderboard" value="${param.LEADER_BOARD}" />
-        <c:if test="${not empty leaderboard}">
+    
+        
+        <%--<c:if test="${not empty leaderboard}">--%>
             <div class="wrapper" id="board">
                 <div class="list">
                     <div class="list__header">
@@ -226,8 +234,8 @@
                         <table class="list__table">
                             <tbody>
                                 <!-- Loop -->
-                                <c:forEach items="${result}" var="dto" varStatus="counter">
-                                    <tr class="list__row" data-image="FE/img/thuanphuong.jpg" data-win="167" data-lose="45" data-tie="6">
+                                <c:forEach items="${leaderboard}" var="dto" varStatus="counter">
+                                    <tr class="list__row" data-image="FE/img/thuanphuong.jpg" data-win= ${dto.win} data-lose= ${dto.lose} data-tie= ${dto.tie} data-match= "100">
                                         <td class="list__cell">
                                             <span class="list__value"> ${counter.count}</span>
                                         </td>
@@ -236,11 +244,11 @@
                                             <small class="list__label">Chim</small>
                                         </td>
                                         <td class="list__cell">
-                                            <span class="list__value">ThuanThien</span>
+                                            <span class="list__value">...</span>
                                             <small class="list__label">Trainer</small>
                                         </td>
                                         <td class="list__cell">
-                                            <span class="list__value">&{dto.point}</span>
+                                            <span class="list__value"> ${dto.point} </span>
                                             <small class="list__label">Điểm</small>
                                         </td>
                                     </tr>
@@ -254,7 +262,7 @@
                     </div>
                 </div>
                 <div class="overlay"></div>
-            </c:if>
+            <%--</c:if>--%>
             <c:if test="${empty leaderboard}">
                 <div class="d-flex justify-content-center">
                     <h2>
