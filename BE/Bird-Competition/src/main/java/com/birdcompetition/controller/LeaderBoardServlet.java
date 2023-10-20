@@ -1,18 +1,31 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
+ */
 package com.birdcompetition.controller;
 
+import com.birdcompetition.bird.BirdDAO;
+import com.birdcompetition.bird.BirdDTO;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.SQLException;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.naming.NamingException;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
  *
- * @author Admin
+ * @author Danh
  */
-public class DispatchServlet extends HttpServlet {
+@WebServlet(name = "LeaderBoardServlet", urlPatterns = {"/LeaderBoardServlet"})
+public class LeaderBoardServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -26,14 +39,19 @@ public class DispatchServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        String button = request.getParameter("btAction");
         String url = "FE/leaderboard.jsp";
-        try {
-            if (button == null) {
-            } else if (button.equals("LeaderBoard")) {
-                url = "LeaderBoardServlet";
 
-            }
+        try {
+            BirdDAO dao = new BirdDAO();
+            dao.displayLeaderboard();
+            dao.checkConnect();
+            List<BirdDTO> result = dao.getBirdList();
+
+            request.setAttribute("LEADER_BOARD", result);
+
+        } catch (SQLException | NamingException | ClassNotFoundException ex) {
+            Logger.getLogger(LeaderBoardServlet.class.getName()).log(Level.SEVERE, null, ex);
+ 
         } finally {
             RequestDispatcher rd = request.getRequestDispatcher(url);
             rd.forward(request, response);
