@@ -255,11 +255,11 @@
                 </p>
                 <h6 class="text-uppercase text-secondary mb-3 ml-3">Chọn chim đăng ký:  
                     <select>
-                        <option value="" selected disabled>Chim</option>
+                                                <option value="" selected disabled>Chim</option>
                         <option value="lua-chon-1">cuồn font</option>
                         <option value="lua-chon-2">cánh thép</option>
-                       <option value="lua-chon-3">pikachu</option>
-                    </select>    
+                        <option value="lua-chon-3">pikachu</option>
+                                        </select>    
                 
                 </div>
 

@@ -33,7 +33,7 @@ public class DBHelper {
         //2. Create connection String 
         String url = "jdbc:sqlserver://" 
                 + "localhost:1433;"
-                + "databaseName=SE1729;"
+                + "databaseName=BirdCompetitionDB;"
                 +"encrypt=true;trustServerCertificate=true;";
         //3. Open connection
         Connection con = DriverManager.getConnection(url,"sa","12345");
