@@ -5,13 +5,13 @@
  */
 package com.birdcompetition.dal;
 
+import com.birdcompetition.model.User;
 import com.birdcompetition.util.DBHelper;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.naming.NamingException;
-import model.User;
 
 /**
  *

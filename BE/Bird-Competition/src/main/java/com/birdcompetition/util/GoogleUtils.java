@@ -9,13 +9,17 @@ package com.birdcompetition.util;
  *
  * @author 84366
  */
+import com.birdcompetition.model.GooglePojo;
 import java.io.IOException;
 import org.apache.http.client.ClientProtocolException;
+
 import org.apache.http.client.fluent.Form;
 import org.apache.http.client.fluent.Request;
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
-import model.GooglePojo;
+
+
+
 public class GoogleUtils {
   public static String getToken(final String code) throws ClientProtocolException, IOException {
     String response = Request.Post(Constants.GOOGLE_LINK_GET_TOKEN)
