@@ -1,7 +1,11 @@
 package com.birdcompetition.controller;
 
+import com.birdcompetition.registration.DAO;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -26,9 +30,14 @@ public class DispatchServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        String url = "/FE/index.html";
+        String url = "/FE/schedule.jsp";
         try {
-            
+            DAO dao = new DAO();
+            System.out.println(dao.checkConnect());
+        } catch (SQLException ex) {
+            Logger.getLogger(DispatchServlet.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(DispatchServlet.class.getName()).log(Level.SEVERE, null, ex);
         }finally {
             RequestDispatcher rd = request.getRequestDispatcher(url);
             rd.forward(request, response);
