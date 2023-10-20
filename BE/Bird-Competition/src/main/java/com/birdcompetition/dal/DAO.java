@@ -29,7 +29,7 @@ public class DAO extends DBHelper{
 
         try {
             //1.Make connection
-            con = DBHelper.makeConnections();
+            con = DBHelper.getConnection();
             //check 
             if (con != null) {
                 //2.Creat SQL String 
@@ -72,7 +72,7 @@ public class DAO extends DBHelper{
 
         try {
             //1.Make connection
-            con = DBHelper.makeConnections();
+            con = DBHelper.getConnection();
             //check 
             if (con != null) {
                 //2.Creat SQL String 
@@ -138,7 +138,7 @@ public class DAO extends DBHelper{
         PreparedStatement stm = null;
 
         try {
-            con = DBHelper.makeConnections();
+            con = DBHelper.getConnection();
             String query = "insert into [dbo].[User]\n" +
                         "values(?,?,?,?,0,0)";
             stm = con.prepareStatement(query);
@@ -177,7 +177,7 @@ public class DAO extends DBHelper{
 
         try {
             //1.Make connection
-            con = DBHelper.makeConnections();
+            con = DBHelper.getConnection();
             if (con != null){
             String query = "insert into [dbo].[User]\n" +
                         "values(?,?,?,?,0,0)";

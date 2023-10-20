@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import com.birdcompetition.model.User;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -36,6 +37,7 @@ public class LoginControl extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         String username = request.getParameter("user");
         String password = request.getParameter("pass");
+        HttpSession session = request.getSession();
         try {
             DAO dao = new DAO();
             User u = dao.checkLogin(username, password);
@@ -43,6 +45,7 @@ public class LoginControl extends HttpServlet {
                 request.setAttribute("mess", "Wrong user or password");
                 request.getRequestDispatcher("Login.jsp").forward(request, response);
             }else{
+                session.setAttribute("us",username);
                 response.sendRedirect("newhtml.html");
             }
 
