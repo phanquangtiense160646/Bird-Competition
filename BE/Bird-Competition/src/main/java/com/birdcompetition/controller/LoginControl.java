@@ -46,7 +46,7 @@ public class LoginControl extends HttpServlet {
                 request.getRequestDispatcher("Login.jsp").forward(request, response);
             }else{
                 session.setAttribute("us",username);
-                response.sendRedirect("newhtml.html");
+                response.sendRedirect("postlogin.html");
             }
 
             

@@ -27,7 +27,7 @@ public class LoginGoogleServlet extends HttpServlet {
       throws ServletException, IOException {
     String code = request.getParameter("code");
     if (code == null || code.isEmpty()) {
-      RequestDispatcher dis = request.getRequestDispatcher("login.jsp");
+      RequestDispatcher dis = request.getRequestDispatcher("Login.jsp");
       dis.forward(request, response);
     } else {
       String accessToken = GoogleUtils.getToken(code);
@@ -35,7 +35,7 @@ public class LoginGoogleServlet extends HttpServlet {
       request.setAttribute("id", googlePojo.getId());
       request.setAttribute("name", googlePojo.getName());
       request.setAttribute("email", googlePojo.getEmail());
-      RequestDispatcher dis = request.getRequestDispatcher("newhtml.html");
+      RequestDispatcher dis = request.getRequestDispatcher("postlogin.html");
       dis.forward(request, response);
     }
   }
