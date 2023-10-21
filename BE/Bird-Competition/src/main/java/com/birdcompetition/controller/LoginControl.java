@@ -38,15 +38,19 @@ public class LoginControl extends HttpServlet {
         String username = request.getParameter("user");
         String password = request.getParameter("pass");
         HttpSession session = request.getSession();
+        session.setAttribute("us", username);
+        
+        
         try {
             DAO dao = new DAO();
             User u = dao.checkLogin(username, password);
             if(u == null){
                 request.setAttribute("mess", "Wrong user or password");
-                request.getRequestDispatcher("Login.jsp").forward(request, response);
+                request.getRequestDispatcher("FE/Login.jsp").forward(request, response);
             }else{
                 session.setAttribute("us",username);
-                response.sendRedirect("postlogin.html");
+//                response.sendRedirect("postlogin.html");
+                request.getRequestDispatcher("FE/postlogin.html").forward(request, response);
             }
 
             
