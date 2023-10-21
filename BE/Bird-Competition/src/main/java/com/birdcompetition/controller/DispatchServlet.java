@@ -30,7 +30,6 @@ public class DispatchServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-<<<<<<< HEAD
         String url = "";
         String button = request.getParameter("btAction");
         try {
@@ -39,18 +38,6 @@ public class DispatchServlet extends HttpServlet {
             }
             
         }finally {
-=======
-        // String url = "/FE/index.html";
-        String url = "LeaderBoardServlet";
-        try {
-            DAO dao = new DAO();
-            System.out.println(dao.checkConnect());
-        } catch (SQLException ex) {
-            Logger.getLogger(DispatchServlet.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(DispatchServlet.class.getName()).log(Level.SEVERE, null, ex);
-        } finally {
->>>>>>> 66fbc0bf7348b2973a3bcc813431fe91cb3b4d3d
             RequestDispatcher rd = request.getRequestDispatcher(url);
             rd.forward(request, response);
         }
