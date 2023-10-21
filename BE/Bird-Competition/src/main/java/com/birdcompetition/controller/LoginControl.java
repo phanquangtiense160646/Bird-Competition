@@ -1,70 +1,74 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package com.birdcompetition.controller;
 
-import com.birdcompetition.schedule.ScheduleDAO;
+import com.birdcompetition.dal.DAO;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import com.birdcompetition.model.User;
+import javax.servlet.http.HttpSession;
 
 /**
  *
- * @author Admin
+ * @author 84366
  */
-public class DispatchServlet extends HttpServlet {
+@WebServlet(name = "LoginControl", urlPatterns = {"/login"})
+public class LoginControl extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
      *
-     * @param request  servlet request
+     * @param request servlet request
      * @param response servlet response
      * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException      if an I/O error occurs
+     * @throws IOException if an I/O error occurs
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-<<<<<<< HEAD
-        String url = "";
-        String button = request.getParameter("btAction");
-        try {
-            if(button == null) {
-                url = "StartServlet";
-            }
-            
-        }finally {
-=======
-        // String url = "/FE/index.html";
-        String url = "LeaderBoardServlet";
+        String username = request.getParameter("user");
+        String password = request.getParameter("pass");
+        HttpSession session = request.getSession();
+        session.setAttribute("us", username);
+        
+        
         try {
             DAO dao = new DAO();
-            System.out.println(dao.checkConnect());
-        } catch (SQLException ex) {
-            Logger.getLogger(DispatchServlet.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(DispatchServlet.class.getName()).log(Level.SEVERE, null, ex);
-        } finally {
->>>>>>> 66fbc0bf7348b2973a3bcc813431fe91cb3b4d3d
-            RequestDispatcher rd = request.getRequestDispatcher(url);
-            rd.forward(request, response);
-        }
-    }
+            User u = dao.checkLogin(username, password);
+            if(u == null){
+                request.setAttribute("mess", "Wrong user or password");
+                request.getRequestDispatcher("FE/Login.jsp").forward(request, response);
+            }else{
+                session.setAttribute("us",username);
+//                response.sendRedirect("postlogin.html");
+                request.getRequestDispatcher("FE/postlogin.html").forward(request, response);
+            }
 
-    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the
-    // + sign on the left to edit the code.">
+            
+        } catch (Exception e) {
+        }
+        
+        
+        
+  
+    }
+    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
      *
-     * @param request  servlet request
+     * @param request servlet request
      * @param response servlet response
      * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException      if an I/O error occurs
+     * @throws IOException if an I/O error occurs
      */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -75,10 +79,10 @@ public class DispatchServlet extends HttpServlet {
     /**
      * Handles the HTTP <code>POST</code> method.
      *
-     * @param request  servlet request
+     * @param request servlet request
      * @param response servlet response
      * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException      if an I/O error occurs
+     * @throws IOException if an I/O error occurs
      */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
