@@ -45,11 +45,11 @@ public class LoginControl extends HttpServlet {
             User u = dao.checkLogin(username, password);
             if(u == null){
                 request.setAttribute("mess", "Wrong user or password");
-                request.getRequestDispatcher("FE/Login.jsp").forward(request, response);
+                request.getRequestDispatcher("Login.jsp").forward(request, response);
             }else{
                 session.setAttribute("us",username);
 //                response.sendRedirect("postlogin.html");
-                request.getRequestDispatcher("FE/postlogin.html").forward(request, response);
+                request.getRequestDispatcher("FE/postlogin.jsp").forward(request, response);
             }
 
             
