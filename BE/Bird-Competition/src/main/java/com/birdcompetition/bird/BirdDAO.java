@@ -12,6 +12,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.naming.NamingException;
 
 /**
@@ -163,4 +165,42 @@ public class BirdDAO {
     void sort(List list) {
         Collections.sort(list, (BirdDTO b1, BirdDTO b2) -> -b1.compareTo(b2));
     }
+    
+    public boolean addBird(BirdDTO bird) throws SQLException, NamingException {
+    Connection con = null;
+    PreparedStatement stm = null;
+    boolean result = false;
+    try {
+        //1. Make connection
+        con = DBHelper.getConnection();
+        if (con != null) {
+            //2. Create SQL String 
+            String sql = "INSERT INTO Bird (IdBird, NameOfBird, Species, Point, Status, IdMember) VALUES (?, ?, ?, 1000, 'true', 'U01')";
+            //3. Create Statement Object
+            stm = con.prepareStatement(sql);
+            stm.setString(1, bird.getBirdID());
+            stm.setString(2, bird.getBirdName());
+            stm.setString(3, bird.getSpecies());
+
+            
+            
+            //4. Execute Query
+            int effectRows = stm.executeUpdate();
+            //5. Process
+            if (effectRows > 0) {
+                result = true;
+            }
+        }
+    } catch (ClassNotFoundException ex) {
+        Logger.getLogger(BirdDAO.class.getName()).log(Level.SEVERE, null, ex);
+    } finally {
+        if (stm != null) {
+            stm.close();
+        }
+        if (con != null) {
+            con.close();
+        }
+    }
+    return result;
+}
 }

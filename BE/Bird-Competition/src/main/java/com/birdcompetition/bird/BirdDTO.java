@@ -57,6 +57,16 @@ public class BirdDTO implements Comparable<BirdDTO> {
 
     }
 
+    public BirdDTO(String birdID, String birdName, String species, int point, boolean status, String memberID) {
+        this.birdID = birdID;
+        this.birdName = birdName;
+        this.species = species;
+        this.point = point;
+        this.status = status;
+        this.memberID = memberID;
+    }
+
+    
     public String getBirdID() {
         return birdID;
     }
