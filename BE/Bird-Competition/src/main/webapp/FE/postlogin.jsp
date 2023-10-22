@@ -115,21 +115,25 @@
 <!--                                <a href="/UserProfile/userprofile.html" class="btn btn-primary py-md-3 px-md-5 d-none d-lg-block">${sessionScope.us}</a>-->
                                 
                                 
-                        <c:choose>
-                            <c:when test="${empty sessionScope.us}">
-                                <!-- Nếu không có session, hiển thị nút Login/Signup -->
-                                <a href="FE/Login.jsp" class="btn btn-primary py-md-3 px-md-5 d-none d-lg-block">Login/Signup</a>
-                            </c:when>
-                            <c:otherwise>
-                                <!-- Nếu có session, hiển thị tên người dùng -->
-                                <a href="/UserProfile/userprofile.html" class="btn btn-primary py-md-3 px-md-5 d-none d-lg-block">${sessionScope.us}</a>
-                            </c:otherwise>
-                            <c:otherwise>
-                                <!-- Nếu có session của gmail, hiển thị tên người dùng -->
-                                <a href="/UserProfile/userprofile.html" class="btn btn-primary py-md-3 px-md-5 d-none d-lg-block">${sessionScope.email}</a>
-                            </c:otherwise>
-                            
-                        </c:choose>
+<c:choose>
+    <c:when test="${empty sessionScope.us}">
+        <!-- Nếu không có session `us`, kiểm tra session `email` -->
+        <c:choose>
+            <c:when test="${not empty sessionScope.email}">
+                <!-- Nếu có session `email`, hiển thị tên người dùng -->
+                <a href="/UserProfile/userprofile.html" class="btn btn-primary py-md-3 px-md-5 d-none d-lg-block">${sessionScope.email}</a>
+            </c:when>
+            <c:otherwise>
+                <!-- Nếu không có session `email`, hiển thị nút Login/Signup -->
+                <a href="FE/Login.jsp" class="btn btn-primary py-md-3 px-md-5 d-none d-lg-block">Login/Signup</a>
+            </c:otherwise>
+        </c:choose>
+    </c:when>
+    <c:otherwise>
+        <!-- Nếu có session `us`, hiển thị tên người dùng -->
+        <a href="/UserProfile/userprofile.html" class="btn btn-primary py-md-3 px-md-5 d-none d-lg-block">${sessionScope.us}</a>
+    </c:otherwise>
+</c:choose>
                                 
                             </div>
                                     <a href="matchResult.html" class="dropdown-item">Kết quả trận đấu</a>

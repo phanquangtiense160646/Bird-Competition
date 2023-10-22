@@ -49,7 +49,7 @@ public class LoginControl extends HttpServlet {
             }else{
                 session.setAttribute("us",username);
 //                response.sendRedirect("postlogin.html");
-                request.getRequestDispatcher("FE/postlogin.jsp").forward(request, response);
+                request.getRequestDispatcher("postLogin.jsp").forward(request, response);
             }
 
             

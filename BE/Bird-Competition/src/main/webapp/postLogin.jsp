@@ -116,7 +116,28 @@
                                     </div>
                                 </div>
                             </div>
-                            <a href="/UserProfile/userprofile.html" class="btn btn-primary py-md-3 px-md-5 d-none d-lg-block">emhuythichchoichim</a>
+<!--                            <a href="/UserProfile/userprofile.html" class="btn btn-primary py-md-3 px-md-5 d-none d-lg-block">emhuythichchoichim</a>-->
+
+                                        <!-- Kiểm tra sessionScope.us -->
+                                        
+                                        
+        <c:choose>
+            <c:when test="${empty sessionScope.us}">
+                <!-- Nếu không có session, hiển thị nút Login/Signup -->
+                <a href="Login.jsp" class="btn btn-primary py-md-3 px-md-5 d-none d-lg-block">Login/Signup</a>
+            </c:when>
+            <c:when test="${not empty sessionScope.us}">
+                <!-- Nếu có session, hiển thị tên người dùng -->
+                <a href="/UserProfile/userprofile.html" class="btn btn-primary py-md-3 px-md-5 d-none d-lg-block">${sessionScope.us}</a>
+            </c:when>
+            <c:when test="${not empty sessionScope.email}">
+                <a href="/UserProfile/userprofile.html" class="btn btn-primary py-md-3 px-md-5 d-none d-lg-block">${sessionScope.email}</a>
+            </c:when>    
+                
+        </c:choose>
+                
+                
+
                         </div>
                     </nav>
                 </div>
