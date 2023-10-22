@@ -17,7 +17,7 @@ body {
     background-size: 1080px 720px;
 
 
-    background: linear-gradient(rgba(34, 36, 41, .8), rgba(34, 36, 41, .8)), url(/FE/img/chaomao-bg.jpg) top center no-repeat;
+    background: linear-gradient(rgba(34, 36, 41, .8), rgba(34, 36, 41, .8)), url(FE/img/chaomao-bg.jpg) top center no-repeat;
     background-size: cover;
 }
 

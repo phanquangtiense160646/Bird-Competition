@@ -1,10 +1,16 @@
-<!DOCTYPE html>
-<html lang="en">
+<%-- 
+    Document   : postlogin
+    Created on : Oct 21, 2023, 7:30:18 AM
+    Author     : 84366
+--%>
 
-<head>
-    <meta charset="utf-8">
-    <title>Home</title>
-    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>Home</title>
+        <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
 
     <!-- Favicon -->
@@ -29,10 +35,10 @@
     <link href="css/style.css" rel="stylesheet">
 
     <script src="https://kit.fontawesome.com/96a8e8f111.js" crossorigin="anonymous"></script>
-
-</head>
-
-<body>
+        
+        
+    </head>
+    <body>
      <!-- Header Start -->
      <div class="container-fluid bg-dark px-0">
         <div class="row gx-0">
@@ -88,7 +94,7 @@
                         <div class="navbar-nav mr-auto py-0">
                             <a href="#" class="nav-item nav-link active">Home</a>
                             <a href="leaderboard.html" class="nav-item nav-link">Bảng xếp hạng</a>
-                            <a href="FE/schedule.html" class="nav-item nav-link">Lịch thi đấu</a>
+                            <a href="FE/schedule.jsp" class="nav-item nav-link">Lịch thi đấu</a>
                             <a href="memberShip.html" class="nav-item nav-link">Hội viên</a>
                             <div class="nav-item dropdown">
                                 <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
@@ -103,12 +109,34 @@
                                 <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Quản lý</a>
                                 <div class="dropdown-menu rounded-0 m-0">
                                     <a href="updateRule.html" class="dropdown-item">Luật thi đấu</a>
-                                    <a href="" class="dropdown-item">Lịch thi đấu</a>
+                                    <a href="" class="dropdown-item">Lịch thi đấu</a>                        
+                                </div>
+                                
+<!--                                <a href="/UserProfile/userprofile.html" class="btn btn-primary py-md-3 px-md-5 d-none d-lg-block">${sessionScope.us}</a>-->
+                                
+                                
+                        <c:choose>
+                            <c:when test="${empty sessionScope.us}">
+                                <!-- Nếu không có session, hiển thị nút Login/Signup -->
+                                <a href="FE/Login.jsp" class="btn btn-primary py-md-3 px-md-5 d-none d-lg-block">Login/Signup</a>
+                            </c:when>
+                            <c:otherwise>
+                                <!-- Nếu có session, hiển thị tên người dùng -->
+                                <a href="/UserProfile/userprofile.html" class="btn btn-primary py-md-3 px-md-5 d-none d-lg-block">${sessionScope.us}</a>
+                            </c:otherwise>
+                            <c:otherwise>
+                                <!-- Nếu có session của gmail, hiển thị tên người dùng -->
+                                <a href="/UserProfile/userprofile.html" class="btn btn-primary py-md-3 px-md-5 d-none d-lg-block">${sessionScope.email}</a>
+                            </c:otherwise>
+                            
+                        </c:choose>
+                                
+                            </div>
                                     <a href="matchResult.html" class="dropdown-item">Kết quả trận đấu</a>
                                 </div>
                             </div>
                         </div>
-                        <a href="/UserProfile/userprofile.html" class="btn btn-primary py-md-3 px-md-5 d-none d-lg-block">emhuythichchoichim</a>
+                        <a href="/UserProfile/userprofile.html" class="btn btn-primary py-md-3 px-md-5 d-none d-lg-block">${sessionScope.us}</a>
                     </div>
                 </nav>
             </div>
@@ -512,7 +540,7 @@
                     <div class="testimonial-item">
                         <p class="fs-4 fw-normal text-light mb-4"><i class="fa fa-quote-left text-primary me-3"></i>Dolores sed duo clita tempor justo dolor et stet lorem kasd labore dolore lorem ipsum. At lorem lorem magna ut et, nonumy et labore et tempor diam tempor erat dolor rebum sit ipsum.</p>
                         <div class="d-flex align-items-center">
-                            <img class="img-fluid rounded-circle" src="img/testimonial-1.jpg" alt="">
+                            <img class="img-fluid rounded-circle" src="FE/img/testimonial-1.jpg" alt="">
                             <div class="ps-4">
                                 <h5 class="text-uppercase text-light">Client Name</h5>
                                 <span class="text-uppercase text-secondary">Profession</span>
@@ -550,7 +578,7 @@
                         </div>
                         <div class="d-flex mb-2">
                             <i class="bi bi-envelope-open text-primary me-2"></i>
-                            <p class="mb-0">info@example.com</p>
+                            <p class="mb-0">birdcompetition@example.com</p>
                         </div>
                         <div class="d-flex mb-2">
                             <i class="bi bi-telephone text-primary me-2"></i>
@@ -606,12 +634,12 @@
         <div class="row gx-5">
             <div class="col-lg-8">
                 <div class="py-lg-4 text-center">
-                    <p class="text-secondary mb-0">&copy; <a class="text-light fw-bold" href="#">Your Site Name</a>. All Rights Reserved.</p>
+                    <p class="text-secondary mb-0">&copy; <a class="text-light fw-bold" href="#">Bird Competition</a>. All Rights Reserved.</p>
                 </div>
             </div>
             <div class="col-lg-4">
                 <div class="py-lg-4 text-center credit">
-                    <p class="text-light mb-0">Designed by <a class="text-light fw-bold" href="https://htmlcodex.com">HTML Codex</a></p>
+                    <p class="text-light mb-0">       <a class="text-light fw-bold" href="https://htmlcodex.com">Bird Competition</a></p>
                 </div>
             </div>
         </div>
@@ -633,6 +661,12 @@
 
     <!-- Template Javascript -->
     <script src="FE/js/main.js"></script>
-</body>
-
+        
+        
+        
+        
+        
+        
+        
+    </body>
 </html>
