@@ -1,81 +1,77 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
  */
 package com.birdcompetition.controller.web;
 
-import com.birdcompetition.dal.DAO;
+import com.birdcompetition.bird.BirdDAO;
+import com.birdcompetition.bird.BirdDTO;
+import com.birdcompetition.user.UserDTO;
 import java.io.IOException;
-import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import com.birdcompetition.model.User;
+import java.io.PrintWriter;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.naming.NamingException;
 import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 /**
  *
- * @author 84366
+ * @author admin
  */
-@WebServlet(name = "LoginControl", urlPatterns = { "/login" })
-public class LoginControl extends HttpServlet {
+@WebServlet(name = "AddBirdServlet", urlPatterns = {"/AddBirdServlet"})
+public class AddBirdServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
      *
-     * @param request  servlet request
+     * @param request servlet request
      * @param response servlet response
      * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException      if an I/O error occurs
+     * @throws IOException if an I/O error occurs
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        String username = request.getParameter("user");
-        String password = request.getParameter("pass");
-        String url = "Login.jsp";
-
+        
+        String id = request.getParameter("birdId");
+        String name = request.getParameter("birdName");
+        String specie = request.getParameter("birdSpecie");
+        String idMember = "";
+        String url = "";
+        
         try {
-
-            DAO dao = new DAO();
-            User result = dao.checkLogin(username, password);
-
-            if (result != null) {
-                HttpSession session = request.getSession();
-                session.setAttribute("USER", result);
-                url = "PostLoginServlet";
-            } else {
-                String msg = "Incorrect Username or Password";
-                request.setAttribute("msg", msg);
-            }
+            BirdDAO dao = new BirdDAO();
+            BirdDTO dto = new BirdDTO(id, name, specie, 0, true, "U01");
+            boolean result = dao.addBird(dto);
+            if(result){
+                url = "thanhcongroihuyoi.html";
+            };
         } catch (SQLException ex) {
-            Logger.getLogger(LoginControl.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(LoginControl.class.getName()).log(Level.SEVERE, null, ex);
-        } finally {
+            Logger.getLogger(AddBirdServlet.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (NamingException ex) {
+            Logger.getLogger(AddBirdServlet.class.getName()).log(Level.SEVERE, null, ex);
+        }finally{
             RequestDispatcher rd = request.getRequestDispatcher(url);
             rd.forward(request, response);
         }
-
     }
 
-    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the
-    // + sign on the left to edit the code.">
+    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
      *
-     * @param request  servlet request
+     * @param request servlet request
      * @param response servlet response
      * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException      if an I/O error occurs
+     * @throws IOException if an I/O error occurs
      */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -86,10 +82,10 @@ public class LoginControl extends HttpServlet {
     /**
      * Handles the HTTP <code>POST</code> method.
      *
-     * @param request  servlet request
+     * @param request servlet request
      * @param response servlet response
      * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException      if an I/O error occurs
+     * @throws IOException if an I/O error occurs
      */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)

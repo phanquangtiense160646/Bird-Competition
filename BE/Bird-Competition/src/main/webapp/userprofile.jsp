@@ -1,11 +1,18 @@
-<html lang="en">
+<%-- 
+    Document   : userprofile
+    Created on : Oct 22, 2023, 6:46:42 PM
+    Author     : admin
+--%>
 
-<head>
-  <script src="js/main.js"></script>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<!--<!DOCTYPE html>-->
+<html>
+  <head>
+  <script src="FE/js/main.js"></script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Bird Profile</title>
-  <link href="img/favicon.ico" rel="icon">
+  <title>Add Bird</title>
+  <link href="FE/img/favicon.ico" rel="icon">
 
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css"
     integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
@@ -18,22 +25,22 @@
   <!-- Icon Font Stylesheet -->
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.0/css/all.min.css" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
-  <link href="lib/flaticon/font/flaticon.css" rel="stylesheet">
+  <link href="FE/lib/flaticon/font/flaticon.css" rel="stylesheet">
 
   <!-- Libraries Stylesheet -->
-  <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+  <link href="FE/lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
 
   <!-- Customized Bootstrap Stylesheet -->
-  <link href="css/bootstrap.min.css" rel="stylesheet">
+  <link href="FE/css/bootstrap.min.css" rel="stylesheet">
 
   <!-- Template Stylesheet -->
-  <link href="css/userprofile.css" rel="stylesheet">
+  <link href="FE/css/userprofile.css" rel="stylesheet">
 
   <script src="https://kit.fontawesome.com/96a8e8f111.js" crossorigin="anonymous"></script>
 
 
 
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="FE/css/style.css">
   <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
     integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"> -->
 
@@ -52,7 +59,7 @@
 
         <a href="index.html"
           class="navbar-brand w-100 h-100 m-0 p-0 d-flex align-items-center justify-content-center">
-          <img src="img/finallogo.png" style="width: 100px; margin-right: -40px; margin-bottom:50px;">
+          <img src="FE/img/finallogo.png" style="width: 100px; margin-right: -40px; margin-bottom:50px;">
           <h1 class="m-0 display-4 text-primary text-uppercase">BIRDFIGHTER</h1>
         </a>
 
@@ -98,7 +105,7 @@
           </button>
           <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
             <div class="navbar-nav mr-auto py-0">
-              <a href="index.html" class="nav-item nav-link active">Home</a>
+              <a href="/index.html" class="nav-item nav-link active">Home</a>
               <a href="leaderboard.html" class="nav-item nav-link">Bảng Xếp Hạng</a>
               <a href="schedule.html" class="nav-item nav-link">Lịch Thi Đấu</a>
               <a href="memberShip.html" class="nav-item nav-link">Hội Viên</a>
@@ -117,7 +124,7 @@
             <!-- Dropdown-Menu -->
             <div class="dropdown">
               <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
-                ${p.Name}
+                  ${sessionScope.USER.Name}
               </button>
               <div class="dropdown-menu">
                 <a class="dropdown-item" href="birdprofile.html">Bird Profile</a>
@@ -162,14 +169,14 @@
                 </div>
 
                 <div class="ms-3" style="margin-top: 130px; margin-left: 30px;">
-                  <h5 class="text-white">${p.Name}</h5>
-                  <p>${}</p>
+                  <h5 class="text-white">${sessionScope.USER.Name}</h5>
+                  <p>${sessionScope.USER.fullName}</p>
                 </div>
               </div>
               <div class="p-5 text-black" style="background-color: #f8f9fa;">
                 <div class="d-flex justify-content-end text-center py-1">
                   <div>
-                    <p class="mb-1 h5">100</p>
+                      <p class="mb-1 h5">1</p>
                     <p class="small text-muted mb-0">Total Match</p>
                   </div>
                   <div class="px-3">
@@ -188,7 +195,7 @@
                   <p class="lead fw-normal mb-1">About</p>
                   <div class="p-4" style="background-color: #f8f9fa;">
                     <p class="font-italic mb-1">Thích Chơi Chim</p>
-                    <p class="font-italic mb-1">huyln2904@gmail.com</p>
+                    <p class="font-italic mb-1">${sessionScope.USER.gmail}</p>
                     <p class="font-italic mb-2">---</p>
                   </div>
                 </div>
@@ -221,28 +228,7 @@
                   </div>
 
                 </div>
-                <div class=" row g-2">
-                  <div class="box col mb-5">
-                    <div class="imghover">
-                      <form action="#my-dialog">
-                        <button class="btn">Info</button>
-                      </form>
-                    </div>
-                    <img src="https://abbfarm.com/wp-content/uploads/2021/06/hoang-mao-abbfarm.jpg">
-                    <p class="birdname" style="font-weight: bold; text-align:center;">HOÀNG KIM ĐIỂU </p>
-                  </div>
-
-                  <div class=" box col mb-5">
-                    <div class="imghover">
-                      <form action="#my-dialog">
-                        <button class="btn">Info</button>
-                      </form>
-                    </div>
-                    <img
-                      src="http://www.khoahocchonhanong.com.vn/hinhanh/tintuc/ostrichstruthiocamelustanzania3740nevit.jpg">
-                    <p class="birdname" style="font-weight: bold; text-align:center;">ĐÀ ĐIỂU </p>
-                  </div>
-                </div>
+        
               </div>
             </div>
             <div class="d-flex justify-content-center">
@@ -306,36 +292,7 @@
         <a href="#close-dialog" class="dialog-close-btn">&times;</a>
         <header class="dialog-content-header border-bottom">Chỉnh sửa thông tin cá nhân</header>
 
-        <!-- <table class="dialog-content-body">
-        <tr>
-          <td><small>Tên:</small></td>
-          <td><input class="edit-input-form" type="text" placeholder="fullname" value="Lê Nhật Huy"></td>
-        </tr>
-
-        <tr>
-          <td><small>Username:</small></td>
-          <td><input class="edit-input-form" type="text" placeholder="username" value="emhuythichchoichim"></td>
-        </tr>
-
-        <tr>
-          <td><small>Password:</small></td>
-          <td><input class="edit-input-form" type="text" placeholder="password" value="123123123"></td>
-        </tr>
-
-        <tr>
-          <td><small>Email:</small></td>
-          <td><input class="edit-input-form" type="text" placeholder="email" value="huyln2904@gmail.com"></td>
-        </tr>
-
-        <tr>
-          <td><small>Số điện thoại:</small></td>
-          <td><input class="edit-input-form" type="text" placeholder="phonenumber" value="0933788350"></td>
-        </tr>
-
-        <tr>
-          <td class="btn-save-edit"><button>Save</button></td>
-        </tr>
-      </table> -->
+        
 
         <div class="card mb-4">
           <div class="card-header">Account Details</div>
@@ -410,3 +367,4 @@
     integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF"
     crossorigin="anonymous"></script>
 </body>
+</html>

@@ -38,7 +38,7 @@ public class StartServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        String url = "index.jsp";
+        String url = "FE/index.html";
         try {
             ScheduleDAO scheduleDao = new ScheduleDAO();
             scheduleDao.getSchedule();
