@@ -6,64 +6,66 @@ const sidebar = document.querySelector(".sidebar");
 const closeOverlayBtn = document.querySelector(".button--close");
 
 const sidebarClose = () => {
-	sidebar.classList.remove("is-open");
-	overlay.style.opacity = 0;
-	setTimeout(() => {
-		overlay.classList.remove("is-open");
-		overlay.style.opacity = 1;
-	}, 300);
+    sidebar.classList.remove("is-open");
+    overlay.style.opacity = 0;
+    setTimeout(() => {
+        overlay.classList.remove("is-open");
+        overlay.style.opacity = 1;
+    }, 300);
 };
 
 tableRow.forEach(tableRow => {
-	tableRow.addEventListener("click", function() {
-		overlay.style.opacity = 0;
-		overlay.classList.add("is-open");
-		sidebar.classList.add("is-open");
-		setTimeout(() => {
-			overlay.style.opacity = 1;
-		}, 100);
-		
-		// Sidebar content
-		const sidebarBody = document.querySelector(".sidebar__body");
-		sidebarBody.innerHTML = '';
-		
-		const driverPlace = this.querySelector(".list__cell:nth-of-type(1) .list__value").innerHTML;
-		const birdName = this.querySelector(".list__cell:nth-of-type(2) .list__value").innerHTML;
-		const trainer = this.querySelector(".list__cell:nth-of-type(3) .list__value").innerHTML;
-		const birdPoint = this.querySelector(".list__cell:nth-of-type(4) .list__value").innerHTML;
-		const driverImage = this.dataset.image;
-		const win = this.dataset.win;
-		const lose = this.dataset.lose;
-		const tie = this.dataset.tie;
-		
-		const newDriver = document.createElement('div');
-		newDriver.classList = 'driver';
-		
-		const driverContent = document.createElement('div');
-		driverContent.classList = 'driver__content';
-		
-		const profile = document.createElement('div');
-		profile.classList = 'driver__image';
-		profile.style.backgroundImage = `url('${driverImage}')`;
-		newDriver.appendChild(profile);
-		
-		const birdTitle = document.createElement('div');
-		birdTitle.classList = 'driver__title';
-		birdTitle.innerHTML = birdName;
-		driverContent.appendChild(birdTitle);
-		
-		const driverInfo = document.createElement('div');
-		driverInfo.innerHTML = `
+    tableRow.addEventListener("click", function () {
+        overlay.style.opacity = 0;
+        overlay.classList.add("is-open");
+        sidebar.classList.add("is-open");
+        setTimeout(() => {
+            overlay.style.opacity = 1;
+        }, 100);
+
+        // Sidebar content
+        const sidebarBody = document.querySelector(".sidebar__body");
+        sidebarBody.innerHTML = '';
+
+        const driverPlace = this.querySelector(".list__cell:nth-of-type(1) .list__value").innerHTML;
+        const birdName = this.querySelector(".list__cell:nth-of-type(2) .list__value").innerHTML;
+        const trainer = this.querySelector(".list__cell:nth-of-type(3) .list__value").innerHTML;
+        const birdPoint = this.querySelector(".list__cell:nth-of-type(4) .list__value").innerHTML;
+        const birdImage = this.dataset.image;
+        const win = this.dataset.win;
+        const lose = this.dataset.lose;
+        const tie = this.dataset.tie;
+        const matchNumber = this.dataset.match;
+
+
+        const newDriver = document.createElement('div');
+        newDriver.classList = 'driver';
+
+        const driverContent = document.createElement('div');
+        driverContent.classList = 'driver__content';
+
+        const profile = document.createElement('div');
+        profile.classList = 'driver__image';
+        profile.style.backgroundImage = `url('${birdImage}')`;
+        newDriver.appendChild(profile);
+
+        const birdTitle = document.createElement('div');
+        birdTitle.classList = 'driver__title';
+        birdTitle.innerHTML = birdName;
+        driverContent.appendChild(birdTitle);
+
+        const driverInfo = document.createElement('div');
+        driverInfo.innerHTML = `
 		<table class="driver__table">
 			<tbody>
 				<tr>
 					<td><small>Trainer:</small></td>
 					<td>${trainer}</td>
 				</tr>
-                <tr>
-                <td><small>Điểm:</small></td>
-                <td>${birdPoint}</td>
-            </tr>
+                                <tr>
+                                        <td><small>Điểm:</small></td>
+                                        <td class="text-primary">${birdPoint}</td>
+                                </tr>
 				<tr>
 					<td><small>Thắng:</small></td>
 					<td>${win}</td>
@@ -76,21 +78,25 @@ tableRow.forEach(tableRow => {
 					<td><small>Hòa:</small></td>
 					<td>${tie}</td>
 				</tr>
+                                <tr>
+					<td><small>Số trận:</small></td>
+					<td>${matchNumber}</td>
+				</tr>
 			
 			</tbody>
 		</table>`;
-		driverContent.appendChild(driverInfo);
-		
-		newDriver.appendChild(driverContent);
-		sidebarBody.appendChild(newDriver);
-		
-	});
+        driverContent.appendChild(driverInfo);
+
+        newDriver.appendChild(driverContent);
+        sidebarBody.appendChild(newDriver);
+
+    });
 });
 
-closeOverlayBtn.addEventListener("click", function() {
-	sidebarClose();
+closeOverlayBtn.addEventListener("click", function () {
+    sidebarClose();
 });
 
-overlay.addEventListener("click", function() {
-	sidebarClose();
+overlay.addEventListener("click", function () {
+    sidebarClose();
 });
