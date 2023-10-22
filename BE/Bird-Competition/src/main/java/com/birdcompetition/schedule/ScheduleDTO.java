@@ -23,13 +23,14 @@ public class ScheduleDTO implements Serializable {
     private double fee;
     private String userId;
     private String location;
+    private boolean statusOfContest;
 
     public ScheduleDTO() {
     }
 
     public ScheduleDTO(String id, String name, Date date, String locationId, 
             boolean status, double factor, double minPoint, double maxPoint, 
-            double fee, String userId, String location) {
+            double fee, String userId, String location, boolean statusOfContest) {
         this.id = id;
         this.name = name;
         this.date = date;
@@ -41,6 +42,7 @@ public class ScheduleDTO implements Serializable {
         this.fee = fee;
         this.userId = userId;
         this.location = location;
+        this.statusOfContest = statusOfContest;
     }
 
     public String getId() {

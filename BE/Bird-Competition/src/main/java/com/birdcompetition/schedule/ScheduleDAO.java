@@ -62,9 +62,10 @@ public class ScheduleDAO implements Serializable {
                     double fee = rs.getDouble("ParticipatingFee");
                     String userId = rs.getString("IdUser");
                     String location = rs.getString("Location");
+                    boolean contestStatus = rs.getBoolean("StatusOfContest");
 
-                    ScheduleDTO dto = new ScheduleDTO(id, name, date,
-                            locationId, status, factor, minPoint, maxPoint, fee, userId, location);
+                    ScheduleDTO dto = new ScheduleDTO(id, name, date, locationId, 
+                            status, factor, minPoint, maxPoint, fee, userId, location, contestStatus);
                     if (this.scheduleList == null) {
                         this.scheduleList = new ArrayList<>();
                     }

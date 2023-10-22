@@ -34,9 +34,11 @@ public class DispatchServlet extends HttpServlet {
         String url = "";
         try {
             if (button == null) {
-                url = "StartServlet";
+                url = "PostLoginServlet";
             } else if (button.equals("LeaderBoard")) {
                 url = "LeaderBoardServlet";
+            } else if (button.equals("schedule")) {
+                url = "ScheduleServlet";
             }
         } finally {
             RequestDispatcher rd = request.getRequestDispatcher(url);
@@ -44,8 +46,7 @@ public class DispatchServlet extends HttpServlet {
         }
     }
 
-    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the
-    // + sign on the left to edit the code.">
+    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
      *
