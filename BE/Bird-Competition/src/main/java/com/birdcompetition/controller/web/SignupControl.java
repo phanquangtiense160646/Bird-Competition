@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.birdcompetition.controller;
+package com.birdcompetition.controller.web;
 
 import com.birdcompetition.dal.DAO;
 import com.birdcompetition.dal.RegistrationCreateError;

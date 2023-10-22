@@ -16,14 +16,14 @@ import com.birdcompetition.model.GooglePojo;
 import com.birdcompetition.util.GoogleUtils;
 import javax.servlet.http.HttpSession;
 
-
-
 @WebServlet("/login-google")
 public class LoginGoogleServlet extends HttpServlet {
   private static final long serialVersionUID = 1L;
+
   public LoginGoogleServlet() {
     super();
   }
+
   protected void doGet(HttpServletRequest request, HttpServletResponse response)
       throws ServletException, IOException {
     String code = request.getParameter("code");
@@ -41,6 +41,7 @@ public class LoginGoogleServlet extends HttpServlet {
       dis.forward(request, response);
     }
   }
+
   protected void doPost(HttpServletRequest request, HttpServletResponse response)
       throws ServletException, IOException {
     doGet(request, response);

@@ -8,7 +8,8 @@ package com.birdcompetition.bird;
  *
  * @author admin
  */
-public class BirdDTO {
+public class BirdDTO implements Comparable<BirdDTO> {
+
     private String birdID;
     private String birdName;
     private String species;
@@ -16,16 +17,16 @@ public class BirdDTO {
     private boolean status;
     private String memberID;
     private String photoPath;
-    private String win;
-    private String lose;
-    private String tie;
+    private int win;
+    private int lose;
+    private int tie;
     private int matchNumber;
-    
+    private String trainer;
 
     public BirdDTO() {
     }
 
-    public BirdDTO(String birdID, String birdName, String species, int point, boolean status, String memberID, String photoPath, String win, String lose, String tie, int matchNumber) {
+    public BirdDTO(String birdID, String birdName, String species, int point, boolean status, String memberID, String photoPath, int win, int lose, int tie, int matchNumber) {
         this.birdID = birdID;
         this.birdName = birdName;
         this.species = species;
@@ -37,6 +38,23 @@ public class BirdDTO {
         this.lose = lose;
         this.tie = tie;
         this.matchNumber = matchNumber;
+        
+    }
+
+    public BirdDTO(String birdName, String species, int point, String trainer, String photoPath, int win, int lose, int tie, int matchNumber) {
+        this.birdID = null;
+        this.birdName = birdName;
+        this.species = species;
+        this.point = point;
+        this.status = true;
+        this.memberID = null;
+        this.photoPath = photoPath;
+        this.win = win;
+        this.lose = lose;
+        this.tie = tie;
+        this.matchNumber = matchNumber;
+        this.trainer = trainer;
+
     }
 
     public String getBirdID() {
@@ -95,27 +113,27 @@ public class BirdDTO {
         this.photoPath = photoPath;
     }
 
-    public String getWin() {
+    public int getWin() {
         return win;
     }
 
-    public void setWin(String win) {
+    public void setWin(int win) {
         this.win = win;
     }
 
-    public String getLose() {
+    public int getLose() {
         return lose;
     }
 
-    public void setLose(String lose) {
+    public void setLose(int lose) {
         this.lose = lose;
     }
 
-    public String getTie() {
+    public int getTie() {
         return tie;
     }
 
-    public void setTie(String tie) {
+    public void setTie(int tie) {
         this.tie = tie;
     }
 
@@ -127,7 +145,45 @@ public class BirdDTO {
         this.matchNumber = matchNumber;
     }
 
+    public String getTrainer() {
+        return trainer;
+    }
+
+    public void setTrainer(String trainer) {
+        this.trainer = trainer;
+    }
     
     
+
+    public double WinRate() {
+//        double cal = this.win;
+        double winRate = win / matchNumber * 100;
+        System.out.println("-------------");
+        System.out.println("name: " + birdName);
+        System.out.println("win: " + win);
+        System.out.println("match: " + matchNumber);
+        System.out.println(winRate);
+        return winRate;
+    }
     
+    public double calWinRate() {
+        if (matchNumber == 0) {
+            return 0.0;
+        }
+        double cal = ((double) win / matchNumber) * 100.0;
+        cal = Math.round(cal);
+        return cal;
+    }
+
+
+    @Override
+    public int compareTo(BirdDTO o) {
+        return Integer.compare(this.point, o.point);
+    }
+
+    @Override
+    public String toString() {
+        return "BirdDTO{" + "birdID=" + birdID + ", birdName=" + birdName + ", species=" + species + ", point=" + point + ", memberID=" + memberID + ", win=" + win + ", lose=" + lose + ", tie=" + tie + ", matchNumber=" + matchNumber + ", trainer=" + trainer + '}';
+    }
+
 }
