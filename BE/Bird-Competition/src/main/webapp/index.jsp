@@ -279,10 +279,39 @@
         <div class="tab-class text-center">
             <ul class="nav nav-pills d-inline-flex justify-content-center bg-dark text-uppercase rounded-pill mb-5">
                 <li class="nav-item">
-                    <a class="nav-link rounded-pill text-white active" data-bs-toggle="pill" href="#tab-1">Tháng này</a>
+                    <a class="nav-link rounded-pill text-white" data-bs-toggle="pill" href="#tab-0">Đã diễn ra</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link rounded-pill text-white active" data-bs-toggle="pill" href="#tab-1">Đang diễn ra</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link rounded-pill text-white" data-bs-toggle="pill" href="#tab-2">Sắp diễn ra</a>
                 </li>
             </ul>
             <div class="tab-content">
+                <div id="tab-0" class="tab-pane fade show p-0">
+                    <div class="row g-5">
+                        <c:set var="scheduleData" value="${requestScope.SCHEDULE}"/>
+                        <c:if test="${not empty scheduleData}">
+                            <c:forEach var="scheduleDto" items="${scheduleData}" varStatus="counter">
+                                <div class="col-lg-3 col-md-4 col-sm-6">
+                                    <div class="bg-dark rounded text-center py-5 px-3">
+                                        <h6 class="text-uppercase text-light mb-3">Ngày: ${scheduleDto.date}</h6>
+                                        <h6 class="text-uppercase text-light mb-3"> Giờ: 8.00am - 10.00am</h6>
+                                        <h6 class="text-uppercase text-light mb-3"> Địa điểm: ${scheduleDto.location}</h6>
+                                        <h5 class="text-uppercase text-primary">${scheduleDto.name}</h5>
+                                        <p class="text-uppercase text-secondary mb-0">Loại chim: Chào mào</p>
+                                        <p class="text-uppercase text-secondary mb-0">Điểm yêu cầu: ${scheduleDto.minPoint} - ${scheduleDto.maxPoint} </p>
+                                        <p class="text-uppercase text-secondary mb-0" style="display: inline;">
+                                            số người đăng kí: 
+                                        <p class="text-uppercase text-primary mb-0" style="display: inline;">10/15</p>
+                                        </p>
+                                    </div>
+                                </div>
+                            </c:forEach>
+                        </c:if>
+                    </div>
+                </div>
                 <div id="tab-1" class="tab-pane fade show p-0 active">
                     <div class="row g-5">
                         <c:set var="scheduleData" value="${requestScope.SCHEDULE}"/>
@@ -295,8 +324,7 @@
                                         <h6 class="text-uppercase text-light mb-3"> Địa điểm: ${scheduleDto.location}</h6>
                                         <h5 class="text-uppercase text-primary">${scheduleDto.name}</h5>
                                         <p class="text-uppercase text-secondary mb-0">Loại chim: Chào mào</p>
-                                        <p class="text-uppercase text-secondary mb-0">Min Point: ${scheduleDto.minPoint}</p>
-                                        <p class="text-uppercase text-secondary mb-0">Max Point: ${scheduleDto.maxPoint}</p>
+                                        <p class="text-uppercase text-secondary mb-0">Điểm yêu cầu: ${scheduleDto.minPoint} - ${scheduleDto.maxPoint} </p>
                                         <p class="text-uppercase text-secondary mb-0" style="display: inline;">
                                             số người đăng kí: 
                                         <p class="text-uppercase text-primary mb-0" style="display: inline;">10/15</p>
@@ -305,7 +333,30 @@
                                 </div>
                             </c:forEach>
                         </c:if>
-
+                    </div>
+                </div>
+                <div id="tab-2" class="tab-pane fade show p-0">
+                    <div class="row g-5">
+                        <c:set var="scheduleData" value="${requestScope.SCHEDULE}"/>
+                        <c:if test="${not empty scheduleData}">
+                            <c:forEach var="scheduleDto" items="${scheduleData}" varStatus="counter">
+                                <div class="col-lg-3 col-md-4 col-sm-6">
+                                    <div class="bg-dark rounded text-center py-5 px-3">
+                                        <h6 class="text-uppercase text-light mb-3">Ngày: ${scheduleDto.date}</h6>
+                                        <h6 class="text-uppercase text-light mb-3"> Giờ: 8.00am - 10.00am</h6>
+                                        <h6 class="text-uppercase text-light mb-3"> Địa điểm: ${scheduleDto.location}</h6>
+                                        <h5 class="text-uppercase text-primary">${scheduleDto.name}</h5>
+                                        <p class="text-uppercase text-secondary mb-0">Loại chim: Chào mào</p>
+                                        <p class="text-uppercase text-secondary mb-0">Điểm yêu cầu: ${scheduleDto.minPoint} - ${scheduleDto.maxPoint} </p>
+                                        <h6 class="text-uppercase text-light mb-3">Phí đăng kí: ${scheduleDto.fee}</h6>
+                                        <p class="text-uppercase text-secondary mb-0" style="display: inline;">
+                                            số người đăng kí: 
+                                        <p class="text-uppercase text-primary mb-0" style="display: inline;">10/15</p>
+                                        </p>
+                                    </div>
+                                </div>
+                            </c:forEach>
+                        </c:if>
                     </div>
                 </div>
             </div>
