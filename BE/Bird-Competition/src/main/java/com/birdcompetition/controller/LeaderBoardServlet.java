@@ -39,7 +39,7 @@ public class LeaderBoardServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        String url = "FE/leaderboard.jsp";
+        String url = "leaderboard.jsp";
 
         try {
             BirdDAO dao = new BirdDAO();

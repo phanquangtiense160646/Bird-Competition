@@ -31,12 +31,12 @@ public class DispatchServlet extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         String button = request.getParameter("btAction");
-        String url = "FE/leaderboard.jsp";
+        String url = "FE/index.html";
         try {
             if (button == null) {
+                
             } else if (button.equals("LeaderBoard")) {
                 url = "LeaderBoardServlet";
-
             }
         } finally {
             RequestDispatcher rd = request.getRequestDispatcher(url);

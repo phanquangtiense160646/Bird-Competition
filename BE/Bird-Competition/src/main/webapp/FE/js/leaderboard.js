@@ -64,7 +64,7 @@ tableRow.forEach(tableRow => {
 				</tr>
                                 <tr>
                                         <td><small>Điểm:</small></td>
-                                        <td>${birdPoint}</td>
+                                        <td class="text-primary">${birdPoint}</td>
                                 </tr>
 				<tr>
 					<td><small>Thắng:</small></td>

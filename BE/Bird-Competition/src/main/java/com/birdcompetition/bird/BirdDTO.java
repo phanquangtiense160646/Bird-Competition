@@ -38,7 +38,7 @@ public class BirdDTO implements Comparable<BirdDTO> {
         this.lose = lose;
         this.tie = tie;
         this.matchNumber = matchNumber;
-        this.trainer = null;
+        
     }
 
     public BirdDTO(String birdName, String species, int point, String trainer, String photoPath, int win, int lose, int tie, int matchNumber) {
@@ -144,6 +144,16 @@ public class BirdDTO implements Comparable<BirdDTO> {
     public void setMatchNumber(int matchNumber) {
         this.matchNumber = matchNumber;
     }
+
+    public String getTrainer() {
+        return trainer;
+    }
+
+    public void setTrainer(String trainer) {
+        this.trainer = trainer;
+    }
+    
+    
 
     public double WinRate() {
 //        double cal = this.win;

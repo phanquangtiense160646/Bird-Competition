@@ -86,8 +86,8 @@
                         </button>
                         <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
                             <div class="navbar-nav mr-auto py-0">
-                                <a href="FE/postlogin.html" class="nav-item nav-link">Home</a>
-                                <a href="FE/leaderboard.jsp" class="nav-item nav-link active">Bảng xếp hạng</a>
+                                <a href="FE/index.html" class="nav-item nav-link">Home</a>
+                                <a href="leaderboard.jsp" class="nav-item nav-link active">Bảng xếp hạng</a>
                                 <a href="FE/schedule.html" class="nav-item nav-link">Lịch thi đấu</a>
                                 <a href="FE/memberShip.html" class="nav-item nav-link">Hội viên</a>
                                 <div class="nav-item dropdown">
@@ -130,12 +130,13 @@
         </div>
         <!-- Hero End -->
 
-        
+<!--        
         <form action="DispatchServlet" class="d-flex justify-content-center">
             <button type="submit" value="LeaderBoard" name="btAction">Load</button> 
-        </form>
+        </form>-->
          
         <c:set var="leaderboard" value="${requestScope.LEADER_BOARD}" />
+        <c:set var="searchList" value="${requestScope.SEARCH_LIST}" />
         
         <!-- Top Bird Start -->
         <div class="container-fluid p-5">
@@ -160,7 +161,7 @@
                         <div class="position-absolute start-0 bottom-0 w-100 rounded-bottom text-center p-4" style="background: rgba(173, 181, 189, .9);">
                             <h5 class="text-uppercase text-light">${leaderboard[1].birdName}</h5>
                             <p class="text-uppercase text-white m-0">Top 2</p>
-                            <p class="text-uppercase text-white m-0">Trainner: Huy Ln</p>
+                            <p class="text-uppercase text-white m-0">Trainner: ${leaderboard[1].trainer}</p>
 
 
                         </div>
@@ -180,7 +181,7 @@
                         <div class="position-absolute start-0 bottom-0 w-100 rounded-bottom text-center p-4" style="background: rgba(255, 218, 101, .9);">
                             <h5 class="text-uppercase text-light">${leaderboard[0].birdName}</h5>
                             <p class="text-uppercase text-white m-0">Top 1</p>
-                            <p class="text-uppercase text-white m-0">Trainner: ThuanThien</p>
+                            <p class="text-uppercase text-white m-0">Trainner: ${leaderboard[0].trainer}</p>
 
                         </div>
                     </div>
@@ -200,7 +201,7 @@
                         <div class="position-absolute start-0 bottom-0 w-100 rounded-bottom text-center p-4" style="background: rgba(201, 147, 85, .9);">
                             <h5 class="text-uppercase text-light">${leaderboard[2].birdName}</h5>
                             <p class="text-uppercase text-white m-0">Top 3</p>
-                            <p class="text-uppercase text-white m-0">Trainner: Danh Tran</p>
+                            <p class="text-uppercase text-white m-0">Trainner: ${leaderboard[2].trainer}</p>
 
                         </div>
                     </div>
@@ -210,32 +211,28 @@
         <!-- Top Bird End -->
 
         <!-- Leaderboard start -->
-
-
+        <c:set var="searchValue" value="${param.txtSearchValue}" /> 
         <div class='container' tabindex='1'>
             <div class='search-container' tabindex='1'>
-                <input placeholder='Tìm kiếm' type='text'>
-                <a class='button'>
+                <input class="text-black-50" placeholder='Tìm kiếm' type='text' name="txtSearchValue">
+                <a class='button' type="submit" value="Search" name="btAction">
                     <i class='fa fa-search'></i>
                 </a>
             </div>
         </div>
-
-
-    
-        
-        <%--<c:if test="${not empty leaderboard}">--%>
-            <div class="wrapper" id="board">
+        <c:if test="${not empty searchValue}">
+        <c:if test="${not empty searchList}">
+            <div class="wrapper">
                 <div class="list">
                     <div class="list__header">
-                        <h1>Bảng xếp hạng</h1>
+                        <!--<h1>Bảng xếp hạng</h1>-->
                     </div>
                     <div class="list__body">
                         <table class="list__table">
                             <tbody>
                                 <!-- Loop -->
                                 <c:forEach items="${leaderboard}" var="dto" varStatus="counter">
-                                    <tr class="list__row" data-image="FE/img/thuanphuong.jpg" data-win= ${dto.win} data-lose= ${dto.lose} data-tie= ${dto.tie} data-match= "100">
+                                    <tr class="list__row" data-image="FE/img/thuanphuong.jpg" data-win= ${dto.win} data-lose= ${dto.lose} data-tie= ${dto.tie} data-match= "${dto.matchNumber}">
                                         <td class="list__cell">
                                             <span class="list__value"> ${counter.count}</span>
                                         </td>
@@ -244,7 +241,7 @@
                                             <small class="list__label">Chim</small>
                                         </td>
                                         <td class="list__cell">
-                                            <span class="list__value">...</span>
+                                            <span class="list__value">${dto.trainer}</span>
                                             <small class="list__label">Trainer</small>
                                         </td>
                                         <td class="list__cell">
@@ -262,15 +259,48 @@
                     </div>
                 </div>
                 <div class="overlay"></div>
-            <%--</c:if>--%>
-            <c:if test="${empty leaderboard}">
-                <div class="d-flex justify-content-center">
-                    <h2>
-                        Chưa có bảng xếp hạng!!!
-                    </h2> 
-                </div>
+        </c:if>
+        </c:if>
+    
+        
+        <%--<c:if test="${not empty leaderboard}">--%>
+            <div class="wrapper" id="board">
+                <div class="list">
+                    <div class="list__header">
+                        <h1>Bảng xếp hạng</h1>
+                    </div>
+                    <div class="list__body">
+                        <table class="list__table">
+                            <tbody>
+                                <!-- Loop -->
+                                <c:forEach items="${leaderboard}" var="dto" varStatus="counter">
+                                    <tr class="list__row" data-image="FE/img/thuanphuong.jpg" data-win= ${dto.win} data-lose= ${dto.lose} data-tie= ${dto.tie} data-match= "${dto.matchNumber}">
+                                        <td class="list__cell">
+                                            <span class="list__value"> ${counter.count}</span>
+                                        </td>
+                                        <td class="list__cell">
+                                            <span class="list__value"> ${dto.birdName} </span>
+                                            <small class="list__label">Chim</small>
+                                        </td>
+                                        <td class="list__cell">
+                                            <span class="list__value">${dto.trainer}</span>
+                                            <small class="list__label">Trainer</small>
+                                        </td>
+                                        <td class="list__cell">
+                                            <span class="list__value"> ${dto.point} </span>
+                                            <small class="list__label">Điểm</small>
+                                        </td>
+                                    </tr>
+                                    <!-- row -->
+                                    <!-- End of loop -->
+                                </c:forEach>
+                            </tbody>
+                        </table>
 
-            </c:if>
+                        <button class="view-more_bt">Xem thêm</button>
+                    </div>
+                </div>
+                <div class="overlay"></div>
         </div>
         
         <div class="sidebar">
@@ -301,7 +331,7 @@
                     <table class="list__table">
                         <tbody>
                             <!-- Loop -->
-                            <tr class="list__row" data-image="FE/img/thuanphuong.jpg" data-win="167" data-lose="45" data-tie="6">
+                            <tr class="list__row" data-image="FE/img/thuanphuong.jpg" data-win="167" data-lose="45" data-tie="6" data-match= "100">
                                 <td class="list__cell">
                                     <span class="list__value">1</span>
                                 </td>
