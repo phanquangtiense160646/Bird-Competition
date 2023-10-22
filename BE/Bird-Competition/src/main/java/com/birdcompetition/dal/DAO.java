@@ -20,7 +20,7 @@ import javax.naming.NamingException;
 public class DAO extends DBHelper{
 
     public User checkLogin(String username, String password)
-            throws SQLException, NamingException, ClassNotFoundException {
+            throws SQLException, ClassNotFoundException {
         Connection con = null;
         PreparedStatement stm = null;
         ResultSet rs = null;
@@ -33,7 +33,7 @@ public class DAO extends DBHelper{
             //check 
             if (con != null) {
                 //2.Creat SQL String 
-            String query = "select * from [dbo].[User] " +
+            String query = "select * from [dbo].[User] " + 
                     "where UserName = ? " +
                     " and UserPassword = ?";
                 //3.Create Statement Object
@@ -44,8 +44,11 @@ public class DAO extends DBHelper{
                 rs = stm.executeQuery();
                 //5.Process
                 if (rs.next()) {
+                    String id = rs.getString("IdUser");
+                    String gmail = rs.getString("UserGmail");
+                    int role = rs.getInt("UserRole");
                     
-                    result = new User(0, username, password, username, username);
+                    result = new User(id, username, password, gmail, role);
                 }//end username and password is verified 
             }
         } finally {
@@ -87,7 +90,7 @@ public class DAO extends DBHelper{
                 //5.Process
                 if (rs.next()) {
                     
-                    result = new User(0, username, username, username, username);
+                    result = new User(username, username, username, username, 0);
                 }//end username and password is verified 
             }
         } finally {
@@ -142,11 +145,11 @@ public class DAO extends DBHelper{
             String query = "insert into [dbo].[User]\n" +
                         "values(?,?,?,?,0,0)";
             stm = con.prepareStatement(query);
-            stm.setInt(1, user.getIdUser());
+            stm.setString(1, user.getIdUser());
             stm.setString(2, user.getUserName());
             stm.setString(3, user.getUserPassword()); // Đây là một giá trị tùy bạn muốn đặt cho UserGmail.
             stm.setString(4, user.getUserGmail());
-            stm.setString(5, user.getUserRole());
+            stm.setInt(5, user.getUserRole());
             
             stm.executeUpdate();
 
@@ -182,11 +185,11 @@ public class DAO extends DBHelper{
             String query = "insert into [dbo].[User]\n" +
                         "values(?,?,?,?,0,0)";
             stm = con.prepareStatement(query);
-            stm.setInt(1, user.getIdUser());
+            stm.setString(1, user.getIdUser());
             stm.setString(2, user.getUserName());
             stm.setString(3, user.getUserPassword()); // Đây là một giá trị tùy bạn muốn đặt cho UserGmail.
             stm.setString(4, user.getUserGmail());
-            stm.setString(5, user.getUserRole());
+            stm.setInt(5, user.getUserRole());
                 int exercute = stm.executeUpdate();
                 if (exercute > 0) {
                     result = true;

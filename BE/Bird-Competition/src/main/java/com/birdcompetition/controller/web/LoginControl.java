@@ -13,6 +13,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import com.birdcompetition.model.User;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.naming.NamingException;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.http.HttpSession;
 
 /**
@@ -36,24 +41,28 @@ public class LoginControl extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         String username = request.getParameter("user");
         String password = request.getParameter("pass");
-        HttpSession session = request.getSession();
-        session.setAttribute("us", username);
-        
-        
+        String url = "Login.jsp";
+  
         try {
-            DAO dao = new DAO();
-            User u = dao.checkLogin(username, password);
-            if(u == null){
-                request.setAttribute("mess", "Wrong user or password");
-                request.getRequestDispatcher("FE/Login.jsp").forward(request, response);
-            }else{
-                session.setAttribute("us",username);
-//                response.sendRedirect("postlogin.html");
-                request.getRequestDispatcher("FE/postlogin.html").forward(request, response);
-            }
-
             
-        } catch (Exception e) {
+            DAO dao = new DAO();
+            User result = dao.checkLogin(username, password);
+            
+            if(result != null){
+                HttpSession session = request.getSession();
+                session.setAttribute("USER", result);
+                url = "PostLoginServlet";          
+            }else{
+                String msg = "Incorrect Username or Password";
+                request.setAttribute("msg", msg);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(LoginControl.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(LoginControl.class.getName()).log(Level.SEVERE, null, ex);
+        } finally{
+            RequestDispatcher rd = request.getRequestDispatcher(url);
+            rd.forward(request, response);
         }
         
         

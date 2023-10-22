@@ -116,7 +116,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <a href="/UserProfile/userprofile.html" class="btn btn-primary py-md-3 px-md-5 d-none d-lg-block">emhuythichchoichim</a>
+                            <a href="" class="btn btn-primary py-md-3 px-md-5 d-none d-lg-block">${sessionScope.USER.userName}</a>
                         </div>
                     </nav>
                 </div>
