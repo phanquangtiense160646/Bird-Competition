@@ -92,7 +92,7 @@
                             <div class="navbar-nav mr-auto py-0">
                                 <a href="#" class="nav-item nav-link active">Home</a>
                                 <a href="leaderboard.html" class="nav-item nav-link">Bảng xếp hạng</a>
-                                <a href="schedule.html" class="nav-item nav-link">Lịch thi đấu</a>
+                                <a href='<c:url value="/DispatchServlet?btAction=schedule"/>' class="nav-item nav-link">Lịch thi đấu</a>
                                 <a href="memberShip.html" class="nav-item nav-link">Hội viên</a>
                                 <div class="nav-item dropdown">
                                     <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
@@ -364,11 +364,10 @@
             </div>
         </div>
         <div class="col-lg-12 col-md-6 d-flex justify-content-center mt-3">
-            <a href="schedule.html" class="btn btn-primary py-3 px-5">Xem lịch thi đấu</a> 
+            <a href='<c:url value="/DispatchServlet?btAction=schedule"/>' class="btn btn-primary py-3 px-5">Xem lịch thi đấu</a> 
         </div>
     </div>
     <!-- Schedule End -->
-
 
     <!-- Membership Start -->
     <div id="member" class="container-fluid programe position-relative px-5 mt-5"
