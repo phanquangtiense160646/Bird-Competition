@@ -4,16 +4,8 @@
  */
 package com.birdcompetition.controller.web;
 
-import com.birdcompetition.bird.BirdDAO;
-import com.birdcompetition.bird.BirdDTO;
-import com.birdcompetition.user.UserDTO;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.naming.NamingException;
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -23,10 +15,10 @@ import javax.servlet.http.HttpSession;
 
 /**
  *
- * @author admin
+ * @author Admin
  */
-@WebServlet(name = "AddBirdServlet", urlPatterns = {"/AddBirdServlet"})
-public class AddBirdServlet extends HttpServlet {
+@WebServlet(name = "CompetitionRegisterServlet", urlPatterns = {"/CompetitionRegisterServlet"})
+public class CompetitionRegisterServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -40,27 +32,11 @@ public class AddBirdServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        
-        String id = request.getParameter("birdId");
-        String name = request.getParameter("birdName");
-        String specie = request.getParameter("birdSpecie");
-        String idMember = "";
-        String url = "";
-        
         try {
-            BirdDAO dao = new BirdDAO();
-            BirdDTO dto = new BirdDTO(id, name, specie, 0, true, "U01");
-            boolean result = dao.addBird(dto);
-            if(result){
-                url = "thanhcongroihuyoi.html";
-            }
-        } catch (SQLException ex) {
-            Logger.getLogger(AddBirdServlet.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (NamingException ex) {
-            Logger.getLogger(AddBirdServlet.class.getName()).log(Level.SEVERE, null, ex);
-        }finally{
-            RequestDispatcher rd = request.getRequestDispatcher(url);
-            rd.forward(request, response);
+            HttpSession session = request.getSession();
+            
+        }finally {
+            
         }
     }
 
