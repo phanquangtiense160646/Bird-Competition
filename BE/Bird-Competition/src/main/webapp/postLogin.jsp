@@ -112,9 +112,18 @@
                                     </div>
                                 </div>
                             </div>
-                            <a href="/UserProfile/userprofile.html" class="btn btn-primary py-md-3 px-md-5 d-none d-lg-block">
-                                ${sessionScope.USER.userName}
-                            </a>
+                            <div class="dropdown">
+                                <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" style="width: 180px">
+                  ${sessionScope.USER.userName}
+              </button>
+              <div class="dropdown-menu">
+                <a class="dropdown-item" href="birdprofile.html">Bird Profile</a>
+                <a class="dropdown-item" href="addnewbird.jsp">Add Bird </a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="index.html">Log out</a>
+              </div>
+
+            </div>
                         </div>
                     </nav>
                 </div>
@@ -613,6 +622,13 @@
 
     <!-- Template Javascript -->
     <script src="FE/js/main.js"></script>
+    
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
+    integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF"
+    crossorigin="anonymous"></script>
 </body>
 
 </html>

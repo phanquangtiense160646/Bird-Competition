@@ -33,9 +33,11 @@ public class DAO extends DBHelper{
             //check 
             if (con != null) {
                 //2.Creat SQL String 
-            String query = "select * from [dbo].[User] " + 
-                    "where UserName = ? " +
-                    " and UserPassword = ?";
+            String query = "select * from [dbo].[User] "
+                    + "FULL OUTER JOIN Member "
+                    + "ON [dbo].[User].IdUser = Member.IdMember "
+                    + "where UserName = ? " 
+                    + " and UserPassword = ?";
                 //3.Create Statement Object
                 stm = con.prepareStatement(query);
                 stm.setString(1, username);
@@ -47,8 +49,14 @@ public class DAO extends DBHelper{
                     String id = rs.getString("IdUser");
                     String gmail = rs.getString("UserGmail");
                     int role = rs.getInt("UserRole");
+                    String idmember = rs.getString("IdMember");
+                    String fullname = rs.getString("FullName");
+                    String dateofbirth = rs.getString("DateOfBirth");
+                    String country = rs.getString("Country");
+                    int phone = rs.getInt("Phone");
+                    String gender = rs.getString("Gender");
                     
-                    result = new User(id, username, password, gmail, role);
+                    result = new User(id, username, password, gmail, role, idmember, fullname, dateofbirth, country, phone, gender);
                 }//end username and password is verified 
             }
         } finally {
@@ -90,7 +98,7 @@ public class DAO extends DBHelper{
                 //5.Process
                 if (rs.next()) {
                     
-                    result = new User(username, username, username, username, 0);
+                    result = new User(username, username, username, username, 0, query, username, query, query, 0, query);
                 }//end username and password is verified 
             }
         } finally {

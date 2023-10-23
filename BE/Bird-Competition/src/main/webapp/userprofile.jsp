@@ -124,7 +124,7 @@
             <!-- Dropdown-Menu -->
             <div class="dropdown">
               <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
-                  ${sessionScope.USER.Name}
+                  ${sessionScope.USER.userName}
               </button>
               <div class="dropdown-menu">
                 <a class="dropdown-item" href="birdprofile.html">Bird Profile</a>

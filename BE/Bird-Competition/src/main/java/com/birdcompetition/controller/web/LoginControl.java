@@ -16,7 +16,6 @@ import com.birdcompetition.model.User;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.naming.NamingException;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.http.HttpSession;
 
@@ -47,6 +46,7 @@ public class LoginControl extends HttpServlet {
 
             DAO dao = new DAO();
             User result = dao.checkLogin(username, password);
+            
 
             if (result != null) {
                 HttpSession session = request.getSession();
