@@ -175,12 +175,13 @@ public class BirdDAO {
         con = DBHelper.getConnection();
         if (con != null) {
             //2. Create SQL String 
-            String sql = "INSERT INTO Bird (IdBird, NameOfBird, Species, Point, Status, IdMember) VALUES (?, ?, ?, 1000, 'true', 'U01')";
+            String sql = "INSERT INTO Bird (IdBird, NameOfBird, Species, Point, Status, IdMember) VALUES (?, ?, ?, 1000, 'true', ?)";
             //3. Create Statement Object
             stm = con.prepareStatement(sql);
             stm.setString(1, bird.getBirdID());
             stm.setString(2, bird.getBirdName());
             stm.setString(3, bird.getSpecies());
+            stm.setString(4, bird.getMemberID());
 
             
             
