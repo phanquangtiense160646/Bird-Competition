@@ -125,18 +125,19 @@
                                 </div>
                                 <a href="contact.html" class="nav-item nav-link">Liên Hệ</a>
                             </div>
-                            <div class="dropdown">
-                                <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
-                                    emhuythichchoichim
-                                </button>
-                                <div class="dropdown-menu">
-                                    <a class="dropdown-item" href="birdprofile.html">Bird Profile</a>
+                           
+<!--                                Nút User Menu Ở Trên Góc Phải Màn Hình-->
+                                <div class="nav-item dropdown">
+                    
+                                    <a href="#" class="btn btn-primary nav-link dropdown-toggle" data-bs-toggle="dropdown" style="width: 150px;">${sessionScope.USER.userName}</a>
+                                    <div class="dropdown-menu rounded-0 m-0">
+                                        <!-- <a href="blog.html" class="dropdown-item">News</a> -->
+                                         <a class="dropdown-item" href="birdprofile.html">Bird Profile</a>
                                     <a class="dropdown-item" href="addnewbird.html">Add Bird </a>
                                     <div class="dropdown-divider"></div>
                                     <a class="dropdown-item" href="/FE/index.html">Log out</a>
+                                    </div>
                                 </div>
-
-                            </div>
 
                         </div>
                     </nav>
@@ -241,23 +242,23 @@
                                                                     <input class="form-control" id="inputBirdAge" type="text" placeholder="Nhập ID chim (for example: B00)"
                                                                            value="" name="birdId">
                                                                 </div>
+                                                                    
                                                             </div>
-                                                            <!-- Form Row        -->
-<!--                                                            <div class="row gx-3 mb-3">
-                                                                 Form Group (Gender)
-                                                                <div class="col-md-6">
-                                                                    <label class="small mb-1" for="inputGender">Giới tính</label>
-                                                                    <input class="form-control" id="inputGender" type="text"
-                                                                           placeholder="Nhập giới tính chim " value="">
+                                                            
+                                                            <div class="row gx-3 mb-3">
+                             
+                                                               <div class="col-md-12">
+                                                                    
+                                                                   <input class="form-control" type="hidden" name="idMember" value="${sessionScope.USER.idMember}">
                                                                 </div>
-                                                                 Form Group (HealStatus)
-                                                                <div class="col-md-6">
+                                                                 
+<!--                                                                <div class="col-md-6">
                                                                     <label class="small mb-1" for="inputHealStatus">Tình trạng sức khỏe</label>
                                                                     <input class="form-control" id="inputHealStatus" type="text"
                                                                            placeholder="Nhập tình trạng sức khỏe" value="">
-                                                                </div>
+                                                             </div>-->
                                                             </div>
-                                                             Form Group (CompetitionHistory)
+<!--                                                             Form Group (CompetitionHistory)
                                                             <div class="mb-3">
                                                                 <label class="small mb-1" for="inputCompetitionHistory">Lịch sử thi đấu (nếu có)</label>
                                                                 <input class="form-control" id="inputCompetitionHistory" type="text"
@@ -290,6 +291,7 @@
                                                             </div>
                                                         </form>
                                                     </div>
+                                                                ${msg}
                                                 </div>
                                             </div>
                                         </div>
@@ -299,10 +301,12 @@
                                     <script src="FE/js/addbird.js"></script>
 
                                     </body>
-                                    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
-                                            integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
-                                    crossorigin="anonymous"></script>
-                                    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"
-                                            integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF"
-                                    crossorigin="anonymous"></script>
+                                    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+                                    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+                                    <script src="FE/lib/easing/easing.min.js"></script>
+                                    <script src="FE/lib/waypoints/waypoints.min.js"></script>
+                                    <script src="FE/lib/counterup/counterup.min.js"></script>
+                                    <script src="FE/lib/owlcarousel/owl.carousel.min.js"></script>
+                                    
+                                    
                                     </html>

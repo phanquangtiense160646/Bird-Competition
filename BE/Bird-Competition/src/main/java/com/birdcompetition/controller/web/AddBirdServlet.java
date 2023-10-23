@@ -44,16 +44,22 @@ public class AddBirdServlet extends HttpServlet {
         String id = request.getParameter("birdId");
         String name = request.getParameter("birdName");
         String specie = request.getParameter("birdSpecie");
-        String idMember = request.getParameter("");
+        String idMember = request.getParameter("idMember");
         String url = "";
         
         try {
             BirdDAO dao = new BirdDAO();
-            BirdDTO dto = new BirdDTO(id, name, specie, 0, true, "U01");
+            BirdDTO dto = new BirdDTO(id, name, specie, 0, true, idMember);
             boolean result = dao.addBird(dto);
             if(result){
-                url = "thanhcongroihuyoi.html";
-            };
+                url = "addnewbird.jsp";
+                String msg = "Đã Thêm Chim Thành Công";
+                request.setAttribute("msg", msg);
+            }else{
+                String msg = "Thêm Chim Thất Bại";
+                request.setAttribute("msg", msg);
+            }
+                ;
         } catch (SQLException ex) {
             Logger.getLogger(AddBirdServlet.class.getName()).log(Level.SEVERE, null, ex);
         } catch (NamingException ex) {

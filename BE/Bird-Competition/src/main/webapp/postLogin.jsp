@@ -112,18 +112,17 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="dropdown">
-                                <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" style="width: 180px">
-                  ${sessionScope.USER.userName}
-              </button>
-              <div class="dropdown-menu">
-                <a class="dropdown-item" href="birdprofile.html">Bird Profile</a>
-                <a class="dropdown-item" href="addnewbird.jsp">Add Bird </a>
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="index.html">Log out</a>
-              </div>
-
-            </div>
+                            <div class="nav-item dropdown">
+                    
+                                    <a href="#" class="btn btn-primary nav-link dropdown-toggle" data-bs-toggle="dropdown" style="width: 150px;">${sessionScope.USER.userName}</a>
+                                    <div class="dropdown-menu rounded-0 m-0">
+                                        <!-- <a href="blog.html" class="dropdown-item">News</a> -->
+                                         <a class="dropdown-item" href="birdprofile.html">Bird Profile</a>
+                                    <a class="dropdown-item" href="addnewbird.html">Add Bird </a>
+                                    <div class="dropdown-divider"></div>
+                                    <a class="dropdown-item" href="/FE/index.html">Log out</a>
+                                    </div>
+                                </div>
                         </div>
                     </nav>
                 </div>
@@ -626,7 +625,7 @@
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
     integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
     crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF"
     crossorigin="anonymous"></script>
 </body>
