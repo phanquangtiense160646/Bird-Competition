@@ -44,7 +44,7 @@ public class AddBirdServlet extends HttpServlet {
         String id = request.getParameter("birdId");
         String name = request.getParameter("birdName");
         String specie = request.getParameter("birdSpecie");
-        String idMember = "";
+        String idMember = request.getParameter("");
         String url = "";
         
         try {
