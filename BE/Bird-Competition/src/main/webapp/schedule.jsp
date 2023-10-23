@@ -10,7 +10,7 @@
 <html lang="en">
 
     <head>
-        <meta charset="utf-8">
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Schedule</title>
         <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
@@ -163,7 +163,7 @@
                             <c:set var="scheduleData" value="${sessionScope.SCHEDULE}"/>
                             <c:if test="${not empty scheduleData}">
                                 <c:forEach var="scheduleDto" items="${scheduleData}" varStatus="counter">
-                                    <div class="col-lg-3 col-md-4 col-sm-6  btn-register">
+                                    <div class="col-lg-3 col-md-4 col-sm-6  btn-viewInfo">
                                         <div class="bg-dark rounded text-center py-5 px-3">
                                             <p class="schedule-value text-uppercase text-light mb-3">Ngày: ${scheduleDto.date}</p>
                                             <p class="schedule-value text-uppercase text-light mb-3"> Giờ: 2.00am - 5.00am</p>
@@ -177,7 +177,7 @@
                                                 <span class="text-uppercase text-primary mb-0" style="display: inline;">
                                                     10/15</span>
                                             </p>
-                                            <button class="btn btn-primary btn-register px-5" style="margin-top: 10px;">Đăng kí
+                                            <button class="btn btn-primary btn-viewInfo px-5" style="margin-top: 10px;">Đăng kí
                                                 thi đấu</button>
                                         </div>
                                     </div>
@@ -190,7 +190,7 @@
                             <c:set var="scheduleData" value="${sessionScope.SCHEDULE}"/>
                             <c:if test="${not empty scheduleData}">
                                 <c:forEach var="scheduleDto" items="${scheduleData}" varStatus="counter">
-                                    <div class="col-lg-3 col-md-4 col-sm-6  btn-register">
+                                    <div class="col-lg-3 col-md-4 col-sm-6  btn-viewInfo">
                                         <div class="bg-dark rounded text-center py-5 px-3">
                                             <p class="schedule-value text-uppercase text-light mb-3">Ngày: ${scheduleDto.date}</p>
                                             <p class="schedule-value text-uppercase text-light mb-3"> Giờ: 2.00am - 5.00am</p>
@@ -204,7 +204,7 @@
                                                 <span class="text-uppercase text-primary mb-0" style="display: inline;">
                                                     10/15</span>
                                             </p>
-                                            <button class="btn btn-primary btn-register px-5" style="margin-top: 10px;">Đăng kí
+                                            <button class="btn btn-primary btn-viewInfo px-5" style="margin-top: 10px;">Đăng kí
                                                 thi đấu</button>
                                         </div>
                                     </div>
@@ -231,6 +231,7 @@
                                                 <span class="text-uppercase text-primary mb-0" style="display: inline;">
                                                     10/15</span>
                                             </p>
+                                            <input class="idHide" type="hidden" value="${scheduleDto.id}"/>
                                             <button class="btn btn-primary btn-register px-5" style="margin-top: 10px;">Đăng kí
                                                 thi đấu</button>
                                         </div>
@@ -279,7 +280,7 @@
                     const newDriver = document.createElement('div');
                     newDriver.classList = 'schedule-detail';
 
-                    var date, time, place, tOC, tOB, registerNumber;
+                    var date, time, place, tOC, tOB, registerNumber, pointReq, hiddenId,fee;
 
                     if (this.querySelector(".schedule-value:nth-of-type(1)") !== null) {
                         date = this.querySelector(".schedule-value:nth-of-type(1)").innerHTML;
@@ -290,6 +291,7 @@
                         pointReq = this.querySelector(".schedule-value:nth-of-type(6)").innerHTML;
                         fee = this.querySelector(".schedule-value:nth-of-type(7)").innerHTML;
                         registerNumber = this.querySelector(".schedule-value:nth-of-type(8) span").innerHTML;
+                        hiddenId = this.querySelector(".idHide").value;
                     }
 
                     const birds = [];
@@ -317,16 +319,17 @@
                     <p class="text-uppercase text-secondary mb-0 ml-3" style="display: inline;">
                         số người đăng kí:
                     <span class="text-uppercase text-primary mb-0 ml-3" style="display: inline;">` + registerNumber + `</span>
-                    </p>                  
-                    <h6 class="text-uppercase text-secondary mb-3 ml-3">Chọn chim đăng ký:  
-                        <select>
-                            <option value="" selected disabled>Chim</option>
-                            ` + text + `
-                        </select>    
-                
+                    </p>                     
                     </div>
-
-                    <a href="" class="btn btn-primary px-5" style="margin-top: 10px;">Đăng kí thi đấu</a>
+                    <form action="DispatchServlet">
+                        <h6 class="text-uppercase text-secondary mb-3 ml-3">Chọn chim đăng ký:  
+                        <select aria-label="chooseBird" name="cboBird">
+                            <option selected disabled>Chim</option>
+                            ` + text + `
+                        </select>
+                        <input type="hidden" name="hiddenContestId" value="`+ hiddenId +`"/>                        
+                    <button type="submit" name="btAction" value="cRegister" class="btn btn-primary px-5" style="margin-top: 10px;">Đăng kí thi đấu</button>
+                     </form>
                     `;
 
 
@@ -341,10 +344,11 @@
         </script>
         <script type="text/javascript">
             const viewInfo = document.querySelectorAll(".btn-viewInfo");
+            <!--<button type="submit" name="btAction" value="cRegister" class="btn btn-primary px-5" style="margin-top: 10px;">Đăng kí thi đấu</button>-->
 
         </script>
 
-
+        
         <!-- Footer Start -->
         <div class="container-fluid bg-dark text-secondary px-5 mt-5">
             <div class="row gx-5">
