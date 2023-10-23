@@ -1,7 +1,14 @@
 package com.birdcompetition.controller.web;
 
+import com.birdcompetition.bird.BirdDAO;
+import com.birdcompetition.bird.BirdDTO;
+import com.birdcompetition.model.User;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.SQLException;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -30,7 +37,19 @@ public class ScheduleServlet extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         String url = "schedule.jsp";
         try {
-            
+            HttpSession session = request.getSession();
+            List<BirdDTO> birdList = (List<BirdDTO>) session.getAttribute("OWN_BIRD");
+            if (birdList == null) {
+                BirdDAO dao = new BirdDAO();
+                User user = (User) session.getAttribute("USER");
+                dao.getBirdByMemberId(user.getIdMember());
+                birdList = dao.getBirdList();
+                session.setAttribute("OWN_BIRD", birdList);
+            }
+        } catch (SQLException ex) {
+            log("ScheduleServlet_SQL: " + ex.getMessage());
+        } catch (ClassNotFoundException ex) {
+            log("ScheduleServlet_ClassNotFound: " + ex.getMessage());
         }finally {
             response.sendRedirect(url);
         }

@@ -4,11 +4,13 @@
  */
 package com.birdcompetition.bird;
 
+import java.io.Serializable;
+
 /**
  *
  * @author admin
  */
-public class BirdDTO implements Comparable<BirdDTO> {
+public class BirdDTO implements Serializable, Comparable<BirdDTO> {
 
     private String birdID;
     private String birdName;

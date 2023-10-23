@@ -121,8 +121,8 @@
                                     <a class="dropdown-item" href="addnewbird.jsp">Add Bird </a>
                                     <div class="dropdown-divider"></div>
                                     <a class="dropdown-item" href="/FE/index.html">Log out</a>
-                                    </div>
                                 </div>
+                            </div>
                         </div>
                     </nav>
                 </div>
@@ -621,7 +621,7 @@
 
     <!-- Template Javascript -->
     <script src="FE/js/main.js"></script>
-    
+
 </body>
 
 </html>
