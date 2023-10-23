@@ -51,7 +51,7 @@ public class LoginControl extends HttpServlet {
             if (result != null) {
                 HttpSession session = request.getSession();
                 session.setAttribute("USER", result);
-                url = "PostLoginServlet";
+                url = "DispatchServlet?btAction=PostLogin";
             } else {
                 String msg = "Incorrect Username or Password";
                 request.setAttribute("msg", msg);

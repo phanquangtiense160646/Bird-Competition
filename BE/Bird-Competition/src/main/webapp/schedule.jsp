@@ -93,7 +93,7 @@
                         </button>
                         <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
                             <div class="navbar-nav mr-auto py-0">
-                                <a href="postlogin.html" class="nav-item nav-link">Home</a>
+                                <a href='<c:url value="/DispatchServlet?btAction=PostLogin"/>' class="nav-item nav-link">Home</a>
                                 <a href="leaderboard.html" class="nav-item nav-link">Bảng xếp hạng</a>
                                 <a href="#" class="nav-item nav-link active">Lịch thi đấu</a>
                                 <a href="memberShip.html" class="nav-item nav-link">Hội viên</a>
@@ -115,7 +115,8 @@
                                     </div>
                                 </div>
                             </div>
-                            <a href="/UserProfile/userprofile.html" class="btn btn-primary py-md-3 px-md-5 d-none d-lg-block">emhuythichchoichim</a>
+                            <a href="/UserProfile/userprofile.html" class="btn btn-primary py-md-3 px-md-5 d-none d-lg-block">
+                                ${sessionScope.USER.userName}</a>
                         </div>
                     </nav>
                 </div>
@@ -162,18 +163,22 @@
                             <c:set var="scheduleData" value="${sessionScope.SCHEDULE}"/>
                             <c:if test="${not empty scheduleData}">
                                 <c:forEach var="scheduleDto" items="${scheduleData}" varStatus="counter">
-                                    <div class="col-lg-3 col-md-4 col-sm-6">
+                                    <div class="col-lg-3 col-md-4 col-sm-6  btn-register">
                                         <div class="bg-dark rounded text-center py-5 px-3">
-                                            <h6 class="text-uppercase text-light mb-3">Ngày: ${scheduleDto.date}</h6>
-                                            <h6 class="text-uppercase text-light mb-3"> Giờ: 8.00am - 10.00am</h6>
-                                            <h6 class="text-uppercase text-light mb-3"> Địa điểm: ${scheduleDto.location}</h6>
-                                            <h5 class="text-uppercase text-primary">${scheduleDto.name}</h5>
-                                            <p class="text-uppercase text-secondary mb-0">Loại chim: Chào mào</p>
-                                            <p class="text-uppercase text-secondary mb-0">Điểm yêu cầu: ${scheduleDto.minPoint} - ${scheduleDto.maxPoint} </p>
-                                            <p class="text-uppercase text-secondary mb-0" style="display: inline;">
-                                                số người đăng kí: 
-                                            <p class="text-uppercase text-primary mb-0" style="display: inline;">10/15</p>
+                                            <p class="schedule-value text-uppercase text-light mb-3">Ngày: ${scheduleDto.date}</p>
+                                            <p class="schedule-value text-uppercase text-light mb-3"> Giờ: 2.00am - 5.00am</p>
+                                            <p class="schedule-value text-uppercase text-light mb-3 btn">Địa điểm: ${scheduleDto.location}</p>
+                                            <p class="schedule-value text-uppercase text-primary btn">${scheduleDto.name}</p>
+                                            <p class="schedule-value text-uppercase text-secondary mb-0">Loại chim: Gà chiến</p>
+                                            <p class="schedule-value text-uppercase text-secondary mb-0">Điểm yêu cầu: ${scheduleDto.minPoint} - ${scheduleDto.maxPoint} </p>
+                                            <p class="schedule-value text-uppercase text-light mb-3">Phí đăng kí: ${scheduleDto.fee}</p>
+                                            <p class="schedule-value text-uppercase text-secondary mb-0" style="display: inline;">
+                                                số người đăng kí:
+                                                <span class="text-uppercase text-primary mb-0" style="display: inline;">
+                                                    10/15</span>
                                             </p>
+                                            <button class="btn btn-primary btn-register px-5" style="margin-top: 10px;">Đăng kí
+                                                thi đấu</button>
                                         </div>
                                     </div>
                                 </c:forEach>
@@ -185,18 +190,22 @@
                             <c:set var="scheduleData" value="${sessionScope.SCHEDULE}"/>
                             <c:if test="${not empty scheduleData}">
                                 <c:forEach var="scheduleDto" items="${scheduleData}" varStatus="counter">
-                                    <div class="col-lg-3 col-md-4 col-sm-6">
+                                    <div class="col-lg-3 col-md-4 col-sm-6  btn-register">
                                         <div class="bg-dark rounded text-center py-5 px-3">
-                                            <h6 class="text-uppercase text-light mb-3">Ngày: ${scheduleDto.date}</h6>
-                                            <h6 class="text-uppercase text-light mb-3"> Giờ: 8.00am - 10.00am</h6>
-                                            <h6 class="text-uppercase text-light mb-3"> Địa điểm: ${scheduleDto.location}</h6>
-                                            <h5 class="text-uppercase text-primary">${scheduleDto.name}</h5>
-                                            <p class="text-uppercase text-secondary mb-0">Loại chim: Chào mào</p>
-                                            <p class="text-uppercase text-secondary mb-0">Điểm yêu cầu: ${scheduleDto.minPoint} - ${scheduleDto.maxPoint} </p>
-                                            <p class="text-uppercase text-secondary mb-0" style="display: inline;">
-                                                số người đăng kí: 
-                                            <p class="text-uppercase text-primary mb-0" style="display: inline;">10/15</p>
+                                            <p class="schedule-value text-uppercase text-light mb-3">Ngày: ${scheduleDto.date}</p>
+                                            <p class="schedule-value text-uppercase text-light mb-3"> Giờ: 2.00am - 5.00am</p>
+                                            <p class="schedule-value text-uppercase text-light mb-3 btn">Địa điểm: ${scheduleDto.location}</p>
+                                            <p class="schedule-value text-uppercase text-primary btn">${scheduleDto.name}</p>
+                                            <p class="schedule-value text-uppercase text-secondary mb-0">Loại chim: Gà chiến</p>
+                                            <p class="schedule-value text-uppercase text-secondary mb-0">Điểm yêu cầu: ${scheduleDto.minPoint} - ${scheduleDto.maxPoint} </p>
+                                            <p class="schedule-value text-uppercase text-light mb-3">Phí đăng kí: ${scheduleDto.fee}</p>
+                                            <p class="schedule-value text-uppercase text-secondary mb-0" style="display: inline;">
+                                                số người đăng kí:
+                                                <span class="text-uppercase text-primary mb-0" style="display: inline;">
+                                                    10/15</span>
                                             </p>
+                                            <button class="btn btn-primary btn-register px-5" style="margin-top: 10px;">Đăng kí
+                                                thi đấu</button>
                                         </div>
                                     </div>
                                 </c:forEach>
@@ -208,19 +217,22 @@
                             <c:set var="scheduleData" value="${sessionScope.SCHEDULE}"/>
                             <c:if test="${not empty scheduleData}">
                                 <c:forEach var="scheduleDto" items="${scheduleData}" varStatus="counter">
-                                    <div class="col-lg-3 col-md-4 col-sm-6">
+                                    <div class="col-lg-3 col-md-4 col-sm-6  btn-register">
                                         <div class="bg-dark rounded text-center py-5 px-3">
-                                            <h6 class="text-uppercase text-light mb-3">Ngày: ${scheduleDto.date}</h6>
-                                            <h6 class="text-uppercase text-light mb-3"> Giờ: 8.00am - 10.00am</h6>
-                                            <h6 class="text-uppercase text-light mb-3"> Địa điểm: ${scheduleDto.location}</h6>
-                                            <h5 class="text-uppercase text-primary">${scheduleDto.name}</h5>
-                                            <p class="text-uppercase text-secondary mb-0">Loại chim: Chào mào</p>
-                                            <p class="text-uppercase text-secondary mb-0">Điểm yêu cầu: ${scheduleDto.minPoint} - ${scheduleDto.maxPoint} </p>
-                                            <h6 class="text-uppercase text-light mb-3">Phí đăng kí: ${scheduleDto.fee}</h6>
-                                            <p class="text-uppercase text-secondary mb-0" style="display: inline;">
-                                                số người đăng kí: 
-                                            <p class="text-uppercase text-primary mb-0" style="display: inline;">10/15</p>
+                                            <p class="schedule-value text-uppercase text-light mb-3">Ngày: ${scheduleDto.date}</p>
+                                            <p class="schedule-value text-uppercase text-light mb-3"> Giờ: 2.00am - 5.00am</p>
+                                            <p class="schedule-value text-uppercase text-light mb-3 btn">Địa điểm: ${scheduleDto.location}</p>
+                                            <p class="schedule-value text-uppercase text-primary btn">${scheduleDto.name}</p>
+                                            <p class="schedule-value text-uppercase text-secondary mb-0">Loại chim: Gà chiến</p>
+                                            <p class="schedule-value text-uppercase text-secondary mb-0">Điểm yêu cầu: ${scheduleDto.minPoint} - ${scheduleDto.maxPoint} </p>
+                                            <p class="schedule-value text-uppercase text-light mb-3">Phí đăng kí: ${scheduleDto.fee}</p>
+                                            <p class="schedule-value text-uppercase text-secondary mb-0" style="display: inline;">
+                                                số người đăng kí:
+                                                <span class="text-uppercase text-primary mb-0" style="display: inline;">
+                                                    10/15</span>
                                             </p>
+                                            <button class="btn btn-primary btn-register px-5" style="margin-top: 10px;">Đăng kí
+                                                thi đấu</button>
                                         </div>
                                     </div>
                                 </c:forEach>
@@ -275,13 +287,15 @@
                         place = this.querySelector(".schedule-value:nth-of-type(3)").innerHTML;
                         tOC = this.querySelector(".schedule-value:nth-of-type(4)").innerHTML;
                         tOB = this.querySelector(".schedule-value:nth-of-type(5)").innerHTML;
-                        registerNumber = this.querySelector(".schedule-value:nth-of-type(6) span").innerHTML;
+                        pointReq = this.querySelector(".schedule-value:nth-of-type(6)").innerHTML;
+                        fee = this.querySelector(".schedule-value:nth-of-type(7)").innerHTML;
+                        registerNumber = this.querySelector(".schedule-value:nth-of-type(8) span").innerHTML;
                     }
 
                     const birds = [];
-            <c:set var="scheduleData" value="${session.SCHEDULE}"/>
+            <c:set var="scheduleData" value="${sessionScope.SCHEDULE}"/>
             <c:if test="${not empty scheduleData}">
-                <c:forEach var="scheduleDto" items="${scheduleData}" varStatus="counter">                   
+                <c:forEach var="scheduleDto" items="${scheduleData}" varStatus="counter">
                     birds.push("${scheduleDto.name}");
                 </c:forEach>
             </c:if>
@@ -298,10 +312,12 @@
                     <h6 class="text-uppercase text-light mb-3 ml-3">` + place + `</h6>
                     <h5 class="text-uppercase text-primary">` + tOC + `</h5>
                     <p class="text-uppercase text-secondary mb-0 ml-3">` + tOB + `</p>
+                    <p class="text-uppercase text-secondary mb-0 ml-3">` + pointReq + `</p>
+                    <h6 class="text-uppercase text-light mb-3 ml-3">` + fee + `</h6>
                     <p class="text-uppercase text-secondary mb-0 ml-3" style="display: inline;">
                         số người đăng kí:
-                    <p class="text-uppercase text-primary mb-0 ml-3" style="display: inline;">` + registerNumber + `</p>
-                    </p>
+                    <span class="text-uppercase text-primary mb-0 ml-3" style="display: inline;">` + registerNumber + `</span>
+                    </p>                  
                     <h6 class="text-uppercase text-secondary mb-3 ml-3">Chọn chim đăng ký:  
                         <select>
                             <option value="" selected disabled>Chim</option>
@@ -323,6 +339,11 @@
 
 
         </script>
+        <script type="text/javascript">
+            const viewInfo = document.querySelectorAll(".btn-viewInfo");
+
+        </script>
+
 
         <!-- Footer Start -->
         <div class="container-fluid bg-dark text-secondary px-5 mt-5">
