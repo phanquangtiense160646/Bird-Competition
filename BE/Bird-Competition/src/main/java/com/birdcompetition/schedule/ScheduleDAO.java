@@ -85,4 +85,7 @@ public class ScheduleDAO implements Serializable {
         }
 
     }
+    public boolean registerCompetition() {
+        return false;
+    } 
 }
