@@ -78,7 +78,7 @@ public class SignupControl extends HttpServlet {
                 boolean result = dao.createAccount(u);
                 //3. Process Result
                 if (result) {
-                    response.sendRedirect("index.html");
+                    response.sendRedirect("postLogin.jsp");
                 }//create successful
             }// no error occur
 
@@ -92,7 +92,7 @@ public class SignupControl extends HttpServlet {
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(SignupControl.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
-            RequestDispatcher rd = request.getRequestDispatcher("Signup.html");
+            RequestDispatcher rd = request.getRequestDispatcher("Signup.jsp");
             rd.forward(request, response);
         }
     }

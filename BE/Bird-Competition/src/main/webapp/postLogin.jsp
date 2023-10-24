@@ -119,12 +119,11 @@
                                                 <a href="" class="dropdown-item">Lịch thi đấu</a>
                                                 <a href="matchResult.html" class="dropdown-item">Kết quả trận đấu</a>
                                             </div>
-                                        </div>
-                                    </div>
-                                    <a href=""
+                                                </div>
+                                                    </div>
+                                        <a href=""
                                         class="btn btn-primary py-md-3 px-md-5 d-none d-lg-block">${sessionScope.USER.userName}</a>
-                                </div>
-                            </nav>
+                                            </nav>
                         </div>
                     </div>
                 </div>
