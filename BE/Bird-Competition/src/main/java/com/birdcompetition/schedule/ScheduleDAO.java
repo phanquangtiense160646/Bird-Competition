@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package com.birdcompetition.schedule;
 
 import com.birdcompetition.util.DBHelper;
@@ -62,7 +58,7 @@ public class ScheduleDAO implements Serializable {
                     double fee = rs.getDouble("ParticipatingFee");
                     String userId = rs.getString("IdUser");
                     String location = rs.getString("Location");
-                    boolean contestStatus = rs.getBoolean("StatusOfContest");
+                    int contestStatus = rs.getInt("StatusOfContest");
 
                     ScheduleDTO dto = new ScheduleDTO(id, name, date,
                             locationId, status, factor, minPoint, maxPoint, fee, userId, location, 0);

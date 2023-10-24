@@ -9,6 +9,7 @@ import java.sql.SQLException;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -52,6 +53,8 @@ public class ScheduleServlet extends HttpServlet {
             log("ScheduleServlet_ClassNotFound: " + ex.getMessage());
         }finally {
             response.sendRedirect(url);
+//                RequestDispatcher rd = request.getRequestDispatcher(url);
+//                rd.forward(request, response);
         }
         
         
