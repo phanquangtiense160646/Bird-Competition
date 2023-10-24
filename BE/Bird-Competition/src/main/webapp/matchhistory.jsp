@@ -1,6 +1,13 @@
-<html lang="en">
+<%-- 
+    Document   : matchhistory
+    Created on : Oct 24, 2023, 9:32:49 PM
+    Author     : admin
+--%>
 
-<head>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<!--<!DOCTYPE html>-->
+<html>
+    <head>
   <head>
   <script src="FE/js/main.js"></script>
   <meta charset="UTF-8">
@@ -115,14 +122,15 @@
               <a href="contact.html" class="nav-item nav-link">Liên Hệ</a>
             </div>
             <div class="dropdown">
-              <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
-                emhuythichchoichim
+                <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" style="width:130px;">
+                  ${sessionScope.USER.userName}
               </button>
               <div class="dropdown-menu">
+                 <a class="dropdown-item" href="userprofile.jsp">User Profile</a>
                 <a class="dropdown-item" href="birdprofile.html">Bird Profile</a>
                 <a class="dropdown-item" href="addnewbird.html">Add Bird </a>
                 <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="/FE/index.html">Log out</a>
+                <a class="dropdown-item" href="index.html">Log out</a>
               </div>
 
             </div>
@@ -142,7 +150,7 @@
                   src="https://scontent.fsgn3-1.fna.fbcdn.net/v/t39.30808-6/331044364_1135565673791935_1693572774874518896_n.jpg?_nc_cat=104&ccb=1-7&_nc_sid=5f2048&_nc_ohc=Q88Ho-TNwP8AX9l1NVB&_nc_ht=scontent.fsgn3-1.fna&_nc_e2o=s&oh=00_AfCQMQNg0yj6uv-c2XXOnrslTrjcNyVbTgw8Xpxh9Sm37Q&oe=652D3319"
                   alt="Generic placeholder image" class="img-fluid img-thumbnail mt-4 mb-2"
                   style="width: 150px; z-index: 1; margin-left: 10px;">
-                  <form action="userprofile.html" style="z-index: 1;">
+                  <form action="userprofile.jsp" style="z-index: 1;">
                     <button class="btn btn-outline-dark" data-mdb-ripple-color="dark"
                       style="z-index: 0; margin-left: 17px;">
                       User Profile
@@ -153,8 +161,8 @@
               </div>
 
               <div class="ms-3" style="margin-top: 130px; margin-left: 30px;">
-                <h5 class="text-white">emhuythichchoichim</h5>
-                <p>Lê Nhật Huy</p>
+                  <h5 class="text-white">${sessionScope.USER.userName}</h5>
+                <p>${sessionScope.USER.fullName}</p>
               </div>
             </div>
               
@@ -320,3 +328,4 @@
     integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF"
     crossorigin="anonymous"></script>
 </body>
+</html>

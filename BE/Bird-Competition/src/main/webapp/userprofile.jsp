@@ -11,7 +11,7 @@
   <script src="FE/js/main.js"></script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Add Bird</title>
+  <title>Profile</title>
   <link href="FE/img/favicon.ico" rel="icon">
 
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css"
@@ -122,7 +122,7 @@
             
             <!-- Dropdown-Menu -->
             <div class="dropdown">
-              <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+                <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" style="width: 130px;">
                   ${sessionScope.USER.userName}
               </button>
               <div class="dropdown-menu">
@@ -158,7 +158,7 @@
                       Edit profile
                     </button>
                   </form>
-                  <form action="matchhistory.html" style="z-index: 1;">
+                  <form action="matchhistory.jsp" style="z-index: 1;">
                     <button class="btn btn-outline-dark" data-mdb-ripple-color="dark"
                       style="z-index: 0; margin-left: 17px;">
                       Match History
