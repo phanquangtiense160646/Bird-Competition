@@ -1,7 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
- */
+
 package com.birdcompetition.controller.web;
 
 import java.io.IOException;
@@ -16,8 +13,8 @@ import javax.servlet.http.HttpSession;
  *
  * @author Admin
  */
-@WebServlet(name = "CompetitionRegisterServlet", urlPatterns = {"/CompetitionRegisterServlet"})
-public class CompetitionRegisterServlet extends HttpServlet {
+@WebServlet(name = "CRegisterServlet", urlPatterns = {"/CRegisterServlet"})
+public class CRegisterServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -31,8 +28,10 @@ public class CompetitionRegisterServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
+        String birdName = request.getParameter("cboBird");
         try {
             HttpSession session = request.getSession();
+            System.out.println(birdName);
             
         }finally {
             

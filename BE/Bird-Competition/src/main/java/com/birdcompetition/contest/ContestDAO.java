@@ -67,7 +67,10 @@ public class ContestDAO {
                    int afterPoint = rs.getInt("AfterPoint");
                    
                    //5.1.2 add data to list
-                   ContestDTO dto = new ContestDTO(idContest, nameOfContest, date, locationId, status, factor, minPoint, maxPoint, participatingFee, idBird, beforePoint, afterPoint);
+                   ContestDTO dto = new ContestDTO(idContest, nameOfContest, date, 
+                           locationId, status, factor, minPoint, maxPoint, participatingFee, 
+                           idBird, idBird, maxPoint, idBird, factor, 
+                           beforePoint, afterPoint, result);
                    //5.2 add data to list
                    if (this.contestList == null){
                     this.contestList = new ArrayList<>();   

@@ -29,7 +29,7 @@ public class ContestDTO {
 
     public ContestDTO() {
     }
-
+    
     public ContestDTO(String idContest, String nameOfContest, String date, String locationId, boolean status, double factor, int minPoint, int maxPoint, double participatingFee, String idUser, String idRule, int statusOfContest, String idBird, int rank, int beforePoint, int afterPoint, boolean checkin) {
         this.idContest = idContest;
         this.nameOfContest = nameOfContest;
