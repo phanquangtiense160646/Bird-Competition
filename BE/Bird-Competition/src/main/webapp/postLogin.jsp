@@ -116,11 +116,11 @@
                     
                                     <a href="#" class="btn btn-primary nav-link dropdown-toggle" data-bs-toggle="dropdown" style="width: 150px;">${sessionScope.USER.userName}</a>
                                     <div class="dropdown-menu rounded-0 m-0">
-                                        <!-- <a href="blog.html" class="dropdown-item">News</a> -->
-                                         <a class="dropdown-item" href="birdprofile.html">Bird Profile</a>
+                                    <a class="dropdown-item" href="userprofile.jsp">User Profile</a>
+                                    <a class="dropdown-item" href="birdprofile.html">Bird Profile</a>
                                     <a class="dropdown-item" href="addnewbird.jsp">Add Bird </a>
                                     <div class="dropdown-divider"></div>
-                                    <a class="dropdown-item" href="/FE/index.html">Log out</a>
+                                    <a class="dropdown-item" href="" >Log out</a>
                                 </div>
                             </div>
                         </div>
