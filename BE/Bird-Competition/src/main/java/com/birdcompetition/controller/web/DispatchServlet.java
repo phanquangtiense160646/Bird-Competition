@@ -1,25 +1,17 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-package com.birdcompetition.controller;
+package com.birdcompetition.controller.web;
 
 import java.io.IOException;
-import java.io.PrintWriter;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 /**
  *
- * @author 84366
+ * @author Admin
  */
-@WebServlet(name = "LogoutServlet", urlPatterns = {"/logout"})
-public class LogoutServlet extends HttpServlet {
+public class DispatchServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -33,14 +25,26 @@ public class LogoutServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
+        String button = request.getParameter("btAction");
+        String url = "";
         try {
-            HttpSession session = request.getSession(false);
-            if (session != null) {
-                session.invalidate(); // Xóa session hiện tại
+            if (button == null) {
+                url = "StartServlet";
+//                url = "Admin/index.html";
+            } else if (button.equals("SearchLB")) {
+                url = "SearchLeaderBoardServlet";
+            } else if (button.equals("PostLogin")) {
+                url = "PostLoginServlet";
+            } else if (button.equals("LeaderBoard")) {
+                url = "LeaderBoardServlet";
+            } else if (button.equals("schedule")) {
+                url = "ScheduleServlet";
+            } else if (button.equals("AddBird")) {
+                url = "AddBirdServlet";
             }
-            response.sendRedirect("Index.html"); // Chuyển hướng về trang chủ
-        } catch (Exception e) {
-            // Xử lý ngoại lệ nếu cần
+        } finally {
+            RequestDispatcher rd = request.getRequestDispatcher(url);
+            rd.forward(request, response);
         }
     }
 

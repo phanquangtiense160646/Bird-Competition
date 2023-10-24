@@ -5,72 +5,132 @@
  */
 package com.birdcompetition.model;
 
+import java.io.Serializable;
+
 /**
  *
  * @author 84366
  */
-public class User {
-    private int IdUser;
-    private String UserName;
-    private String UserPassword;
-    private String UserGmail;
-    private String UserRole;
+public class User implements Serializable{
+    private String idUser;
+    private String userName;
+    private String userPassword;
+    private String userGmail;
+    private int userRole;
+    private String idMember;
+    private String fullName;
+    private String dateOfBirth;
+    private String country;
+    private int phone;
+    private String gender;
+    
 
     public User() {
     }
 
-    public User(int IdUser, String UserName, String UserPassword, String UserGmail, String UserRole) {
-        this.IdUser = IdUser;
-        this.UserName = UserName;
-        this.UserPassword = UserPassword;
-        this.UserGmail = UserGmail;
-        this.UserRole = UserRole;
+    public User(String idUser, String userName, String userPassword, String userGmail, int userRole, String idMember, String fullName, String dateOfBirth, String country, int phone, String gender) {
+        this.idUser = idUser;
+        this.userName = userName;
+        this.userPassword = userPassword;
+        this.userGmail = userGmail;
+        this.userRole = userRole;
+        this.idMember = idMember;
+        this.fullName = fullName;
+        this.dateOfBirth = dateOfBirth;
+        this.country = country;
+        this.phone = phone;
+        this.gender = gender;
     }
 
-    public int getIdUser() {
-        return IdUser;
+    public String getIdUser() {
+        return idUser;
     }
 
-    public void setIdUser(int IdUser) {
-        this.IdUser = IdUser;
+    public void setIdUser(String idUser) {
+        this.idUser = idUser;
     }
 
     public String getUserName() {
-        return UserName;
+        return userName;
     }
 
-    public void setUserName(String UserName) {
-        this.UserName = UserName;
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 
     public String getUserPassword() {
-        return UserPassword;
+        return userPassword;
     }
 
-    public void setUserPassword(String UserPassword) {
-        this.UserPassword = UserPassword;
+    public void setUserPassword(String userPassword) {
+        this.userPassword = userPassword;
     }
 
     public String getUserGmail() {
-        return UserGmail;
+        return userGmail;
     }
 
-    public void setUserGmail(String UserGmail) {
-        this.UserGmail = UserGmail;
+    public void setUserGmail(String userGmail) {
+        this.userGmail = userGmail;
     }
 
-    public String getUserRole() {
-        return UserRole;
+    public int getUserRole() {
+        return userRole;
     }
 
-    public void setUserRole(String UserRole) {
-        this.UserRole = UserRole;
+    public void setUserRole(int userRole) {
+        this.userRole = userRole;
     }
 
-    @Override
-    public String toString() {
-        return "User{" + "IdUser=" + IdUser + ", UserName=" + UserName + ", UserPassword=" + UserPassword + ", UserGmail=" + UserGmail + ", UserRole=" + UserRole + '}';
+    public String getIdMember() {
+        return idMember;
     }
+
+    public void setIdMember(String idMember) {
+        this.idMember = idMember;
+    }
+
+    public String getFullName() {
+        return fullName;
+    }
+
+    public void setFullName(String fullName) {
+        this.fullName = fullName;
+    }
+
+    public String getDateOfBirth() {
+        return dateOfBirth;
+    }
+
+    public void setDateOfBirth(String dateOfBirth) {
+        this.dateOfBirth = dateOfBirth;
+    }
+
+    public String getCountry() {
+        return country;
+    }
+
+    public void setCountry(String country) {
+        this.country = country;
+    }
+
+    public int getPhone() {
+        return phone;
+    }
+
+    public void setPhone(int phone) {
+        this.phone = phone;
+    }
+
+    public String getGender() {
+        return gender;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
+    }
+
+    
     
     
 }

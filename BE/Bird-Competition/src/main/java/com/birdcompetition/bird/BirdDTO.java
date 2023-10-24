@@ -4,11 +4,13 @@
  */
 package com.birdcompetition.bird;
 
+import java.io.Serializable;
+
 /**
  *
  * @author admin
  */
-public class BirdDTO implements Comparable<BirdDTO> {
+public class BirdDTO implements Serializable, Comparable<BirdDTO> {
 
     private String birdID;
     private String birdName;
@@ -69,6 +71,16 @@ public class BirdDTO implements Comparable<BirdDTO> {
         this.rank = rank;
     }
 
+    public BirdDTO(String birdID, String birdName, String species, int point, boolean status, String memberID) {
+        this.birdID = birdID;
+        this.birdName = birdName;
+        this.species = species;
+        this.point = point;
+        this.status = status;
+        this.memberID = memberID;
+    }
+
+    
     public String getBirdID() {
         return birdID;
     }

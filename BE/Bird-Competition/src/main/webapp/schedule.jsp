@@ -10,7 +10,7 @@
 <html lang="en">
 
     <head>
-        <meta charset="utf-8">
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Schedule</title>
         <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
@@ -93,9 +93,9 @@
                         </button>
                         <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
                             <div class="navbar-nav mr-auto py-0">
-                                <a href="postlogin.html" class="nav-item nav-link">Home</a>
+                                <a href='<c:url value="/DispatchServlet?btAction=PostLogin"/>' class="nav-item nav-link">Home</a>
                                 <a href="leaderboard.html" class="nav-item nav-link">Bảng xếp hạng</a>
-                                <a href="schedule.html" class="nav-item nav-link active">Lịch thi đấu</a>
+                                <a href="#" class="nav-item nav-link active">Lịch thi đấu</a>
                                 <a href="memberShip.html" class="nav-item nav-link">Hội viên</a>
                                 <div class="nav-item dropdown">
                                     <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
@@ -115,7 +115,16 @@
                                     </div>
                                 </div>
                             </div>
-                            <a href="/UserProfile/userprofile.html" class="btn btn-primary py-md-3 px-md-5 d-none d-lg-block">emhuythichchoichim</a>
+                            <div class="nav-item dropdown">
+                                <a href="#" class="btn btn-primary nav-link dropdown-toggle" data-bs-toggle="dropdown" style="width: 150px;">${sessionScope.USER.userName}</a>
+                                <div class="dropdown-menu rounded-0 m-0">
+                                    <!-- <a href="blog.html" class="dropdown-item">News</a> -->
+                                    <a class="dropdown-item" href="birdprofile.html">Bird Profile</a>
+                                    <a class="dropdown-item" href="addnewbird.html">Add Bird </a>
+                                    <div class="dropdown-divider"></div>
+                                    <a class="dropdown-item" href="/FE/index.html">Log out</a>
+                                </div>
+                            </div>
                         </div>
                     </nav>
                 </div>
@@ -139,53 +148,104 @@
 
 
         <!-- Class Timetable Start -->
-        <div class="container-fluid p-5">
+        <div id="schedule" class="container-fluid p-5">
             <div class="mb-5 text-center">
-                <h5 class="text-primary text-uppercase">các trận đấu</h5>
-                <h1 class="display-3 text-uppercase mb-0">Lịch Thi đấu</h1>
+                <h5 class="text-primary text-uppercase">Lịch thi đấu</h5>
+                <h1 class="display-3 text-uppercase mb-0">các trận đấu sắp tới</h1>
             </div>
             <div class="tab-class text-center">
                 <ul class="nav nav-pills d-inline-flex justify-content-center bg-dark text-uppercase rounded-pill mb-5">
                     <li class="nav-item">
-                        <a class="nav-link rounded-pill text-white active" data-bs-toggle="pill" href="#tab-1">Tháng này</a>
+                        <a class="nav-link rounded-pill text-white" data-bs-toggle="pill" href="#tab-0">Đã diễn ra</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link rounded-pill text-white active" data-bs-toggle="pill" href="#tab-1">Đang diễn ra</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link rounded-pill text-white" data-bs-toggle="pill" href="#tab-2">Sắp diễn ra</a>
                     </li>
                 </ul>
                 <div class="tab-content">
+                    <div id="tab-0" class="tab-pane fade show p-0">
+                        <div class="row g-5">
+                            <c:set var="scheduleData" value="${sessionScope.SCHEDULE}"/>
+                            <c:if test="${not empty scheduleData}">
+                                <c:forEach var="scheduleDto" items="${scheduleData}" varStatus="counter">
+                                    <div class="col-lg-3 col-md-4 col-sm-6  btn-viewInfo">
+                                        <div class="bg-dark rounded text-center py-5 px-3">
+                                            <p class="schedule-value text-uppercase text-light mb-3">Ngày: ${scheduleDto.date}</p>
+                                            <p class="schedule-value text-uppercase text-light mb-3"> Giờ: 2.00am - 5.00am</p>
+                                            <p class="schedule-value text-uppercase text-light mb-3">Địa điểm: ${scheduleDto.location}</p>
+                                            <p class="schedule-value text-uppercase text-primary">${scheduleDto.name}</p>
+                                            <p class="schedule-value text-uppercase text-secondary mb-0">Loại chim: Gà chiến</p>
+                                            <p class="schedule-value text-uppercase text-secondary mb-0">Điểm yêu cầu: ${scheduleDto.minPoint} - ${scheduleDto.maxPoint} </p>
+                                            <p class="schedule-value text-uppercase text-light mb-3">Phí đăng kí: ${scheduleDto.fee}</p>
+                                            <p class="schedule-value text-uppercase text-secondary mb-0" style="display: inline;">
+                                                số người đăng kí:
+                                                <span class="text-uppercase text-primary mb-0" style="display: inline;">
+                                                    10/15</span>
+                                            </p>
+                                            </br><button class="btn btn-primary btn-viewInfo px-5" style="margin-top: 10px;">Đăng kí
+                                                thi đấu</button>
+                                        </div>
+                                    </div>
+                                </c:forEach>
+                            </c:if>
+                        </div>
+                    </div>
                     <div id="tab-1" class="tab-pane fade show p-0 active">
-                        <div class="row g-5  d-flex justify-content-center">
-                            <div class="col-lg-3 col-md-4 col-sm-6  btn-register">
-                                <div class="bg-dark rounded text-center py-5 px-3">
-                                    <p class="schedule-value text-uppercase text-light mb-3"> Ngày: 23/1/2023</p>
-                                    <p class="schedule-value text-uppercase text-light mb-3"> Giờ: 8.00am - 10.00am</p>
-                                    <p class="schedule-value text-uppercase text-light mb-3"> Địa điểm: FPT</p>
-                                    <p class="schedule-value text-uppercase text-primary">Thi hót</p>
-                                    <p class="schedule-value text-uppercase text-secondary mb-0">Loại chim: Chào mào</p>
-                                    <p class="schedule-value text-uppercase text-secondary mb-0" style="display: inline;">
-                                        số người đăng kí:
-                                        <span class="text-uppercase text-primary mb-0" style="display: inline;">
-                                            10/15</span>
-                                    </p>
-                                    <button class="btn btn-primary btn-register px-5" style="margin-top: 10px;">Đăng kí
-                                        thi đấu</button>
-                                </div>
-                            </div>
-                            <div class="col-lg-3 col-md-4 col-sm-6  btn-register">
-                                <div class="bg-dark rounded text-center py-5 px-3">
-                                    <p class="schedule-value text-uppercase text-light mb-3"> Ngày: 1/10/2023</p>
-                                    <p class="schedule-value text-uppercase text-light mb-3"> Giờ: 2.00am - 5.00am</p>
-                                    <p class="schedule-value text-uppercase text-light mb-3"> Địa điểm: FPTHCM</p>
-                                    <p class="schedule-value text-uppercase text-primary">Đá gà</p>
-                                    <p class="schedule-value text-uppercase text-secondary mb-0">Loại chim: Gà chiến</p>
-                                    <p class="schedule-value text-uppercase text-secondary mb-0" style="display: inline;">
-                                        số người đăng kí:
-                                        <span class="text-uppercase text-primary mb-0" style="display: inline;">
-                                            10/15</span>
-                                    </p>
-                                    <button class="btn btn-primary btn-register px-5" style="margin-top: 10px;">Đăng kí
-                                        thi đấu</button>
-                                </div>
-                            </div>
-
+                        <div class="row g-5">
+                            <c:set var="scheduleData" value="${sessionScope.SCHEDULE}"/>
+                            <c:if test="${not empty scheduleData}">
+                                <c:forEach var="scheduleDto" items="${scheduleData}" varStatus="counter">
+                                    <div class="col-lg-3 col-md-4 col-sm-6  btn-viewInfo">
+                                        <div class="bg-dark rounded text-center py-5 px-3">
+                                            <p class="schedule-value text-uppercase text-light mb-3">Ngày: ${scheduleDto.date}</p>
+                                            <p class="schedule-value text-uppercase text-light mb-3"> Giờ: 2.00am - 5.00am</p>
+                                            <p class="schedule-value text-uppercase text-light mb-3">Địa điểm: ${scheduleDto.location}</p>
+                                            <p class="schedule-value text-uppercase text-primary">${scheduleDto.name}</p>
+                                            <p class="schedule-value text-uppercase text-secondary mb-0">Loại chim: Gà chiến</p>
+                                            <p class="schedule-value text-uppercase text-secondary mb-0">Điểm yêu cầu: ${scheduleDto.minPoint} - ${scheduleDto.maxPoint} </p>
+                                            <p class="schedule-value text-uppercase text-light mb-3">Phí đăng kí: ${scheduleDto.fee}</p>
+                                            <p class="schedule-value text-uppercase text-secondary mb-0" style="display: inline;">
+                                                số người đăng kí:
+                                                <span class="text-uppercase text-primary mb-0" style="display: inline;">
+                                                    10/15</span>
+                                            </p>
+                                            </br><button class="btn btn-primary btn-viewInfo px-5" style="margin-top: 10px;">Đăng kí
+                                                thi đấu</button>
+                                        </div>
+                                    </div>
+                                </c:forEach>
+                            </c:if>
+                        </div>
+                    </div>
+                    <div id="tab-2" class="tab-pane fade show p-0">
+                        <div class="row g-5">
+                            <c:set var="scheduleData" value="${sessionScope.SCHEDULE}"/>
+                            <c:if test="${not empty scheduleData}">
+                                <c:forEach var="scheduleDto" items="${scheduleData}" varStatus="counter">
+                                    <div class="col-lg-3 col-md-4 col-sm-6  btn-register">
+                                        <div class="bg-dark rounded text-center py-5 px-3">
+                                            <p class="schedule-value text-uppercase text-light mb-3">Ngày: ${scheduleDto.date}</p>
+                                            <p class="schedule-value text-uppercase text-light mb-3"> Giờ: 2.00am - 5.00am</p>
+                                            <p class="schedule-value text-uppercase text-light mb-3">Địa điểm: ${scheduleDto.location}</p>
+                                            <p class="schedule-value text-uppercase text-primary">${scheduleDto.name}</p>
+                                            <p class="schedule-value text-uppercase text-secondary mb-0">Loại chim: Gà chiến</p>
+                                            <p class="schedule-value text-uppercase text-secondary mb-0">Điểm yêu cầu: ${scheduleDto.minPoint} - ${scheduleDto.maxPoint} </p>
+                                            <p class="schedule-value text-uppercase text-light mb-3">Phí đăng kí: ${scheduleDto.fee}</p>
+                                            <p class="schedule-value text-uppercase text-secondary mb-0" style="display: inline;">
+                                                số người đăng kí:
+                                                <span class="text-uppercase text-primary mb-0" style="display: inline;">
+                                                    10/15</span> 
+                                            </p>
+                                            <input class="idHide" type="hidden" value="${scheduleDto.id}"/></br>
+                                            <button class="btn btn-primary btn-register px-5" style="margin-top: 10px;">Đăng kí
+                                                thi đấu</button>
+                                        </div>
+                                    </div>
+                                </c:forEach>
+                            </c:if>
                         </div>
                     </div>
                 </div>
@@ -228,7 +288,7 @@
                     const newDriver = document.createElement('div');
                     newDriver.classList = 'schedule-detail';
 
-                    var date, time, place, tOC, tOB, registerNumber;
+                    var date, time, place, tOC, tOB, registerNumber, pointReq, hiddenId, fee;
 
                     if (this.querySelector(".schedule-value:nth-of-type(1)") !== null) {
                         date = this.querySelector(".schedule-value:nth-of-type(1)").innerHTML;
@@ -236,20 +296,24 @@
                         place = this.querySelector(".schedule-value:nth-of-type(3)").innerHTML;
                         tOC = this.querySelector(".schedule-value:nth-of-type(4)").innerHTML;
                         tOB = this.querySelector(".schedule-value:nth-of-type(5)").innerHTML;
-                        registerNumber = this.querySelector(".schedule-value:nth-of-type(6) span").innerHTML;
+                        pointReq = this.querySelector(".schedule-value:nth-of-type(6)").innerHTML;
+                        fee = this.querySelector(".schedule-value:nth-of-type(7)").innerHTML;
+                        registerNumber = this.querySelector(".schedule-value:nth-of-type(8) span").innerHTML;
+                        hiddenId = this.querySelector(".idHide").value;
                     }
 
                     const birds = [];
-            <c:set var="scheduleData" value="${requestScope.SCHEDULE}"/>
-            <c:if test="${not empty scheduleData}">
-                <c:forEach var="scheduleDto" items="${scheduleData}" varStatus="counter">                   
-                    birds.push("${scheduleDto.name}");
+            <c:set var="ownBird" value="${sessionScope.OWN_BIRD}"/>
+            <c:if test="${not empty ownBird}">
+                <c:forEach var="bird" items="${ownBird}" varStatus="counter">
+                    birds.push("${bird.birdName}", "${bird.point}");
                 </c:forEach>
             </c:if>
                     let text = "";
 
                     for (let i = 0; i < birds.length; i++) {
-                        text += "<option>" + birds[i] + "</option>";
+                        text += "<option>" + birds[i] + ", Rank point: "+ birds[i+1] + "</option>";
+                        i++;
                     }
 
                     newDriver.innerHTML = `
@@ -259,19 +323,23 @@
                     <h6 class="text-uppercase text-light mb-3 ml-3">` + place + `</h6>
                     <h5 class="text-uppercase text-primary">` + tOC + `</h5>
                     <p class="text-uppercase text-secondary mb-0 ml-3">` + tOB + `</p>
+                    <p class="text-uppercase text-secondary mb-0 ml-3">` + pointReq + `</p>
+                    <h6 class="text-uppercase text-light mb-3 ml-3">` + fee + `</h6>
                     <p class="text-uppercase text-secondary mb-0 ml-3" style="display: inline;">
                         số người đăng kí:
-                    <p class="text-uppercase text-primary mb-0 ml-3" style="display: inline;">` + registerNumber + `</p>
-                    </p>
-                    <h6 class="text-uppercase text-secondary mb-3 ml-3">Chọn chim đăng ký:  
-                        <select>
-                            <option value="" selected disabled>Chim</option>
+                    <span class="text-uppercase text-primary mb-0 ml-3" style="display: inline;">` + registerNumber + `</span>
+                    </p>                     
+                    
+                    <form action="DispatchServlet">
+                        <h6 class="text-uppercase text-secondary mb-3 ml-3">Chọn chim đăng ký:  
+                        <select aria-label="chooseBird" name="cboBird">
+                            <option selected disabled>Chim</option>
                             ` + text + `
-                        </select>    
-                
-                    </div>
-
-                    <a href="" class="btn btn-primary px-5" style="margin-top: 10px;">Đăng kí thi đấu</a>
+                        </select>
+                        <input type="hidden" name="hiddenContestId" value="` + hiddenId + `"/>                        
+                    <button type="submit" name="btAction" value="cRegister" class="btn btn-primary px-5" style="margin-top: 10px;">Đăng kí thi đấu</button>
+                     </form>
+                     </div>
                     `;
 
 
@@ -284,6 +352,12 @@
 
 
         </script>
+        <script type="text/javascript">
+            const viewInfo = document.querySelectorAll(".btn-viewInfo");
+<!--<button type="submit" name="btAction" value="cRegister" class="btn btn-primary px-5" style="margin-top: 10px;">Đăng kí thi đấu</button>-->
+
+        </script>
+
 
         <!-- Footer Start -->
         <div class="container-fluid bg-dark text-secondary px-5 mt-5">
