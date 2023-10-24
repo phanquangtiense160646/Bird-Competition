@@ -4,7 +4,6 @@
  */
 package com.birdcompetition.controller;
 
-import com.birdcompetition.bird.BirdDAO;
 import com.birdcompetition.bird.BirdDTO;
 import com.birdcompetition.schedule.ScheduleDAO;
 import com.birdcompetition.schedule.ScheduleDTO;
@@ -14,7 +13,6 @@ import java.sql.SQLException;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.naming.NamingException;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -24,10 +22,10 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  *
- * @author Admin
+ * @author Danh
  */
-@WebServlet(name = "StartServlet", urlPatterns = {"/StartServlet"})
-public class StartServlet extends HttpServlet {
+@WebServlet(name = "HappeningMatchServlet", urlPatterns = {"/HappeningMatchServlet"})
+public class HappeningMatchServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -41,27 +39,19 @@ public class StartServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        String url = "index.jsp";
+        String url = "Admin/happeningContest.jsp";
         try {
-            ScheduleDAO scheduleDao = new ScheduleDAO();
-            scheduleDao.getSchedule();
-            
-            List<ScheduleDTO> listSchedule = scheduleDao.getList();
-            request.setAttribute("SCHEDULE", listSchedule);
-            
-            BirdDAO birdDao = new BirdDAO();
-            birdDao.displayLeaderboard();
-            List<BirdDTO> listBird = birdDao.getBirdList();
+            ScheduleDAO dao = new ScheduleDAO();
+            dao.getScheduleByStatus(3);
+            List<ScheduleDTO> result = dao.getList();
 
-            request.setAttribute("LEADER_BOARD", listBird);
-            
+            request.setAttribute("HAPPENING", result);
+
         } catch (SQLException ex) {
-            log("StartServlet_SQL");
+            Logger.getLogger(HappeningMatchServlet.class.getName()).log(Level.SEVERE, null, ex);
         } catch (ClassNotFoundException ex) {
-            log("StartServlet_ClassNotFound");
-        } catch (NamingException ex) {
-            Logger.getLogger(StartServlet.class.getName()).log(Level.SEVERE, null, ex);
-        }finally {
+            Logger.getLogger(HappeningMatchServlet.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
             RequestDispatcher rd = request.getRequestDispatcher(url);
             rd.forward(request, response);
         }

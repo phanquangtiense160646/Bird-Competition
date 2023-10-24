@@ -26,6 +26,10 @@ public class BirdDAO {
         return birdList;
     }
 
+    public void resetBirdList() {
+        birdList = null;
+    }
+
     public void displayLeaderboard()
             throws SQLException, NamingException, ClassNotFoundException {
         Connection con = null;
@@ -33,44 +37,33 @@ public class BirdDAO {
         ResultSet rs = null;
 
         try {
-            //1.Make connection
             con = DBHelper.getConnection();
-
-            //check 
             if (con != null) {
-
-//                2.Creat SQL String 
                 String sql = "Select NameOfBird, Species, Point, Win, Lose, Tie, MatchNumber, b.IdMember, m.FullName "
                         + "From Bird b JOIN [dbo].[Member] m "
                         + "ON m.IdMember = b.IdMember ";
-//                String sql = "Select NameOfBird, Species, Point, IdMember, Win, Lose, Tie, MatchNumber From Bird";
                 stm = con.prepareStatement(sql);
 
-                //4.Exercute Query
                 rs = stm.executeQuery();
-                //5.Process
                 while (rs.next()) {
-                    //5.1 map 
-                    //5.1.1 get data from Result Set
                     String name = rs.getString("NameOfBird");
                     String speices = rs.getString("Species");
                     int point = rs.getInt("Point");
-//                    String ownerId = rs.getString("IdMember");
                     int win = rs.getInt("Win");
                     int lose = rs.getInt("Lose");
                     int tie = rs.getInt("Tie");
                     int matchNumber = rs.getInt("MatchNumber");
                     String trainer = rs.getString("FullName");
 
-                    BirdDTO dto = new BirdDTO(name, speices, point, trainer, "photo", win, lose, tie, matchNumber);
-//                    System.out.println(dto.toString());
+                    BirdDTO dto = new BirdDTO(name, speices, point, trainer, "photo", win, lose, tie, matchNumber, 0);
                     if (this.birdList == null) {
                         this.birdList = new ArrayList<>();
                     }
                     this.birdList.add(dto);
-                }//end map DB to DTO
+                }
                 sort(birdList);
-            }//end connection is available
+                setRank();
+            }
         } finally {
             if (rs != null) {
                 rs.close();
@@ -84,82 +77,23 @@ public class BirdDAO {
         }
     }
 
-    public void seardBird(String searchValue)
-            throws SQLException, ClassNotFoundException, NamingException {
-        Connection con = null;
-        PreparedStatement stm = null;
-        ResultSet rs = null;
-        boolean result = true;
-
-        try {
-            //1. Make connection
-            con = DBHelper.getConnection();
-            if (con != null) {
-                //2. Crate SQL String
-                String sql = "Select NameOfBird, Species, Point, IdMember, Win, Lose, Tie, MatchNumber From Bird Where NameOfBird Like ?";
-
-                //3. Create Statement Object
-                stm = con.prepareStatement(sql);
-                stm.setString(1, "%" + searchValue + "%");
-
-                //4. Execute query
-                rs = stm.executeQuery();
-                //5. Process
-                while (rs.next()) {
-                    String name = rs.getString("NameOfBird");
-                    String speices = rs.getString("Species");
-                    int point = rs.getInt("Point");
-//                    String ownerId = rs.getString("b.IdMember");
-                    int win = rs.getInt("Win");
-                    int lose = rs.getInt("Lose");
-                    int tie = rs.getInt("Tie");
-                    int matchNumber = rs.getInt("MatchNumber");
-//                    String trainer = rs.getString("m.FullName");                     
-                    //5.1.2 add data to list
-
-                    BirdDTO dto = new BirdDTO(name, speices, point, "", "photo", win, lose, tie, matchNumber);
-//                    System.out.println(dto.toString());
-                    if (this.birdList == null) {
-                        this.birdList = new ArrayList<>();
-                    }
-                    this.birdList.add(dto);
-                }//end map DB to DTO
-                sort(birdList);
-            }//end connection í available
-        } finally {
-            if (rs != null) {
-                rs.close();
-            }
-            if (stm != null) {
-                stm.close();
-            }
-            if (con != null) {
-                con.close();
-            }
+    public void setRank() {
+        for (int i = 0; i < birdList.size(); i++) {
+            birdList.get(i).setRank(i + 1);
         }
-
     }
 
-//    public void checkConnect()
-//            throws SQLException, ClassNotFoundException {
-//        Connection con = null;
-//        PreparedStatement stm = null;
-//        ResultSet rs = null;
-//        boolean result = false;
-//
-//        try {
-//            con = DBHelper.getConnection();
-//            if (con != null) {
-//                System.out.println("vô");
-//                return;
-//            }
-//        } finally {
-//            if (con != null) {
-//                con.close();
-//            }
-//        }
-//        System.out.println("cút");;
-//    }
+    public List<BirdDTO> search(String searchValue) {
+        List<BirdDTO> searchList = new ArrayList<>();
+        for (int i = 0; i < birdList.size(); i++) {
+            if (birdList.get(i).getBirdName().contains(searchValue)) {
+                searchList.add(birdList.get(i));
+            }
+        }
+        return searchList;
+    }
+
+
     void sort(List list) {
         Collections.sort(list, (BirdDTO b1, BirdDTO b2) -> -b1.compareTo(b2));
     }

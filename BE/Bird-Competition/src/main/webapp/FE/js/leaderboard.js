@@ -64,7 +64,7 @@ tableRow.forEach(tableRow => {
 				</tr>
                                 <tr>
                                         <td><small>Điểm:</small></td>
-                                        <td class="text-primary">${birdPoint}</td>
+                                        <td>${birdPoint}</td>
                                 </tr>
 				<tr>
 					<td><small>Thắng:</small></td>
@@ -100,3 +100,8 @@ closeOverlayBtn.addEventListener("click", function () {
 overlay.addEventListener("click", function () {
     sidebarClose();
 });
+
+setTimeout(function() {
+    var myDiv = document.getElementById('notFound');
+    myDiv.style.display = 'none'; // Hoặc 'inline', 'inline-block', tùy thuộc vào cách bạn muốn hiển thị
+  }, 2000); // 2000 mili giây tương đương với 2 giây

@@ -1,13 +1,7 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
- */
 package com.birdcompetition.controller;
 
 import com.birdcompetition.bird.BirdDAO;
 import com.birdcompetition.bird.BirdDTO;
-import com.birdcompetition.schedule.ScheduleDAO;
-import com.birdcompetition.schedule.ScheduleDTO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
@@ -24,10 +18,10 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  *
- * @author Admin
+ * @author Danh
  */
-@WebServlet(name = "StartServlet", urlPatterns = {"/StartServlet"})
-public class StartServlet extends HttpServlet {
+@WebServlet(name = "SearchLeaderBoardServlet", urlPatterns = {"/SearchLeaderBoardServlet"})
+public class SearchLeaderBoardServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -41,27 +35,34 @@ public class StartServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        String url = "index.jsp";
-        try {
-            ScheduleDAO scheduleDao = new ScheduleDAO();
-            scheduleDao.getSchedule();
-            
-            List<ScheduleDTO> listSchedule = scheduleDao.getList();
-            request.setAttribute("SCHEDULE", listSchedule);
-            
-            BirdDAO birdDao = new BirdDAO();
-            birdDao.displayLeaderboard();
-            List<BirdDTO> listBird = birdDao.getBirdList();
+//        String url = "LeaderBoardServlet";
+        String url = "leaderboard.jsp#search";
 
-            request.setAttribute("LEADER_BOARD", listBird);
-            
+        String searchValue = request.getParameter("txtSearchValue");
+        try {
+            if (!searchValue.trim().isEmpty()) {
+                //call model
+                BirdDAO dao = new BirdDAO();
+//                dao.searchBird(searchValue);
+//                List<BirdDTO> searchList = dao.getBirdList();
+//                request.setAttribute("SEARCH_RS", searchList);
+//                dao.resetBirdList();
+
+                dao.displayLeaderboard();
+                List<BirdDTO> result = dao.getBirdList();
+                request.setAttribute("LEADER_BOARD", result);
+
+                List<BirdDTO> searchList = dao.search(searchValue);
+                request.setAttribute("SEARCH_RS", searchList);
+
+            }
         } catch (SQLException ex) {
-            log("StartServlet_SQL");
+            Logger.getLogger(SearchLeaderBoardServlet.class.getName()).log(Level.SEVERE, null, ex);
         } catch (ClassNotFoundException ex) {
-            log("StartServlet_ClassNotFound");
+            Logger.getLogger(SearchLeaderBoardServlet.class.getName()).log(Level.SEVERE, null, ex);
         } catch (NamingException ex) {
-            Logger.getLogger(StartServlet.class.getName()).log(Level.SEVERE, null, ex);
-        }finally {
+            Logger.getLogger(SearchLeaderBoardServlet.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
             RequestDispatcher rd = request.getRequestDispatcher(url);
             rd.forward(request, response);
         }
