@@ -82,3 +82,7 @@ html {
     display: flex;
     justify-content: space-between;
 }
+
+.schedule-value {
+        font-family: 'Oswald', sans-serif;
+}

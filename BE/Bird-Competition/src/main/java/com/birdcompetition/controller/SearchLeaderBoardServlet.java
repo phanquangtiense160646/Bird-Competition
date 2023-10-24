@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
- */
 package com.birdcompetition.controller;
 
 import com.birdcompetition.bird.BirdDAO;
@@ -24,8 +20,8 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Danh
  */
-@WebServlet(name = "LeaderBoardServlet", urlPatterns = {"/LeaderBoardServlet"})
-public class LeaderBoardServlet extends HttpServlet {
+@WebServlet(name = "SearchLeaderBoardServlet", urlPatterns = {"/SearchLeaderBoardServlet"})
+public class SearchLeaderBoardServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -39,18 +35,33 @@ public class LeaderBoardServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        String url = "leaderboard.jsp";
+//        String url = "LeaderBoardServlet";
+        String url = "leaderboard.jsp#search";
 
+        String searchValue = request.getParameter("txtSearchValue");
         try {
-            BirdDAO dao = new BirdDAO();
-            dao.displayLeaderboard();
-            List<BirdDTO> result = dao.getBirdList();
+            if (!searchValue.trim().isEmpty()) {
+                //call model
+                BirdDAO dao = new BirdDAO();
+//                dao.searchBird(searchValue);
+//                List<BirdDTO> searchList = dao.getBirdList();
+//                request.setAttribute("SEARCH_RS", searchList);
+//                dao.resetBirdList();
 
-            request.setAttribute("LEADER_BOARD", result);
+                dao.displayLeaderboard();
+                List<BirdDTO> result = dao.getBirdList();
+                request.setAttribute("LEADER_BOARD", result);
 
-        } catch (SQLException | NamingException | ClassNotFoundException ex) {
-            Logger.getLogger(LeaderBoardServlet.class.getName()).log(Level.SEVERE, null, ex);
- 
+                List<BirdDTO> searchList = dao.search(searchValue);
+                request.setAttribute("SEARCH_RS", searchList);
+
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(SearchLeaderBoardServlet.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(SearchLeaderBoardServlet.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (NamingException ex) {
+            Logger.getLogger(SearchLeaderBoardServlet.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
             RequestDispatcher rd = request.getRequestDispatcher(url);
             rd.forward(request, response);

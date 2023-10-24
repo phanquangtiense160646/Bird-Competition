@@ -1,11 +1,6 @@
 package com.birdcompetition.controller.web;
 
-import com.birdcompetition.schedule.ScheduleDAO;
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -22,10 +17,10 @@ public class DispatchServlet extends HttpServlet {
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
      *
-     * @param request  servlet request
+     * @param request servlet request
      * @param response servlet response
      * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException      if an I/O error occurs
+     * @throws IOException if an I/O error occurs
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -35,9 +30,16 @@ public class DispatchServlet extends HttpServlet {
         try {
             if (button == null) {
                 url = "StartServlet";
+//                url = "Admin/index.html";
+            } else if (button.equals("SearchLB")) {
+                url = "SearchLeaderBoardServlet";
+            } else if (button.equals("PostLogin")) {
+                url = "PostLoginServlet";
             } else if (button.equals("LeaderBoard")) {
                 url = "LeaderBoardServlet";
-            } else if (button.equals("AddBird")){
+            } else if (button.equals("schedule")) {
+                url = "ScheduleServlet";
+            } else if (button.equals("AddBird")) {
                 url = "AddBirdServlet";
             }
         } finally {
@@ -46,15 +48,14 @@ public class DispatchServlet extends HttpServlet {
         }
     }
 
-    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the
-    // + sign on the left to edit the code.">
+    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
      *
-     * @param request  servlet request
+     * @param request servlet request
      * @param response servlet response
      * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException      if an I/O error occurs
+     * @throws IOException if an I/O error occurs
      */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -65,10 +66,10 @@ public class DispatchServlet extends HttpServlet {
     /**
      * Handles the HTTP <code>POST</code> method.
      *
-     * @param request  servlet request
+     * @param request servlet request
      * @param response servlet response
      * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException      if an I/O error occurs
+     * @throws IOException if an I/O error occurs
      */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)

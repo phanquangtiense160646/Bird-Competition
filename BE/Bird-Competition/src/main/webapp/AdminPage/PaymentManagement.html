@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Admin</title>
+    <title>SB Admin 2 - Tables</title>
 
     <!-- Custom fonts for this template -->
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -19,7 +19,6 @@
 
     <!-- Custom styles for this template -->
     <link href="css/sb-admin-2.min.css" rel="stylesheet">
-    <link href="css/matchResult.css" rel="stylesheet">
 
     <!-- Custom styles for this page -->
     <link href="vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
@@ -35,11 +34,11 @@
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
             <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="indexAdmin.html">
                 <div class="sidebar-brand-icon rotate-n-15">
                     <i class="fas fa-laugh-wink"></i>
                 </div>
-                <div class="sidebar-brand-text mx-3">Admin</div>
+                <div class="sidebar-brand-text mx-3">SB Admin <sup>2</sup></div>
             </a>
 
             <!-- Divider -->
@@ -47,7 +46,7 @@
 
             <!-- Nav Item - Dashboard -->
             <li class="nav-item">
-                <a class="nav-link" href="index.html">
+                <a class="nav-link" href="charts.html">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Dashboard</span></a>
             </li>
@@ -186,66 +185,56 @@
 
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
-                    <h1 class="h3 mb-2 text-gray-800">Match Management</h1>
-                    <p class="mb-4">Quản lí các trận đấu đang diễn ra<a target="_blank"></p>
-                   
-                    <!-- Manage Rule Start -->
-                    <div class="container-fluid p-5">
-                        <div class="mb-5 text-center">
-                            
-                            <h1 class="display-3 text-uppercase mb-0">Cập nhật kết quả</h1>
-                        </div>
-                        <div class="tab-class text-center">
-                            <ul class="nav nav-pills d-inline-flex justify-content-center bg-dark text-uppercase rounded-pill mb-5">
-                                <li class="nav-item">
-                                    <a class="nav-link rounded-pill text-white active" data-bs-toggle="pill" href="#tab-1">các trận đấu đang diễn ra</a>
-                                </li>
-                            </ul>
-                            <div class="tab-content">
-                                <div id="tab-1" class="tab-pane fade show p-0 active">
-                                    <div class="row g-5 d-flex justify-content-center">
-                                        <div class="col-lg-3 col-md-4 col-sm-6  btn-register">
-                                            <div class="bg-dark rounded text-center py-5 px-3">
-                                                <p class="schedule-value text-uppercase text-light mb-3"> Ngày: 23/1/2023</p>
-                                                <p class="schedule-value text-uppercase text-light mb-3"> Giờ: 8.00am - 10.00am</p>
-                                                <p class="schedule-value text-uppercase text-light mb-3"> Địa điểm: FPT</p>
-                                                <p class="schedule-value text-uppercase text-primary">Thi hót</p>
-                                                <p class="schedule-value text-uppercase text-secondary mb-0">Loại chim: Chào mào</p>
-                                                <p class="schedule-value text-uppercase text-secondary mb-0" style="display: inline;">
-                                                    số người đăng kí:
-                                                    <span class="text-uppercase text-primary mb-0" style="display: inline;">
-                                                    10/15</span>
-                                                </p>
-                                                <!-- <button class="btn btn-primary btn-register px-5" style="margin-top: 10px;">cập nhật kết quả</button> -->
-                                                <a href="MatchResult.html" class="btn btn-primary px-5 mt-2">Cập nhật kết quả</a>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-3 col-md-4 col-sm-6  btn-register">
-                                            <div class="bg-dark rounded text-center py-5 px-3">
-                                                <p class="schedule-value text-uppercase text-light mb-3"> Ngày: 1/10/2023</p>
-                                                <p class="schedule-value text-uppercase text-light mb-3"> Giờ: 2.00am - 5.00am</p>
-                                                <p class="schedule-value text-uppercase text-light mb-3"> Địa điểm: FPTHCM</p>
-                                                <p class="schedule-value text-uppercase text-primary">Đá gà</p>
-                                                <p class="schedule-value text-uppercase text-secondary mb-0">Loại chim: Gà chiến</p>
-                                                <p class="schedule-value text-uppercase text-secondary mb-0" style="display: inline;">
-                                                    số người đăng kí:
-                                                    <span class="text-uppercase text-primary mb-0" style="display: inline;">
-                                                    10/15</span>
-                                                </p>
-                                                <!-- <button class="btn btn-primary btn-register px-5" style="margin-top: 10px;">cập nhật kết quả</button> -->
-                                                <a href="MatchResult.html" class="btn btn-primary px-5 mt-2">Cập nhật kết quả</a>
+                    <h1 class="h3 mb-2 text-gray-800">Payment Management</h1>
+                    <p class="mb-4">Quản lí danh sách thanh toán <a target="_blank">
+                            </p>
 
-                                            </div>
-                                        </div>
-                
-                                    </div>
-                                </div>
+                    <!-- Page Heading -->
+                   
+
+                    <!-- DataTales Example -->
+                    <div class="card shadow mb-4">
+                        <div class="card-header py-3">
+                            <h6 class="m-0 font-weight-bold text-primary">Payment Management</h6>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                    <thead>
+                                        <tr>
+                                            <th>Banking Code</th>
+                                            <th>Username</th>
+                                            <th>Platform</th>
+                                            <th>Fee(vnd)</th>
+                                            <th>Payment Date</th>
+                                            <th>Amount(vnd)</th>
+                                        </tr>
+                                    </thead>
+                                    <tfoot>
+                                        <tr>
+                                            <th>Banking Code</th>
+                                            <th>Username</th>
+                                            <th>Platform</th>
+                                            <th>Fee(vnd)</th>
+                                            <th>Payment Date</th>
+                                            <th>Amount(vnd)</th>
+                                        </tr>
+                                    </tfoot>
+                                    <tbody>
+                                        <tr>
+                                            <td>VTB1231202</td>
+                                            <td>emhuythichchoichim</td>
+                                            <td>Momo</td>
+                                            <td>3.000</td>
+                                            <td>30/04/2023</td>
+                                            <td>100.000</td>
+                                        </tr>
+                                        
+                                    </tbody>
+                                </table>
                             </div>
                         </div>
                     </div>
-
-                    <!-- Manage Rule End -->
-
 
                 </div>
                 <!-- /.container-fluid -->
@@ -253,10 +242,6 @@
             </div>
             <!-- End of Main Content -->
 
-
-
-
-            
             <!-- Footer -->
             <footer class="sticky-footer bg-white">
                 <div class="container my-auto">

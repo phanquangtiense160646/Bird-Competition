@@ -168,10 +168,8 @@ h6,
     right: 0;
     background-color:rgba(33, 37, 42, .9);
     display: none;
-    /* display: flex; */
     justify-content: center;
     align-items: center;
-    cursor: pointer;
     transition: all 300ms ease;
     z-index: 3;
 }   

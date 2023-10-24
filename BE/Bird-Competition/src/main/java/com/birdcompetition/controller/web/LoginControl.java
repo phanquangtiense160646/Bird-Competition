@@ -16,7 +16,6 @@ import com.birdcompetition.model.User;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.naming.NamingException;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.http.HttpSession;
 
@@ -47,11 +46,12 @@ public class LoginControl extends HttpServlet {
 
             DAO dao = new DAO();
             User result = dao.checkLogin(username, password);
+            
 
             if (result != null) {
                 HttpSession session = request.getSession();
                 session.setAttribute("USER", result);
-                url = "PostLoginServlet";
+                url = "DispatchServlet?btAction=PostLogin";
             } else {
                 String msg = "Incorrect Username or Password";
                 request.setAttribute("msg", msg);
@@ -67,8 +67,7 @@ public class LoginControl extends HttpServlet {
 
     }
 
-    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the
-    // + sign on the left to edit the code.">
+    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
      *

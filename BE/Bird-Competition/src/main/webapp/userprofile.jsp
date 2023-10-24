@@ -41,8 +41,7 @@
 
 
   <link rel="stylesheet" href="FE/css/style.css">
-  <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
-    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"> -->
+  
 
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -124,9 +123,10 @@
             <!-- Dropdown-Menu -->
             <div class="dropdown">
               <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
-                  ${sessionScope.USER.Name}
+                  ${sessionScope.USER.userName}
               </button>
               <div class="dropdown-menu">
+                 <a class="dropdown-item" href="userprofile.jsp">User Profile</a>
                 <a class="dropdown-item" href="birdprofile.html">Bird Profile</a>
                 <a class="dropdown-item" href="addnewbird.html">Add Bird </a>
                 <div class="dropdown-divider"></div>
@@ -149,7 +149,7 @@
               <div class="rounded-top text-white d-flex flex-row" style="background-color: #000000; height:200px;">
                 <div class="ms-4 mt-5 d-flex flex-column" style="width: 150px;">
                   <img
-                    src="https://scontent.fsgn2-5.fna.fbcdn.net/v/t39.30808-6/331044364_1135565673791935_1693572774874518896_n.jpg?_nc_cat=104&ccb=1-7&_nc_sid=5f2048&_nc_ohc=rEl0ltbqKZEAX-SP35b&_nc_ht=scontent.fsgn2-5.fna&_nc_e2o=s&oh=00_AfD4dAUmuOeY6SRnnBKa0TquDo5_uTlkM977gRt2TKh5_A&oe=653321D9"
+                    src="https://scontent.fsgn2-5.fna.fbcdn.net/v/t39.30808-6/331044364_1135565673791935_1693572774874518896_n.jpg?_nc_cat=104&ccb=1-7&_nc_sid=5f2048&_nc_ohc=XK0r9dQmanUAX_FUmQO&_nc_ht=scontent.fsgn2-5.fna&_nc_e2o=s&oh=00_AfCgR_jHe4yv8Y2TppEaLM8usFhnk-8DrdTekWraoyG42Q&oe=653D0519"
                     alt="Generic placeholder image" class="img-fluid img-thumbnail mt-4 mb-2"
                     style="width: 150px; z-index: 1; margin-left: 10px;">
                   <form action="#editprofile-dialog" style="z-index: 1;">
@@ -169,7 +169,7 @@
                 </div>
 
                 <div class="ms-3" style="margin-top: 130px; margin-left: 30px;">
-                  <h5 class="text-white">${sessionScope.USER.Name}</h5>
+                  <h5 class="text-white">${sessionScope.USER.userName}</h5>
                   <p>${sessionScope.USER.fullName}</p>
                 </div>
               </div>
@@ -195,7 +195,7 @@
                   <p class="lead fw-normal mb-1">About</p>
                   <div class="p-4" style="background-color: #f8f9fa;">
                     <p class="font-italic mb-1">Thích Chơi Chim</p>
-                    <p class="font-italic mb-1">${sessionScope.USER.gmail}</p>
+                    <p class="font-italic mb-1">${sessionScope.USER.userGmail}</p>
                     <p class="font-italic mb-2">---</p>
                   </div>
                 </div>
@@ -303,7 +303,7 @@
                 <label class="small mb-1" for="inputUsername">Username (how your name will appear to other users on the
                   site)</label>
                 <input class="form-control" id="inputUsername" type="text" placeholder="Enter your username"
-                  value="emhuythichchoichim">
+                       value="${sessionScope.USER.userName}">
               </div>
               <!-- Form Row-->
               <div class="row gx-3 mb-3">
@@ -311,7 +311,7 @@
                 <div class="col-md-12">
                   <label class="small mb-1" for="inputFirstName">Fullname</label>
                   <input class="form-control" id="inputFirstName" type="text" placeholder="Enter your full name"
-                    value="Lê Nhật Huy">
+                    value="${sessionScope.USER.fullName}">
                 </div>
               </div>
 
@@ -320,7 +320,7 @@
                 <div class="col-md-12">
                   <label class="small mb-1" for="inputOrgName">Password</label>
                   <input class="form-control" id="inputOrgName" type="text" placeholder="Enter your new password"
-                    value="123123123">
+                    value="${sessionScope.USER.userPassword}">
                 </div>
 
               </div>
@@ -328,7 +328,7 @@
               <div class="mb-3">
                 <label class="small mb-1" for="inputEmailAddress">Email address</label>
                 <input class="form-control" id="inputEmailAddress" type="email" placeholder="Enter your email address"
-                  value="huyln2904@gmail.com">
+                  value="${sessionScope.USER.userGmail}">
               </div>
               <!-- Form Row-->
               <div class="row gx-3 mb-3">
@@ -336,7 +336,7 @@
                 <div class="col-md-12">
                   <label class="small mb-1" for="inputPhone">Phone number</label>
                   <input class="form-control" id="inputPhone" type="tel" placeholder="Enter your phone number"
-                    value="555-123-4567">
+                    value="0933788350">
                 </div>
 
               </div>

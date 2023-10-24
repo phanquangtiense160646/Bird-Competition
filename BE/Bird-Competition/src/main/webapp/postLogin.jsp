@@ -25,7 +25,7 @@
                     rel="stylesheet">
                 <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css"
                     rel="stylesheet">
-                <link href="lib/flaticon/font/flaticon.css" rel="stylesheet">
+                <link href="FE/lib/flaticon/font/flaticon.css" rel="stylesheet">
 
                 <!-- Libraries Stylesheet -->
                 <link href="FE/lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
@@ -49,7 +49,7 @@
 
                             <a href="postlogin.html"
                                 class="navbar-brand w-100 h-100 m-0 p-0 d-flex align-items-center justify-content-center">
-                                <img src="img/finallogo.png"
+                                <img src="FE/img/finallogo.png"
                                     style="width: 100px; margin-right: -40px; margin-bottom:50px;">
                                 <h1 class="m-0 display-4 text-primary text-uppercase">BIRDFIGHTER</h1>
                             </a>
@@ -99,7 +99,8 @@
                                     <div class="navbar-nav mr-auto py-0">
                                         <a href="#" class="nav-item nav-link active">Home</a>
                                         <a href="leaderboard.html" class="nav-item nav-link">Bảng xếp hạng</a>
-                                        <a href="schedule.html" class="nav-item nav-link">Lịch thi đấu</a>
+                                        <a href='<c:url value="/DispatchServlet?btAction=schedule"/>'
+                                            class="nav-item nav-link">Lịch thi đấu</a>
                                         <a href="memberShip.html" class="nav-item nav-link">Hội viên</a>
                                         <div class="nav-item dropdown">
                                             <a href="#" class="nav-link dropdown-toggle"
@@ -119,11 +120,23 @@
                                                 <a href="" class="dropdown-item">Lịch thi đấu</a>
                                                 <a href="matchResult.html" class="dropdown-item">Kết quả trận đấu</a>
                                             </div>
-                                                </div>
-                                                    </div>
-                                        <a href=""
-                                        class="btn btn-primary py-md-3 px-md-5 d-none d-lg-block">${sessionScope.USER.userName}</a>
-                                            </nav>
+                                        </div>
+                                    </div>
+                                    <div class="nav-item dropdown">
+
+                                        <a href="#" class="btn btn-primary nav-link dropdown-toggle"
+                                            data-bs-toggle="dropdown"
+                                            style="width: 150px;">${sessionScope.USER.userName}</a>
+                                        <div class="dropdown-menu rounded-0 m-0">
+                                            <a class="dropdown-item" href="userprofile.jsp">User Profile</a>
+                                            <a class="dropdown-item" href="birdprofile.html">Bird Profile</a>
+                                            <a class="dropdown-item" href="addnewbird.jsp">Add Bird </a>
+                                            <div class="dropdown-divider"></div>
+                                            <a class="dropdown-item" href="">Log out</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </nav>
                         </div>
                     </div>
                 </div>
@@ -180,7 +193,7 @@
                     <div class="row gx-5">
                         <div class="col-lg-5 mb-5 mb-lg-0" style="min-height: 500px;">
                             <div class="position-relative h-100">
-                                <img class="position-absolute w-100 h-100 rounded" src="/FE/img/chaomao-bg (1).jpg"
+                                <img class="position-absolute w-100 h-100 rounded" src="FE/img/chaomao-bg (1).jpg"
                                     style="object-fit: cover;">
                             </div>
                         </div>
@@ -239,7 +252,7 @@
                         <div class="col-lg-4 col-md-6">
                             <div class="team-item position-relative">
                                 <div class="position-relative overflow-hidden rounded">
-                                    <img class="img-fluid w-100" src="/FE/img/daddyHuy.jpg" alt="">
+                                    <img class="img-fluid w-100" src="FE/img/daddyHuy.jpg" alt="">
                                     <div class="team-overlay">
                                         <div class="align-items-center justify-content-start">
                                             <h6 class="text-uppercase text-light mb-3"> Điểm: 2180</h6>
@@ -260,7 +273,7 @@
                         <div class="col-lg-4 col-md-6">
                             <div class="team-item position-relative">
                                 <div class="position-relative overflow-hidden rounded">
-                                    <img class="img-fluid w-100" src="/FE/img/thuanDam.jpg" alt="">
+                                    <img class="img-fluid w-100" src="FE/img/thuanDam.jpg" alt="">
                                     <div class="team-overlay">
                                         <div class="align-items-center justify-content-start">
                                             <h6 class="text-uppercase text-light mb-3"> Điểm: 2198</h6>
@@ -280,7 +293,7 @@
                         <div class="col-lg-4 col-md-6">
                             <div class="team-item position-relative">
                                 <div class="position-relative overflow-hidden rounded">
-                                    <img class="img-fluid w-100" src="/FE/img/eDanh.jpg" alt="">
+                                    <img class="img-fluid w-100" src="FE/img/eDanh.jpg" alt="">
                                     <div class="team-overlay">
                                         <div class="align-items-center justify-content-start">
                                             <h6 class="text-uppercase text-light mb-3"> Điểm: 2178</h6>
@@ -315,11 +328,49 @@
                         <ul
                             class="nav nav-pills d-inline-flex justify-content-center bg-dark text-uppercase rounded-pill mb-5">
                             <li class="nav-item">
+                                <a class="nav-link rounded-pill text-white" data-bs-toggle="pill" href="#tab-0">Đã diễn
+                                    ra</a>
+                            </li>
+                            <li class="nav-item">
                                 <a class="nav-link rounded-pill text-white active" data-bs-toggle="pill"
-                                    href="#tab-1">Tháng này</a>
+                                    href="#tab-1">Đang diễn ra</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link rounded-pill text-white" data-bs-toggle="pill" href="#tab-2">Sắp diễn
+                                    ra</a>
                             </li>
                         </ul>
                         <div class="tab-content">
+                            <div id="tab-0" class="tab-pane fade show p-0">
+                                <div class="row g-5">
+                                    <c:set var="scheduleData" value="${sessionScope.SCHEDULE}" />
+                                    <c:if test="${not empty scheduleData}">
+                                        <c:forEach var="scheduleDto" items="${scheduleData}" varStatus="counter">
+                                            <div class="col-lg-3 col-md-4 col-sm-6">
+                                                <div class="bg-dark rounded text-center py-5 px-3">
+                                                    <h6 class="text-uppercase text-light mb-3">Ngày: ${scheduleDto.date}
+                                                    </h6>
+                                                    <h6 class="text-uppercase text-light mb-3"> Giờ: 8.00am - 10.00am
+                                                    </h6>
+                                                    <h6 class="text-uppercase text-light mb-3"> Địa điểm:
+                                                        ${scheduleDto.location}</h6>
+                                                    <h5 class="text-uppercase text-primary">${scheduleDto.name}</h5>
+                                                    <p class="text-uppercase text-secondary mb-0">Loại chim: Chào mào
+                                                    </p>
+                                                    <p class="text-uppercase text-secondary mb-0">Điểm yêu cầu:
+                                                        ${scheduleDto.minPoint} - ${scheduleDto.maxPoint} </p>
+                                                    <p class="text-uppercase text-secondary mb-0"
+                                                        style="display: inline;">
+                                                        số người đăng kí:
+                                                    <p class="text-uppercase text-primary mb-0"
+                                                        style="display: inline;">10/15</p>
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </c:forEach>
+                                    </c:if>
+                                </div>
+                            </div>
                             <div id="tab-1" class="tab-pane fade show p-0 active">
                                 <div class="row g-5">
                                     <c:set var="scheduleData" value="${sessionScope.SCHEDULE}" />
@@ -336,10 +387,8 @@
                                                     <h5 class="text-uppercase text-primary">${scheduleDto.name}</h5>
                                                     <p class="text-uppercase text-secondary mb-0">Loại chim: Chào mào
                                                     </p>
-                                                    <p class="text-uppercase text-secondary mb-0">Min Point:
-                                                        ${scheduleDto.minPoint}</p>
-                                                    <p class="text-uppercase text-secondary mb-0">Max Point:
-                                                        ${scheduleDto.maxPoint}</p>
+                                                    <p class="text-uppercase text-secondary mb-0">Điểm yêu cầu:
+                                                        ${scheduleDto.minPoint} - ${scheduleDto.maxPoint} </p>
                                                     <p class="text-uppercase text-secondary mb-0"
                                                         style="display: inline;">
                                                         số người đăng kí:
@@ -352,10 +401,46 @@
                                     </c:if>
                                 </div>
                             </div>
+                            <div id="tab-2" class="tab-pane fade show p-0">
+                                <div class="row g-5">
+                                    <c:set var="scheduleData" value="${sessionScope.SCHEDULE}" />
+                                    <c:if test="${not empty scheduleData}">
+                                        <c:forEach var="scheduleDto" items="${scheduleData}" varStatus="counter">
+                                            <div class="col-lg-3 col-md-4 col-sm-6">
+                                                <div class="bg-dark rounded text-center py-5 px-3">
+                                                    <h6 class="text-uppercase text-light mb-3">Ngày: ${scheduleDto.date}
+                                                    </h6>
+                                                    <h6 class="text-uppercase text-light mb-3"> Giờ: 8.00am - 10.00am
+                                                    </h6>
+                                                    <h6 class="text-uppercase text-light mb-3"> Địa điểm:
+                                                        ${scheduleDto.location}</h6>
+                                                    <h5 class="text-uppercase text-primary">${scheduleDto.name}</h5>
+                                                    <p class="text-uppercase text-secondary mb-0">Loại chim: Chào mào
+                                                    </p>
+                                                    <p class="text-uppercase text-secondary mb-0">Điểm yêu cầu:
+                                                        ${scheduleDto.minPoint} - ${scheduleDto.maxPoint} </p>
+                                                    <h6 class="text-uppercase text-light mb-3">Phí đăng kí:
+                                                        ${scheduleDto.fee}</h6>
+                                                    <p class="text-uppercase text-secondary mb-0"
+                                                        style="display: inline;">
+                                                        số người đăng kí:
+                                                    <p class="text-uppercase text-primary mb-0"
+                                                        style="display: inline;">10/15</p>
+                                                    </p>
+                                                    <button class="btn btn-primary btn-register px-5"
+                                                        style="margin-top: 10px;">
+                                                        Đăng kí thi đấu</button>
+                                                </div>
+                                            </div>
+                                        </c:forEach>
+                                    </c:if>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <div class="col-lg-12 col-md-6 d-flex justify-content-center mt-3">
-                        <a href="schedule.html" class="btn btn-primary py-3 px-5">Xem lịch thi đấu</a>
+                        <a href='<c:url value="/DispatchServlet?btAction=schedule"/>'
+                            class="btn btn-primary py-3 px-5">Xem lịch thi đấu</a>
                     </div>
                 </div>
                 <!-- Schedule End -->
@@ -478,7 +563,7 @@
                     <div class="row g-0">
                         <div class="col-lg-6" style="min-height: 500px;">
                             <div class="position-relative h-100">
-                                <img class="position-absolute w-100 h-100" src="img/bird_player.png"
+                                <img class="position-absolute w-100 h-100" src="FE/img/bird_player.png"
                                     style="object-fit: cover;">
                             </div>
                         </div>
@@ -525,7 +610,7 @@
                 <!-- Footer Start -->
                 <div class="container-fluid bg-dark text-secondary px-5 mt-5">
                     <div class="row gx-5">
-                        <div class="col-lg-8 col-md-6">
+                        <div class="col-lg-12 col-md-12">
                             <div class="row gx-5">
                                 <div class="col-lg-4 col-md-12 pt-5 mb-5">
                                     <h4 class="text-uppercase text-light mb-4">Get In Touch</h4>
@@ -589,35 +674,14 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-lg-4 col-md-6">
-                            <div
-                                class="d-flex flex-column align-items-center justify-content-center text-center h-100 bg-primary p-5">
-                                <h4 class="text-uppercase text-white mb-4">Newsletter</h4>
-                                <h6 class="text-uppercase text-white">Subscribe Our Newsletter</h6>
-                                <p class="text-light">Amet justo diam dolor rebum lorem sit stet sea justo kasd</p>
-                                <form action="">
-                                    <div class="input-group">
-                                        <input type="text" class="form-control border-white p-3"
-                                            placeholder="Your Email">
-                                        <button class="btn btn-dark">Sign Up</button>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
                     </div>
                 </div>
                 <div class="container-fluid py-4 py-lg-0 px-5" style="background: #111111;">
                     <div class="row gx-5">
-                        <div class="col-lg-8">
+                        <div class="col-lg-12">
                             <div class="py-lg-4 text-center">
-                                <p class="text-secondary mb-0">&copy; <a class="text-light fw-bold" href="#">Your Site
-                                        Name</a>. All Rights Reserved.</p>
-                            </div>
-                        </div>
-                        <div class="col-lg-4">
-                            <div class="py-lg-4 text-center credit">
-                                <p class="text-light mb-0">Designed by <a class="text-light fw-bold"
-                                        href="https://htmlcodex.com">HTML Codex</a></p>
+                                <p class="text-secondary mb-0">&copy; <a class="text-light fw-bold"
+                                        href="#">BIRDFIGHTER</a>. All Rights Reserved.</p>
                             </div>
                         </div>
                     </div>
@@ -639,6 +703,7 @@
 
                 <!-- Template Javascript -->
                 <script src="FE/js/main.js"></script>
+
             </body>
 
             </html>
