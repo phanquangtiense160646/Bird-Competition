@@ -4,6 +4,8 @@
  */
 package com.birdcompetition.controller.web;
 
+import com.birdcompetition.bird.BirdDAO;
+import com.birdcompetition.bird.BirdDTO;
 import com.birdcompetition.schedule.ScheduleDAO;
 import com.birdcompetition.schedule.ScheduleDTO;
 import java.io.IOException;
@@ -12,6 +14,7 @@ import java.sql.SQLException;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.naming.NamingException;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -46,10 +49,18 @@ public class StartServlet extends HttpServlet {
             List<ScheduleDTO> listSchedule = scheduleDao.getList();
             request.setAttribute("SCHEDULE", listSchedule);
             
+            BirdDAO birdDao = new BirdDAO();
+            birdDao.displayLeaderboard();
+            List<BirdDTO> listBird = birdDao.getBirdList();
+
+            request.setAttribute("LEADER_BOARD", listBird);
+            
         } catch (SQLException ex) {
             log("StartServlet_SQL");
         } catch (ClassNotFoundException ex) {
             log("StartServlet_ClassNotFound");
+        } catch (NamingException ex) {
+            Logger.getLogger(StartServlet.class.getName()).log(Level.SEVERE, null, ex);
         }finally {
             RequestDispatcher rd = request.getRequestDispatcher(url);
             rd.forward(request, response);

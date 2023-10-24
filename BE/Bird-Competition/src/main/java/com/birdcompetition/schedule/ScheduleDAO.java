@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package com.birdcompetition.schedule;
 
 import com.birdcompetition.util.DBHelper;
@@ -62,10 +58,70 @@ public class ScheduleDAO implements Serializable {
                     double fee = rs.getDouble("ParticipatingFee");
                     String userId = rs.getString("IdUser");
                     String location = rs.getString("Location");
-                    boolean contestStatus = rs.getBoolean("StatusOfContest");
+                    int contestStatus = rs.getInt("StatusOfContest");
 
-                    ScheduleDTO dto = new ScheduleDTO(id, name, date, locationId, 
-                            status, factor, minPoint, maxPoint, fee, userId, location, contestStatus);
+                    ScheduleDTO dto = new ScheduleDTO(id, name, date,
+                            locationId, status, factor, minPoint, maxPoint, fee, userId, location, 0);
+                    if (this.scheduleList == null) {
+                        this.scheduleList = new ArrayList<>();
+                    }
+                    scheduleList.add(dto);
+                }
+            }
+        } finally {
+            if (rs != null) {
+                rs.close();
+            }
+            if (stm != null) {
+                stm.close();
+            }
+            if (con != null) {
+                con.close();
+            }
+        }
+    }
+
+    public void getScheduleByStatus(int contestStatus)
+            throws SQLException, ClassNotFoundException {
+        Connection con = null;
+        PreparedStatement stm = null;
+        ResultSet rs = null;
+
+        try {
+            //1.Make connection
+            con = DBHelper.getConnection();
+            //check 
+            if (con != null) {
+                //2.Creat SQL String 
+//                String sql = "Select * "
+//                        + "From Contest "
+//                        + "Where StatusOfContest = ?";
+                String sql = "Select * "
+                        + "From Contest, Location "
+                        + "Where Contest.LocationId = Location.LocationId and StatusOfContest = ?";
+                //3.Create Statement Object
+                stm = con.prepareStatement(sql);
+//                stm.setInt(1, contestStatus);
+                stm.setInt(1, contestStatus);
+                //4.Exercute Query
+                rs = stm.executeQuery();
+                //5.Process
+                while (rs.next()) {
+
+                    String id = rs.getString("IdContest");
+                    String name = rs.getString("NameOfContest");
+                    Date date = rs.getDate("Date");
+                    String locationId = rs.getString("LocationId");
+                    boolean status = rs.getBoolean("Status");
+                    double factor = rs.getDouble("Factor");
+                    double minPoint = rs.getDouble("MinPoint");
+                    double maxPoint = rs.getDouble("MaxPoint");
+                    double fee = rs.getDouble("ParticipatingFee");
+                    String userId = rs.getString("IdUser");
+                    String location = rs.getString("Location");
+
+                    ScheduleDTO dto = new ScheduleDTO(id, name, date,
+                            locationId, status, factor, minPoint, maxPoint, fee, userId, location, contestStatus);
                     if (this.scheduleList == null) {
                         this.scheduleList = new ArrayList<>();
                     }

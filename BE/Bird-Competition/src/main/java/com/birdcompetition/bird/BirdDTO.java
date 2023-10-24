@@ -24,6 +24,8 @@ public class BirdDTO implements Serializable, Comparable<BirdDTO> {
     private int tie;
     private int matchNumber;
     private String trainer;
+    private int rank;
+    
 
     public BirdDTO() {
     }
@@ -40,10 +42,11 @@ public class BirdDTO implements Serializable, Comparable<BirdDTO> {
         this.lose = lose;
         this.tie = tie;
         this.matchNumber = matchNumber;
+        this.rank = 0;
         
     }
 
-    public BirdDTO(String birdName, String species, int point, String trainer, String photoPath, int win, int lose, int tie, int matchNumber) {
+    public BirdDTO(String birdName, String species, int point, String trainer, String photoPath, int win, int lose, int tie, int matchNumber, int rank) {
         this.birdID = null;
         this.birdName = birdName;
         this.species = species;
@@ -56,7 +59,16 @@ public class BirdDTO implements Serializable, Comparable<BirdDTO> {
         this.tie = tie;
         this.matchNumber = matchNumber;
         this.trainer = trainer;
+        this.rank = rank;
 
+    }
+
+    public int getRank() {
+        return rank;
+    }
+
+    public void setRank(int rank) {
+        this.rank = rank;
     }
 
     public BirdDTO(String birdID, String birdName, String species, int point, boolean status, String memberID) {
@@ -166,25 +178,14 @@ public class BirdDTO implements Serializable, Comparable<BirdDTO> {
     }
     
     
-
-    public double WinRate() {
-//        double cal = this.win;
-        double winRate = win / matchNumber * 100;
-        System.out.println("-------------");
-        System.out.println("name: " + birdName);
-        System.out.println("win: " + win);
-        System.out.println("match: " + matchNumber);
-        System.out.println(winRate);
-        return winRate;
-    }
-    
-    public double calWinRate() {
+    public int winRate() {
         if (matchNumber == 0) {
-            return 0.0;
+            return 0;
         }
         double cal = ((double) win / matchNumber) * 100.0;
         cal = Math.round(cal);
-        return cal;
+        int rate = (int) cal;
+        return rate;
     }
 
 

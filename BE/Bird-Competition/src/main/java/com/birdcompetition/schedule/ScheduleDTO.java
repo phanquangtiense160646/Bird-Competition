@@ -6,7 +6,6 @@ package com.birdcompetition.schedule;
 
 import java.io.Serializable;
 import java.sql.Date;
-import java.text.SimpleDateFormat;
 /**
  *
  * @author Admin
@@ -23,14 +22,14 @@ public class ScheduleDTO implements Serializable {
     private double fee;
     private String userId;
     private String location;
-    private boolean statusOfContest;
+    private int statusOfContest;
 
     public ScheduleDTO() {
     }
 
     public ScheduleDTO(String id, String name, Date date, String locationId, 
             boolean status, double factor, double minPoint, double maxPoint, 
-            double fee, String userId, String location, boolean statusOfContest) {
+            double fee, String userId, String location, int statusOfContest) {
         this.id = id;
         this.name = name;
         this.date = date;
@@ -42,6 +41,14 @@ public class ScheduleDTO implements Serializable {
         this.fee = fee;
         this.userId = userId;
         this.location = location;
+        this.statusOfContest = statusOfContest;
+    }
+
+    public int getStatusOfContest() {
+        return statusOfContest;
+    }
+
+    public void setStatusOfContest(int statusOfContest) {
         this.statusOfContest = statusOfContest;
     }
 

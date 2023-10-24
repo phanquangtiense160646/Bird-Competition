@@ -30,6 +30,9 @@ public class DispatchServlet extends HttpServlet {
         try {
             if (button == null) {
                 url = "StartServlet";
+//                url = "Admin/index.html";
+            } else if (button.equals("SearchLB")) {
+                url = "SearchLeaderBoardServlet";
             } else if (button.equals("PostLogin")) {
                 url = "PostLoginServlet";
             } else if (button.equals("LeaderBoard")) {
