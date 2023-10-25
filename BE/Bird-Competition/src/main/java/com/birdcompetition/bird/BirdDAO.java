@@ -120,7 +120,7 @@ public class BirdDAO implements Serializable {
                 //5. Process
                 this.birdList = new ArrayList<>();
                 while (rs.next()) {
-                    String birdId = rs.getString("IdBird");
+                    int birdId = rs.getInt("IdBird");
                     String name = rs.getString("NameOfBird");
                     String speices = rs.getString("Species");
                     int point = rs.getInt("Point");
@@ -168,7 +168,7 @@ public class BirdDAO implements Serializable {
                 String sql = "INSERT INTO Bird (IdBird, NameOfBird, Species, Point, Status, IdMember, Win, Lose, Tie, MatchNumber) VALUES (?, ?, ?, 1000, 'true', ?, 0, 0, 0, 0)";
                 //3. Create Statement Object
                 stm = con.prepareStatement(sql);
-                stm.setString(1, bird.getBirdID());
+                stm.setInt(1, bird.getBirdID());
                 stm.setString(2, bird.getBirdName());
                 stm.setString(3, bird.getSpecies());
                 stm.setString(4, bird.getMemberID());

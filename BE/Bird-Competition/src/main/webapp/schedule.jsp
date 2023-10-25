@@ -336,7 +336,7 @@
                             <option selected disabled>Chim</option>
                             ` + text + `
                         </select>
-                        <input type="hidden" name="hiddenContestId" value="` + hiddenId + `"/>                        
+                        <input type="hidden" name="hiddenContestId" value="` + hiddenId + `"></input>                        
                     <button type="submit" name="btAction" value="cRegister" class="btn btn-primary px-5" style="margin-top: 10px;">Đăng kí thi đấu</button>
                      </form>
                      </div>

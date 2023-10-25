@@ -39,25 +39,24 @@ public class ScheduleServlet extends HttpServlet {
         String url = "schedule.jsp";
         try {
             HttpSession session = request.getSession();
-            List<BirdDTO> birdList = (List<BirdDTO>) session.getAttribute("OWN_BIRD");
-            if (birdList == null) {
-                BirdDAO dao = new BirdDAO();
-                User user = (User) session.getAttribute("USER");
-                dao.getBirdByMemberId(user.getIdMember());
-                birdList = dao.getBirdList();
-                session.setAttribute("OWN_BIRD", birdList);
-            }
+            List<BirdDTO> birdList;
+
+            BirdDAO dao = new BirdDAO();
+            User user = (User) session.getAttribute("USER");
+            dao.getBirdByMemberId(user.getIdMember());
+            birdList = dao.getBirdList();
+            session.setAttribute("OWN_BIRD", birdList);
+
         } catch (SQLException ex) {
             log("ScheduleServlet_SQL: " + ex.getMessage());
         } catch (ClassNotFoundException ex) {
             log("ScheduleServlet_ClassNotFound: " + ex.getMessage());
-        }finally {
+        } finally {
             response.sendRedirect(url);
 //                RequestDispatcher rd = request.getRequestDispatcher(url);
 //                rd.forward(request, response);
         }
-        
-        
+
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
