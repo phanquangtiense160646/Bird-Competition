@@ -86,3 +86,7 @@ html {
 .schedule-value {
         font-family: 'Oswald', sans-serif;
 }
+
+.hideBId {
+    display: none;
+}

@@ -41,7 +41,7 @@ public class AddBirdServlet extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         
-        String id = request.getParameter("birdId");
+//        String id = request.getParameter("birdId");
         String name = request.getParameter("birdName");
         String specie = request.getParameter("birdSpecie");
         String idMember = request.getParameter("idMember");
@@ -49,7 +49,7 @@ public class AddBirdServlet extends HttpServlet {
         
         try {
             BirdDAO dao = new BirdDAO();
-            BirdDTO dto = new BirdDTO(id, name, specie, 0, true, idMember);
+            BirdDTO dto = new BirdDTO(2, name, specie, 0, true, idMember);
             boolean result = dao.addBird(dto);
             if(result){
                 url = "addnewbird.jsp";
@@ -59,7 +59,7 @@ public class AddBirdServlet extends HttpServlet {
                 String msg = "Thêm Chim Thất Bại";
                 request.setAttribute("msg", msg);
             }
-                ;
+                
         } catch (SQLException ex) {
             Logger.getLogger(AddBirdServlet.class.getName()).log(Level.SEVERE, null, ex);
         } catch (NamingException ex) {

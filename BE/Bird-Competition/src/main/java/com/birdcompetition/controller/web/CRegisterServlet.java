@@ -1,7 +1,14 @@
-
 package com.birdcompetition.controller.web;
 
+import com.birdcompetition.bird.BirdContestDTO;
+import com.birdcompetition.bird.BirdDTO;
+import com.birdcompetition.registerCompetition.CRegisterDAO;
 import java.io.IOException;
+import java.sql.SQLException;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -28,13 +35,40 @@ public class CRegisterServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        String birdName = request.getParameter("cboBird");
+        String birdId = request.getParameter("cboBird");
+        String contestId = request.getParameter("hiddenContestId");
+        String url = "ScheduleServlet";
+        HttpSession session = request.getSession();
         try {
-            HttpSession session = request.getSession();
-            System.out.println(birdName);
-            
-        }finally {
-            
+            if (birdId != null) {
+                int id = Integer.parseInt(birdId);
+                CRegisterDAO dao = new CRegisterDAO();
+                //lay chim by id chim
+                int beforePoint = 0;
+                List<BirdDTO> listBird = (List<BirdDTO>) session.getAttribute("OWN_BIRD");
+                for (BirdDTO birdDTO : listBird) {
+                    if (birdDTO.getBirdID() == id) {
+                        beforePoint = birdDTO.getPoint();
+                        break;
+                    }
+                }
+                BirdContestDTO dto = new BirdContestDTO(id, contestId,
+                        0, beforePoint, 0, true, false, null);
+                dao.cRegisterInsert(dto);
+                String mes = "success";
+                request.setAttribute("MES", mes);
+            } else {
+                String mes = "fail";
+                request.setAttribute("MES", mes);
+            }
+
+        } catch (SQLException ex) {
+            log("CRegister_SQL: " + ex.getMessage());
+        } catch (ClassNotFoundException ex) {
+            log("CRegister_ClassNotFound: " + ex.getMessage());
+        } finally {
+            RequestDispatcher rd = request.getRequestDispatcher(url);
+            rd.forward(request, response);
         }
     }
 

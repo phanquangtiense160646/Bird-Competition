@@ -36,6 +36,7 @@
         <!-- Template Stylesheet -->
         <link href="FE/css/style.css" rel="stylesheet">
         <link href="FE/css/Schedule.css" rel="stylesheet">
+        <link href="FE/css/toast.css" rel="stylesheet">
     </head>
 
     <body>
@@ -152,6 +153,7 @@
             <div class="mb-5 text-center">
                 <h5 class="text-primary text-uppercase">Lịch thi đấu</h5>
                 <h1 class="display-3 text-uppercase mb-0">các trận đấu sắp tới</h1>
+                <h6 id="toastmes">${requestScope.MES}</h6>
             </div>
             <div class="tab-class text-center">
                 <ul class="nav nav-pills d-inline-flex justify-content-center bg-dark text-uppercase rounded-pill mb-5">
@@ -306,14 +308,13 @@
             <c:set var="ownBird" value="${sessionScope.OWN_BIRD}"/>
             <c:if test="${not empty ownBird}">
                 <c:forEach var="bird" items="${ownBird}" varStatus="counter">
-                    birds.push("${bird.birdName}", "${bird.point}");
+                    birds.push("${bird.birdName}", "${bird.point}", "${bird.birdID}");
                 </c:forEach>
             </c:if>
                     let text = "";
 
-                    for (let i = 0; i < birds.length; i++) {
-                        text += "<option>" + birds[i] + ", Rank point: "+ birds[i+1] + "</option>";
-                        i++;
+                    for (let i = 0; i < birds.length; i = i + 3) {
+                        text += "<option value=" + birds[i + 2] + ">" + birds[i] + ", Rank point: " + birds[i + 1] + "</option>";
                     }
 
                     newDriver.innerHTML = `
@@ -330,7 +331,7 @@
                     <span class="text-uppercase text-primary mb-0 ml-3" style="display: inline;">` + registerNumber + `</span>
                     </p>                     
                     
-                    <form action="DispatchServlet">
+                    <form action="DispatchServlet" method="POST">
                         <h6 class="text-uppercase text-secondary mb-3 ml-3">Chọn chim đăng ký:  
                         <select aria-label="chooseBird" name="cboBird">
                             <option selected disabled>Chim</option>
@@ -357,7 +358,8 @@
 <!--<button type="submit" name="btAction" value="cRegister" class="btn btn-primary px-5" style="margin-top: 10px;">Đăng kí thi đấu</button>-->
 
         </script>
-
+        <div id="toast">
+        </div>
 
         <!-- Footer Start -->
         <div class="container-fluid bg-dark text-secondary px-5 mt-5">
@@ -475,6 +477,7 @@
 
         <!-- Template Javascript -->
         <script src="FE/js/main.js"></script>
+        <script src="FE/js/schedule.js"></script>
 
     </body>
 
