@@ -4,11 +4,13 @@
  */
 package com.birdcompetition.contest;
 
+import java.io.Serializable;
+
 /**
  *
  * @author admin
  */
-public class ContestDTO {
+public class ContestDTO implements Serializable {
     private String idContest;
     private String nameOfContest;
     private String date;
@@ -49,6 +51,23 @@ public class ContestDTO {
         this.afterPoint = afterPoint;
         this.checkin = checkin;
     }
+
+    public ContestDTO(String idContest, String nameOfContest, String date, String locationId, boolean status, double factor, int minPoint, int maxPoint, double participatingFee, String idBird, int beforePoint, int afterPoint) {
+        this.idContest = idContest;
+        this.nameOfContest = nameOfContest;
+        this.date = date;
+        this.locationId = locationId;
+        this.status = status;
+        this.factor = factor;
+        this.minPoint = minPoint;
+        this.maxPoint = maxPoint;
+        this.participatingFee = participatingFee;
+        this.idBird = idBird;
+        this.beforePoint = beforePoint;
+        this.afterPoint = afterPoint;
+    }
+    
+    
 
     public String getIdContest() {
         return idContest;

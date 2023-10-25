@@ -41,7 +41,7 @@ public class ContestDAO {
                         + "From Contest "
                         + "Full outer join BirdContest "
                         + "On Contest.IdContest = BirdContest.IdContest"
-                        + "Where IdUser Like ? ";
+                        + "Where IdUser = ? ";
                         
                 //3. Create Statement Object
                 stm = con.prepareStatement(sql);
