@@ -331,15 +331,18 @@
                     <span class="text-uppercase text-primary mb-0 ml-3" style="display: inline;">` + registerNumber + `</span>
                     </p>                     
                     
-                    <form action="DispatchServlet" method="POST">
-                        <h6 class="text-uppercase text-secondary mb-3 ml-3">Chọn chim đăng ký:  
-                        <select aria-label="chooseBird" name="cboBird">
-                            <option selected disabled>Chim</option>
-                            ` + text + `
-                        </select>
-                        <input type="hidden" name="hiddenContestId" value="` + hiddenId + `"></input>                        
-                    <button type="submit" name="btAction" value="cRegister" class="btn btn-primary px-5" style="margin-top: 10px;">Đăng kí thi đấu</button>
-                     </form>
+
+    
+    <form action="vnpay_pay.jsp" method="POST">
+    <h6 class="text-uppercase text-secondary mb-3 ml-3">Chọn chim đăng ký:  
+    <select aria-label="chooseBird" name="cboBird">
+        <option selected disabled>Chim</option>
+        ` + text + `
+    </select>
+    <input type="hidden" name="hiddenContestId" value="` + hiddenId + `"></input>                        
+    <button type="submit" name="btAction" value="cRegister" class="btn btn-primary px-5" style="margin-top: 10px;">Đăng kí thi đấu</button>
+    </form>
+    
                      </div>
                     `;
 
