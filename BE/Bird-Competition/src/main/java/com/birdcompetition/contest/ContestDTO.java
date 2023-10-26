@@ -20,7 +20,7 @@ public class ContestDTO implements Serializable {
     private int minPoint;
     private int maxPoint;
     private double participatingFee;
-    private String idUser;
+    private String userName;
     private String idRule;
     private int statusOfContest;
     private String idBird;
@@ -28,11 +28,14 @@ public class ContestDTO implements Serializable {
     private int beforePoint;
     private int afterPoint;
     private boolean checkin;
+    private String location;
+    private String nameOfBird;
+    private String species;
 
     public ContestDTO() {
     }
-    
-    public ContestDTO(String idContest, String nameOfContest, String date, String locationId, boolean status, double factor, int minPoint, int maxPoint, double participatingFee, String idUser, String idRule, int statusOfContest, String idBird, int rank, int beforePoint, int afterPoint, boolean checkin) {
+
+    public ContestDTO(String idContest, String nameOfContest, String date, String locationId, boolean status, double factor, int minPoint, int maxPoint, double participatingFee, String userName, String idRule, int statusOfContest, String idBird, int rank, int beforePoint, int afterPoint, boolean checkin, String location, String nameOfBird, String species) {
         this.idContest = idContest;
         this.nameOfContest = nameOfContest;
         this.date = date;
@@ -42,7 +45,7 @@ public class ContestDTO implements Serializable {
         this.minPoint = minPoint;
         this.maxPoint = maxPoint;
         this.participatingFee = participatingFee;
-        this.idUser = idUser;
+        this.userName = userName;
         this.idRule = idRule;
         this.statusOfContest = statusOfContest;
         this.idBird = idBird;
@@ -50,9 +53,18 @@ public class ContestDTO implements Serializable {
         this.beforePoint = beforePoint;
         this.afterPoint = afterPoint;
         this.checkin = checkin;
+        this.location = location;
+        this.nameOfBird = nameOfBird;
+        this.species = species;
     }
 
-    public ContestDTO(String idContest, String nameOfContest, String date, String locationId, boolean status, double factor, int minPoint, int maxPoint, double participatingFee, String idBird, int beforePoint, int afterPoint) {
+
+    
+
+    public ContestDTO(String idContest, String nameOfContest, String date, 
+            String locationId, boolean status, double factor, int minPoint, 
+            int maxPoint, double participatingFee, String idBird, int beforePoint, 
+            int afterPoint, String location, String nameOfBird, String species ) {
         this.idContest = idContest;
         this.nameOfContest = nameOfContest;
         this.date = date;
@@ -65,9 +77,10 @@ public class ContestDTO implements Serializable {
         this.idBird = idBird;
         this.beforePoint = beforePoint;
         this.afterPoint = afterPoint;
+        this.location = location;
+        this.nameOfBird = nameOfBird;
+        this.species = species;
     }
-    
-    
 
     public String getIdContest() {
         return idContest;
@@ -141,12 +154,12 @@ public class ContestDTO implements Serializable {
         this.participatingFee = participatingFee;
     }
 
-    public String getIdUser() {
-        return idUser;
+    public String getUserName() {
+        return userName;
     }
 
-    public void setIdUser(String idUser) {
-        this.idUser = idUser;
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 
     public String getIdRule() {
@@ -204,6 +217,32 @@ public class ContestDTO implements Serializable {
     public void setCheckin(boolean checkin) {
         this.checkin = checkin;
     }
+
+    public String getLocation() {
+        return location;
+    }
+
+    public void setLocation(String location) {
+        this.location = location;
+    }
+
+    public String getNameOfBird() {
+        return nameOfBird;
+    }
+
+    public void setNameOfBird(String nameOfBird) {
+        this.nameOfBird = nameOfBird;
+    }
+
+    public String getSpecies() {
+        return species;
+    }
+
+    public void setSpecies(String species) {
+        this.species = species;
+    }
+    
+    
 
     
 }

@@ -40,8 +40,12 @@ public class ContestDAO {
                 String sql = "Select * "
                         + "From Contest "
                         + "Full outer join BirdContest "
-                        + "On Contest.IdContest = BirdContest.IdContest"
-                        + "Where IdUser = ? ";
+                        + "On Contest.IdContest = BirdContest.IdContest "
+                        + "Full outer join Bird "
+                        + "On BirdContest.IdBird = Bird.IdBird "
+                        + "Full outer join Location "
+                        + "On Contest.LocationId = Location.LocationId "
+                        + "Where UserName = ?";
                         
                 //3. Create Statement Object
                 stm = con.prepareStatement(sql);
@@ -65,12 +69,16 @@ public class ContestDAO {
                    String idBird = rs.getString("IdBird");
                    int beforePoint = rs.getInt("BeforePoint");
                    int afterPoint = rs.getInt("AfterPoint");
+                   String location = rs.getString("Location");
+                   String nameOfBird = rs.getString("NameOfBird");
+                   String specie = rs.getString("Species");
                    
                    //5.1.2 add data to list
-                   ContestDTO dto = new ContestDTO(idContest, nameOfContest, date, 
-                           locationId, status, factor, minPoint, maxPoint, participatingFee, 
-                           idBird, idBird, maxPoint, idBird, factor, 
-                           beforePoint, afterPoint, result);
+//                   ContestDTO dto = new ContestDTO(idContest, nameOfContest, date, 
+//                           locationId, status, factor, minPoint, maxPoint, participatingFee, 
+//                           idBird, idBird, maxPoint, idBird, factor, 
+//                           beforePoint, afterPoint, result, location, nameOfBird, specie);
+                   ContestDTO dto = new ContestDTO(idContest, nameOfContest, date, locationId, status, factor, minPoint, maxPoint, participatingFee, idBird, beforePoint, afterPoint, location, nameOfBird, specie);
                    //5.2 add data to list
                    if (this.contestList == null){
                     this.contestList = new ArrayList<>();   

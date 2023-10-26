@@ -158,9 +158,10 @@
                       Edit profile
                     </button>
                   </form>
-                  <form action="matchhistory.jsp" style="z-index: 1;">
+                  <form action="DispatchServlet" style="z-index: 1;">
                     <button class="btn btn-outline-dark" data-mdb-ripple-color="dark"
-                      style="z-index: 0; margin-left: 17px;">
+                            style="z-index: 0; margin-left: 17px;" 
+                            name="btAction" value="MatchHistory">
                       Match History
                     </button>
                   </form>
