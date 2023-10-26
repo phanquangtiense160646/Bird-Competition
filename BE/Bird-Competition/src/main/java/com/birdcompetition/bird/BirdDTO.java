@@ -75,6 +75,14 @@ public class BirdDTO implements Serializable, Comparable<BirdDTO> {
         this.memberID = memberID;
     }
 
+    public BirdDTO(String birdName, String species, int point, boolean status, String memberID) {
+        this.birdName = birdName;
+        this.species = species;
+        this.point = point;
+        this.status = status;
+        this.memberID = memberID;
+    }
+
     
     public int getBirdID() {
         return birdID;

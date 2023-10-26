@@ -6,9 +6,7 @@ package com.birdcompetition.controller.web;
 
 import com.birdcompetition.bird.BirdDAO;
 import com.birdcompetition.bird.BirdDTO;
-import com.birdcompetition.user.UserDTO;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -41,7 +39,6 @@ public class AddBirdServlet extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         
-//        String id = request.getParameter("birdId");
         String name = request.getParameter("birdName");
         String specie = request.getParameter("birdSpecie");
         String idMember = request.getParameter("idMember");
@@ -49,7 +46,7 @@ public class AddBirdServlet extends HttpServlet {
         
         try {
             BirdDAO dao = new BirdDAO();
-            BirdDTO dto = new BirdDTO(2, name, specie, 0, true, idMember);
+            BirdDTO dto = new BirdDTO(name, specie, 1000, true, idMember);
             boolean result = dao.addBird(dto);
             if(result){
                 url = "addnewbird.jsp";

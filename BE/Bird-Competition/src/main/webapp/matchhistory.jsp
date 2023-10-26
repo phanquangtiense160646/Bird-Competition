@@ -148,7 +148,7 @@
                         <div class="rounded-top text-white d-flex flex-row" style="background-color: #000000; height:200px;">
                             <div class="ms-4 mt-5 d-flex flex-column" style="width: 150px;">
                                 <img
-                                    src="https://scontent.fsgn3-1.fna.fbcdn.net/v/t39.30808-6/331044364_1135565673791935_1693572774874518896_n.jpg?_nc_cat=104&ccb=1-7&_nc_sid=5f2048&_nc_ohc=Q88Ho-TNwP8AX9l1NVB&_nc_ht=scontent.fsgn3-1.fna&_nc_e2o=s&oh=00_AfCQMQNg0yj6uv-c2XXOnrslTrjcNyVbTgw8Xpxh9Sm37Q&oe=652D3319"
+                                    src="FE/img/manager.png"
                                     alt="Generic placeholder image" class="img-fluid img-thumbnail mt-4 mb-2"
                                     style="width: 150px; z-index: 1; margin-left: 10px;">
                                 <form action="userprofile.jsp" style="z-index: 1;">
@@ -196,120 +196,132 @@
                                     <div class="col-xl-12 border-bottom">
                                         <!-- Account details card-->
                                         <div class="card mb-4 upcoming-match-box">
-                                            <div class="card-header"><h4>Upcoming</h4></div>
+                                            <div class="card-header"><h4>Match</h4></div>
                                             <div class="card-body">
                                                 <div class="match-box">
 
-                                                    <c:set var="userName" value="${sessionScope.USER.userName}" />
-                                                    <c:if test="${not empty userName}">
-                                                        <c:set var="match" value="${sessionScope.OWN_CONTEST}" />
-                                                        <c:if test="${not empty match}">
-                                                            <c:forEach items="${match}" var="dto">
-                                                                <table class="match-box-content border-bottom">
-                                                                    <tr>
-                                                                        <td><small>Địa điểm:</small></td>
-                                                                        <td>${dto.locationId}</td>
-                                                                    </tr>
 
-                                                                    <tr>
-                                                                        <td><small>Ngày diễn ra:</small></td>
-                                                                        <td>${dto.date}</td>
-                                                                    </tr>
 
-                                                                    <tr>
-                                                                        <td><small>Số người tham gia:</small></td>
-                                                                        <td>8/10</td>
-                                                                    </tr>
 
-                                                                    <tr>
-                                                                        <td><small>Chim tham gia:</small></td>
-                                                                        <td><h5>${dto.idBird}</h5></td>
-                                                                    </tr>
+                                                    <c:set var="contest" value="${sessionScope.OWN_CONTEST}"/>
+                                                    <c:if test="${not empty contest}">
+                                                        <c:forEach items="${contest}" var="p"> 
+                                                            <table class="match-box-content border-bottom">
+                                                                <tr>
+                                                                    <td><small>Tên cuộc thi:</small></td>
+                                                                    <td><h3 style="color: orange">${p.nameOfContest}</h3></td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td><small>Địa điểm:</small></td>
+                                                                    <td><h4>${p.location}</h4></td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td><small>Min Point:</small></td>
+                                                                    <td><h4>${p.minPoint}</h4></td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td><small>Max Point:</small></td>
+                                                                    <td><h4>${p.maxPoint}</h4></td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td><small>Ngày diễn ra:</small></td>
+                                                                    <td>${p.date}__/__/___</td>
+                                                                </tr>
 
-                                                                    <tr>
-                                                                        <td><h3 style="color: rgb(186, 180, 167);">Kết quả:</h3></td>
-                                                                        <td><h5 style="color: rgb(186, 180, 167);">${beforePoint}</h5></td>
-                                                                    </tr>
-                                                                </table>
-                                                            </c:forEach>
-<!--                                                            <div class="card mb-4">
-                                                                <div class="card-header"><h4>Completed</h4></div>
-                                                                <div class="card-body">
-                                                                    <table class="match-box-content border-bottom">
-                                                                        <tr>
-                                                                            <td><small>Địa điểm:</small></td>
-                                                                            <td>FPT HCM</td>
-                                                                        </tr>
+                                                                <tr>
+                                                                    <td><small>Số người tham gia:</small></td>
+                                                                    <td><h4>_/16</h4></td>
+                                                                </tr>
 
-                                                                        <tr>
-                                                                            <td><small>Ngày diễn ra:</small></td>
-                                                                            <td>20/10/2023</td>
-                                                                        </tr>
+                                                                <tr>
+                                                                    <td><small>Chim tham gia:</small></td>
+                                                                    <td><h5>${p.nameOfBird}</h5></td>
+                                                                </tr>
 
-                                                                        <tr>
-                                                                            <td><small>Số người tham gia:</small></td>
-                                                                            <td>8/10</td>
-                                                                        </tr>
+                                                                <tr>
+                                                                    <td><h3 style="color: green;">Kết quả:</h3></td>
+                                                                    <td><h6 style="color: green;">Before Point: ${p.beforePoint}</h6></td>
+                                                                    <td><h6 style="color: green;">After Point: ${p.afterPoint}</h6></td>
+                                                                </tr>
+                                                            </table>
 
-                                                                        <tr>
-                                                                            <td><small>Chim tham gia:</small></td>
-                                                                            <td><h5>Chào Mào Lửa</h5></td>
-                                                                        </tr>
-                                                                        <tr>
-                                                                            <td><h3 style="color: orange;;">Kết quả:</h3></td>
-                                                                            <td><h5 style="color: rgb(6, 185, 6);">+15</h5></td>
-                                                                        </tr>
-                                                                    </table>
-                                                                    <table class="match-box-content border-bottom">
-                                                                        <tr>
-                                                                            <td><small>Địa điểm:</small></td>
-                                                                            <td>FPT HCM</td>
-                                                                        </tr>
+                                                        </c:forEach> 
+                                                    </c:if>
 
-                                                                        <tr>
-                                                                            <td><small>Ngày diễn ra:</small></td>
-                                                                            <td>20/10/2023</td>
-                                                                        </tr>
 
-                                                                        <tr>
-                                                                            <td><small>Số người tham gia:</small></td>
-                                                                            <td>8/10</td>
-                                                                        </tr>
-                                                                        <tr>
-                                                                            <td><small>Chim tham gia:</small></td>
-                                                                            <td><h5>Chào Mào Lửa</h5></td>
-                                                                        </tr>
-                                                                        <tr>
-                                                                            <td><h3 style="color: orange;">Kết quả:</h3></td>
-                                                                            <td><h5 style="color: red;">-20</h5></td>
-                                                                        </tr>
-                                                                    </table>-->
-                                                                </c:if>
-                                                                <c:if test="${empty match}">
-                                                                    <h2>
-                                                                        No record is matched!!!
-                                                                    </h2>
-                                                                </c:if>
-                                                            </c:if>
 
-                                                        </div>
-                                                    </div>
+                                                    <!--                                                            <div class="card mb-4">
+                                                                                                                    <div class="card-header"><h4>Completed</h4></div>
+                                                                                                                    <div class="card-body">
+                                                                                                                        <table class="match-box-content border-bottom">
+                                                                                                                            <tr>
+                                                                                                                                <td><small>Địa điểm:</small></td>
+                                                                                                                                <td>FPT HCM</td>
+                                                                                                                            </tr>
+                                                    
+                                                                                                                            <tr>
+                                                                                                                                <td><small>Ngày diễn ra:</small></td>
+                                                                                                                                <td>20/10/2023</td>
+                                                                                                                            </tr>
+                                                    
+                                                                                                                            <tr>
+                                                                                                                                <td><small>Số người tham gia:</small></td>
+                                                                                                                                <td>8/10</td>
+                                                                                                                            </tr>
+                                                    
+                                                                                                                            <tr>
+                                                                                                                                <td><small>Chim tham gia:</small></td>
+                                                                                                                                <td><h5>Chào Mào Lửa</h5></td>
+                                                                                                                            </tr>
+                                                                                                                            <tr>
+                                                                                                                                <td><h3 style="color: orange;;">Kết quả:</h3></td>
+                                                                                                                                <td><h5 style="color: rgb(6, 185, 6);">+15</h5></td>
+                                                                                                                            </tr>
+                                                                                                                        </table>
+                                                                                                                        <table class="match-box-content border-bottom">
+                                                                                                                            <tr>
+                                                                                                                                <td><small>Địa điểm:</small></td>
+                                                                                                                                <td>FPT HCM</td>
+                                                                                                                            </tr>
+                                                    
+                                                                                                                            <tr>
+                                                                                                                                <td><small>Ngày diễn ra:</small></td>
+                                                                                                                                <td>20/10/2023</td>
+                                                                                                                            </tr>
+                                                    
+                                                                                                                            <tr>
+                                                                                                                                <td><small>Số người tham gia:</small></td>
+                                                                                                                                <td>8/10</td>
+                                                                                                                            </tr>
+                                                                                                                            <tr>
+                                                                                                                                <td><small>Chim tham gia:</small></td>
+                                                                                                                                <td><h5>Chào Mào Lửa</h5></td>
+                                                                                                                            </tr>
+                                                                                                                            <tr>
+                                                                                                                                <td><h3 style="color: orange;">Kết quả:</h3></td>
+                                                                                                                                <td><h5 style="color: red;">-20</h5></td>
+                                                                                                                            </tr>
+                                                                                                                        </table>-->
+
 
                                                 </div>
                                             </div>
+
                                         </div>
                                     </div>
                                 </div>
+                            </div>
+                        </div>
 
 
 
 
-                                </section>
-                                <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
-                                        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
-                                crossorigin="anonymous"></script>
-                                <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"
-                                        integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF"
-                                crossorigin="anonymous"></script>
-                                </body>
-                                </html>
+                        </section>
+                        <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
+                                integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+                        crossorigin="anonymous"></script>
+                        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"
+                                integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF"
+                        crossorigin="anonymous"></script>
+                        </body>
+                        </html>

@@ -43,6 +43,8 @@ public class DispatchServlet extends HttpServlet {
                 url = "AddBirdServlet";
             } else if (button.equals("cRegister")) {
                 url = "CRegisterServlet";
+            } else if (button.equals("MatchHistory")){
+                url = "GetContestListServlet";
             }
         } finally {
             RequestDispatcher rd = request.getRequestDispatcher(url);

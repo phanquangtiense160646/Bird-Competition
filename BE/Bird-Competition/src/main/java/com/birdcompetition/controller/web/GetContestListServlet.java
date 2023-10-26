@@ -11,6 +11,7 @@ import com.birdcompetition.model.User;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -37,25 +38,25 @@ public class GetContestListServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        String url = "";
+        String url = "matchhistory.jsp";
         try {
             HttpSession session = request.getSession();
-            List<ContestDTO> contestList = (List<ContestDTO>) session.getAttribute("OWN_CONTEST");
-            if (contestList == null) {
+            List<ContestDTO> contestList;
+            
                 ContestDAO dao = new ContestDAO();
                 User user = (User) session.getAttribute("USER");
                 dao.getContestList(user.getUserName());
                 contestList = dao.getContestList();
                 session.setAttribute("OWN_CONTEST", contestList);
-            }
+            
         } catch (SQLException ex) {
             log("ScheduleServlet_SQL: " + ex.getMessage());
         } catch (ClassNotFoundException ex) {
             log("ScheduleServlet_ClassNotFound: " + ex.getMessage());
         }finally {
-            response.sendRedirect(url);
-//                RequestDispatcher rd = request.getRequestDispatcher(url);
-//                rd.forward(request, response);
+//            response.sendRedirect(url);
+                RequestDispatcher rd = request.getRequestDispatcher(url);
+                rd.forward(request, response);
         }
         
         
