@@ -9,7 +9,7 @@ package com.birdcompetition.bird;
  * @author Admin
  */
 public class BirdContestDTO {
-    private String birdId;
+    private int birdId;
     private String contestId;
     private int rank;
     private int beforePoint;
@@ -21,7 +21,7 @@ public class BirdContestDTO {
     public BirdContestDTO() {
     }
 
-    public BirdContestDTO(String birdId, String contestId, int rank, 
+    public BirdContestDTO(int birdId, String contestId, int rank, 
             int beforePoint, int afterPoint, boolean status, boolean checkIn, String checkinCode) {
         this.birdId = birdId;
         this.contestId = contestId;
@@ -37,14 +37,14 @@ public class BirdContestDTO {
     /**
      * @return the birdId
      */
-    public String getBirdId() {
+    public int getBirdId() {
         return birdId;
     }
 
     /**
      * @param birdId the birdId to set
      */
-    public void setBirdId(String birdId) {
+    public void setBirdId(int birdId) {
         this.birdId = birdId;
     }
 

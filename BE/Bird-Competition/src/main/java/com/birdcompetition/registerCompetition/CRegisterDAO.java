@@ -34,7 +34,7 @@ public class CRegisterDAO implements Serializable {
                         + ")";
                 //3.Create Statement Object
                 stm = con.prepareStatement(sql);
-                stm.setString(1, birdContest.getBirdId());
+                stm.setInt(1, birdContest.getBirdId());
                 stm.setString(2, birdContest.getContestId());
                 stm.setInt(3, birdContest.getBeforePoint());
                 stm.setBoolean(4, birdContest.isStatus());

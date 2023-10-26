@@ -56,7 +56,7 @@ public class AddBirdServlet extends HttpServlet {
                 String msg = "Thêm Chim Thất Bại";
                 request.setAttribute("msg", msg);
             }
-                ;
+                
         } catch (SQLException ex) {
             Logger.getLogger(AddBirdServlet.class.getName()).log(Level.SEVERE, null, ex);
         } catch (NamingException ex) {
