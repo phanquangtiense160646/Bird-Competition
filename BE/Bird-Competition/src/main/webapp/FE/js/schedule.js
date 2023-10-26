@@ -68,11 +68,22 @@ function showFailToast() {
 
     })
 }
+function showErrorToast() {
+    toast({
+        tiltle: 'Fail',
+        message: 'Chim đã được đăng kí vào cuộc thi này',
+        type: 'info',
+        duration: 3000
+
+    })
+}
 
 var mes = document.getElementById('toastmes').innerHTML;
 if (mes === 'fail') {
     showFailToast();
 } else if (mes === 'success') {
     showSuccessToast();
+} else if (mes === 'error') {
+    showErrorToast();
 }
 

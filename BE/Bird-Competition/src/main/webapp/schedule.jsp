@@ -153,7 +153,7 @@
             <div class="mb-5 text-center">
                 <h5 class="text-primary text-uppercase">Lịch thi đấu</h5>
                 <h1 class="display-3 text-uppercase mb-0">các trận đấu sắp tới</h1>
-                <h6 id="toastmes">${requestScope.MES}</h6>
+                <h6 id="toastmes">${sessionScope.MES}</h6>
             </div>
             <div class="tab-class text-center">
                 <ul class="nav nav-pills d-inline-flex justify-content-center bg-dark text-uppercase rounded-pill mb-5">
@@ -161,10 +161,10 @@
                         <a class="nav-link rounded-pill text-white" data-bs-toggle="pill" href="#tab-0">Đã diễn ra</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link rounded-pill text-white active" data-bs-toggle="pill" href="#tab-1">Đang diễn ra</a>
+                        <a class="nav-link rounded-pill text-white" data-bs-toggle="pill" href="#tab-1">Đang diễn ra</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link rounded-pill text-white" data-bs-toggle="pill" href="#tab-2">Sắp diễn ra</a>
+                        <a class="nav-link rounded-pill text-white active" data-bs-toggle="pill" href="#tab-2">Sắp diễn ra</a>
                     </li>
                 </ul>
                 <div class="tab-content">
@@ -187,15 +187,14 @@
                                                 <span class="text-uppercase text-primary mb-0" style="display: inline;">
                                                     10/15</span>
                                             </p>
-                                            </br><button class="btn btn-primary btn-viewInfo px-5" style="margin-top: 10px;">Đăng kí
-                                                thi đấu</button>
+                                            </br><button class="btn btn-primary btn-viewInfo px-5" style="margin-top: 10px;">Xem thông tin</button>
                                         </div>
                                     </div>
                                 </c:forEach>
                             </c:if>
                         </div>
                     </div>
-                    <div id="tab-1" class="tab-pane fade show p-0 active">
+                    <div id="tab-1" class="tab-pane fade show p-0">
                         <div class="row g-5">
                             <c:set var="scheduleData" value="${sessionScope.SCHEDULE}"/>
                             <c:if test="${not empty scheduleData}">
@@ -214,15 +213,14 @@
                                                 <span class="text-uppercase text-primary mb-0" style="display: inline;">
                                                     10/15</span>
                                             </p>
-                                            </br><button class="btn btn-primary btn-viewInfo px-5" style="margin-top: 10px;">Đăng kí
-                                                thi đấu</button>
+                                            </br><button class="btn btn-primary btn-viewInfo px-5" style="margin-top: 10px;">Xem thông tin</button>
                                         </div>
                                     </div>
                                 </c:forEach>
                             </c:if>
                         </div>
                     </div>
-                    <div id="tab-2" class="tab-pane fade show p-0">
+                    <div id="tab-2" class="tab-pane fade show p-0 active">
                         <div class="row g-5">
                             <c:set var="scheduleData" value="${sessionScope.SCHEDULE}"/>
                             <c:if test="${not empty scheduleData}">
@@ -331,7 +329,7 @@
                     <span class="text-uppercase text-primary mb-0 ml-3" style="display: inline;">` + registerNumber + `</span>
                     </p>                     
                     
-                    <form action="DispatchServlet" method="POST">
+                    <form action="DispatchServlet" method="GET">
                         <h6 class="text-uppercase text-secondary mb-3 ml-3">Chọn chim đăng ký:  
                         <select aria-label="chooseBird" name="cboBird">
                             <option selected disabled>Chim</option>
@@ -342,9 +340,6 @@
                      </form>
                      </div>
                     `;
-
-
-
                     body.appendChild(newDriver);
                 });
             });
