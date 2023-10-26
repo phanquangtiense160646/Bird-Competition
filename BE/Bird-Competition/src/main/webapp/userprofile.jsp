@@ -128,7 +128,7 @@
               <div class="dropdown-menu">
                  <a class="dropdown-item" href="userprofile.jsp">User Profile</a>
                 <a class="dropdown-item" href="birdprofile.html">Bird Profile</a>
-                <a class="dropdown-item" href="addnewbird.html">Add Bird </a>
+                <a class="dropdown-item" href="addnewbird.jsp">Add Bird </a>
                 <div class="dropdown-divider"></div>
                 <a class="dropdown-item" href="index.html">Log out</a>
               </div>
