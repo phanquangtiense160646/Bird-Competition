@@ -121,19 +121,22 @@
             </div>
             
             <!-- Dropdown-Menu -->
-            <div class="dropdown">
-                <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" style="width: 130px;">
-                  ${sessionScope.USER.userName}
-              </button>
-              <div class="dropdown-menu">
-                 <a class="dropdown-item" href="userprofile.jsp">User Profile</a>
-                <a class="dropdown-item" href="birdprofile.html">Bird Profile</a>
-                <a class="dropdown-item" href="addnewbird.jsp">Add Bird </a>
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="index.html">Log out</a>
-              </div>
+            <div class="nav-item dropdown">
 
-            </div>
+                                <a href="#" class="btn btn-primary nav-link dropdown-toggle" data-bs-toggle="dropdown" style="width: 150px;">${sessionScope.USER.userName}</a>
+                                <div class="dropdown-menu rounded-0 m-0">
+
+                                    <form action="DispatchServlet" method="POST">
+                                        <a class="dropdown-item" href="userprofile.jsp">User Profile</a>
+                                        <a class="dropdown-item" href="birdprofile.html">Bird Profile</a>
+                                        <a class="dropdown-item" href="addnewbird.jsp">Add Bird</a>
+                                        <button class="dropdown-item" name="btAction" value="MatchHistory">Match History</button>
+                                        <button class="dropdown-item" name="btAction" value="PaymentHistory">Payment History</button>
+                                        <div class="dropdown-divider"></div>
+                                        <button class="dropdown-item" name="btAction" value="Logout">Logout</button>
+                                    </form>
+                                </div>
+                            </div>
           </div>
         </nav>
       </div>
@@ -161,7 +164,7 @@
                   <form action="DispatchServlet" style="z-index: 1;">
                     <button class="btn btn-outline-dark" data-mdb-ripple-color="dark"
                             style="z-index: 0; margin-left: 17px;" 
-                            name="btAction" value="MatchHistory">
+                            name="btAction" value="PaymentHistory">
                       Match History
                     </button>
                   </form>
@@ -191,6 +194,7 @@
                 </div>
               </div>
 
+<!--                Con chim-->
               <div class="card-body p-4 text-black">
                 <div class="mb-5">
                   <p class="lead fw-normal mb-1">About</p>
@@ -360,12 +364,11 @@
   </div>
 
 
-
-  <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
-    integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
-    crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF"
-    crossorigin="anonymous"></script>
 </body>
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+                                    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+                                    <script src="FE/lib/easing/easing.min.js"></script>
+                                    <script src="FE/lib/waypoints/waypoints.min.js"></script>
+                                    <script src="FE/lib/counterup/counterup.min.js"></script>
+                                    <script src="FE/lib/owlcarousel/owl.carousel.min.js"></script>
 </html>

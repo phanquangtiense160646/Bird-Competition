@@ -1,17 +1,23 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
+ */
 package com.birdcompetition.controller.web;
 
 import java.io.IOException;
-import javax.servlet.RequestDispatcher;
+import java.io.PrintWriter;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
  *
- * @author Admin
+ * @author admin
  */
-public class DispatchServlet extends HttpServlet {
+@WebServlet(name = "GetBirdInfoServlet", urlPatterns = {"/GetBirdInfoServlet"})
+public class GetBirdInfoServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -25,38 +31,11 @@ public class DispatchServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        String button = request.getParameter("btAction");
         String url = "";
-        try {
-            if (button == null) {
-                url = "StartServlet";
-//                url = "Admin/index.html";
-            } else if (button.equals("SearchLB")) {
-                url = "SearchLeaderBoardServlet";
-            } else if (button.equals("PostLogin")) {
-                url = "PostLoginServlet";
-            } else if (button.equals("LeaderBoard")) {
-                url = "LeaderBoardServlet";
-            } else if (button.equals("schedule")) {
-                url = "ScheduleServlet";
-            } else if (button.equals("AddBird")) {
-                url = "AddBirdServlet";
-            } else if (button.equals("cRegister")) {
-                url = "CRegisterServlet";
-            } else if (button.equals("MatchHistory")){
-                url = "GetContestListServlet";
-            } else if (button.equals("createSchedule")) {
-                url = "AddScheduleServlet";
-            } else if (button.equals("PaymentHistory")){
-                url = "PaymentHistoryServlet";
-            } else if (button.equals("MatchHistory")){
-                url = "GetContestListServlet";
-            } else if (button.equals("Logout")){
-                url = "logout";
-            }
-        } finally {
-            RequestDispatcher rd = request.getRequestDispatcher(url);
-            rd.forward(request, response);
+        try  {
+            
+        }finally{
+            
         }
     }
 

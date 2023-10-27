@@ -28,7 +28,7 @@
             <p style="text-align:center"> OR  </p>
             <input name="user" type="user" id="inputEmail" class="form-control" placeholder="Username" required="" autofocus="">
             <input name="pass" type="password" id="inputPassword" class="form-control" placeholder="Password" required="">
-            <p class="text-danger" style="text-align: center;">${msg}</p>
+            <p class="text-danger" style="text-align: center;">${mess}</p>
             <button class="btn btn-success btn-block" type="submit"><i class="fas fa-sign-in-alt"></i> Sign in</button>
             <a href="#" id="forgot_pswd">Forgot password?</a>
             <hr>

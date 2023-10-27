@@ -189,12 +189,12 @@
                   <p class="small text-muted mb-0">Total Match</p>
                 </div>
                 <div class="px-3">
-                  <p class="mb-1 h5">6-4</p>
-                  <p class="small text-muted mb-0">W-L</p>
+                  <p class="mb-1 h5">6</p>
+                  <p class="small text-muted mb-0">Win</p>
                 </div>
                 <div>
-                  <p class="mb-1 h5">60%</p>
-                  <p class="small text-muted mb-0">Winrate</p>
+                  <p class="mb-1 h5">5</p>
+                  <p class="small text-muted mb-0">Lose</p>
                 </div>
               </div>
             </div>
@@ -220,50 +220,53 @@
                             <div class="mb-3">
                               <label class="small mb-1" for="inputBirdname">Tên chim</label>
                               <input class="form-control" id="inputBirdname" type="text"
-                                value="Chào Mào Lửa">
+                                value="Chào Mào Lửa" readonly>
                             </div>
                             <!-- Form Row-->
                             <div class="row gx-3 mb-3">
                               <!-- Form Group (Species)-->
-                              <div class="col-md-6">
+                              <div class="col-md-12">
                                 <label class="small mb-1" for="inputSpecies">Loài chim</label>
                                 <input class="form-control" id="inputSpecies" type="text" 
-                                  value="Chào Mào">
+                                  value="Chào Mào" readonly>
                               </div>
-                              <!-- Form Group (BirdAge)-->
-                              <div class="col-md-6">
-                                <label class="small mb-1" for="inputBirdAge">Độ tuổi</label>
-                                <input class="form-control" id="inputBirdAge" type="text" 
-                                  value="1">
-                              </div>
+
                             </div>
                             <!-- Form Row        -->
+                            <div class="row gx-3 mb-3">
+                                <div class="col-md-12">
+                                <label class="small mb-1">Điểm Rank</label>
+                                <input class="form-control" id="inputBirdAge" type="text" 
+                                  value="1" readonly>
+                              </div>
+                            </div>
                             <div class="row gx-3 mb-3">
                               <!-- Form Group (Gender)-->
                               <div class="col-md-6">
                                 <label class="small mb-1" for="inputGender">Giới tính</label>
                                 <input class="form-control" id="inputGender" type="text"
-                                  value="Đực">
+                                  value="Đực" readonly>
                               </div>
-                              <!-- Form Group (HealStatus)-->
                               <div class="col-md-6">
-                                <label class="small mb-1" for="inputHealStatus">Tình trạng sức khỏe</label>
-                                <input class="form-control" id="inputHealStatus" type="text"
-                                   value="Bình Thường">
+                                <label class="small mb-1" for="inputGender">Tình trạng sức khỏe</label>
+                                <input class="form-control" id="inputGender" type="text"
+                                  value="Bình thường" readonly>
                               </div>
                             </div>
+                            
                             <!-- Form Group (CompetitionHistory)-->
-                            <div class="mb-3">
+<!--                            <div class="mb-3">
                               <label class="small mb-1" for="inputCompetitionHistory">Được Thêm Vào Ngày</label>
                               <input class="form-control" id="inputCompetitionHistory" type="date"
-                                placeholder="Nhập lịch sử đấu" value="">
-                            </div>
+                                placeholder="Nhập lịch sử đấu" value="" readonly>
+                            </div>-->
 
                             <!-- Form Group (OtherInfo)-->
+                            
                             <div class="mb-3">
                               <label class="small mb-1" for="inputOtherInfo">Thông tin khác (nếu có)</label>
                               <input class="form-control" id="inputOtherInfo" type="text"
-                                placeholder="Thông tin khác" value="">
+                                     placeholder="Thông tin khác" value="" readonly="">
                             </div>
 
                             <!-- Save changes button-->
