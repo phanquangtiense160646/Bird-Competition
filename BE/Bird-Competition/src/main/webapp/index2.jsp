@@ -10,10 +10,10 @@
         <meta name="author" content="">
         <title>Cổng thanh toán VNPAY DEMO</title>
         <!-- Bootstrap core CSS -->
-        <link href="assets/bootstrap.min.css" rel="stylesheet"/>
+        <link href="/vnpay_jsp/assets/bootstrap.min.css" rel="stylesheet"/>
         <!-- Custom styles for this template -->
-        <link href="assets/jumbotron-narrow.css" rel="stylesheet">      
-        <script src="assets/jquery-1.11.3.min.js"></script>
+        <link href="/vnpay_jsp/assets/jumbotron-narrow.css" rel="stylesheet">      
+        <script src="/vnpay_jsp/assets/jquery-1.11.3.min.js"></script>
     </head>
 
     <body>

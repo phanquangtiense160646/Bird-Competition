@@ -35,7 +35,9 @@ public class ajaxServlet extends HttpServlet {
         String vnp_Version = "2.1.0";
         String vnp_Command = "pay";
         String orderType = "other";
+        String paymentContent = req.getParameter("paymentContent");
         long amount = Integer.parseInt(req.getParameter("amount"))*100;
+        
         String bankCode = req.getParameter("bankCode");
         
         String vnp_TxnRef = Config.getRandomNumber(8);
@@ -54,7 +56,7 @@ public class ajaxServlet extends HttpServlet {
             vnp_Params.put("vnp_BankCode", bankCode);
         }
         vnp_Params.put("vnp_TxnRef", vnp_TxnRef);
-        vnp_Params.put("vnp_OrderInfo", "Thanh toan don hang:" + vnp_TxnRef);
+        vnp_Params.put("vnp_OrderInfo", ", Noi dung thanh toan: " + paymentContent);
         vnp_Params.put("vnp_OrderType", orderType);
 
         String locate = req.getParameter("language");

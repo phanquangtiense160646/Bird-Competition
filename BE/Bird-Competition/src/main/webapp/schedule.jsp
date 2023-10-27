@@ -123,7 +123,7 @@
                                     <a class="dropdown-item" href="birdprofile.html">Bird Profile</a>
                                     <a class="dropdown-item" href="addnewbird.html">Add Bird </a>
                                     <div class="dropdown-divider"></div>
-                                    <a class="dropdown-item" href="/FE/index.html">Log out</a>
+                                    <a class="dropdown-item" href="LogoutServlet">Log out</a>
                                 </div>
                             </div>
                         </div>
@@ -232,7 +232,8 @@
                                             <p class="schedule-value text-uppercase text-light mb-3">Ngày: ${scheduleDto.date}</p>
                                             <p class="schedule-value text-uppercase text-light mb-3"> Giờ: 2.00am - 5.00am</p>
                                             <p class="schedule-value text-uppercase text-light mb-3">Địa điểm: ${scheduleDto.location}</p>
-                                            <p class="schedule-value text-uppercase text-primary">${scheduleDto.name}</p>
+<!--                                            <p class="schedule-value text-uppercase text-primary">${scheduleDto.name}</p>-->
+                                            <p class="schedule-value text-uppercase text-primary my-name">${scheduleDto.name}</p>
                                             <p class="schedule-value text-uppercase text-secondary mb-0">Loại chim: Gà chiến</p>
                                             <p class="schedule-value text-uppercase text-secondary mb-0">Điểm yêu cầu: ${scheduleDto.minPoint} - ${scheduleDto.maxPoint} </p>
                                             <p class="schedule-value text-uppercase text-light mb-3">Phí đăng kí: ${scheduleDto.fee}</p>
@@ -244,6 +245,9 @@
                                             <input class="idHide" type="hidden" value="${scheduleDto.id}"/></br>
                                             <button class="btn btn-primary btn-register px-5" style="margin-top: 10px;">Đăng kí
                                                 thi đấu</button>
+                                            
+                                            
+                                            
                                         </div>
                                     </div>
                                 </c:forEach>
@@ -333,7 +337,7 @@
                     
 
     
-    <form action="vnpay_pay.jsp" method="POST">
+<form action="vnpay_pay.jsp" method="POST">
     <h6 class="text-uppercase text-secondary mb-3 ml-3">Chọn chim đăng ký:  
     <select aria-label="chooseBird" name="cboBird">
         <option selected disabled>Chim</option>
@@ -341,7 +345,7 @@
     </select>
     <input type="hidden" name="hiddenContestId" value="` + hiddenId + `"></input>                        
     <button type="submit" name="btAction" value="cRegister" class="btn btn-primary px-5" style="margin-top: 10px;">Đăng kí thi đấu</button>
-    </form>
+</form>
     
                      </div>
                     `;

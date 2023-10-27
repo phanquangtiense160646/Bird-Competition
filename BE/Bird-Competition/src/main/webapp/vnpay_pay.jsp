@@ -8,13 +8,14 @@
         <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
         <meta name="description" content="">
         <meta name="author" content="">
-        <title>Tạo mới đơn hàng</title>
+        <title>Trang thanh toán </title>
         <!-- Bootstrap core CSS -->
         <link href="assets/bootstrap.min.css" rel="stylesheet"/>
         <!-- Custom styles for this template -->
         <link href="assets/jumbotron-narrow.css" rel="stylesheet">      
         <script src="assets/jquery-1.11.3.min.js"></script>
-            <style>
+        
+        <style>
         body, html {
             height: 100%;
             margin: 0;
@@ -48,24 +49,29 @@
             z-index: 1;
         }
             </style>
+        
     </head>
 
     <body>
-        
-         <div class="bg-image" style="background-image: url('FE/img/0t98r20u2ruh1654574469292.jpg');"></div>
-        
+            <div class="bg-image" style="background-image: url('FE/img/0t98r20u2ruh1654574469292.jpg');"></div>
          <div class="container">
            <div class="header clearfix">
 
-                <h3 class="text-muted">VNPAY DEMO</h3>
+                <h3 class="text-muted"></h3>
             </div>
-             <h3>THANH TOÁN</h3>
+            <h3>THANH TOÁN PHÍ THAM GIA  </h3>
             <div class="table-responsive">
                 <form action="vnpayajax" id="frmCreateOrder" method="post">        
                     <div class="form-group">
                         <label for="amount">Số tiền</label>
                         <input class="form-control" data-val="true" data-val-number="The field Amount must be a number." data-val-required="The Amount field is required." id="amount" max="100000000" min="1" name="amount" type="number" value="10000" />
                     </div>
+                    
+<div class="form-group">
+    <label for="paymentContent">Nội dung thanh toán</label>
+    <textarea class="form-control" id="paymentContent" name="paymentContent" rows="3" placeholder="vd: Dau Chim Chao Mao"></textarea>
+</div>
+                    
                      <h4>Chọn phương thức thanh toán</h4>
                     <div class="form-group">
                         <h5>Cách 1: Chuyển hướng sang Cổng VNPAY chọn phương thức thanh toán</h5>
@@ -91,12 +97,9 @@
                          <label for="language">Tiếng anh</label><br>
                          
                     </div>
-                     
-                    <button type="button" class="btn btn-default" onclick="goBack()">Quay lại</button>
-                     
-                    <button type="submit" class="btn btn-default" href>Thanh toán</button>
-                    
+                    <button type="button" class="btn btn-default" onclick="goBack()">Back</button>
 
+                    <button type="submit" class="btn btn-default" href>Thanh toán</button>
                 </form>
             </div>
             <p>
@@ -133,11 +136,16 @@
                 });
                 return false;
             });
-        </script>  
+        </script> 
+        
         <script>
 function goBack() {
-    window.history.back();
+  window.history.back();
 }
 </script>
+        
+
+
+
     </body>
 </html>

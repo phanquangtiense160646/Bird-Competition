@@ -24,7 +24,7 @@
             </div>
             <h3>Query</h3>
             <div class="table-responsive">
-            <form action="/vnpay_jsp/vnpayquery" id="frmQerydr" method="Post">
+            <form action="vnpayquery" id="frmQerydr" method="Post">
                 <div class="form-group">
                 <label for="order_id">Mã giao dịch cần truy vấn (Giá trị của vnp_TxnRef)</label>
                 <input class="form-control" id="order_id"
