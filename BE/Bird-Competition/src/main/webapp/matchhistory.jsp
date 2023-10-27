@@ -122,19 +122,22 @@
                             </div>
                             <a href="contact.html" class="nav-item nav-link">Liên Hệ</a>
                         </div>
-                        <div class="dropdown">
-                            <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" style="width:130px;">
-                                ${sessionScope.USER.userName}
-                            </button>
-                            <div class="dropdown-menu">
-                                <a class="dropdown-item" href="userprofile.jsp">User Profile</a>
-                                <a class="dropdown-item" href="birdprofile.html">Bird Profile</a>
-                                <a class="dropdown-item" href="addnewbird.html">Add Bird </a>
-                                <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="index.html">Log out</a>
-                            </div>
+                        <div class="nav-item dropdown">
 
-                        </div>
+                                <a href="#" class="btn btn-primary nav-link dropdown-toggle" data-bs-toggle="dropdown" style="width: 150px;">${sessionScope.USER.userName}</a>
+                                <div class="dropdown-menu rounded-0 m-0">
+
+                                    <form action="DispatchServlet" method="POST">
+                                        <a class="dropdown-item" href="userprofile.jsp">User Profile</a>
+                                        <a class="dropdown-item" href="birdprofile.html">Bird Profile</a>
+                                        <a class="dropdown-item" href="addnewbird.jsp">Add Bird</a>
+                                        <button class="dropdown-item" name="btAction" value="MatchHistory">Match History</button>
+                                        <button class="dropdown-item" name="btAction" value="PaymentHistory">Payment History</button>
+                                        <div class="dropdown-divider"></div>
+                                        <button class="dropdown-item" name="btAction" value="Logout">Logout</button>
+                                    </form>
+                                </div>
+                            </div>
                     </div>
                 </nav>
             </div>
@@ -209,7 +212,7 @@
                                                             <table class="match-box-content border-bottom">
                                                                 <tr>
                                                                     <td><small>Tên cuộc thi:</small></td>
-                                                                    <td><h3 style="color: orange">${p.nameOfContest}</h3></td>
+                                                                    <td><h4 style="color: orange">${p.nameOfContest}</h4></td>
                                                                 </tr>
                                                                 <tr>
                                                                     <td><small>Địa điểm:</small></td>
@@ -238,10 +241,22 @@
                                                                     <td><h5>${p.nameOfBird}</h5></td>
                                                                 </tr>
 
-                                                                <tr>
-                                                                    <td><h3 style="color: green;">Kết quả:</h3></td>
-                                                                    <td><h6 style="color: green;">Before Point: ${p.beforePoint}</h6></td>
-                                                                    <td><h6 style="color: green;">After Point: ${p.afterPoint}</h6></td>
+                                                                <tr style="">
+                                                                    <td><h1 style="color: green;">Kết quả</h1></td>
+
+                                                                    <td style=""><h2 style="color: black;"> Point: ${p.afterPoint} </h2></td>
+                                                                    <td>
+                                                                        <h2 style="color: black; display: inline;"> (</h2>
+                                                                        <c:if test="${(p.afterPoint - p.beforePoint) >= 0}" >
+                                                                            <h2 style="color: green; display: inline;"> +${p.afterPoint - p.beforePoint}</h2>
+                                                                        </c:if>
+                                                                        <c:if test="${(p.afterPoint - p.beforePoint) < 0}" >
+                                                                            <h2 style="color: red; display: inline;"> ${p.afterPoint - p.beforePoint}</h2>
+                                                                        </c:if>
+                                                                        <h2 style="color: black; display: inline;"> )</h2>
+                                                                    </td>
+
+
                                                                 </tr>
                                                             </table>
 
@@ -317,11 +332,12 @@
 
 
                         </section>
-                        <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
-                                integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
-                        crossorigin="anonymous"></script>
-                        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"
-                                integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF"
-                        crossorigin="anonymous"></script>
+                        
                         </body>
+                        <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+                                    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+                                    <script src="FE/lib/easing/easing.min.js"></script>
+                                    <script src="FE/lib/waypoints/waypoints.min.js"></script>
+                                    <script src="FE/lib/counterup/counterup.min.js"></script>
+                                    <script src="FE/lib/owlcarousel/owl.carousel.min.js"></script>
                         </html>
