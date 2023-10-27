@@ -1,7 +1,8 @@
-package com.birdcompetition.controller.web;
+package com.birdcompetition.controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.Date;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -27,8 +28,18 @@ public class AddScheduleServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            
+        String date = request.getParameter("date");
+        String name = request.getParameter("txtContestName");
+        String minPoint = request.getParameter("minPoint");
+        String maxPoint = request.getParameter("maxPoint");
+        String place = request.getParameter("cboBird");
+        String factor = request.getParameter("factor");
+        String maxPar = request.getParameter("maxPar");
+        String fee = request.getParameter("fee");
+        
+        try {
+            Date sqlDate = Date.valueOf(date);
+        }finally {
             
         }
     }

@@ -163,6 +163,11 @@
                         <i class="fas fa-fw fa-table"></i>
                         <span>Update Match Result</span></a>
                 </li> 
+                <li class="nav-item">
+                    <a class="nav-link" href="AdminPage/createSchedule.jsp">
+                        <i class="fas fa-fw fa-table"></i>
+                        <span>Create Schedule</span></a>
+                </li>
                 <!-- Divider -->
                 <hr class="sidebar-divider d-none d-md-block">
 
