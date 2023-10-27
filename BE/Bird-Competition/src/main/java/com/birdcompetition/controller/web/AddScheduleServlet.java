@@ -1,30 +1,19 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.birdcompetition.controller.web;
 
-import com.birdcompetition.dal.DAO;
 import java.io.IOException;
+import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import com.birdcompetition.model.User;
-import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.servlet.RequestDispatcher;
-import javax.servlet.http.HttpSession;
 
 /**
  *
- * @author 84366
+ * @author Admin
  */
-@WebServlet(name = "LoginControl", urlPatterns = {"/login"})
-public class LoginControl extends HttpServlet {
+@WebServlet(name = "AddScheduleServlet", urlPatterns = {"/AddScheduleServlet"})
+public class AddScheduleServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -38,32 +27,10 @@ public class LoginControl extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        String username = request.getParameter("user");
-        String password = request.getParameter("pass");
-        String url = "Login.jsp";
-
-        try {
-
-            DAO dao = new DAO();
-            User result = dao.checkLogin(username, password);
-
-            if (result != null) {
-                HttpSession session = request.getSession();
-                session.setAttribute("USER", result);
-                url = "DispatchServlet?btAction=PostLogin";
-            } else {
-                String msg = "Incorrect Username or Password";
-                request.setAttribute("msg", msg);
-            }
-        } catch (SQLException ex) {
-            log("Login_SQL: " + ex.getMessage());
-        } catch (ClassNotFoundException ex) {
-            log("Login_ClassNotFound: " + ex.getMessage());
-        } finally {
-            RequestDispatcher rd = request.getRequestDispatcher(url);
-            rd.forward(request, response);
+        try (PrintWriter out = response.getWriter()) {
+            
+            
         }
-
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

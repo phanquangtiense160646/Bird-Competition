@@ -41,7 +41,7 @@
 
     <body>
 
-        <jsp:include page="JspCommon/header.jsp"/>       
+        <jsp:include page="JspCommon/webheader.jsp"/>       
         <!-- Hero Start -->
         <div class="container-fluid bg-primary p-5 bg-hero mb-5">
             <div class="row py-5">
@@ -266,7 +266,7 @@
         </div>
         <!-- end schedule script and toast -->
 
-        <jsp:include page="JspCommon/footer.jsp"/>
+        <jsp:include page="JspCommon/webfooter.jsp"/>
 
         <!-- JavaScript Libraries -->
         <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>

@@ -40,7 +40,7 @@
     </head>
 
     <body>
-        <jsp:include page="JspCommon/header.jsp"/>
+        <jsp:include page="JspCommon/webheader.jsp"/>
 
         <!-- Carousel Start -->
         <div class="container-fluid p-0 mb-5">
@@ -512,7 +512,7 @@
         </div>
         <!-- Feedback end -->
         
-        <jsp:include page="JspCommon/footer.jsp"/>
+        <jsp:include page="JspCommon/webfooter.jsp"/>
 
         <!-- JavaScript Libraries -->
         <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
