@@ -66,19 +66,6 @@
                 </div>
             </div>
         </div>
-        <!-- <div class="col-lg-4 col-md-6">
-    <div class="d-flex flex-column align-items-center justify-content-center text-center h-100 bg-primary p-5">
-        <h4 class="text-uppercase text-white mb-4">Newsletter</h4>
-        <h6 class="text-uppercase text-white">Subscribe Our Newsletter</h6>
-        <p class="text-light">Amet justo diam dolor rebum lorem sit stet sea justo kasd</p>
-        <form action="">
-            <div class="input-group">
-                <input type="text" class="form-control border-white p-3" placeholder="Your Email">
-                <button class="btn btn-dark">Sign Up</button>
-            </div>
-        </form>
-    </div>
-</div> -->
     </div>
 </div>
 <div class="container-fluid py-4 py-lg-0 px-5" style="background: #111111;">
@@ -89,16 +76,10 @@
                                                          href="#">BIRDFIGHTER</a>. All Rights Reserved.</p>
             </div>
         </div>
-        <!-- <div class="col-lg-4">
-    <div class="py-lg-4 text-center credit">
-        <p class="text-light mb-0">Designed by <a class="text-light fw-bold" href="">Danh dan</a></p>
-    </div>
-</div> -->
     </div>
 </div>
 <!-- Footer End -->
 
 
 <!-- Back to Top -->
-<a href="#" class="btn btn-dark py-3 fs-4 back-to-top"><i class="fa-solid fa-arrow-up"></i></a>
-
+<a href="#" class="btn btn-dark py-3 fs-4 back-to-top"><i class="bi bi-arrow-up"></i></a>
