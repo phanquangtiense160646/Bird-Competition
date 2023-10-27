@@ -6,6 +6,7 @@ import com.birdcompetition.registerCompetition.CRegisterDAO;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
+import java.util.UUID;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.RequestDispatcher;
@@ -48,6 +49,7 @@ public class CRegisterServlet extends HttpServlet {
                 CRegisterDAO dao = new CRegisterDAO();
                 dao.getBirdInContest(contestID);
                 List<BirdContestDTO> birdContestList = dao.getListBirdContest();
+                /*Check existence Bird*/
                 if (birdContestList != null) {
                     for (BirdContestDTO birdContestDTO : birdContestList) {
                         if (birdContestDTO.getBirdId() == id) {
@@ -55,9 +57,8 @@ public class CRegisterServlet extends HttpServlet {
                         }
                     }
                 }
-
+                //insert
                 if (count == 0) {
-                    //lay chim by id chim
                     int beforePoint = 0;
                     List<BirdDTO> listBird = (List<BirdDTO>) session.getAttribute("OWN_BIRD");
                     for (BirdDTO birdDTO : listBird) {
@@ -66,8 +67,9 @@ public class CRegisterServlet extends HttpServlet {
                             break;
                         }
                     }
+                    String checkInCode = UUID.randomUUID().toString().substring(0, 10);
                     BirdContestDTO dto = new BirdContestDTO(id, contestId,
-                            0, beforePoint, 0, true, false, null);
+                            0, beforePoint, 0, true, false, checkInCode);
                     dao.cRegisterInsert(dto);
                     String mes = "success";
                     session.setAttribute("MES", mes);
