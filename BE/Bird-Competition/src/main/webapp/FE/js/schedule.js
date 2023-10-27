@@ -52,29 +52,26 @@ function toast({
 function showSuccessToast() {
     toast({
         tiltle: 'Success',
-        message: 'Đăng kí thành công',
+        message: 'Đăng kí thành công, Xem CHECK_IN_CODE ở mục Match',
         type: 'success',
-        duration: 3000
-
+        duration: 20000
     })
 }
 
 function showFailToast() {
     toast({
         tiltle: 'Fail',
-        message: 'Đăng kí fail',
+        message: 'Hãy chọn chim thi đấu',
         type: 'warning',
-        duration: 3000
-
+        duration: 8000
     })
 }
 function showErrorToast() {
     toast({
-        tiltle: 'Fail',
+        tiltle: 'Lỗi',
         message: 'Chim đã được đăng kí vào cuộc thi này',
         type: 'info',
-        duration: 3000
-
+        duration: 8000
     })
 }
 
