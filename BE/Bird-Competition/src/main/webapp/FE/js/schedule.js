@@ -1,63 +1,86 @@
-const buyBtn = document.querySelectorAll(".btn-register");
-        const schedule = document.querySelector('.schedule-overlay');
-        const sidebarClose = () => {
-            schedule.classList.remove("is-open");
+function toast({
+    tiltle = '',
+    message = '',
+    type = 'info',
+    duration = 3000
+}) {
+    const main = document.getElementById('toast');
+    if (main) {
+        const toast = document.createElement('div');
+
+        //auto remove
+        const autoremove = setTimeout(function () {
+            main.removeChild(toast);
+        }, duration + 1000);
+
+        //remove click 
+        toast.onclick = function (e) {
+            if (e.target.closest('.toast__close')) {
+                main.removeChild(toast);
+                clearTimeout(autoremove);
+            }
         };
+        const icons = {
+            success: 'fas fa-check-circle',
+            warning: 'fas fa-info-circle',
+            info: 'fas fa-info-circle'
+        };
+        const icon = icons[type];
+        const delay = (duration / 1000).toFixed(2);
 
-        buyBtn.forEach(buyBtn => {
-            buyBtn.addEventListener("click", function () {
-                schedule.classList.add("is-open");
-
-                const body = document.querySelector('.schedule-body');
-                body.innerHTML = '';
-
-                const newDriver = document.createElement('div');
-                newDriver.classList = 'schedule-detail';
-
-                var date, time, place, tOC, tOB, registerNumber;
-
-                if (this.querySelector(".schedule-value:nth-of-type(1)") !== null) {
-                    date = this.querySelector(".schedule-value:nth-of-type(1)").innerHTML;
-                    time = this.querySelector(".schedule-value:nth-of-type(2)").innerHTML;
-                    place = this.querySelector(".schedule-value:nth-of-type(3)").innerHTML;
-                    tOC = this.querySelector(".schedule-value:nth-of-type(4)").innerHTML;
-                    tOB = this.querySelector(".schedule-value:nth-of-type(5)").innerHTML;
-                    registerNumber = this.querySelector(".schedule-value:nth-of-type(6) span").innerHTML;
-                }
-
-
-
-
-
-                newDriver.innerHTML = `
-                <div>
-                <h6 class="text-uppercase text-light mb-3 ml-3">${date}</h6>
-                <h6 class="text-uppercase text-light mb-3 ml-3"> ${time}</h6>
-                <h6 class="text-uppercase text-light mb-3 ml-3"> ${place}</h6>
-                <h5 class="text-uppercase text-primary">${tOC}</h5>
-                <p class="text-uppercase text-secondary mb-0 ml-3">${tOB}</p>
-                <p class="text-uppercase text-secondary mb-0 ml-3" style="display: inline;">
-                    số người đăng kí:
-                <p class="text-uppercase text-primary mb-0 ml-3" style="display: inline;">${registerNumber}</p>
-                </p>
-                <h6 class="text-uppercase text-secondary mb-3 ml-3">Chọn chim đăng ký:  
-                    <select>
-                        <option value="" selected disabled>Chim</option>
-                        <option value="lua-chon-1">cuồn font</option>
-                        <option value="lua-chon-2">cánh thép</option>
-                        <option value="lua-chon-3">pikachu</option>
-                    
-                    </select>    
-                
-                </div>
-
-                <a href="" class="btn btn-primary px-5" style="margin-top: 10px;">Đăng kí thi đấu</a>
+        toast.classList.add('toast1', `toast--${type}`);
+        toast.style.animation = `slideLeft ease .3s, fadeOut linear 1s ${delay}s forwards`;
+        toast.innerHTML = `
+                    <div class="toast__icon">
+                        <i class="${icon}"></i>
+                    </div>
+                    <div class="toast__body">
+                        <h3 class="toast__title">${tiltle}</h3>
+                        <p class="toast__msg">${message}</p>
+                    </div>
+                    <div class="toast__close">
+                         <i class="fas fa-times"></i>
+                    </div>
                 `;
+        main.appendChild(toast);
+
+    }
+}
 
 
 
-                body.appendChild(newDriver);
-            })
-        })
-        const closeOverlayBtn = document.querySelector(".button--close");
-        closeOverlayBtn.addEventListener("click", sidebarClose);
+function showSuccessToast() {
+    toast({
+        tiltle: 'Success',
+        message: 'Đăng kí thành công, Xem CHECK_IN_CODE ở mục Match',
+        type: 'success',
+        duration: 20000
+    })
+}
+
+function showFailToast() {
+    toast({
+        tiltle: 'Fail',
+        message: 'Hãy chọn chim thi đấu',
+        type: 'warning',
+        duration: 8000
+    })
+}
+function showErrorToast() {
+    toast({
+        tiltle: 'Lỗi',
+        message: 'Chim đã được đăng kí vào cuộc thi này',
+        type: 'info',
+        duration: 8000
+    })
+}
+
+var mes = document.getElementById('toastmes').innerHTML;
+if (mes === 'fail') {
+    showFailToast();
+} else if (mes === 'success') {
+    showSuccessToast();
+} else if (mes === 'error') {
+    showErrorToast();
+}
+

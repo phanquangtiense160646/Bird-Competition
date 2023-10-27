@@ -1,12 +1,12 @@
 package com.birdcompetition.controller.web;
 
-import com.birdcompetition.bird.BirdDAO;
+import com.birdcompetition.bird.BirdContestDTO;
 import com.birdcompetition.bird.BirdDTO;
-import com.birdcompetition.model.User;
+import com.birdcompetition.registerCompetition.CRegisterDAO;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.sql.SQLException;
 import java.util.List;
+import java.util.UUID;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.RequestDispatcher;
@@ -21,8 +21,8 @@ import javax.servlet.http.HttpSession;
  *
  * @author Admin
  */
-@WebServlet(name = "ScheduleServlet", urlPatterns = {"/ScheduleServlet"})
-public class ScheduleServlet extends HttpServlet {
+@WebServlet(name = "CRegisterServlet", urlPatterns = {"/CRegisterServlet"})
+public class CRegisterServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -36,27 +36,60 @@ public class ScheduleServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        String url = "schedule.jsp";
+        String birdId = request.getParameter("cboBird");
+        String contestId = request.getParameter("hiddenContestId");
+        String url = "ScheduleServlet";
+        int count = 0;
         try {
+            System.out.println("birdId: " + birdId + " contestID: " + contestId);
             HttpSession session = request.getSession();
-            List<BirdDTO> birdList;
-
-            BirdDAO dao = new BirdDAO();
-            User user = (User) session.getAttribute("USER");
-            dao.getBirdByMemberId(user.getIdMember());
-            birdList = dao.getBirdList();
-            session.setAttribute("OWN_BIRD", birdList);
+            if (birdId != null) {
+                int id = Integer.parseInt(birdId);
+                int contestID = Integer.parseInt(contestId);
+                CRegisterDAO dao = new CRegisterDAO();
+                dao.getBirdInContest(contestID);
+                List<BirdContestDTO> birdContestList = dao.getListBirdContest();
+                /*Check existence Bird*/
+                if (birdContestList != null) {
+                    for (BirdContestDTO birdContestDTO : birdContestList) {
+                        if (birdContestDTO.getBirdId() == id) {
+                            count++;
+                        }
+                    }
+                }
+                //insert
+                if (count == 0) {
+                    int beforePoint = 0;
+                    List<BirdDTO> listBird = (List<BirdDTO>) session.getAttribute("OWN_BIRD");
+                    for (BirdDTO birdDTO : listBird) {
+                        if (birdDTO.getBirdID() == id) {
+                            beforePoint = birdDTO.getPoint();
+                            break;
+                        }
+                    }
+                    String checkInCode = UUID.randomUUID().toString().substring(0, 10);
+                    BirdContestDTO dto = new BirdContestDTO(id, contestId,
+                            0, beforePoint, 0, true, false, checkInCode);
+                    dao.cRegisterInsert(dto);
+                    String mes = "success";
+                    session.setAttribute("MES", mes);
+                } else {
+                    String mes = "error";
+                    session.setAttribute("MES", mes);
+                }
+            } else {
+                String mes = "fail";
+                session.setAttribute("MES", mes);
+            }
 
         } catch (SQLException ex) {
-            log("ScheduleServlet_SQL: " + ex.getMessage());
+            log("CRegister_SQL: " + ex.getMessage());
+//               ex.printStackTrace();
         } catch (ClassNotFoundException ex) {
-            log("ScheduleServlet_ClassNotFound: " + ex.getMessage());
+            log("CRegister_ClassNotFound: " + ex.getMessage());
         } finally {
             response.sendRedirect(url);
-//            RequestDispatcher rd = request.getRequestDispatcher(url);
-//            rd.forward(request, response);
         }
-
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

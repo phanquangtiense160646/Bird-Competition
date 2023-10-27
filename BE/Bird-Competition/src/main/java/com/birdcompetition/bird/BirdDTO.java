@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package com.birdcompetition.bird;
 
 import java.io.Serializable;
@@ -12,7 +8,7 @@ import java.io.Serializable;
  */
 public class BirdDTO implements Serializable, Comparable<BirdDTO> {
 
-    private String birdID;
+    private int birdID;
     private String birdName;
     private String species;
     private int point;
@@ -30,7 +26,7 @@ public class BirdDTO implements Serializable, Comparable<BirdDTO> {
     public BirdDTO() {
     }
 
-    public BirdDTO(String birdID, String birdName, String species, int point, boolean status, String memberID, String photoPath, int win, int lose, int tie, int matchNumber) {
+    public BirdDTO(int birdID, String birdName, String species, int point, boolean status, String memberID, String photoPath, int win, int lose, int tie, int matchNumber) {
         this.birdID = birdID;
         this.birdName = birdName;
         this.species = species;
@@ -46,13 +42,12 @@ public class BirdDTO implements Serializable, Comparable<BirdDTO> {
         
     }
 
-    public BirdDTO(String birdName, String species, int point, String trainer, String photoPath, int win, int lose, int tie, int matchNumber, int rank) {
-        this.birdID = null;
+    public BirdDTO(String birdName, String species, int point, String trainer, 
+            String photoPath, int win, int lose, int tie, int matchNumber, int rank) {
         this.birdName = birdName;
         this.species = species;
         this.point = point;
         this.status = true;
-        this.memberID = null;
         this.photoPath = photoPath;
         this.win = win;
         this.lose = lose;
@@ -71,7 +66,7 @@ public class BirdDTO implements Serializable, Comparable<BirdDTO> {
         this.rank = rank;
     }
 
-    public BirdDTO(String birdID, String birdName, String species, int point, boolean status, String memberID) {
+    public BirdDTO(int birdID, String birdName, String species, int point, boolean status, String memberID) {
         this.birdID = birdID;
         this.birdName = birdName;
         this.species = species;
@@ -80,12 +75,20 @@ public class BirdDTO implements Serializable, Comparable<BirdDTO> {
         this.memberID = memberID;
     }
 
+    public BirdDTO(String birdName, String species, int point, boolean status, String memberID) {
+        this.birdName = birdName;
+        this.species = species;
+        this.point = point;
+        this.status = status;
+        this.memberID = memberID;
+    }
+
     
-    public String getBirdID() {
+    public int getBirdID() {
         return birdID;
     }
 
-    public void setBirdID(String birdID) {
+    public void setBirdID(int birdID) {
         this.birdID = birdID;
     }
 

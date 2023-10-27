@@ -4,8 +4,16 @@
  */
 package com.birdcompetition.controller.web;
 
+import com.birdcompetition.model.User;
+import com.birdcompetition.payment.PaymentDAO;
+import com.birdcompetition.payment.PaymentDTO;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.SQLException;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -15,10 +23,10 @@ import javax.servlet.http.HttpSession;
 
 /**
  *
- * @author Admin
+ * @author admin
  */
-@WebServlet(name = "CompetitionRegisterServlet", urlPatterns = {"/CompetitionRegisterServlet"})
-public class CompetitionRegisterServlet extends HttpServlet {
+@WebServlet(name = "PaymentHistoryServlet", urlPatterns = {"/PaymentHistoryServlet"})
+public class PaymentHistoryServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -32,12 +40,28 @@ public class CompetitionRegisterServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
+        String url = "paymenthistory.jsp";
         try {
             HttpSession session = request.getSession();
+            List<PaymentDTO> paymentList;
             
+                PaymentDAO dao = new PaymentDAO();
+                User user = (User) session.getAttribute("USER");
+                dao.getPaymentList(user.getUserName());
+                paymentList = dao.getPaymentList();
+                session.setAttribute("OWN_PAYMENT", paymentList);
+            
+        } catch (SQLException ex) {
+            log("ScheduleServlet_SQL: " + ex.getMessage());
+        } catch (ClassNotFoundException ex) {
+            log("ScheduleServlet_ClassNotFound: " + ex.getMessage());
         }finally {
-            
+//            response.sendRedirect(url);
+                RequestDispatcher rd = request.getRequestDispatcher(url);
+                rd.forward(request, response);
         }
+        
+        
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

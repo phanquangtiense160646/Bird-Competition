@@ -58,7 +58,7 @@ public class ScheduleDAO implements Serializable {
                     double minPoint = rs.getDouble("MinPoint");
                     double maxPoint = rs.getDouble("MaxPoint");
                     double fee = rs.getDouble("ParticipatingFee");
-                    String userId = rs.getString("IdUser");
+                    String userId = rs.getString("UserName");
                     String location = rs.getString("Location");
                     int contestStatus = rs.getInt("StatusOfContest");
 
@@ -116,7 +116,7 @@ public class ScheduleDAO implements Serializable {
                     double minPoint = rs.getDouble("MinPoint");
                     double maxPoint = rs.getDouble("MaxPoint");
                     double fee = rs.getDouble("ParticipatingFee");
-                    String userId = rs.getString("IdUser");
+                    String userId = rs.getString("UserName");
                     String location = rs.getString("Location");
 
                     ScheduleDTO dto = new ScheduleDTO(id, name, date,
@@ -173,7 +173,7 @@ public class ScheduleDAO implements Serializable {
                     double minPoint = rs.getDouble("MinPoint");
                     double maxPoint = rs.getDouble("MaxPoint");
                     double fee = rs.getDouble("ParticipatingFee");
-                    String userId = rs.getString("IdUser");
+                    String userId = rs.getString("UserName");
                     String location = rs.getString("Location");
                     int contestStatus = rs.getInt("StatusOfContest");
 

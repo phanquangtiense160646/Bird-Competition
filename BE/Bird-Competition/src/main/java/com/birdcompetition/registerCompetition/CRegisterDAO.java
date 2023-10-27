@@ -1,11 +1,7 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package com.birdcompetition.registerCompetition;
 
-import com.birdcompetition.bird.BirdDTO;
-import com.birdcompetition.schedule.ScheduleDTO;
+import com.birdcompetition.bird.BirdContestDTO;
+
 import com.birdcompetition.util.DBHelper;
 import java.io.Serializable;
 import java.sql.Connection;
@@ -20,5 +16,100 @@ import java.util.List;
  * @author Admin
  */
 public class CRegisterDAO implements Serializable {
+    public boolean cRegisterInsert(BirdContestDTO birdContest) throws SQLException, ClassNotFoundException {
+        Connection con = null;
+        PreparedStatement stm = null;
+        boolean result = false;
+        
+        try {
+            //1.Make connection
+            con = DBHelper.getConnection();
+            //check 
+            if (con != null) {
+                //2.Creat SQL String 
+                String sql = "Insert Into BirdContest("
+                        + "IdBird, IdContest, BeforePoint, Status, CheckIn, CheckInCode"
+                        + ") Values("
+                        + "?, ?, ?, ?, ?, ?"
+                        + ")";
+                //3.Create Statement Object
+                stm = con.prepareStatement(sql);
+                stm.setInt(1, birdContest.getBirdId());
+                stm.setString(2, birdContest.getContestId());
+                stm.setInt(3, birdContest.getBeforePoint());
+                stm.setBoolean(4, birdContest.isStatus());
+                stm.setBoolean(5, birdContest.isCheckIn());
+                stm.setString(6, birdContest.getCheckinCode());
+
+                //4.Exercute Query
+                int exercute = stm.executeUpdate();
+                //5.Process
+                if (exercute > 0) {
+                    result = true;
+                }
+                //end username and password is verified 
+            }
+        } finally {
+
+            if (stm != null) {
+                stm.close();
+            }
+            if (con != null) {
+                con.close();
+            }
+        }
+        return result;
+    }
     
+    private List<BirdContestDTO> listBirdContest;
+
+    public List<BirdContestDTO> getListBirdContest() {
+        return listBirdContest;
+    }
+    
+    
+    public void getBirdInContest(int contestId)
+            throws SQLException, ClassNotFoundException {
+        Connection con = null;
+        PreparedStatement stm = null;
+        ResultSet rs = null;
+//        boolean result = false;
+        
+        try {
+            //1.Make connection
+            con = DBHelper.getConnection();
+            //check 
+            if (con != null) {
+                //2.Creat SQL String 
+                String sql = "Select IdBird "
+                        + "From BirdContest "
+                        + "Where IdContest = ? ";
+                //3.Create Statement Object
+                stm = con.prepareStatement(sql);
+                stm.setInt(1, contestId);
+                //4.Exercute Query
+                rs = stm.executeQuery();
+                
+                //5.Process
+                this.listBirdContest = new ArrayList<>();
+                while (rs.next()) {
+                    int birdId = rs.getInt("IdBird");
+                    BirdContestDTO dto = new BirdContestDTO(birdId, null, 0, 0, 
+                            0, true, true, null);
+                    this.listBirdContest.add(dto);
+                }
+            }
+        } finally {
+            if (rs != null) {
+                rs.close();
+            }
+            if (stm != null) {
+                stm.close();
+            }
+            if (con != null) {
+                con.close();
+            }
+        }
+        
+    }
 }

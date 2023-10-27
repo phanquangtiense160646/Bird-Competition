@@ -11,7 +11,7 @@ body>div {
     z-index: 999999;
 }
 
-.toast {
+.toast1 {
     display: flex;
     align-items: center;
     background-color: white;
@@ -56,10 +56,10 @@ body>div {
     color: #2f86eb;
 }
 .toast--warning {
-    border-color: #ffc021;
+    border-color: red;
 }
 .toast--warning .toast__icon {
-    color:#ffc021;
+    color:red;
 }
 
 .toast + .toast {
@@ -95,5 +95,8 @@ body>div {
     font-size: 20px;
     color: rgba(0, 0, 0, 0.5);
     cursor: pointer;
+}
+#toastmes {
+    display: none;
 }
 

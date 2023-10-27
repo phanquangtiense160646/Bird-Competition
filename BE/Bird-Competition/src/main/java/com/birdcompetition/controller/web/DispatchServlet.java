@@ -55,6 +55,16 @@ import javax.servlet.ServletException;
                 url = "CheckInServlet";
             } else if (button.equals("CheckIn")) {
                 url = "CheckCodeServlet";
+            } else if (button.equals("cRegister")) {
+                url = "CRegisterServlet";
+            } else if (button.equals("MatchHistory")){
+                url = "GetContestListServlet";
+            } else if (button.equals("PaymentHistory")){
+                url = "PaymentHistoryServlet";
+            } else if (button.equals("MatchHistory")){
+                url = "GetContestListServlet";
+            } else if (button.equals("Logout")){
+                url = "logout";
             }
         } finally {
             RequestDispatcher rd = request.getRequestDispatcher(url);

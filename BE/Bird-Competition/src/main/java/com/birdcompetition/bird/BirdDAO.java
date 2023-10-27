@@ -121,19 +121,19 @@ public class BirdDAO implements Serializable {
                 //5. Process
                 this.birdList = new ArrayList<>();
                 while (rs.next()) {
-                    String birdId = rs.getString("IdBird");
+                    int birdId = rs.getInt("IdBird");
                     String name = rs.getString("NameOfBird");
                     String speices = rs.getString("Species");
                     int point = rs.getInt("Point");
-//                    String ownerId = rs.getString("b.IdMember");
-//                    int win = rs.getInt("Win");
-//                    int lose = rs.getInt("Lose");
-//                    int tie = rs.getInt("Tie");
-//                    int matchNumber = rs.getInt("MatchNumber");
+                    String ownerId = rs.getString("b.IdMember");
+                    int win = rs.getInt("Win");
+                    int lose = rs.getInt("Lose");
+                    int tie = rs.getInt("Tie");
+                    int matchNumber = rs.getInt("MatchNumber");
 //                    String trainer = rs.getString("m.FullName");                     
                     //5.1.2 add data to list
 
-                    BirdDTO dto = new BirdDTO(birdId, name, speices, point, true, id);
+                    BirdDTO dto = new BirdDTO(birdId, name, speices, point, true, ownerId, ownerId, win, lose, tie, matchNumber);
 //                    System.out.println(dto.toString());
                     this.birdList.add(dto);
                 }//end map DB to DTO
@@ -166,14 +166,13 @@ public class BirdDAO implements Serializable {
             con = DBHelper.getConnection();
             if (con != null) {
                 //2. Create SQL String 
-                String sql = "INSERT INTO Bird (IdBird, NameOfBird, Species, Point, Status, IdMember) VALUES (?, ?, ?, 1000, 'true', ?)";
+                String sql = "INSERT INTO Bird (NameOfBird, Species, Point, Status, IdMember, Win, Lose, Tie, MatchNumber) VALUES (?, ?, 1000, 'true', ?, 0, 0, 0, 0)";
                 //3. Create Statement Object
                 stm = con.prepareStatement(sql);
-                stm.setString(1, bird.getBirdID());
-                stm.setString(2, bird.getBirdName());
-                stm.setString(3, bird.getSpecies());
-                stm.setString(4, bird.getMemberID());
-
+                
+                stm.setString(1, bird.getBirdName());
+                stm.setString(2, bird.getSpecies());
+                stm.setString(3, bird.getMemberID());
                 //4. Execute Query
                 int effectRows = stm.executeUpdate();
                 //5. Process

@@ -8,142 +8,57 @@
 <!--<!DOCTYPE html>-->
 <html>
     <head>
-    <script src="FE/js/main.js"></script>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Add Bird</title>
-  <link href="FE/img/favicon.ico" rel="icon">
+        <script src="FE/js/main.js"></script>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Add Bird</title>
+        <link href="FE/img/favicon.ico" rel="icon">
 
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css"
-    integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css"
+              integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
 
-  <!-- Google Web Fonts -->
-  <link rel="preconnect" href="https://fonts.gstatic.com">
-  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Rubik&display=swap"
-    rel="stylesheet">
+        <!-- Google Web Fonts -->
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Rubik&display=swap"
+              rel="stylesheet">
 
-  <!-- Icon Font Stylesheet -->
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.0/css/all.min.css" rel="stylesheet">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
-  <link href="FE/lib/flaticon/font/flaticon.css" rel="stylesheet">
+        <!-- Icon Font Stylesheet -->
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.0/css/all.min.css" rel="stylesheet">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+        <link href="FE/lib/flaticon/font/flaticon.css" rel="stylesheet">
 
-  <!-- Libraries Stylesheet -->
-  <link href="FE/lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+        <!-- Libraries Stylesheet -->
+        <link href="FE/lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
 
-  <!-- Customized Bootstrap Stylesheet -->
-  <link href="FE/css/bootstrap.min.css" rel="stylesheet">
+        <!-- Customized Bootstrap Stylesheet -->
+        <link href="FE/css/bootstrap.min.css" rel="stylesheet">
 
-  <!-- Template Stylesheet -->
-  <link href="FE/css/userprofile.css" rel="stylesheet">
+        <!-- Template Stylesheet -->
+        <link href="FE/css/userprofile.css" rel="stylesheet">
 
-  <script src="https://kit.fontawesome.com/96a8e8f111.js" crossorigin="anonymous"></script>
-
-
-
-  <link rel="stylesheet" href="FE/css/style.css">
-  <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
-    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"> -->
+        <script src="https://kit.fontawesome.com/96a8e8f111.js" crossorigin="anonymous"></script>
 
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,500;1,900&display=swap" rel="stylesheet">
 
-  <style>
-    .centered-text {
-      display: flex;
-      justify-content: center;
-    }
-  </style>
+        <link rel="stylesheet" href="FE/css/style.css">
+        <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"> -->
+
+
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,500;1,900&display=swap" rel="stylesheet">
+
+        <style>
+            .centered-text {
+                display: flex;
+                justify-content: center;
+            }
+        </style>
     </head>
 
     <body class="">
-        <div class="container-fluid bg-dark px-0">
-            <div class="row gx-0">
-                <div class="col-lg-3 bg-dark d-none d-lg-block">
-
-
-                    <a href="index.html" class="navbar-brand w-100 h-100 m-0 p-0 d-flex align-items-center justify-content-center">
-                        <img src="FE/img/finallogo.png" style="width: 100px; margin-right: -40px; margin-bottom:50px;">
-                        <h1 class="m-0 display-4 text-primary text-uppercase">BIRDFIGHTER</h1>
-                    </a>
-
-
-
-                </div>
-                <div class="col-lg-9">
-                    <div class="row gx-0 bg-secondary d-none d-lg-flex">
-                        <div class="col-lg-7 px-5 text-start">
-                            <div class="h-100 d-inline-flex align-items-center py-2 me-4">
-                                <i class="fa fa-envelope text-primary me-2"></i>
-                                <h6 class="mb-0">birdfight@compe.com</h6>
-                            </div>
-                            <div class="h-100 d-inline-flex align-items-center py-2">
-                                <i class="fa fa-phone-alt text-primary me-2"></i>
-                                <h6 class="mb-0">+123 321 333</h6>
-                            </div>
-                        </div>
-                        <div class="col-lg-5 px-5 text-end">
-                            <div class="d-inline-flex align-items-center py-2">
-                                <a class="btn btn-light btn-square rounded-circle me-2" href="">
-                                    <i class="fab fa-facebook-f"></i>
-                                </a>
-                                <a class="btn btn-light btn-square rounded-circle me-2" href="">
-                                    <i class="fab fa-twitter"></i>
-                                </a>
-                                <a class="btn btn-light btn-square rounded-circle me-2" href="">
-                                    <i class="fab fa-linkedin-in"></i>
-                                </a>
-                                <a class="btn btn-light btn-square rounded-circle me-2" href="">
-                                    <i class="fab fa-instagram"></i>
-                                </a>
-                                <a class="btn btn-light btn-square rounded-circle" href="">
-                                    <i class="fab fa-youtube"></i>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <nav class="navbar navbar-expand-lg bg-dark navbar-dark p-3 p-lg-0 px-lg-5">
-
-                        <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
-                            <span class="navbar-toggler-icon"></span>
-                        </button>
-                        <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
-                            <div class="navbar-nav mr-auto py-0">
-                                <a href="/FE/postlogin.html" class="nav-item nav-link active">Home</a>
-                                <a href="/FE/leaderboard.html" class="nav-item nav-link">Bảng xếp hạng</a>
-                                <a href="/FE/schedule.html" class="nav-item nav-link">Lịch thi đấu</a>
-                                <a href="/FE/memberShip.html" class="nav-item nav-link">Hội viên</a>
-                                <div class="nav-item dropdown">
-                                    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
-                                    <div class="dropdown-menu rounded-0 m-0">
-                                        <!-- <a href="blog.html" class="dropdown-item">News</a> -->
-                                        <a href="/FE/rules.html" class="dropdown-item">Luật thi đấu</a>
-                                        <a href="/FE/feedback.html" class="dropdown-item">Feedback</a>
-                                        <a href="/FE/news.html" class="dropdown-item">Tin Tức</a>
-                                    </div>
-                                </div>
-                                <a href="contact.html" class="nav-item nav-link">Liên Hệ</a>
-                            </div>
-                           
-<!--                                Nút User Menu Ở Trên Góc Phải Màn Hình-->
-                                <div class="nav-item dropdown">
-                    
-                                    <a href="#" class="btn btn-primary nav-link dropdown-toggle" data-bs-toggle="dropdown" style="width: 150px;">${sessionScope.USER.userName}</a>
-                                    <div class="dropdown-menu rounded-0 m-0">
-                                        <!-- <a href="blog.html" class="dropdown-item">News</a> -->
-                                         <a class="dropdown-item" href="birdprofile.html">Bird Profile</a>
-                                    <a class="dropdown-item" href="addnewbird.html">Add Bird </a>
-                                    <div class="dropdown-divider"></div>
-                                    <a class="dropdown-item" href="/FE/index.html">Log out</a>
-                                    </div>
-                                </div>
-
-                        </div>
-                    </nav>
-                </div>
-            </div>
-        </div>
+               <jsp:include page="JspCommon/webheader.jsp"/>
         <section class="h-25 gradient-custom-2">
             <div class="container py-5 h-100">
                 <div class="row d-flex justify-content-center align-items-center h-100">
@@ -236,41 +151,41 @@
                                                                     <input class="form-control" id="inputSpecies" type="text" placeholder="Nhập giống chim"
                                                                            value="" name="birdSpecie">
                                                                 </div>
-<!--                                                                 Form Group (BirdAge)-->
+                                                                <!--                                                                 Form Group (BirdAge)-->
                                                                 <div class="col-md-6">
                                                                     <label class="small mb-1" for="inputBirdAge">ID</label>
                                                                     <input class="form-control" id="inputBirdAge" type="text" placeholder="Nhập ID chim (for example: B00)"
                                                                            value="" name="birdId">
                                                                 </div>
-                                                                    
-                                                            </div>
-                                                            
-                                                            <div class="row gx-3 mb-3">
-                             
-                                                               <div class="col-md-12">
-                                                                    
-                                                                   <input class="form-control" type="hidden" name="idMember" value="${sessionScope.USER.idMember}">
-                                                                </div>
-                                                                 
-<!--                                                                <div class="col-md-6">
-                                                                    <label class="small mb-1" for="inputHealStatus">Tình trạng sức khỏe</label>
-                                                                    <input class="form-control" id="inputHealStatus" type="text"
-                                                                           placeholder="Nhập tình trạng sức khỏe" value="">
-                                                             </div>-->
-                                                            </div>
-<!--                                                             Form Group (CompetitionHistory)
-                                                            <div class="mb-3">
-                                                                <label class="small mb-1" for="inputCompetitionHistory">Lịch sử thi đấu (nếu có)</label>
-                                                                <input class="form-control" id="inputCompetitionHistory" type="text"
-                                                                       placeholder="Nhập lịch sử đấu" value="">
+
                                                             </div>
 
-                                                             Form Group (OtherInfo)
-                                                            <div class="mb-3">
-                                                                <label class="small mb-1" for="inputOtherInfo">Thông tin khác (nếu có)</label>
-                                                                <input class="form-control" id="inputOtherInfo" type="text"
-                                                                       placeholder="Nhập thông tin khác" value="">
-                                                            </div>-->
+                                                            <div class="row gx-3 mb-3">
+
+                                                                <div class="col-md-12">
+
+                                                                    <input class="form-control" type="hidden" name="idMember" value="${sessionScope.USER.idMember}">
+                                                                </div>
+
+                                                                <!--                                                                <div class="col-md-6">
+                                                                                                                                    <label class="small mb-1" for="inputHealStatus">Tình trạng sức khỏe</label>
+                                                                                                                                    <input class="form-control" id="inputHealStatus" type="text"
+                                                                                                                                           placeholder="Nhập tình trạng sức khỏe" value="">
+                                                                                                                             </div>-->
+                                                            </div>
+                                                            <!--                                                             Form Group (CompetitionHistory)
+                                                                                                                        <div class="mb-3">
+                                                                                                                            <label class="small mb-1" for="inputCompetitionHistory">Lịch sử thi đấu (nếu có)</label>
+                                                                                                                            <input class="form-control" id="inputCompetitionHistory" type="text"
+                                                                                                                                   placeholder="Nhập lịch sử đấu" value="">
+                                                                                                                        </div>
+                                                            
+                                                                                                                         Form Group (OtherInfo)
+                                                                                                                        <div class="mb-3">
+                                                                                                                            <label class="small mb-1" for="inputOtherInfo">Thông tin khác (nếu có)</label>
+                                                                                                                            <input class="form-control" id="inputOtherInfo" type="text"
+                                                                                                                                   placeholder="Nhập thông tin khác" value="">
+                                                                                                                        </div>-->
 
                                                             <!-- Save changes button-->
 
@@ -291,7 +206,7 @@
                                                             </div>
                                                         </form>
                                                     </div>
-                                                                ${msg}
+                                                    ${msg}
                                                 </div>
                                             </div>
                                         </div>
@@ -307,6 +222,6 @@
                                     <script src="FE/lib/waypoints/waypoints.min.js"></script>
                                     <script src="FE/lib/counterup/counterup.min.js"></script>
                                     <script src="FE/lib/owlcarousel/owl.carousel.min.js"></script>
-                                    
-                                    
+
+
                                     </html>

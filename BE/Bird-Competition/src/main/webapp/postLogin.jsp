@@ -16,11 +16,15 @@
 
         <!-- Google Web Fonts -->
         <link rel="preconnect" href="https://fonts.gstatic.com">
-        <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Rubik&display=swap" rel="stylesheet"> 
+        <link
+            href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Rubik&display=swap"
+            rel="stylesheet">
 
         <!-- Icon Font Stylesheet -->
-        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.0/css/all.min.css" rel="stylesheet">
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.0/css/all.min.css"
+              rel="stylesheet">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css"
+              rel="stylesheet">
         <link href="FE/lib/flaticon/font/flaticon.css" rel="stylesheet">
 
         <!-- Libraries Stylesheet -->
@@ -38,95 +42,7 @@
 
     <body>
         <!-- Header Start -->
-        <div class="container-fluid bg-dark px-0">
-            <div class="row gx-0">
-                <div class="col-lg-3 bg-dark d-none d-lg-block">
-
-
-                    <a href="postlogin.html" class="navbar-brand w-100 h-100 m-0 p-0 d-flex align-items-center justify-content-center">
-                        <img src="FE/img/finallogo.png" style="width: 100px; margin-right: -40px; margin-bottom:50px;">
-                        <h1 class="m-0 display-4 text-primary text-uppercase">BIRDFIGHTER</h1>
-                    </a>
-
-
-
-                </div>
-                <div class="col-lg-9">
-                    <div class="row gx-0 bg-secondary d-none d-lg-flex">
-                        <div class="col-lg-7 px-5 text-start">
-                            <div class="h-100 d-inline-flex align-items-center py-2 me-4">
-                                <i class="fa fa-envelope text-primary me-2"></i>
-                                <h6 class="mb-0">birdfight@compe.com</h6>
-                            </div>
-                            <div class="h-100 d-inline-flex align-items-center py-2">
-                                <i class="fa fa-phone-alt text-primary me-2"></i>
-                                <h6 class="mb-0">+123 321 333</h6>
-                            </div>
-                        </div>
-                        <div class="col-lg-5 px-5 text-end">
-                            <div class="d-inline-flex align-items-center py-2">
-                                <a class="btn btn-light btn-square rounded-circle me-2" href="">
-                                    <i class="fab fa-facebook-f"></i>
-                                </a>
-                                <a class="btn btn-light btn-square rounded-circle me-2" href="">
-                                    <i class="fab fa-twitter"></i>
-                                </a>
-                                <a class="btn btn-light btn-square rounded-circle me-2" href="">
-                                    <i class="fab fa-linkedin-in"></i>
-                                </a>
-                                <a class="btn btn-light btn-square rounded-circle me-2" href="">
-                                    <i class="fab fa-instagram"></i>
-                                </a>
-                                <a class="btn btn-light btn-square rounded-circle" href="">
-                                    <i class="fab fa-youtube"></i>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <nav class="navbar navbar-expand-lg bg-dark navbar-dark p-3 p-lg-0 px-lg-5">
-
-                        <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
-                            <span class="navbar-toggler-icon"></span>
-                        </button>
-                        <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
-                            <div class="navbar-nav mr-auto py-0">
-                                <a href="#" class="nav-item nav-link active">Home</a>
-                                <a href='<c:url value="/DispatchServlet?btAction=Leaderboard"/>'>Bảng xếp hạng</a>
-                                <a href='<c:url value="/DispatchServlet?btAction=schedule"/>' class="nav-item nav-link">Lịch thi đấu</a>
-                                <a href="memberShip.html" class="nav-item nav-link">Hội viên</a>
-                                <div class="nav-item dropdown">
-                                    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
-                                    <div class="dropdown-menu rounded-0 m-0">
-                                        <a href="news.html" class="dropdown-item">News</a>
-                                        <a href="rules.html" class="dropdown-item">Luật thi đấu</a>
-                                        <a href="feedback.html" class="dropdown-item">Feedback</a>
-                                    </div>
-                                </div>
-                                <a href="contact.html" class="nav-item nav-link">Liên Hệ</a>
-                                <div class="nav-item dropdown">
-                                    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Quản lý</a>
-                                    <div class="dropdown-menu rounded-0 m-0">
-                                        <a href="updateRule.html" class="dropdown-item">Luật thi đấu</a>
-                                        <a href="" class="dropdown-item">Lịch thi đấu</a>
-                                        <a href="matchResult.html" class="dropdown-item">Kết quả trận đấu</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="nav-item dropdown">
-                                <a href="#" class="btn btn-primary nav-link dropdown-toggle" data-bs-toggle="dropdown" style="width: 150px;">${sessionScope.USER.userName}</a>
-                                <div class="dropdown-menu rounded-0 m-0">
-                                    <!-- <a href="blog.html" class="dropdown-item">News</a> -->
-                                    <a class="dropdown-item" href="birdprofile.html">Bird Profile</a>
-                                    <a class="dropdown-item" href="addnewbird.html">Add Bird </a>
-                                    <div class="dropdown-divider"></div>
-                                    <a class="dropdown-item" href="/FE/index.html">Log out</a>
-                                </div>
-                            </div>
-                        </div>
-                    </nav>
-                </div>
-            </div>
-        </div>
+       <jsp:include page="JspCommon/webheader.jsp"/>
         <!-- Header End -->
 
         <!-- Carousel Start -->
@@ -135,10 +51,12 @@
                 <div class="carousel-inner">
                     <div class="carousel-item active">
                         <img class="w-100" src="FE/img/hinh-anh-chim-chao-mao.jpg" alt="Image">
-                        <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
+                        <div
+                            class="carousel-caption d-flex flex-column align-items-center justify-content-center">
                             <div class="p-3" style="max-width: 900px;">
                                 <h5 class="text-white text-uppercase">BIRD COMPETITION PLATFORM</h5>
-                                <h1 class="display-2 text-white text-uppercase mb-md-4">Best Place To Show Us Your Birds </h1>
+                                <h1 class="display-2 text-white text-uppercase mb-md-4">Best Place To Show Us
+                                    Your Birds </h1>
                                 <a href="" class="btn btn-primary py-md-3 px-md-5 me-3">Join Us</a>
                                 <a href="" class="btn btn-light py-md-3 px-md-5">Contact Us</a>
                             </div>
@@ -146,10 +64,12 @@
                     </div>
                     <div class="carousel-item">
                         <img class="w-100" src="FE/img/chaomao-bg (2).jpg" alt="Image">
-                        <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
+                        <div
+                            class="carousel-caption d-flex flex-column align-items-center justify-content-center">
                             <div class="p-3" style="max-width: 900px;">
                                 <h5 class="text-white text-uppercase">BIRD COMPETITION PLATFORM</h5>
-                                <h1 class="display-2 text-white text-uppercase mb-md-4">Best Place To Show Us Your Birds</h1>
+                                <h1 class="display-2 text-white text-uppercase mb-md-4">Best Place To Show Us
+                                    Your Birds</h1>
                                 <a href="" class="btn btn-primary py-md-3 px-md-5 me-3">Join Us</a>
                                 <a href="" class="btn btn-light py-md-3 px-md-5">Contact Us</a>
                             </div>
@@ -176,7 +96,8 @@
             <div class="row gx-5">
                 <div class="col-lg-5 mb-5 mb-lg-0" style="min-height: 500px;">
                     <div class="position-relative h-100">
-                        <img class="position-absolute w-100 h-100 rounded" src="FE/img/chaomao-bg (1).jpg" style="object-fit: cover;">
+                        <img class="position-absolute w-100 h-100 rounded" src="FE/img/chaomao-bg (1).jpg"
+                             style="object-fit: cover;">
                     </div>
                 </div>
                 <div class="col-lg-7">
@@ -184,22 +105,38 @@
                         <h5 class="text-primary text-uppercase">About Us</h5>
                         <h1 class="display-3 text-uppercase mb-0">Welcome to Birdfighter</h1>
                     </div>
-                    <h4 class="text-body mb-4">BIRDFIGHTER là một trong những platform đầu tiên tổ chức và vận hành nhiều giải đấu dành cho người chơi chim. Cung cấp các dịch vụ như đăng kí tham gia online, bảng xếp hạng cập nhật theo các mùa,....</p>
+                    <h4 class="text-body mb-4">BIRDFIGHTER là một trong những platform đầu tiên tổ chức và vận
+                        hành nhiều giải đấu dành cho người chơi chim. Cung cấp các dịch vụ như đăng kí tham gia
+                        online, bảng xếp hạng cập nhật theo các mùa,....</p>
                         <div class="rounded bg-dark p-5">
                             <ul class="nav nav-pills justify-content-between mb-3">
                                 <li class="nav-item w-50">
-                                    <a class="nav-link text-uppercase text-center w-100 active" data-bs-toggle="pill" href="#pills-1">About Us</a>
+                                    <a class="nav-link text-uppercase text-center w-100 active"
+                                       data-bs-toggle="pill" href="#pills-1">About Us</a>
                                 </li>
                                 <li class="nav-item w-50">
-                                    <a class="nav-link text-uppercase text-center w-100" data-bs-toggle="pill" href="#pills-2">Why Choose Us</a>
+                                    <a class="nav-link text-uppercase text-center w-100" data-bs-toggle="pill"
+                                       href="#pills-2">Why Choose Us</a>
                                 </li>
                             </ul>
                             <div class="tab-content">
                                 <div class="tab-pane fade show active" id="pills-1">
-                                    <p class="text-secondary mb-0">Chào mừng bạn đến với "BIRDFIGHTER" - nơi tinh túy của sự cạnh tranh giữa những chú chim tài năng! Trang web của chúng tôi là điểm hẹn cho những người yêu mến thế giới chim và muốn theo dõi, tham gia và chia sẻ về các cuộc thi chim hấp dẫn. Tại đây, bạn sẽ được khám phá các cuộc thi chim độc đáo từ khắp nơi trên thế giới, theo dõi những màn trình diễn ngoạn mục của các loài chim, và tham gia cùng cộng đồng đam mê chim. Với thông tin mới nhất về các sự kiện, video, hình ảnh và bài viết thú vị, chúng tôi hy vọng sẽ giúp bạn nối kết với cộng đồng chim độc đáo và thú vị này. Hãy tham gia cùng chúng tôi để khám phá sự đẹp và tài năng của thế giới chim đầy màu sắc!</p>
+                                    <p class="text-secondary mb-0">Chào mừng bạn đến với "BIRDFIGHTER" - nơi
+                                        tinh túy của sự cạnh tranh giữa những chú chim tài năng! Trang web của
+                                        chúng tôi là điểm hẹn cho những người yêu mến thế giới chim và muốn theo
+                                        dõi, tham gia và chia sẻ về các cuộc thi chim hấp dẫn. Tại đây, bạn sẽ
+                                        được khám phá các cuộc thi chim độc đáo từ khắp nơi trên thế giới, theo
+                                        dõi những màn trình diễn ngoạn mục của các loài chim, và tham gia cùng
+                                        cộng đồng đam mê chim. Với thông tin mới nhất về các sự kiện, video,
+                                        hình ảnh và bài viết thú vị, chúng tôi hy vọng sẽ giúp bạn nối kết với
+                                        cộng đồng chim độc đáo và thú vị này. Hãy tham gia cùng chúng tôi để
+                                        khám phá sự đẹp và tài năng của thế giới chim đầy màu sắc!</p>
                                 </div>
                                 <div class="tab-pane fade" id="pills-2">
-                                    <p class="text-secondary mb-0">Chúng tôi cam kết mang đến cho bạn những trải nghiệm chất lượng và chuyên nghiệp nhất trong việc theo dõi và tham gia các cuộc thi chim. Chúng tôi đảm bảo cung cấp thông tin và nội dung đáng tin cậy.</p>
+                                    <p class="text-secondary mb-0">Chúng tôi cam kết mang đến cho bạn những trải
+                                        nghiệm chất lượng và chuyên nghiệp nhất trong việc theo dõi và tham gia
+                                        các cuộc thi chim. Chúng tôi đảm bảo cung cấp thông tin và nội dung đáng
+                                        tin cậy.</p>
                                 </div>
                             </div>
                         </div>
@@ -222,11 +159,12 @@
                             <div class="team-overlay">
                                 <div class="align-items-center justify-content-start">
                                     <h6 class="text-uppercase text-light mb-3"> Điểm: 2180</h6>
-                                    <h6 class="text-uppercase text-light mb-3"> Tỉ lệ thắng: 	67%</h6>
+                                    <h6 class="text-uppercase text-light mb-3"> Tỉ lệ thắng: 67%</h6>
                                 </div>
                             </div>
                         </div>
-                        <div class="position-absolute start-0 bottom-0 w-100 rounded-bottom text-center p-4" style="background: rgba(173, 181, 189, .9);">
+                        <div class="position-absolute start-0 bottom-0 w-100 rounded-bottom text-center p-4"
+                             style="background: rgba(173, 181, 189, .9);">
                             <h5 class="text-uppercase text-light">Arow</h5>
                             <p class="text-uppercase text-white m-0">Top 2</p>
                             <p class="text-uppercase text-white m-0">Trainner: Huy Ln</p>
@@ -242,11 +180,12 @@
                             <div class="team-overlay">
                                 <div class="align-items-center justify-content-start">
                                     <h6 class="text-uppercase text-light mb-3"> Điểm: 2198</h6>
-                                    <h6 class="text-uppercase text-light mb-3"> Tỉ lệ thắng: 	64%</h6>
+                                    <h6 class="text-uppercase text-light mb-3"> Tỉ lệ thắng: 64%</h6>
                                 </div>
                             </div>
                         </div>
-                        <div class="position-absolute start-0 bottom-0 w-100 rounded-bottom text-center p-4" style="background: rgba(255, 218, 101, .9);">
+                        <div class="position-absolute start-0 bottom-0 w-100 rounded-bottom text-center p-4"
+                             style="background: rgba(255, 218, 101, .9);">
                             <h5 class="text-uppercase text-light">Chào mào chiến</h5>
                             <p class="text-uppercase text-white m-0">Top 1</p>
                             <p class="text-uppercase text-white m-0">Trainner: ThuanThien</p>
@@ -261,11 +200,12 @@
                             <div class="team-overlay">
                                 <div class="align-items-center justify-content-start">
                                     <h6 class="text-uppercase text-light mb-3"> Điểm: 2178</h6>
-                                    <h6 class="text-uppercase text-light mb-3"> Tỉ lệ thắng: 	55%</h6>
+                                    <h6 class="text-uppercase text-light mb-3"> Tỉ lệ thắng: 55%</h6>
                                 </div>
                             </div>
                         </div>
-                        <div class="position-absolute start-0 bottom-0 w-100 rounded-bottom text-center p-4" style="background: rgba(201, 147, 85, .9);">
+                        <div class="position-absolute start-0 bottom-0 w-100 rounded-bottom text-center p-4"
+                             style="background: rgba(201, 147, 85, .9);">
                             <h5 class="text-uppercase text-light">Senu</h5>
                             <p class="text-uppercase text-white m-0">Top 3</p>
                             <p class="text-uppercase text-white m-0">Trainner: Danh Tran</p>
@@ -276,7 +216,7 @@
             </div>
         </div>
         <div class="col-lg-12 col-md-6 text-center" style="margin-top: 25px;">
-            <a href="leaderboard.html#board" class="btn btn-primary py-3 px-5">Xem bảng xếp hạng</a> 
+            <a href="leaderboard.html#board" class="btn btn-primary py-3 px-5">Xem bảng xếp hạng</a>
         </div>
     </div>
     <!-- Top Bird End -->
@@ -288,34 +228,45 @@
             <h1 class="display-3 text-uppercase mb-0">các trận đấu sắp tới</h1>
         </div>
         <div class="tab-class text-center">
-            <ul class="nav nav-pills d-inline-flex justify-content-center bg-dark text-uppercase rounded-pill mb-5">
+            <ul
+                class="nav nav-pills d-inline-flex justify-content-center bg-dark text-uppercase rounded-pill mb-5">
                 <li class="nav-item">
-                    <a class="nav-link rounded-pill text-white" data-bs-toggle="pill" href="#tab-0">Đã diễn ra</a>
+                    <a class="nav-link rounded-pill text-white" data-bs-toggle="pill" href="#tab-0">Đã diễn
+                        ra</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link rounded-pill text-white active" data-bs-toggle="pill" href="#tab-1">Đang diễn ra</a>
+                    <a class="nav-link rounded-pill text-white active" data-bs-toggle="pill"
+                       href="#tab-1">Đang diễn ra</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link rounded-pill text-white" data-bs-toggle="pill" href="#tab-2">Sắp diễn ra</a>
+                    <a class="nav-link rounded-pill text-white" data-bs-toggle="pill" href="#tab-2">Sắp diễn
+                        ra</a>
                 </li>
             </ul>
             <div class="tab-content">
                 <div id="tab-0" class="tab-pane fade show p-0">
                     <div class="row g-5">
-                        <c:set var="scheduleData" value="${sessionScope.SCHEDULE}"/>
+                        <c:set var="scheduleData" value="${sessionScope.SCHEDULE}" />
                         <c:if test="${not empty scheduleData}">
                             <c:forEach var="scheduleDto" items="${scheduleData}" varStatus="counter">
                                 <div class="col-lg-3 col-md-4 col-sm-6">
                                     <div class="bg-dark rounded text-center py-5 px-3">
-                                        <h6 class="text-uppercase text-light mb-3">Ngày: ${scheduleDto.date}</h6>
-                                        <h6 class="text-uppercase text-light mb-3"> Giờ: 8.00am - 10.00am</h6>
-                                        <h6 class="text-uppercase text-light mb-3"> Địa điểm: ${scheduleDto.location}</h6>
+                                        <h6 class="text-uppercase text-light mb-3">Ngày: ${scheduleDto.date}
+                                        </h6>
+                                        <h6 class="text-uppercase text-light mb-3"> Giờ: 8.00am - 10.00am
+                                        </h6>
+                                        <h6 class="text-uppercase text-light mb-3"> Địa điểm:
+                                            ${scheduleDto.location}</h6>
                                         <h5 class="text-uppercase text-primary">${scheduleDto.name}</h5>
-                                        <p class="text-uppercase text-secondary mb-0">Loại chim: Chào mào</p>
-                                        <p class="text-uppercase text-secondary mb-0">Điểm yêu cầu: ${scheduleDto.minPoint} - ${scheduleDto.maxPoint} </p>
-                                        <p class="text-uppercase text-secondary mb-0" style="display: inline;">
-                                            số người đăng kí: 
-                                        <p class="text-uppercase text-primary mb-0" style="display: inline;">10/15</p>
+                                        <p class="text-uppercase text-secondary mb-0">Loại chim: Chào mào
+                                        </p>
+                                        <p class="text-uppercase text-secondary mb-0">Điểm yêu cầu:
+                                            ${scheduleDto.minPoint} - ${scheduleDto.maxPoint} </p>
+                                        <p class="text-uppercase text-secondary mb-0"
+                                           style="display: inline;">
+                                            số người đăng kí:
+                                        <p class="text-uppercase text-primary mb-0"
+                                           style="display: inline;">10/15</p>
                                         </p>
                                     </div>
                                 </div>
@@ -325,20 +276,27 @@
                 </div>
                 <div id="tab-1" class="tab-pane fade show p-0 active">
                     <div class="row g-5">
-                        <c:set var="scheduleData" value="${sessionScope.SCHEDULE}"/>
+                        <c:set var="scheduleData" value="${sessionScope.SCHEDULE}" />
                         <c:if test="${not empty scheduleData}">
                             <c:forEach var="scheduleDto" items="${scheduleData}" varStatus="counter">
                                 <div class="col-lg-3 col-md-4 col-sm-6">
                                     <div class="bg-dark rounded text-center py-5 px-3">
-                                        <h6 class="text-uppercase text-light mb-3">Ngày: ${scheduleDto.date}</h6>
-                                        <h6 class="text-uppercase text-light mb-3"> Giờ: 8.00am - 10.00am</h6>
-                                        <h6 class="text-uppercase text-light mb-3"> Địa điểm: ${scheduleDto.location}</h6>
+                                        <h6 class="text-uppercase text-light mb-3">Ngày: ${scheduleDto.date}
+                                        </h6>
+                                        <h6 class="text-uppercase text-light mb-3"> Giờ: 8.00am - 10.00am
+                                        </h6>
+                                        <h6 class="text-uppercase text-light mb-3"> Địa điểm:
+                                            ${scheduleDto.location}</h6>
                                         <h5 class="text-uppercase text-primary">${scheduleDto.name}</h5>
-                                        <p class="text-uppercase text-secondary mb-0">Loại chim: Chào mào</p>
-                                        <p class="text-uppercase text-secondary mb-0">Điểm yêu cầu: ${scheduleDto.minPoint} - ${scheduleDto.maxPoint} </p>
-                                        <p class="text-uppercase text-secondary mb-0" style="display: inline;">
-                                            số người đăng kí: 
-                                        <p class="text-uppercase text-primary mb-0" style="display: inline;">10/15</p>
+                                        <p class="text-uppercase text-secondary mb-0">Loại chim: Chào mào
+                                        </p>
+                                        <p class="text-uppercase text-secondary mb-0">Điểm yêu cầu:
+                                            ${scheduleDto.minPoint} - ${scheduleDto.maxPoint} </p>
+                                        <p class="text-uppercase text-secondary mb-0"
+                                           style="display: inline;">
+                                            số người đăng kí:
+                                        <p class="text-uppercase text-primary mb-0"
+                                           style="display: inline;">10/15</p>
                                         </p>
                                     </div>
                                 </div>
@@ -348,23 +306,32 @@
                 </div>
                 <div id="tab-2" class="tab-pane fade show p-0">
                     <div class="row g-5">
-                        <c:set var="scheduleData" value="${sessionScope.SCHEDULE}"/>
+                        <c:set var="scheduleData" value="${sessionScope.SCHEDULE}" />
                         <c:if test="${not empty scheduleData}">
                             <c:forEach var="scheduleDto" items="${scheduleData}" varStatus="counter">
                                 <div class="col-lg-3 col-md-4 col-sm-6">
                                     <div class="bg-dark rounded text-center py-5 px-3">
-                                        <h6 class="text-uppercase text-light mb-3">Ngày: ${scheduleDto.date}</h6>
-                                        <h6 class="text-uppercase text-light mb-3"> Giờ: 8.00am - 10.00am</h6>
-                                        <h6 class="text-uppercase text-light mb-3"> Địa điểm: ${scheduleDto.location}</h6>
+                                        <h6 class="text-uppercase text-light mb-3">Ngày: ${scheduleDto.date}
+                                        </h6>
+                                        <h6 class="text-uppercase text-light mb-3"> Giờ: 8.00am - 10.00am
+                                        </h6>
+                                        <h6 class="text-uppercase text-light mb-3"> Địa điểm:
+                                            ${scheduleDto.location}</h6>
                                         <h5 class="text-uppercase text-primary">${scheduleDto.name}</h5>
-                                        <p class="text-uppercase text-secondary mb-0">Loại chim: Chào mào</p>
-                                        <p class="text-uppercase text-secondary mb-0">Điểm yêu cầu: ${scheduleDto.minPoint} - ${scheduleDto.maxPoint} </p>
-                                        <h6 class="text-uppercase text-light mb-3">Phí đăng kí: ${scheduleDto.fee}</h6>
-                                        <p class="text-uppercase text-secondary mb-0" style="display: inline;">
-                                            số người đăng kí: 
-                                        <p class="text-uppercase text-primary mb-0" style="display: inline;">10/15</p>
+                                        <p class="text-uppercase text-secondary mb-0">Loại chim: Chào mào
                                         </p>
-                                        <button class="btn btn-primary btn-register px-5" style="margin-top: 10px;">
+                                        <p class="text-uppercase text-secondary mb-0">Điểm yêu cầu:
+                                            ${scheduleDto.minPoint} - ${scheduleDto.maxPoint} </p>
+                                        <h6 class="text-uppercase text-light mb-3">Phí đăng kí:
+                                            ${scheduleDto.fee}</h6>
+                                        <p class="text-uppercase text-secondary mb-0"
+                                           style="display: inline;">
+                                            số người đăng kí:
+                                        <p class="text-uppercase text-primary mb-0"
+                                           style="display: inline;">10/15</p>
+                                        </p>
+                                        <button class="btn btn-primary btn-register px-5"
+                                                style="margin-top: 10px;">
                                             Đăng kí thi đấu</button>
                                     </div>
                                 </div>
@@ -375,7 +342,8 @@
             </div>
         </div>
         <div class="col-lg-12 col-md-6 d-flex justify-content-center mt-3">
-            <a href='<c:url value="/DispatchServlet?btAction=schedule"/>' class="btn btn-primary py-3 px-5">Xem lịch thi đấu</a> 
+            <a href='<c:url value="/DispatchServlet?btAction=schedule"/>'
+               class="btn btn-primary py-3 px-5">Xem lịch thi đấu</a>
         </div>
     </div>
     <!-- Schedule End -->
@@ -551,7 +519,8 @@
                         <h4 class="text-uppercase text-light mb-4">Get In Touch</h4>
                         <div class="d-flex mb-2">
                             <i class="bi bi-geo-alt text-primary me-2"></i>
-                            <p class="mb-0">FPT University, Lô E2a-7, Đường D1, Đ. D1, Long Thạnh Mỹ, Thành Phố Thủ Đức, Thành phố Hồ Chí Minh</p>
+                            <p class="mb-0">FPT University, Lô E2a-7, Đường D1, Đ. D1, Long Thạnh Mỹ, Thành
+                                Phố Thủ Đức, Thành phố Hồ Chí Minh</p>
                         </div>
                         <div class="d-flex mb-2">
                             <i class="bi bi-envelope-open text-primary me-2"></i>
@@ -562,32 +531,48 @@
                             <p class="mb-0">+012 345 67890</p>
                         </div>
                         <div class="d-flex mt-4">
-                            <a class="btn btn-primary btn-square rounded-circle me-2" href="#"><i class="fab fa-twitter"></i></a>
-                            <a class="btn btn-primary btn-square rounded-circle me-2" href="#"><i class="fab fa-facebook-f"></i></a>
-                            <a class="btn btn-primary btn-square rounded-circle me-2" href="#"><i class="fab fa-linkedin-in"></i></a>
-                            <a class="btn btn-primary btn-square rounded-circle" href="#"><i class="fab fa-instagram"></i></a>
+                            <a class="btn btn-primary btn-square rounded-circle me-2" href="#"><i
+                                    class="fab fa-twitter"></i></a>
+                            <a class="btn btn-primary btn-square rounded-circle me-2" href="#"><i
+                                    class="fab fa-facebook-f"></i></a>
+                            <a class="btn btn-primary btn-square rounded-circle me-2" href="#"><i
+                                    class="fab fa-linkedin-in"></i></a>
+                            <a class="btn btn-primary btn-square rounded-circle" href="#"><i
+                                    class="fab fa-instagram"></i></a>
                         </div>
                     </div>
                     <div class="col-lg-4 col-md-12 pt-0 pt-lg-5 mb-5">
                         <h4 class="text-uppercase text-light mb-4">Quick Links</h4>
                         <div class="d-flex flex-column justify-content-start">
-                            <a class="text-secondary mb-2" href="#"><i class="bi bi-arrow-right text-primary me-2"></i>Home</a>
-                            <a class="text-secondary mb-2" href="#"><i class="bi bi-arrow-right text-primary me-2"></i>About Us</a>
-                            <a class="text-secondary mb-2" href="#"><i class="bi bi-arrow-right text-primary me-2"></i>Class Schedule</a>
-                            <a class="text-secondary mb-2" href="#"><i class="bi bi-arrow-right text-primary me-2"></i>Our Trainers</a>
-                            <a class="text-secondary mb-2" href="#"><i class="bi bi-arrow-right text-primary me-2"></i>Latest Blog</a>
-                            <a class="text-secondary" href="#"><i class="bi bi-arrow-right text-primary me-2"></i>Contact Us</a>
+                            <a class="text-secondary mb-2" href="#"><i
+                                    class="bi bi-arrow-right text-primary me-2"></i>Home</a>
+                            <a class="text-secondary mb-2" href="#"><i
+                                    class="bi bi-arrow-right text-primary me-2"></i>About Us</a>
+                            <a class="text-secondary mb-2" href="#"><i
+                                    class="bi bi-arrow-right text-primary me-2"></i>Class Schedule</a>
+                            <a class="text-secondary mb-2" href="#"><i
+                                    class="bi bi-arrow-right text-primary me-2"></i>Our Trainers</a>
+                            <a class="text-secondary mb-2" href="#"><i
+                                    class="bi bi-arrow-right text-primary me-2"></i>Latest Blog</a>
+                            <a class="text-secondary" href="#"><i
+                                    class="bi bi-arrow-right text-primary me-2"></i>Contact Us</a>
                         </div>
                     </div>
                     <div class="col-lg-4 col-md-12 pt-0 pt-lg-5 mb-5">
                         <h4 class="text-uppercase text-light mb-4">Popular Links</h4>
                         <div class="d-flex flex-column justify-content-start">
-                            <a class="text-secondary mb-2" href="#"><i class="bi bi-arrow-right text-primary me-2"></i>Home</a>
-                            <a class="text-secondary mb-2" href="#"><i class="bi bi-arrow-right text-primary me-2"></i>About Us</a>
-                            <a class="text-secondary mb-2" href="#"><i class="bi bi-arrow-right text-primary me-2"></i>Class Schedule</a>
-                            <a class="text-secondary mb-2" href="#"><i class="bi bi-arrow-right text-primary me-2"></i>Our Trainers</a>
-                            <a class="text-secondary mb-2" href="#"><i class="bi bi-arrow-right text-primary me-2"></i>Latest Blog</a>
-                            <a class="text-secondary" href="#"><i class="bi bi-arrow-right text-primary me-2"></i>Contact Us</a>
+                            <a class="text-secondary mb-2" href="#"><i
+                                    class="bi bi-arrow-right text-primary me-2"></i>Home</a>
+                            <a class="text-secondary mb-2" href="#"><i
+                                    class="bi bi-arrow-right text-primary me-2"></i>About Us</a>
+                            <a class="text-secondary mb-2" href="#"><i
+                                    class="bi bi-arrow-right text-primary me-2"></i>Class Schedule</a>
+                            <a class="text-secondary mb-2" href="#"><i
+                                    class="bi bi-arrow-right text-primary me-2"></i>Our Trainers</a>
+                            <a class="text-secondary mb-2" href="#"><i
+                                    class="bi bi-arrow-right text-primary me-2"></i>Latest Blog</a>
+                            <a class="text-secondary" href="#"><i
+                                    class="bi bi-arrow-right text-primary me-2"></i>Contact Us</a>
                         </div>
                     </div>
                 </div>
@@ -598,7 +583,8 @@
         <div class="row gx-5">
             <div class="col-lg-12">
                 <div class="py-lg-4 text-center">
-                    <p class="text-secondary mb-0">&copy; <a class="text-light fw-bold" href="#">BIRDFIGHTER</a>. All Rights Reserved.</p>
+                    <p class="text-secondary mb-0">&copy; <a class="text-light fw-bold"
+                                                             href="#">BIRDFIGHTER</a>. All Rights Reserved.</p>
                 </div>
             </div>
         </div>
