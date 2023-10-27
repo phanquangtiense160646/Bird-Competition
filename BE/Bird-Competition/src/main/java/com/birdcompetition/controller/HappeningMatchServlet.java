@@ -19,6 +19,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -39,13 +40,16 @@ public class HappeningMatchServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        String url = "Admin/happeningContest.jsp";
+        
+        HttpSession session = request.getSession();
+        String url = "AdminPage/curentMatch.jsp";
         try {
             ScheduleDAO dao = new ScheduleDAO();
             dao.getScheduleByStatus(3);
+//            dao.getSchedule();
             List<ScheduleDTO> result = dao.getList();
-
-            request.setAttribute("HAPPENING", result);
+//            System.out.println("size: " + result.size() );
+            session.setAttribute("HAPPENING", result);
 
         } catch (SQLException ex) {
             Logger.getLogger(HappeningMatchServlet.class.getName()).log(Level.SEVERE, null, ex);

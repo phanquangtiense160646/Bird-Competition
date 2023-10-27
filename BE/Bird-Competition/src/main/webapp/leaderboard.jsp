@@ -187,6 +187,8 @@
                             </table>
                         </div>
                     </div>
+                    </div>
+                    
                     <div class="overlay"></div>
                 </c:if>
                 <c:if test="${empty searchList}">
@@ -355,7 +357,7 @@
             <!-- Leaderboard end -->
 
             <!-- Personal Leaderboard start -->
-            <div class="wrapper" id="p-board">
+<!--            <div class="wrapper" id="p-board">
                 <div class="list">
                     <div class="list__header">
                         <h1>Xếp hạng chim của bạn</h1>
@@ -363,7 +365,7 @@
                     <div class="list__body">
                         <table class="list__table">
                             <tbody>
-                                <!-- Loop -->
+                                 Loop 
                                 <tr class="list__row" data-image="FE/img/thuanphuong.jpg" data-win="167" data-lose="45" data-tie="6" data-match= "100">
                                     <td class="list__cell">
                                         <span class="list__value">1</span>
@@ -381,7 +383,7 @@
                                         <small class="list__label">Điểm</small>
                                     </td>
                                 </tr>
-                                <!-- row -->
+                                 row 
                                 <tr class="list__row" data-image="FE/img/hinh-anh-chim-chao-mao.jpg" data-win="146" data-lose="56" data-tie="3">
                                     <td class="list__cell">
                                         <span class="list__value">2</span>
@@ -399,7 +401,7 @@
                                         <small class="list__label">Điểm</small>
                                     </td>
                                 </tr>
-                                <!-- row -->
+                                 row 
                                 <tr class="list__row" data-image="FE/img/thuanphuong.jpg" data-win="143" data-lose="60" data-tie="5">
                                     <td class="list__cell">
                                         <span class="list__value">3</span>
@@ -417,14 +419,14 @@
                                         <small class="list__label">Điểm</small>
                                     </td>
                                 </tr>
-                                <!-- row -->
-                                <!-- End of loop -->
+                                 row 
+                                 End of loop 
                             </tbody>
                         </table>
-                        <!-- <button class="view-more_bt">Xem thêm</button> -->
+                         <button class="view-more_bt">Xem thêm</button> 
                     </div>
                 </div>
-                <div class="overlay"></div>
+                <div class="overlay"></div>-->
 
                 <!-- Personal Leaderboard end -->
 

@@ -4,12 +4,10 @@
  */
 package com.birdcompetition.controller;
 
-import com.birdcompetition.bird.BirdDAO;
-import com.birdcompetition.bird.BirdDTO;
+import com.birdcompetition.schedule.ScheduleDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
-import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.naming.NamingException;
@@ -24,8 +22,8 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Danh
  */
-@WebServlet(name = "LeaderBoardServlet", urlPatterns = {"/LeaderBoardServlet"})
-public class LeaderBoardServlet extends HttpServlet {
+@WebServlet(name = "CompleteCheckInServlet", urlPatterns = {"/CompleteCheckInServlet"})
+public class CompleteCheckInServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -39,22 +37,23 @@ public class LeaderBoardServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        String url = "leaderboard.jsp";
+        int matchId = Integer.parseInt(request.getParameter("txtMatchId"));
+        String url = "PreparingMatchServlet";
 
         try {
-            BirdDAO dao = new BirdDAO();
-            dao.resetBirdList();
-            dao.displayLeaderboard();
-            List<BirdDTO> result = dao.getBirdList();
-            request.setAttribute("LEADER_BOARD", result);
-
-        } catch (SQLException | NamingException | ClassNotFoundException ex) {
-            Logger.getLogger(LeaderBoardServlet.class.getName()).log(Level.SEVERE, null, ex);
-
+            ScheduleDAO dao = new ScheduleDAO();
+            dao.setStatus(matchId, 3);
+        } catch (SQLException ex) {
+            Logger.getLogger(CompleteCheckInServlet.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (NamingException ex) {
+            Logger.getLogger(CompleteCheckInServlet.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(CompleteCheckInServlet.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
             RequestDispatcher rd = request.getRequestDispatcher(url);
             rd.forward(request, response);
         }
+
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

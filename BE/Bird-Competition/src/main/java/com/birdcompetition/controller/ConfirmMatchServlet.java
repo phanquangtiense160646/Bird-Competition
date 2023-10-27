@@ -5,11 +5,11 @@
 package com.birdcompetition.controller;
 
 import com.birdcompetition.bird.BirdDAO;
-import com.birdcompetition.bird.BirdDTO;
+import com.birdcompetition.birdInContest.BirdContestDAO;
+import com.birdcompetition.schedule.ScheduleDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
-import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.naming.NamingException;
@@ -24,8 +24,8 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Danh
  */
-@WebServlet(name = "LeaderBoardServlet", urlPatterns = {"/LeaderBoardServlet"})
-public class LeaderBoardServlet extends HttpServlet {
+@WebServlet(name = "ConfirmMatchServlet", urlPatterns = {"/ConfirmMatchServlet"})
+public class ConfirmMatchServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -39,20 +39,37 @@ public class LeaderBoardServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        String url = "leaderboard.jsp";
+
+        int matchId = Integer.parseInt(request.getParameter("txtMatchId"));
+        String[] birdIdList = request.getParameterValues("txtBirdID");
+        String[] orderList = request.getParameterValues("txtOrder");
+        String[] beforePointList = request.getParameterValues("txtBefore");
+        String[] afterPointList = request.getParameterValues("txtAfter");
 
         try {
-            BirdDAO dao = new BirdDAO();
-            dao.resetBirdList();
-            dao.displayLeaderboard();
-            List<BirdDTO> result = dao.getBirdList();
-            request.setAttribute("LEADER_BOARD", result);
+            BirdContestDAO birdContestDao = new BirdContestDAO();
+            ScheduleDAO scheduleDao = new ScheduleDAO();
+            BirdDAO birdDao = new BirdDAO();
 
-        } catch (SQLException | NamingException | ClassNotFoundException ex) {
-            Logger.getLogger(LeaderBoardServlet.class.getName()).log(Level.SEVERE, null, ex);
+            for (int i = 0; i < birdIdList.length; i++) {
+                int id = Integer.parseInt(birdIdList[i]);
+                int order = Integer.parseInt(orderList[i]);
+                int beforePoint = Integer.parseInt(beforePointList[i]);
+                int afterPoint = Integer.parseInt(afterPointList[i]);
 
+                birdContestDao.setPoint(id, order, beforePoint, afterPoint);
+                birdDao.setPoint(id, afterPoint);
+            }
+            scheduleDao.setStatus(matchId, 4);
+
+        } catch (SQLException ex) {
+            Logger.getLogger(ConfirmMatchServlet.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (NamingException ex) {
+            Logger.getLogger(ConfirmMatchServlet.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(ConfirmMatchServlet.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
-            RequestDispatcher rd = request.getRequestDispatcher(url);
+            RequestDispatcher rd = request.getRequestDispatcher("HappeningMatchServlet");
             rd.forward(request, response);
         }
     }
