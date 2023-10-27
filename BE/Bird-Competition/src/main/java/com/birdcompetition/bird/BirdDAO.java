@@ -124,15 +124,15 @@ public class BirdDAO implements Serializable {
                     String name = rs.getString("NameOfBird");
                     String speices = rs.getString("Species");
                     int point = rs.getInt("Point");
-//                    String ownerId = rs.getString("b.IdMember");
-//                    int win = rs.getInt("Win");
-//                    int lose = rs.getInt("Lose");
-//                    int tie = rs.getInt("Tie");
-//                    int matchNumber = rs.getInt("MatchNumber");
+                    String ownerId = rs.getString("b.IdMember");
+                    int win = rs.getInt("Win");
+                    int lose = rs.getInt("Lose");
+                    int tie = rs.getInt("Tie");
+                    int matchNumber = rs.getInt("MatchNumber");
 //                    String trainer = rs.getString("m.FullName");                     
                     //5.1.2 add data to list
 
-                    BirdDTO dto = new BirdDTO(birdId, name, speices, point, true, id);
+                    BirdDTO dto = new BirdDTO(birdId, name, speices, point, true, ownerId, ownerId, win, lose, tie, matchNumber);
 //                    System.out.println(dto.toString());
                     this.birdList.add(dto);
                 }//end map DB to DTO

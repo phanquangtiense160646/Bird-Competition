@@ -141,7 +141,44 @@ public class ScheduleDAO implements Serializable {
         }
 
     }
-    public boolean registerCompetition() {
-        return false;
-    } 
+    public boolean cRegisterInsert(ScheduleDTO dto) 
+            throws SQLException, ClassNotFoundException {
+        Connection con = null;
+        PreparedStatement stm = null;
+        boolean result = false;
+        
+        try {
+            //1.Make connection
+            con = DBHelper.getConnection();
+            //check 
+            if (con != null) {
+                //2.Creat SQL String 
+                String sql = "Insert Into Contest("
+                        + "NameOfContest, Date, LocationId, Status, Factor, MinPoint, MaxPoint, MaxParticipant, ParticipatingFee"
+                        + ") Values("
+                        + "?, ?, ?, ?, ?, ?, ?, ?, ?"
+                        + ")";
+                //3.Create Statement Object
+                stm = con.prepareStatement(sql);
+                
+
+                //4.Exercute Query
+                int exercute = stm.executeUpdate();
+                //5.Process
+                if (exercute > 0) {
+                    result = true;
+                }
+                //end username and password is verified 
+            }
+        } finally {
+
+            if (stm != null) {
+                stm.close();
+            }
+            if (con != null) {
+                con.close();
+            }
+        }
+        return result;
+    }
 }

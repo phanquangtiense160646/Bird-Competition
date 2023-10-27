@@ -128,11 +128,20 @@
                                             data-bs-toggle="dropdown"
                                             style="width: 150px;">${sessionScope.USER.userName}</a>
                                         <div class="dropdown-menu rounded-0 m-0">
-                                            <a class="dropdown-item" href="userprofile.jsp">User Profile</a>
-                                            <a class="dropdown-item" href="birdprofile.html">Bird Profile</a>
-                                            <a class="dropdown-item" href="addnewbird.jsp">Add Bird </a>
-                                            <div class="dropdown-divider"></div>
-                                            <a class="dropdown-item" href="LogoutServlet">Log out</a>
+
+                                            <form action="DispatchServlet" method="POST">
+                                                <a class="dropdown-item" href="userprofile.jsp">User Profile</a>
+                                                <a class="dropdown-item" href="birdprofile.html">Bird Profile</a>
+                                                <a class="dropdown-item" href="addnewbird.jsp">Add Bird</a>
+                                                <button class="dropdown-item" name="btAction" value="MatchHistory">Match
+                                                    History</button>
+                                                <button class="dropdown-item" name="btAction"
+                                                    value="PaymentHistory">Payment History</button>
+                                                <div class="dropdown-divider"></div>
+                                                <button class="dropdown-item" name="btAction"
+                                                    value="Logout">Logout</button>
+                                            </form>
+
                                         </div>
                                     </div>
                                 </div>
@@ -518,7 +527,7 @@
                                     href="https://baocaobang.vn/hoi-thi-dau-hot-chim-chao-mao-thanh-pho-mo-rong-nam-2023-3161421.html">
                                     <div class="position-relative overflow-hidden rounded-top">
                                         <img class="img-fluid"
-                                            src="FE/img/104155_104154_104153_ntv03550_14381223_16185323_16191723.jpg"
+                                            src="img/104155_104154_104153_ntv03550_14381223_16185323_16191723.jpg"
                                             alt="">
                                     </div>
                                     <div class="bg-dark d-flex align-items-center rounded-bottom p-4">

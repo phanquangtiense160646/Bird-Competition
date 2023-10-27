@@ -6,6 +6,7 @@ import com.birdcompetition.registerCompetition.CRegisterDAO;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
+import java.util.UUID;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.RequestDispatcher;
@@ -38,37 +39,56 @@ public class CRegisterServlet extends HttpServlet {
         String birdId = request.getParameter("cboBird");
         String contestId = request.getParameter("hiddenContestId");
         String url = "ScheduleServlet";
-        HttpSession session = request.getSession();
+        int count = 0;
         try {
+            System.out.println("birdId: " + birdId + " contestID: " + contestId);
+            HttpSession session = request.getSession();
             if (birdId != null) {
                 int id = Integer.parseInt(birdId);
+                int contestID = Integer.parseInt(contestId);
                 CRegisterDAO dao = new CRegisterDAO();
-                //lay chim by id chim
-                int beforePoint = 0;
-                List<BirdDTO> listBird = (List<BirdDTO>) session.getAttribute("OWN_BIRD");
-                for (BirdDTO birdDTO : listBird) {
-                    if (birdDTO.getBirdID() == id) {
-                        beforePoint = birdDTO.getPoint();
-                        break;
+                dao.getBirdInContest(contestID);
+                List<BirdContestDTO> birdContestList = dao.getListBirdContest();
+                /*Check existence Bird*/
+                if (birdContestList != null) {
+                    for (BirdContestDTO birdContestDTO : birdContestList) {
+                        if (birdContestDTO.getBirdId() == id) {
+                            count++;
+                        }
                     }
                 }
-                BirdContestDTO dto = new BirdContestDTO(id, contestId,
-                        0, beforePoint, 0, true, false, null);
-                dao.cRegisterInsert(dto);
-                String mes = "success";
-                request.setAttribute("MES", mes);
+                //insert
+                if (count == 0) {
+                    int beforePoint = 0;
+                    List<BirdDTO> listBird = (List<BirdDTO>) session.getAttribute("OWN_BIRD");
+                    for (BirdDTO birdDTO : listBird) {
+                        if (birdDTO.getBirdID() == id) {
+                            beforePoint = birdDTO.getPoint();
+                            break;
+                        }
+                    }
+                    String checkInCode = UUID.randomUUID().toString().substring(0, 10);
+                    BirdContestDTO dto = new BirdContestDTO(id, contestId,
+                            0, beforePoint, 0, true, false, checkInCode);
+                    dao.cRegisterInsert(dto);
+                    String mes = "success";
+                    session.setAttribute("MES", mes);
+                } else {
+                    String mes = "error";
+                    session.setAttribute("MES", mes);
+                }
             } else {
                 String mes = "fail";
-                request.setAttribute("MES", mes);
+                session.setAttribute("MES", mes);
             }
 
         } catch (SQLException ex) {
             log("CRegister_SQL: " + ex.getMessage());
+//               ex.printStackTrace();
         } catch (ClassNotFoundException ex) {
             log("CRegister_ClassNotFound: " + ex.getMessage());
         } finally {
-            RequestDispatcher rd = request.getRequestDispatcher(url);
-            rd.forward(request, response);
+            response.sendRedirect(url);
         }
     }
 
