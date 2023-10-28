@@ -7,6 +7,7 @@ package com.birdcompetition.controller;
 import com.birdcompetition.schedule.ScheduleDAO;
 import com.birdcompetition.schedule.ScheduleDTO;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.sql.SQLException;
 import java.util.List;
 import java.util.logging.Level;
@@ -23,8 +24,8 @@ import javax.servlet.http.HttpSession;
  *
  * @author Danh
  */
-@WebServlet(name = "HappeningMatchServlet", urlPatterns = {"/HappeningMatchServlet"})
-public class HappeningMatchServlet extends HttpServlet {
+@WebServlet(name = "PreparingMatchServlet", urlPatterns = {"/PreparingMatchServlet"})
+public class PreparingMatchServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -37,17 +38,17 @@ public class HappeningMatchServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
+         response.setContentType("text/html;charset=UTF-8");
         
         HttpSession session = request.getSession();
-        String url = "AdminPage/curentMatch.jsp";
+        String url = "AdminPage/PreparingMatch.jsp";
         try {
             ScheduleDAO dao = new ScheduleDAO();
-            dao.getScheduleByStatus(3);
+            dao.getScheduleByStatus(2);
 //            dao.getSchedule();
             List<ScheduleDTO> result = dao.getList();
 //            System.out.println("size: " + result.size() );
-            session.setAttribute("HAPPENING", result);
+            session.setAttribute("PREPARING", result);
 
         } catch (SQLException ex) {
             Logger.getLogger(HappeningMatchServlet.class.getName()).log(Level.SEVERE, null, ex);

@@ -43,14 +43,14 @@ public class LeaderBoardServlet extends HttpServlet {
 
         try {
             BirdDAO dao = new BirdDAO();
+            dao.resetBirdList();
             dao.displayLeaderboard();
             List<BirdDTO> result = dao.getBirdList();
-
             request.setAttribute("LEADER_BOARD", result);
 
         } catch (SQLException | NamingException | ClassNotFoundException ex) {
             Logger.getLogger(LeaderBoardServlet.class.getName()).log(Level.SEVERE, null, ex);
- 
+
         } finally {
             RequestDispatcher rd = request.getRequestDispatcher(url);
             rd.forward(request, response);

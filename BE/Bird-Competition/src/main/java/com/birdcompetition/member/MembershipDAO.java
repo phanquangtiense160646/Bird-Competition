@@ -14,10 +14,6 @@ import java.util.List;
 
 import com.birdcompetition.util.DBHelper;
 
-/**
- *
- * @author phanquangtien
- */
 public class MembershipDAO {
     public List<MembershipDTO> searchByType(String search) throws SQLException{
         List<MembershipDTO> list = new ArrayList<>();
@@ -36,9 +32,9 @@ public class MembershipDAO {
                 String memberId = rs.getString("IdMember");
                 Date dateOfSignup = rs.getDate("DateSignUp");
                 boolean status = rs.getBoolean("status");
-                int type = rs.getInt("TypeOfMemberShip");
+                String type = rs.getString("TypeOfMemberShip");
                 String des = rs.getString("Decription");
-                MembershipDTO member = new MembershipDTO(memberId, dateOfSignup, status, type, des);
+                MembershipDTO member = new MembershipDTO(memberId, dateOfSignup, status, 0, des);
                 list.add(member);
             }
         }catch(Exception e){
@@ -87,7 +83,8 @@ public class MembershipDAO {
         return check;
     }
     
-    public boolean registerMembership(String id, Date dateSignup, boolean status, int typeOfMemberShip, String description) throws SQLException{
+    public boolean registerMembership(String id, Date dateSignup, boolean status, String typeOfMemberShip, String description) 
+            throws SQLException{
         boolean check = false;
         Connection conn = null;
         PreparedStatement stm = null;
@@ -99,7 +96,7 @@ public class MembershipDAO {
             stm.setString(1, id);
             stm.setDate(2, dateSignup);
             stm.setBoolean(3, status);
-            stm.setInt(4, typeOfMemberShip);
+            stm.setString(4, typeOfMemberShip);
             stm.setString(5, description);
             check = stm.executeUpdate() > 0 ? true : false;
         }catch(Exception e){
@@ -113,6 +110,33 @@ public class MembershipDAO {
             }
         }
         
+        return check;
+    }
+    
+    public boolean updateMembership(Date dateSignup, String typeOfMembership) throws SQLException{
+        boolean check = false;
+        Connection conn = null;
+        PreparedStatement stm = null;
+        String sql = "UPDATE [dbo].[MemberShip] SET [DateSignUp] = ?, [TypeOfMemberShip] = ?"
+                + "WHERE [IdMember] = ?";
+        try{
+            conn = DBHelper.getConnection();
+            if(conn != null){
+                stm = conn.prepareStatement(sql);
+                stm.setDate(1, dateSignup);
+                stm.setString(2, typeOfMembership);
+                check = stm.executeUpdate() > 0 ? true : false;
+            }
+        }catch(Exception e){
+            e.printStackTrace();
+        }finally{
+            if(stm != null){
+                stm.close();
+            }
+            if(conn != null){
+                conn.close();
+            }
+        }
         return check;
     }
 }

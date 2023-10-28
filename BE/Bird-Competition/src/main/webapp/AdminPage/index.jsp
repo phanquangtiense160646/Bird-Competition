@@ -31,9 +31,10 @@
 
     <body id="page-top">
 
-        <!-- Page Wrapper -->
-        <div id="wrapper">
+        <jsp:include page="Menu.jsp"/>
 
+<<<<<<< HEAD
+=======
             <!-- Sidebar -->
             <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
@@ -163,6 +164,11 @@
                         <i class="fas fa-fw fa-table"></i>
                         <span>Update Match Result</span></a>
                 </li> 
+                <li class="nav-item">
+                    <a class="nav-link" href="AdminPage/createSchedule.jsp">
+                        <i class="fas fa-fw fa-table"></i>
+                        <span>Create Schedule</span></a>
+                </li>
                 <!-- Divider -->
                 <hr class="sidebar-divider d-none d-md-block">
 
@@ -269,6 +275,7 @@
 
                     </nav>
                     <!-- End of Topbar -->
+>>>>>>> 80e0c1b5ef677481bad883822d77c1601a0595c0
 
                     <!-- Begin Page Content -->
                     <div class="container-fluid">

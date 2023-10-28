@@ -12,7 +12,7 @@ import java.sql.Date;
  */
 public class ScheduleDTO implements Serializable {
 
-    private String id;
+    private int id;
     private String name;
     private Date date;
     private String locationId;
@@ -27,7 +27,7 @@ public class ScheduleDTO implements Serializable {
     public ScheduleDTO() {
     }
 
-    public ScheduleDTO(String id, String name, Date date, String locationId, 
+    public ScheduleDTO(int id, String name, Date date, String locationId, 
             boolean status, double factor, double minPoint, double maxPoint, 
             double fee, String userId, String location, int statusOfContest) {
         this.id = id;
@@ -52,11 +52,11 @@ public class ScheduleDTO implements Serializable {
         this.statusOfContest = statusOfContest;
     }
 
-    public String getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(int id) {
         this.id = id;
     }
 
@@ -140,5 +140,10 @@ public class ScheduleDTO implements Serializable {
         this.location = location;
     }
 
+    @Override
+    public String toString() {
+        return "ScheduleDTO{" + "id=" + id + ", name=" + name + ", date=" + date + ", locationId=" + locationId + ", status=" + status + ", factor=" + factor + ", minPoint=" + minPoint + ", maxPoint=" + maxPoint + ", fee=" + fee + ", userId=" + userId + ", location=" + location + ", statusOfContest=" + statusOfContest + '}';
+    }
 
+    
 }

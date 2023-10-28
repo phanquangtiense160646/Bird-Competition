@@ -4,27 +4,28 @@
  */
 package com.birdcompetition.controller;
 
+import com.birdcompetition.bird.BirdDAO;
+import com.birdcompetition.birdInContest.BirdContestDAO;
 import com.birdcompetition.schedule.ScheduleDAO;
-import com.birdcompetition.schedule.ScheduleDTO;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.sql.SQLException;
-import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.naming.NamingException;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 /**
  *
  * @author Danh
  */
-@WebServlet(name = "HappeningMatchServlet", urlPatterns = {"/HappeningMatchServlet"})
-public class HappeningMatchServlet extends HttpServlet {
+@WebServlet(name = "ConfirmMatchServlet", urlPatterns = {"/ConfirmMatchServlet"})
+public class ConfirmMatchServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -38,23 +39,37 @@ public class HappeningMatchServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        
-        HttpSession session = request.getSession();
-        String url = "AdminPage/curentMatch.jsp";
+
+        int matchId = Integer.parseInt(request.getParameter("txtMatchId"));
+        String[] birdIdList = request.getParameterValues("txtBirdID");
+        String[] orderList = request.getParameterValues("txtOrder");
+        String[] beforePointList = request.getParameterValues("txtBefore");
+        String[] afterPointList = request.getParameterValues("txtAfter");
+
         try {
-            ScheduleDAO dao = new ScheduleDAO();
-            dao.getScheduleByStatus(3);
-//            dao.getSchedule();
-            List<ScheduleDTO> result = dao.getList();
-//            System.out.println("size: " + result.size() );
-            session.setAttribute("HAPPENING", result);
+            BirdContestDAO birdContestDao = new BirdContestDAO();
+            ScheduleDAO scheduleDao = new ScheduleDAO();
+            BirdDAO birdDao = new BirdDAO();
+
+            for (int i = 0; i < birdIdList.length; i++) {
+                int id = Integer.parseInt(birdIdList[i]);
+                int order = Integer.parseInt(orderList[i]);
+                int beforePoint = Integer.parseInt(beforePointList[i]);
+                int afterPoint = Integer.parseInt(afterPointList[i]);
+
+                birdContestDao.setPoint(id, order, beforePoint, afterPoint);
+                birdDao.setPoint(id, afterPoint);
+            }
+            scheduleDao.setStatus(matchId, 4);
 
         } catch (SQLException ex) {
-            Logger.getLogger(HappeningMatchServlet.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ConfirmMatchServlet.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (NamingException ex) {
+            Logger.getLogger(ConfirmMatchServlet.class.getName()).log(Level.SEVERE, null, ex);
         } catch (ClassNotFoundException ex) {
-            Logger.getLogger(HappeningMatchServlet.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ConfirmMatchServlet.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
-            RequestDispatcher rd = request.getRequestDispatcher(url);
+            RequestDispatcher rd = request.getRequestDispatcher("HappeningMatchServlet");
             rd.forward(request, response);
         }
     }
