@@ -40,6 +40,41 @@
 
             </head>
 
+<<<<<<< HEAD
+    <body>
+        <!-- Header Start -->
+       <jsp:include page="JspCommon/webheader.jsp"/>
+        <!-- Header End -->
+
+        <!-- Carousel Start -->
+        <div class="container-fluid p-0 mb-5">
+            <div id="header-carousel" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <img class="w-100" src="FE/img/hinh-anh-chim-chao-mao.jpg" alt="Image">
+                        <div
+                            class="carousel-caption d-flex flex-column align-items-center justify-content-center">
+                            <div class="p-3" style="max-width: 900px;">
+                                <h5 class="text-white text-uppercase">BIRD COMPETITION PLATFORM</h5>
+                                <h1 class="display-2 text-white text-uppercase mb-md-4">Best Place To Show Us
+                                    Your Birds </h1>
+                                <a href="" class="btn btn-primary py-md-3 px-md-5 me-3">Join Us</a>
+                                <a href="" class="btn btn-light py-md-3 px-md-5">Contact Us</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <img class="w-100" src="FE/img/chaomao-bg (2).jpg" alt="Image">
+                        <div
+                            class="carousel-caption d-flex flex-column align-items-center justify-content-center">
+                            <div class="p-3" style="max-width: 900px;">
+                                <h5 class="text-white text-uppercase">BIRD COMPETITION PLATFORM</h5>
+                                <h1 class="display-2 text-white text-uppercase mb-md-4">Best Place To Show Us
+                                    Your Birds</h1>
+                                <a href="" class="btn btn-primary py-md-3 px-md-5 me-3">Join Us</a>
+                                <a href="" class="btn btn-light py-md-3 px-md-5">Contact Us</a>
+                            </div>
+=======
             <body>
                 <!-- Header Start -->
                 <div class="container-fluid bg-dark px-0">
@@ -246,6 +281,7 @@
                                         </div>
                                     </div>
                                 </div>
+>>>>>>> 80e0c1b5ef677481bad883822d77c1601a0595c0
                         </div>
                     </div>
                 </div>

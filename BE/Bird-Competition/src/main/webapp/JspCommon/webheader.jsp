@@ -1,4 +1,5 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <!-- Header Start -->
 <div class="container-fluid bg-dark px-0">
@@ -53,22 +54,38 @@
                 </button>
                 <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
                     <div class="navbar-nav mr-auto py-0">
-                        <a href="#" class="nav-item nav-link active">Home</a>
-                        <a href="LeaderBoardServlet" class="nav-item nav-link">Bảng xếp hạng</a>
-                        <a href="#schedule" class="nav-item nav-link">Lịch thi đấu</a>
-                        <a href="#member" class="nav-item nav-link">Hội viên</a>
+                        <a href="" class="nav-item nav-link active">Home</a>
+                        <a href='<c:url value="/DispatchServlet?btAction=LeaderBoard"/>' class="nav-item nav-link">Bảng xếp hạng</a>
+                        <a href='<c:url value="/DispatchServlet?btAction=schedule"/>' class="nav-item nav-link">Lịch thi đấu</a>
+                        <a href="FE/memberShip.html" class="nav-item nav-link">Hội viên</a>
                         <div class="nav-item dropdown">
                             <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
                             <div class="dropdown-menu rounded-0 m-0">
                                 <!-- <a href="blog.html" class="dropdown-item">News</a> -->
-                                <a href="HappeningMatchServlet" class="dropdown-item">Luật thi đấu</a>
-                                <a href="feedback_pre.html" class="dropdown-item">Feedback</a>
-                                <a href="news.html" class="dropdown-item">Tin Tức</a>
+                                <a href="FE/rules.html" class="dropdown-item">Luật thi đấu</a>
+                                <a href="FE/feedback.html" class="dropdown-item">Feedback</a>
+                                <a href="FE/news.html" class="dropdown-item">Tin Tức</a>
                             </div>
                         </div>
-                        <a href="contact.html" class="nav-item nav-link">Liên Hệ</a>
+                        <a href="FE/contact.html" class="nav-item nav-link">Liên Hệ</a>
                     </div>
-                    <a href="Login.jsp" class="btn btn-primary py-md-3 px-md-5 d-none d-lg-block">Login/Signup</a>
+                    <div class="nav-item dropdown">
+
+                        <a href="#" class="btn btn-primary nav-link dropdown-toggle" data-bs-toggle="dropdown" style="width: 150px;">${sessionScope.USER.userName}</a>
+                        <div class="dropdown-menu rounded-0 m-0">
+
+                            <form action="DispatchServlet" method="POST">
+                                <a class="dropdown-item" href="userprofile.jsp">User Profile</a>
+                                <a class="dropdown-item" href="birdprofile.html">Bird Profile</a>
+                                <a class="dropdown-item" href="addnewbird.jsp">Add Bird</a>
+                                <button class="dropdown-item" name="btAction" value="MatchHistory">Match History</button>
+                                <button class="dropdown-item" name="btAction" value="PaymentHistory">Payment History</button>
+                                <div class="dropdown-divider"></div>
+                                <button class="dropdown-item" name="btAction" value="Logout">Logout</button>
+                            </form>
+
+                        </div>
+                    </div>
 
                 </div>
             </nav>

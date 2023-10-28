@@ -40,7 +40,82 @@
     </head>
 
     <body>
-        <jsp:include page="JspCommon/webheader.jsp"/>
+        <!-- Header Start -->
+<div class="container-fluid bg-dark px-0">
+    <div class="row gx-0">
+        <div class="col-lg-3 bg-dark d-none d-lg-block">
+
+
+            <a href="index.html" class="navbar-brand w-100 h-100 m-0 p-0 d-flex align-items-center justify-content-center">
+                <img src="FE/img/finallogo.png" style="width: 100px; margin-right: -40px; margin-bottom:50px;">
+                <h1 class="m-0 display-4 text-primary text-uppercase">BIRDFIGHTER</h1>
+            </a>
+
+
+
+        </div>
+        <div class="col-lg-9">
+            <div class="row gx-0 bg-secondary d-none d-lg-flex">
+                <div class="col-lg-7 px-5 text-start">
+                    <div class="h-100 d-inline-flex align-items-center py-2 me-4">
+                        <i class="fa fa-envelope text-primary me-2"></i>
+                        <h6 class="mb-0">birdfight@compe.com</h6>
+                    </div>
+                    <div class="h-100 d-inline-flex align-items-center py-2">
+                        <i class="fa fa-phone-alt text-primary me-2"></i>
+                        <h6 class="mb-0">+123 321 333</h6>
+                    </div>
+                </div>
+                <div class="col-lg-5 px-5 text-end">
+                    <div class="d-inline-flex align-items-center py-2">
+                        <a class="btn btn-light btn-square rounded-circle me-2" href="">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a class="btn btn-light btn-square rounded-circle me-2" href="">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a class="btn btn-light btn-square rounded-circle me-2" href="">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                        <a class="btn btn-light btn-square rounded-circle me-2" href="">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a class="btn btn-light btn-square rounded-circle" href="">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <nav class="navbar navbar-expand-lg bg-dark navbar-dark p-3 p-lg-0 px-lg-5">
+
+                <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
+                    <div class="navbar-nav mr-auto py-0">
+                        <a href="#" class="nav-item nav-link active">Home</a>
+                        <a href="#leaderboard" class="nav-item nav-link">Bảng xếp hạng</a>
+                        <a href="#schedule" class="nav-item nav-link">Lịch thi đấu</a>
+                        <a href="#member" class="nav-item nav-link">Hội viên</a>
+                        <div class="nav-item dropdown">
+                            <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
+                            <div class="dropdown-menu rounded-0 m-0">
+                                <!-- <a href="blog.html" class="dropdown-item">News</a> -->
+                                <a href="HappeningMatchServlet" class="dropdown-item">Luật thi đấu</a>
+                                <a href="feedback_pre.html" class="dropdown-item">Feedback</a>
+                                <a href="news.html" class="dropdown-item">Tin Tức</a>
+                            </div>
+                        </div>
+                        <a href="contact.html" class="nav-item nav-link">Liên Hệ</a>
+                    </div>
+                    <a href="Login.jsp" class="btn btn-primary py-md-3 px-md-5 d-none d-lg-block">Login/Signup</a>
+
+                </div>
+            </nav>
+        </div>
+    </div>
+</div>
+<!-- Header End -->
 
         <!-- Carousel Start -->
         <div class="container-fluid p-0 mb-5">
@@ -143,7 +218,8 @@
         <!-- About End -->
 
         <!-- Top Bird Start -->
-        <c:set var="leaderboard" value="${requestScope.LEADER_BOARD}" />
+        <div id="leaderboard">
+           <c:set var="leaderboard" value="${requestScope.LEADER_BOARD}" />
         <c:if test="${not empty leaderboard}">
             <div class="container-fluid p-5">
                 <div class="mb-5 text-center">
@@ -223,7 +299,9 @@
                     </div>
                 </div>
             </div>
-        </c:if>
+        </c:if>  
+        </div>
+       
         <!-- Top Bird End -->
 
 
@@ -382,7 +460,7 @@
                 <div class="col-lg-12 col-md-6 text-center">
                     <!-- <h1 class="text-uppercase text-light mb-4">30% Discount For This Summer</h1>
                     -->
-                    <a href="memberShip.html" class="btn btn-primary py-3 px-5">Tìm hiểu thêm</a>
+                    <!--<a href="memberShip.html" class="btn btn-primary py-3 px-5">Tìm hiểu thêm</a>-->
                 </div>
             </div>
         </div>
@@ -400,7 +478,7 @@
                         <a
                             href="https://baria.baria-vungtau.gov.vn/article/?item=63944904898b51bc1d04e968c0c1ca50">
                             <div class="position-relative overflow-hidden rounded-top">
-                                <img class="img-fluid" src="img/Hoithichimmorong01.jpg" alt="">
+                                <img class="img-fluid" src="FE/img/Hoithichimmorong01.jpg" alt="">
                             </div>
                             <div class="bg-dark d-flex align-items-center rounded-bottom p-4">
                                 <div
@@ -422,7 +500,7 @@
                             href="https://baocaobang.vn/hoi-thi-dau-hot-chim-chao-mao-thanh-pho-mo-rong-nam-2023-3161421.html">
                             <div class="position-relative overflow-hidden rounded-top">
                                 <img class="img-fluid"
-                                     src="img/104155_104154_104153_ntv03550_14381223_16185323_16191723.jpg"
+                                     src="FE/img/104155_104154_104153_ntv03550_14381223_16185323_16191723.jpg"
                                      alt="">
                             </div>
                             <div class="bg-dark d-flex align-items-center rounded-bottom p-4">
@@ -444,7 +522,7 @@
                         <a
                             href="https://www.baokiengiang.vn/le-hoi/hoi-thi-chim-hot-nghe-thuat-mo-rong-nam-2023-17028.html">
                             <div class="position-relative overflow-hidden rounded-top">
-                                <img class="img-fluid" src="img/KGO - ảnh 3 -.jpg" alt="">
+                                <img class="img-fluid" src="FE/img/news03.jpg" alt="">
                             </div>
                             <div class="bg-dark d-flex align-items-center rounded-bottom p-4">
                                 <div
@@ -470,7 +548,7 @@
             <div class="row g-0">
                 <div class="col-lg-6" style="min-height: 500px;">
                     <div class="position-relative h-100">
-                        <img class="position-absolute w-100 h-100" src="img/bird_player.png"
+                        <img class="position-absolute w-100 h-100" src="FE/img/bird_player.png"
                              style="object-fit: cover;">
                     </div>
                 </div>
@@ -486,7 +564,7 @@
                                 justo dolor et stet lorem kasd labore dolore lorem ipsum. At lorem lorem magna
                                 ut et, nonumy et labore et tempor diam tempor erat dolor rebum sit ipsum.</p>
                             <div class="d-flex align-items-center">
-                                <img class="img-fluid rounded-circle" src="img/testimonial-1.jpg" alt="">
+                                <img class="img-fluid rounded-circle" src="FE/img/testimonial-1.jpg" alt="">
                                 <div class="ps-4">
                                     <h5 class="text-uppercase text-light">Client Name</h5>
                                     <span class="text-uppercase text-secondary">Profession</span>
@@ -499,7 +577,7 @@
                                 justo dolor et stet lorem kasd labore dolore lorem ipsum. At lorem lorem magna
                                 ut et, nonumy et labore et tempor diam tempor erat dolor rebum sit ipsum.</p>
                             <div class="d-flex align-items-center">
-                                <img class="img-fluid rounded-circle" src="img/testimonial-2.jpg" alt="">
+                                <img class="img-fluid rounded-circle" src="FE/img/testimonial-2.jpg" alt="">
                                 <div class="ps-4">
                                     <h5 class="text-uppercase text-light">Client Name</h5>
                                     <span class="text-uppercase text-secondary">Profession</span>

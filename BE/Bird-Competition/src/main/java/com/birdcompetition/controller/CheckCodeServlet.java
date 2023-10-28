@@ -4,11 +4,11 @@
  */
 package com.birdcompetition.controller;
 
-import com.birdcompetition.schedule.ScheduleDAO;
-import com.birdcompetition.schedule.ScheduleDTO;
+import com.birdcompetition.birdInContest.BirdContestDAO;
+import com.birdcompetition.birdInContest.BirdContestDTO;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.sql.SQLException;
-import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.RequestDispatcher;
@@ -17,14 +17,13 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 /**
  *
  * @author Danh
  */
-@WebServlet(name = "HappeningMatchServlet", urlPatterns = {"/HappeningMatchServlet"})
-public class HappeningMatchServlet extends HttpServlet {
+@WebServlet(name = "CheckCodeServlet", urlPatterns = {"/CheckCodeServlet"})
+public class CheckCodeServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -37,29 +36,14 @@ public class HappeningMatchServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        
-        HttpSession session = request.getSession();
-        String url = "AdminPage/curentMatch.jsp";
-        try {
-            ScheduleDAO dao = new ScheduleDAO();
-            dao.getScheduleByStatus(3);
-//            dao.getSchedule();
-            List<ScheduleDTO> result = dao.getList();
-//            System.out.println("size: " + result.size() );
-            session.setAttribute("HAPPENING", result);
+        int matchId = Integer.parseInt(request.getParameter("txtMatchId"));
+        String url = "AdminPage/CheckIn.jsp";
 
-        } catch (SQLException ex) {
-            Logger.getLogger(HappeningMatchServlet.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(HappeningMatchServlet.class.getName()).log(Level.SEVERE, null, ex);
-        } finally {
-            RequestDispatcher rd = request.getRequestDispatcher(url);
-            rd.forward(request, response);
-        }
+        RequestDispatcher rd = request.getRequestDispatcher(url);
+        rd.forward(request, response);
     }
 
-    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
+// <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
      *

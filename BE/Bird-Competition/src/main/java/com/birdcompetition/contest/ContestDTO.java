@@ -31,6 +31,8 @@ public class ContestDTO implements Serializable {
     private String location;
     private String nameOfBird;
     private String species;
+    private String checkInCode;
+    
 
     public ContestDTO() {
     }
@@ -64,7 +66,7 @@ public class ContestDTO implements Serializable {
     public ContestDTO(String idContest, String nameOfContest, String date, 
             String locationId, boolean status, double factor, int minPoint, 
             int maxPoint, double participatingFee, String idBird, int beforePoint, 
-            int afterPoint, String location, String nameOfBird, String species ) {
+            int afterPoint, String location, String nameOfBird, String species, String checkInCode ) {
         this.idContest = idContest;
         this.nameOfContest = nameOfContest;
         this.date = date;
@@ -80,8 +82,18 @@ public class ContestDTO implements Serializable {
         this.location = location;
         this.nameOfBird = nameOfBird;
         this.species = species;
+        this.checkInCode = checkInCode;
     }
 
+    public String getCheckInCode() {
+        return checkInCode;
+    }
+
+    public void setCheckInCode(String checkInCode) {
+        this.checkInCode = checkInCode;
+    }
+
+    
     public String getIdContest() {
         return idContest;
     }

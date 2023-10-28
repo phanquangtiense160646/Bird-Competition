@@ -4,9 +4,12 @@
  */
 package com.birdcompetition.controller;
 
+import com.birdcompetition.birdInContest.BirdContestDAO;
+import com.birdcompetition.birdInContest.BirdContestDTO;
 import com.birdcompetition.schedule.ScheduleDAO;
 import com.birdcompetition.schedule.ScheduleDTO;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.sql.SQLException;
 import java.util.List;
 import java.util.logging.Level;
@@ -17,14 +20,13 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 /**
  *
  * @author Danh
  */
-@WebServlet(name = "HappeningMatchServlet", urlPatterns = {"/HappeningMatchServlet"})
-public class HappeningMatchServlet extends HttpServlet {
+@WebServlet(name = "UpdateResultServlet", urlPatterns = {"/UpdateResultServlet"})
+public class UpdateResultServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -38,21 +40,24 @@ public class HappeningMatchServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        
-        HttpSession session = request.getSession();
-        String url = "AdminPage/curentMatch.jsp";
+
+        int matchId = Integer.parseInt(request.getParameter("txtMatchId"));
+        String url = "AdminPage/MatchResult.jsp";
         try {
-            ScheduleDAO dao = new ScheduleDAO();
-            dao.getScheduleByStatus(3);
-//            dao.getSchedule();
-            List<ScheduleDTO> result = dao.getList();
-//            System.out.println("size: " + result.size() );
-            session.setAttribute("HAPPENING", result);
+//            System.out.println("match id: " + matchId);
+            ScheduleDAO scheduleDao = new ScheduleDAO();
+//            ScheduleDTO match = scheduleDao.getScheduleById(matchId);
+
+            BirdContestDAO joinerDao = new BirdContestDAO();
+            joinerDao.getJoiner(matchId);
+
+            List<BirdContestDTO> result = joinerDao.getList();
+            request.setAttribute("JOINER", result);
 
         } catch (SQLException ex) {
-            Logger.getLogger(HappeningMatchServlet.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(UpdateResultServlet.class.getName()).log(Level.SEVERE, null, ex);
         } catch (ClassNotFoundException ex) {
-            Logger.getLogger(HappeningMatchServlet.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(UpdateResultServlet.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
             RequestDispatcher rd = request.getRequestDispatcher(url);
             rd.forward(request, response);

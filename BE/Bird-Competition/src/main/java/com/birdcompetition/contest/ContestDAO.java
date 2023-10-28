@@ -72,13 +72,13 @@ public class ContestDAO {
                    String location = rs.getString("Location");
                    String nameOfBird = rs.getString("NameOfBird");
                    String specie = rs.getString("Species");
-                   
+                   String checkInCode = rs.getString("CheckInCode");
                    //5.1.2 add data to list
 //                   ContestDTO dto = new ContestDTO(idContest, nameOfContest, date, 
 //                           locationId, status, factor, minPoint, maxPoint, participatingFee, 
 //                           idBird, idBird, maxPoint, idBird, factor, 
 //                           beforePoint, afterPoint, result, location, nameOfBird, specie);
-                   ContestDTO dto = new ContestDTO(idContest, nameOfContest, date, locationId, status, factor, minPoint, maxPoint, participatingFee, idBird, beforePoint, afterPoint, location, nameOfBird, specie);
+                   ContestDTO dto = new ContestDTO(idContest, nameOfContest, date, locationId, status, factor, minPoint, maxPoint, participatingFee, idBird, beforePoint, afterPoint, location, nameOfBird, specie, checkInCode );
                    //5.2 add data to list
                    if (this.contestList == null){
                     this.contestList = new ArrayList<>();   

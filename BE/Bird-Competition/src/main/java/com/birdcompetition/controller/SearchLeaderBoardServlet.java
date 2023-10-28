@@ -36,26 +36,26 @@ public class SearchLeaderBoardServlet extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
 //        String url = "LeaderBoardServlet";
-        String url = "leaderboard.jsp#search";
+        String url = "leaderboard.jsp";
 
         String searchValue = request.getParameter("txtSearchValue");
         try {
-            if (!searchValue.trim().isEmpty()) {
-                //call model
                 BirdDAO dao = new BirdDAO();
 //                dao.searchBird(searchValue);
 //                List<BirdDTO> searchList = dao.getBirdList();
 //                request.setAttribute("SEARCH_RS", searchList);
 //                dao.resetBirdList();
-
+                dao.resetBirdList();
                 dao.displayLeaderboard();
                 List<BirdDTO> result = dao.getBirdList();
                 request.setAttribute("LEADER_BOARD", result);
+                if (!searchValue.trim().isEmpty()) {
+                    List<BirdDTO> searchList = dao.search(searchValue);
+                    request.setAttribute("SEARCH_RS", searchList);
+                }
+                
+                
 
-                List<BirdDTO> searchList = dao.search(searchValue);
-                request.setAttribute("SEARCH_RS", searchList);
-
-            }
         } catch (SQLException ex) {
             Logger.getLogger(SearchLeaderBoardServlet.class.getName()).log(Level.SEVERE, null, ex);
         } catch (ClassNotFoundException ex) {

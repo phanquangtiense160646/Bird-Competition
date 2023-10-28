@@ -4,6 +4,7 @@
  */
 package com.birdcompetition.bird;
 
+import com.birdcompetition.birdInContest.BirdContestDTO;
 import com.birdcompetition.util.DBHelper;
 import java.io.Serializable;
 import java.sql.Connection;
@@ -88,21 +89,21 @@ public class BirdDAO implements Serializable {
 
     public List<BirdDTO> search(String searchValue) {
         List<BirdDTO> searchList = new ArrayList<>();
-        for (int i = 0; i < birdList.size(); i++) {
-            if (birdList.get(i).getBirdName().contains(searchValue)) {
-                searchList.add(birdList.get(i));
+        if (searchValue != null) {
+            for (int i = 0; i < birdList.size(); i++) {
+                if (birdList.get(i).getBirdName().contains(searchValue)) {
+                    searchList.add(birdList.get(i));
+                }
             }
         }
         return searchList;
     }
-
 
     public void getBirdByMemberId(String id)
             throws SQLException, ClassNotFoundException {
         Connection con = null;
         PreparedStatement stm = null;
         ResultSet rs = null;
-        
 
         try {
             //1. Make connection
@@ -124,7 +125,7 @@ public class BirdDAO implements Serializable {
                     String name = rs.getString("NameOfBird");
                     String speices = rs.getString("Species");
                     int point = rs.getInt("Point");
-                    String ownerId = rs.getString("b.IdMember");
+                    String ownerId = rs.getString("IdMember");
                     int win = rs.getInt("Win");
                     int lose = rs.getInt("Lose");
                     int tie = rs.getInt("Tie");
@@ -190,6 +191,48 @@ public class BirdDAO implements Serializable {
             }
         }
         return result;
+    }
+    public boolean setPoint(int id, int point)
+            throws SQLException, NamingException, ClassNotFoundException {
+        Connection con = null;
+        PreparedStatement stm = null;
+        boolean result = false;
+
+        BirdContestDTO dto = new BirdContestDTO();
+        try {
+            //1.Make connection
+            con = DBHelper.getConnection();
+            if (con != null) {
+                //2. Create SQL String 
+                String sql = "UPDATE Bird "
+                        + "SET Point = ? "
+                        + "WHERE IdBird = ? ";
+                //3. Create Statement Object
+                stm = con.prepareStatement(sql);
+                stm.setInt(1, point);
+                stm.setInt(2, id);
+          
+                //4. Execute Query
+                int exercute = stm.executeUpdate();
+                //5. Process
+                if (exercute > 0) {
+                    return true;
+                }
+            }//end username and password is verified
+        }//end connection is available   
+        finally {
+            if (stm != null) {
+                stm.close();
+            }
+            if (con != null) {
+                con.close();
+            }
+        }
+        return result;
+    }
+
+    public boolean registerCompetition() {
+        return false;
     }
 
 }
