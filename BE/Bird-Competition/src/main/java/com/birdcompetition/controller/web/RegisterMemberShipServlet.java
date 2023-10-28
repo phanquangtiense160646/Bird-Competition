@@ -1,14 +1,11 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
- */
-package com.birdcompetition.controller;
+package com.birdcompetition.controller.web;
 
 import com.birdcompetition.membership.MembershipDAO;
 import com.birdcompetition.membership.MembershipDTO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Date;
+import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -37,26 +34,24 @@ public class RegisterMemberShipServlet extends HttpServlet {
         try{
             MembershipDAO dao = new MembershipDAO();
             String memberId = request.getParameter("name");
-            Date dateSignup = SimpleDateFormat.format(request.getParameter("dos"));
+//            Date dateSignup = SimpleDateFormat.format(request.getParameter("dos"));
             String type = request.getParameter("type");
             String des = request.getParameter("description");
             
             
-            MembershipDTO member = dao.checkRegister(memberId);
-            if(member != null){
-                request.setAttribute("ERROR", "Tài khoản đã đăng ký gói VIP");
-            }
-            
-            boolean check = dao.registerMembership(memberId, dateSignup, true, type, des);
-            if(check){
-                request.setAttribute("MESSAGE", "Đăng ký thành công gói thành viên");
-                url = "memberShip.html";
-            }else{
-                request.setAttribute("MESSAGE", "Chưa đăng ký thành công gói thành ");
-                url = "memberShip.html";
-            }
-        }catch(Exception e){
-            log("Error" + e.toString());
+//            MembershipDTO member = dao.checkRegister(memberId);
+//            if(member != null){
+//                request.setAttribute("ERROR", "Tài khoản đã đăng ký gói VIP");
+//            }
+//            
+//            boolean check = dao.registerMembership(memberId, dateSignup, true, type, des);
+//            if(check){
+//                request.setAttribute("MESSAGE", "Đăng ký thành công gói thành viên");
+//                url = "memberShip.html";
+//            }else{
+//                request.setAttribute("MESSAGE", "Chưa đăng ký thành công gói thành ");
+//                url = "memberShip.html";
+//            }
         }finally{
             request.getRequestDispatcher(url).forward(request, response);
         }
