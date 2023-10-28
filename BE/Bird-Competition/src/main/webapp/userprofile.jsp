@@ -105,9 +105,9 @@
           <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
             <div class="navbar-nav mr-auto py-0">
               <a href="/index.html" class="nav-item nav-link active">Home</a>
-              <a href="leaderboard.html" class="nav-item nav-link">Bảng Xếp Hạng</a>
-              <a href="schedule.html" class="nav-item nav-link">Lịch Thi Đấu</a>
-              <a href="memberShip.html" class="nav-item nav-link">Hội Viên</a>
+              <a href="leaderboard.jsp" class="nav-item nav-link">Bảng Xếp Hạng</a>
+              <a href="schedule.jsp" class="nav-item nav-link">Lịch Thi Đấu</a>
+              <a href="FE/memberShip.html" class="nav-item nav-link">Hội Viên</a>
               <div class="nav-item dropdown">
                 <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
                 <div class="dropdown-menu rounded-0 m-0">
@@ -152,7 +152,7 @@
               <div class="rounded-top text-white d-flex flex-row" style="background-color: #000000; height:200px;">
                 <div class="ms-4 mt-5 d-flex flex-column" style="width: 150px;">
                   <img
-                    src="https://scontent.fsgn2-5.fna.fbcdn.net/v/t39.30808-6/331044364_1135565673791935_1693572774874518896_n.jpg?_nc_cat=104&ccb=1-7&_nc_sid=5f2048&_nc_ohc=XK0r9dQmanUAX_FUmQO&_nc_ht=scontent.fsgn2-5.fna&_nc_e2o=s&oh=00_AfCgR_jHe4yv8Y2TppEaLM8usFhnk-8DrdTekWraoyG42Q&oe=653D0519"
+                    src="FE/img/manager.png"
                     alt="Generic placeholder image" class="img-fluid img-thumbnail mt-4 mb-2"
                     style="width: 150px; z-index: 1; margin-left: 10px;">
                   <form action="#editprofile-dialog" style="z-index: 1;">
@@ -164,7 +164,7 @@
                   <form action="DispatchServlet" style="z-index: 1;">
                     <button class="btn btn-outline-dark" data-mdb-ripple-color="dark"
                             style="z-index: 0; margin-left: 17px;" 
-                            name="btAction" value="PaymentHistory">
+                            name="btAction" value="MatchHistory">
                       Match History
                     </button>
                   </form>
@@ -180,15 +180,15 @@
               <div class="p-5 text-black" style="background-color: #f8f9fa;">
                 <div class="d-flex justify-content-end text-center py-1">
                   <div>
-                      <p class="mb-1 h5">1</p>
+                      <p class="mb-1 h5">10</p>
                     <p class="small text-muted mb-0">Total Match</p>
                   </div>
                   <div class="px-3">
-                    <p class="mb-1 h5">51</p>
+                    <p class="mb-1 h5">5</p>
                     <p class="small text-muted mb-0">Win</p>
                   </div>
                   <div>
-                    <p class="mb-1 h5">49</p>
+                    <p class="mb-1 h5">5</p>
                     <p class="small text-muted mb-0">Lose</p>
                   </div>
                 </div>

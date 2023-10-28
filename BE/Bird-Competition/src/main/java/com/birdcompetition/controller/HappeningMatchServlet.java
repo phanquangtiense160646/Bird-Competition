@@ -4,11 +4,9 @@
  */
 package com.birdcompetition.controller;
 
-import com.birdcompetition.bird.BirdDTO;
 import com.birdcompetition.schedule.ScheduleDAO;
 import com.birdcompetition.schedule.ScheduleDTO;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.sql.SQLException;
 import java.util.List;
 import java.util.logging.Level;
