@@ -34,7 +34,7 @@ public class MembershipDAO {
                 boolean status = rs.getBoolean("status");
                 String type = rs.getString("TypeOfMemberShip");
                 String des = rs.getString("Decription");
-                MembershipDTO member = new MembershipDTO(memberId, dateOfSignup, status, type, des);
+                MembershipDTO member = new MembershipDTO(memberId, dateOfSignup, status, 0, des);
                 list.add(member);
             }
         }catch(Exception e){

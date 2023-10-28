@@ -249,7 +249,7 @@ public class BirdContestDAO {
                 //4.Exercute Query
                 rs = stm.executeQuery();
                 //5.Process
-                while (rs.next()) {
+                if(rs.next()) {
                     String birdId = rs.getString("IdBird");
                     String matchID = rs.getString("IdContest");
                     int order = rs.getInt("Rank");
@@ -261,8 +261,9 @@ public class BirdContestDAO {
                     String birdName = rs.getString("NameOfBird");
                     String trainerName = rs.getString("FullName");
 
-                    dto = new BirdContestDTO(birdId, matchID, order, point, postPoint, true, checkInCode, birdName, trainerName);
-
+                    dto = new BirdContestDTO(birdId, matchID, order, point, postPoint, checkIn, checkInCode, birdName, trainerName);
+                    System.out.println("dto: " + dto.toString());
+                    return dto;
                 }
             }
         } finally {
@@ -276,7 +277,7 @@ public class BirdContestDAO {
                 con.close();
             }
         }
-        return dto;
+        return null;
     }
 
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

@@ -125,7 +125,7 @@ public class BirdDAO implements Serializable {
                     String name = rs.getString("NameOfBird");
                     String speices = rs.getString("Species");
                     int point = rs.getInt("Point");
-                    String ownerId = rs.getString("b.IdMember");
+                    String ownerId = rs.getString("IdMember");
                     int win = rs.getInt("Win");
                     int lose = rs.getInt("Lose");
                     int tie = rs.getInt("Tie");

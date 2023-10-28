@@ -49,8 +49,12 @@ public class LoginControl extends HttpServlet {
 
             if (result != null) {
                 HttpSession session = request.getSession();
-                session.setAttribute("USER", result);
-                url = "DispatchServlet?btAction=PostLogin";
+                if (result.getUserRole() == 4) {
+                    session.setAttribute("USER", result);
+                    url = "DispatchServlet?btAction=PostLogin";
+                } else if (result.getUserRole() == 1) {
+                    url = "AdminPage/index.jsp";
+                }
             } else {
                 String msg = "Incorrect Username or Password";
                 request.setAttribute("msg", msg);

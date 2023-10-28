@@ -42,7 +42,6 @@ public class CheckInServlet extends HttpServlet {
         try {
             BirdContestDAO dao = new BirdContestDAO();
             BirdContestDTO checkInBird = dao.getCheckIn(checkInCode, matchId);
-            System.out.println("check in bird: " + checkInBird.toString());
             request.setAttribute("CHECKIN", checkInBird);
 
         } catch (SQLException ex) {
