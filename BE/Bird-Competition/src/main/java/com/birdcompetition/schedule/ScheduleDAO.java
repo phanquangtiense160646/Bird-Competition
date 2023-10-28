@@ -140,19 +140,20 @@ public class ScheduleDAO implements Serializable {
         }
 
     }
+    
     public ScheduleDTO getScheduleById(int id)
             throws SQLException, ClassNotFoundException {
         Connection con = null;
         PreparedStatement stm = null;
         ResultSet rs = null;
         ScheduleDTO match = new ScheduleDTO();
-        try {
+           try {
             //1.Make connection
             con = DBHelper.getConnection();
             //check 
             if (con != null) {
                 //2.Creat SQL String 
-                String sql = "Select * "
+             String sql = "Select * "
                         + "From Contest, Location "
                         + "Where Contest.LocationId = Location.LocationId and IdContest = ?";
                 //3.Create Statement Object
@@ -224,7 +225,48 @@ public class ScheduleDAO implements Serializable {
                 }
             }//end username and password is verified
         }//end connection is available   
-        finally {
+        finally {            if (stm != null) {
+                stm.close();
+            }
+            if (con != null) {
+                con.close();
+            }
+        }
+        return result;
+    }
+    
+    public boolean cRegisterInsert(ScheduleDTO dto) 
+            throws SQLException, ClassNotFoundException {
+        Connection con = null;
+        PreparedStatement stm = null;
+        boolean result = false;
+        
+        try {
+            //1.Make connection
+            con = DBHelper.getConnection();
+            //check 
+            if (con != null) {
+                //2.Creat SQL String 
+               
+                String sql = "Insert Into Contest("
+                        + "NameOfContest, Date, LocationId, Status, Factor, MinPoint, MaxPoint, MaxParticipant, ParticipatingFee"
+                        + ") Values("
+                        + "?, to_date(?,'yyyy-mm-dd'), ?, ?, ?, ?, ?, ?, ?"
+                        + ")";
+                //3.Create Statement Object
+                stm = con.prepareStatement(sql);
+                stm.setString(1, dto.getName());
+
+                //4.Exercute Query
+                int exercute = stm.executeUpdate();
+                //5.Process
+                if (exercute > 0) {
+                    result = true;
+                }
+                //end username and password is verified 
+            }
+        } finally {
+
             if (stm != null) {
                 stm.close();
             }

@@ -59,6 +59,8 @@ import javax.servlet.ServletException;
                 url = "CRegisterServlet";
             } else if (button.equals("MatchHistory")){
                 url = "GetContestListServlet";
+            } else if (button.equals("createSchedule")) {
+                url = "AddScheduleServlet";
             } else if (button.equals("PaymentHistory")){
                 url = "PaymentHistoryServlet";
             } else if (button.equals("MatchHistory")){
