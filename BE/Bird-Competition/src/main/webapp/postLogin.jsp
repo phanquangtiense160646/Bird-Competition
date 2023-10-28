@@ -117,7 +117,7 @@
                                                 lý</a>
                                             <div class="dropdown-menu rounded-0 m-0">
                                                 <a href="updateRule.html" class="dropdown-item">Luật thi đấu</a>
-                                                <a href="" class="dropdown-item">Lịch thi đấu</a>
+                                                <a href="schedule.jsp" class="dropdown-item">Lịch thi đấu</a>
                                                 <a href="matchResult.html" class="dropdown-item">Kết quả trận đấu</a>
                                             </div>
                                         </div>
