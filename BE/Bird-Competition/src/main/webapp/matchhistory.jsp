@@ -67,12 +67,12 @@
                                     src="FE/img/manager.png"
                                     alt="Generic placeholder image" class="img-fluid img-thumbnail mt-4 mb-2"
                                     style="width: 150px; z-index: 1; margin-left: 10px;">
-                                <form action="userprofile.jsp" style="z-index: 1;">
+<!--                                <form action="userprofile.jsp" style="z-index: 1;">
                                     <button class="btn btn-outline-dark" data-mdb-ripple-color="dark"
                                             style="z-index: 0; margin-left: 17px;">
                                         User Profile
                                     </button>
-                                </form>
+                                </form>-->
 
 
                             </div>
@@ -84,22 +84,22 @@
                         </div>
 
                     </div>
-                    <div class="p-4 text-black" style="background-color: #f8f9fa;">
+<!--                    <div class="p-4 text-black" style="background-color: #f8f9fa;">
                         <div class="d-flex justify-content-end text-center py-1">
                             <div>
-                                <p class="mb-1 h5">100</p>
-                                <p class="small text-muted mb-0">Total Match</p>
-                            </div>
-                            <div class="px-3">
-                                <p class="mb-1 h5">51</p>
+                                <p class="mb-1 h5"></p>
                                 <p class="small text-muted mb-0">Win</p>
                             </div>
-                            <div>
-                                <p class="mb-1 h5">49</p>
+                            <div class="px-3">
+                                <p class="mb-1 h5"></p>
                                 <p class="small text-muted mb-0">Lose</p>
                             </div>
+                            <div>
+                                <p class="mb-1 h5"></p>
+                                <p class="small text-muted mb-0">Tie</p>
+                            </div>
                         </div>
-                    </div>
+                    </div>-->
                     <div class="card-body p-4 text-black">
                         <div class="mb-5">
                             <p class="lead fw-normal mb-1">Upcoming Match and History</p>
@@ -116,16 +116,18 @@
                                             <div class="card-body">
                                                 <div class="match-box">
 
-
-
-
                                                     <c:set var="contest" value="${sessionScope.OWN_CONTEST}"/>
                                                     <c:if test="${not empty contest}">
+                                                        <c:if test="contest."></c:if>
                                                         <c:forEach items="${contest}" var="p"> 
                                                             <table class="match-box-content border-bottom">
                                                                 <tr>
                                                                     <td><small>Tên cuộc thi:</small></td>
                                                                     <td><h4 style="color: orange">${p.nameOfContest}</h4></td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td><small>CheckInCode:</small></td>
+                                                                    <td><h4></h4></td>
                                                                 </tr>
                                                                 <tr>
                                                                     <td><small>Địa điểm:</small></td>
@@ -141,12 +143,12 @@
                                                                 </tr>
                                                                 <tr>
                                                                     <td><small>Ngày diễn ra:</small></td>
-                                                                    <td>${p.date}__/__/___</td>
+                                                                    <td>${p.date}</td>
                                                                 </tr>
 
                                                                 <tr>
                                                                     <td><small>Số người tham gia:</small></td>
-                                                                    <td><h4>_/16</h4></td>
+                                                                    <td><h4>5/10</h4></td>
                                                                 </tr>
 
                                                                 <tr>
@@ -174,7 +176,9 @@
                                                             </table>
 
                                                         </c:forEach> 
+                                                        
                                                     </c:if>
+                                                    
 
 
 

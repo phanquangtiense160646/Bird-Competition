@@ -265,6 +265,115 @@
 
     </div>
 
+<<<<<<< HEAD
+
+
+    <section class="h-25 gradient-custom-2">
+      <div class="container py-5 h-100">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+          <div class="col col-lg-9 col-xl-7">
+            <div class="card">
+              <div class="rounded-top text-white d-flex flex-row" style="background-color: #000000; height:200px;">
+                <div class="ms-4 mt-5 d-flex flex-column" style="width: 150px;">
+                  <img
+                    src="FE/img/manager.png"
+                    alt="Generic placeholder image" class="img-fluid img-thumbnail mt-4 mb-2"
+                    style="width: 150px; z-index: 1; margin-left: 10px;">
+                  <form action="#editprofile-dialog" style="z-index: 1;">
+                    <button class="btn btn-outline-dark" data-mdb-ripple-color="dark"
+                      style="z-index: 0; margin-left: 17px;">
+                      Edit profile
+                    </button>
+                  </form>
+                  <form action="DispatchServlet" style="z-index: 1;">
+                    <button class="btn btn-outline-dark" data-mdb-ripple-color="dark"
+                            style="z-index: 0; margin-left: 17px;" 
+                            name="btAction" value="MatchHistory">
+                      Match History
+                    </button>
+                  </form>
+
+
+                </div>
+
+                <div class="ms-3" style="margin-top: 130px; margin-left: 30px;">
+                  <h5 class="text-white">${sessionScope.USER.userName}</h5>
+                  <p>${sessionScope.USER.fullName}</p>
+                </div>
+              </div>
+              <div class="p-5 text-black" style="background-color: #f8f9fa;">
+                <div class="d-flex justify-content-end text-center py-1">
+                  <div>
+                      <p class="mb-1 h5">10</p>
+                    <p class="small text-muted mb-0">Total Match</p>
+                  </div>
+                  <div class="px-3">
+                    <p class="mb-1 h5">5</p>
+                    <p class="small text-muted mb-0">Win</p>
+                  </div>
+                  <div>
+                    <p class="mb-1 h5">5</p>
+                    <p class="small text-muted mb-0">Lose</p>
+                  </div>
+                </div>
+              </div>
+
+<!--                Con chim-->
+              <div class="card-body p-4 text-black">
+                <div class="mb-5">
+                  <p class="lead fw-normal mb-1">About</p>
+                  <div class="p-4" style="background-color: #f8f9fa;">
+                    <p class="font-italic mb-1">Thích Chơi Chim</p>
+                    <p class="font-italic mb-1">${sessionScope.USER.userGmail}</p>
+                    <p class="font-italic mb-2">---</p>
+                  </div>
+                </div>
+
+                <div class="d-flex justify-content-between align-items-center mb-4">
+                  <p class="lead fw-normal mb-0">Bird Category</p>
+                  <p class="mb-0"><a href="#!" class="text-muted">Show all</a></p>
+                </div>
+
+                <div class="row g-2">
+                  <div class="box col mb-5">
+                    <div class="imghover">
+                      <form action="#my-dialog">
+                        <button class="btn">Info</button>
+                      </form>
+                    </div>
+
+                    <img src="https://tmso.baotanglamdong.com.vn/wp-content/uploads/2021/10/CHAO-MAO-DIT-DO-3.jpg">
+                    <p class="birdname" style="font-weight: bold; text-align:center;">CHÀO MÀO LỬA</p>
+                  </div>
+
+                  <div class="box col mb-5">
+                    <div class="imghover">
+                      <form action="#my-dialog1">
+                        <button class="btn">Info</button>
+                      </form>
+                    </div>
+                    <img src="https://static-images.vnncdn.net/files/publish/2022/11/13/chim-chao-mao-4-937.jpg">
+                    <p class="birdname" style="font-weight: bold; text-align:center;">TAM ĐIỂU BẠCH TẠNG </p>
+                  </div>
+
+                </div>
+        
+              </div>
+            </div>
+            <div class="d-flex justify-content-center">
+              <a href="/FE/index.html" class="btn btn-outline-dark btn-primary" data-mdb-ripple-color="dark"
+                style="z-index: 0; margin-left: 17px; margin-top: 30px; margin-bottom: 40px;">Đăng xuất</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+
+    <!-- Dialog -->
+=======
+>>>>>>> 2eff3e974656219f1373c2a80bd4cd472cfa1c32
     <div class="dialog overlay" id="my-dialog">
         <a href="#close-dialog" class="overlay-close"></a>
         <div id="close-dialog" class="dialog-body">

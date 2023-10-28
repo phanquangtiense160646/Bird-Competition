@@ -90,10 +90,10 @@
                                       style="width: 150px; z-index: 1; margin-left: 10px;"> -->
 
 
-                                    <button type="button" class="btn btn-outline-dark" data-mdb-ripple-color="dark"
+<!--                                    <button type="button" class="btn btn-outline-dark" data-mdb-ripple-color="dark"
                                             style="z-index: 1; margin-left: 17px;">
                                         View Profile
-                                    </button>
+                                    </button>-->
 
 
                                     <input id="file" type="file" onchange="loadFile(event)" />
@@ -146,17 +146,17 @@
                                                             <!-- Form Row-->
                                                             <div class="row gx-3 mb-3">
                                                                 <!-- Form Group (Species)-->
-                                                                <div class="col-md-6">
+                                                                <div class="col-md-12">
                                                                     <label class="small mb-1" for="inputSpecies">Loài chim</label>
                                                                     <input class="form-control" id="inputSpecies" type="text" placeholder="Nhập giống chim"
                                                                            value="" name="birdSpecie">
                                                                 </div>
                                                                 <!--                                                                 Form Group (BirdAge)-->
-                                                                <div class="col-md-6">
+<!--                                                                <div class="col-md-6">
                                                                     <label class="small mb-1" for="inputBirdAge">ID</label>
                                                                     <input class="form-control" id="inputBirdAge" type="text" placeholder="Nhập ID chim (for example: B00)"
                                                                            value="" name="birdId">
-                                                                </div>
+                                                                </div>-->
 
                                                             </div>
 
