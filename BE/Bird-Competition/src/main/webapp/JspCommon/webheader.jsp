@@ -54,7 +54,7 @@
                 </button>
                 <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
                     <div class="navbar-nav mr-auto py-0">
-                        <a href="" class="nav-item nav-link active">Home</a>
+                        <a href='<c:url value="/DispatchServlet?btAction=PostLogin"/>' class="nav-item nav-link active">Home</a>
                         <a href='<c:url value="/DispatchServlet?btAction=LeaderBoard"/>' class="nav-item nav-link">Bảng xếp hạng</a>
                         <a href='<c:url value="/DispatchServlet?btAction=schedule"/>' class="nav-item nav-link">Lịch thi đấu</a>
                         <a href="FE/memberShip.html" class="nav-item nav-link">Hội viên</a>

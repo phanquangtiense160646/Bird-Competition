@@ -87,7 +87,7 @@
                                                 <p class="schedule-value text-uppercase text-light mb-3"> Giờ: 2.00am - 5.00am</p>
                                                 <p class="schedule-value text-uppercase text-light mb-3">Địa điểm: ${scheduleDto.location}</p>
                                                 <p class="schedule-value text-uppercase text-primary">${scheduleDto.name}</p>
-                                                <p class="schedule-value text-uppercase text-secondary mb-0">Loại chim: Gà chiến</p>
+                                                <p class="schedule-value text-uppercase text-secondary mb-0">Loại chim: Chào mào</p>
                                                 <p class="schedule-value text-uppercase text-secondary mb-0">Điểm yêu cầu: ${scheduleDto.minPoint} - ${scheduleDto.maxPoint} </p>
                                                 <p class="schedule-value text-uppercase text-light mb-3">Phí đăng kí: ${scheduleDto.fee}</p>
                                                 <p class="schedule-value text-uppercase text-secondary mb-0" style="display: inline;">
@@ -116,7 +116,7 @@
                                                 <p class="schedule-value text-uppercase text-light mb-3"> Giờ: 2.00am - 5.00am</p>
                                                 <p class="schedule-value text-uppercase text-light mb-3">Địa điểm: ${scheduleDto.location}</p>
                                                 <p class="schedule-value text-uppercase text-primary">${scheduleDto.name}</p>
-                                                <p class="schedule-value text-uppercase text-secondary mb-0">Loại chim: Gà chiến</p>
+                                                <p class="schedule-value text-uppercase text-secondary mb-0">Loại chim: Chào mào</p>
                                                 <p class="schedule-value text-uppercase text-secondary mb-0">Điểm yêu cầu: ${scheduleDto.minPoint} - ${scheduleDto.maxPoint} </p>
                                                 <p class="schedule-value text-uppercase text-light mb-3">Phí đăng kí: ${scheduleDto.fee}</p>
                                                 <p class="schedule-value text-uppercase text-secondary mb-0" style="display: inline;">
@@ -145,7 +145,7 @@
                                                 <p class="schedule-value text-uppercase text-light mb-3"> Giờ: 2.00am - 5.00am</p>
                                                 <p class="schedule-value text-uppercase text-light mb-3">Địa điểm: ${scheduleDto.location}</p>
                                                 <p class="schedule-value text-uppercase text-primary">${scheduleDto.name}</p>
-                                                <p class="schedule-value text-uppercase text-secondary mb-0">Loại chim: Gà chiến</p>
+                                                <p class="schedule-value text-uppercase text-secondary mb-0">Loại chim: Chào mào</p>
                                                 <p class="schedule-value text-uppercase text-secondary mb-0">Điểm yêu cầu: ${scheduleDto.minPoint} - ${scheduleDto.maxPoint} </p>
                                                 <p class="schedule-value text-uppercase text-light mb-3">Phí đăng kí: ${scheduleDto.fee}</p>
                                                 <p class="schedule-value text-uppercase text-secondary mb-0" style="display: inline;">

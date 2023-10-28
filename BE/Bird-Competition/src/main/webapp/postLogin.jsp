@@ -40,7 +40,6 @@
 
             </head>
 
-<<<<<<< HEAD
     <body>
         <!-- Header Start -->
        <jsp:include page="JspCommon/webheader.jsp"/>
