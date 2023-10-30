@@ -7,8 +7,6 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
 import java.util.UUID;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -40,8 +38,8 @@ public class CRegisterServlet extends HttpServlet {
         String contestId = request.getParameter("hiddenContestId");
         String url = "ScheduleServlet";
         int count = 0;
+        String mes;
         try {
-            System.out.println("birdId: " + birdId + " contestID: " + contestId);
             HttpSession session = request.getSession();
             if (birdId != null) {
                 int id = Integer.parseInt(birdId);
@@ -71,24 +69,21 @@ public class CRegisterServlet extends HttpServlet {
                     BirdContestDTO dto = new BirdContestDTO(id, contestId,
                             0, beforePoint, 0, true, false, checkInCode);
                     dao.cRegisterInsert(dto);
-                    String mes = "success";
-                    session.setAttribute("MES", mes);
+                    mes = "success";
                 } else {
-                    String mes = "error";
-                    session.setAttribute("MES", mes);
+                    mes = "error";
                 }
             } else {
-                String mes = "fail";
-                session.setAttribute("MES", mes);
+                mes = "fail";
             }
-
+            request.setAttribute("MES", mes);
         } catch (SQLException ex) {
             log("CRegister_SQL: " + ex.getMessage());
-//               ex.printStackTrace();
         } catch (ClassNotFoundException ex) {
             log("CRegister_ClassNotFound: " + ex.getMessage());
         } finally {
-            response.sendRedirect(url);
+            RequestDispatcher rd = request.getRequestDispatcher(url);
+            rd.forward(request, response);
         }
     }
 

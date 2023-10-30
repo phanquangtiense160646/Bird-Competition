@@ -56,16 +56,17 @@ public class ScheduleDAO implements Serializable {
                     String locationId = rs.getString("LocationId");
                     boolean status = rs.getBoolean("Status");
                     double factor = rs.getDouble("Factor");
-                    double minPoint = rs.getDouble("MinPoint");
-                    double maxPoint = rs.getDouble("MaxPoint");
-                    double fee = rs.getDouble("ParticipatingFee");
+                    int minPoint = rs.getInt("MinPoint");
+                    int maxPoint = rs.getInt("MaxPoint");
+                    int fee = rs.getInt("ParticipatingFee");
                     String userId = rs.getString("UserName");
                     String location = rs.getString("Location");
                     int contestStatus = rs.getInt("StatusOfContest");
+                    int maxPar = rs.getInt("MaxParticipant");
 
-                    ScheduleDTO dto = new ScheduleDTO(id, name, date,
-                            locationId, status, factor, minPoint, maxPoint, fee,
-                            userId, location, contestStatus);
+                    ScheduleDTO dto = new ScheduleDTO(id, name, date, locationId, status,
+                            factor, minPoint, maxPoint, fee, userId, location,
+                            contestStatus, maxPar);
                     scheduleList.add(dto);
                 }
             }
@@ -104,7 +105,7 @@ public class ScheduleDAO implements Serializable {
                 //4.Exercute Query
                 rs = stm.executeQuery();
                 //5.Process
-                 this.scheduleList = new ArrayList<>();
+                this.scheduleList = new ArrayList<>();
 
                 while (rs.next()) {
 
@@ -114,15 +115,17 @@ public class ScheduleDAO implements Serializable {
                     String locationId = rs.getString("LocationId");
                     boolean status = rs.getBoolean("Status");
                     double factor = rs.getDouble("Factor");
-                    double minPoint = rs.getDouble("MinPoint");
-                    double maxPoint = rs.getDouble("MaxPoint");
-                    double fee = rs.getDouble("ParticipatingFee");
+                    int minPoint = rs.getInt("MinPoint");
+                    int maxPoint = rs.getInt("MaxPoint");
+                    int fee = rs.getInt("ParticipatingFee");
                     String userId = rs.getString("UserName");
                     String location = rs.getString("Location");
-
-                    ScheduleDTO dto = new ScheduleDTO(id, name, date,
-                            locationId, status, factor, minPoint, maxPoint, fee, 
-                            userId, location, contestStatus);
+                    int maxPar = rs.getInt("MaxParticipant");
+                    
+                    ScheduleDTO dto = new ScheduleDTO(id, name, date, locationId,
+                            status, factor, minPoint, maxPoint, fee, userId, 
+                            location, contestStatus, maxPar);
+                    
                     scheduleList.add(dto);
                 }
             }
@@ -170,16 +173,18 @@ public class ScheduleDAO implements Serializable {
                     String locationId = rs.getString("LocationId");
                     boolean status = rs.getBoolean("Status");
                     double factor = rs.getDouble("Factor");
-                    double minPoint = rs.getDouble("MinPoint");
-                    double maxPoint = rs.getDouble("MaxPoint");
-                    double fee = rs.getDouble("ParticipatingFee");
+                    int minPoint = rs.getInt("MinPoint");
+                    int maxPoint = rs.getInt("MaxPoint");
+                    int fee = rs.getInt("ParticipatingFee");
                     String userId = rs.getString("UserName");
                     String location = rs.getString("Location");
                     int contestStatus = rs.getInt("StatusOfContest");
+                    int maxPar = rs.getInt("MaxParticipant");
 
-                    match = new ScheduleDTO(id, name, date,
-                            locationId, status, factor, minPoint, maxPoint, fee, userId, location, contestStatus);
-
+                    ScheduleDTO dto = new ScheduleDTO(id, name, date, locationId, status,
+                            factor, minPoint, maxPoint, fee, userId, location,
+                            contestStatus, maxPar);
+                    scheduleList.add(dto);
                 }
             }
         } finally {

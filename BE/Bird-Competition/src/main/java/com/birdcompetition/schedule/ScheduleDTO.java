@@ -18,18 +18,19 @@ public class ScheduleDTO implements Serializable {
     private String locationId;
     private boolean status;
     private double factor;
-    private double minPoint, maxPoint;
-    private double fee;
+    private int minPoint, maxPoint;
+    private int fee;
     private String userId;
     private String location;
     private int statusOfContest;
+    private int maxPar;
 
     public ScheduleDTO() {
     }
 
     public ScheduleDTO(int id, String name, Date date, String locationId, 
-            boolean status, double factor, double minPoint, double maxPoint, 
-            double fee, String userId, String location, int statusOfContest) {
+            boolean status, double factor, int minPoint, int maxPoint, 
+            int fee, String userId, String location, int statusOfContest, int maxPar) {
         this.id = id;
         this.name = name;
         this.date = date;
@@ -42,6 +43,15 @@ public class ScheduleDTO implements Serializable {
         this.userId = userId;
         this.location = location;
         this.statusOfContest = statusOfContest;
+        this.maxPar = maxPar;
+    }
+
+    public int getMaxPar() {
+        return maxPar;
+    }
+
+    public void setMaxPar(int maxPar) {
+        this.maxPar = maxPar;
     }
 
     public int getStatusOfContest() {
@@ -100,27 +110,27 @@ public class ScheduleDTO implements Serializable {
         this.factor = factor;
     }
 
-    public double getMinPoint() {
+    public int getMinPoint() {
         return minPoint;
     }
 
-    public void setMinPoint(double minPoint) {
+    public void setMinPoint(int minPoint) {
         this.minPoint = minPoint;
     }
 
-    public double getMaxPoint() {
+    public int getMaxPoint() {
         return maxPoint;
     }
 
-    public void setMaxPoint(double maxPoint) {
+    public void setMaxPoint(int maxPoint) {
         this.maxPoint = maxPoint;
     }
 
-    public double getFee() {
+    public int getFee() {
         return fee;
     }
 
-    public void setFee(double fee) {
+    public void setFee(int fee) {
         this.fee = fee;
     }
 

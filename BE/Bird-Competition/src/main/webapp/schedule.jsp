@@ -59,7 +59,7 @@
             <div class="mb-5 text-center">
                 <h5 class="text-primary text-uppercase">Lịch thi đấu</h5>
                 <h1 class="display-3 text-uppercase mb-0">các trận đấu sắp tới</h1>
-                <h6 id="toastmes">${sessionScope.MES}</h6>
+                <h6 id="toastmes">${requestScope.MES}</h6>
             </div>
             <div class="tab-class text-center">
                 <ul class="nav nav-pills d-inline-flex justify-content-center bg-dark text-uppercase rounded-pill mb-5">
@@ -83,13 +83,14 @@
 
                                         <div class="col-lg-3 col-md-4 col-sm-6  btn-viewInfo">
                                             <div class="bg-dark rounded text-center py-5 px-3">
+                                                <p class="schedule-value text-uppercase text-light mb-3">Hệ số: ${scheduleDto.factor}</p>
                                                 <p class="schedule-value text-uppercase text-light mb-3">Ngày: ${scheduleDto.date}</p>
                                                 <p class="schedule-value text-uppercase text-light mb-3"> Giờ: 2.00am - 5.00am</p>
                                                 <p class="schedule-value text-uppercase text-light mb-3">Địa điểm: ${scheduleDto.location}</p>
                                                 <p class="schedule-value text-uppercase text-primary">${scheduleDto.name}</p>
                                                 <p class="schedule-value text-uppercase text-secondary mb-0">Loại chim: Chào mào</p>
                                                 <p class="schedule-value text-uppercase text-secondary mb-0">Điểm yêu cầu: ${scheduleDto.minPoint} - ${scheduleDto.maxPoint} </p>
-                                                <p class="schedule-value text-uppercase text-light mb-3">Phí đăng kí: ${scheduleDto.fee}</p>
+                                                <p class="schedule-value text-uppercase text-light mb-3">Phí đăng kí: ${scheduleDto.fee} vnđ</p>
                                                 <p class="schedule-value text-uppercase text-secondary mb-0" style="display: inline;">
                                                     số người đăng kí:
                                                     <span class="text-uppercase text-primary mb-0" style="display: inline;">
@@ -112,13 +113,14 @@
 
                                         <div class="col-lg-3 col-md-4 col-sm-6  btn-viewInfo">
                                             <div class="bg-dark rounded text-center py-5 px-3">
+                                                <p class="schedule-value text-uppercase text-light mb-3">Hệ số: ${scheduleDto.factor}</p>
                                                 <p class="schedule-value text-uppercase text-light mb-3">Ngày: ${scheduleDto.date}</p>
                                                 <p class="schedule-value text-uppercase text-light mb-3"> Giờ: 2.00am - 5.00am</p>
                                                 <p class="schedule-value text-uppercase text-light mb-3">Địa điểm: ${scheduleDto.location}</p>
                                                 <p class="schedule-value text-uppercase text-primary">${scheduleDto.name}</p>
                                                 <p class="schedule-value text-uppercase text-secondary mb-0">Loại chim: Chào mào</p>
                                                 <p class="schedule-value text-uppercase text-secondary mb-0">Điểm yêu cầu: ${scheduleDto.minPoint} - ${scheduleDto.maxPoint} </p>
-                                                <p class="schedule-value text-uppercase text-light mb-3">Phí đăng kí: ${scheduleDto.fee}</p>
+                                                <p class="schedule-value text-uppercase text-light mb-3">Phí đăng kí: ${scheduleDto.fee} vnđ</p>
                                                 <p class="schedule-value text-uppercase text-secondary mb-0" style="display: inline;">
                                                     số người đăng kí:
                                                     <span class="text-uppercase text-primary mb-0" style="display: inline;">
@@ -141,13 +143,14 @@
 
                                         <div class="col-lg-3 col-md-4 col-sm-6  btn-register">
                                             <div class="bg-dark rounded text-center py-5 px-3">
+                                                <p class="schedule-value text-uppercase text-light mb-3">Hệ số: ${scheduleDto.factor}</p>
                                                 <p class="schedule-value text-uppercase text-light mb-3">Ngày: ${scheduleDto.date}</p>
                                                 <p class="schedule-value text-uppercase text-light mb-3"> Giờ: 2.00am - 5.00am</p>
                                                 <p class="schedule-value text-uppercase text-light mb-3">Địa điểm: ${scheduleDto.location}</p>
                                                 <p class="schedule-value text-uppercase text-primary">${scheduleDto.name}</p>
                                                 <p class="schedule-value text-uppercase text-secondary mb-0">Loại chim: Chào mào</p>
                                                 <p class="schedule-value text-uppercase text-secondary mb-0">Điểm yêu cầu: ${scheduleDto.minPoint} - ${scheduleDto.maxPoint} </p>
-                                                <p class="schedule-value text-uppercase text-light mb-3">Phí đăng kí: ${scheduleDto.fee}</p>
+                                                <p class="schedule-value text-uppercase text-light mb-3">Phí đăng kí: ${scheduleDto.fee} vnđ</p>
                                                 <p class="schedule-value text-uppercase text-secondary mb-0" style="display: inline;">
                                                     số người đăng kí:
                                                     <span class="text-uppercase text-primary mb-0" style="display: inline;">
@@ -163,13 +166,14 @@
 
                                         <div class="col-lg-3 col-md-4 col-sm-6">
                                             <div class="bg-dark rounded text-center py-5 px-3">
+                                                <p class="schedule-value text-uppercase text-light mb-3">Hệ số: ${scheduleDto.factor}</p>
                                                 <p class="schedule-value text-uppercase text-light mb-3">Ngày: ${scheduleDto.date}</p>
                                                 <p class="schedule-value text-uppercase text-light mb-3"> Giờ: 2.00am - 5.00am</p>
                                                 <p class="schedule-value text-uppercase text-light mb-3">Địa điểm: ${scheduleDto.location}</p>
                                                 <p class="schedule-value text-uppercase text-primary">${scheduleDto.name}</p>
                                                 <p class="schedule-value text-uppercase text-secondary mb-0">Loại chim: Chào mào</p>
                                                 <p class="schedule-value text-uppercase text-secondary mb-0">Điểm yêu cầu: ${scheduleDto.minPoint} - ${scheduleDto.maxPoint} </p>
-                                                <p class="schedule-value text-uppercase text-light mb-3">Phí đăng kí: ${scheduleDto.fee}</p>
+                                                <p class="schedule-value text-uppercase text-light mb-3">Phí đăng kí: ${scheduleDto.fee} vnđ</p>
                                                 <p class="schedule-value text-uppercase text-secondary mb-0" style="display: inline;">
                                                     số người đăng kí:
                                                     <span class="text-uppercase text-primary mb-0" style="display: inline;">
@@ -231,14 +235,15 @@
                     var date, time, place, tOC, tOB, registerNumber, pointReq, hiddenId, fee;
 
                     if (this.querySelector(".schedule-value:nth-of-type(1)") !== null) {
-                        date = this.querySelector(".schedule-value:nth-of-type(1)").innerHTML;
-                        time = this.querySelector(".schedule-value:nth-of-type(2)").innerHTML;
-                        place = this.querySelector(".schedule-value:nth-of-type(3)").innerHTML;
-                        tOC = this.querySelector(".schedule-value:nth-of-type(4)").innerHTML;
-                        tOB = this.querySelector(".schedule-value:nth-of-type(5)").innerHTML;
-                        pointReq = this.querySelector(".schedule-value:nth-of-type(6)").innerHTML;
-                        fee = this.querySelector(".schedule-value:nth-of-type(7)").innerHTML;
-                        registerNumber = this.querySelector(".schedule-value:nth-of-type(8) span").innerHTML;
+                        factor= this.querySelector(".schedule-value:nth-of-type(1)").innerHTML;
+                        date = this.querySelector(".schedule-value:nth-of-type(2)").innerHTML;
+                        time = this.querySelector(".schedule-value:nth-of-type(3)").innerHTML;
+                        place = this.querySelector(".schedule-value:nth-of-type(4)").innerHTML;
+                        tOC = this.querySelector(".schedule-value:nth-of-type(5)").innerHTML;
+                        tOB = this.querySelector(".schedule-value:nth-of-type(6)").innerHTML;
+                        pointReq = this.querySelector(".schedule-value:nth-of-type(7)").innerHTML;
+                        fee = this.querySelector(".schedule-value:nth-of-type(8)").innerHTML;
+                        registerNumber = this.querySelector(".schedule-value:nth-of-type(9) span").innerHTML;
                         hiddenId = this.querySelector(".idHide").value;
                     }
 
@@ -256,7 +261,8 @@
                     }
 
                     newDriver.innerHTML = `
-            <div>                                    
+            <div> 
+            <h6 class="text-uppercase text-light mb-3 ml-3">` + factor + `</h6>                                       
             <h6 class="text-uppercase text-light mb-3 ml-3">` + date + `</h6>
             <h6 class="text-uppercase text-light mb-3 ml-3">` + time + `</h6>
             <h6 class="text-uppercase text-light mb-3 ml-3">` + place + `</h6>
