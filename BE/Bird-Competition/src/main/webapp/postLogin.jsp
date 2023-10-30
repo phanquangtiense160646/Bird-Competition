@@ -40,7 +40,7 @@
 
             </head>
 
-<<<<<<< HEAD
+
     <body>
         <!-- Header Start -->
        <jsp:include page="JspCommon/webheader.jsp"/>
@@ -74,7 +74,7 @@
                                 <a href="" class="btn btn-primary py-md-3 px-md-5 me-3">Join Us</a>
                                 <a href="" class="btn btn-light py-md-3 px-md-5">Contact Us</a>
                             </div>
-=======
+
             <body>
                 <!-- Header Start -->
                 <div class="container-fluid bg-dark px-0">
@@ -281,7 +281,7 @@
                                         </div>
                                     </div>
                                 </div>
->>>>>>> 80e0c1b5ef677481bad883822d77c1601a0595c0
+
                         </div>
                     </div>
                 </div>

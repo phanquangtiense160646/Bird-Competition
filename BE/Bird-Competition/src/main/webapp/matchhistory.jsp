@@ -118,7 +118,7 @@
 
                                                     <c:set var="contest" value="${sessionScope.OWN_CONTEST}"/>
                                                     <c:if test="${not empty contest}">
-                                                        <c:if test="contest."></c:if>
+                                                    
                                                         <c:forEach items="${contest}" var="p"> 
                                                             <table class="match-box-content border-bottom">
                                                                 <tr>
@@ -127,7 +127,7 @@
                                                                 </tr>
                                                                 <tr>
                                                                     <td><small>CheckInCode:</small></td>
-                                                                    <td><h4></h4></td>
+                                                                    <td><h4>${p.checkInCode}</h4></td>
                                                                 </tr>
                                                                 <tr>
                                                                     <td><small>Địa điểm:</small></td>

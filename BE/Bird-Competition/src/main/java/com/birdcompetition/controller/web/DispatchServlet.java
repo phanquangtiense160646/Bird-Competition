@@ -67,6 +67,8 @@ import javax.servlet.ServletException;
                 url = "GetContestListServlet";
             } else if (button.equals("Logout")){
                 url = "logout";
+            } else if (button.equals("BirdList")){
+                url = "GetBirdServlet";
             }
         } finally {
             RequestDispatcher rd = request.getRequestDispatcher(url);
