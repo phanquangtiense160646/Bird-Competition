@@ -19,6 +19,8 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import javax.websocket.Session;
 
 /**
  *
@@ -43,12 +45,16 @@ public class ScoringServlet extends HttpServlet {
         String[] ordersL = request.getParameterValues("txtOder");
         int matchId = Integer.parseInt(request.getParameter("txtMatchId"));
         String url = "AdminPage/ConfirmUpdate.jsp";
+        String msg = "";
+
+        HttpSession session = request.getSession();
 
         try {
             BirdContestDAO dao = new BirdContestDAO();
 
             if (!dao.checkValidOrder(ordersL)) {
                 url = "UpdateResultServlet";
+                msg = "fail";
             } else {
                 dao.getJoiner(matchId);
                 List<BirdContestDTO> joiner = dao.getList();
@@ -60,8 +66,13 @@ public class ScoringServlet extends HttpServlet {
 
                 dao.Scoring(matchId, joiner);
                 List<BirdContestDTO> result = dao.getList();
+//                msg = "success";
+
                 request.setAttribute("SCORING", result);
             }
+            request.setAttribute("Message", msg);
+
+            session.setAttribute("Message", msg);
 
 //            System.out.println("sau cap nhat");
 //            for (BirdContestDTO birdContestDTO : joiner) {
