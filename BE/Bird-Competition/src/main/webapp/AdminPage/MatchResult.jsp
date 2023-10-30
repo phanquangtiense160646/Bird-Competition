@@ -23,6 +23,7 @@
         <!-- Custom styles for this template -->
         <link href="FE/css/style.css" rel="stylesheet">
         <link href="FE/css/leaderboard.css" rel="stylesheet">
+        <link href="FE/css/toast.css" rel="stylesheet">
         <link href="AdminPage/css/sb-admin-2.min.css" rel="stylesheet">
         <!--<link href="AdminPage/css/matchResult.css" rel="stylesheet">-->
 
@@ -40,6 +41,8 @@
 
                     <!-- Begin Page Content -->
                     <c:set var="match" value="${requestScope.JOINER}" />
+                    <%--<c:set var="msg" value="${sessionScope.Message}" />--%>
+                    <c:set var="msg" value="${requestScope.Message}" />
 
                     <div class="container-fluid">
 
@@ -229,6 +232,9 @@
 
         </div>
         <!-- End of Page Wrapper -->
+        
+        <h6 id="toastmes">${msg}</h6>
+        <div id="toast"></div>
 
         <!-- Scroll to Top Button-->
         <a class="scroll-to-top rounded" href="#page-top">
@@ -272,6 +278,7 @@
 
         <!-- Page level custom scripts -->
         <script src="AdminPage/js/demo/datatables-demo.js"></script>
+        <script src="FE/js/checkOrder.js"></script>
 
     </body>
 
