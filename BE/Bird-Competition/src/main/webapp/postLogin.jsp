@@ -140,7 +140,6 @@
                                 </div>
                             </div>
                         </div>
-                        >>>>>>> 80e0c1b5ef677481bad883822d77c1601a0595c0
                 </div>
             </div>
         </div>
@@ -607,6 +606,7 @@
 
     <!-- Template Javascript -->
     <script src="FE/js/main.js"></script>
+    <script src="FE/js/postLogin.js"></script>
 
 </body>
 

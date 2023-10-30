@@ -80,7 +80,6 @@
                             <c:if test="${not empty scheduleData}">
                                 <c:forEach var="scheduleDto" items="${scheduleData}" varStatus="counter">
                                     <c:if test="${scheduleDto.statusOfContest == 4}">
-
                                         <div class="col-lg-3 col-md-4 col-sm-6  btn-viewInfo">
                                             <div class="bg-dark rounded text-center py-5 px-3">
                                                 <p class="schedule-value text-uppercase text-light mb-3">Hệ số: ${scheduleDto.factor}</p>
@@ -89,7 +88,8 @@
                                                 <p class="schedule-value text-uppercase text-light mb-3">Địa điểm: ${scheduleDto.location}</p>
                                                 <p class="schedule-value text-uppercase text-primary">${scheduleDto.name}</p>
                                                 <p class="schedule-value text-uppercase text-secondary mb-0">Loại chim: Chào mào</p>
-                                                <p class="schedule-value text-uppercase text-secondary mb-0">Điểm yêu cầu: ${scheduleDto.minPoint} - ${scheduleDto.maxPoint} </p>
+                                                <p class="schedule-value text-uppercase text-secondary mb-0">Điểm yêu cầu:</p>
+                                                <p class="schedule-value text-uppercase text-secondary mb-0">${scheduleDto.minPoint} - ${scheduleDto.maxPoint} </p>
                                                 <p class="schedule-value text-uppercase text-light mb-3">Phí đăng kí: ${scheduleDto.fee} vnđ</p>
                                                 <p class="schedule-value text-uppercase text-secondary mb-0" style="display: inline;">
                                                     số người đăng kí:
@@ -119,7 +119,8 @@
                                                 <p class="schedule-value text-uppercase text-light mb-3">Địa điểm: ${scheduleDto.location}</p>
                                                 <p class="schedule-value text-uppercase text-primary">${scheduleDto.name}</p>
                                                 <p class="schedule-value text-uppercase text-secondary mb-0">Loại chim: Chào mào</p>
-                                                <p class="schedule-value text-uppercase text-secondary mb-0">Điểm yêu cầu: ${scheduleDto.minPoint} - ${scheduleDto.maxPoint} </p>
+                                                <p class="schedule-value text-uppercase text-secondary mb-0">Điểm yêu cầu:</p>
+                                                <p class="schedule-value text-uppercase text-secondary mb-0">${scheduleDto.minPoint} - ${scheduleDto.maxPoint} </p>
                                                 <p class="schedule-value text-uppercase text-light mb-3">Phí đăng kí: ${scheduleDto.fee} vnđ</p>
                                                 <p class="schedule-value text-uppercase text-secondary mb-0" style="display: inline;">
                                                     số người đăng kí:
@@ -141,15 +142,16 @@
                                 <c:forEach var="scheduleDto" items="${scheduleData}" varStatus="counter">
                                     <c:if test="${scheduleDto.statusOfContest == 1}">
 
-                                        <div class="col-lg-3 col-md-4 col-sm-6  btn-register">
-                                            <div class="bg-dark rounded text-center py-5 px-3">
+                                        <div class="col-lg-3 col-md-4 col-sm-6">
+                                            <div class="bg-dark rounded text-center py-5 px-3 btn-register">
                                                 <p class="schedule-value text-uppercase text-light mb-3">Hệ số: ${scheduleDto.factor}</p>
                                                 <p class="schedule-value text-uppercase text-light mb-3">Ngày: ${scheduleDto.date}</p>
                                                 <p class="schedule-value text-uppercase text-light mb-3"> Giờ: 2.00am - 5.00am</p>
                                                 <p class="schedule-value text-uppercase text-light mb-3">Địa điểm: ${scheduleDto.location}</p>
                                                 <p class="schedule-value text-uppercase text-primary">${scheduleDto.name}</p>
                                                 <p class="schedule-value text-uppercase text-secondary mb-0">Loại chim: Chào mào</p>
-                                                <p class="schedule-value text-uppercase text-secondary mb-0">Điểm yêu cầu: ${scheduleDto.minPoint} - ${scheduleDto.maxPoint} </p>
+                                                <p class="schedule-value text-uppercase text-secondary mb-0">Điểm yêu cầu:</p>
+                                                <p class="schedule-value text-uppercase text-secondary mb-0">${scheduleDto.minPoint} - ${scheduleDto.maxPoint} </p>
                                                 <p class="schedule-value text-uppercase text-light mb-3">Phí đăng kí: ${scheduleDto.fee} vnđ</p>
                                                 <p class="schedule-value text-uppercase text-secondary mb-0" style="display: inline;">
                                                     số người đăng kí:
@@ -172,7 +174,8 @@
                                                 <p class="schedule-value text-uppercase text-light mb-3">Địa điểm: ${scheduleDto.location}</p>
                                                 <p class="schedule-value text-uppercase text-primary">${scheduleDto.name}</p>
                                                 <p class="schedule-value text-uppercase text-secondary mb-0">Loại chim: Chào mào</p>
-                                                <p class="schedule-value text-uppercase text-secondary mb-0">Điểm yêu cầu: ${scheduleDto.minPoint} - ${scheduleDto.maxPoint} </p>
+                                                <p class="schedule-value text-uppercase text-secondary mb-0">Điểm yêu cầu:</p>
+                                                <p class="schedule-value text-uppercase text-secondary mb-0">${scheduleDto.minPoint} - ${scheduleDto.maxPoint} </p>
                                                 <p class="schedule-value text-uppercase text-light mb-3">Phí đăng kí: ${scheduleDto.fee} vnđ</p>
                                                 <p class="schedule-value text-uppercase text-secondary mb-0" style="display: inline;">
                                                     số người đăng kí:
@@ -232,7 +235,7 @@
                     const newDriver = document.createElement('div');
                     newDriver.classList = 'schedule-detail';
 
-                    var date, time, place, tOC, tOB, registerNumber, pointReq, hiddenId, fee;
+                    var factor, date, time, place, tOC, tOB, registerNumber, pointReq, hiddenId, fee;
 
                     if (this.querySelector(".schedule-value:nth-of-type(1)") !== null) {
                         factor= this.querySelector(".schedule-value:nth-of-type(1)").innerHTML;
@@ -241,9 +244,9 @@
                         place = this.querySelector(".schedule-value:nth-of-type(4)").innerHTML;
                         tOC = this.querySelector(".schedule-value:nth-of-type(5)").innerHTML;
                         tOB = this.querySelector(".schedule-value:nth-of-type(6)").innerHTML;
-                        pointReq = this.querySelector(".schedule-value:nth-of-type(7)").innerHTML;
-                        fee = this.querySelector(".schedule-value:nth-of-type(8)").innerHTML;
-                        registerNumber = this.querySelector(".schedule-value:nth-of-type(9) span").innerHTML;
+                        pointReq = this.querySelector(".schedule-value:nth-of-type(8)").innerHTML;
+                        fee = this.querySelector(".schedule-value:nth-of-type(9)").innerHTML;
+                        registerNumber = this.querySelector(".schedule-value:nth-of-type(10) span").innerHTML;
                         hiddenId = this.querySelector(".idHide").value;
                     }
 
@@ -257,7 +260,8 @@
                     let text = "";
 
                     for (let i = 0; i < birds.length; i = i + 3) {
-                        text += "<option value=" + birds[i + 2] + ">" + birds[i] + ", Rank point: " + birds[i + 1] + "</option>";
+                        text += "<option value=" + birds[i + 2] +","+ birds[i + 1] + ">" + birds[i] + 
+                            ", Rank point: " + birds[i + 1] + "</option>";
                     }
 
                     newDriver.innerHTML = `
@@ -268,20 +272,21 @@
             <h6 class="text-uppercase text-light mb-3 ml-3">` + place + `</h6>
             <h5 class="text-uppercase text-primary">` + tOC + `</h5>
             <p class="text-uppercase text-secondary mb-0 ml-3">` + tOB + `</p>
-            <p class="text-uppercase text-secondary mb-0 ml-3">` + pointReq + `</p>
+            <p class="text-uppercase text-secondary mb-0 ml-3">Điểm yêu cầu: ` + pointReq + `</p>
             <h6 class="text-uppercase text-light mb-3 ml-3">` + fee + `</h6>
             <p class="text-uppercase text-secondary mb-0 ml-3" style="display: inline;">
                 số người đăng kí:
             <span class="text-uppercase text-primary mb-0 ml-3" style="display: inline;">` + registerNumber + `</span>
             </p>                     
                     
-            <form action="DispatchServlet" method="GET">
+            <form action="DispatchServlet" method="POST">
                 <h6 class="text-uppercase text-secondary mb-3 ml-3">Chọn chim đăng ký:  
                 <select aria-label="chooseBird" name="cboBird">
                     <option selected disabled>Chim</option>
                     ` + text + `
                 </select>
-                <input type="hidden" name="hiddenContestId" value="` + hiddenId + `"></input>                        
+                <input type="hidden" name="hiddenContestId" value="` + hiddenId + `"></input>
+                <input type="hidden" name="hiddenPoint" value="` + pointReq + `"></input>                          
             <button type="submit" name="btAction" value="cRegister" class="btn btn-primary px-5" style="margin-top: 10px;">Đăng kí thi đấu</button>
              </form>
              </div>
