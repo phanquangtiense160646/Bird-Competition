@@ -28,7 +28,7 @@
     <!-- Custom styles for this template -->
     <link href="css/sb-admin-2.min.css" rel="stylesheet">
     <link href="css/matchResult.css" rel="stylesheet">
-    <link href="/FE/css/style.css" rel="stylesheet">
+    
 
 
 
@@ -38,235 +38,74 @@
 </head>
 
 <body id="page-top">
-
-    <!-- Page Wrapper -->
-    <div id="wrapper">
-
-        <!-- Sidebar -->
-        <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
-
-            <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="indexAdmin.html">
-                <div class="sidebar-brand-icon rotate-n-15">
-                    <i class="fas fa-laugh-wink"></i>
-                </div>
-                <div class="sidebar-brand-text mx-3">ADMIN</div>
-            </a>
-
-            <!-- Divider -->
-            <hr class="sidebar-divider my-0">
-
-            <!-- Nav Item - Dashboard -->
-            <li class="nav-item">
-                <a class="nav-link" href="indexAdmin.html">
-                    <i class="fas fa-fw fa-tachometer-alt"></i>
-                    <span>Dashboard</span></a>
-            </li>
-
-            <!-- Divider -->
-            <hr class="sidebar-divider">
-
-            <!-- Nav Item - Charts -->
-            <li class="nav-item">
-                <a class="nav-link" href="AccountManagement.html">
-                    <i class="fas fa-fw fa-chart-area"></i>
-                    <span>Account Management</span></a>
-            </li>
-
-            <!-- Nav Item - Tables -->
-            <li class="nav-item">
-                <a class="nav-link" href="BirdManagement.html">
-                    <i class="fas fa-fw fa-table"></i>
-                    <span>Bird Management </span></a>
-            </li>
-
-            <!-- Nav Item - Tables -->
-            <li class="nav-item">
-                <a class="nav-link" href="MatchManagement.html">
-                    <i class="fas fa-fw fa-table"></i>
-                    <span>Match Management</span></a>
-            </li>
-
-
-            <!-- Nav Item - Tables -->
-            <li class="nav-item">
-                <a class="nav-link" href="PaymentManagement.html">
-                    <i class="fas fa-fw fa-table"></i>
-                    <span>Payment Management</span></a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">
-                    <i class="fas fa-fw fa-table"></i>
-                    <span>Create Schedule</span></a>
-            </li>
-
-            <!-- Divider -->
-            <hr class="sidebar-divider d-none d-md-block">
-
-            <!-- Sidebar Toggler (Sidebar) -->
-            <div class="text-center d-none d-md-inline">
-                <button class="rounded-circle border-0" id="sidebarToggle"></button>
-            </div>
-
-        </ul>
-        <!-- End of Sidebar -->
-
-        <!-- Content Wrapper -->
-        <div id="content-wrapper" class="d-flex flex-column">
-
-            <!-- Main Content -->
-            <div id="content">
-
-                <!-- Topbar -->
-                <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
-
-                    <!-- Sidebar Toggle (Topbar) -->
-                    <form class="form-inline">
-                        <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
-                            <i class="fa fa-bars"></i>
-                        </button>
-                    </form>
-
-                    <!-- Topbar Search -->
-                    <form
-                        class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
-                        <div class="input-group">
-                            <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..."
-                                aria-label="Search" aria-describedby="basic-addon2">
-                            <div class="input-group-append">
-                                <button class="btn btn-primary" type="button">
-                                    <i class="fas fa-search fa-sm"></i>
-                                </button>
-                            </div>
-                        </div>
-                    </form>
-
-                    <!-- Topbar Navbar -->
-                    <ul class="navbar-nav ml-auto">
-
-                        <!-- Nav Item - Search Dropdown (Visible Only XS) -->
-                        <li class="nav-item dropdown no-arrow d-sm-none">
-                            <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <i class="fas fa-search fa-fw"></i>
-                            </a>
-                            <!-- Dropdown - Messages -->
-                            <div class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in"
-                                aria-labelledby="searchDropdown">
-                                <form class="form-inline mr-auto w-100 navbar-search">
-                                    <div class="input-group">
-                                        <input type="text" class="form-control bg-light border-0 small"
-                                            placeholder="Search for..." aria-label="Search"
-                                            aria-describedby="basic-addon2">
-                                        <div class="input-group-append">
-                                            <button class="btn btn-primary" type="button">
-                                                <i class="fas fa-search fa-sm"></i>
-                                            </button>
-                                        </div>
-                                    </div>
-                                </form>
-                            </div>
-                        </li>
-
-
-                        <div class="topbar-divider d-none d-sm-block"></div>
-
-                        <!-- Nav Item - User Information -->
-                        <li class="nav-item dropdown no-arrow">
-                            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Admin</span>
-                                <img class="img-profile rounded-circle" src="img/undraw_profile.svg">
-                            </a>
-                            <!-- Dropdown - User Information -->
-                            <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
-                                aria-labelledby="userDropdown">
-                                <a class="dropdown-item" href="#">
-                                    <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    Profile
-                                </a>
-
-                                <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
-                                    <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    Logout
-                                </a>
-                            </div>
-                        </li>
-
-                    </ul>
-
-                </nav>
-                <!-- End of Topbar -->
-
+        <jsp:include page="Menu.jsp"/>
+       
                 <!-- Begin Page Content -->
-                <form action="<c:url value="/DispatchServlet"/>">
-                    <!-- Form Group (username)-->
-                    <div class="mb-3">
-                        <label class="small mb-1">Date</label>
-                        <input class="form-control" name="date" type="date" value="">
-                    </div>
-                    <!-- Form Row-->
-                    <div class="row gx-3 mb-3">
-
-                        <div class="col-md-12">
-                            <label class="small mb-1">Name Of Contest</label>
-                            <input class="form-control" name="txtContestName" type="text" placeholder="Name of Contest"
-                                value="">
+                <div class="row">
+                    <div class="col-lg-5 d-none d-lg-block bg-register-image"></div>
+                    <div class="col-lg-7">
+                        <div class="p-5">
+                            <div class="text-center">
+                                <h1 class="h4 text-gray-900 mb-4">Tạo lịch thi đấu</h1>
+                            </div>
+                            <form action='<c:url value="/DispatchServlet"/>' class="user">
+                                <div class="form-group row">
+                                    <div class="col-sm-6 mb-3 mb-sm-0">
+                                        <label class="small mb-1">Ngày thi đấu:</label>
+                                        <input type="date" class="form-control form-control-user" id="date"
+                                            name="date">
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <label class="small mb-1">Hệ số:</label>
+                                        <input type="number" class="form-control form-control-user" id="contestFactor"
+                                            placeholder="Hệ số" name="factor">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="small mb-1">Tên cuộc thi:</label>
+                                    <input type="email" class="form-control form-control-user" id="contestName"
+                                        placeholder="Tên cuộc thi" name="txtContestName">
+                                </div>
+                                <div class="form-group row">
+                                    <div class="col-sm-6 mb-3 mb-sm-0">
+                                        <label class="small mb-1">Điểm tham gia tối thiểu:</label>
+                                        <input type="number" class="form-control form-control-user"
+                                            id="minPoint" placeholder="min point" name="minPoint">
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <label class="small mb-1">Điểm tham gia tối đa:</label>
+                                        <input type="number" class="form-control form-control-user"
+                                            id="maxPoint" placeholder="max point" name="maxPoint">
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <div class="col-sm-6 mb-3 mb-sm-0">
+                                        <label class="small mb-1">Số lượng tham gia tối đa:</label>
+                                        <input type="number" class="form-control form-control-user"
+                                            id="maxPar" placeholder="max participant" name="maxPar">
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <label class="small mb-1">Số lượng chim được phép tham gia:</label>
+                                        <input type="number" class="form-control form-control-user"
+                                            id="maxBirdJoin" placeholder="max bird in a contest" name="maxBirdJoin">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="small mb-1">Phí tham gia:</label>
+                                    <input type="email" class="form-control form-control-user" id="contestName"
+                                        placeholder="Phí" name="txtContestName">
+                                </div>
+                                Chọn địa điểm tham gia: <select aria-label="chooseBird" name="cboBird">
+                                    <option selected disabled>địa điểm</option>
+                                </select>
+                                <hr>
+                                <button type="submit" value="createSchedule" class="btn btn-primary btn-user btn-block" name="btAction">
+                                    Tạo lịch</button>
+                            </form>
+                        
                         </div>
                     </div>
-
-                    <div class="row gx-3 mb-3">
-                        <div class="col-md-12">
-                            <label class="small mb-1">MinPoint</label>
-                            <input class="form-control" name="minPoint" type="number" placeholder="Enter MIN Point"
-                                value="">
-                        </div>
-                    </div>
-                    <div class="row gx-3 mb-3">
-
-                        <div class="col-md-12">
-                            <label class="small mb-1">MaxPoint</label>
-                            <input class="form-control" name="maxPoint" type="number" placeholder="Enter MAX Point"
-                                value="">
-                        </div>
-
-                    </div>
-                    Choose Place: <select aria-label="chooseBird" name="cboBird">
-                        <option selected disabled>place</option>
-                    </select>
-                    <div class="row gx-3 mb-3">
-
-                        <div class="col-md-12">
-                            <label class="small mb-1">Factor</label>
-                            <input class="form-control" name="factor" type="number" placeholder="Enter Factor"
-                                value="">
-                        </div>
-
-                    </div>
-                    <div class="row gx-3 mb-3">
-
-                        <div class="col-md-12">
-                            <label class="small mb-1">Max participant</label>
-                            <input class="form-control" name="maxPar" type="number" placeholder="Enter Max Participant"
-                                value="">
-                        </div>
-
-                    </div>
-                    <div class="row gx-3 mb-3">
-
-                        <div class="col-md-12">
-                            <label class="small mb-1">Participation Fee</label>
-                            <input class="form-control" name="fee" type="number" placeholder="Enter Participation Fee"
-                                value="">
-                        </div>
-
-                    </div>
-
-                    <!-- Save changes button-->
-                    <button type="submit" value="createSchedule" class="btn btn-primary" name="btAction">Save changes</button>
-                </form>
-
+                </div>
 
                 <!-- /.container-fluid -->
 
@@ -278,7 +117,7 @@
             <footer class="sticky-footer bg-white">
                 <div class="container my-auto">
                     <div class="copyright text-center my-auto">
-                        <span>Copyright &copy; Your Website 2020</span>
+                        <span>Copyright &copy; Bird-Competition</span>
                     </div>
                 </div>
             </footer>

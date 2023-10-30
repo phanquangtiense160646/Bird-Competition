@@ -3,6 +3,8 @@ package com.birdcompetition.controller.web;
 import com.birdcompetition.bird.BirdDAO;
 import com.birdcompetition.bird.BirdDTO;
 import com.birdcompetition.model.User;
+import com.birdcompetition.schedule.ScheduleDAO;
+import com.birdcompetition.schedule.ScheduleDTO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
@@ -39,23 +41,26 @@ public class ScheduleServlet extends HttpServlet {
         String url = "schedule.jsp";
         try {
             HttpSession session = request.getSession();
-            List<BirdDTO> birdList;
-
             BirdDAO dao = new BirdDAO();
+            /*lich thi dau*/
+            ScheduleDAO scheduleDao = new ScheduleDAO();
+            scheduleDao.getSchedule();
+            List<ScheduleDTO> listSchedule = scheduleDao.getList();
+            session.setAttribute("SCHEDULE", listSchedule);
+            /*danh sach chim dk*/
             User user = (User) session.getAttribute("USER");
             dao.getBirdByMemberId(user.getIdMember());
-            birdList = dao.getBirdList();
+            List<BirdDTO> birdList = dao.getBirdList();
             session.setAttribute("OWN_BIRD", birdList);
 
         } catch (SQLException ex) {
-//            log("ScheduleServlet_SQL: " + ex.getMessage());
-            ex.printStackTrace();
+            log("ScheduleServlet_SQL: " + ex.getMessage());
         } catch (ClassNotFoundException ex) {
             log("ScheduleServlet_ClassNotFound: " + ex.getMessage());
         } finally {
-            response.sendRedirect(url);
-//            RequestDispatcher rd = request.getRequestDispatcher(url);
-//            rd.forward(request, response);
+//            response.sendRedirect(url);
+            RequestDispatcher rd = request.getRequestDispatcher(url);
+            rd.forward(request, response);
         }
 
     }

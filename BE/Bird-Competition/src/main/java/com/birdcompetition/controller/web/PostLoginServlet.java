@@ -41,14 +41,10 @@ public class PostLoginServlet extends HttpServlet {
         String url = "postLogin.jsp";
         try {
             HttpSession session = request.getSession();
-            List<ScheduleDTO> listSchedule = (List<ScheduleDTO>) session.getAttribute("SCHEDULE");
-            if (listSchedule == null) {
-                ScheduleDAO scheduleDao = new ScheduleDAO();
-                scheduleDao.getSchedule();
-
-                listSchedule = scheduleDao.getList();
-                session.setAttribute("SCHEDULE", listSchedule);
-            }
+            ScheduleDAO scheduleDao = new ScheduleDAO();
+            scheduleDao.getSchedule();
+            List<ScheduleDTO> listSchedule = scheduleDao.getList();
+            session.setAttribute("SCHEDULE", listSchedule);
 
         } catch (SQLException ex) {
             log("PostLoginServlet_SQL: " + ex.getMessage());

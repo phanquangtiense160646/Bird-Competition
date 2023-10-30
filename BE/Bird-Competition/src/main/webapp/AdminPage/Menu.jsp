@@ -71,7 +71,11 @@
                 <i class="fas fa-fw fa-table"></i>
                 <span>Update Match Result</span></a>
         </li> 
-
+        <li class="nav-item">
+            <a class="nav-link" href='<c:url value="/DispatchServlet?btAction=createSchedule"/>'>
+                <i class="fas fa-fw fa-table"></i>
+                <span>Create Schedule</span></a>
+        </li>
         <li class="nav-item">
             <!--<a class="nav-link" href='<c:url value="/DispatchServlet?btAction=Preparing"/>'>-->
             <a class="nav-link" href="PreparingMatchServlet">
