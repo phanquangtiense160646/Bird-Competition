@@ -61,6 +61,7 @@ public class ConfirmMatchServlet extends HttpServlet {
                 birdDao.setPoint(id, afterPoint);
             }
             scheduleDao.setStatus(matchId, 4);
+            request.setAttribute("Message", "success");
 
         } catch (SQLException ex) {
             Logger.getLogger(ConfirmMatchServlet.class.getName()).log(Level.SEVERE, null, ex);

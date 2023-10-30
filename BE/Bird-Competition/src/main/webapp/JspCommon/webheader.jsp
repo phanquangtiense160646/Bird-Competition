@@ -7,7 +7,7 @@
         <div class="col-lg-3 bg-dark d-none d-lg-block">
 
 
-            <a href="index.html" class="navbar-brand w-100 h-100 m-0 p-0 d-flex align-items-center justify-content-center">
+            <a href='<c:url value="/DispatchServlet?btAction=PostLogin"/>' class="navbar-brand w-100 h-100 m-0 p-0 d-flex align-items-center justify-content-center">
                 <img src="FE/img/finallogo.png" style="width: 100px; margin-right: -40px; margin-bottom:50px;">
                 <h1 class="m-0 display-4 text-primary text-uppercase">BIRDFIGHTER</h1>
             </a>
@@ -54,7 +54,7 @@
                 </button>
                 <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
                     <div class="navbar-nav mr-auto py-0">
-                        <a href="" class="nav-item nav-link active">Home</a>
+                        <a href='<c:url value="/DispatchServlet?btAction=PostLogin"/>' class="nav-item nav-link active">Home</a>
                         <a href='<c:url value="/DispatchServlet?btAction=LeaderBoard"/>' class="nav-item nav-link">Bảng xếp hạng</a>
                         <a href='<c:url value="/DispatchServlet?btAction=schedule"/>' class="nav-item nav-link">Lịch thi đấu</a>
                         <a href="FE/memberShip.html" class="nav-item nav-link">Hội viên</a>

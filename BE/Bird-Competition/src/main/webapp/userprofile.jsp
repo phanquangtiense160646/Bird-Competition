@@ -252,9 +252,6 @@
         </div>
 
     </div>
-
-
-    <!-- Dialog -->
     <div class="dialog overlay" id="my-dialog">
         <a href="#close-dialog" class="overlay-close"></a>
         <div id="close-dialog" class="dialog-body">
