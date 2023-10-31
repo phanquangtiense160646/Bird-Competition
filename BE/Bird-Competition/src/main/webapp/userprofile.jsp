@@ -4,6 +4,7 @@
     Author     : admin
 --%>
 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!--<!DOCTYPE html>-->
 <html>
@@ -116,32 +117,60 @@
 
                                 <div class="d-flex justify-content-between align-items-center mb-4">
                                     <p class="lead fw-normal mb-0">Bird Category</p>
-                                    <p class="mb-0"><a href="#!" class="text-muted">Show all</a></p>
+                                    <form action="DispatchServlet">
+                                        <button class="mb-0" name="btAction" value="BirdList">Show all</button>
+                                    </form>
+                                    
                                 </div>
-
-                                <div class="row g-2">
-                                    <div class="box col mb-5">
-                                        <div class="imghover">
-                                            <form action="#my-dialog">
-                                                <button class="btn">Info</button>
-                                            </form>
-                                        </div>
-
-                                        <img src="https://tmso.baotanglamdong.com.vn/wp-content/uploads/2021/10/CHAO-MAO-DIT-DO-3.jpg">
-                                        <p class="birdname" style="font-weight: bold; text-align:center;">CHÀO MÀO LỬA</p>
+                <c:set var="count" value="0" />                
+                <c:set var="birdList" value="${sessionScope.OWN_BIRD}"/>
+                <c:if test="${not empty birdList}">                   
+                    <c:forEach items="${birdList}" var="p" varStatus="loop"> 
+                        <c:if test="${count lt 4}">
+                            <c:if test="${loop.index % 2 == 0}">
+                        <c:set var="nextIndex" value="${loop.index + 1}" />
+                   
+                        <div class="row g-2">
+                                  <div class="box col mb-5">
+                                    <div class="imghover">
+                                      <form action="">
+                                        <button class="btn">Info</button>
+                                      </form>
                                     </div>
-
-                                    <div class="box col mb-5">
-                                        <div class="imghover">
-                                            <form action="#my-dialog1">
-                                                <button class="btn">Info</button>
-                                            </form>
-                                        </div>
-                                        <img src="https://static-images.vnncdn.net/files/publish/2022/11/13/chim-chao-mao-4-937.jpg">
-                                        <p class="birdname" style="font-weight: bold; text-align:center;">TAM ĐIỂU BẠCH TẠNG </p>
+                                    <img src="https://tmso.baotanglamdong.com.vn/wp-content/uploads/2021/10/CHAO-MAO-DIT-DO-3.jpg"
+                                         class="border border-warning rounded border-2">
+                                    <p class="birdname" style="font-weight: bold; text-align:center;">${p.birdName}</p>
+                                  </div>
+                                    <c:if test="${nextIndex <= birdList.size() - 1}">
+                                        
+                                    <div class="box col mb-5 ">
+                                    <div class="imghover">
+                                      <form action="">
+                                        <button class="btn">Info</button>
+                                      </form>
                                     </div>
+                                    <img src="https://tmso.baotanglamdong.com.vn/wp-content/uploads/2021/10/CHAO-MAO-DIT-DO-3.jpg"
+                                         class="border border-warning rounded border-2">
+                                    <p class="birdname" style="font-weight: bold; text-align:center;">${birdList[nextIndex].birdName}</p>
+                                    </div>
+                                    </c:if>
+                                    <c:if test="${nextIndex > birdList.size() - 1}">
+                                        <div class="box col mb-5"></div>
+                                    </c:if>
+                                  
+                             
 
-                                </div>
+                    </c:if>
+                           
+                            <c:set var="count" value="${count + 1}" />
+                          </c:if>
+                    </c:forEach>
+                </c:if>    
+                <c:if test="${empty birdList}">
+            <h2>
+                Chưa có chim trong bộ sưu tập
+            </h2>
+                </c:if>
 
                             </div>
                         </div>
@@ -156,48 +185,7 @@
 
 
 
-        <!-- Dialog -->
-        <div class="dialog overlay" id="my-dialog">
-            <a href="#close-dialog" class="overlay-close"></a>
-            <div id="close-dialog" class="dialog-body">
-                <a href="#close-dialog" class="dialog-close-btn">&times;</a>
-                <header class="dialog-content-header border-bottom">Thông tin chim</header>
-
-                <table class="dialog-content-body">
-                    <tr>
-                        <td><small>Tên:</small></td>
-                        <td>Chào Mào Lửa</td>
-                    </tr>
-
-                    <tr>
-                        <td><small>Ngày Thêm Vào:</small></td>
-                        <td>29/04/2023</td>
-                    </tr>
-
-                    <tr>
-                        <td><small>Tổng Số Trận:</small></td>
-                        <td>10</td>
-                    </tr>
-
-                    <tr>
-                        <td><small>Số Trận Thắng:</small></td>
-                        <td>6</td>
-                    </tr>
-
-                    <tr>
-                        <td><small>Số Trận Thua:</small></td>
-                        <td>4</td>
-                    </tr>
-
-                    <tr>
-                        <td><small>Tỉ Lệ Thắng:</small></td>
-                        <td>60%</td>
-                    </tr>
-                </table>
-
-            </div>
-
-        </div>
+        
 
         <!-- Edit profile dialog  -->
         <div class="dialog overlay" id="editprofile-dialog">

@@ -24,54 +24,50 @@
         <hr class="sidebar-divider my-0">
 
 
+        <hr class="sidebar-divider d-none d-md-block">
 
-        <!-- Divider -->
-        <hr class="sidebar-divider">
 
         <!-- Heading -->
         <div class="sidebar-heading">
-            Management
+            Staff
         </div>
 
 
-
-        <!-- Nav Item - Charts -->
-        <!-- Nav Item - Tables -->
+        <li class="nav-item">
+            <a class="nav-link" href="AdminPage/index.jsp">
+                <i class="fas fa-fw fa-table"></i>
+                <span>Dashboard</span></a>
+        </li>
+        
         <li class="nav-item">
             <a class="nav-link" href="AdminPage/Pages/AccountManagement.html">
                 <i class="fas fa-fw fa-table"></i>
-                <span>Account Management </span></a>
+                <span>Quản lý tài khoản</span></a>
         </li>
 
-        <!-- Nav Item - Tables -->
         <li class="nav-item">
             <a class="nav-link" href="AdminPage/Pages/BirdManagement.html">
                 <i class="fas fa-fw fa-table"></i>
-                <span>Bird Management </span></a>
+                <span>Quản lý danh sách Chim</span></a>
         </li>
 
-        <!-- Nav Item - Tables -->
         <li class="nav-item">
             <a class="nav-link" href="AdminPage/Pages/MatchManagement.html">
                 <i class="fas fa-fw fa-table"></i>
-                <span>Match Management</span></a>
+                <span>Quản lý lịch thi đấu</span></a>
         </li>      
 
 
-        <!-- Nav Item - Tables -->
-        <li class="nav-item">
-            <a class="nav-link" href="AdminPage/Pages/PaymentManagement.html">
-                <i class="fas fa-fw fa-table"></i>
-                <span>Payment Management</span></a>
-        </li>           
-
-        <!-- Nav Item - Tables -->
         <li class="nav-item">
             <a class="nav-link" href="HappeningMatchServlet">
                 <i class="fas fa-fw fa-table"></i>
-                <span>Update Match Result</span></a>
+                <span>Cập nhật kết quả trận đấu</span></a>
         </li> 
-
+        <li class="nav-item">
+            <a class="nav-link" href='<c:url value="/DispatchServlet?btAction=createSchedule"/>'>
+                <i class="fas fa-fw fa-table"></i>
+                <span>Create Schedule</span></a>
+        </li>
         <li class="nav-item">
             <!--<a class="nav-link" href='<c:url value="/DispatchServlet?btAction=Preparing"/>'>-->
             <a class="nav-link" href="PreparingMatchServlet">
@@ -80,6 +76,29 @@
         </li> 
         <!-- Divider -->
         <hr class="sidebar-divider d-none d-md-block">
+        <!-- Heading -->
+        <div class="sidebar-heading">
+            Manager
+        </div>
+        
+        
+        <li class="nav-item">
+            <a class="nav-link" href="AdminPage/Pages/PaymentManagement.html">
+                <i class="fas fa-fw fa-table"></i>
+                <span>Quản lý thanh toán</span></a>
+        </li>  
+        
+        <li class="nav-item">
+            <a class="nav-link" href="">
+                <i class="fas fa-fw fa-table"></i>
+                <span>Quản lý Luật thi</span></a>
+        </li>   
+
+        <!-- Divider -->
+        <hr class="sidebar-divider d-none d-md-block">
+
+
+
 
         <!-- Sidebar Toggler (Sidebar) -->
         <div class="text-center d-none d-md-inline">
@@ -102,7 +121,7 @@
                 </button>
 
                 <!-- Topbar Search -->
-                <form
+<!--                <form
                     class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
                     <div class="input-group">
                         <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..."
@@ -113,7 +132,7 @@
                             </button>
                         </div>
                     </div>
-                </form>
+                </form>-->
 
                 <!-- Topbar Navbar -->
                 <ul class="navbar-nav ml-auto">
@@ -154,11 +173,11 @@
                         <!-- Dropdown - User Information -->
                         <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
                              aria-labelledby="userDropdown">
-                            <a class="dropdown-item" href="#">
+<!--                            <a class="dropdown-item" href="#">
                                 <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                                 Profile
-                            </a>
-                            <div class="dropdown-divider"></div>
+                            </a>-->
+                            <!--<div class="dropdown-divider"></div>-->
                             <a class="dropdown-item" href='<c:url value="/DispatchServlet?btAction=Logout"/>'>
                                 <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                                 Logout
