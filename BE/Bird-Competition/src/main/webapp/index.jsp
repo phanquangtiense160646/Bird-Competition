@@ -102,8 +102,8 @@
                             <div class="dropdown-menu rounded-0 m-0">
                                 <!-- <a href="blog.html" class="dropdown-item">News</a> -->
                                 <a href="#" class="dropdown-item">Luật thi đấu</a>
-                                <a href="feedback_pre.html" class="dropdown-item">Feedback</a>
-                                <a href="news.html" class="dropdown-item">Tin Tức</a>
+                                <a href="FE/feedback_pre.jsp" class="dropdown-item">Feedback</a>
+                                <a href="News.jsp" class="dropdown-item">Tin Tức</a>
                             </div>
                         </div>
                         <a href="contact.html" class="nav-item nav-link">Liên Hệ</a>

@@ -1,9 +1,8 @@
 <!DOCTYPE html>
-<html lang="en">
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@page contentType="text/html" pageEncoding="UTF-8" %>
 
 <head>
-    <meta charset="utf-8">
-    <title>Feedback</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="Free HTML Templates" name="keywords">
     <meta content="Free HTML Templates" name="description">
@@ -94,7 +93,7 @@
                             <div class="dropdown-menu rounded-0 m-0">
                                 <a href="news.html" class="dropdown-item">News</a>
                                 <a href="rules.html" class="dropdown-item">Luật thi đấu</a>
-                                <a href="feedback.html" class="dropdown-item active">Feedback</a>
+                                <a href="Feedback.jsp" class="dropdown-item active">Feedback</a>
                             </div>
                         </div>
                         <a href="contact.html" class="nav-item nav-link">Liên Hệ</a>

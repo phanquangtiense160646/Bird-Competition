@@ -77,7 +77,7 @@
                         <div class="col-md-6">
                             <div class="blog-item">
                                 <div class="position-relative overflow-hidden rounded-top">
-                                    <img class="img-fluid" src="img/4d13efeb00abdef587ba8-f2eaaed080ef4a81bfc4e69d6d75a200.jpg" alt="">
+                                    <img class="img-fluid" src="FE/img/4d13efeb00abdef587ba8-f2eaaed080ef4a81bfc4e69d6d75a200.jpg" alt="">
                                 </div>
                                 <div class="bg-dark d-flex align-items-center rounded-bottom p-4">
                                     <!-- <div class="flex-shrink-0 text-center text-secondary border-end border-secondary pe-3 me-3">
