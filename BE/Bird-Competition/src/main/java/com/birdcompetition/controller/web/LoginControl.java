@@ -40,7 +40,8 @@ public class LoginControl extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         String username = request.getParameter("user");
         String password = request.getParameter("pass");
-        String url = "Login.jsp";
+        String url = "Login2.jsp";
+        
 
         try {
 
