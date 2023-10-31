@@ -1,30 +1,20 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
- */
 package com.birdcompetition.controller.web;
 
-import com.birdcompetition.schedule.ScheduleDAO;
-import com.birdcompetition.schedule.ScheduleDTO;
+import com.birdcompetition.membership.MembershipDAO;
+import com.birdcompetition.membership.MembershipDTO;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.Date;
 import java.sql.SQLException;
-import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import java.text.SimpleDateFormat;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
-/**
- *
- * @author Admin
- */
-@WebServlet(name = "PostLoginServlet", urlPatterns = {"/PostLoginServlet"})
-public class PostLoginServlet extends HttpServlet {
+@WebServlet(name = "RegisterMemberShipServlet", urlPatterns = {"/RegisterMemberShipServlet"})
+public class RegisterMemberShipServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -38,20 +28,32 @@ public class PostLoginServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        String url = "postLogin.jsp";
-        try {
-            HttpSession session = request.getSession();
-            ScheduleDAO scheduleDao = new ScheduleDAO();
-            scheduleDao.getSchedule();
-            List<ScheduleDTO> listSchedule = scheduleDao.getList();
-            session.setAttribute("SCHEDULE", listSchedule);
-
-        } catch (SQLException ex) {
-            log("PostLoginServlet_SQL: " + ex.getMessage());
-        } catch (ClassNotFoundException ex) {
-            log("PostLoginServlet_ClassNotFound: " + ex.getMessage());
-        } finally {
-            response.sendRedirect(url);
+        
+        String url = "memberShip.html";
+        
+        try{
+            MembershipDAO dao = new MembershipDAO();
+            String memberId = request.getParameter("name");
+//            Date dateSignup = SimpleDateFormat.format(request.getParameter("dos"));
+            String type = request.getParameter("type");
+            String des = request.getParameter("description");
+            
+            
+//            MembershipDTO member = dao.checkRegister(memberId);
+//            if(member != null){
+//                request.setAttribute("ERROR", "Tài khoản đã đăng ký gói VIP");
+//            }
+//            
+//            boolean check = dao.registerMembership(memberId, dateSignup, true, type, des);
+//            if(check){
+//                request.setAttribute("MESSAGE", "Đăng ký thành công gói thành viên");
+//                url = "memberShip.html";
+//            }else{
+//                request.setAttribute("MESSAGE", "Chưa đăng ký thành công gói thành ");
+//                url = "memberShip.html";
+//            }
+        }finally{
+            request.getRequestDispatcher(url).forward(request, response);
         }
     }
 

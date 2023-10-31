@@ -37,10 +37,15 @@ public class AddScheduleServlet extends HttpServlet {
         String maxPar = request.getParameter("maxPar");
         String fee = request.getParameter("fee");
         
+        String url = "AdminPage/createSchedule.jsp";
         try {
-            Date sqlDate = Date.valueOf(date);
-        }finally {
+            if(date != null) {
+                Date sqlDate = Date.valueOf(date);
+            System.out.println(sqlDate);
+            }
             
+        }finally {
+            response.sendRedirect(url);
         }
     }
 

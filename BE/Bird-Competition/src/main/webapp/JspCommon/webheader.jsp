@@ -7,7 +7,7 @@
         <div class="col-lg-3 bg-dark d-none d-lg-block">
 
 
-            <a href="index.html" class="navbar-brand w-100 h-100 m-0 p-0 d-flex align-items-center justify-content-center">
+            <a href='<c:url value="/DispatchServlet?btAction=PostLogin"/>' class="navbar-brand w-100 h-100 m-0 p-0 d-flex align-items-center justify-content-center">
                 <img src="FE/img/finallogo.png" style="width: 100px; margin-right: -40px; margin-bottom:50px;">
                 <h1 class="m-0 display-4 text-primary text-uppercase">BIRDFIGHTER</h1>
             </a>
@@ -54,12 +54,12 @@
                 </button>
                 <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
                     <div class="navbar-nav mr-auto py-0">
-                        <a href="" class="nav-item nav-link active">Home</a>
-                        <a href='<c:url value="/DispatchServlet?btAction=LeaderBoard"/>' class="nav-item nav-link">Bảng xếp hạng</a>
-                        <a href='<c:url value="/DispatchServlet?btAction=schedule"/>' class="nav-item nav-link">Lịch thi đấu</a>
-                        <a href="FE/memberShip.html" class="nav-item nav-link">Hội viên</a>
+                        <a href='<c:url value="/DispatchServlet?btAction=PostLogin"/>' id="home-page" class="nav-item nav-link">Home</a>
+                        <a href='<c:url value="/DispatchServlet?btAction=LeaderBoard"/>' id="rank-list" class="nav-item nav-link">Bảng xếp hạng</a>
+                        <a href='<c:url value="/DispatchServlet?btAction=schedule"/>' id="lichthidau" class="nav-item nav-link">Lịch thi đấu</a>
+                        <a href="FE/memberShip.html" id="hoivien" class="nav-item nav-link">Hội viên</a>
                         <div class="nav-item dropdown">
-                            <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
+                            <a href="#" id="cactrangdropdown" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
                             <div class="dropdown-menu rounded-0 m-0">
                                 <!-- <a href="blog.html" class="dropdown-item">News</a> -->
                                 <a href="FE/rules.html" class="dropdown-item">Luật thi đấu</a>

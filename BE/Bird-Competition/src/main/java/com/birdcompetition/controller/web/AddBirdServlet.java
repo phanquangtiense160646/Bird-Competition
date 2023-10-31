@@ -50,10 +50,10 @@ public class AddBirdServlet extends HttpServlet {
             boolean result = dao.addBird(dto);
             if(result){
                 url = "addnewbird.jsp";
-                String msg = "Đã Thêm Chim Thành Công";
+                String msg = "success";
                 request.setAttribute("msg", msg);
             }else{
-                String msg = "Thêm Chim Thất Bại";
+                String msg = "fail";
                 request.setAttribute("msg", msg);
             }
                 

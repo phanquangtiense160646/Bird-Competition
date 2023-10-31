@@ -52,7 +52,7 @@ function toast({
 function showSuccessToast() {
     toast({
         tiltle: 'Success',
-        message: 'Đăng kí thành công, Xem CHECK_IN_CODE ở mục Match',
+        message: 'Thêm Chim Thành Công',
         type: 'success',
         duration: 20000
     })
@@ -61,30 +61,26 @@ function showSuccessToast() {
 function showFailToast() {
     toast({
         tiltle: 'Fail',
-        message: 'Chim thi đấu của bạn không hợp lệ',
+        message: 'Thêm Chim Thất Bại',
         type: 'warning',
         duration: 8000
     })
 }
-function showErrorToast() {
-    toast({
-        tiltle: 'Lỗi',
-        message: 'Chim đã được đăng kí vào cuộc thi này',
-        type: 'info',
-        duration: 8000
-    })
-}
+// function showErrorToast() {
+//     toast({
+//         tiltle: 'Lỗi',
+//         message: 'Chim đã được đăng kí vào cuộc thi này',
+//         type: 'info',
+//         duration: 8000
+//     })
+// }
 
 var mes = document.getElementById('toastmes').innerHTML;
 if (mes === 'fail') {
     showFailToast();
 } else if (mes === 'success') {
     showSuccessToast();
-} else if (mes === 'error') {
-    showErrorToast();
+} else{
+    console.log("bi loi " + mes);
 }
-
-const activePage = document.getElementById('lichthidau');
-activePage.classList.add('active')
-
 
