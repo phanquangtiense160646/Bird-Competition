@@ -8,7 +8,7 @@
     <meta content="Free HTML Templates" name="description">
 
     <!-- Favicon -->
-    <link href="img/favicon.ico" rel="icon">
+    <link href="FE/img/favicon.ico" rel="icon">
 
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -17,16 +17,16 @@
     <!-- Icon Font Stylesheet -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.0/css/all.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
-    <link href="lib/flaticon/font/flaticon.css" rel="stylesheet">
+    <link href="FE/lib/flaticon/font/flaticon.css" rel="stylesheet">
 
     <!-- Libraries Stylesheet -->
-    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+    <link href="FE/lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
 
     <!-- Customized Bootstrap Stylesheet -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="FE/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Template Stylesheet -->
-    <link href="css/style.css" rel="stylesheet">
+    <link href="FE/css/style.css" rel="stylesheet">
 </head>
 
 <body>
@@ -106,7 +106,23 @@
                             </div>
                         </div>
                     </div>
-                    <a href="/UserProfile/userprofile.html" class="btn btn-primary py-md-3 px-md-5 d-none d-lg-block">emhuythichchoichim</a>
+                    <div class="nav-item dropdown">
+
+                        <a href="#" class="btn btn-primary nav-link dropdown-toggle" data-bs-toggle="dropdown" style="width: 150px;">${sessionScope.USER.userName}</a>
+                        <div class="dropdown-menu rounded-0 m-0">
+
+                            <form action="DispatchServlet" method="POST">
+                                <a class="dropdown-item" href="userprofile.jsp">User Profile</a>
+                                <a class="dropdown-item" href="birdprofile.html">Bird Profile</a>
+                                <a class="dropdown-item" href="addnewbird.jsp">Add Bird</a>
+                                <button class="dropdown-item" name="btAction" value="MatchHistory">Match History</button>
+                                <button class="dropdown-item" name="btAction" value="PaymentHistory">Payment History</button>
+                                <div class="dropdown-divider"></div>
+                                <button class="dropdown-item" name="btAction" value="Logout">Logout</button>
+                            </form>
+
+                        </div>
+                    </div>
                 </div>
             </nav>
         </div>

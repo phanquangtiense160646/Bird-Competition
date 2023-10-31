@@ -39,7 +39,7 @@
         <div class="col-lg-3 bg-dark d-none d-lg-block">
             
                 
-            <a href="postlogin.html" class="navbar-brand w-100 h-100 m-0 p-0 d-flex align-items-center justify-content-center">
+            <a href="postlogin.jsp" class="navbar-brand w-100 h-100 m-0 p-0 d-flex align-items-center justify-content-center">
                 <img src="img/finallogo.png" style="width: 100px; margin-right: -40px; margin-bottom:50px;">
                 <h1 class="m-0 display-4 text-primary text-uppercase">BIRDFIGHTER</h1>
             </a>
@@ -86,29 +86,29 @@
                 </button>
                 <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
                     <div class="navbar-nav mr-auto py-0">
-                        <a href="index.html" class="nav-item nav-link">Home</a>
-                        <a href="leaderboard.html" class="nav-item nav-link">Bảng xếp hạng</a>
-                        <a href="schedule.html" class="nav-item nav-link">Lịch thi đấu</a>
-                        <a href="memberShip.html" class="nav-item nav-link">Hội viên</a>
+                        <a href="index.jsp" class="nav-item nav-link">Home</a>
+                        <a href="leaderboard.jsp" class="nav-item nav-link">Bảng xếp hạng</a>
+                        <a href="schedule.jsp" class="nav-item nav-link">Lịch thi đấu</a>
+                        <a href="memberShip.jsp" class="nav-item nav-link">Hội viên</a>
                         <div class="nav-item dropdown">
                             <a href="#" class="nav-link dropdown-toggle active" data-bs-toggle="dropdown">Pages</a>
                             <div class="dropdown-menu rounded-0 m-0">
-                                <a href="news.html" class="dropdown-item">News</a>
-                                <a href="rules.html" class="dropdown-item">Luật thi đấu</a>
-                                <a href="feedback.html" class="dropdown-item active">Feedback</a>
+                                <a href="news.jsp" class="dropdown-item">News</a>
+                                <a href="rules.jsp" class="dropdown-item">Luật thi đấu</a>
+                                <a href="feedback.jsp" class="dropdown-item active">Feedback</a>
                             </div>
                         </div>
-                        <a href="contact.html" class="nav-item nav-link">Liên Hệ</a>
+                        <a href="contact.jsp" class="nav-item nav-link">Liên Hệ</a>
                         <div class="nav-item dropdown">
                             <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Quản lý</a>
                             <div class="dropdown-menu rounded-0 m-0">
-                                <a href="updateRule.html" class="dropdown-item">Luật thi đấu</a>
+                                <a href="updateRule.jsp" class="dropdown-item">Luật thi đấu</a>
                                 <a href="" class="dropdown-item">Lịch thi đấu</a>
                                 <a href="matchResult.html" class="dropdown-item">Kết quả trận đấu</a>
                             </div>
                         </div>
                     </div>
-                    <a href="/Login/Login.html" class="btn btn-primary py-md-3 px-md-5 d-none d-lg-block">Login/Signup</a>
+                    <a href="Login.jsp" class="btn btn-primary py-md-3 px-md-5 d-none d-lg-block">Login/Signup</a>
                 </div>
             </nav>
         </div>

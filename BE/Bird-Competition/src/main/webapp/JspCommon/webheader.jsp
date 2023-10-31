@@ -62,8 +62,8 @@
                             <a href="#" id="cactrangdropdown" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
                             <div class="dropdown-menu rounded-0 m-0">
                                 <!-- <a href="blog.html" class="dropdown-item">News</a> -->
-                                <a href="FE/rules.html" class="dropdown-item">Luật thi đấu</a>
-                                <a href="FE/feedback.html" class="dropdown-item">Feedback</a>
+                                <a href="rules.jsp" class="dropdown-item">Luật thi đấu</a>
+                                <a href="Feedback.jsp" class="dropdown-item">Feedback</a>
                                 <a href="News.jsp" class="dropdown-item">Tin Tức</a>
                             </div>
                         </div>

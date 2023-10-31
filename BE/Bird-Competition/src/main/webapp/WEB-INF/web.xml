@@ -12,6 +12,10 @@
         <servlet-name>FeedBackDAO</servlet-name>
         <servlet-class>com.birdcompetition.feedback.FeedBackDAO</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>AddFeedBackServlet</servlet-name>
+        <servlet-class>com.birdcompetition.controller.AddFeedBackServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>DispatchServlet</servlet-name>
         <url-pattern>/DispatchServlet</url-pattern>
@@ -27,6 +31,10 @@
     <servlet-mapping>
         <servlet-name>FeedBackDAO</servlet-name>
         <url-pattern>/FeedBackDAO</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AddFeedBackServlet</servlet-name>
+        <url-pattern>/AddFeedBackServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
