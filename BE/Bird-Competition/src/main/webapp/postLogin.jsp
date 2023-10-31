@@ -216,7 +216,7 @@
             </div>
         </div>
         <div class="col-lg-12 col-md-6 text-center" style="margin-top: 25px;">
-            <a href="leaderboard.html#board" class="btn btn-primary py-3 px-5">Xem bảng xếp hạng</a>
+            <a href="leaderboard.jsp#board" class="btn btn-primary py-3 px-5">Xem bảng xếp hạng</a>
         </div>
     </div>
     <!-- Top Bird End -->

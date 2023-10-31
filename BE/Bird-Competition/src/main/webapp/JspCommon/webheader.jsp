@@ -64,7 +64,7 @@
                                 <!-- <a href="blog.html" class="dropdown-item">News</a> -->
                                 <a href="FE/rules.html" class="dropdown-item">Luật thi đấu</a>
                                 <a href="FE/feedback.html" class="dropdown-item">Feedback</a>
-                                <a href="FE/news.html" class="dropdown-item">Tin Tức</a>
+                                <a href="News.jsp" class="dropdown-item">Tin Tức</a>
                             </div>
                         </div>
                         <a href="FE/contact.html" class="nav-item nav-link">Liên Hệ</a>
