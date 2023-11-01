@@ -54,17 +54,17 @@
                 </button>
                 <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
                     <div class="navbar-nav mr-auto py-0">
-                        <a href='<c:url value="/DispatchServlet?btAction=PostLogin"/>' class="nav-item nav-link active">Home</a>
-                        <a href='<c:url value="/DispatchServlet?btAction=LeaderBoard"/>' class="nav-item nav-link">Bảng xếp hạng</a>
-                        <a href='<c:url value="/DispatchServlet?btAction=schedule"/>' class="nav-item nav-link">Lịch thi đấu</a>
-                        <a href="FE/memberShip.html" class="nav-item nav-link">Hội viên</a>
+                        <a href='<c:url value="/DispatchServlet?btAction=PostLogin"/>' id="home-page" class="nav-item nav-link">Home</a>
+                        <a href='<c:url value="/DispatchServlet?btAction=LeaderBoard"/>' id="rank-list" class="nav-item nav-link">Bảng xếp hạng</a>
+                        <a href='<c:url value="/DispatchServlet?btAction=schedule"/>' id="lichthidau" class="nav-item nav-link">Lịch thi đấu</a>
+                        <a href="FE/memberShip.html" id="hoivien" class="nav-item nav-link">Hội viên</a>
                         <div class="nav-item dropdown">
-                            <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
+                            <a href="#" id="cactrangdropdown" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
                             <div class="dropdown-menu rounded-0 m-0">
                                 <!-- <a href="blog.html" class="dropdown-item">News</a> -->
-                                <a href="FE/rules.html" class="dropdown-item">Luật thi đấu</a>
-                                <a href="FE/feedback.html" class="dropdown-item">Feedback</a>
-                                <a href="FE/news.html" class="dropdown-item">Tin Tức</a>
+                                <a href="rules.jsp" class="dropdown-item">Luật thi đấu</a>
+                                <a href="Feedback.jsp" class="dropdown-item">Feedback</a>
+                                <a href="News.jsp" class="dropdown-item">Tin Tức</a>
                             </div>
                         </div>
                         <a href="FE/contact.html" class="nav-item nav-link">Liên Hệ</a>

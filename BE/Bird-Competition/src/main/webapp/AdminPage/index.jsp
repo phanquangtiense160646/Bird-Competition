@@ -33,7 +33,6 @@
 
         <jsp:include page="Menu.jsp"/>
 
-           
                     <!-- Begin Page Content -->
                     <div class="container-fluid">
 

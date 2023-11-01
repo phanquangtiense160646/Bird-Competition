@@ -4,6 +4,8 @@
  */
 package com.birdcompetition.controller.web;
 
+import com.birdcompetition.bird.BirdContestDTO;
+import com.birdcompetition.registerCompetition.CRegisterDAO;
 import com.birdcompetition.schedule.ScheduleDAO;
 import com.birdcompetition.schedule.ScheduleDTO;
 import java.io.IOException;
@@ -12,19 +14,19 @@ import java.sql.SQLException;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 /**
  *
  * @author Admin
  */
-@WebServlet(name = "PostLoginServlet", urlPatterns = {"/PostLoginServlet"})
-public class PostLoginServlet extends HttpServlet {
+@WebServlet(name = "ViewMatchInfoServlet", urlPatterns = {"/ViewMatchInfoServlet"})
+public class ViewMatchInfoServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -38,20 +40,28 @@ public class PostLoginServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        String url = "postLogin.jsp";
+        String url = "matchInfo.jsp";
+        String contestId = request.getParameter("hiddenContestId");
+
         try {
-            HttpSession session = request.getSession();
-            ScheduleDAO scheduleDao = new ScheduleDAO();
-            scheduleDao.getSchedule();
-            List<ScheduleDTO> listSchedule = scheduleDao.getList();
-            session.setAttribute("SCHEDULE", listSchedule);
+            if (contestId != null) {
+                int idContest = Integer.parseInt(contestId);
+                ScheduleDAO scheduleDao = new ScheduleDAO();
+                ScheduleDTO dto = scheduleDao.getScheduleById(idContest);
+                request.setAttribute("SCHEDULE_DTO", dto);
+                CRegisterDAO cRDao = new CRegisterDAO();
+                cRDao.getBirdInContest(idContest);
+                List<BirdContestDTO> listBird = cRDao.getListBirdContest();
+                request.setAttribute("LIST_BIRD", listBird);
+            }
 
         } catch (SQLException ex) {
-            log("PostLoginServlet_SQL: " + ex.getMessage());
+            log("ViewMatchInfo_SQL: " + ex.getMessage());
         } catch (ClassNotFoundException ex) {
-            log("PostLoginServlet_ClassNotFound: " + ex.getMessage());
+            log("ViewMatchInfo_ClassNotFound: " + ex.getMessage());
         } finally {
-            response.sendRedirect(url);
+            RequestDispatcher rd = request.getRequestDispatcher(url);
+            rd.forward(request, response);
         }
     }
 

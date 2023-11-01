@@ -2,29 +2,20 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
  */
-package com.birdcompetition.controller.web;
+package com.birdcompetition.controller;
 
-import com.birdcompetition.schedule.ScheduleDAO;
-import com.birdcompetition.schedule.ScheduleDTO;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.sql.SQLException;
-import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 /**
  *
- * @author Admin
+ * @author MSI
  */
-@WebServlet(name = "PostLoginServlet", urlPatterns = {"/PostLoginServlet"})
-public class PostLoginServlet extends HttpServlet {
+public class AddFeedBackServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -38,20 +29,17 @@ public class PostLoginServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        String url = "postLogin.jsp";
-        try {
-            HttpSession session = request.getSession();
-            ScheduleDAO scheduleDao = new ScheduleDAO();
-            scheduleDao.getSchedule();
-            List<ScheduleDTO> listSchedule = scheduleDao.getList();
-            session.setAttribute("SCHEDULE", listSchedule);
-
-        } catch (SQLException ex) {
-            log("PostLoginServlet_SQL: " + ex.getMessage());
-        } catch (ClassNotFoundException ex) {
-            log("PostLoginServlet_ClassNotFound: " + ex.getMessage());
-        } finally {
-            response.sendRedirect(url);
+        try (PrintWriter out = response.getWriter()) {
+            /* TODO output your page here. You may use following sample code. */
+            out.println("<!DOCTYPE html>");
+            out.println("<html>");
+            out.println("<head>");
+            out.println("<title>Servlet AddFeedBackServlet</title>");            
+            out.println("</head>");
+            out.println("<body>");
+            out.println("<h1>Servlet AddFeedBackServlet at " + request.getContextPath() + "</h1>");
+            out.println("</body>");
+            out.println("</html>");
         }
     }
 

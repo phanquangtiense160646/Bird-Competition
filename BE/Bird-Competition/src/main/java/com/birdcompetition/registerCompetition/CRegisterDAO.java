@@ -81,7 +81,7 @@ public class CRegisterDAO implements Serializable {
             //check 
             if (con != null) {
                 //2.Creat SQL String 
-                String sql = "Select IdBird "
+                String sql = "Select * "
                         + "From BirdContest "
                         + "Where IdContest = ? ";
                 //3.Create Statement Object
@@ -94,8 +94,12 @@ public class CRegisterDAO implements Serializable {
                 this.listBirdContest = new ArrayList<>();
                 while (rs.next()) {
                     int birdId = rs.getInt("IdBird");
-                    BirdContestDTO dto = new BirdContestDTO(birdId, null, 0, 0, 
-                            0, true, true, null);
+                    int rank = rs.getInt("Rank");
+                    int beforePoint = rs.getInt("BeforePoint");
+                    int afterPoint = rs.getInt("AfterPoint");
+                    String contestID = contestId + "";
+                    BirdContestDTO dto = new BirdContestDTO(birdId, contestID, rank, beforePoint, 
+                            afterPoint, true, true, null);
                     this.listBirdContest.add(dto);
                 }
             }

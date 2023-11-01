@@ -41,7 +41,12 @@ public class LogoutServlet extends HttpServlet {
         }finally{
             response.sendRedirect("StartServlet");
 
+
+            //response.sendRedirect("postLogin.jsp"); // Chuyển hướng về trang chủ
+
+
             response.sendRedirect("postLogin.jsp"); // Chuyển hướng về trang chủ
+
         }
     }
 

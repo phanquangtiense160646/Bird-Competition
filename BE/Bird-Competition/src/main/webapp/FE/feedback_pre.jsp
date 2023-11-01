@@ -1,8 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@page contentType="text/html" pageEncoding="UTF-8" %>
 
 <head>
-    <meta charset="utf-8">
+    
     <title>Feedback</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="Free HTML Templates" name="keywords">
@@ -38,7 +39,7 @@
         <div class="col-lg-3 bg-dark d-none d-lg-block">
             
                 
-            <a href="postlogin.html" class="navbar-brand w-100 h-100 m-0 p-0 d-flex align-items-center justify-content-center">
+            <a href="postlogin.jsp" class="navbar-brand w-100 h-100 m-0 p-0 d-flex align-items-center justify-content-center">
                 <img src="img/finallogo.png" style="width: 100px; margin-right: -40px; margin-bottom:50px;">
                 <h1 class="m-0 display-4 text-primary text-uppercase">BIRDFIGHTER</h1>
             </a>
@@ -85,29 +86,29 @@
                 </button>
                 <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
                     <div class="navbar-nav mr-auto py-0">
-                        <a href="postlogin.html" class="nav-item nav-link">Home</a>
-                        <a href="leaderboard.html" class="nav-item nav-link">Bảng xếp hạng</a>
-                        <a href="schedule.html" class="nav-item nav-link">Lịch thi đấu</a>
-                        <a href="memberShip.html" class="nav-item nav-link">Hội viên</a>
+                        <a href="index.jsp" class="nav-item nav-link">Home</a>
+                        <a href="leaderboard.jsp" class="nav-item nav-link">Bảng xếp hạng</a>
+                        <a href="schedule.jsp" class="nav-item nav-link">Lịch thi đấu</a>
+                        <a href="memberShip.jsp" class="nav-item nav-link">Hội viên</a>
                         <div class="nav-item dropdown">
                             <a href="#" class="nav-link dropdown-toggle active" data-bs-toggle="dropdown">Pages</a>
                             <div class="dropdown-menu rounded-0 m-0">
-                                <a href="news.html" class="dropdown-item">News</a>
-                                <a href="rules.html" class="dropdown-item">Luật thi đấu</a>
-                                <a href="feedback.html" class="dropdown-item active">Feedback</a>
+                                <a href="news.jsp" class="dropdown-item">News</a>
+                                <a href="rules.jsp" class="dropdown-item">Luật thi đấu</a>
+                                <a href="feedback.jsp" class="dropdown-item active">Feedback</a>
                             </div>
                         </div>
-                        <a href="contact.html" class="nav-item nav-link">Liên Hệ</a>
+                        <a href="contact.jsp" class="nav-item nav-link">Liên Hệ</a>
                         <div class="nav-item dropdown">
                             <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Quản lý</a>
                             <div class="dropdown-menu rounded-0 m-0">
-                                <a href="updateRule.html" class="dropdown-item">Luật thi đấu</a>
+                                <a href="updateRule.jsp" class="dropdown-item">Luật thi đấu</a>
                                 <a href="" class="dropdown-item">Lịch thi đấu</a>
                                 <a href="matchResult.html" class="dropdown-item">Kết quả trận đấu</a>
                             </div>
                         </div>
                     </div>
-                    <a href="/UserProfile/userprofile.html" class="btn btn-primary py-md-3 px-md-5 d-none d-lg-block">emhuythichchoichim</a>
+                    <a href="Login.jsp" class="btn btn-primary py-md-3 px-md-5 d-none d-lg-block">Login/Signup</a>
                 </div>
             </nav>
         </div>
@@ -120,7 +121,7 @@
         <div class="row py-5">
             <div class="col-12 text-center">
                 <h1 class="display-2 text-uppercase text-white mb-md-4">Feedback</h1>
-                <a href="postlogin.html" class="btn btn-primary py-md-3 px-md-5 me-3">Home</a>
+                <a href="index.html" class="btn btn-primary py-md-3 px-md-5 me-3">Home</a>
                 <a href="#feedback" class="btn btn-light py-md-3 px-md-5">Gửi Feedback</a>
             </div>
         </div>
@@ -184,7 +185,7 @@
             <div class="bg-dark p-5">
                 <form>
                     <div class="row g-3">
-                        <div class="col-6">
+                        <!-- <div class="col-6">
                             <input type="text" class="form-control bg-light border-0 px-4" placeholder="Tên của bạn" style="height: 55px;">
                         </div>
                         <div class="col-6">
@@ -195,9 +196,12 @@
                         </div>
                         <div class="col-12">
                             <textarea class="form-control bg-light border-0 px-4 py-3" rows="4" placeholder="Nội dung"></textarea>
-                        </div>
+                        </div> -->
                         <div class="col-12">
-                            <button class="btn btn-primary w-100 py-3" type="submit">Gửi Feedback</button>
+                            <!-- <button class="btn btn-primary w-100 py-3" type="submit">Đăng Nhập Để Gửi Feedback</button> -->
+                            <a href="Login.jsp" class="btn btn-primary py-md-3 px-md-5 d-none d-lg-block">Đăng Nhập
+                                Để Gửi Feedback
+                            </a>
                         </div>
                     </div>
                 </form>

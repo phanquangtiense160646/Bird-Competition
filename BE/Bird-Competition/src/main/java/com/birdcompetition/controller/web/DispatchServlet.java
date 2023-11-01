@@ -63,8 +63,6 @@ import javax.servlet.ServletException;
                 url = "AddScheduleServlet";
             } else if (button.equals("PaymentHistory")){
                 url = "PaymentHistoryServlet";
-            } else if (button.equals("MatchHistory")){
-                url = "GetContestListServlet";
             } else if (button.equals("Logout")){
                 url = "logout";
             } else if (button.equals("BirdList")){
