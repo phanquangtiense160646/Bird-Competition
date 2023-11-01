@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Validate form</title>
+  <link rel="stylesheet" href="navbar.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  
+  
+</head>
+
+<body>
+    
+    
+  <div class="container" id="container">
+    <div class="form-container register-container">
+      <form>
+        <h1>Register here.</h1>
+        <div class="form-control">
+          <input name="txtUsername" type="text" id="user-username" placeholder="Username" />
+          <small id="username-error"></small>
+          <span></span>
+        </div>
+        <div class="form-control">
+          <input name="txtPassword" type="text" id="user-pass" placeholder="Password" />
+          <small id="password-error"></small>
+          <span></span>
+        </div>
+        <div class="form-control">
+          <input name="txtConfirm" type="text" id="user-repeatpass" placeholder="Re-Password" />
+          <small id="repassword-error"></small>
+          <span></span>
+        </div>
+
+        <div class="form-control">
+          <input name="txtFullname" type="text" id="user-name" placeholder="Fullname" />
+          <small id="fullname-error"></small>
+          <span></span>
+        </div>
+
+        <button class="btn btn-primary btn-block" type="submit" value="submit">Register</button>
+        <span>or use your account</span>
+        <div class="social-container">
+
+          <a href="#" class="social"><i class="fa-brands fa-google"></i></a>
+
+        </div>
+      </form>
+    </div>
+
+    <div class="form-container login-container" id="logreg-forms">
+      <form class="form-signin" action="login" method="post">
+        <h1>Login here.</h1>
+        <div class="form-control2">
+          <input name="user" type="user" id="inputUser" class="form-control" placeholder="Username" required=""
+            autofocus="" />
+          <small class="email-error-2"></small>
+          <span></span>
+        </div>
+        <div class="form-control2">
+          <input name="pass" type="password" id="inputPassword" class="form-control" placeholder="Password"
+            required="" />
+          <small class="password-error-2"></small>
+          <span></span>
+        </div>
+
+       
+        <p style="text-align: center;"><span class="text-danger">${msg}</span></p>
+
+        <div class="content">
+          <div class="checkbox">
+            <input type="checkbox" name="checkbox" id="checkbox" />
+            <label for="">Remember me</label>
+          </div>
+          <div class="pass-link">
+            <a href="#">Forgot password</a>
+          </div>
+        </div>
+        <button class="btn btn-success btn-block" type="submit" value="submit">Login</button>
+        <span>Or use your account</span>
+        <div class="social-container">
+
+          <a href="#" class="btn google-btn social-btn"><i class="fab fa-google-plus-g"></i></a>
+
+        </div>
+      </form>
+    </div>
+
+    <div class="overlay-container">
+      <div class="overlay">
+        <div class="overlay-panel overlay-left">
+          <h1 class="title">
+            Hello <br />
+            friends
+          </h1>
+          <p>If you have an account, login here and have fun</p>
+          <button class="ghost" id="login">
+            Login
+            <i class="fa-solid fa-arrow-left"></i>
+          </button>
+        </div>
+
+        <div class="overlay-panel overlay-right">
+          <h1 class="title">
+            Start your <br />
+            journey now
+          </h1>
+          <p>
+            If you don'n have an account yet, join us and start your journey
+          </p>
+          <button class="ghost" id="register">
+            Register
+            <i class="fa-solid fa-arrow-right"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+<script src="main.js"></script>
+
+</html>

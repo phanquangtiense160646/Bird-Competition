@@ -4,16 +4,38 @@
         <servlet-name>DispatchServlet</servlet-name>
         <servlet-class>com.birdcompetition.controller.web.DispatchServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>AddNewsServlet</servlet-name>
+        <servlet-class>com.birdcompetition.controller.AddNewsServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>FeedBackDAO</servlet-name>
+        <servlet-class>com.birdcompetition.feedback.FeedBackDAO</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AddFeedBackServlet</servlet-name>
+        <servlet-class>com.birdcompetition.controller.AddFeedBackServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>DispatchServlet</servlet-name>
         <url-pattern>/DispatchServlet</url-pattern>
     </servlet-mapping>
-    
     <servlet-mapping>
-    <servlet-name>LogoutServlet</servlet-name>
-    <url-pattern>/LogoutServlet</url-pattern>
+        <servlet-name>LogoutServlet</servlet-name>
+        <url-pattern>/LogoutServlet</url-pattern>
     </servlet-mapping>
-    
+    <servlet-mapping>
+        <servlet-name>AddNewsServlet</servlet-name>
+        <url-pattern>/AddNewsServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>FeedBackDAO</servlet-name>
+        <url-pattern>/FeedBackDAO</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AddFeedBackServlet</servlet-name>
+        <url-pattern>/AddFeedBackServlet</url-pattern>
+    </servlet-mapping>
     <session-config>
         <session-timeout>
             30
@@ -22,8 +44,7 @@
     <welcome-file-list>
         <welcome-file>DispatchServlet</welcome-file>
     </welcome-file-list>
-    
-        <servlet>
+    <servlet>
         <servlet-name>ajaxServlet</servlet-name>
         <servlet-class>com.vnpay.common.ajaxServlet</servlet-class>
     </servlet>
@@ -47,5 +68,4 @@
         <servlet-name>vnpayRefund</servlet-name>
         <url-pattern>/vnpayrefund/*</url-pattern>
     </servlet-mapping>
-    
 </web-app>
