@@ -239,14 +239,20 @@ public class DAO extends DBHelper{
             //1.Make connection
             con = DBHelper.getConnection();
             if (con != null){
-            String query = "insert into [dbo].[User]\n" +
+            //String query = "insert into [dbo].[User]\n" +
+            //            "values(?,?,?,0,0)";
+            
+            String query = "insert into [dbo].[User](UserName, UserPassword, UserGmail, UserRole, Status)\n" +
                         "values(?,?,?,0,0)";
+            
+            
             stm = con.prepareStatement(query);
             
             stm.setString(1, user.getUserName());
             stm.setString(2, user.getUserPassword()); // Đây là một giá trị tùy bạn muốn đặt cho UserGmail.
             stm.setString(3, user.getUserGmail());
             stm.setInt(4, user.getUserRole());
+            
                 int exercute = stm.executeUpdate();
                 if (exercute > 0) {
                     result = true;

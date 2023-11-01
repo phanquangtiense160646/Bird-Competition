@@ -9,6 +9,9 @@
 <!--<!DOCTYPE html>-->
 <html lang="en">
     <head>
+        <style>
+
+</style>
         <script src="FE/js/main.js"></script>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -61,6 +64,7 @@
                         <div class="card">
                             <div class="rounded-top text-white d-flex flex-row" style="background-color: #000000; height:200px;">
                                 <div class="ms-4 mt-5 d-flex flex-column" style="width: 150px;">
+                                    
                                     <img
                                         src="FE/img/manager.png"
                                         class="img-fluid img-thumbnail mt-4 mb-2"
@@ -78,7 +82,7 @@
                                             Match History
                                         </button>
                                     </form>
-
+                                    
 
                                 </div>
 
@@ -119,7 +123,7 @@
                                 <div class="d-flex justify-content-between align-items-center mb-4">
                                     <p class="lead fw-normal mb-0">Bird Category</p>
                                     <form action="DispatchServlet">
-                                        <button class="mb-0" name="btAction" value="BirdList">Show all</button>
+                                        <button class="mb-0 btn btn-outline-dark btn-primary" name="btAction" value="BirdList">Show all</button>
                                     </form>
                                     
                                 </div>
@@ -133,12 +137,7 @@
 
                                         <div class="row g-2">
                                             <div class="box col mb-5">
-                                                <div class="imghover">
-                                                    <form action="">
-                                                        <button class="btn">Info</button>
-                                                        
-                                                    </form>
-                                                </div>
+                                               
                                                 <img src="https://tmso.baotanglamdong.com.vn/wp-content/uploads/2021/10/CHAO-MAO-DIT-DO-3.jpg"
                                                      >
                                                 <p class="birdname" style="font-weight: bold; text-align:center;">${p.birdName}</p>
@@ -146,11 +145,7 @@
                                             <c:if test="${nextIndex <= birdList.size() - 1}">
 
                                                 <div class="box col mb-5 ">
-                                                    <div class="imghover">
-                                                        <form action="">
-                                                            <button class="btn">Info</button>
-                                                        </form>
-                                                    </div>
+                                                   
                                                     <img src="https://tmso.baotanglamdong.com.vn/wp-content/uploads/2021/10/CHAO-MAO-DIT-DO-3.jpg"
                                                          >
                                                     <p class="birdname" style="font-weight: bold; text-align:center;">${birdList[nextIndex].birdName}</p>
@@ -201,14 +196,22 @@
                 <div class="card mb-4">
                     <div class="card-header">Account Details</div>
                     <div class="card-body">
+                         <form action="DispatchServlet" method="post" enctype="multipart/form-data">
+                             <label for="fileInput" class=""><u class="">Choose a File</u></label>
+                                  <input type="file" id="fileInput" name="image">
+                                 <input type="submit" value="Add Image">
+                         </form>
                         <form action="DispatchServlet" method="GET" >
                             <!-- Form Group (username)-->
                             <div class="mb-3">
                                 <label class="small mb-1" for="inputUsername">Username (how your name will appear to other users on the
                                     site)</label>
                                 <input class="form-control" type="hidden" name="txtUsername" 
-                                       value="${sessionScope.USER.userName}">
+                                       value="${sessionScope.USER.userName}"> 
+                                 <input class="form-control" type="text" name="txtUsername" 
+                                       value="${sessionScope.USER.userName}" readonly>
                             </div>
+                             
                             <!-- Form Row-->
                             <div class="row gx-3 mb-3">
 

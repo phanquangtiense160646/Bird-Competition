@@ -108,7 +108,7 @@
                         </div>
                         <a href="contact.html" class="nav-item nav-link">Liên Hệ</a>
                     </div>
-                    <a href="Login2.jsp" class="btn btn-primary py-md-3 px-md-5 d-none d-lg-block">Login/Signup</a>
+                    <a href="login" class="btn btn-primary py-md-3 px-md-5 d-none d-lg-block">Login/Signup</a>
 
                 </div>
             </nav>

@@ -68,24 +68,29 @@
                                         <div class="row g-2">
                                             <div class="box col mb-5">
                                                 <div class="imghover">
-                                                    <form action="">
-                                                        <button class="btn">Info</button>
+                                                    <form action="DispatchServlet">
+                                                        <input type="hidden" name="txtBirdID" value="${p.birdID}" />
+                                                        <button class="btn" name="btAction" value="BirdProfile">Info</button>
                                                         
                                                     </form>
                                                 </div>
                                                 <img src="https://tmso.baotanglamdong.com.vn/wp-content/uploads/2021/10/CHAO-MAO-DIT-DO-3.jpg">
                                                 <p class="birdname" style="font-weight: bold; text-align:center;">${p.birdName}</p>
+                                                
                                             </div>
                                             <c:if test="${nextIndex <= birdList.size() - 1}">
 
                                                 <div class="box col mb-5 ">
                                                     <div class="imghover">
-                                                        <form action="">
-                                                            <button class="btn">Info</button>
+                                                        <form action="DispatchServlet">
+                                                            <input type="hidden" name="txtBirdID" value="${birdList[nextIndex].birdID}" />
+                                                            <button class="btn" name="btAction" value="BirdProfile">Info</button>
+                                                            
                                                         </form>
                                                     </div>
                                                     <img src="https://tmso.baotanglamdong.com.vn/wp-content/uploads/2021/10/CHAO-MAO-DIT-DO-3.jpg">
-                                                    <p class="birdname" style="font-weight: bold; text-align:center;">${birdList[nextIndex].birdName}</p>
+                                                    <p class="birdname" style="font-weight: bold; text-align:center;">${birdList[nextIndex].birdName}
+                                                    </p>
                                                 </div>
                                             </c:if>
                                             <c:if test="${nextIndex > birdList.size() - 1}">
