@@ -92,7 +92,7 @@ public class SignupControl extends HttpServlet {
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(SignupControl.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
-            RequestDispatcher rd = request.getRequestDispatcher("Signup.jsp");
+            RequestDispatcher rd = request.getRequestDispatcher("Login2.jsp");
             rd.forward(request, response);
         }
     }

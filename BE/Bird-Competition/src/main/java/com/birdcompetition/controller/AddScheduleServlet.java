@@ -40,10 +40,7 @@ public class AddScheduleServlet extends HttpServlet {
         
         String url = "AdminPage/createSchedule.jsp";
         try {
-            if(date != null) {
-                Date sqlDate = Date.valueOf(date);
-            System.out.println(sqlDate);
-            }
+            
             
         }finally {
             RequestDispatcher rd = request.getRequestDispatcher(url);
