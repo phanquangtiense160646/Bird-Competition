@@ -1,9 +1,3 @@
-<%-- 
-    Document   : birdprofile
-    Created on : Oct 26, 2023, 11:04:11 PM
-    Author     : admin
---%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>

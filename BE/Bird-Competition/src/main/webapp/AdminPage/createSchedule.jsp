@@ -52,7 +52,7 @@
                                 <div class="form-group row">
                                     <div class="col-sm-6 mb-3 mb-sm-0">
                                         <label class="small mb-1">Ngày thi đấu:</label>
-                                        <input type="date" class="form-control form-control-user" id="date"
+                                        <input type="date" class="form-control form-control-user" id="datePickerId"
                                             name="date">
                                     </div>
                                     <div class="col-sm-6">
@@ -170,6 +170,9 @@
 
     <!-- Page level custom scripts -->
     <script src="js/demo/datatables-demo.js"></script>
+    <script>
+        datePickerId.min = new Date().toLocaleDateString('fr-ca')
+    </script>
 
 
 </body>
