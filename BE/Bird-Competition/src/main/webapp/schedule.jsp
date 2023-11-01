@@ -47,7 +47,7 @@
                         <div class="col-12 text-center">
                             <h1 class="display-2 text-uppercase text-white mb-md-4">Lịch thi đấu</h1>
                             <!-- <a href="" class="btn btn-primary py-md-3 px-md-5 me-3">Home</a>
-                    <a href="" class="btn btn-light py-md-3 px-md-5">Classes</a> -->
+            <a href="" class="btn btn-light py-md-3 px-md-5">Classes</a> -->
                         </div>
                     </div>
                 </div>
@@ -59,7 +59,7 @@
                     <div class="mb-5 text-center">
                         <h5 class="text-primary text-uppercase">Lịch thi đấu</h5>
                         <h1 class="display-3 text-uppercase mb-0">các trận đấu sắp tới</h1>
-                        <h6 id="toastmes">${sessionScope.MES}</h6>
+                        <h6 id="toastmes">${requestScope.MES}</h6>
                     </div>
                     <div class="tab-class text-center">
                         <ul
@@ -84,35 +84,44 @@
                                     <c:if test="${not empty scheduleData}">
                                         <c:forEach var="scheduleDto" items="${scheduleData}" varStatus="counter">
                                             <c:if test="${scheduleDto.statusOfContest == 4}">
-
-                                                <div class="col-lg-3 col-md-4 col-sm-6  btn-viewInfo">
-                                                    <div class="bg-dark rounded text-center py-5 px-3">
-                                                        <p class="schedule-value text-uppercase text-light mb-3">Ngày:
-                                                            ${scheduleDto.date}</p>
-                                                        <p class="schedule-value text-uppercase text-light mb-3"> Giờ:
-                                                            2.00am - 5.00am</p>
-                                                        <p class="schedule-value text-uppercase text-light mb-3">Địa
-                                                            điểm: ${scheduleDto.location}</p>
-                                                        <p class="schedule-value text-uppercase text-primary">
-                                                            ${scheduleDto.name}</p>
-                                                        <p class="schedule-value text-uppercase text-secondary mb-0">
-                                                            Loại chim: Gà chiến</p>
-                                                        <p class="schedule-value text-uppercase text-secondary mb-0">
-                                                            Điểm yêu cầu: ${scheduleDto.minPoint} -
-                                                            ${scheduleDto.maxPoint} </p>
-                                                        <p class="schedule-value text-uppercase text-light mb-3">Phí
-                                                            đăng kí: ${scheduleDto.fee}</p>
-                                                        <p class="schedule-value text-uppercase text-secondary mb-0"
-                                                            style="display: inline;">
-                                                            số người đăng kí:
-                                                            <span class="text-uppercase text-primary mb-0"
+                                                <form action="ViewMatchInfoServlet">
+                                                    <div class="col-lg-3 col-md-4 col-sm-6  btn-viewInfo">
+                                                        <div class="bg-dark rounded text-center py-5 px-3">
+                                                            <p class="schedule-value text-uppercase text-info mb-3">Hệ
+                                                                số: ${scheduleDto.factor}</p>
+                                                            <p class="schedule-value text-uppercase text-light mb-3">
+                                                                Ngày: ${scheduleDto.getDateFormat()}</p>
+                                                            <p class="schedule-value text-uppercase text-light mb-3">
+                                                                Giờ: 2.00am - 5.00am</p>
+                                                            <p class="schedule-value text-uppercase text-light mb-3">Địa
+                                                                điểm: ${scheduleDto.location}</p>
+                                                            <p class="schedule-value text-uppercase text-primary">
+                                                                ${scheduleDto.name}</p>
+                                                            <p
+                                                                class="schedule-value text-uppercase text-secondary mb-0">
+                                                                Loại chim: Chào mào</p>
+                                                            <p class="schedule-value text-uppercase text-light mb-0">
+                                                                Điểm yêu cầu:</p>
+                                                            <p class="schedule-value text-uppercase text-light mb-3">
+                                                                ${scheduleDto.minPoint} - ${scheduleDto.maxPoint} </p>
+                                                            <p class="schedule-value text-uppercase text-light mb-0">Phí
+                                                                đăng kí(VND):</p>
+                                                            <p class="schedule-value text-uppercase text-light mb-3">
+                                                                ${scheduleDto.fee}</p>
+                                                            <p class="schedule-value text-uppercase text-secondary mb-0"
                                                                 style="display: inline;">
-                                                                10/15</span>
-                                                        </p>
-                                                        </br><button class="btn btn-primary btn-viewInfo px-5"
-                                                            style="margin-top: 10px;">Xem thông tin</button>
+                                                                số người đăng kí:
+                                                                <span class="text-uppercase text-primary mb-0"
+                                                                    style="display: inline;">
+                                                                    10/15</span>
+                                                            </p>
+                                                            <input type="hidden" name="hiddenContestId"
+                                                                value="${scheduleDto.id}" />
+                                                            </br><button class="btn btn-primary btn-viewInfo px-5"
+                                                                style="margin-top: 10px;">Xem thông tin</button>
+                                                        </div>
                                                     </div>
-                                                </div>
+                                                </form>
                                             </c:if>
                                         </c:forEach>
                                     </c:if>
@@ -127,8 +136,10 @@
 
                                                 <div class="col-lg-3 col-md-4 col-sm-6  btn-viewInfo">
                                                     <div class="bg-dark rounded text-center py-5 px-3">
+                                                        <p class="schedule-value text-uppercase text-info mb-3">Hệ số:
+                                                            ${scheduleDto.factor}</p>
                                                         <p class="schedule-value text-uppercase text-light mb-3">Ngày:
-                                                            ${scheduleDto.date}</p>
+                                                            ${scheduleDto.getDateFormat()}</p>
                                                         <p class="schedule-value text-uppercase text-light mb-3"> Giờ:
                                                             2.00am - 5.00am</p>
                                                         <p class="schedule-value text-uppercase text-light mb-3">Địa
@@ -136,12 +147,15 @@
                                                         <p class="schedule-value text-uppercase text-primary">
                                                             ${scheduleDto.name}</p>
                                                         <p class="schedule-value text-uppercase text-secondary mb-0">
-                                                            Loại chim: Gà chiến</p>
-                                                        <p class="schedule-value text-uppercase text-secondary mb-0">
-                                                            Điểm yêu cầu: ${scheduleDto.minPoint} -
-                                                            ${scheduleDto.maxPoint} </p>
-                                                        <p class="schedule-value text-uppercase text-light mb-3">Phí
-                                                            đăng kí: ${scheduleDto.fee}</p>
+                                                            Loại chim: Chào mào</p>
+                                                        <p class="schedule-value text-uppercase text-light mb-0">Điểm
+                                                            yêu cầu:</p>
+                                                        <p class="schedule-value text-uppercase text-light mb-3">
+                                                            ${scheduleDto.minPoint} - ${scheduleDto.maxPoint} </p>
+                                                        <p class="schedule-value text-uppercase text-light mb-0">Phí
+                                                            đăng kí(VND):</p>
+                                                        <p class="schedule-value text-uppercase text-light mb-3">
+                                                            ${scheduleDto.fee}</p>
                                                         <p class="schedule-value text-uppercase text-secondary mb-0"
                                                             style="display: inline;">
                                                             số người đăng kí:
@@ -163,12 +177,14 @@
                                     <c:set var="scheduleData" value="${sessionScope.SCHEDULE}" />
                                     <c:if test="${not empty scheduleData}">
                                         <c:forEach var="scheduleDto" items="${scheduleData}" varStatus="counter">
-                                            <c:if test="${scheduleDto.statusOfContest == 2}">
+                                            <c:if test="${scheduleDto.statusOfContest == 1}">
 
-                                                <div class="col-lg-3 col-md-4 col-sm-6  btn-register">
-                                                    <div class="bg-dark rounded text-center py-5 px-3">
+                                                <div class="col-lg-3 col-md-4 col-sm-6">
+                                                    <div class="bg-dark rounded text-center py-5 px-3 btn-register">
+                                                        <p class="schedule-value text-uppercase text-info mb-3">Hệ số:
+                                                            ${scheduleDto.factor}</p>
                                                         <p class="schedule-value text-uppercase text-light mb-3">Ngày:
-                                                            ${scheduleDto.date}</p>
+                                                            ${scheduleDto.getDateFormat()}</p>
                                                         <p class="schedule-value text-uppercase text-light mb-3"> Giờ:
                                                             2.00am - 5.00am</p>
                                                         <p class="schedule-value text-uppercase text-light mb-3">Địa
@@ -176,12 +192,15 @@
                                                         <p class="schedule-value text-uppercase text-primary">
                                                             ${scheduleDto.name}</p>
                                                         <p class="schedule-value text-uppercase text-secondary mb-0">
-                                                            Loại chim: Gà chiến</p>
-                                                        <p class="schedule-value text-uppercase text-secondary mb-0">
-                                                            Điểm yêu cầu: ${scheduleDto.minPoint} -
-                                                            ${scheduleDto.maxPoint} </p>
-                                                        <p class="schedule-value text-uppercase text-light mb-3">Phí
-                                                            đăng kí: ${scheduleDto.fee}</p>
+                                                            Loại chim: Chào mào</p>
+                                                        <p class="schedule-value text-uppercase text-light mb-0">Điểm
+                                                            yêu cầu:</p>
+                                                        <p class="schedule-value text-uppercase text-light mb-3">
+                                                            ${scheduleDto.minPoint} - ${scheduleDto.maxPoint} </p>
+                                                        <p class="schedule-value text-uppercase text-light mb-0">Phí
+                                                            đăng kí(VND):</p>
+                                                        <p class="schedule-value text-uppercase text-light mb-3">
+                                                            ${scheduleDto.fee}</p>
                                                         <p class="schedule-value text-uppercase text-secondary mb-0"
                                                             style="display: inline;">
                                                             số người đăng kí:
@@ -194,6 +213,43 @@
                                                         <button class="btn btn-primary btn-register px-5"
                                                             style="margin-top: 10px;">Đăng kí
                                                             thi đấu</button>
+                                                    </div>
+                                                </div>
+                                            </c:if>
+                                            <c:if test="${scheduleDto.statusOfContest == 2}">
+
+                                                <div class="col-lg-3 col-md-4 col-sm-6">
+                                                    <div class="bg-dark rounded text-center py-5 px-3">
+                                                        <p class="schedule-value text-uppercase text-info mb-3">Hệ số:
+                                                            ${scheduleDto.factor}</p>
+                                                        <p class="schedule-value text-uppercase text-light mb-3">Ngày:
+                                                            ${scheduleDto.getDateFormat()}</p>
+                                                        <p class="schedule-value text-uppercase text-light mb-3"> Giờ:
+                                                            2.00am - 5.00am</p>
+                                                        <p class="schedule-value text-uppercase text-light mb-3">Địa
+                                                            điểm: ${scheduleDto.location}</p>
+                                                        <p class="schedule-value text-uppercase text-danger">
+                                                            ${scheduleDto.name}</p>
+                                                        <p class="schedule-value text-uppercase text-secondary mb-0">
+                                                            Loại chim: Chào mào</p>
+                                                        <p class="schedule-value text-uppercase text-light mb-0">Điểm
+                                                            yêu cầu:</p>
+                                                        <p class="schedule-value text-uppercase text-light mb-3">
+                                                            ${scheduleDto.minPoint} - ${scheduleDto.maxPoint} </p>
+                                                        <p class="schedule-value text-uppercase text-light mb-0">Phí
+                                                            đăng kí(VND):</p>
+                                                        <p class="schedule-value text-uppercase text-light mb-3">
+                                                            ${scheduleDto.fee}</p>
+                                                        <p class="schedule-value text-uppercase text-secondary mb-0"
+                                                            style="display: inline;">
+                                                            số người đăng kí:
+                                                            <span class="text-uppercase text-danger mb-0"
+                                                                style="display: inline;">
+                                                                10/15</span>
+                                                        </p>
+                                                        <button class="btn btn-danger px-5"
+                                                            style="margin-top: 10px;">Hết hạn đăng kí</button>
+
                                                     </div>
                                                 </div>
                                             </c:if>
@@ -245,17 +301,18 @@
                             const newDriver = document.createElement('div');
                             newDriver.classList = 'schedule-detail';
 
-                            var date, time, place, tOC, tOB, registerNumber, pointReq, hiddenId, fee;
+                            var factor, date, time, place, tOC, tOB, registerNumber, pointReq, hiddenId, fee;
 
                             if (this.querySelector(".schedule-value:nth-of-type(1)") !== null) {
-                                date = this.querySelector(".schedule-value:nth-of-type(1)").innerHTML;
-                                time = this.querySelector(".schedule-value:nth-of-type(2)").innerHTML;
-                                place = this.querySelector(".schedule-value:nth-of-type(3)").innerHTML;
-                                tOC = this.querySelector(".schedule-value:nth-of-type(4)").innerHTML;
-                                tOB = this.querySelector(".schedule-value:nth-of-type(5)").innerHTML;
-                                pointReq = this.querySelector(".schedule-value:nth-of-type(6)").innerHTML;
-                                fee = this.querySelector(".schedule-value:nth-of-type(7)").innerHTML;
-                                registerNumber = this.querySelector(".schedule-value:nth-of-type(8) span").innerHTML;
+                                factor = this.querySelector(".schedule-value:nth-of-type(1)").innerHTML;
+                                date = this.querySelector(".schedule-value:nth-of-type(2)").innerHTML;
+                                time = this.querySelector(".schedule-value:nth-of-type(3)").innerHTML;
+                                place = this.querySelector(".schedule-value:nth-of-type(4)").innerHTML;
+                                tOC = this.querySelector(".schedule-value:nth-of-type(5)").innerHTML;
+                                tOB = this.querySelector(".schedule-value:nth-of-type(6)").innerHTML;
+                                pointReq = this.querySelector(".schedule-value:nth-of-type(8)").innerHTML;
+                                fee = this.querySelector(".schedule-value:nth-of-type(10)").innerHTML;
+                                registerNumber = this.querySelector(".schedule-value:nth-of-type(11) span").innerHTML;
                                 hiddenId = this.querySelector(".idHide").value;
                             }
 
@@ -269,34 +326,39 @@
                             let text = "";
 
                             for (let i = 0; i < birds.length; i = i + 3) {
-                                text += "<option value=" + birds[i + 2] + ">" + birds[i] + ", Rank point: " + birds[i + 1] + "</option>";
+                                text += "<option value=" + birds[i + 2] + "," + birds[i + 1] + ">" + birds[i] +
+                                    ", Rank point: " + birds[i + 1] + "</option>";
                             }
 
                             newDriver.innerHTML = `
-                    <div>                                    
-                    <h6 class="text-uppercase text-light mb-3 ml-3">` + date + `</h6>
-                    <h6 class="text-uppercase text-light mb-3 ml-3">` + time + `</h6>
-                    <h6 class="text-uppercase text-light mb-3 ml-3">` + place + `</h6>
-                    <h5 class="text-uppercase text-primary">` + tOC + `</h5>
-                    <p class="text-uppercase text-secondary mb-0 ml-3">` + tOB + `</p>
-                    <p class="text-uppercase text-secondary mb-0 ml-3">` + pointReq + `</p>
-                    <h6 class="text-uppercase text-light mb-3 ml-3">` + fee + `</h6>
-                    <p class="text-uppercase text-secondary mb-0 ml-3" style="display: inline;">
-                        số người đăng kí:
-                    <span class="text-uppercase text-primary mb-0 ml-3" style="display: inline;">` + registerNumber + `</span>
-                    </p>                     
+            <div> 
+            <h6 class="text-uppercase text-light mb-3 ml-3">` + factor + `</h6>                                       
+            <h6 class="text-uppercase text-light mb-3 ml-3">` + date + `</h6>
+            <h6 class="text-uppercase text-light mb-3 ml-3">` + time + `</h6>
+            <h6 class="text-uppercase text-light mb-3 ml-3">` + place + `</h6>
+            <h5 class="text-uppercase text-primary">` + tOC + `</h5>
+            <p class="text-uppercase text-secondary mb-0 ml-3">` + tOB + `</p>
+            <p class="text-uppercase text-secondary mb-0 ml-3">Điểm yêu cầu: ` + pointReq + `</p>
+            <h6 class="text-uppercase text-light mb-3 ml-3">Phí đăng kí(VND): ` + fee + `</h6>
+            <p class="text-uppercase text-secondary mb-0 ml-3" style="display: inline;">
+                số người đăng kí:
+            <span class="text-uppercase text-primary mb-0 ml-3" style="display: inline;">` + registerNumber + `</span>
+            </p>                     
                     
-<form action="vnpay_pay.jsp" method="POST">
-    <h6 class="text-uppercase text-secondary mb-3 ml-3">Chọn chim đăng ký:  
-    <select aria-label="chooseBird" name="cboBird">
-        <option selected disabled>Chim</option>
-        ` + text + `
-    </select>
-    <input type="hidden" name="hiddenContestId" value="` + hiddenId + `"></input>                        
-    <button type="submit" name="btAction" value="cRegister" class="btn btn-primary px-5" style="margin-top: 10px;">Đăng kí thi đấu</button>
-</form>
-                     </div>
-                    `;
+            <form action="DispatchServlet" method="POST">
+                <h6 class="text-uppercase text-secondary mb-3 ml-3">Chọn chim đăng ký:  
+                <select aria-label="chooseBird" name="cboBird">
+                    <option selected disabled>Chim</option>
+                    ` + text + `
+                </select>
+                <input type="hidden" name="hiddenContestId" value="` + hiddenId + `"></input>
+                <input type="hidden" name="hiddenPoint" value="` + pointReq + `"></input>
+                <input type="hidden" name="txtCost" value="` + fee + `"></input>
+                <input type="hidden" name="txtPayType" value="` + 4 + `"></input>                         
+            <button type="submit" name="btAction" value="cRegister" class="btn btn-primary px-5" style="margin-top: 10px;">Đăng kí thi đấu</button>
+             </form>
+             </div>
+            `;
                             body.appendChild(newDriver);
                         });
                     });

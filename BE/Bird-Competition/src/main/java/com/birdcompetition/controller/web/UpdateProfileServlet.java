@@ -4,12 +4,12 @@
  */
 package com.birdcompetition.controller.web;
 
-import com.birdcompetition.bird.BirdDAO;
-import com.birdcompetition.bird.BirdDTO;
+import com.birdcompetition.dal.DAO;
+import com.birdcompetition.model.User;
 import java.io.IOException;
 import java.sql.SQLException;
-import java.util.List;
-import javax.servlet.RequestDispatcher;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -21,8 +21,8 @@ import javax.servlet.http.HttpSession;
  *
  * @author admin
  */
-@WebServlet(name = "GetBirdInfoServlet", urlPatterns = {"/GetBirdInfoServlet"})
-public class GetBirdInfoServlet extends HttpServlet {
+@WebServlet(name = "UpdateProfileServlet", urlPatterns = {"/UpdateProfileServlet"})
+public class UpdateProfileServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -36,30 +36,37 @@ public class GetBirdInfoServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        String id = request.getParameter("txtBirdID");
-        String url = "";
-        try {
-
-            BirdDAO dao = new BirdDAO();
-            BirdDTO result = dao.getBirdInfo(id);
-
-            if (result != null) {
+        String username = request.getParameter("txtUsername");
+        String fullname = request.getParameter("txtFullname");
+        String password = request.getParameter("txtPassword");
+        String gmail = request.getParameter("txtGmail");
+        String phone = request.getParameter("txtPhone");
+        String idmember = request.getParameter("txtUsername");
+        String url = "biloi.html";
+        try{
+           
+            DAO dao = new DAO();
+            
+            boolean result = dao.UpdateProfile(username, fullname, password, gmail, phone, idmember);
+            
+            if (result) {
                 HttpSession session = request.getSession();
-                session.setAttribute("BIRD", result);
-                url = "birdprofile.jsp";
-            } else {
-                url = "biloi.html";
+                User tempresult = dao.GetUserInfo(username);
+                session.setAttribute("USER", tempresult);
+                
+                url = "userprofile.jsp";
             }
+            
+           
         } catch (SQLException ex) {
-            log("Login_SQL: " + ex.getMessage());
+            Logger.getLogger(UpdateProfileServlet.class.getName()).log(Level.SEVERE, null, ex);
         } catch (ClassNotFoundException ex) {
-            log("Login_ClassNotFound: " + ex.getMessage());
-        } finally {
-            RequestDispatcher rd = request.getRequestDispatcher(url);
-            rd.forward(request, response);
+            Logger.getLogger(UpdateProfileServlet.class.getName()).log(Level.SEVERE, null, ex);
+        }finally{
+            response.sendRedirect(url);
         }
-
     }
+
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.

@@ -11,6 +11,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.naming.NamingException;
 
 /**
@@ -63,6 +65,53 @@ public class DAO extends DBHelper{
             if (rs != null) {
                 rs.close();
             }
+            if (stm != null) {
+                stm.close();
+            }
+            if (con != null) {
+                con.close();
+            }
+        }
+        return result;
+    }
+    
+        public boolean UpdateProfile(String username, String fullname, 
+                String password, String email, String phone, String idmember)
+            throws SQLException {
+        Connection con = null;
+        PreparedStatement stm = null;
+        boolean result = false;
+        try {
+            //1.Make connection
+            con = DBHelper.getConnection();
+            if (con != null) {
+                //2. Create SQL String 
+                String sql = "UPDATE [dbo].[User] "
+                        + "SET UserPassword = ?, UserGmail = ? "
+                        + "WHERE UserName = ? "
+                        + "Update Member "
+                        + "SET FullName = ?, Phone = ? "
+                        + "WHERE IdMember = ? ";
+                //3. Create Statement Object
+                stm = con.prepareStatement(sql);
+                stm.setString(1, password);
+                stm.setString(2, email);
+                stm.setString(3,username);
+                stm.setString(4, fullname);
+                stm.setString(5, phone);
+                stm.setString(6, idmember);
+                
+                //4. Execute Query
+                int exercute = stm.executeUpdate();
+                //5. Process
+                if (exercute > 0) {
+                    return true;
+                }
+            }//end username and password is verified
+        }//end connection is available   
+        catch (ClassNotFoundException ex) {
+            Logger.getLogger(DAO.class.getName()).log(Level.SEVERE, null, ex);
+        }        finally {
             if (stm != null) {
                 stm.close();
             }
@@ -213,6 +262,57 @@ public class DAO extends DBHelper{
 
             } finally {
 
+            if (stm != null) {
+                stm.close();
+            }
+            if (con != null) {
+                con.close();
+            }
+        }
+        return result;
+    }
+    
+    public User GetUserInfo(String username)
+            throws SQLException, ClassNotFoundException {
+        Connection con = null;
+        PreparedStatement stm = null;
+        ResultSet rs = null;
+        User result = null;
+
+        try {
+            //1.Make connection
+            con = DBHelper.getConnection();
+            //check 
+            if (con != null) {
+                //2.Creat SQL String 
+            String query = "select * from [dbo].[User] "
+                    + "FULL OUTER JOIN Member "
+                    + "ON [dbo].[User].UserName = Member.IdMember "
+                    + "where UserName = ? ";
+                //3.Create Statement Object
+                stm = con.prepareStatement(query);
+                stm.setString(1, username);
+                //4.Exercute Query
+                rs = stm.executeQuery();
+                //5.Process
+                if (rs.next()) {
+                    String password = rs.getString("UserPassword");
+                    String gmail = rs.getString("UserGmail");
+                    int role = rs.getInt("UserRole");
+                    String idmember = rs.getString("IdMember");
+                    String fullname = rs.getString("FullName");
+                    String dateofbirth = rs.getString("DateOfBirth");
+                    String country = rs.getString("Country");
+                    int phone = rs.getInt("Phone");
+                    String gender = rs.getString("Gender");
+                    
+                    result = new User(username, password, gmail, role, idmember, fullname, dateofbirth, country, phone, gender);
+                }//end username and password is verified 
+            }
+        } finally {
+            if (rs != null) {
+                rs.close();
+            }
             if (stm != null) {
                 stm.close();
             }

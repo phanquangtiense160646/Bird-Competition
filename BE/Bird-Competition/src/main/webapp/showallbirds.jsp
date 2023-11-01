@@ -46,15 +46,14 @@
     </head>
     <body>
 
-        <jsp:include page="JspCommon/webheader.jsp"/>
-
+       <jsp:include page="JspCommon/webheader.jsp"/>
 
         <section class="h-25 gradient-custom-2">
             <div class="container py-5 h-100">
                 <div class="row d-flex justify-content-center align-items-center h-100">
                         
                     
-                    <div class="col col-lg-8 col-xl-8">
+                    <div class="col col-lg-9 col-xl-7">
                         <div class="card">
                             <div class="text-center h1 fw-bold" style="padding-top: 20px;">
                                 <p class="fs-1 lead fw-normal mb-20">Bird Category</p>
@@ -69,25 +68,29 @@
                                         <div class="row g-2">
                                             <div class="box col mb-5">
                                                 <div class="imghover">
-                                                    <form action="">
-                                                        <button class="btn">Info</button>
+                                                    <form action="DispatchServlet">
+                                                        <input type="hidden" name="txtBirdID" value="${p.birdID}" />
+                                                        <button class="btn" name="btAction" value="BirdProfile">Info</button>
+                                                        
                                                     </form>
                                                 </div>
-                                                <img src="https://tmso.baotanglamdong.com.vn/wp-content/uploads/2021/10/CHAO-MAO-DIT-DO-3.jpg"
-                                                     class="border border-warning rounded border-4">
+                                                <img src="https://tmso.baotanglamdong.com.vn/wp-content/uploads/2021/10/CHAO-MAO-DIT-DO-3.jpg">
                                                 <p class="birdname" style="font-weight: bold; text-align:center;">${p.birdName}</p>
+                                                
                                             </div>
                                             <c:if test="${nextIndex <= birdList.size() - 1}">
 
                                                 <div class="box col mb-5 ">
                                                     <div class="imghover">
-                                                        <form action="">
-                                                            <button class="btn">Info</button>
+                                                        <form action="DispatchServlet">
+                                                            <input type="hidden" name="txtBirdID" value="${birdList[nextIndex].birdID}" />
+                                                            <button class="btn" name="btAction" value="BirdProfile">Info</button>
+                                                            
                                                         </form>
                                                     </div>
-                                                    <img src="https://tmso.baotanglamdong.com.vn/wp-content/uploads/2021/10/CHAO-MAO-DIT-DO-3.jpg"
-                                                         class="border border-warning rounded border-4">
-                                                    <p class="birdname" style="font-weight: bold; text-align:center;">${birdList[nextIndex].birdName}</p>
+                                                    <img src="https://tmso.baotanglamdong.com.vn/wp-content/uploads/2021/10/CHAO-MAO-DIT-DO-3.jpg">
+                                                    <p class="birdname" style="font-weight: bold; text-align:center;">${birdList[nextIndex].birdName}
+                                                    </p>
                                                 </div>
                                             </c:if>
                                             <c:if test="${nextIndex > birdList.size() - 1}">

@@ -52,7 +52,7 @@
         </li>
 
         <li class="nav-item">
-            <a class="nav-link" href="AdminPage/Pages/MatchManagement.html">
+            <a class="nav-link" href='<c:url value="/DispatchServlet?btAction=ManageSchedule"/>'>
                 <i class="fas fa-fw fa-table"></i>
                 <span>Quản lý lịch thi đấu</span></a>
         </li>      
@@ -63,11 +63,6 @@
                 <i class="fas fa-fw fa-table"></i>
                 <span>Cập nhật kết quả trận đấu</span></a>
         </li> 
-        <li class="nav-item">
-            <a class="nav-link" href='<c:url value="/DispatchServlet?btAction=createSchedule"/>'>
-                <i class="fas fa-fw fa-table"></i>
-                <span>Create Schedule</span></a>
-        </li>
         <li class="nav-item">
             <!--<a class="nav-link" href='<c:url value="/DispatchServlet?btAction=Preparing"/>'>-->
             <a class="nav-link" href="PreparingMatchServlet">
