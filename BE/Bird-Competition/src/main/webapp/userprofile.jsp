@@ -7,7 +7,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!--<!DOCTYPE html>-->
-<html>
+<html lang="en">
     <head>
         <script src="FE/js/main.js"></script>
         <meta charset="UTF-8">
@@ -62,8 +62,8 @@
                             <div class="rounded-top text-white d-flex flex-row" style="background-color: #000000; height:200px;">
                                 <div class="ms-4 mt-5 d-flex flex-column" style="width: 150px;">
                                     <img
-                                        src="https://scontent.fsgn2-5.fna.fbcdn.net/v/t39.30808-6/331044364_1135565673791935_1693572774874518896_n.jpg?_nc_cat=104&ccb=1-7&_nc_sid=5f2048&_nc_ohc=XK0r9dQmanUAX_FUmQO&_nc_ht=scontent.fsgn2-5.fna&_nc_e2o=s&oh=00_AfCgR_jHe4yv8Y2TppEaLM8usFhnk-8DrdTekWraoyG42Q&oe=653D0519"
-                                        alt="Generic placeholder image" class="img-fluid img-thumbnail mt-4 mb-2"
+                                        src="FE/img/manager.png"
+                                        class="img-fluid img-thumbnail mt-4 mb-2"
                                         style="width: 150px; z-index: 1; margin-left: 10px;">
                                     <form action="#editprofile-dialog" style="z-index: 1;">
                                         <button class="btn btn-outline-dark" data-mdb-ripple-color="dark"
@@ -109,6 +109,7 @@
                                 <div class="mb-5">
                                     <p class="lead fw-normal mb-1">About</p>
                                     <div class="p-4" style="background-color: #f8f9fa;">
+                                        <p class="font-italic mb-2">---</p>
                                         <p class="font-italic mb-1">Thích Chơi Chim</p>
                                         <p class="font-italic mb-1">${sessionScope.USER.userGmail}</p>
                                         <p class="font-italic mb-2">---</p>
@@ -122,56 +123,56 @@
                                     </form>
                                     
                                 </div>
-                <c:set var="count" value="0" />                
-                <c:set var="birdList" value="${sessionScope.OWN_BIRD}"/>
-                <c:if test="${not empty birdList}">                   
-                    <c:forEach items="${birdList}" var="p" varStatus="loop"> 
-                        <c:if test="${count lt 4}">
-                            <c:if test="${loop.index % 2 == 0}">
-                        <c:set var="nextIndex" value="${loop.index + 1}" />
-                   
-                        <div class="row g-2">
-                                  <div class="box col mb-5">
-                                    <div class="imghover">
-                                      <form action="">
-                                        <button class="btn">Info</button>
-                                      </form>
-                                    </div>
-                                    <img src="https://tmso.baotanglamdong.com.vn/wp-content/uploads/2021/10/CHAO-MAO-DIT-DO-3.jpg"
-                                         class="border border-warning rounded border-2">
-                                    <p class="birdname" style="font-weight: bold; text-align:center;">${p.birdName}</p>
-                                  </div>
-                                    <c:if test="${nextIndex <= birdList.size() - 1}">
-                                        
-                                    <div class="box col mb-5 ">
-                                    <div class="imghover">
-                                      <form action="">
-                                        <button class="btn">Info</button>
-                                      </form>
-                                    </div>
-                                    <img src="https://tmso.baotanglamdong.com.vn/wp-content/uploads/2021/10/CHAO-MAO-DIT-DO-3.jpg"
-                                         class="border border-warning rounded border-2">
-                                    <p class="birdname" style="font-weight: bold; text-align:center;">${birdList[nextIndex].birdName}</p>
-                                    </div>
-                                    </c:if>
-                                    <c:if test="${nextIndex > birdList.size() - 1}">
-                                        <div class="box col mb-5"></div>
-                                    </c:if>
-                                  
-                             
+                            <c:set var="count" value="0" />            
+                            <c:set var="birdList" value="${sessionScope.OWN_BIRD}"/>
+                            <c:if test="${not empty birdList}">                   
+                                <c:forEach items="${birdList}" var="p" varStatus="loop"> 
+                                    <c:if test="${count lt 4}">
+                                       <c:if test="${loop.index % 2 == 0}">
+                                        <c:set var="nextIndex" value="${loop.index + 1}" />
 
-                    </c:if>
-                           
-                            <c:set var="count" value="${count + 1}" />
-                          </c:if>
-                    </c:forEach>
-                </c:if>    
-                <c:if test="${empty birdList}">
-            <h2>
-                Chưa có chim trong bộ sưu tập
-            </h2>
-                </c:if>
+                                        <div class="row g-2">
+                                            <div class="box col mb-5">
+                                                <div class="imghover">
+                                                    <form action="">
+                                                        <button class="btn">Info</button>
+                                                        
+                                                    </form>
+                                                </div>
+                                                <img src="https://tmso.baotanglamdong.com.vn/wp-content/uploads/2021/10/CHAO-MAO-DIT-DO-3.jpg"
+                                                     >
+                                                <p class="birdname" style="font-weight: bold; text-align:center;">${p.birdName}</p>
+                                            </div>
+                                            <c:if test="${nextIndex <= birdList.size() - 1}">
 
+                                                <div class="box col mb-5 ">
+                                                    <div class="imghover">
+                                                        <form action="">
+                                                            <button class="btn">Info</button>
+                                                        </form>
+                                                    </div>
+                                                    <img src="https://tmso.baotanglamdong.com.vn/wp-content/uploads/2021/10/CHAO-MAO-DIT-DO-3.jpg"
+                                                         >
+                                                    <p class="birdname" style="font-weight: bold; text-align:center;">${birdList[nextIndex].birdName}</p>
+                                                </div>
+                                            </c:if>
+                                            <c:if test="${nextIndex > birdList.size() - 1}">
+                                                <div class="box col mb-5"></div>
+                                            </c:if>
+
+
+
+                                        </c:if>
+
+                                      <c:set var="count" value="${count + 1}" />
+                                      </c:if>
+                                    </c:forEach>
+                                </c:if>    
+                                <c:if test="${empty birdList}">
+                                    <h2>
+                                        Chưa có chim trong bộ sưu tập
+                                    </h2>
+                                </c:if>           
                             </div>
                         </div>
                         <div class="d-flex justify-content-center">
@@ -181,6 +182,7 @@
                     </div>
                 </div>
             </div>
+            </div>
         </section>
 
 
@@ -188,7 +190,7 @@
         
 
         <!-- Edit profile dialog  -->
-        <div class="dialog overlay" id="editprofile-dialog">
+        <div class="dialog overlay rounded" id="editprofile-dialog">
             <a href="#close-dialog" class="overlay-close"></a>
             <div id="close-dialog" class="dialog-body">
                 <a href="#close-dialog" class="dialog-close-btn">&times;</a>
@@ -199,12 +201,12 @@
                 <div class="card mb-4">
                     <div class="card-header">Account Details</div>
                     <div class="card-body">
-                        <form>
+                        <form action="DispatchServlet" method="GET" >
                             <!-- Form Group (username)-->
                             <div class="mb-3">
                                 <label class="small mb-1" for="inputUsername">Username (how your name will appear to other users on the
                                     site)</label>
-                                <input class="form-control" id="inputUsername" type="text" placeholder="Enter your username"
+                                <input class="form-control" type="hidden" name="txtUsername" 
                                        value="${sessionScope.USER.userName}">
                             </div>
                             <!-- Form Row-->
@@ -212,8 +214,8 @@
 
                                 <div class="col-md-12">
                                     <label class="small mb-1" for="inputFirstName">Fullname</label>
-                                    <input class="form-control" id="inputFirstName" type="text" placeholder="Enter your full name"
-                                           value="${sessionScope.USER.fullName}">
+                                    <input class="form-control"  type="text" placeholder="Enter your full name"
+                                           value="${sessionScope.USER.fullName}" name="txtFullname">
                                 </div>
                             </div>
 
@@ -221,29 +223,33 @@
 
                                 <div class="col-md-12">
                                     <label class="small mb-1" for="inputOrgName">Password</label>
-                                    <input class="form-control" id="inputOrgName" type="text" placeholder="Enter your new password"
-                                           value="${sessionScope.USER.userPassword}">
+                                    <input class="form-control" type="text" placeholder="Enter your new password"
+                                           value="${sessionScope.USER.userPassword}" name="txtPassword">
                                 </div>
 
                             </div>
                             <!-- Form Group (email address)-->
                             <div class="mb-3">
                                 <label class="small mb-1" for="inputEmailAddress">Email address</label>
-                                <input class="form-control" id="inputEmailAddress" type="email" placeholder="Enter your email address"
-                                       value="${sessionScope.USER.userGmail}">
+                                <input class="form-control" type="email" placeholder="Enter your email address"
+                                       value="${sessionScope.USER.userGmail}" name="txtGmail">
                             </div>
                             <!-- Form Row-->
                             <div class="row gx-3 mb-3">
                                 <!-- Form Group (phone number)-->
                                 <div class="col-md-12">
                                     <label class="small mb-1" for="inputPhone">Phone number</label>
-                                    <input class="form-control" id="inputPhone" type="tel" placeholder="Enter your phone number"
-                                           value="0933788350">
+                                    <input class="form-control" type="tel" placeholder="Enter your phone number"
+                                           value="${sessionScope.USER.phone}" name="txtPhone">
                                 </div>
 
                             </div>
                             <!-- Save changes button-->
-                            <button class="btn btn-primary" type="button">Save changes</button>
+                            <div class="d-flex justify-content-center">
+                                <input type="submit" value="Update Profile" name="btAction" class="btn btn-primary"/>
+                            </div>
+                            
+                           
                         </form>
                     </div>
                 </div>

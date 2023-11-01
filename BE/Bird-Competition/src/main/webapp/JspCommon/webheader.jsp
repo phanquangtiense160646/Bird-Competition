@@ -75,13 +75,14 @@
                         <div class="dropdown-menu rounded-0 m-0">
 
                             <form action="DispatchServlet" method="POST">
-                                <a class="dropdown-item" href="userprofile.jsp">User Profile</a>
-                                <a class="dropdown-item" href="birdprofile.html">Bird Profile</a>
-                                <a class="dropdown-item" href="addnewbird.jsp">Add Bird</a>
-                                <button class="dropdown-item" name="btAction" value="MatchHistory">Match History</button>
-                                <button class="dropdown-item" name="btAction" value="PaymentHistory">Payment History</button>
+                                
+                                <button class="dropdown-item" name="btAction" value="UserProfile">Trang cá nhân</button>
+                                <a class="dropdown-item" href="birdprofile.html">Bộ sưu tập</a>
+                                <a class="dropdown-item" href="addnewbird.jsp">Thêm chim</a>
+                                <button class="dropdown-item" name="btAction" value="MatchHistory">Lịch sử đấu</button>
+                                <button class="dropdown-item" name="btAction" value="PaymentHistory">Lịch sử giao dịch</button>
                                 <div class="dropdown-divider"></div>
-                                <button class="dropdown-item" name="btAction" value="Logout">Logout</button>
+                                <button class="dropdown-item" name="btAction" value="Logout">Đăng xuất</button>
                             </form>
 
                         </div>

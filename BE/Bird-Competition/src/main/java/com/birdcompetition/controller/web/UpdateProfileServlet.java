@@ -4,14 +4,12 @@
  */
 package com.birdcompetition.controller.web;
 
-import com.birdcompetition.bird.BirdDAO;
-import com.birdcompetition.bird.BirdDTO;
+import com.birdcompetition.dal.DAO;
+import com.birdcompetition.model.User;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.naming.NamingException;
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -23,8 +21,8 @@ import javax.servlet.http.HttpSession;
  *
  * @author admin
  */
-@WebServlet(name = "AddBirdServlet", urlPatterns = {"/AddBirdServlet"})
-public class AddBirdServlet extends HttpServlet {
+@WebServlet(name = "UpdateProfileServlet", urlPatterns = {"/UpdateProfileServlet"})
+public class UpdateProfileServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -38,31 +36,34 @@ public class AddBirdServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        String name = request.getParameter("birdName");
-        String specie = request.getParameter("birdSpecie");
-        String idMember = request.getParameter("idMember");
-        String url = "";
-        
-        try {
-            BirdDAO dao = new BirdDAO();
-            BirdDTO dto = new BirdDTO(name, specie, 1000, true, idMember);
-            boolean result = dao.addBird(dto);
-            if(result){
-                url = "addnewbird.jsp";
-                String msg = "success";
-                request.setAttribute("msg", msg);
-            }else{
-                String msg = "fail";
-                request.setAttribute("msg", msg);
-            }
+        String username = request.getParameter("txtUsername");
+        String fullname = request.getParameter("txtFullname");
+        String password = request.getParameter("txtPassword");
+        String gmail = request.getParameter("txtGmail");
+        String phone = request.getParameter("txtPhone");
+        String idmember = request.getParameter("txtUsername");
+        String url = "biloi.html";
+        try{
+           
+            DAO dao = new DAO();
+            
+            boolean result = dao.UpdateProfile(username, fullname, password, gmail, phone, idmember);
+            
+            if (result) {
+                HttpSession session = request.getSession();
+                User tempresult = dao.GetUserInfo(username);
+                session.setAttribute("USER", tempresult);
                 
+                url = "userprofile.jsp";
+            }
+            
+           
         } catch (SQLException ex) {
-            Logger.getLogger(AddBirdServlet.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (NamingException ex) {
-            Logger.getLogger(AddBirdServlet.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(UpdateProfileServlet.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(UpdateProfileServlet.class.getName()).log(Level.SEVERE, null, ex);
         }finally{
-            RequestDispatcher rd = request.getRequestDispatcher(url);
-            rd.forward(request, response);
+            response.sendRedirect(url);
         }
     }
 
