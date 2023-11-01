@@ -41,13 +41,13 @@ public class ScheduleServlet extends HttpServlet {
         String url = "schedule.jsp";
         try {
             HttpSession session = request.getSession();
-            BirdDAO dao = new BirdDAO();
             /*lich thi dau*/
             ScheduleDAO scheduleDao = new ScheduleDAO();
             scheduleDao.getSchedule();
             List<ScheduleDTO> listSchedule = scheduleDao.getList();
             session.setAttribute("SCHEDULE", listSchedule);
             /*danh sach chim dk*/
+            BirdDAO dao = new BirdDAO();
             User user = (User) session.getAttribute("USER");
             dao.getBirdByMemberId(user.getIdMember());
             List<BirdDTO> birdList = dao.getBirdList();
