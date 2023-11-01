@@ -45,7 +45,8 @@ public class ContestDAO {
                         + "On BirdContest.IdBird = Bird.IdBird "
                         + "Full outer join Location "
                         + "On Contest.LocationId = Location.LocationId "
-                        + "Where UserName = ?";
+                        + "Where UserName = ?"
+                        + "ORDER BY Date ASC";
                         
                 //3. Create Statement Object
                 stm = con.prepareStatement(sql);

@@ -17,7 +17,9 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Profile</title>
         <link href="FE/img/favicon.ico" rel="icon">
-
+        
+        <link href="FE/css/toast.css" rel="stylesheet">
+        
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css"
               integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
 
@@ -69,19 +71,8 @@
                                         src="FE/img/manager.png"
                                         class="img-fluid img-thumbnail mt-4 mb-2"
                                         style="width: 150px; z-index: 1; margin-left: 10px;">
-                                    <form action="#editprofile-dialog" style="z-index: 1;">
-                                        <button class="btn btn-outline-dark" data-mdb-ripple-color="dark"
-                                                style="z-index: 0; margin-left: 17px;">
-                                            Edit profile
-                                        </button>
-                                    </form>
-                                    <form action="DispatchServlet" style="z-index: 1;">
-                                        <button class="btn btn-outline-dark" data-mdb-ripple-color="dark"
-                                                style="z-index: 0; margin-left: 17px;" 
-                                                name="btAction" value="PaymentHistory">
-                                            Match History
-                                        </button>
-                                    </form>
+                                    
+                                    
                                     
 
                                 </div>
@@ -91,25 +82,25 @@
                                     <p>${sessionScope.USER.fullName}</p>
                                 </div>
                             </div>
-                            <div class="p-5 text-black" style="background-color: #f8f9fa;">
-                                <div class="d-flex justify-content-end text-center py-1">
-                                    <div>
-                                        <p class="mb-1 h5">1</p>
-                                        <p class="small text-muted mb-0">Total Match</p>
-                                    </div>
-                                    <div class="px-3">
-                                        <p class="mb-1 h5">51</p>
-                                        <p class="small text-muted mb-0">Win</p>
-                                    </div>
-                                    <div>
-                                        <p class="mb-1 h5">49</p>
-                                        <p class="small text-muted mb-0">Lose</p>
-                                    </div>
-                                </div>
+                            <div class=" pt-5 pl-4 text-black" style="background-color: #f8f9fa;">
+                                <form action="#editprofile-dialog" style="z-index: 1;">
+                                        <button class="btn btn-outline-dark" data-mdb-ripple-color="dark"
+                                                style="z-index: 0; margin-left: 17px;">
+                                            Edit profile
+                                        </button>
+                                    </form>
+                                <form action="DispatchServlet" style="z-index: 1;">
+                                        <button class="btn btn-outline-dark" data-mdb-ripple-color="dark"
+                                                style="z-index: 0; margin-left: 17px;" 
+                                                name="btAction" value="MatchHistory">
+                                            Match History
+                                        </button>
+                                </form>
+                                <img src="FE/img/tt7.png" style="width: 50%; float: right; position: absolute; top: 200; right: -30;" />
                             </div>
 
                             <!--                Con chim-->
-                            <div class="card-body p-4 text-black">
+                            <div class="card-body p-4 text-black ">
                                 <div class="mb-5">
                                     <p class="lead fw-normal mb-1">About</p>
                                     <div class="p-4" style="background-color: #f8f9fa;">
@@ -170,16 +161,15 @@
                                 </c:if>           
                             </div>
                         </div>
-                        <div class="d-flex justify-content-center">
-                            <a href="/FE/index.html" class="btn btn-outline-dark btn-primary" data-mdb-ripple-color="dark"
-                               style="z-index: 0; margin-left: 17px; margin-top: 30px; margin-bottom: 40px;">Đăng xuất</a>
-                        </div>
+                       
                     </div>
                 </div>
             </div>
             </div>
         </section>
-
+         
+<h6 id="toastmes">${msg}</h6>
+<div id="toast"></div>
 
 
         
@@ -196,10 +186,10 @@
                 <div class="card mb-4">
                     <div class="card-header">Account Details</div>
                     <div class="card-body">
-                         <form action="DispatchServlet" method="post" enctype="multipart/form-data">
-                             <label for="fileInput" class=""><u class="">Choose a File</u></label>
-                                  <input type="file" id="fileInput" name="image">
-                                 <input type="submit" value="Add Image">
+                        <form action="DispatchServlet" method="post" enctype="multipart/form-data" style="align-items: center">
+                             <label for="fileInput" style="color: blue"><u class="">Choose a File</u></label>
+                             <input type="file" id="fileInput" name="image">
+                             <input type="submit" value="Add Image">
                          </form>
                         <form action="DispatchServlet" method="GET" >
                             <!-- Form Group (username)-->
@@ -260,7 +250,7 @@
 
         </div>
 
-    </div>
+    
     <div class="dialog overlay" id="my-dialog">
         <a href="#close-dialog" class="overlay-close"></a>
         <div id="close-dialog" class="dialog-body">
@@ -276,4 +266,5 @@
 <script src="FE/lib/waypoints/waypoints.min.js"></script>
 <script src="FE/lib/counterup/counterup.min.js"></script>
 <script src="FE/lib/owlcarousel/owl.carousel.min.js"></script>
+<script src="FE/js/updateprofile.js"></script>
 </html>

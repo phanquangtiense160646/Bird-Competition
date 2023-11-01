@@ -54,7 +54,7 @@ function showSuccessToast() {
         tiltle: 'Success',
         message: 'Thêm Chim Thành Công',
         type: 'success',
-        duration: 20000
+        duration: 5000
     })
 }
 

@@ -55,10 +55,11 @@
                     
                     <div class="col col-lg-9 col-xl-7">
                         <div class="card">
+                            
                             <div class="text-center h1 fw-bold" style="padding-top: 20px;">
                                 <p class="fs-1 lead fw-normal mb-20">Bird Category</p>
                             </div>
-
+                            
                             <c:set var="birdList" value="${sessionScope.OWN_BIRD}"/>
                             <c:if test="${not empty birdList}">                   
                                 <c:forEach items="${birdList}" var="p" varStatus="loop"> 
@@ -70,7 +71,7 @@
                                                 <div class="imghover">
                                                     <form action="DispatchServlet">
                                                         <input type="hidden" name="txtBirdID" value="${p.birdID}" />
-                                                        <button class="btn" name="btAction" value="BirdProfile">Info</button>
+                                                        <button class="btn" name="btAction" value="BirdProfile">Thông Tin</button>
                                                         
                                                     </form>
                                                 </div>
@@ -84,7 +85,8 @@
                                                     <div class="imghover">
                                                         <form action="DispatchServlet">
                                                             <input type="hidden" name="txtBirdID" value="${birdList[nextIndex].birdID}" />
-                                                            <button class="btn" name="btAction" value="BirdProfile">Info</button>
+                                                            <button class="btn" name="btAction" value="BirdProfile">Thông Tin</button>
+                                                        
                                                             
                                                         </form>
                                                     </div>
@@ -117,6 +119,11 @@
             </div>
         </section>
     </body>
-
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="FE/lib/easing/easing.min.js"></script>
+<script src="FE/lib/waypoints/waypoints.min.js"></script>
+<script src="FE/lib/counterup/counterup.min.js"></script>
+<script src="FE/lib/owlcarousel/owl.carousel.min.js"></script>
 </html>
 
