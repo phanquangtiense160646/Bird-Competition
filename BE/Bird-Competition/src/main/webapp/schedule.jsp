@@ -84,7 +84,7 @@
                                             <div class="col-lg-3 col-md-4 col-sm-6  btn-viewInfo">
                                                 <div class="bg-dark rounded text-center py-5 px-3">
                                                     <p class="schedule-value text-uppercase text-info mb-3">Hệ số: ${scheduleDto.factor}</p>
-                                                    <p class="schedule-value text-uppercase text-light mb-3">Ngày: ${scheduleDto.date}</p>
+                                                    <p class="schedule-value text-uppercase text-light mb-3">Ngày: ${scheduleDto.getDateFormat()}</p>
                                                     <p class="schedule-value text-uppercase text-light mb-3"> Giờ: 2.00am - 5.00am</p>
                                                     <p class="schedule-value text-uppercase text-light mb-3">Địa điểm: ${scheduleDto.location}</p>
                                                     <p class="schedule-value text-uppercase text-primary">${scheduleDto.name}</p>
@@ -118,7 +118,7 @@
                                         <div class="col-lg-3 col-md-4 col-sm-6  btn-viewInfo">
                                             <div class="bg-dark rounded text-center py-5 px-3">
                                                 <p class="schedule-value text-uppercase text-info mb-3">Hệ số: ${scheduleDto.factor}</p>
-                                                <p class="schedule-value text-uppercase text-light mb-3">Ngày: ${scheduleDto.date}</p>
+                                                <p class="schedule-value text-uppercase text-light mb-3">Ngày: ${scheduleDto.getDateFormat()}</p>
                                                 <p class="schedule-value text-uppercase text-light mb-3"> Giờ: 2.00am - 5.00am</p>
                                                 <p class="schedule-value text-uppercase text-light mb-3">Địa điểm: ${scheduleDto.location}</p>
                                                 <p class="schedule-value text-uppercase text-primary">${scheduleDto.name}</p>
@@ -150,7 +150,7 @@
                                         <div class="col-lg-3 col-md-4 col-sm-6">
                                             <div class="bg-dark rounded text-center py-5 px-3 btn-register">
                                                 <p class="schedule-value text-uppercase text-info mb-3">Hệ số: ${scheduleDto.factor}</p>
-                                                <p class="schedule-value text-uppercase text-light mb-3">Ngày: ${scheduleDto.date}</p>
+                                                <p class="schedule-value text-uppercase text-light mb-3">Ngày: ${scheduleDto.getDateFormat()}</p>
                                                 <p class="schedule-value text-uppercase text-light mb-3"> Giờ: 2.00am - 5.00am</p>
                                                 <p class="schedule-value text-uppercase text-light mb-3">Địa điểm: ${scheduleDto.location}</p>
                                                 <p class="schedule-value text-uppercase text-primary">${scheduleDto.name}</p>
@@ -175,7 +175,7 @@
                                         <div class="col-lg-3 col-md-4 col-sm-6">
                                             <div class="bg-dark rounded text-center py-5 px-3">
                                                 <p class="schedule-value text-uppercase text-info mb-3">Hệ số: ${scheduleDto.factor}</p>
-                                                <p class="schedule-value text-uppercase text-light mb-3">Ngày: ${scheduleDto.date}</p>
+                                                <p class="schedule-value text-uppercase text-light mb-3">Ngày: ${scheduleDto.getDateFormat()}</p>
                                                 <p class="schedule-value text-uppercase text-light mb-3"> Giờ: 2.00am - 5.00am</p>
                                                 <p class="schedule-value text-uppercase text-light mb-3">Địa điểm: ${scheduleDto.location}</p>
                                                 <p class="schedule-value text-uppercase text-danger">${scheduleDto.name}</p>

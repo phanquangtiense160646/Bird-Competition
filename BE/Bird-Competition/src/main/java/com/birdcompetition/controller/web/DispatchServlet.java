@@ -64,9 +64,11 @@ import javax.servlet.ServletException;
             } else if (button.equals("PaymentHistory")){
                 url = "PaymentHistoryServlet";
             } else if (button.equals("Logout")){
-                url = "logout";
+                url = "LogoutServlet";
             } else if (button.equals("BirdList")){
                 url = "GetBirdServlet";
+            } else if (button.equals("ManageSchedule")) {
+                url = "ManageSchedule";
             }
         } finally {
             RequestDispatcher rd = request.getRequestDispatcher(url);

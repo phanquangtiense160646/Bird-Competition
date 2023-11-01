@@ -1,21 +1,32 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
+ */
 package com.birdcompetition.controller;
 
+import com.birdcompetition.schedule.ScheduleDAO;
+import com.birdcompetition.schedule.ScheduleDTO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Date;
+import java.sql.SQLException;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
  * @author Admin
  */
-@WebServlet(name = "AddScheduleServlet", urlPatterns = {"/AddScheduleServlet"})
-public class AddScheduleServlet extends HttpServlet {
+@WebServlet(name = "ManageSchedule", urlPatterns = {"/ManageSchedule"})
+public class ManageSchedule extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -29,22 +40,18 @@ public class AddScheduleServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        String date = request.getParameter("date");
-        String name = request.getParameter("txtContestName");
-        String minPoint = request.getParameter("minPoint");
-        String maxPoint = request.getParameter("maxPoint");
-        String place = request.getParameter("cboBird");
-        String factor = request.getParameter("factor");
-        String maxPar = request.getParameter("maxPar");
-        String fee = request.getParameter("fee");
-        
-        String url = "AdminPage/createSchedule.jsp";
+        String url = "AdminPage/manageSchedule.jsp";
         try {
-            if(date != null) {
-                Date sqlDate = Date.valueOf(date);
-            System.out.println(sqlDate);
-            }
+            HttpSession session = request.getSession();
+            ScheduleDAO scheduleDao = new ScheduleDAO();
+            scheduleDao.getSchedule();
+            List<ScheduleDTO> listSchedule = scheduleDao.getList();
+            session.setAttribute("SCHEDULE", listSchedule);
             
+        } catch (SQLException ex) {
+            Logger.getLogger(ManageSchedule.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(ManageSchedule.class.getName()).log(Level.SEVERE, null, ex);
         }finally {
             RequestDispatcher rd = request.getRequestDispatcher(url);
             rd.forward(request, response);

@@ -255,7 +255,7 @@ public class ScheduleDAO implements Serializable {
                 String sql = "Insert Into Contest("
                         + "NameOfContest, Date, LocationId, Status, Factor, MinPoint, MaxPoint, MaxParticipant, ParticipatingFee"
                         + ") Values("
-                        + "?, to_date(?,'yyyy-mm-dd'), ?, ?, ?, ?, ?, ?, ?"
+                        + "?, ?, ?, ?, ?, ?, ?, ?, ?"
                         + ")";
                 //3.Create Statement Object
                 stm = con.prepareStatement(sql);
