@@ -83,7 +83,7 @@
         
         
         <li class="nav-item">
-            <a class="nav-link" href="AdminPage/Pages/PaymentManagement.html">
+            <a class="nav-link" href="https://sandbox.vnpayment.vn/merchantv2/">
                 <i class="fas fa-fw fa-table"></i>
                 <span>Quản lý thanh toán</span></a>
         </li>  

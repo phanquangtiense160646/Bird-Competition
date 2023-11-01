@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -47,7 +48,7 @@
         <span>or use your account</span>
         <div class="social-container">
 
-          <a href="#" class="social"><i class="fa-brands fa-google"></i></a>
+          <a href="https://accounts.google.com/o/oauth2/auth?scope=profile&redirect_uri=http://localhost:8080/Bird-Competition/login-google&response_type=code&client_id=507956590617-8srqvghri9v7r3r2joqe9ak8lnl0stdf.apps.googleusercontent.com&approval_prompt=force" class="social"><i class="fa-brands fa-google"></i></a>
 
         </div>
       </form>
@@ -70,7 +71,9 @@
         </div>
 
        
-        <p style="text-align: center;"><span class="text-danger">${msg}</span></p>
+        
+            <p style="text-align: center;"><span class="text-black">${msg}</span></p>
+       
 
         <div class="content">
           <div class="checkbox">
@@ -85,7 +88,7 @@
         <span>Or use your account</span>
         <div class="social-container">
 
-          <a href="#" class="btn google-btn social-btn"><i class="fab fa-google-plus-g"></i></a>
+          <a href="https://accounts.google.com/o/oauth2/auth?scope=profile&redirect_uri=http://localhost:8080/Bird-Competition/login-google&response_type=code&client_id=507956590617-8srqvghri9v7r3r2joqe9ak8lnl0stdf.apps.googleusercontent.com&approval_prompt=force" class="btn google-btn social-btn"><i class="fab fa-google-plus-g"></i></a>
 
         </div>
       </form>
