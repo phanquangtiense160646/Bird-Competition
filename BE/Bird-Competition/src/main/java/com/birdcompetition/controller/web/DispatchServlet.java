@@ -69,7 +69,11 @@ import javax.servlet.ServletException;
                 url = "logout";
             } else if (button.equals("BirdList")){
                 url = "GetBirdServlet";
-            }
+            } else if(button.equals("UserProfile")){
+                url = "UserProfileServlet";        
+            } else if(button.equals("Update Profile")){
+                url = "UpdateProfileServlet";
+            } 
         } finally {
             RequestDispatcher rd = request.getRequestDispatcher(url);
             rd.forward(request, response);
