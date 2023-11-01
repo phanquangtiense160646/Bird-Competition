@@ -1,10 +1,12 @@
 package com.birdcompetition.bird;
 
+import java.io.Serializable;
+
 /**
  *
  * @author Admin
  */
-public class BirdContestDTO {
+public class BirdContestDTO implements Serializable{
     private int birdId;
     private String contestId;
     private int rank;
