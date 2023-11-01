@@ -71,7 +71,11 @@ import javax.servlet.ServletException;
                 url = "UserProfileServlet";        
             } else if(button.equals("Update Profile")){
                 url = "UpdateProfileServlet";
-            } 
+            } else if(button.equals("Add Image")){
+                url = "AddImageServlet";
+            } else if(button.equals("BirdProfile")){
+                url = "GetBirdInfoServlet";
+            }
         } finally {
             RequestDispatcher rd = request.getRequestDispatcher(url);
             rd.forward(request, response);
