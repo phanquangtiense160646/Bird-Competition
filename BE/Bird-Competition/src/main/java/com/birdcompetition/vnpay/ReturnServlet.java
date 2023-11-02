@@ -2,15 +2,13 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
  */
-package com.birdcompetition.controller.web;
+package com.birdcompetition.vnpay;
 
-import com.birdcompetition.membership.MembershipDAO;
-import com.birdcompetition.model.User;
+import com.birdcompetition.bird.BirdContestDTO;
+import com.birdcompetition.registerCompetition.CRegisterDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import java.util.UUID;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -23,8 +21,8 @@ import javax.servlet.http.HttpSession;
  *
  * @author Danh
  */
-@WebServlet(name = "MembershipRegisterServlet", urlPatterns = {"/MembershipRegisterServlet"})
-public class MembershipRegisterServlet extends HttpServlet {
+@WebServlet(name = "ReturnServlet", urlPatterns = {"/ReturnServlet"})
+public class ReturnServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -38,31 +36,20 @@ public class MembershipRegisterServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        HttpSession session = request.getSession();
-        String type = (String)session.getAttribute("TYPE");
-        System.out.println("regis type: " + type);
-
+        String type = request.getParameter("payType");
+        String url = "";
         try {
-            MembershipDAO dao = new MembershipDAO();
-            User user = (User) session.getAttribute("USER");
-            String memberId = user.getIdMember();
+            String trueType = type.substring(0, 4);
 
-            if (user.getVipType() == null) {
-                if (dao.VipRegister(memberId, type)) {
-                    String msg = "success";
-                    request.setAttribute("Message", msg);
-
-                    user.setVipType(type);
-                    session.setAttribute("USER", user);
-                }
+            if (trueType.equals("DKTD")) {
+                request.setAttribute("MES", "fail");
+                url = "ScheduleServlet";
+            } else if (trueType.equals("DKMB") || trueType.equals("UDMB")) {
+                request.setAttribute("Message", "fail");
+                url = "MembershipServlet";
             }
-
-        } catch (SQLException ex) {
-            Logger.getLogger(MembershipRegisterServlet.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(MembershipRegisterServlet.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
-            RequestDispatcher rd = request.getRequestDispatcher("MembershipServlet");
+            RequestDispatcher rd = request.getRequestDispatcher(url);
             rd.forward(request, response);
         }
     }

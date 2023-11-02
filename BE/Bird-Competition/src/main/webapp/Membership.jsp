@@ -123,7 +123,7 @@
                         </div>
                         <div style="height: 85px;">
                             <c:if test="${user.vipType == null}">
-                                <form action="DispatchServlet" method="post">
+                                <form action="VnPayServlet" method="post">
                                     <p style="font-weight: bold;">200.000 vnđ</p>
                                     <input type="hidden" name="txtCost" value="200000">
                                     <input type="hidden" name="txtType" value="1">
@@ -167,7 +167,7 @@
                         </div>
                         <div style="height: 85px;">
                             <c:if test="${user.vipType == null}">
-                                <form action="DispatchServlet" method="post">
+                                <form action="VnPayServlet" method="post">
                                     <p style="font-weight: bold;">500.000 vnđ</p>
                                     <input type="hidden" name="txtCost" value="500000">
                                     <input type="hidden" name="txtType" value="3">
@@ -186,13 +186,13 @@
 
                                 </c:if>
                                 <c:if test="${user.getVipType() lt '3'}">
-                                    <form action="DispatchServlet" method="post">
+                                    <form action="VnPayServlet" method="post">
                                         <c:set var="costTo3" value="${requestScope.VIP3}" />
                                         <p style="font-weight: bold;" class="text-decoration-line-through">500.000 vnđ</p>
                                         <p style="font-weight: bold;">Giảm giá: ${costTo3/1000}00 vnđ</p>
 
                                         <input type="hidden" name="txtCost" value="${costTo3}">
-                                        <input type="hidden" name="txtNewType" value="3">
+                                        <input type="hidden" name="txtType" value="U3">
 
                                         <button class="btn btn-secondary" style="color: #0f6848" type="submit" value="VipUpdate" name="btAction">
                                             Nâng cấp gói
@@ -223,7 +223,7 @@
 
                         <div style="height: 85px;">
                             <c:if test="${user.vipType == null}">
-                                <form action="DispatchServlet" method="post">
+                                <form action="VnPayServlet" method="post">
                                     <p style="font-weight: bold;">300.000 vnđ</p>
                                     <input type="hidden" name="txtCost" value="300000">
                                     <input type="hidden" name="txtType" value="2">
@@ -245,13 +245,13 @@
 
                                 </c:if>
                                 <c:if test="${user.getVipType() lt '2'}">
-                                    <form action="DispatchServlet" method="post">
+                                    <form action="VnPayServlet" method="post">
                                         <c:set var="costTo2" value="${requestScope.VIP2}" />
                                         <p style="font-weight: bold;" class="text-decoration-line-through">300.000 vnđ</p>
                                         <p style="font-weight: bold;">Giảm giá: ${costTo2/1000}00 vnđ</p>
 
                                         <input type="hidden" name="txtCost" value="${costTo2}">
-                                        <input type="hidden" name="txtNewType" value="2">
+                                        <input type="hidden" name="txtType" value="U2">
 
                                         <button class="btn btn-secondary" style="color: #0f6848" type="submit" value="VipUpdate" name="btAction">
                                             Nâng cấp gói
