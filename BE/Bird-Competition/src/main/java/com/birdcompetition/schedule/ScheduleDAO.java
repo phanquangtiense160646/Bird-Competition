@@ -1,6 +1,5 @@
 package com.birdcompetition.schedule;
 
-import com.birdcompetition.birdInContest.BirdContestDTO;
 import com.birdcompetition.util.DBHelper;
 import java.io.Serializable;
 import java.sql.Connection;
@@ -8,7 +7,6 @@ import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import javax.naming.NamingException;
@@ -141,7 +139,7 @@ public class ScheduleDAO implements Serializable {
                 //2.Creat SQL String 
                 String sql = "Select * "
                         + "From Contest, Location "
-                        + "Where Contest.LocationId = Location.LocationId and StatusOfContest = ?";;
+                        + "Where Contest.LocationId = Location.LocationId and StatusOfContest = ?";
                 //3.Create Statement Object
                 stm = con.prepareStatement(sql);
 //                stm.setInt(1, contestStatus);
