@@ -28,6 +28,7 @@
         <!-- Custom styles for this template -->
         <link href="AdminPage/css/sb-admin-2.min.css" rel="stylesheet">
         <link href="AdminPage/css/matchResult.css" rel="stylesheet">
+        <link href="AdminPage/css/toast.css" rel="stylesheet">
 
 
 
@@ -102,9 +103,9 @@
                                                 <c:if test="${scheduleDto.statusOfContest == 2}">Hết hạn đăng kí</c:if>
                                                 <c:if test="${scheduleDto.statusOfContest == 3}">Đang diễn ra</c:if>
                                                 <c:if test="${scheduleDto.statusOfContest == 4}">Đã diễn ra</c:if>
-                                            </td>
-                                            
-                                        </tr>
+                                                </td>
+
+                                            </tr>
                                     </c:forEach>
                                 </c:if>
                             </tbody>
@@ -118,7 +119,9 @@
         <!-- /.container-fluid -->
 
     </div>
-
+    <h6 id="toastmes">${requestScope.MES}</h6>
+    <div id="toast">
+    </div>
     <!-- End of Main Content -->
 
     <!-- Footer -->
@@ -178,9 +181,7 @@
 
 <!-- Page level custom scripts -->
 <script src="AdminPage/js/demo/datatables-demo.js"></script>
-<script>
-    datePickerId.min = new Date().toLocaleDateString('fr-ca')
-</script>
+<script src="AdminPage/js/manageSchedule.js"></script>
 
 
 </body>

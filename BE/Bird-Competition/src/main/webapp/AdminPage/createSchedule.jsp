@@ -9,15 +9,15 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
+    <head>
 
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta name="description" content="">
+        <meta name="author" content="">
 
-    <title>Create Schedule</title>
+        <title>Create Schedule</title>
 
         <!-- Custom fonts for this template -->
         <link href="AdminPage/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -31,124 +31,157 @@
 
         <!-- Custom styles for this page -->
         <link href="AdminPage/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
-</head>
+    </head>
 
-<body id="page-top">
+    <body id="page-top">
         <jsp:include page="Menu.jsp"/>
-       
-                <!-- Begin Page Content -->
-                <div class="row">
-                    <div class="col-lg-5 d-none d-lg-block bg-register-image"></div>
-                    <div class="col-lg-7">
-                        <div class="p-5">
-                            <div class="text-center">
-                                <h1 class="h4 text-gray-900 mb-4">Tạo lịch thi đấu</h1>
+
+        <!-- Begin Page Content -->
+        <div class="row">
+            <div class="col-lg-5 d-none d-lg-block bg-register-image"></div>
+            <div class="col-lg-7">
+                <div class="p-5">
+                    <div class="text-center">
+                        <h1 class="h4 text-gray-900 mb-4">Tạo lịch thi đấu</h1>
+                    </div>
+                    <form action='<c:url value="/DispatchServlet"/>' class="user">
+                        <div class="form-group row">
+                            <div class="col-sm-6 mb-3 mb-sm-0">
+                                <label class="small mb-1">Ngày thi đấu:</label>
+                                <input type="date" class="form-control form-control-user" id="datePickerId"
+                                       name="date">
+                                <c:set var="errors" value="${requestScope.CREATE_ERRORS}"/>
+                                <c:if test="${not empty errors.dateErr}">
+                                    <label class="small mb-1" style="color: red;">${errors.dateErr}</label>
+                                </c:if>
                             </div>
-                            <form action='<c:url value="/DispatchServlet"/>' class="user">
-                                <div class="form-group row">
-                                    <div class="col-sm-6 mb-3 mb-sm-0">
-                                        <label class="small mb-1">Ngày thi đấu:</label>
-                                        <input type="date" class="form-control form-control-user" id="datePickerId"
-                                            name="date">
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <label class="small mb-1">Hệ số:</label>
-                                        <input type="number" class="form-control form-control-user" id="contestFactor"
-                                            placeholder="Hệ số" name="factor">
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label class="small mb-1">Tên cuộc thi:</label>
-                                    <input type="email" class="form-control form-control-user" id="contestName"
-                                        placeholder="Tên cuộc thi" name="txtContestName">
-                                </div>
-                                <div class="form-group row">
-                                    <div class="col-sm-6 mb-3 mb-sm-0">
-                                        <label class="small mb-1">Điểm tham gia tối thiểu:</label>
-                                        <input type="number" class="form-control form-control-user"
-                                            id="minPoint" placeholder="min point" name="minPoint">
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <label class="small mb-1">Điểm tham gia tối đa:</label>
-                                        <input type="number" class="form-control form-control-user"
-                                            id="maxPoint" placeholder="max point" name="maxPoint">
-                                    </div>
-                                </div>
-                                <div class="form-group row">
-                                    <div class="col-sm-6 mb-3 mb-sm-0">
-                                        <label class="small mb-1">Số lượng tham gia tối đa:</label>
-                                        <input type="number" class="form-control form-control-user"
-                                            id="maxPar" placeholder="max participant" name="maxPar">
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <label class="small mb-1">Số lượng chim được phép tham gia:</label>
-                                        <input type="number" class="form-control form-control-user"
-                                            id="maxBirdJoin" placeholder="max bird in a contest" name="maxBirdJoin">
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label class="small mb-1">Phí tham gia:</label>
-                                    <input type="email" class="form-control form-control-user" id="contestName"
-                                        placeholder="Phí" name="txtContestName">
-                                </div>
-                                Chọn địa điểm tham gia: <select aria-label="chooseBird" name="cboBird">
-                                    <option selected disabled>địa điểm</option>
-                                </select>
-                                <hr>
-                                <button type="submit" value="createSchedule" class="btn btn-primary btn-user btn-block" name="btAction">
-                                    Tạo lịch</button>
-                            </form>
-                        
+                            <div class="col-sm-6">
+                                <label class="small mb-1">Hệ số:</label>
+                                <input type="number" class="form-control form-control-user" id="contestFactor"
+                                       placeholder="Hệ số" value="${param.txtfactor}" name="txtfactor">
+                                <c:if test="${not empty errors.factorErr}">
+                                    <label class="small mb-1" style="color: red;">${errors.factorErr}</label>
+                                </c:if>
+                            </div>
+
                         </div>
-                    </div>
+                        <div class="form-group">
+                            <label class="small mb-1">Tên cuộc thi:</label>
+                            <input type="text" class="form-control form-control-user" id="contestName"
+                                   placeholder="Tên cuộc thi" value="${param.txtContestName}" name="txtContestName">
+                            <c:if test="${not empty errors.contestNameErr}">
+                                <label class="small mb-1" style="color: red;">${errors.contestNameErr}</label>
+                            </c:if>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-sm-6 mb-3 mb-sm-0">
+                                <label class="small mb-1">Điểm tham gia tối thiểu:</label>
+                                <input type="number" class="form-control form-control-user"
+                                       id="minPoint" placeholder="min point" name="txtminPoint">
+                                <c:if test="${not empty errors.minPointErr}">
+                                    <label class="small mb-1" style="color: red;">${errors.minPointErr}</label>
+                                </c:if>
+                            </div>
+                            <div class="col-sm-6">
+                                <label class="small mb-1">Điểm tham gia tối đa:</label>
+                                <input type="number" class="form-control form-control-user"
+                                       id="maxPoint" placeholder="max point" name="txtmaxPoint">
+                                <c:if test="${not empty errors.maxPointErr}">
+                                    <label class="small mb-1" style="color: red;">${errors.maxPointErr}</label>
+                                </c:if>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-sm-6 mb-3 mb-sm-0">
+                                <label class="small mb-1">Số lượng tham gia tối đa:</label>
+                                <input type="number" class="form-control form-control-user"
+                                       id="maxPar" placeholder="max participant" name="txtmaxPar">
+                                <c:if test="${not empty errors.maxParErr}">
+                                    <label class="small mb-1" style="color: red;">${errors.maxParErr}</label>
+                                </c:if>
+                            </div>
+                            <div class="col-sm-6">
+                                <label class="small mb-1">Số lượng chim được phép tham gia:</label>
+                                <input type="number" class="form-control form-control-user"
+                                       id="maxBirdJoin" placeholder="max bird in a contest" name="txtmaxBirdJoin">
+                                <c:if test="${not empty errors.maxBirdInContestErr}">
+                                    <label class="small mb-1" style="color: red;">${errors.maxBirdInContestErr}</label>
+                                </c:if>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="small mb-1">Phí tham gia:</label>
+                            <input type="number" class="form-control form-control-user" id="fee"
+                                   placeholder="Phí" value="${param.txtfee}" name="txtfee">
+                            <c:if test="${not empty errors.feeErr}">
+                                <label class="small mb-1" style="color: red;">${errors.feeErr}</label>
+                            </c:if>
+                        </div>
+                        Chọn địa điểm tham gia: <select aria-label="chooseBird" name="cboBird">
+                            <option selected disabled>Địa điểm</option>
+                            <c:set var="locations" value="${sessionScope.LOCATION}"/>
+                            <c:forEach var="location" items="${locations}">
+                                <option value="${location.locationId}">${location.location}</option>
+                            </c:forEach>   
+                        </select>
+                        <c:if test="${not empty errors.placeErr}">
+                            <label class="small mb-1" style="color: red;">${errors.placeErr}</label>
+                        </c:if>
+                        <hr>
+                        <button type="submit" value="createSchedule" class="btn btn-primary btn-user btn-block" name="btAction">
+                            Tạo lịch</button>
+                    </form>
+
                 </div>
-
-                <!-- /.container-fluid -->
-
             </div>
-
-            <!-- End of Main Content -->
-
-            <!-- Footer -->
-            <footer class="sticky-footer bg-white">
-                <div class="container my-auto">
-                    <div class="copyright text-center my-auto">
-                        <span>Copyright &copy; Bird-Competition</span>
-                    </div>
-                </div>
-            </footer>
-            <!-- End of Footer -->
-
         </div>
-        <!-- End of Content Wrapper -->
+
+        <!-- /.container-fluid -->
 
     </div>
-    <!-- End of Page Wrapper -->
 
-    <!-- Scroll to Top Button-->
-    <a class="scroll-to-top rounded" href="#page-top">
-        <i class="fas fa-angle-up"></i>
-    </a>
+    <!-- End of Main Content -->
 
-    <!-- Logout Modal-->
-    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
-                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">×</span>
-                    </button>
-                </div>
-                <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
-                <div class="modal-footer">
-                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <a class="btn btn-primary" href="login.html">Logout</a>
-                </div>
+    <!-- Footer -->
+    <footer class="sticky-footer bg-white">
+        <div class="container my-auto">
+            <div class="copyright text-center my-auto">
+                <span>Copyright &copy; Bird-Competition</span>
+            </div>
+        </div>
+    </footer>
+    <!-- End of Footer -->
+
+</div>
+<!-- End of Content Wrapper -->
+
+</div>
+<!-- End of Page Wrapper -->
+
+<!-- Scroll to Top Button-->
+<a class="scroll-to-top rounded" href="#page-top">
+    <i class="fas fa-angle-up"></i>
+</a>
+
+<!-- Logout Modal-->
+<div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                <a class="btn btn-primary" href="login.html">Logout</a>
             </div>
         </div>
     </div>
+</div>
 
 <!-- Bootstrap core JavaScript-->
 <script src="AdminPage/vendor/jquery/jquery.min.js"></script>
@@ -166,9 +199,9 @@
 
 <!-- Page level custom scripts -->
 <script src="AdminPage/js/demo/datatables-demo.js"></script>
-    <script>
-        datePickerId.min = new Date().toLocaleDateString('fr-ca')
-    </script>
+<script>
+    datePickerId.min = new Date().toLocaleDateString('fr-ca');
+</script>
 
 
 </body>

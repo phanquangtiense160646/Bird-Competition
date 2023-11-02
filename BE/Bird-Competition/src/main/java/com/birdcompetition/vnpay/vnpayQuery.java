@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.vnpay.common;
+package com.birdcompetition.vnpay;
 
 import com.google.gson.JsonObject;
 import java.io.BufferedReader;

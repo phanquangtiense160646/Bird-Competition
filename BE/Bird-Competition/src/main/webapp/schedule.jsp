@@ -339,7 +339,7 @@
                 <input type="hidden" name="hiddenContestId" value="` + hiddenId + `"></input>
                 <input type="hidden" name="hiddenPoint" value="` + pointReq + `"></input>
                 <input type="hidden" name="txtCost" value="` + fee + `"></input>
-                <input type="hidden" name="txtPayType" value="` + 4 + `"></input>                         
+                <input type="hidden" name="txtType" value="` + 4 + `"></input>                         
             <button type="submit" name="btAction" value="cRegister" class="btn btn-primary px-5" style="margin-top: 10px;">Đăng kí thi đấu</button>
              </form>
              </div>
