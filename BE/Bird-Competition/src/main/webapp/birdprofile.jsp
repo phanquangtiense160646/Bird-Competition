@@ -164,7 +164,7 @@
                                                                 <div class="col-md-6">
                                                                     <label class="small mb-1" for="inputGender">Tình trạng sức khỏe</label>
                                                                     <input class="form-control" id="inputGender" type="text"
-                                                                           value="${sessionScope.BIRD.birdName}" readonly>
+                                                                           value="${sessionScope.BIRD.birdName}" readonly>  
                                                                 </div>
                                                             </div>
 

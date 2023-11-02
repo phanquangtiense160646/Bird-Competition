@@ -22,12 +22,13 @@ public class User implements Serializable{
     private String country;
     private int phone;
     private String gender;
+    private String vipType;
     
 
     public User() {
     }
 
-    public User(String userName, String userPassword, String userGmail, int userRole, String idMember, String fullName, String dateOfBirth, String country, int phone, String gender) {
+    public User(String userName, String userPassword, String userGmail, int userRole, String idMember, String fullName, String dateOfBirth, String country, int phone, String gender, String vipType) {
         this.userName = userName;
         this.userPassword = userPassword;
         this.userGmail = userGmail;
@@ -38,10 +39,19 @@ public class User implements Serializable{
         this.country = country;
         this.phone = phone;
         this.gender = gender;
+        this.vipType = vipType;
     }
 
     public String getUserName() {
         return userName;
+    }
+    
+    public String getVipType() {
+        return vipType;
+    }
+
+    public void setVipType(String vipType) {
+        this.vipType = vipType;
     }
 
     public void setUserName(String userName) {

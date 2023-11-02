@@ -43,7 +43,8 @@ public class CompleteCheckInServlet extends HttpServlet {
         try {
             ScheduleDAO dao = new ScheduleDAO();
             dao.setStatus(matchId, 3);
-            request.setAttribute("CompleteCheckInMsg", "success");
+            request.setAttribute("Message", "complete");
+            
         } catch (SQLException ex) {
             Logger.getLogger(CompleteCheckInServlet.class.getName()).log(Level.SEVERE, null, ex);
         } catch (NamingException ex) {

@@ -60,13 +60,45 @@
 
                                             <!-- Loop -->
                                             <c:set var="mid" value="${(updateResult.size() + 1) / 2}" />
+                                            <tr class="list__row">
+                                                <td class="list__cell d-none" style="background: #CED4DA; color:#868E96;">
+                                                    <span class="list__value"></span>
+                                                    <input type="hidden" name="txtMatchId" value="${updateResult[0].matchID}">
+
+
+                                                    <small class="list__label"></small>
+                                                </td>
+                                                <td class="list__cell" style="color:#868E96;">
+                                                    <small class="list__label">Top</small>
+                                                </td>
+                                                <td class="list__cell" style="color:#868E96;">
+                                                    <small class="list__label">Chim</small>
+                                                </td>
+                                                <td class="list__cell" style="color:#868E96;">
+                                                    <small class="list__label">Trainer</small>
+                                                </td>
+                                                <td class="list__cell" style="color:#868E96;">
+                                                    <small class="list__label">Điểm</small>
+                                                </td>
+                                                <td class="list__cell" style="color:#868E96;">
+                                                    <small class="list__label">Điểm theo hạng</small>
+                                                </td>
+                                                <td class="list__cell" style="color:#868E96;">
+                                                    <small class="list__label">Điểm elo</small>
+                                                </td>
+                                                <td class="list__cell" style="color:#868E96;">
+                                                    <small class="list__label">Điểm thay đổi</small>
+                                                </td>
+                                                <td class="list__cell" style="color:#868E96;">
+                                                    <small class="list__label">Điểm sau trận</small>
+                                                </td>
+                                            </tr>
                                             <c:forEach items="${updateResult}" var="dto" varStatus="counter">
                                                 <c:if test="${dto.getOrder() < mid}">
                                                     <tr class="list__row">
                                                         <td class="list__cell d-none" style="background: #CED4DA; color:#868E96;">
                                                             <span class="list__value"></span>
                                                             <input type="hidden" name="txtBirdID" value="${dto.birdID}">
-                                                            <input type="hidden" name="txtMatchId" value="${dto.matchID}">
                                                             <input type="hidden" name="txtOrder" value="${dto.order}">
                                                             <input type="hidden" name="txtBefore" value="${dto.prePoint}">
                                                             <input type="hidden" name="txtAfter" value="${dto.postPoint}">
@@ -75,27 +107,27 @@
                                                         </td>
                                                         <td class="list__cell" style="color:#868E96;">
                                                             <span class="list__value"> ${dto.order} </span>
-                                                            <small class="list__label">Top</small>
                                                         </td>
-                                                        <td class="list__cell" style="color:#868E96;">
+                                                        <td class="list__cell" style="color:#868E96; width: 300px;">
                                                             <span class="list__value"> ${dto.birdName} </span>
-                                                            <small class="list__label">Chim</small>
                                                         </td>
-                                                        <td class="list__cell" style="color:#868E96;">
+                                                        <td class="list__cell" style="color:#868E96; width: 200px;">
                                                             <span class="list__value">${dto.trainer}</span>
-                                                            <small class="list__label">Trainer</small>
                                                         </td>
                                                         <td class="list__cell" style="color:#868E96;">
                                                             <span class="list__value">${dto.prePoint}</span>
-                                                            <small class="list__label">Điểm</small>
                                                         </td>
                                                         <td class="list__cell" style="color:#868E96;">
-                                                            <span class="list__value">${dto.postPoint}</span>
-                                                            <small class="list__label">Điểm sau trận</small>
+                                                            <span class="list__value">${dto.stdPoint}</span>
                                                         </td>
                                                         <td class="list__cell" style="color:#868E96;">
-                                                            <span class="list__value">${dto.postPoint - dto.prePoint}</span>
-                                                            <small class="list__label">Điểm thay đổi</small>
+                                                            <span class="list__value">${dto.eloPoint}</span>
+                                                        </td>
+                                                        <td class="list__cell" style="color:#868E96;">
+                                                            <span class="list__value" style="color: green;">+${dto.postPoint - dto.prePoint}</span>
+                                                        </td>
+                                                        <td class="list__cell" style="color:#868E96;">
+                                                            <span class="list__value" style="font-weight: bold;">${dto.postPoint}</span>
                                                         </td>
                                                     </tr>
                                                 </c:if>
@@ -110,7 +142,6 @@
                                                         <td class="list__cell d-none" style="background: #CED4DA; color:#868E96;">
                                                             <span class="list__value"></span>
                                                             <input type="hidden" name="txtBirdID" value="${dto.birdID}">
-                                                            <input type="hidden" name="txtMatchId" value="${dto.matchID}">
                                                             <input type="hidden" name="txtOrder" value="${dto.order}">
                                                             <input type="hidden" name="txtBefore" value="${dto.prePoint}">
                                                             <input type="hidden" name="txtAfter" value="${dto.postPoint}">
@@ -119,27 +150,27 @@
                                                         </td>
                                                         <td class="list__cell" style="color:#868E96;">
                                                             <span class="list__value"> ${dto.order} </span>
-                                                            <small class="list__label">Top</small>
                                                         </td>
-                                                        <td class="list__cell" style="color:#868E96;">
+                                                        <td class="list__cell" style="color:#868E96; width: 300px;">
                                                             <span class="list__value"> ${dto.birdName} </span>
-                                                            <small class="list__label">Chim</small>
                                                         </td>
-                                                        <td class="list__cell" style="color:#868E96;">
+                                                        <td class="list__cell" style="color:#868E96; width: 200px;">
                                                             <span class="list__value">${dto.trainer}</span>
-                                                            <small class="list__label">Trainer</small>
                                                         </td>
                                                         <td class="list__cell" style="color:#868E96;">
                                                             <span class="list__value">${dto.prePoint}</span>
-                                                            <small class="list__label">Điểm</small>
                                                         </td>
                                                         <td class="list__cell" style="color:#868E96;">
-                                                            <span class="list__value">${dto.postPoint}</span>
-                                                            <small class="list__label">Điểm sau trận</small>
+                                                            <span class="list__value">${dto.stdPoint}</span>
                                                         </td>
                                                         <td class="list__cell" style="color:#868E96;">
-                                                            <span class="list__value">${dto.postPoint - dto.prePoint}</span>
-                                                            <small class="list__label">Điểm thay đổi</small>
+                                                            <span class="list__value">${dto.eloPoint}</span>
+                                                        </td>
+                                                        <td class="list__cell" style="color:#868E96;">
+                                                            <span class="list__value" style="color: blue;">${dto.postPoint - dto.prePoint}</span>
+                                                        </td>
+                                                        <td class="list__cell" style="color:#868E96;">
+                                                            <span class="list__value" style="font-weight: bold;">${dto.postPoint}</span>
                                                         </td>
                                                     </tr>
                                                 </c:if>
@@ -150,11 +181,10 @@
                                             </c:forEach>
                                             <c:forEach items="${updateResult}" var="dto" varStatus="counter">
                                                 <c:if test="${dto.getOrder() > mid}">
-                                                    <tr class="list__row">
+                                                    <tr class="list__row" style=" width: 1000px;">
                                                         <td class="list__cell d-none" style="background: #CED4DA; color:#868E96;">
                                                             <span class="list__value"></span>
                                                             <input type="hidden" name="txtBirdID" value="${dto.birdID}">
-                                                            <input type="hidden" name="txtMatchId" value="${dto.matchID}">
                                                             <input type="hidden" name="txtOrder" value="${dto.order}">
                                                             <input type="hidden" name="txtBefore" value="${dto.prePoint}">
                                                             <input type="hidden" name="txtAfter" value="${dto.postPoint}">
@@ -163,27 +193,27 @@
                                                         </td>
                                                         <td class="list__cell" style="color:#868E96;">
                                                             <span class="list__value"> ${dto.order} </span>
-                                                            <small class="list__label">Top</small>
                                                         </td>
-                                                        <td class="list__cell" style="color:#868E96;">
+                                                        <td class="list__cell" style="color:#868E96; width: 300px;">
                                                             <span class="list__value"> ${dto.birdName} </span>
-                                                            <small class="list__label">Chim</small>
                                                         </td>
-                                                        <td class="list__cell" style="color:#868E96;">
+                                                        <td class="list__cell" style="color:#868E96; width: 200px;">
                                                             <span class="list__value">${dto.trainer}</span>
-                                                            <small class="list__label">Trainer</small>
                                                         </td>
                                                         <td class="list__cell" style="color:#868E96;">
                                                             <span class="list__value">${dto.prePoint}</span>
-                                                            <small class="list__label">Điểm</small>
                                                         </td>
                                                         <td class="list__cell" style="color:#868E96;">
-                                                            <span class="list__value">${dto.postPoint}</span>
-                                                            <small class="list__label">Điểm sau trận</small>
+                                                            <span class="list__value">${dto.stdPoint}</span>
                                                         </td>
                                                         <td class="list__cell" style="color:#868E96;">
-                                                            <span class="list__value">${dto.postPoint - dto.prePoint}</span>
-                                                            <small class="list__label">Điểm thay đổi</small>
+                                                            <span class="list__value">${dto.eloPoint}</span>
+                                                        </td>
+                                                        <td class="list__cell" style="color:#868E96;">
+                                                            <span class="list__value" style="color: red;">${dto.postPoint - dto.prePoint}</span>
+                                                        </td>
+                                                        <td class="list__cell" style="color:#868E96;">
+                                                            <span class="list__value" style="font-weight: bold;">${dto.postPoint}</span>
                                                         </td>
                                                     </tr>
                                                 </c:if>
@@ -200,18 +230,19 @@
 
 
                     </div>
-                    <div class="d-sm-block justify-content-center">
-                        <!--<a href="" class="btn btn-primary px-5" >Xác nhận</a>-->
-
-                        <input type="submit" class="btn btn-primary px-5 mt-2" value="Xác nhận" name="btAction">
-                        <!--                                <button class="btn btn-primary px-5 mt-2" type="submit" value="Confirm" name="btAction">
-                                                            Xác nhận
-                                                        </button>-->
-                        <a href='<c:url value="/DispatchServlet?btAction=UpdateResult"/>' class="btn btn-primary px-5 mt-2" style="margin-top: 10px;">Quay lại</a>
+                    <div class="d-flex justify-content-center">
+                        <input type="submit" class="btn btn-primary mb-2 mx-2" style="width: 100px" value="Xác nhận" name="btAction">
                     </div>
                 </div>
             </form>
+            <div class="d-flex justify-content-center">
+                <form action="UpdateResultServlet">
+                    <input type="hidden" name="txtMatchId" value="${updateResult[0].matchID}">
+                    <input type="submit" class="btn btn-primary mb-5 mx-2" style="width: 100px" value="Quay lại">
 
+                </form>
+
+            </div>
 
 
         </c:if>
@@ -241,7 +272,7 @@
 
     </div>
     <!-- End of Main Content -->
-   
+
     <!-- Footer -->
     <footer class="sticky-footer bg-white">
         <div class="container my-auto">

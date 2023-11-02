@@ -1,20 +1,30 @@
-package com.birdcompetition.controller.web;
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
+ */
+package com.birdcompetition.controller;
 
-import com.birdcompetition.member.MembershipDAO;
-import com.birdcompetition.member.MembershipDTO;
+import com.birdcompetition.schedule.ScheduleDAO;
+import com.birdcompetition.schedule.ScheduleDTO;
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.sql.Date;
 import java.sql.SQLException;
-import java.text.SimpleDateFormat;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
-@WebServlet(name = "RegisterMemberShipServlet", urlPatterns = {"/RegisterMemberShipServlet"})
-public class RegisterMemberShipServlet extends HttpServlet {
+/**
+ *
+ * @author Danh
+ */
+@WebServlet(name = "HappeningMatchServlet", urlPatterns = {"/HappeningMatchServlet"})
+public class CurrentMatchServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -29,31 +39,31 @@ public class RegisterMemberShipServlet extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         
-        String url = "memberShip.html";
-        
-        try{
-            MembershipDAO dao = new MembershipDAO();
-            String memberId = request.getParameter("name");
-//            Date dateSignup = SimpleDateFormat.format(request.getParameter("dos"));
-            String type = request.getParameter("type");
-            String des = request.getParameter("description");
+        HttpSession session = request.getSession();
+        String url = "AdminPage/curentMatch.jsp";
+        try {
+            ScheduleDAO dao = new ScheduleDAO();
+            dao.getScheduleByStatus(3);
+//            dao.getSchedule();
+            List<ScheduleDTO> result = dao.getList();
+//            System.out.println("size: " + result.size() );
+            session.setAttribute("HAPPENING", result);
             
+            String action = (String) request.getAttribute("action");
+            System.out.println("action: " + action);
+            if (action != null) {
+                request.setAttribute("Message", "success");
+
+            }
             
-//            MembershipDTO member = dao.checkRegister(memberId);
-//            if(member != null){
-//                request.setAttribute("ERROR", "Tài khoản đã đăng ký gói VIP");
-//            }
-//            
-//            boolean check = dao.registerMembership(memberId, dateSignup, true, type, des);
-//            if(check){
-//                request.setAttribute("MESSAGE", "Đăng ký thành công gói thành viên");
-//                url = "memberShip.html";
-//            }else{
-//                request.setAttribute("MESSAGE", "Chưa đăng ký thành công gói thành ");
-//                url = "memberShip.html";
-//            }
-        }finally{
-            request.getRequestDispatcher(url).forward(request, response);
+
+        } catch (SQLException ex) {
+            Logger.getLogger(CurrentMatchServlet.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(CurrentMatchServlet.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            RequestDispatcher rd = request.getRequestDispatcher(url);
+            rd.forward(request, response);
         }
     }
 

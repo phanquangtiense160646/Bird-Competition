@@ -38,18 +38,13 @@
                 <i class="fas fa-fw fa-table"></i>
                 <span>Dashboard</span></a>
         </li>
-        
+
         <li class="nav-item">
             <a class="nav-link" href="AdminPage/Pages/AccountManagement.html">
                 <i class="fas fa-fw fa-table"></i>
                 <span>Quản lý tài khoản</span></a>
         </li>
 
-        <li class="nav-item">
-            <a class="nav-link" href="AdminPage/Pages/BirdManagement.html">
-                <i class="fas fa-fw fa-table"></i>
-                <span>Quản lý danh sách Chim</span></a>
-        </li>
 
         <li class="nav-item">
             <a class="nav-link" href='<c:url value="/DispatchServlet?btAction=ManageSchedule"/>'>
@@ -75,14 +70,14 @@
         <div class="sidebar-heading">
             Manager
         </div>
-        
-        
+
+
         <li class="nav-item">
-            <a class="nav-link" href="https://sandbox.vnpayment.vn/merchantv2/">
+            <a class="nav-link" href="https://sandbox.vnpayment.vn/merchantv2/" target="_blank">
                 <i class="fas fa-fw fa-table"></i>
                 <span>Quản lý thanh toán</span></a>
         </li>  
-        
+
         <li class="nav-item">
             <a class="nav-link" href="">
                 <i class="fas fa-fw fa-table"></i>
@@ -91,7 +86,6 @@
 
         <!-- Divider -->
         <hr class="sidebar-divider d-none d-md-block">
-
 
 
 
@@ -116,18 +110,18 @@
                 </button>
 
                 <!-- Topbar Search -->
-<!--                <form
-                    class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
-                    <div class="input-group">
-                        <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..."
-                               aria-label="Search" aria-describedby="basic-addon2">
-                        <div class="input-group-append">
-                            <button class="btn btn-primary" type="button">
-                                <i class="fas fa-search fa-sm"></i>
-                            </button>
-                        </div>
-                    </div>
-                </form>-->
+                <!--                <form
+                                    class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
+                                    <div class="input-group">
+                                        <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..."
+                                               aria-label="Search" aria-describedby="basic-addon2">
+                                        <div class="input-group-append">
+                                            <button class="btn btn-primary" type="button">
+                                                <i class="fas fa-search fa-sm"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </form>-->
 
                 <!-- Topbar Navbar -->
                 <ul class="navbar-nav ml-auto">
@@ -161,17 +155,21 @@
                     <li class="nav-item dropdown no-arrow">
                         <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <span class="mr-2 d-none d-lg-inline text-gray-600 small">Danh Trần</span>
-                            <img class="img-profile rounded-circle"
-                                 src="FE/img/eDanh.jpg">
+                            <c:set var="user" value="${sessionScope.USER}"/>
+                            <span class="btn btn-primary nav-link dropdown-toggle h-75" style="width: 100px;">${user.userName}</span>
+                            <%--<c:if test="${user.userRole == 1}">Admin</c:if>--%>
+                            <%--<c:if test="${user.userRole == 2}">Manager</c:if>--%>
+                            <%--<c:if test="${user.userRole == 3}">Staff</c:if>--%>
+                            
+                           
                         </a>
                         <!-- Dropdown - User Information -->
                         <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
                              aria-labelledby="userDropdown">
-<!--                            <a class="dropdown-item" href="#">
-                                <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
-                                Profile
-                            </a>-->
+                            <!--                            <a class="dropdown-item" href="#">
+                                                            <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+                                                            Profile
+                                                        </a>-->
                             <!--<div class="dropdown-divider"></div>-->
                             <a class="dropdown-item" href='<c:url value="/DispatchServlet?btAction=Logout"/>'>
                                 <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>

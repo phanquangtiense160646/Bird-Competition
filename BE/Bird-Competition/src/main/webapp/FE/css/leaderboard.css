@@ -91,6 +91,7 @@ body {
     opacity: .6;
 }
 .list__row {
+    /*width: 1000px;*/
     background: var(--grey-7);
     cursor: pointer;
     transition: all 300ms ease;

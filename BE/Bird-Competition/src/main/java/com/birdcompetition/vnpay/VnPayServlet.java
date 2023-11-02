@@ -12,6 +12,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -35,13 +36,19 @@ public class VnPayServlet extends HttpServlet {
         String url = "vnpay_pay.jsp";
         String cost = request.getParameter("txtCost");
         String type = request.getParameter("txtType");
+        HttpSession session = request.getSession();
         try {
             request.setAttribute("COST", cost.trim());
-            request.setAttribute("TYPE", type);
+            session.setAttribute("TYPE", type);
+            
+            
             if (type.equals("4")) {
                 request.setAttribute("NOI_DUNG", "DKTD Competition Register");
-            } else if (type.equals("1")) {
+            } else if (type.equals("1") || type.equals("2") || type.equals("3")) {
                 request.setAttribute("NOI_DUNG", "DKMB MemberShip Register");
+            } else if (type.equals("U2") || type.equals("U3")) {
+                request.setAttribute("NOI_DUNG", "UDMB MemberShip Update");
+
             }
 
         } finally {

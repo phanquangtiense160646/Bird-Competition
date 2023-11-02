@@ -4,17 +4,16 @@
  */
 package com.birdcompetition.controller.web;
 
-import com.birdcompetition.bird.BirdDAO;
-import com.birdcompetition.bird.BirdDTO;
-import com.birdcompetition.schedule.ScheduleDAO;
-import com.birdcompetition.schedule.ScheduleDTO;
+import com.birdcompetition.membership.MembershipDAO;
+import com.birdcompetition.membership.MembershipDTO;
+import com.birdcompetition.model.User;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
-import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.naming.NamingException;
+import javax.faces.bean.SessionScoped;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -24,10 +23,10 @@ import javax.servlet.http.HttpSession;
 
 /**
  *
- * @author Admin
+ * @author Danh
  */
-@WebServlet(name = "PostLoginServlet", urlPatterns = {"/PostLoginServlet"})
-public class PostLoginServlet extends HttpServlet {
+@WebServlet(name = "MembershipServlet", urlPatterns = {"/MembershipServlet"})
+public class MembershipServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -41,32 +40,40 @@ public class PostLoginServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        String url = "postLogin.jsp";
+        HttpSession session = request.getSession();
         try {
-            HttpSession session = request.getSession();
-            List<ScheduleDTO> listSchedule = (List<ScheduleDTO>) session.getAttribute("SCHEDULE");
-            if (listSchedule == null) {
-                    //Schedule
-                ScheduleDAO scheduleDao = new ScheduleDAO();
-                scheduleDao.getSchedule();
-                listSchedule = scheduleDao.getList();
-                session.setAttribute("SCHEDULE", listSchedule);
+            User user = (User) session.getAttribute("USER");
+            String memberId = user.getIdMember();
+//            System.out.println("viptype: " + user.getVipType());
+
+            MembershipDAO dao = new MembershipDAO();
+            if (user.getVipType() != null) {
+                if (!dao.checkSession(memberId)) {
+                    user.setVipType(null);
+                    //hamf set trong DB
+
+                    session.setAttribute("USER", user);
+                    request.setAttribute("Message", "overdate");
+                }
                 
-                    //Leaderboard
-                BirdDAO birdDao = new BirdDAO();
-                birdDao.displayLeaderboard();
-                List<BirdDTO> listBird = birdDao.getBirdList();
-                request.setAttribute("LEADER_BOARD", listBird);
+                MembershipDTO membership = dao.getMember(memberId);
+                request.setAttribute("EXPIRED", membership.getDayExpired());
+                
+                int vip2 = dao.updatePack(memberId, "2");
+                request.setAttribute("VIP2", vip2);
+                int vip3 = dao.updatePack(memberId, "3");
+                request.setAttribute("VIP3", vip3);
+
+        
             }
 
         } catch (SQLException ex) {
-            log("PostLoginServlet_SQL: " + ex.getMessage());
+            Logger.getLogger(MembershipServlet.class.getName()).log(Level.SEVERE, null, ex);
         } catch (ClassNotFoundException ex) {
-            log("PostLoginServlet_ClassNotFound: " + ex.getMessage());
-        } catch (NamingException ex) {
-            Logger.getLogger("PostLoginServlet_Naming: " + ex.getMessage());
+            Logger.getLogger(MembershipServlet.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
-            response.sendRedirect(url);
+            RequestDispatcher rd = request.getRequestDispatcher("Membership.jsp");
+            rd.forward(request, response);
         }
     }
 
