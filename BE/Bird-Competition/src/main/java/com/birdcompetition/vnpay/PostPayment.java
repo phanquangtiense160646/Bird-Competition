@@ -1,28 +1,31 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
  */
-package com.birdcompetition.controller.web;
+package com.birdcompetition.vnpay;
 
-import com.birdcompetition.dal.DAO;
+import com.birdcompetition.bird.BirdContestDTO;
+import com.birdcompetition.registerCompetition.CRegisterDAO;
 import java.io.IOException;
+import java.io.PrintWriter;
+import java.sql.SQLException;
+import java.util.UUID;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import com.birdcompetition.model.User;
-import java.sql.SQLException;
-import javax.servlet.RequestDispatcher;
 import javax.servlet.http.HttpSession;
 
 /**
  *
- * @author 84366
+ * @author Admin
  */
-@WebServlet(name = "LoginControl", urlPatterns = {"/login"})
-public class LoginControl extends HttpServlet {
+@WebServlet(name = "PostPayment", urlPatterns = {"/PostPayment"})
+public class PostPayment extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -36,39 +39,36 @@ public class LoginControl extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        String username = request.getParameter("user");
-        String password = request.getParameter("pass");
-        String url = "Login2.jsp";
-        
-
+        String type = request.getParameter("payType");
+        String url = "ScheduleServlet";
         try {
-        if(username != null && password != null){
-           DAO dao = new DAO();
-            User result = dao.checkLogin(username, password);
-
-            if (result != null) {
-                HttpSession session = request.getSession();
-                if (result.getUserRole() == 4) {
-                    session.setAttribute("USER", result);
-                    url = "DispatchServlet?btAction=PostLogin";
-                } else if (result.getUserRole() == 1) {
-                    url = "AdminPage/index.jsp";
-                }
-            } else {
-                String msg = "Incorrect Username or Password";
-                request.setAttribute("msg", msg);
-            } 
+            String trueType = type.substring(0, 4);
+            System.out.println(trueType);
+            HttpSession session = request.getSession();
+            if (trueType.equals("DKTD")) {
+                CRegisterDAO dao = new CRegisterDAO();
+                String checkInCode = UUID.randomUUID().toString().substring(0, 10);
+                int id = (int) session.getAttribute("BIRD_ID");
+                int beforePoint = (int) session.getAttribute("BEFORE_POINT");
+                String contestId = (String) session.getAttribute("CONTEST_ID");
+                System.out.println(id + " " + beforePoint + contestId);
+                
+                BirdContestDTO dto = new BirdContestDTO(id, contestId,
+                        0, beforePoint, 0, true, false, checkInCode);
+                dao.cRegisterInsert(dto);
+                String mes = "success";
+                request.setAttribute("MES", mes);
+                url = "ScheduleServlet";
+            }
         }
-            
-        } catch (SQLException ex) {
-            log("Login_SQL: " + ex.getMessage());
+        catch (SQLException ex) {
+            Logger.getLogger(PostPayment.class.getName()).log(Level.SEVERE, null, ex);
         } catch (ClassNotFoundException ex) {
-            log("Login_ClassNotFound: " + ex.getMessage());
+            Logger.getLogger(PostPayment.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
             RequestDispatcher rd = request.getRequestDispatcher(url);
             rd.forward(request, response);
         }
-
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

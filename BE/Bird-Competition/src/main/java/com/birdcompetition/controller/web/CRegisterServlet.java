@@ -39,7 +39,7 @@ public class CRegisterServlet extends HttpServlet {
         String pointCombine = request.getParameter("hiddenPoint");
         String url = "ScheduleServlet";
         int count = 0;
-        String mes;
+        String mes = "";
 
         try {
             HttpSession session = request.getSession();
@@ -67,6 +67,7 @@ public class CRegisterServlet extends HttpServlet {
                     }
                     //insert
                     if (count == 0) {
+                        
                         int beforePoint = 0;
                         List<BirdDTO> listBird = (List<BirdDTO>) session.getAttribute("OWN_BIRD");
                         for (BirdDTO birdDTO : listBird) {
@@ -75,11 +76,15 @@ public class CRegisterServlet extends HttpServlet {
                                 break;
                             }
                         }
-                        String checkInCode = UUID.randomUUID().toString().substring(0, 10);
-                        BirdContestDTO dto = new BirdContestDTO(id, contestId,
-                                0, beforePoint, 0, true, false, checkInCode);
-                        dao.cRegisterInsert(dto);
-                        mes = "success";
+                        session.setAttribute("BIRD_ID", id);
+                        session.setAttribute("BEFORE_POINT", beforePoint);
+                        session.setAttribute("CONTEST_ID", contestId);
+                        url = "VnPayServlet";
+//                        String checkInCode = UUID.randomUUID().toString().substring(0, 10);
+//                        BirdContestDTO dto = new BirdContestDTO(id, contestId,
+//                                0, beforePoint, 0, true, false, checkInCode);
+//                        dao.cRegisterInsert(dto);
+//                        mes = "success";
                     } else {
                         mes = "error";
                     }

@@ -42,15 +42,15 @@
     </welcome-file-list>
     <servlet>
         <servlet-name>ajaxServlet</servlet-name>
-        <servlet-class>com.vnpay.common.ajaxServlet</servlet-class>
+        <servlet-class>com.birdcompetition.vnpay.ajaxServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>vnpayQuery</servlet-name>
-        <servlet-class>com.vnpay.common.vnpayQuery</servlet-class>
+        <servlet-class>com.birdcompetition.vnpay.vnpayQuery</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>vnpayRefund</servlet-name>
-        <servlet-class>com.vnpay.common.vnpayRefund</servlet-class>
+        <servlet-class>com.birdcompetition.vnpay.vnpayRefund</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>ajaxServlet</servlet-name>

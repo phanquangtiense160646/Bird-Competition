@@ -1,8 +1,11 @@
 package com.birdcompetition.controller;
 
+import com.birdcompetition.schedule.ScheduleError;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Date;
+import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -37,12 +40,40 @@ public class AddScheduleServlet extends HttpServlet {
         String factor = request.getParameter("factor");
         String maxPar = request.getParameter("maxPar");
         String fee = request.getParameter("fee");
-        
+        boolean foundErr = false;
+        ScheduleError error = new ScheduleError();
+
         String url = "AdminPage/createSchedule.jsp";
         try {
-            
-            
-        }finally {
+            if (date == null) {
+                foundErr = true;
+                error.setDateErr("Date không được trống");
+            }else {
+                LocalDate date1 = LocalDate.now();
+                LocalDate date2 = LocalDate.parse(date);
+                long daysBetween = ChronoUnit.DAYS.between(date1, date2);
+                if(daysBetween < 6) {
+                    foundErr = true;
+                    error.setDateErr("Ngày phải cách hiện tại 7 ngày");
+                }
+            }
+            if (name.length() < 6 || name.length() > 50) {
+                foundErr = true;
+                error.setContestNameErr("Tên cuộc thi 6 - 50");
+            }
+            if(minPoint == null || maxPoint == null) {
+                foundErr = true;
+                error.setMinPointErr("Min point không được trống");
+                error.setMaxPointErr("Max point không được trống");
+            }else {
+                int min = Integer.parseInt(minPoint);
+                int max = Integer.parseInt(maxPoint);
+                if (min < 0 || max < 0){
+                    foundErr = true;
+                }
+            }
+
+        } finally {
             RequestDispatcher rd = request.getRequestDispatcher(url);
             rd.forward(request, response);
         }

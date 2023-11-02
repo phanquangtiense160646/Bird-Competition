@@ -1,28 +1,24 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
  */
-package com.birdcompetition.controller.web;
+package com.birdcompetition.vnpay;
 
-import com.birdcompetition.dal.DAO;
 import java.io.IOException;
+import java.io.PrintWriter;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import com.birdcompetition.model.User;
-import java.sql.SQLException;
-import javax.servlet.RequestDispatcher;
-import javax.servlet.http.HttpSession;
 
 /**
  *
- * @author 84366
+ * @author Admin
  */
-@WebServlet(name = "LoginControl", urlPatterns = {"/login"})
-public class LoginControl extends HttpServlet {
+@WebServlet(name = "VnPayServlet", urlPatterns = {"/VnPayServlet"})
+public class VnPayServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -36,39 +32,22 @@ public class LoginControl extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        String username = request.getParameter("user");
-        String password = request.getParameter("pass");
-        String url = "Login2.jsp";
-        
-
+        String url = "vnpay_pay.jsp";
+        String cost = request.getParameter("txtCost");
+        String type = request.getParameter("txtType");
         try {
-        if(username != null && password != null){
-           DAO dao = new DAO();
-            User result = dao.checkLogin(username, password);
+            request.setAttribute("COST", cost.trim());
+            request.setAttribute("TYPE", type);
+            if (type.equals("4")) {
+                request.setAttribute("NOI_DUNG", "DKTD Competition Register");
+            } else if (type.equals("1")) {
+                request.setAttribute("NOI_DUNG", "DKMB MemberShip Register");
+            }
 
-            if (result != null) {
-                HttpSession session = request.getSession();
-                if (result.getUserRole() == 4) {
-                    session.setAttribute("USER", result);
-                    url = "DispatchServlet?btAction=PostLogin";
-                } else if (result.getUserRole() == 1) {
-                    url = "AdminPage/index.jsp";
-                }
-            } else {
-                String msg = "Incorrect Username or Password";
-                request.setAttribute("msg", msg);
-            } 
-        }
-            
-        } catch (SQLException ex) {
-            log("Login_SQL: " + ex.getMessage());
-        } catch (ClassNotFoundException ex) {
-            log("Login_ClassNotFound: " + ex.getMessage());
         } finally {
             RequestDispatcher rd = request.getRequestDispatcher(url);
             rd.forward(request, response);
         }
-
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

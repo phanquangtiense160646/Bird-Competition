@@ -21,6 +21,9 @@ public class ScheduleError implements Serializable{
     private String feeErr;
     private String placeErr;
 
+    public ScheduleError() {
+    }
+    
     public String getDateErr() {
         return dateErr;
     }
