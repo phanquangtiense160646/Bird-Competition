@@ -63,10 +63,54 @@ public class ScheduleDAO implements Serializable {
                     String location = rs.getString("Location");
                     int contestStatus = rs.getInt("StatusOfContest");
                     int maxPar = rs.getInt("MaxParticipant");
-
+//                    String maxBird = rs.getString("");
                     ScheduleDTO dto = new ScheduleDTO(id, name, date, locationId, status,
                             factor, minPoint, maxPoint, fee, userId, location,
-                            contestStatus, maxPar);
+                            contestStatus, maxPar, "");
+                    scheduleList.add(dto);
+                }
+            }
+        } finally {
+            if (rs != null) {
+                rs.close();
+            }
+            if (stm != null) {
+                stm.close();
+            }
+            if (con != null) {
+                con.close();
+            }
+        }
+    }
+
+    public void getLocation()
+            throws SQLException, ClassNotFoundException {
+        Connection con = null;
+        PreparedStatement stm = null;
+        ResultSet rs = null;
+//        boolean result = false;
+
+        try {
+            //1.Make connection
+            con = DBHelper.getConnection();
+            //check 
+            if (con != null) {
+                //2.Creat SQL String 
+                String sql = "Select * "
+                        + "From Location "
+                        + "";
+                //3.Create Statement Object
+                stm = con.prepareStatement(sql);
+
+                //4.Exercute Query
+                rs = stm.executeQuery();
+                //5.Process
+                this.scheduleList = new ArrayList<>();
+                while (rs.next()) {
+                    String locationId = rs.getString("LocationId");
+                    String location = rs.getString("Location");
+
+                    ScheduleDTO dto = new ScheduleDTO(locationId, true, location);
                     scheduleList.add(dto);
                 }
             }
@@ -121,11 +165,12 @@ public class ScheduleDAO implements Serializable {
                     String userId = rs.getString("UserName");
                     String location = rs.getString("Location");
                     int maxPar = rs.getInt("MaxParticipant");
-                    
+                    //                    String maxBird = rs.getString("");
+
                     ScheduleDTO dto = new ScheduleDTO(id, name, date, locationId,
-                            status, factor, minPoint, maxPoint, fee, userId, 
-                            location, contestStatus, maxPar);
-                    
+                            status, factor, minPoint, maxPoint, fee, userId,
+                            location, contestStatus, maxPar, "");
+
                     scheduleList.add(dto);
                 }
             }
@@ -180,10 +225,11 @@ public class ScheduleDAO implements Serializable {
                     String location = rs.getString("Location");
                     int contestStatus = rs.getInt("StatusOfContest");
                     int maxPar = rs.getInt("MaxParticipant");
+//                    String maxBird = rs.getString("");
 
                     match = new ScheduleDTO(contestId, name, date, locationId, status,
                             factor, minPoint, maxPoint, fee, userId, location,
-                            contestStatus, maxPar);
+                            contestStatus, maxPar, "");
                 }
             }
         } finally {
@@ -206,7 +252,6 @@ public class ScheduleDAO implements Serializable {
         PreparedStatement stm = null;
         boolean result = false;
 
-        BirdContestDTO dto = new BirdContestDTO();
         try {
             //1.Make connection
             con = DBHelper.getConnection();
@@ -239,7 +284,7 @@ public class ScheduleDAO implements Serializable {
         return result;
     }
 
-    public boolean cRegisterInsert(ScheduleDTO dto)
+    public boolean contestInsert(ScheduleDTO dto)
             throws SQLException, ClassNotFoundException {
         Connection con = null;
         PreparedStatement stm = null;
@@ -256,11 +301,22 @@ public class ScheduleDAO implements Serializable {
                         + "NameOfContest, Date, LocationId, Status, Factor, MinPoint, "
                         + "MaxPoint, MaxParticipant, ParticipatingFee, IdRule, UserName, StatusOfContest"
                         + ") Values("
-                        + "?, ?, ?, ?, ?, ?, ?, ?, ?"
+                        + "?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?"
                         + ")";
                 //3.Create Statement Object
                 stm = con.prepareStatement(sql);
                 stm.setString(1, dto.getName());
+                stm.setDate(2, dto.getDate());
+                stm.setString(3, dto.getLocationId());
+                stm.setBoolean(4, true);
+                stm.setDouble(5, dto.getFactor());
+                stm.setInt(6, dto.getMinPoint());
+                stm.setInt(7, dto.getMaxPoint());
+                stm.setInt(8, dto.getMaxPar());
+                stm.setInt(9, dto.getFee());
+                stm.setString(10, "1");
+                stm.setString(11, dto.getUserId());
+                stm.setInt(12, dto.getStatusOfContest());
 
                 //4.Exercute Query
                 int exercute = stm.executeUpdate();

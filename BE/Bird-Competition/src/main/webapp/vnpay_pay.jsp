@@ -14,48 +14,48 @@
         <!-- Custom styles for this template -->
         <link href="assets/jumbotron-narrow.css" rel="stylesheet">      
         <script src="assets/jquery-1.11.3.min.js"></script>
-        
+
         <style>
-        body, html {
-            height: 100%;
-            margin: 0;
-        }
+            body, html {
+                height: 100%;
+                margin: 0;
+            }
 
-        .bg-image {
-            /* Kích thước ảnh nền */
-            background-size: cover;
-            /* Hiển thị ảnh nền full trang */
-            background-position: center;
-            /* Ẩn nền màu mặc định */
-            background-color: transparent;
-            /* Sắc nét */
-            -webkit-filter: blur(0);
-            filter: blur(5px);
-            /* Tăng độ trong suốt */
-            opacity: 0.8;
-            /* Thiết lập z-index thấp hơn để đảm bảo nội dung hiển thị phía trên */
-            z-index: -1;
-            /* Kích thước ảnh phù hợp với màn hình */
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-        }
+            .bg-image {
+                /* Kích thước ảnh nền */
+                background-size: cover;
+                /* Hiển thị ảnh nền full trang */
+                background-position: center;
+                /* Ẩn nền màu mặc định */
+                background-color: transparent;
+                /* Sắc nét */
+                -webkit-filter: blur(0);
+                filter: blur(5px);
+                /* Tăng độ trong suốt */
+                opacity: 0.8;
+                /* Thiết lập z-index thấp hơn để đảm bảo nội dung hiển thị phía trên */
+                z-index: -1;
+                /* Kích thước ảnh phù hợp với màn hình */
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+            }
 
-        .content {
-            /* Đảm bảo nội dung không bị che phủ bởi ảnh nền */
-            position: relative;
-            z-index: 1;
-        }
-            </style>
-        
+            .content {
+                /* Đảm bảo nội dung không bị che phủ bởi ảnh nền */
+                position: relative;
+                z-index: 1;
+            }
+        </style>
+
     </head>
 
     <body>
-            <div class="bg-image" style="background-image: url('FE/img/0t98r20u2ruh1654574469292.jpg');"></div>
-         <div class="container">
-           <div class="header clearfix">
+        <div class="bg-image" style="background-image: url('FE/img/0t98r20u2ruh1654574469292.jpg');"></div>
+        <div class="container">
+            <div class="header clearfix">
 
                 <h3 class="text-muted"></h3>
             </div>
@@ -64,38 +64,43 @@
                 <form action="vnpayajax" id="frmCreateOrder" method="post">        
                     <div class="form-group">
                         <label for="amount">Số tiền</label>
-                        <input class="form-control" data-val="true" data-val-number="The field Amount must be a number." data-val-required="The Amount field is required." id="amount" max="100000000" min="1" name="amount" type="number" value="10000" />
+                        <input class="form-control" data-val="true" 
+                               data-val-number="The field Amount must be a number." 
+                               data-val-required="The Amount field is required." id="amount" max="100000000" 
+                               min="1" name="amount" type="number" value="${requestScope.COST}" readonly/>
                     </div>
-                    
-<div class="form-group">
-    <label for="paymentContent">Nội dung thanh toán</label>
-    <textarea class="form-control" id="paymentContent" name="paymentContent" rows="3" placeholder="vd: Dau Chim Chao Mao"></textarea>
-</div>
-                    
-                     <h4>Chọn phương thức thanh toán</h4>
+
+                    <div class="form-group">
+                        <label for="paymentContent">Nội dung thanh toán</label>
+                        <textarea class="form-control" id="paymentContent" name="paymentContent" rows="3" 
+                                  readonly>${requestScope.NOI_DUNG}</textarea>
+
+                    </div>
+
+                    <h4>Chọn phương thức thanh toán</h4>
                     <div class="form-group">
                         <h5>Cách 1: Chuyển hướng sang Cổng VNPAY chọn phương thức thanh toán</h5>
-                       <input type="radio" Checked="True" id="bankCode" name="bankCode" value="">
-                       <label for="bankCode">Cổng thanh toán VNPAYQR</label><br>
-                       
-                       <h5>Cách 2: Tách phương thức tại site của đơn vị kết nối</h5>
-                       <input type="radio" id="bankCode" name="bankCode" value="VNPAYQR">
-                       <label for="bankCode">Thanh toán bằng ứng dụng hỗ trợ VNPAYQR</label><br>
-                       
-                       <input type="radio" id="bankCode" name="bankCode" value="VNBANK">
-                       <label for="bankCode">Thanh toán qua thẻ ATM/Tài khoản nội địa</label><br>
-                       
-                       <input type="radio" id="bankCode" name="bankCode" value="INTCARD">
-                       <label for="bankCode">Thanh toán qua thẻ quốc tế</label><br>
-                       
+                        <input type="radio" Checked="True" id="bankCode" name="bankCode" value="">
+                        <label for="bankCode">Cổng thanh toán VNPAYQR</label><br>
+
+                        <h5>Cách 2: Tách phương thức tại site của đơn vị kết nối</h5>
+                        <input type="radio" id="bankCode" name="bankCode" value="VNPAYQR">
+                        <label for="bankCode">Thanh toán bằng ứng dụng hỗ trợ VNPAYQR</label><br>
+
+                        <input type="radio" id="bankCode" name="bankCode" value="VNBANK">
+                        <label for="bankCode">Thanh toán qua thẻ ATM/Tài khoản nội địa</label><br>
+
+                        <input type="radio" id="bankCode" name="bankCode" value="INTCARD">
+                        <label for="bankCode">Thanh toán qua thẻ quốc tế</label><br>
+
                     </div>
                     <div class="form-group">
                         <h5>Chọn ngôn ngữ giao diện thanh toán:</h5>
-                         <input type="radio" id="language" Checked="True" name="language" value="vn">
-                         <label for="language">Tiếng việt</label><br>
-                         <input type="radio" id="language" name="language" value="en">
-                         <label for="language">Tiếng anh</label><br>
-                         
+                        <input type="radio" id="language" Checked="True" name="language" value="vn">
+                        <label for="language">Tiếng việt</label><br>
+                        <input type="radio" id="language" name="language" value="en">
+                        <label for="language">Tiếng anh</label><br>
+
                     </div>
                     <button type="button" class="btn btn-default" onclick="goBack()">Back</button>
 
@@ -109,41 +114,41 @@
                 <p>&copy; VNPAY 2020</p>
             </footer>
         </div>
-          
+
         <link href="https://pay.vnpay.vn/lib/vnpay/vnpay.css" rel="stylesheet" />
         <script src="https://pay.vnpay.vn/lib/vnpay/vnpay.min.js"></script>
         <script type="text/javascript">
-            $("#frmCreateOrder").submit(function () {
-                var postData = $("#frmCreateOrder").serialize();
-                var submitUrl = $("#frmCreateOrder").attr("action");
-                $.ajax({
-                    type: "POST",
-                    url: submitUrl,
-                    data: postData,
-                    dataType: 'JSON',
-                    success: function (x) {
-                        if (x.code === '00') {
-                            if (window.vnpay) {
-                                vnpay.open({width: 768, height: 600, url: x.data});
-                            } else {
-                                location.href = x.data;
-                            }
+                        $("#frmCreateOrder").submit(function () {
+                            var postData = $("#frmCreateOrder").serialize();
+                            var submitUrl = $("#frmCreateOrder").attr("action");
+                            $.ajax({
+                                type: "POST",
+                                url: submitUrl,
+                                data: postData,
+                                dataType: 'JSON',
+                                success: function (x) {
+                                    if (x.code === '00') {
+                                        if (window.vnpay) {
+                                            vnpay.open({width: 768, height: 600, url: x.data});
+                                        } else {
+                                            location.href = x.data;
+                                        }
+                                        return false;
+                                    } else {
+                                        alert(x.Message);
+                                    }
+                                }
+                            });
                             return false;
-                        } else {
-                            alert(x.Message);
-                        }
-                    }
-                });
-                return false;
-            });
+                        });
         </script> 
-        
+
         <script>
-function goBack() {
-  window.history.back();
-}
-</script>
-        
+            function goBack() {
+                window.history.back();
+            }
+        </script>
+
 
 
 

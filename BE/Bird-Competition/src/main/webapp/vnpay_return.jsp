@@ -1,6 +1,7 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@page import="com.birdcompetition.vnpay.Config"%>
 <%@page import="java.net.URLEncoder"%>
 <%@page import="java.nio.charset.StandardCharsets"%>
-<%@page import="com.vnpay.common.Config"%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
@@ -62,11 +63,13 @@
                 </div>    
                 <div class="form-group">
                     <label >Số tiền:</label>
-                    <label><%=request.getParameter("vnp_Amount")%></label>
+                    <label>
+                        ${param["vnp_Amount"]/100}
+                    </label>
                 </div>  
                 <div class="form-group">
                     <label >Mô tả giao dịch:</label>
-                    <label><%=request.getParameter("vnp_OrderInfo")%></label>
+                    <label>${param["vnp_OrderInfo"]}</label>
                 </div> 
                 <div class="form-group">
                     <label >Mã lỗi thanh toán:</label>
@@ -86,26 +89,40 @@
                 </div> 
                 <div class="form-group">
                     <label >Tình trạng giao dịch:</label>
-                    <label>
-                        <%
-                            if (signValue.equals(vnp_SecureHash)) {
-                                if ("00".equals(request.getParameter("vnp_TransactionStatus"))) {
-                                    out.print("Thành công");
-                                } else {
-                                    out.print("Không thành công");
-                                }
 
-                            } else {
-                                out.print("invalid signature");
+                    <%
+                        if (signValue.equals(vnp_SecureHash)) {
+                            if ("00".equals(request.getParameter("vnp_TransactionStatus"))) {
+                    %>
+                    <label style="color:green;">
+                        Thành công
+                    </label>
+                    </br>
+                    <form action="DispatchServlet">
+                        <input type="hidden" name="payType" value="${param.vnp_OrderInfo}" />   
+                        <button type="submit" name="btAction" value="PostPayment" class="btn btn-primary px-5" style="margin-top: 10px;">Quay lại</button>
+                    </form>
+                    <%
+                    } else {
+                    %>
+                    <label style="color:red;">
+                        Không thành công
+                    </label>
+                    </br><a href="" class="btn btn-primary px-5" style="margin-top: 10px;">Quay lại</a>
+                    <%
                             }
-                        %></label>
+
+                        } else {
+                            out.print("invalid signature");
+                        }
+                    %>
                 </div> 
             </div>
             <p>
                 &nbsp;
             </p>
             <footer class="footer">
-                <p>&copy; VNPAY 2020</p>
+                <p>&copy; BIRD COMPETITION</p>
             </footer>
         </div>  
     </body>

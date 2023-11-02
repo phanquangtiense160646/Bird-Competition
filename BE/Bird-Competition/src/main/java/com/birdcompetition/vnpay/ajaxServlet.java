@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.vnpay.common;
+package com.birdcompetition.vnpay;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
@@ -52,12 +52,13 @@ public class ajaxServlet extends HttpServlet {
         vnp_Params.put("vnp_Amount", String.valueOf(amount));
         vnp_Params.put("vnp_CurrCode", "VND");
         
+        
         if (bankCode != null && !bankCode.isEmpty()) {
             vnp_Params.put("vnp_BankCode", bankCode);
         }
         vnp_Params.put("vnp_TxnRef", vnp_TxnRef);
-        vnp_Params.put("vnp_OrderInfo", ", Noi dung thanh toan: " + paymentContent);
         vnp_Params.put("vnp_OrderType", orderType);
+        vnp_Params.put("vnp_OrderInfo", paymentContent);
 
         String locate = req.getParameter("language");
         if (locate != null && !locate.isEmpty()) {
