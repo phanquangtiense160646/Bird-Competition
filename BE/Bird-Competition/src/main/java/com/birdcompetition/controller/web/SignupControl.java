@@ -5,7 +5,7 @@
  */
 package com.birdcompetition.controller.web;
 
-import com.birdcompetition.dal.DAO;
+import com.birdcompetition.dal.UserDAO;
 import com.birdcompetition.dal.RegistrationCreateError;
 import java.io.IOException;
 import java.sql.SQLException;
@@ -71,10 +71,10 @@ public class SignupControl extends HttpServlet {
             if (foundErr) {
                 request.setAttribute("CREATE_ERRORS", errors);
             } else {
-                //2. call DAO
-                DAO dao = new DAO();
+                //2. call UserDAO
+                UserDAO dao = new UserDAO();
                 
-                User u = new User(fullname, re_pass, user, 0, user, fullname, user, user, 0, user);
+                User u = new User(fullname, re_pass, user, 0, user, fullname, user, user, 0, user, null);
                 boolean result = dao.createAccount(u);
                 //3. Process Result
                 if (result) {

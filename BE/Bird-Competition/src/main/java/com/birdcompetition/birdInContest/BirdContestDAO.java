@@ -43,7 +43,7 @@ public class BirdContestDAO {
             //check 
             if (con != null) {
                 //2.Creat SQL String 
-                String sql = "Select BirdContest.*, Bird.Point , Bird.NameOfBird, Member.FullName "
+                String sql = "Select BirdContest.*, Bird.Point , Bird.NameOfBird, Member.FullName, Member.IdMember "
                         + "From BirdContest, Bird, Member "
                         + "Where BirdContest.IdContest = ? "
                         + "and BirdContest.IdBird = Bird.IdBird "
@@ -56,7 +56,6 @@ public class BirdContestDAO {
                 //4.Exercute Query
                 rs = stm.executeQuery();
                 //5.Process
-                System.out.println("joiner");
                 while (rs.next()) {
                     String birdId = rs.getString("IdBird");
                     String matchID = rs.getString("IdContest");
@@ -68,8 +67,9 @@ public class BirdContestDAO {
                     String checkInCode = rs.getString("CheckInCode");
                     String birdName = rs.getString("NameOfBird");
                     String trainerName = rs.getString("FullName");
+                    String memberId = rs.getString("IdMember");
 
-                    BirdContestDTO dto = new BirdContestDTO(birdId, matchID, order, point, postPoint, true, checkInCode, birdName, trainerName);
+                    BirdContestDTO dto = new BirdContestDTO(birdId, matchID, order, point, postPoint, true, checkInCode, birdName, trainerName, memberId);
 //                    System.out.println(dto.toString());
 
                     if (this.joinerList == null) {
@@ -91,7 +91,7 @@ public class BirdContestDAO {
         }
     }
 
-    public boolean setPoint(int id, int order, int prePoint, int postPoint)
+    public boolean setAfterMatch(int id, int order, int prePoint, int postPoint, int matchId)
             throws SQLException, NamingException, ClassNotFoundException {
         Connection con = null;
         PreparedStatement stm = null;
@@ -107,13 +107,14 @@ public class BirdContestDAO {
                         + "SET Rank = ?, "
                         + "BeforePoint = ?, "
                         + "AfterPoint = ? "
-                        + "WHERE IdBird = ? ";
+                        + "WHERE IdBird = ? and IdContest = ?";
                 //3. Create Statement Object
                 stm = con.prepareStatement(sql);
                 stm.setInt(1, order);
                 stm.setInt(2, prePoint);
                 stm.setInt(3, postPoint);
                 stm.setInt(4, id);
+                stm.setInt(5, matchId);
                 //4. Execute Query
                 int exercute = stm.executeUpdate();
                 //5. Process
@@ -235,7 +236,7 @@ public class BirdContestDAO {
             //check 
             if (con != null) {
                 //2.Creat SQL String 
-                String sql = "Select BirdContest.*, Bird.Point , Bird.NameOfBird, Member.FullName "
+                String sql = "Select BirdContest.*, Bird.Point , Bird.NameOfBird, Member.FullName, Member.IdMember "
                         + "From BirdContest, Bird, Member "
                         + "Where BirdContest.IdBird = Bird.IdBird "
                         + "and Bird.IdMember = Member.IdMember "
@@ -260,10 +261,13 @@ public class BirdContestDAO {
                     String checkInCode = rs.getString("CheckInCode");
                     String birdName = rs.getString("NameOfBird");
                     String trainerName = rs.getString("FullName");
+                    String memberId = rs.getString("IdMember");
 
-                    dto = new BirdContestDTO(birdId, matchID, order, point, postPoint, checkIn, checkInCode, birdName, trainerName);
+                    dto = new BirdContestDTO(birdId, matchID, order, point, postPoint, checkIn, checkInCode, birdName, trainerName, memberId);
                     System.out.println("dto: " + dto.toString());
-                    return dto;
+//                    return dto;
+                }else{
+                    dto = null;
                 }
             }
         } finally {
@@ -277,158 +281,10 @@ public class BirdContestDAO {
                 con.close();
             }
         }
-        return null;
+        return dto;
     }
-
-    /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    void sort(List<BirdContestDTO> list) {
+void sort(List<BirdContestDTO> list) {
         Collections.sort(list, (BirdContestDTO b1, BirdContestDTO b2) -> b1.compareTo(b2));
     }
 
-    public void Scoring(int matchId, List<BirdContestDTO> list) {
-        int matchSize = list.size();
-        double mid = ((double) matchSize + 1) / 2.0;
-        int totalPoint = getTotalPoint();
-        double avgPoint = (double) totalPoint / matchSize;
-
-        for (BirdContestDTO bird : list) {
-            int oder = bird.getOrder();
-            if (oder < mid) { // vào Top
-                int point = InTopScoring(bird, mid, avgPoint, matchSize, list);
-                bird.setPostPoint(bird.getPrePoint() + point);
-            } else if (bird.getOrder() > mid) { // Out top
-                int point = OutTopScoring(bird, mid, avgPoint, matchSize);
-                bird.setPostPoint(bird.getPrePoint() + point);
-
-            } else if (bird.getOrder() == mid) { // giữa
-                bird.setPostPoint(bird.getPrePoint());
-            }
-
-        }
-        sort(list);
-
-    }
-
-    private int getTotalPoint() {
-        int sum = 0;
-        for (BirdContestDTO bird : joinerList) {
-            sum = sum + bird.getPrePoint();
-        }
-        return sum;
-    }
-//Win
-
-    private double getMinElo(List<BirdContestDTO> list, double mid, double avgPoint) {
-        double min = Double.MAX_VALUE;
-
-        for (BirdContestDTO bird : list) {
-            if (bird.getOrder() < mid) {
-                if (bird.getPrePoint() < min) {
-                    min = bird.getPrePoint();
-                }
-            }
-        }
-        return min;
-    }
-
-    private double getReverseRate(List<BirdContestDTO> list, double mid, double avgPoint) {
-        double min = getMinElo(list, mid, avgPoint);
-
-        double total1 = 0;
-        double total2 = 0;
-        double total3 = 0;
-        for (BirdContestDTO bird : list) {
-            if (bird.getOrder() < mid) {
-                double rate1 = bird.getPrePoint() / avgPoint;
-                double rate2 = rate1 / min;
-                total1 = total1 + rate1;
-
-                if (bird.getPrePoint() == min) {
-                    double rate3 = 1;
-                    total3 = total3 + rate3;
-                } else if (bird.getPrePoint() != min) {
-                    double rate3 = 1 / rate2;
-                    total3 = total3 + rate3;
-                }
-            }
-        }
-        double rate = total3 / total1;
-        return rate;
-    }
-
-    private double getRate4(BirdContestDTO bird, double revRate, double avgPoint, double min) {
-        double rate1 = bird.getPrePoint() / avgPoint;
-        double rate2 = rate1 / min;
-        double rate3 = 0;
-        if (bird.getPrePoint() == min) {
-            rate3 = 1;
-        } else {
-            rate3 = 1 / rate2;
-        }
-        rate3 = rate3 * revRate;
-        System.out.println("rate4 " + rate3);
-        return rate3;
-    }
-
-    private double getWinPointRate(double mid, double avgPoint, int size, List<BirdContestDTO> list, double reverseRate) {
-        double min = getMinElo(list, mid, avgPoint);
-        double total = 0;
-        for (BirdContestDTO bird : joinerList) {
-            if (bird.getOrder() < mid) {
-                double rate4 = getRate4(bird, reverseRate, avgPoint, min);
-                total = total + rate4;
-            }
-        }
-        double rate = (size * 5) / total;
-        System.out.println("rateX " + rate);
-        return rate;
-    }
-
-    private int InTopScoring(BirdContestDTO bird, double mid, double avgPoint, int size, List<BirdContestDTO> list) {
-        int oder = bird.getOrder();
-        int base = (int) mid + 1;
-
-        double reverseRate = getReverseRate(list, mid, avgPoint);
-        double rate = getWinPointRate(mid, avgPoint, size, list, reverseRate);
-
-        int point = 5 * (base - oder);
-        if (oder == 1) {
-            point = point + 5;
-        }
-        double rate4 = getRate4(bird, reverseRate, avgPoint, mid);
-        double eloPoint = rate * rate4;
-        System.out.println("elo point " + eloPoint);
-
-//        point = point + (int) Math.round(eloPoint);
-
-        return point;
-    }
-//Lose
-
-    private double getLosePointRate(double avgTop, double avgPoint, int size) {
-        double total = 0;
-        for (BirdContestDTO bird : joinerList) {
-            if (bird.getOrder() > avgTop) {
-                total = total + (bird.getPrePoint() / avgPoint);
-            }
-        }
-        double rate = (size * 5) / total;
-        return rate;
-    }
-
-    private int OutTopScoring(BirdContestDTO bird, double avg, double avgPoint, int size) {
-        int oder = bird.getOrder();
-        int base = (int) avg;
-        double pointRate = bird.getPrePoint() / avgPoint;
-        double rate = getLosePointRate(avg, avgPoint, size);
-
-        int point = 5 * (base - oder);
-        if (oder == size) {
-            point = point - 5;
-        }
-
-        double eloPoint = -(bird.getPrePoint() / avgPoint) * rate;
-//        point = point + (int) Math.round(eloPoint);
-        return point;
-    }
 }

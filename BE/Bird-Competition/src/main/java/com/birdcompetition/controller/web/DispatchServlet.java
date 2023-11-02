@@ -30,7 +30,6 @@ import javax.servlet.ServletException;
             try {
             if (button == null) {
                 url = "StartServlet";
-//                url = "Admin/index.html";
             } else if (button.equals("PostLogin")) {
                 url = "PostLoginServlet";
             } else if (button.equals("LeaderBoard")) {
@@ -39,6 +38,8 @@ import javax.servlet.ServletException;
                 url = "SearchLeaderBoardServlet";
             } else if (button.equals("Current")) {
                 url = "HappeningMatchServlet";
+            } else if (button.equals("Preparing")) {
+                url = "PreparingMatchServlet";
             } else if (button.equals("UpdateResult")) {
                 url = "UpdateResultServlet";
             } else if (button.equals("Confirm")) {
@@ -65,6 +66,12 @@ import javax.servlet.ServletException;
                 url = "PaymentHistoryServlet";
             } else if (button.equals("MatchHistory")){
                 url = "GetContestListServlet";
+            } else if (button.equals("Membership")){
+                url = "MembershipServlet";
+            } else if (button.equals("VipRegis")){
+                url = "MembershipRegisterServlet";
+            } else if (button.equals("VipUpdate")){
+                url = "MembershipUpdateServlet";
             } else if (button.equals("Logout")){
                 url = "LogoutServlet";
             }

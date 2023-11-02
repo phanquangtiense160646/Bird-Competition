@@ -54,7 +54,7 @@ function showSuccessToast() {
         tiltle: 'Success',
         message: 'Cập nhật kết quả thành công',
         type: 'success',
-        duration: 20000
+        duration: 3000
     })
 }
 
@@ -63,15 +63,15 @@ function showFailToast() {
         tiltle: 'Fail',
         message: '',
         type: 'warning',
-        duration: 8000
+        duration: 3000
     })
 }
 function showErrorToast() {
     toast({
         tiltle: 'Lỗi',
-        message: 'Chim đã được đăng kí vào cuộc thi này',
+        message: '',
         type: 'info',
-        duration: 8000
+        duration: 3000
     })
 }
 

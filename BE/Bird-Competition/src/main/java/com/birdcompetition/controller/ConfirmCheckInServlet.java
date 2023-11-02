@@ -44,6 +44,9 @@ public class ConfirmCheckInServlet extends HttpServlet {
         try {
             BirdContestDAO dao = new BirdContestDAO();;
             dao.setCheckIn(id);
+
+            request.setAttribute("Message", "success");
+
         } catch (SQLException ex) {
             Logger.getLogger(ConfirmCheckInServlet.class.getName()).log(Level.SEVERE, null, ex);
         } catch (NamingException ex) {

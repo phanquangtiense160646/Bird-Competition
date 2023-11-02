@@ -65,24 +65,29 @@
                                 <div class="row g-5 d-flex justify-content-center">
                                     <c:forEach items="${happening}" var="dto" varStatus="counter">
 
-                                        <div class="col-lg-3 col-md-4 col-sm-6  btn-register">
+                                        <div class="col-lg-3 col-md-4 col-sm-6  btn-register mb-3">
                                             <div class="bg-dark rounded text-center py-5 px-3">
-                                                <p class="schedule-value text-uppercase text-light mb-3">Ngày: ${dto.date}</p>
-                                                <p class="schedule-value text-uppercase text-light mb-3"> Giờ: 2.00am - 5.00am</p>
-                                                <p class="schedule-value text-uppercase text-light mb-3">Địa điểm: ${dto.location}</p>
-                                                <p class="schedule-value text-uppercase text-primary">${dto.name}</p>
-                                                <p class="schedule-value text-uppercase text-secondary mb-0">Loại chim: Gà chiến</p>
-                                                <p class="schedule-value text-uppercase text-secondary mb-0">Điểm yêu cầu: ${dto.minPoint} - ${dto.maxPoint} </p>
-                                                <p class="schedule-value text-uppercase text-light mb-3">Phí đăng kí: ${dto.fee}</p>
-                                                <p class="schedule-value text-uppercase text-secondary mb-0" style="display: inline;">
-                                                    số người đăng kí:
-                                                    <span class="text-uppercase text-primary mb-0" style="display: inline;">
-                                                        10/15</span>
-                                                </p>
+                                                <div style="height: 320px">
+
+                                                    <p class="schedule-value text-uppercase text-light mb-3">Ngày: ${dto.date}</p>
+                                                    <p class="schedule-value text-uppercase text-light mb-3"> Giờ: 2.00am - 5.00am</p>
+                                                    <p class="schedule-value text-uppercase text-light mb-3">Địa điểm: ${dto.location}</p>
+                                                    <p class="schedule-value text-uppercase text-primary">${dto.name}</p>
+                                                    <p class="schedule-value text-uppercase text-secondary mb-0">Loại chim: Gà chiến</p>
+                                                    <p class="schedule-value text-uppercase text-secondary mb-0">Điểm yêu cầu: ${dto.minPoint} - ${dto.maxPoint} </p>
+                                                    <p class="schedule-value text-uppercase text-light mb-3">Phí đăng kí: ${dto.fee}</p>
+                                                    <p class="schedule-value text-uppercase text-secondary mb-0" style="display: inline;">
+                                                        số người đăng kí:
+                                                        <span class="text-uppercase text-primary mb-0" style="display: inline;">
+                                                            10/15</span>
+                                                    </p>
+
+                                                </div>
                                                 <form action="UpdateResultServlet" method="post">
                                                     <input type="hidden" name="txtMatchId" value="${dto.id}">
                                                     <input type="submit" class="btn btn-primary px-5 mt-2" value="Cập nhật kết quả">
                                                 </form>
+
                                             </div>
                                         </div>
 

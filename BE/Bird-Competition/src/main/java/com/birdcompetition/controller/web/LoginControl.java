@@ -5,7 +5,7 @@
  */
 package com.birdcompetition.controller.web;
 
-import com.birdcompetition.dal.DAO;
+import com.birdcompetition.dal.UserDAO;
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -44,7 +44,7 @@ public class LoginControl extends HttpServlet {
 
         try {
 
-            DAO dao = new DAO();
+            UserDAO dao = new UserDAO();
             User result = dao.checkLogin(username, password);
 
             if (result != null) {
@@ -52,7 +52,8 @@ public class LoginControl extends HttpServlet {
                 if (result.getUserRole() == 4) {
                     session.setAttribute("USER", result);
                     url = "DispatchServlet?btAction=PostLogin";
-                } else if (result.getUserRole() == 1) {
+                } else if (result.getUserRole() == 1 || result.getUserRole() == 2 || result.getUserRole() == 3) {
+                    session.setAttribute("USER", result);
                     url = "AdminPage/index.jsp";
                 }
             } else {

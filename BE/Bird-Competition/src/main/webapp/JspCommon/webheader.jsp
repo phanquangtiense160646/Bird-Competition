@@ -57,7 +57,7 @@
                         <a href='<c:url value="/DispatchServlet?btAction=PostLogin"/>' class="nav-item nav-link active">Home</a>
                         <a href='<c:url value="/DispatchServlet?btAction=LeaderBoard"/>' class="nav-item nav-link">Bảng xếp hạng</a>
                         <a href='<c:url value="/DispatchServlet?btAction=schedule"/>' class="nav-item nav-link">Lịch thi đấu</a>
-                        <a href="FE/memberShip.html" class="nav-item nav-link">Hội viên</a>
+                        <a href='<c:url value="/DispatchServlet?btAction=Membership"/>' class="nav-item nav-link">Hội viên</a>
                         <div class="nav-item dropdown">
                             <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
                             <div class="dropdown-menu rounded-0 m-0">

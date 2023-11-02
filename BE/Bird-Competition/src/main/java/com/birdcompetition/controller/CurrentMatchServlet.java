@@ -4,28 +4,27 @@
  */
 package com.birdcompetition.controller;
 
-import com.birdcompetition.bird.BirdDAO;
-import com.birdcompetition.bird.BirdDTO;
+import com.birdcompetition.schedule.ScheduleDAO;
+import com.birdcompetition.schedule.ScheduleDTO;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.sql.SQLException;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.naming.NamingException;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
  * @author Danh
  */
-@WebServlet(name = "LeaderBoardServlet", urlPatterns = {"/LeaderBoardServlet"})
-public class LeaderBoardServlet extends HttpServlet {
+@WebServlet(name = "HappeningMatchServlet", urlPatterns = {"/HappeningMatchServlet"})
+public class CurrentMatchServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -39,18 +38,29 @@ public class LeaderBoardServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        String url = "leaderboard.jsp";
-
+        
+        HttpSession session = request.getSession();
+        String url = "AdminPage/curentMatch.jsp";
         try {
-            BirdDAO dao = new BirdDAO();
-            dao.resetBirdList();
-            dao.displayLeaderboard();
-            List<BirdDTO> result = dao.getBirdList();
-            request.setAttribute("LEADER_BOARD", result);
+            ScheduleDAO dao = new ScheduleDAO();
+            dao.getScheduleByStatus(3);
+//            dao.getSchedule();
+            List<ScheduleDTO> result = dao.getList();
+//            System.out.println("size: " + result.size() );
+            session.setAttribute("HAPPENING", result);
+            
+            String action = (String) request.getAttribute("action");
+            System.out.println("action: " + action);
+            if (action != null) {
+                request.setAttribute("Message", "success");
 
-        } catch (SQLException | NamingException | ClassNotFoundException ex) {
-            Logger.getLogger(LeaderBoardServlet.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            
 
+        } catch (SQLException ex) {
+            Logger.getLogger(CurrentMatchServlet.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(CurrentMatchServlet.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
             RequestDispatcher rd = request.getRequestDispatcher(url);
             rd.forward(request, response);

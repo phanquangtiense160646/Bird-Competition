@@ -49,18 +49,19 @@ function toast({
 
 
 
-function showCompleteToast() {
-    toast({
-        tiltle: 'Success',
-        message: 'Đã hoàn tất Check-in',
-        type: 'success',
-        duration: 3000
-    })
-}
 function showSuccessToast() {
     toast({
         tiltle: 'Success',
-        message: 'Chech-in thành công vào trận đâu',
+        message: 'Đăng kí gói Membership thành công',
+        type: 'success',
+        duration: 2000
+    })
+}
+
+function showUpdateSuccessToast() {
+    toast({
+        tiltle: 'Success',
+        message: 'Nâng cấp gói Membership thành công',
         type: 'success',
         duration: 3000
     })
@@ -69,28 +70,26 @@ function showSuccessToast() {
 function showFailToast() {
     toast({
         tiltle: 'Fail',
-        message: 'Sai format thứ hạng',
+        message: '',
         type: 'warning',
         duration: 3000
     })
 }
-function showErrorToast() {
+function showOverDateToast() {
     toast({
-        tiltle: 'Lỗi',
-        message: '...',
+        tiltle: 'Thông báo',
+        message: 'Gói Membership của bạn đã hết hạn',
         type: 'info',
         duration: 3000
     })
 }
 
 var mes = document.getElementById('toastmes').innerHTML;
-if (mes === 'fail') {
-    showFailToast();
-} else if (mes === 'complete') {
-    showCompleteToast();
+if (mes === 'overdate') {
+    showOverDateToast();
 } else if (mes === 'success') {
-    showSuccessToast()();
-// } else if (mes === 'error') {
-//     showErrorToast();
+    showSuccessToast();
+ } else if (mes === 'updateSuccess') {
+     showUpdateSuccessToast();
 }
 

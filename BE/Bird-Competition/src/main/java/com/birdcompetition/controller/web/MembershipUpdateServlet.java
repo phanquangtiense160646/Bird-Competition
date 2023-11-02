@@ -2,13 +2,13 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
  */
-package com.birdcompetition.controller;
+package com.birdcompetition.controller.web;
 
-import com.birdcompetition.schedule.ScheduleDAO;
-import com.birdcompetition.schedule.ScheduleDTO;
+import com.birdcompetition.membership.MembershipDAO;
+import com.birdcompetition.model.User;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.sql.SQLException;
-import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.RequestDispatcher;
@@ -23,8 +23,8 @@ import javax.servlet.http.HttpSession;
  *
  * @author Danh
  */
-@WebServlet(name = "HappeningMatchServlet", urlPatterns = {"/HappeningMatchServlet"})
-public class HappeningMatchServlet extends HttpServlet {
+@WebServlet(name = "MembershipUpdateServlet", urlPatterns = {"/MembershipUpdateServlet"})
+public class MembershipUpdateServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -38,23 +38,30 @@ public class HappeningMatchServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        
+        String newType = request.getParameter("txtNewType");
         HttpSession session = request.getSession();
-        String url = "AdminPage/curentMatch.jsp";
+
         try {
-            ScheduleDAO dao = new ScheduleDAO();
-            dao.getScheduleByStatus(3);
-//            dao.getSchedule();
-            List<ScheduleDTO> result = dao.getList();
-//            System.out.println("size: " + result.size() );
-            session.setAttribute("HAPPENING", result);
+            MembershipDAO dao = new MembershipDAO();
+            User user = (User) session.getAttribute("USER");
+            String memberId = user.getIdMember();
+            if (user.getVipType() != null) {
+                if (dao.VipUpdate(memberId, newType)) {
+                    String msg = "updateSuccess";
+                    request.setAttribute("Message", msg);
+
+                    user.setVipType(newType);
+                    session.setAttribute("USER", user);
+
+                }
+            }
 
         } catch (SQLException ex) {
-            Logger.getLogger(HappeningMatchServlet.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(MembershipUpdateServlet.class.getName()).log(Level.SEVERE, null, ex);
         } catch (ClassNotFoundException ex) {
-            Logger.getLogger(HappeningMatchServlet.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(MembershipUpdateServlet.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
-            RequestDispatcher rd = request.getRequestDispatcher(url);
+            RequestDispatcher rd = request.getRequestDispatcher("MembershipServlet");
             rd.forward(request, response);
         }
     }
