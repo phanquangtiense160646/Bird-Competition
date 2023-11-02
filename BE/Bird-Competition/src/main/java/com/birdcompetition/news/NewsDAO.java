@@ -5,7 +5,7 @@
 package com.birdcompetition.news;
 
 import com.birdcompetition.util.DBHelper;
-import java.io.Serializable;
+
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
@@ -18,7 +18,11 @@ import java.util.List;
  *
  * @author MSI
  */
-public class NewsDAO implements Serializable {
+public class NewsDAO {
+
+    Connection con = null;
+    PreparedStatement stm = null;
+    ResultSet rs = null;
 
     private List<NewsDTO> newsList;
 
@@ -26,7 +30,7 @@ public class NewsDAO implements Serializable {
         return newsList;
     }
 
-    public void getNews()
+    public List<NewsDTO> getNews()
             throws SQLException, ClassNotFoundException {
         Connection con = null;
         PreparedStatement stm = null;
@@ -56,13 +60,14 @@ public class NewsDAO implements Serializable {
                     String photo = rs.getString("Photo");
                     String idUser = rs.getString("IdUser");
 
-                    NewsDTO dto = new NewsDTO(id, newsName, date, descrip, idUser, photo, idUser);
+                    NewsDTO dto = new NewsDTO(id, newsName, date, descrip, newsLink, photo, idUser);
 
                     if (this.newsList == null) {
                         this.newsList = new ArrayList<>();
                     }
                     newsList.add(dto);
                 }
+                return newsList;
             }
 
         } finally {
@@ -76,7 +81,16 @@ public class NewsDAO implements Serializable {
                 con.close();
             }
         }
+        return null;
     }
+//    public static void main(String[] args) throws SQLException, ClassNotFoundException {
+//        NewsDAO dao = new NewsDAO();
+//        List<NewsDTO> list = dao.getNews();
+//        for (NewsDTO newsDTO : list) {
+//            System.out.println(newsDTO);
+//            
+//        }
+//    }
 
     public NewsDTO getNewsById(int id)
             throws SQLException, ClassNotFoundException {
@@ -126,4 +140,5 @@ public class NewsDAO implements Serializable {
         return news;
     }
 
+    
 }
