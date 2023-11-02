@@ -116,7 +116,9 @@
                                                     <c:if test="${not empty contest}">
 
                                                         <c:forEach items="${contest}" var="p"> 
-                                                            <c:if test="${p.statusOfContest eq 2 || p.statusOfContest eq 3 }">
+                                                            <c:if test="${p.statusOfContest eq 2 || p.statusOfContest eq 3 || p.statusOfContest eq 1}">
+                                                                
+                                                            
                                                                 <table class="match-box-content border-bottom">
                                                                     <tr>
                                                                         <td><small>Tên cuộc thi:</small></td>
@@ -124,19 +126,19 @@
                                                                     </tr>
                                                                     <tr>
                                                                         <td><small>Checkin Code:</small></td>
-                                                                        <td><h4>${p.checkInCode}</h4></td>
+                                                                        <td>${p.checkInCode}</td>
                                                                     </tr>
                                                                     <tr>
                                                                         <td><small>Địa điểm:</small></td>
-                                                                        <td><h4>${p.location}</h4></td>
+                                                                        <td>${p.location}</td>
                                                                     </tr>
                                                                     <tr>
                                                                         <td><small>Min Point:</small></td>
-                                                                        <td><h4>${p.minPoint}</h4></td>
+                                                                        <td>${p.minPoint}</td>
                                                                     </tr>
                                                                     <tr>
                                                                         <td><small>Max Point:</small></td>
-                                                                        <td><h4>${p.maxPoint}</h4></td>
+                                                                        <td>${p.maxPoint}</td>
                                                                     </tr>
                                                                     <tr>
                                                                         <td><small>Ngày diễn ra:</small></td>
@@ -145,7 +147,7 @@
 
                                                                     <tr>
                                                                         <td><small>Số người tham gia:</small></td>
-                                                                        <td><h4>5/10</h4></td>
+                                                                        <td>5/10</td>
                                                                     </tr>
 
                                                                     <tr>
@@ -154,18 +156,14 @@
                                                                     </tr>
 
                                                                     <tr style="">
-                                                                        <td><h1 style="color: green;">Kết quả</h1></td>
+                                                                        <td><h4 style="color: green;">Kết quả</h4></td>
 
-                                                                        <td style=""><h2 style="color: black;"> Point: ${p.afterPoint} </h2></td>
+                                                                        
                                                                         <td>
-                                                                            <h2 style="color: black; display: inline;"> (</h2>
-                                                                            <c:if test="${(p.afterPoint - p.beforePoint) >= 0}" >
-                                                                                <h2 style="color: green; display: inline;"> +${p.afterPoint - p.beforePoint}</h2>
-                                                                            </c:if>
-                                                                            <c:if test="${(p.afterPoint - p.beforePoint) < 0}" >
-                                                                                <h2 style="color: red; display: inline;"> ${p.afterPoint - p.beforePoint}</h2>
-                                                                            </c:if>
-                                                                            <h2 style="color: black; display: inline;"> )</h2>
+                                                                            
+                                                                          <p> Trận đấu chưa diễn ra </p>
+                                                                            
+                                                                            
                                                                         </td>
                                                                     </tr>
                                                                 </table>
@@ -195,23 +193,23 @@
                                                                     <table class="match-box-content border-bottom">
                                                                         <tr>
                                                                             <td><small>Tên cuộc thi:</small></td>
-                                                                            <td><h4 style="color: orange">${p.nameOfContest}</h4></td>
+                                                                            <td><p style="color: orange">${p.nameOfContest}</p></td>
                                                                         </tr>
                                                                         <tr>
                                                                             <td><small>Checkin Code:</small></td>
-                                                                            <td><h4>${p.checkInCode}</h4></td>
+                                                                            <td><p>${p.checkInCode}</p></td>
                                                                         </tr>
                                                                         <tr>
                                                                             <td><small>Địa điểm:</small></td>
-                                                                            <td><h4>${p.location}</h4></td>
+                                                                            <td><p>${p.location}</p></td>
                                                                         </tr>
                                                                         <tr>
                                                                             <td><small>Min Point:</small></td>
-                                                                            <td><h4>${p.minPoint}</h4></td>
+                                                                            <td><p>${p.minPoint}</p></td>
                                                                         </tr>
                                                                         <tr>
                                                                             <td><small>Max Point:</small></td>
-                                                                            <td><h4>${p.maxPoint}</h4></td>
+                                                                            <td><p>${p.maxPoint}</p></td>
                                                                         </tr>
                                                                         <tr>
                                                                             <td><small>Ngày diễn ra:</small></td>
@@ -220,7 +218,7 @@
 
                                                                         <tr>
                                                                             <td><small>Số người tham gia:</small></td>
-                                                                            <td><h4>5/10</h4></td>
+                                                                            <td><p>5/10</p></td>
                                                                         </tr>
 
                                                                         <tr>
@@ -231,16 +229,16 @@
                                                                         <tr style="">
                                                                             <td><h1 style="color: green;">Kết quả</h1></td>
 
-                                                                            <td style=""><h2 style="color: black;"> Point: ${p.afterPoint} </h2></td>
+                                                                            <td style=""><p style="color: black;"> Point: ${p.afterPoint} </p></td>
                                                                             <td>
-                                                                                <h2 style="color: black; display: inline;"> (</h2>
+                                                                                
                                                                                 <c:if test="${(p.afterPoint - p.beforePoint) >= 0}" >
-                                                                                    <h2 style="color: green; display: inline;"> +${p.afterPoint - p.beforePoint}</h2>
+                                                                                    <p style="color: green; display: inline;"> +${p.afterPoint - p.beforePoint}</p>
                                                                                 </c:if>
                                                                                 <c:if test="${(p.afterPoint - p.beforePoint) < 0}" >
-                                                                                    <h2 style="color: red; display: inline;"> ${p.afterPoint - p.beforePoint}</h2>
+                                                                                    <p style="color: red; display: inline;"> ${p.afterPoint - p.beforePoint}</p>
                                                                                 </c:if>
-                                                                                <h2 style="color: black; display: inline;"> )</h2>
+                                                                               
                                                                             </td>
                                                                         </tr>
                                                                     </table>
