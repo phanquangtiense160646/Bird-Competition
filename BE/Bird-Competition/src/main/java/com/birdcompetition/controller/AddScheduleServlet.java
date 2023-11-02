@@ -1,11 +1,16 @@
 package com.birdcompetition.controller;
 
+import com.birdcompetition.schedule.ScheduleDAO;
+import com.birdcompetition.schedule.ScheduleDTO;
 import com.birdcompetition.schedule.ScheduleError;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Date;
+import java.sql.SQLException;
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -34,45 +39,111 @@ public class AddScheduleServlet extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         String date = request.getParameter("date");
         String name = request.getParameter("txtContestName");
-        String minPoint = request.getParameter("minPoint");
-        String maxPoint = request.getParameter("maxPoint");
+        String minPoint = request.getParameter("txtminPoint");
+        String maxPoint = request.getParameter("txtmaxPoint");
         String place = request.getParameter("cboBird");
-        String factor = request.getParameter("factor");
-        String maxPar = request.getParameter("maxPar");
-        String fee = request.getParameter("fee");
+        String factor = request.getParameter("txtfactor");
+        String maxPar = request.getParameter("txtmaxPar");
+        String maxBird = request.getParameter("txtmaxBirdJoin");
+        String fee = request.getParameter("txtfee");
         boolean foundErr = false;
-        ScheduleError error = new ScheduleError();
-
+        ScheduleError errors = new ScheduleError();
+        double dfactor = 0;
+        int min = 0, max = 0, maxP = 0, maxB = 0;
+        
         String url = "AdminPage/createSchedule.jsp";
         try {
-            if (date == null) {
+            if (date.isEmpty()) {
                 foundErr = true;
-                error.setDateErr("Date không được trống");
-            }else {
+                errors.setDateErr("Date không được trống");
+            } else {
                 LocalDate date1 = LocalDate.now();
                 LocalDate date2 = LocalDate.parse(date);
                 long daysBetween = ChronoUnit.DAYS.between(date1, date2);
-                if(daysBetween < 6) {
+                if (daysBetween < 6) {
                     foundErr = true;
-                    error.setDateErr("Ngày phải cách hiện tại 7 ngày");
+                    errors.setDateErr("Ngày phải cách hiện tại 7 ngày");
                 }
-            }
+            }//end check date
             if (name.length() < 6 || name.length() > 50) {
                 foundErr = true;
-                error.setContestNameErr("Tên cuộc thi 6 - 50");
-            }
-            if(minPoint == null || maxPoint == null) {
+                errors.setContestNameErr("Tên cuộc thi 6 - 50");
+            }//end check name
+            if (minPoint.isEmpty() || maxPoint.isEmpty()) {
                 foundErr = true;
-                error.setMinPointErr("Min point không được trống");
-                error.setMaxPointErr("Max point không được trống");
-            }else {
-                int min = Integer.parseInt(minPoint);
-                int max = Integer.parseInt(maxPoint);
-                if (min < 0 || max < 0){
+                errors.setMinPointErr("Min point không được trống");
+                errors.setMaxPointErr("Max point không được trống");
+            } else {
+                min = Integer.parseInt(minPoint);
+                max = Integer.parseInt(maxPoint);
+                if (min < 0 || max < 0) {
                     foundErr = true;
+                    errors.setMinPointErr("Min point không được < 0");
+                    errors.setMaxPointErr("Max point không được < 0");
+                } else if (max - min > 300) {
+                    errors.setMinPointErr("Min point - Max point chêch lệch < 300");
+                    errors.setMaxPointErr("Min point - Max point chêch lệch < 300");
                 }
+            }//end check min max point
+            if (maxPar.isEmpty()) {
+                foundErr = true;
+                errors.setMaxParErr("Số lượng tham gia không được trống");
+            }else {
+                maxP = Integer.parseInt(maxPar);
+                if (maxP > 20) {
+                    foundErr = true;
+                    errors.setMaxParErr("Số lượng tham gia <= 20");
+                }
+            }//end check maxPar
+            if (factor.isEmpty()) {
+                foundErr = true;
+                errors.setFactorErr("Hệ số không được trống");
+            }else {
+                dfactor = Double.parseDouble(factor);
+                if (dfactor > 2) {
+                    foundErr = true;
+                    errors.setFactorErr("Hệ số <= 2");
+                }
+            }//end check fator
+            if (maxBird.isEmpty()) {
+                foundErr = true;
+                errors.setMaxBirdInContestErr("Số lượng chim tham gia không được trống");
+            }else {
+                maxB = Integer.parseInt(maxBird);
+                if (maxB > 3) {
+                    foundErr = true;
+                    errors.setMaxBirdInContestErr("Số lượng chim tham gia <= 3");
+                }
+            }//end check maxBird
+            if (fee.isEmpty()) {
+                foundErr = true;
+                errors.setFeeErr("Phí không được trống");
             }
+            if (place == null) {
+                foundErr = true;
+                errors.setPlaceErr("Place không được trống");
+            }
+            if (foundErr) {
+                request.setAttribute("CREATE_ERRORS", errors);
+            } else {
+                //2. call DAO
+                ScheduleDAO dao = new ScheduleDAO();
+                Date sqlDate = Date.valueOf(LocalDate.parse(date));
+                int feee = Integer.parseInt(fee);
+                ScheduleDTO dto = new ScheduleDTO(0, name, sqlDate, factor, true, dfactor,
+                        min, max, feee, "manager", place, 1, maxP, maxBird);
+                boolean result = dao.contestInsert(dto);
+                //3. Process Result
+                if (result) {
+                    url = "ManageSchedule";
+                    request.setAttribute("MES", "success");
+                }//create successful
+            }// no error occur
 
+        } catch (SQLException ex) {
+            log("AddSchedule_SQL: " + ex.getMessage());
+        } catch (ClassNotFoundException ex) {
+            log("AddSchedule_ClassNotFound: " + ex.getMessage());
         } finally {
             RequestDispatcher rd = request.getRequestDispatcher(url);
             rd.forward(request, response);

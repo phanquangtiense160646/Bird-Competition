@@ -48,10 +48,14 @@ public class ManageSchedule extends HttpServlet {
             List<ScheduleDTO> listSchedule = scheduleDao.getList();
             session.setAttribute("SCHEDULE", listSchedule);
             
+            scheduleDao.getLocation();
+            listSchedule = scheduleDao.getList();
+            session.setAttribute("LOCATION", listSchedule);
+            
         } catch (SQLException ex) {
-            Logger.getLogger(ManageSchedule.class.getName()).log(Level.SEVERE, null, ex);
+            log("ManageSchedule_SQL: " + ex.getMessage());
         } catch (ClassNotFoundException ex) {
-            Logger.getLogger(ManageSchedule.class.getName()).log(Level.SEVERE, null, ex);
+            log("ManageSchedule_ClassNotFound: " + ex.getMessage());
         }finally {
             RequestDispatcher rd = request.getRequestDispatcher(url);
             rd.forward(request, response);
