@@ -234,5 +234,90 @@ public class BirdDAO implements Serializable {
     public boolean registerCompetition() {
         return false;
     }
+    
 
+    
+    public BirdDTO getBirdInfo(String birdID)
+            throws SQLException, ClassNotFoundException {
+        Connection con = null;
+        PreparedStatement stm = null;
+        ResultSet rs = null;
+        BirdDTO result = null;
+
+        try {
+            //1.Make connection
+            con = DBHelper.getConnection();
+            //check 
+            if (con != null) {
+                //2.Creat SQL String 
+            String query = "select * from [dbo].[Bird] "
+                    + "where IdBird = ? ";
+                //3.Create Statement Object
+                stm = con.prepareStatement(query);
+                stm.setString(1, birdID);
+                //4.Exercute Query
+                rs = stm.executeQuery();
+                //5.Process
+                if (rs.next()) {
+
+                    int birdId = rs.getInt("IdBird");
+                    String name = rs.getString("NameOfBird");
+                    String speices = rs.getString("Species");
+                    int point = rs.getInt("Point");
+                    String ownerId = rs.getString("IdMember");
+                    int win = rs.getInt("Win");
+                    int lose = rs.getInt("Lose");
+                    int tie = rs.getInt("Tie");
+                    int matchNumber = rs.getInt("MatchNumber");
+                    
+                    result = new BirdDTO(birdId, name, speices, point, true, ownerId, ownerId, win, lose, tie, matchNumber);
+                }
+            }
+        } finally {
+            if (rs != null) {
+                rs.close();
+            }
+            if (stm != null) {
+                stm.close();
+            }
+            if (con != null) {
+                con.close();
+            }
+        }
+        return result;
+    }
+
+    public boolean deleteBird(String id)
+            throws SQLException, NamingException, ClassNotFoundException {
+        Connection con = null;
+        PreparedStatement stm = null;
+        boolean result = false;
+        try {
+            //1.Make connection
+            con = DBHelper.getConnection();
+            if (con != null) {
+                //2. Create SQL String 
+                String sql = "Delete From Bird "
+                        + "Where IdBird = ?";
+                //3. Create Statement Object
+                stm = con.prepareStatement(sql);
+                stm.setString(1, id);
+                //4. Execute Query
+                int exercute = stm.executeUpdate();
+                //5. Process
+                if (exercute > 0) {
+                    return true;
+                }
+            }//end username and password is verified
+        }//end connection is available   
+        finally {
+            if (stm != null) {
+                stm.close();
+            }
+            if (con != null) {
+                con.close();
+            }
+        }
+        return result;
+    }
 }

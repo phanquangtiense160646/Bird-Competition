@@ -91,7 +91,7 @@
                         <div class="nav-item dropdown">
                             <a href="#" class="nav-link dropdown-toggle active" data-bs-toggle="dropdown">Pages</a>
                             <div class="dropdown-menu rounded-0 m-0">
-                                <a href="News.jsp" class="dropdown-item">News</a>
+                                <a href="News.jsp" class="dropdown-item">Tin tức</a>
                                 <a href="rules.jsp" class="dropdown-item">Luật thi đấu</a>
                                 <a href="Feedback.jsp" class="dropdown-item active">Feedback</a>
                             </div>

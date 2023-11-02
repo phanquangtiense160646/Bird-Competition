@@ -206,26 +206,30 @@
                                                             </div>
                                                         </form>
                                                     </div>
-
-
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                    </section>
-                                    <h6 id="toastmes">${msg}</h6>
-                                    <div id="toast"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </section>
+    <h6 id="toastmes">${msg}</h6>
+    <div id="toast"></div>
 
 
 
-                                    </body>
-                                    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-                                    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
-                                    <script src="FE/lib/easing/easing.min.js"></script>
-                                    <script src="FE/lib/waypoints/waypoints.min.js"></script>
-                                    <script src="FE/lib/counterup/counterup.min.js"></script>
-                                    <script src="FE/lib/owlcarousel/owl.carousel.min.js"></script>
-                                    <script src="FE/js/addnewbird.js"></script>
-                                    <script src="FE/js/addbird.js"></script>   
+</body>
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="FE/lib/easing/easing.min.js"></script>
+<script src="FE/lib/waypoints/waypoints.min.js"></script>
+<script src="FE/lib/counterup/counterup.min.js"></script>
+<script src="FE/lib/owlcarousel/owl.carousel.min.js"></script>
+<script src="FE/js/addnewbird.js"></script>
+<script src="FE/js/addbird.js"></script>   
 
-                                    </html>
+</html>

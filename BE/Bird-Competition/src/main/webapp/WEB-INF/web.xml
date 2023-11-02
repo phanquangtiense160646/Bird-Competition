@@ -21,10 +21,6 @@
         <url-pattern>/DispatchServlet</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>LogoutServlet</servlet-name>
-        <url-pattern>/LogoutServlet</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
         <servlet-name>AddNewsServlet</servlet-name>
         <url-pattern>/AddNewsServlet</url-pattern>
     </servlet-mapping>

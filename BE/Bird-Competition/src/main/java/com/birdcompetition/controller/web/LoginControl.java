@@ -1,4 +1,4 @@
-/*
+    /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
@@ -14,8 +14,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import com.birdcompetition.model.User;
 import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.http.HttpSession;
 
@@ -44,8 +42,8 @@ public class LoginControl extends HttpServlet {
         
 
         try {
-
-            DAO dao = new DAO();
+        if(!username.isEmpty() && !password.isEmpty()){
+           DAO dao = new DAO();
             User result = dao.checkLogin(username, password);
 
             if (result != null) {
@@ -59,7 +57,9 @@ public class LoginControl extends HttpServlet {
             } else {
                 String msg = "Incorrect Username or Password";
                 request.setAttribute("msg", msg);
-            }
+            } 
+        }
+            
         } catch (SQLException ex) {
             log("Login_SQL: " + ex.getMessage());
         } catch (ClassNotFoundException ex) {

@@ -39,7 +39,7 @@ public class CRegisterServlet extends HttpServlet {
         String pointCombine = request.getParameter("hiddenPoint");
         String url = "ScheduleServlet";
         int count = 0;
-        String mes = "";
+        String mes;
 
         try {
             HttpSession session = request.getSession();

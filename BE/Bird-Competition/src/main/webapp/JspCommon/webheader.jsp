@@ -62,9 +62,9 @@
                             <a href="#" id="cactrangdropdown" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
                             <div class="dropdown-menu rounded-0 m-0">
                                 <!-- <a href="blog.html" class="dropdown-item">News</a> -->
-                                <a href="rules.jsp" class="dropdown-item">Luật thi đấu</a>
-                                <a href="Feedback.jsp" class="dropdown-item">Feedback</a>
-                                <a href="News.jsp" class="dropdown-item">Tin Tức</a>
+                                <a href='<c:url value="/DispatchServlet?btAction=Rule"/>'class="dropdown-item">Luật thi đấu</a>
+                                <a href='<c:url value="/DispatchServlet?btAction=FeedBack"/>' class="dropdown-item">Feedback</a>
+                                <a href='<c:url value="/DispatchServlet?btAction=Blog"/>' class="dropdown-item">Tin Tức</a>
                             </div>
                         </div>
                         <a href="FE/contact.html" class="nav-item nav-link">Liên Hệ</a>
@@ -75,13 +75,14 @@
                         <div class="dropdown-menu rounded-0 m-0">
 
                             <form action="DispatchServlet" method="POST">
-                                <a class="dropdown-item" href="userprofile.jsp">User Profile</a>
-                                <a class="dropdown-item" href="birdprofile.html">Bird Profile</a>
-                                <a class="dropdown-item" href="addnewbird.jsp">Add Bird</a>
-                                <button class="dropdown-item" name="btAction" value="MatchHistory">Match History</button>
-                                <button class="dropdown-item" name="btAction" value="PaymentHistory">Payment History</button>
+                                
+                                <button class="dropdown-item" name="btAction" value="UserProfile">Trang cá nhân</button>
+                                <button class="dropdown-item" name="btAction" value="ShowAllBirds">Bộ Sưu Tập</button>
+                                <a class="dropdown-item" href="addnewbird.jsp">Thêm chim</a>
+                                <button class="dropdown-item" name="btAction" value="MatchHistory">Lịch sử đấu</button>
+                                <button class="dropdown-item" name="btAction" value="PaymentHistory">Lịch sử giao dịch</button>
                                 <div class="dropdown-divider"></div>
-                                <button class="dropdown-item" name="btAction" value="Logout">Logout</button>
+                                <button class="dropdown-item" name="btAction" value="Logout">Đăng xuất</button>
                             </form>
 
                         </div>

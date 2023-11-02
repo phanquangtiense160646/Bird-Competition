@@ -41,8 +41,8 @@
             <div class="row py-5">
                 <div class="col-12 text-center">
                     <h1 class="display-2 text-uppercase text-white mb-md-4">Blog Grid</h1>
-                    <a href="postlogin.jsp" class="btn btn-primary py-md-3 px-md-5 me-3">Home</a>
-                    <a href="news.jsp" class="btn btn-light py-md-3 px-md-5">Blog</a>
+<!--                    <a href='<c:url value="/DispatchServlet?btAction=PostLogin"/>' class="btn btn-primary py-md-3 px-md-5 me-3">Home</a>
+                    <a href='#' class="btn btn-light py-md-3 px-md-5">Blog</a>-->
                 </div>
             </div>
         </div>
@@ -53,22 +53,31 @@
         <div class="col-lg-8">
             <div class="row g-5">
                 <!-- Khung Tong -->
-                <c:forEach items="${NEWS}" var="o">
-                    <div class="col-md-6">
-                        <div class="blog-item">
+                <c:set var="newsList" value="${sessionScope.NEWS}"/>
+                <c:if test="${not empty newsList}">
+                    
+                    <c:forEach items="${newsList}" var="o">
+                        <div class="col-md-6">
+                            <div class="blog-item">
 
-                            <div class="position-relative overflow-hidden rounded-top">
-                                <img class="img-fluid" src="img/${o.Photo}" alt="">
-                            </div>
-                            <div class="bg-dark d-flex align-items-center rounded-bottom p-4">
-                                <a href="${o.LinkOfNews}">
-                                    <p class="text-light text-uppercase mb-0">${o.NameOfNews}</p>
-                                </a>
+                                <div class="position-relative overflow-hidden rounded-top">
+                                    <img class="img-fluid" src="FE/img/Hoithichimmorong01.jpg" alt="">
+                                </div>
+                                <div class="bg-dark d-flex align-items-center rounded-bottom p-4">
+                                    <a href="${o.getLinkOfNews()}">
+                                        <p class="text-light text-uppercase mb-0">${o.getNameOfNews()}</p>
+                                    </a>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </c:forEach>
-                <div class="col-md-6">
+                    </c:forEach>
+                </c:if>
+                <c:if test="${empty newsList}">
+                    <h1>CHua co</h1>
+                </c:if>
+
+
+<!--                <div class="col-md-6">
                     <div class="blog-item">
                         <div class="position-relative overflow-hidden rounded-top">
                             <img class="img-fluid" src="FE/img/4d13efeb00abdef587ba8-f2eaaed080ef4a81bfc4e69d6d75a200.jpg" alt="">
@@ -79,9 +88,11 @@
                                 <h6 class="text-light text-uppercase mb-0">January</h6>
                                 <span>2045</span>
                             </div>
-                            <a class="h5 text-uppercase text-light" href="">Sed amet tempor amet sit kasd sea lorem</h4></a> 
+
                             <a href="https://truyenhinhnghean.vn/van-hoa-giai-tri/202302/hap-dan-hoi-thi-chim-chao-mao-dau-hot-tai-le-hoi-den-con-669118b/">
-                                <p class="text-light text-uppercase mb-0">Hấp dẫn hội thi tiếng hót chim chào mào</p>
+                                <a class="h5 text-uppercase text-light" href="https://truyenhinhnghean.vn/van-hoa-giai-tri/202302/hap-dan-hoi-thi-chim-chao-mao-dau-hot-tai-le-hoi-den-con-669118b/">
+                                    Hấp dẫn hội thi tiếng hót chim chào mào</h4></a>
+
                             </a>
 
                         </div>
@@ -183,7 +194,7 @@
                             <a class="h5 text-uppercase text-light" href="">Sed amet tempor amet sit kasd sea lorem</h4></a>
                         </div>
                     </div>
-                </div> 
+                </div> -->
                 <div class="col-12">
                     <nav aria-label="Page navigation">
                         <ul class="pagination pagination-lg justify-content-center m-0">
@@ -272,7 +283,7 @@
                     <a href="" class="btn btn-dark m-1">Hội Chim</a>
                     <a href="" class="btn btn-dark m-1">Marketing</a>
                     <a href="" class="btn btn-dark m-1">CEO</a>
-                    <a href="" class="btn btn-dark m-1">Bài Viết</a>
+
                 </div>
             </div>
             <!-- Tags End -->
@@ -282,7 +293,7 @@
                 <h3 class="text-uppercase mb-4">Đăng Ký VIP</h3>
                 <div class="bg-dark rounded text-center text-light" style="padding: 30px;">
                     <p>Trở thành hội viên VIP có nhiều đặc quyền riêng và có giá ưu đãi dành cho gói tháng.</p>
-                    <a href="about.html" class="btn btn-primary py-2 px-4">Xem Thêm</a>
+                    <a href='<c:url value="/DispatchServlet?btAction=Blog"/>' class="btn btn-primary py-2 px-4">Xem Thêm</a>
                 </div>
             </div>
             <!-- Plain Text End -->

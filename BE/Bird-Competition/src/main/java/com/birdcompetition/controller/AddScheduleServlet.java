@@ -3,6 +3,7 @@ package com.birdcompetition.controller;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Date;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -39,13 +40,11 @@ public class AddScheduleServlet extends HttpServlet {
         
         String url = "AdminPage/createSchedule.jsp";
         try {
-            if(date != null) {
-                Date sqlDate = Date.valueOf(date);
-            System.out.println(sqlDate);
-            }
+            
             
         }finally {
-            response.sendRedirect(url);
+            RequestDispatcher rd = request.getRequestDispatcher(url);
+            rd.forward(request, response);
         }
     }
 

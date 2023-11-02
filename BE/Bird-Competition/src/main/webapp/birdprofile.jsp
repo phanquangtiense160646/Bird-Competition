@@ -1,299 +1,219 @@
-<%-- 
-    Document   : birdprofile
-    Created on : Oct 26, 2023, 11:04:11 PM
-    Author     : admin
---%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<!DOCTYPE html>
+<!--<!DOCTYPE html>-->
 <html>
-    
-<head>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css"
-    integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Bird Profile</title>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
-  <link href="img/favicon.ico" rel="icon">
 
-  <!-- Google Web Fonts -->
-  <link rel="preconnect" href="https://fonts.gstatic.com">
-  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Rubik&display=swap"
-    rel="stylesheet">
+    <head>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css"
+              integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Bird Profile</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <!-- Icon Font Stylesheet -->
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.0/css/all.min.css" rel="stylesheet">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
-  <link href="FE/lib/flaticon/font/flaticon.css" rel="stylesheet">
+        <link href="img/favicon.ico" rel="icon">
 
-  <!-- Libraries Stylesheet -->
-  <link href="FE/lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+        <!-- Google Web Fonts -->
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Rubik&display=swap"
+              rel="stylesheet">
 
-  <!-- Customized Bootstrap Stylesheet -->
-  <link href="FE/css/bootstrap.min.css" rel="stylesheet">
+        <!-- Icon Font Stylesheet -->
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.0/css/all.min.css" rel="stylesheet">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+        <link href="FE/lib/flaticon/font/flaticon.css" rel="stylesheet">
 
-  <!-- Template Stylesheet -->
-  <link href="FE/css/userprofile.css" rel="stylesheet">
+        <!-- Libraries Stylesheet -->
+        <link href="FE/lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
 
-  <script src="https://kit.fontawesome.com/96a8e8f111.js" crossorigin="anonymous"></script>
+        <!-- Customized Bootstrap Stylesheet -->
+        <link href="FE/css/bootstrap.min.css" rel="stylesheet">
 
+        <!-- Template Stylesheet -->
+        <link href="FE/css/userprofile.css" rel="stylesheet">
+        <link href="FE/css/deletemodal.css" rel="stylesheet">
 
-
-  <link rel="stylesheet" href="FE/css/style.css">
-  <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
-    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"> -->
+        <script src="https://kit.fontawesome.com/96a8e8f111.js" crossorigin="anonymous"></script>
 
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,500;1,900&display=swap" rel="stylesheet">
+
+        <link rel="stylesheet" href="FE/css/style.css">
+        <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"> -->
 
 
-  <style>
-    .centered-text {
-      display: flex;
-      justify-content: center;
-    }
-  </style>
-</head>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,500;1,900&display=swap" rel="stylesheet">
 
-<body class="">
-  <div class="container-fluid bg-dark px-0">
-    <div class="row gx-0">
-        <div class="col-lg-3 bg-dark d-none d-lg-block">
-            
-                
-            <a href="index.html" class="navbar-brand w-100 h-100 m-0 p-0 d-flex align-items-center justify-content-center">
-                <img src="FE/img/finallogo.png" style="width: 100px; margin-right: -40px; margin-bottom:50px;">
-                <h1 class="m-0 display-4 text-primary text-uppercase">BIRDFIGHTER</h1>
-            </a>
 
-            
-            
-        </div>
-        <div class="col-lg-9">
-            <div class="row gx-0 bg-secondary d-none d-lg-flex">
-                <div class="col-lg-7 px-5 text-start">
-                    <div class="h-100 d-inline-flex align-items-center py-2 me-4">
-                        <i class="fa fa-envelope text-primary me-2"></i>
-                        <h6 class="mb-0">birdfight@compe.com</h6>
-                    </div>
-                    <div class="h-100 d-inline-flex align-items-center py-2">
-                        <i class="fa fa-phone-alt text-primary me-2"></i>
-                        <h6 class="mb-0">+123 321 333</h6>
-                    </div>
-                </div>
-                <div class="col-lg-5 px-5 text-end">
-                    <div class="d-inline-flex align-items-center py-2">
-                        <a class="btn btn-light btn-square rounded-circle me-2" href="">
-                            <i class="fab fa-facebook-f"></i>
-                        </a>
-                        <a class="btn btn-light btn-square rounded-circle me-2" href="">
-                            <i class="fab fa-twitter"></i>
-                        </a>
-                        <a class="btn btn-light btn-square rounded-circle me-2" href="">
-                            <i class="fab fa-linkedin-in"></i>
-                        </a>
-                        <a class="btn btn-light btn-square rounded-circle me-2" href="">
-                            <i class="fab fa-instagram"></i>
-                        </a>
-                        <a class="btn btn-light btn-square rounded-circle" href="">
-                            <i class="fab fa-youtube"></i>
-                        </a>
-                    </div>
-                </div>
-            </div>
-            <nav class="navbar navbar-expand-lg bg-dark navbar-dark p-3 p-lg-0 px-lg-5">
-                
-                <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
-                    <div class="navbar-nav mr-auto py-0">
-                        <a href="/FE/postlogin.html" class="nav-item nav-link active">Home</a>
-                        <a href="/FE/leaderboard.html" class="nav-item nav-link">Bảng xếp hạng</a>
-                        <a href="/FE/schedule.html" class="nav-item nav-link">Lịch thi đấu</a>
-                        <a href="/FE/memberShip.html" class="nav-item nav-link">Hội viên</a>
-                        <div class="nav-item dropdown">
-                            <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
-                            <div class="dropdown-menu rounded-0 m-0">
-                                <!-- <a href="blog.html" class="dropdown-item">News</a> -->
-                                <a href="/FE/rules.html" class="dropdown-item">Luật thi đấu</a>
-                                <a href="/FE/feedback.html" class="dropdown-item">Feedback</a>
-                                <a href="/FE/news.html" class="dropdown-item">Tin Tức</a>
+        <style>
+            .centered-text {
+                display: flex;
+                justify-content: center;
+            }
+        </style>
+    </head>
+
+    <body>
+        <jsp:include page="JspCommon/webheader.jsp"/>
+        <section class="h-25 gradient-custom-2">
+            <div class="container py-5 h-100">
+                <div class="row d-flex justify-content-center align-items-center h-100">
+                    <div class="col col-lg-9 col-xl-7">
+                        <div class="card">
+                            <div class="rounded-top text-white d-flex flex-row" style="background-color: #000000; height:200px;">
+                                <div class="ms-4 mt-5 d-flex flex-column" style="width: 150px;">
+                                    <img
+                                        src="FE/img/manager.png"
+                                        alt="Generic placeholder image" class="img-fluid img-thumbnail mt-4 mb-2"
+                                        style="width: 150px; z-index: 1; margin-left: 10px;"> 
+
+
+
+                                </div>
+                                <div class="ms-3" style="margin-top: 130px; margin-left: 30px;">
+                                    <h5 style="color: #f8f9fa;"></h5>
+                                    <p></p>
+                                </div>
+                            </div>
+
+
+
+
+                            <div class="p-4 text-black" style="background-color: #f8f9fa;">
+
+
+                                <!--                                 <form action="" style="z-index: 1; padding-top: 20px; padding-left:17px">
+                                                                                <button class="btn btn-outline-dark" data-mdb-ripple-color="dark"
+                                                                                        style="z-index: 0; margin-left: 17px;">
+                                                                                    Xóa Chim
+                                                                                </button>
+                                                                    </form>-->
+
+
+
+
+
+
+
+                                <div class="d-flex justify-content-end text-center py-1">
+                                    <div>
+                                        <p class="mb-1 h5">${sessionScope.BIRD.win + sessionScope.BIRD.lose + sessionScope.BIRD.tie}</p>
+                                        <p class="small text-muted mb-0">Total Match</p>
+                                    </div>
+                                    <div class="px-3">
+                                        <p class="mb-1 h5">${sessionScope.BIRD.win}</p>
+                                        <p class="small text-muted mb-0">Win</p>
+                                    </div>
+                                    <div>
+                                        <p class="mb-1 h5">${sessionScope.BIRD.lose}</p>
+                                        <p class="small text-muted mb-0">Lose</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-body p-4 text-black">
+                                <div class="mb-5">
+
+                                    <span class="centered-text">
+                                        <p class="lead fw-normal mb-1">Bird Profile</p>
+                                    </span>
+
+
+                                    <div class="container-xl px-4 mt-4">
+
+                                        <hr class="mt-0 mb-4">
+                                        <div class="row">
+                                            <div class="col-xl-12 border-bottom">
+                                                <!-- Account details card-->
+                                                <div class="card mb-4">
+                                                    <div class="card-header"></div>
+                                                    <div class="card-body">
+                                                        <form action="DispatchServlet">
+                                                            <!-- Form Group (birdname)-->
+                                                            <div class="mb-3">
+                                                                <label class="small mb-1" for="inputBirdname">Tên chim</label>
+                                                                <input class="form-control" id="inputBirdname" type="text"
+                                                                       value="${sessionScope.BIRD.birdName}" readonly>
+                                                            </div>
+                                                            <!-- Form Row-->
+                                                            <div class="row gx-3 mb-3">
+                                                                <!-- Form Group (Species)-->
+                                                                <div class="col-md-12">
+                                                                    <label class="small mb-1" for="inputSpecies">Loài chim</label>
+                                                                    <input class="form-control" id="inputSpecies" type="text" 
+                                                                           value="${sessionScope.BIRD.species}" readonly>
+                                                                </div>
+
+                                                            </div>
+                                                            <!-- Form Row        -->
+                                                            <div class="row gx-3 mb-3">
+                                                                <div class="col-md-12">
+                                                                    <label class="small mb-1">Điểm Rank</label>
+                                                                    <input class="form-control" id="inputBirdAge" type="text" 
+                                                                           value="${sessionScope.BIRD.point}" readonly>
+                                                                </div>
+                                                            </div>
+                                                            <div class="row gx-3 mb-3">
+                                                                <!-- Form Group (Gender)-->
+                                                                <div class="col-md-6">
+                                                                    <label class="small mb-1" for="inputGender">Giới tính</label>
+                                                                    <input class="form-control" id="inputGender" type="text"
+                                                                           value="${sessionScope.BIRD.birdName}" readonly>
+                                                                </div>
+                                                                <div class="col-md-6">
+                                                                    <label class="small mb-1" for="inputGender">Tình trạng sức khỏe</label>
+                                                                    <input class="form-control" id="inputGender" type="text"
+                                                                           value="${sessionScope.BIRD.birdName}" readonly>
+                                                                </div>
+                                                            </div>
+
+                                                            <!-- Form Group (CompetitionHistory)-->
+                                                            <!--                            <div class="mb-3">
+                                                                                          <label class="small mb-1" for="inputCompetitionHistory">Được Thêm Vào Ngày</label>
+                                                                                          <input class="form-control" id="inputCompetitionHistory" type="date"
+                                                                                            placeholder="Nhập lịch sử đấu" value="" readonly>
+                                                                                        </div>-->
+
+                                                            <!-- Form Group (OtherInfo)-->
+
+                                                            <div class="mb-3">
+                                                                <label class="small mb-1" for="inputOtherInfo">Thông tin khác (nếu có)</label>
+                                                                <input class="form-control" id="inputOtherInfo" type="text"
+                                                                       placeholder="Thông tin khác" value="${sessionScope.BIRD.birdName}" readonly="">
+                                                            </div>
+
+                                                            <input type="hidden" name="txtBirdId" value="${sessionScope.BIRD.birdID}" />
+                                                            <button class="btn btn-outline-dark" data-mdb-ripple-color="dark"
+                                                                    style="z-index: 0; " name="btAction" value="DeleteBird">
+                                                                    Xóa Chim
+                                                            </button>
+                                                        </form>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                        <a href="contact.html" class="nav-item nav-link">Liên Hệ</a>
-                    </div>
-                    <div class="dropdown">
-                      <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
-                        emhuythichchoichim
-                      </button>
-                      <div class="dropdown-menu">
-                        <a class="dropdown-item" href="birdprofile.html">Bird Profile</a>
-                        <a class="dropdown-item" href="addnewbird.html">Add Bird </a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="/FE/index.html">Log out</a>
-                      </div>
-        
-                    </div>
-                    
-                </div>
-            </nav>
-        </div>
-    </div>
-</div>
-  <section class="h-25 gradient-custom-2">
-    <div class="container py-5 h-100">
-      <div class="row d-flex justify-content-center align-items-center h-100">
-        <div class="col col-lg-9 col-xl-7">
-          <div class="card">
-            <div class="rounded-top text-white d-flex flex-row" style="background-color: #000000; height:200px;">
-              <div class="ms-4 mt-5 d-flex flex-column profile-pic" style="width: 150px;">
 
-                <div class="edit-pic">
-                  <form action="upload.php" method="post" enctype="multipart/form-data">
-                    <label for="fileToUpload" class=" mt-4 mb-2">
-                      <div class="profile-pic">
-                        <img 
-                          src="birdprofileimg.jpg"
-                          class="img-fluid img-thumbnail mb-2" style="width: 100%; height: 140px; margin-left: 10px;">
-                        <span class="glyphicon glyphicon-camera"></span>
-                        <span>Change Image</span>
-                      </div>
-                    </label>
-                    <input type="File" name="fileToUpload" id="fileToUpload">
-                  </form>
-                </div>
+                        </section>
 
 
 
-                <!-- <img
-                  src="https://scontent.fsgn2-5.fna.fbcdn.net/v/t39.30808-1/331044364_1135565673791935_1693572774874518896_n.jpg?stp=c0.0.241.240a_dst-jpg_p240x240&_nc_cat=104&ccb=1-7&_nc_sid=fe8171&_nc_ohc=TXcwpKt4QK0AX_9toxW&_nc_ht=scontent.fsgn2-5.fna&_nc_e2o=s&oh=00_AfD0Xd7axgyl8Ex23jGXKvXEQGNbysWHsZ3zx9ymtvlsdQ&oe=652637DB"
-                  alt="Generic placeholder image" class="img-fluid img-thumbnail mt-4 mb-2"
-                  style="width: 150px; z-index: 1; margin-left: 10px;"> -->
 
 
-                <button type="button" class="btn btn-outline-dark" data-mdb-ripple-color="dark"
-                  style="z-index: 1; margin-left: 17px;">
-                  View Profile
-                </button>
 
 
-                <input id="file" type="file" onchange="loadFile(event)" />
-              </div>
-              <div class="ms-3" style="margin-top: 130px; margin-left: 30px;">
-                <h5 style="color: #f8f9fa;"></h5>
-                <p></p>
-              </div>
-            </div>
-            <div class="p-4 text-black" style="background-color: #f8f9fa;">
-              <div class="d-flex justify-content-end text-center py-1">
-                <div>
-                  <p class="mb-1 h5">10</p>
-                  <p class="small text-muted mb-0">Total Match</p>
-                </div>
-                <div class="px-3">
-                  <p class="mb-1 h5">6</p>
-                  <p class="small text-muted mb-0">Win</p>
-                </div>
-                <div>
-                  <p class="mb-1 h5">5</p>
-                  <p class="small text-muted mb-0">Lose</p>
-                </div>
-              </div>
-            </div>
-            <div class="card-body p-4 text-black">
-              <div class="mb-5">
-
-                <span class="centered-text">
-                  <p class="lead fw-normal mb-1">Bird Profile</p>
-                </span>
-
-
-                <div class="container-xl px-4 mt-4">
-
-                  <hr class="mt-0 mb-4">
-                  <div class="row">
-                    <div class="col-xl-12 border-bottom">
-                      <!-- Account details card-->
-                      <div class="card mb-4">
-                        <div class="card-header"></div>
-                        <div class="card-body">
-                          <form>
-                            <!-- Form Group (birdname)-->
-                            <div class="mb-3">
-                              <label class="small mb-1" for="inputBirdname">Tên chim</label>
-                              <input class="form-control" id="inputBirdname" type="text"
-                                value="Chào Mào Lửa" readonly>
-                            </div>
-                            <!-- Form Row-->
-                            <div class="row gx-3 mb-3">
-                              <!-- Form Group (Species)-->
-                              <div class="col-md-12">
-                                <label class="small mb-1" for="inputSpecies">Loài chim</label>
-                                <input class="form-control" id="inputSpecies" type="text" 
-                                  value="Chào Mào" readonly>
-                              </div>
-
-                            </div>
-                            <!-- Form Row        -->
-                            <div class="row gx-3 mb-3">
-                                <div class="col-md-12">
-                                <label class="small mb-1">Điểm Rank</label>
-                                <input class="form-control" id="inputBirdAge" type="text" 
-                                  value="1" readonly>
-                              </div>
-                            </div>
-                            <div class="row gx-3 mb-3">
-                              <!-- Form Group (Gender)-->
-                              <div class="col-md-6">
-                                <label class="small mb-1" for="inputGender">Giới tính</label>
-                                <input class="form-control" id="inputGender" type="text"
-                                  value="Đực" readonly>
-                              </div>
-                              <div class="col-md-6">
-                                <label class="small mb-1" for="inputGender">Tình trạng sức khỏe</label>
-                                <input class="form-control" id="inputGender" type="text"
-                                  value="Bình thường" readonly>
-                              </div>
-                            </div>
-                            
-                            <!-- Form Group (CompetitionHistory)-->
-<!--                            <div class="mb-3">
-                              <label class="small mb-1" for="inputCompetitionHistory">Được Thêm Vào Ngày</label>
-                              <input class="form-control" id="inputCompetitionHistory" type="date"
-                                placeholder="Nhập lịch sử đấu" value="" readonly>
-                            </div>-->
-
-                            <!-- Form Group (OtherInfo)-->
-                            
-                            <div class="mb-3">
-                              <label class="small mb-1" for="inputOtherInfo">Thông tin khác (nếu có)</label>
-                              <input class="form-control" id="inputOtherInfo" type="text"
-                                     placeholder="Thông tin khác" value="" readonly="">
-                            </div>
-
-                            <!-- Save changes button-->
-
-                          </form>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-  </section>
-
-  <script src="/UserProfile/addbird.js"></script>
-
-</body>
-<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
-    integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
-    crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF"
-    crossorigin="anonymous"></script>
-</html>
+                        </body>
+                        <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+                        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+                        <script src="FE/lib/easing/easing.min.js"></script>
+                        <script src="FE/lib/waypoints/waypoints.min.js"></script>
+                        <script src="FE/lib/counterup/counterup.min.js"></script>
+                        <script src="FE/lib/owlcarousel/owl.carousel.min.js"></script>
+                        <script src="/UserProfile/addbird.js"></script>
+                        <script src="FE/js/confirm.js"></script>
+                        </html>

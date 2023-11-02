@@ -52,7 +52,7 @@ function toast({
 function showSuccessToast() {
     toast({
         tiltle: 'Success',
-        message: 'Thêm Chim Thành Công',
+        message: 'Thay Đổi Thông Tin Thành Công',
         type: 'success',
         duration: 5000
     })
@@ -61,19 +61,12 @@ function showSuccessToast() {
 function showFailToast() {
     toast({
         tiltle: 'Fail',
-        message: 'Thêm Chim Thất Bại',
+        message: 'Thay Đổi Thông Tin Thất Bại',
         type: 'warning',
         duration: 8000
     })
 }
-// function showErrorToast() {
-//     toast({
-//         tiltle: 'Lỗi',
-//         message: 'Chim đã được đăng kí vào cuộc thi này',
-//         type: 'info',
-//         duration: 8000
-//     })
-// }
+
 
 var mes = document.getElementById('toastmes').innerHTML;
 if (mes === 'fail') {

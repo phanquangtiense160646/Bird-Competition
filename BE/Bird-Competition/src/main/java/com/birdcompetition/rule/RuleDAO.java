@@ -4,8 +4,10 @@
  */
 package com.birdcompetition.rule;
 
+import com.birdcompetition.news.NewsDTO;
 import com.birdcompetition.util.DBHelper;
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -24,10 +26,12 @@ public class RuleDAO {
         return ruleList;
     }
 
-    public void getAllRule() throws SQLException, ClassNotFoundException {
+    public List<RuleDTO> getAllRule()
+            throws SQLException, ClassNotFoundException {
         Connection con = null;
         PreparedStatement stm = null;
         ResultSet rs = null;
+        List<RuleDTO> result = null;
 
         try {
             //1.Make connection
@@ -36,27 +40,26 @@ public class RuleDAO {
             if (con != null) {
                 //2.Creat SQL String 
                 String sql = "Select * "
-                        + "From Rule ";
-
+                        + "From Rule\n";
                 //3.Create Statement Object
                 stm = con.prepareStatement(sql);
+
                 //4.Exercute Query
                 rs = stm.executeQuery();
                 //5.Process
                 while (rs.next()) {
                     int id = rs.getInt("IdRule");
-                    String name = rs.getString("NameOfRule");
-                    String detail = rs.getString("DetailOfRule");
+                    String newsName = rs.getString("NameOfRule");
+                    String descrip = rs.getString("DetailOfRule");
                     boolean status = rs.getBoolean("Status");
-                    //5.1.2 set properties of DTO
-                    RuleDTO dto = new RuleDTO(id, name, detail, status);
-                    //5.2 add data to list
+
+                    RuleDTO dto = new RuleDTO(id, newsName, descrip, status);
                     if (this.ruleList == null) {
                         this.ruleList = new ArrayList<>();
                     }
-                    this.ruleList.add(dto);
+                   ruleList.add(dto);
                 }
-
+                return ruleList;
             }
 
         } finally {
@@ -70,6 +73,6 @@ public class RuleDAO {
                 con.close();
             }
         }
-
+        return result;
     }
 }

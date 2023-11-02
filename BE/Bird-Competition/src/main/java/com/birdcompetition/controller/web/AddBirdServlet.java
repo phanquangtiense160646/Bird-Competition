@@ -38,7 +38,6 @@ public class AddBirdServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        
         String name = request.getParameter("birdName");
         String specie = request.getParameter("birdSpecie");
         String idMember = request.getParameter("idMember");

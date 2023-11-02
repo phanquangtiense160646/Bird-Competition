@@ -6,6 +6,7 @@ package com.birdcompetition.schedule;
 
 import java.io.Serializable;
 import java.sql.Date;
+import java.text.SimpleDateFormat;
 /**
  *
  * @author Admin
@@ -80,6 +81,10 @@ public class ScheduleDTO implements Serializable {
 
     public Date getDate() {
         return date;
+    }
+    public String getDateFormat() {
+        SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
+        return sdf.format(date);
     }
 
     public void setDate(Date date) {

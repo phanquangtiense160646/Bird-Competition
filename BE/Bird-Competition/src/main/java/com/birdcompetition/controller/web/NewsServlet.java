@@ -3,6 +3,9 @@ package com.birdcompetition.controller.web;
 
 
 
+import com.birdcompetition.bird.BirdDAO;
+import com.birdcompetition.bird.BirdDTO;
+import com.birdcompetition.model.User;
 import com.birdcompetition.news.NewsDAO;
 import com.birdcompetition.news.NewsDTO;
 
@@ -39,30 +42,33 @@ public class NewsServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, SQLException, ClassNotFoundException{
         response.setContentType("text/html;charset=UTF-8");
-//       String url = "News.jsp";
-//       try {
-//            HttpSession session = request.getSession();
-//            /*tin tuc*/
-//            NewsDAO newsDao = new NewsDAO();
-//            newsDao.getNews();
-//            List<NewsDTO> listNews = newsDao.getList();
-//            session.setAttribute("NEWS", listNews);
-//            
-//            
-//        } catch (SQLException ex) {
-//            log("ScheduleServlet_SQL: " + ex.getMessage());
-//        } catch (ClassNotFoundException ex) {
-//            log("ScheduleServlet_ClassNotFound: " + ex.getMessage());
-//        } finally {
-////            response.sendRedirect(url);
-//            RequestDispatcher rd = request.getRequestDispatcher(url);
-//            rd.forward(request, response);
-//        }
-            NewsDAO dao = new NewsDAO();
-            List<NewsDTO> list = dao.getNews();
+       String url = null;
+      try {
+         
             
-            request.setAttribute("NEWS", list);
-            request.getRequestDispatcher("News.jsp").forward(request, response);
+            List<NewsDTO> newsList;
+
+            NewsDAO dao = new NewsDAO();
+            List<NewsDTO> result = dao.getNews();
+            
+            if(result != null){
+                HttpSession session = request.getSession();
+                
+                session.setAttribute("NEWS", result);
+                url = "News.jsp";
+            }
+
+        } catch (SQLException ex) {
+//            log("ScheduleServlet_SQL: " + ex.getMessage());
+            ex.printStackTrace();
+        } catch (ClassNotFoundException ex) {
+            log("ScheduleServlet_ClassNotFound: " + ex.getMessage());
+        } finally {
+//            response.sendRedirect(url);
+            RequestDispatcher rd = request.getRequestDispatcher(url);
+            rd.forward(request, response);
+        }
+
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

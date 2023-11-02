@@ -38,16 +38,16 @@ public class ScheduleServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        String url = "schedule.jsp";
+        String url = "News.jsp";
         try {
             HttpSession session = request.getSession();
-            BirdDAO dao = new BirdDAO();
             /*lich thi dau*/
             ScheduleDAO scheduleDao = new ScheduleDAO();
             scheduleDao.getSchedule();
             List<ScheduleDTO> listSchedule = scheduleDao.getList();
             session.setAttribute("SCHEDULE", listSchedule);
             /*danh sach chim dk*/
+            BirdDAO dao = new BirdDAO();
             User user = (User) session.getAttribute("USER");
             dao.getBirdByMemberId(user.getIdMember());
             List<BirdDTO> birdList = dao.getBirdList();

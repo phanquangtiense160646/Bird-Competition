@@ -67,12 +67,8 @@
                                     src="FE/img/manager.png"
                                     alt="Generic placeholder image" class="img-fluid img-thumbnail mt-4 mb-2"
                                     style="width: 150px; z-index: 1; margin-left: 10px;">
-<!--                                <form action="userprofile.jsp" style="z-index: 1;">
-                                    <button class="btn btn-outline-dark" data-mdb-ripple-color="dark"
-                                            style="z-index: 0; margin-left: 17px;">
-                                        User Profile
-                                    </button>
-                                </form>-->
+                                <form action="userprofile.jsp" style="z-index: 1;">
+
 
 
                             </div>
@@ -84,27 +80,27 @@
                         </div>
 
                     </div>
-<!--                    <div class="p-4 text-black" style="background-color: #f8f9fa;">
-                        <div class="d-flex justify-content-end text-center py-1">
-                            <div>
-                                <p class="mb-1 h5"></p>
-                                <p class="small text-muted mb-0">Win</p>
-                            </div>
-                            <div class="px-3">
-                                <p class="mb-1 h5"></p>
-                                <p class="small text-muted mb-0">Lose</p>
-                            </div>
-                            <div>
-                                <p class="mb-1 h5"></p>
-                                <p class="small text-muted mb-0">Tie</p>
-                            </div>
-                        </div>
-                    </div>-->
+                    <!--                   <div class="p-4 text-black" style="background-color: #f8f9fa;">
+                                            <div class="d-flex justify-content-end text-center py-1">
+                                                <div>
+                                                    <p class="mb-1 h5"></p>
+                                                    <p class="small text-muted mb-0">Win</p>
+                                                </div>
+                                                <div class="px-3">
+                                                    <p class="mb-1 h5"></p>
+                                                    <p class="small text-muted mb-0">Lose</p>
+                                                </div>
+                                                <div>
+                                                    <p class="mb-1 h5"></p>
+                                                    <p class="small text-muted mb-0">Tie</p>
+                                                </div>
+                                            </div>
+                                        </div>-->
                     <div class="card-body p-4 text-black">
                         <div class="mb-5">
-                            <p class="lead fw-normal mb-1">Upcoming Match and History</p>
-                            <div class="container-xl px-4 mt-4">
 
+                            <div class="container-xl px-4 mt-4">
+                                <p class="lead fw-normal mb-1">Upcoming Match and History</p>
 
 
                                 <hr class="mt-0 mb-4">
@@ -112,129 +108,151 @@
                                     <div class="col-xl-12 border-bottom">
                                         <!-- Account details card-->
                                         <div class="card mb-4 upcoming-match-box">
-                                            <div class="card-header"><h4>Match</h4></div>
+                                            <div class="card-header"><h4>Trận đấu sắp tới</h4></div>
                                             <div class="card-body">
                                                 <div class="match-box">
 
                                                     <c:set var="contest" value="${sessionScope.OWN_CONTEST}"/>
                                                     <c:if test="${not empty contest}">
-                                                    
+
                                                         <c:forEach items="${contest}" var="p"> 
-                                                            <table class="match-box-content border-bottom">
-                                                                <tr>
-                                                                    <td><small>Tên cuộc thi:</small></td>
-                                                                    <td><h4 style="color: orange">${p.nameOfContest}</h4></td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <td><small>CheckInCode:</small></td>
-                                                                    <td><h4>${p.checkInCode}</h4></td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <td><small>Địa điểm:</small></td>
-                                                                    <td><h4>${p.location}</h4></td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <td><small>Min Point:</small></td>
-                                                                    <td><h4>${p.minPoint}</h4></td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <td><small>Max Point:</small></td>
-                                                                    <td><h4>${p.maxPoint}</h4></td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <td><small>Ngày diễn ra:</small></td>
-                                                                    <td>${p.date}</td>
-                                                                </tr>
+                                                            <c:if test="${p.statusOfContest eq 2 || p.statusOfContest eq 3 }">
+                                                                <table class="match-box-content border-bottom">
+                                                                    <tr>
+                                                                        <td><small>Tên cuộc thi:</small></td>
+                                                                        <td><h4 style="color: orange">${p.nameOfContest}</h4></td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td><small>Checkin Code:</small></td>
+                                                                        <td><h4>${p.checkInCode}</h4></td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td><small>Địa điểm:</small></td>
+                                                                        <td><h4>${p.location}</h4></td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td><small>Min Point:</small></td>
+                                                                        <td><h4>${p.minPoint}</h4></td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td><small>Max Point:</small></td>
+                                                                        <td><h4>${p.maxPoint}</h4></td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td><small>Ngày diễn ra:</small></td>
+                                                                        <td>${p.date}</td>
+                                                                    </tr>
 
-                                                                <tr>
-                                                                    <td><small>Số người tham gia:</small></td>
-                                                                    <td><h4>5/10</h4></td>
-                                                                </tr>
+                                                                    <tr>
+                                                                        <td><small>Số người tham gia:</small></td>
+                                                                        <td><h4>5/10</h4></td>
+                                                                    </tr>
 
-                                                                <tr>
-                                                                    <td><small>Chim tham gia:</small></td>
-                                                                    <td><h5>${p.nameOfBird}</h5></td>
-                                                                </tr>
+                                                                    <tr>
+                                                                        <td><small>Chim tham gia:</small></td>
+                                                                        <td><h5>${p.nameOfBird}</h5></td>
+                                                                    </tr>
 
-                                                                <tr style="">
-                                                                    <td><h1 style="color: green;">Kết quả</h1></td>
+                                                                    <tr style="">
+                                                                        <td><h1 style="color: green;">Kết quả</h1></td>
 
-                                                                    <td style=""><h2 style="color: black;"> Point: ${p.afterPoint} </h2></td>
-                                                                    <td>
-                                                                        <h2 style="color: black; display: inline;"> (</h2>
-                                                                        <c:if test="${(p.afterPoint - p.beforePoint) >= 0}" >
-                                                                            <h2 style="color: green; display: inline;"> +${p.afterPoint - p.beforePoint}</h2>
-                                                                        </c:if>
-                                                                        <c:if test="${(p.afterPoint - p.beforePoint) < 0}" >
-                                                                            <h2 style="color: red; display: inline;"> ${p.afterPoint - p.beforePoint}</h2>
-                                                                        </c:if>
-                                                                        <h2 style="color: black; display: inline;"> )</h2>
-                                                                    </td>
-
-
-                                                                </tr>
-                                                            </table>
-
+                                                                        <td style=""><h2 style="color: black;"> Point: ${p.afterPoint} </h2></td>
+                                                                        <td>
+                                                                            <h2 style="color: black; display: inline;"> (</h2>
+                                                                            <c:if test="${(p.afterPoint - p.beforePoint) >= 0}" >
+                                                                                <h2 style="color: green; display: inline;"> +${p.afterPoint - p.beforePoint}</h2>
+                                                                            </c:if>
+                                                                            <c:if test="${(p.afterPoint - p.beforePoint) < 0}" >
+                                                                                <h2 style="color: red; display: inline;"> ${p.afterPoint - p.beforePoint}</h2>
+                                                                            </c:if>
+                                                                            <h2 style="color: black; display: inline;"> )</h2>
+                                                                        </td>
+                                                                    </tr>
+                                                                </table>
+                                                            </c:if>
                                                         </c:forEach> 
-                                                        
+
                                                     </c:if>
-                                                    
+                                                    <c:if test="${empty contest}">
+                                                        Bạn chưa đăng ký trận đấu nào :(
+                                                    </c:if>
 
+                                                </div>
+                                            </div>
 
+                                        </div>
+                                        <div class="card mb-4 upcoming-match-box">
+                                            <div class="card-header"><h4>Trận đấu đã diễn ra</h4></div>
+                                            <div class="card-body">
+                                                <div class="match-box">
 
-                                                    <!--                                                            <div class="card mb-4">
-                                                                                                                    <div class="card-header"><h4>Completed</h4></div>
-                                                                                                                    <div class="card-body">
-                                                                                                                        <table class="match-box-content border-bottom">
-                                                                                                                            <tr>
-                                                                                                                                <td><small>Địa điểm:</small></td>
-                                                                                                                                <td>FPT HCM</td>
-                                                                                                                            </tr>
-                                                    
-                                                                                                                            <tr>
-                                                                                                                                <td><small>Ngày diễn ra:</small></td>
-                                                                                                                                <td>20/10/2023</td>
-                                                                                                                            </tr>
-                                                    
-                                                                                                                            <tr>
-                                                                                                                                <td><small>Số người tham gia:</small></td>
-                                                                                                                                <td>8/10</td>
-                                                                                                                            </tr>
-                                                    
-                                                                                                                            <tr>
-                                                                                                                                <td><small>Chim tham gia:</small></td>
-                                                                                                                                <td><h5>Chào Mào Lửa</h5></td>
-                                                                                                                            </tr>
-                                                                                                                            <tr>
-                                                                                                                                <td><h3 style="color: orange;;">Kết quả:</h3></td>
-                                                                                                                                <td><h5 style="color: rgb(6, 185, 6);">+15</h5></td>
-                                                                                                                            </tr>
-                                                                                                                        </table>
-                                                                                                                        <table class="match-box-content border-bottom">
-                                                                                                                            <tr>
-                                                                                                                                <td><small>Địa điểm:</small></td>
-                                                                                                                                <td>FPT HCM</td>
-                                                                                                                            </tr>
-                                                    
-                                                                                                                            <tr>
-                                                                                                                                <td><small>Ngày diễn ra:</small></td>
-                                                                                                                                <td>20/10/2023</td>
-                                                                                                                            </tr>
-                                                    
-                                                                                                                            <tr>
-                                                                                                                                <td><small>Số người tham gia:</small></td>
-                                                                                                                                <td>8/10</td>
-                                                                                                                            </tr>
-                                                                                                                            <tr>
-                                                                                                                                <td><small>Chim tham gia:</small></td>
-                                                                                                                                <td><h5>Chào Mào Lửa</h5></td>
-                                                                                                                            </tr>
-                                                                                                                            <tr>
-                                                                                                                                <td><h3 style="color: orange;">Kết quả:</h3></td>
-                                                                                                                                <td><h5 style="color: red;">-20</h5></td>
-                                                                                                                            </tr>
-                                                                                                                        </table>-->
+                                                    <c:set var="contest" value="${sessionScope.OWN_CONTEST}"/>
+                                                    <c:if test="${not empty contest}">
+                                                        <c:set var="counter" value="0" />
+                                                        <c:forEach items="${contest}" var="p"> 
+                                                            <c:if test="${p.statusOfContest eq 4}">
+                                                                <c:if test="${counter < 11}">
+                                                                    <table class="match-box-content border-bottom">
+                                                                        <tr>
+                                                                            <td><small>Tên cuộc thi:</small></td>
+                                                                            <td><h4 style="color: orange">${p.nameOfContest}</h4></td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td><small>Checkin Code:</small></td>
+                                                                            <td><h4>${p.checkInCode}</h4></td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td><small>Địa điểm:</small></td>
+                                                                            <td><h4>${p.location}</h4></td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td><small>Min Point:</small></td>
+                                                                            <td><h4>${p.minPoint}</h4></td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td><small>Max Point:</small></td>
+                                                                            <td><h4>${p.maxPoint}</h4></td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td><small>Ngày diễn ra:</small></td>
+                                                                            <td>${p.date}</td>
+                                                                        </tr>
 
+                                                                        <tr>
+                                                                            <td><small>Số người tham gia:</small></td>
+                                                                            <td><h4>5/10</h4></td>
+                                                                        </tr>
+
+                                                                        <tr>
+                                                                            <td><small>Chim tham gia:</small></td>
+                                                                            <td><h5>${p.nameOfBird}</h5></td>
+                                                                        </tr>
+
+                                                                        <tr style="">
+                                                                            <td><h1 style="color: green;">Kết quả</h1></td>
+
+                                                                            <td style=""><h2 style="color: black;"> Point: ${p.afterPoint} </h2></td>
+                                                                            <td>
+                                                                                <h2 style="color: black; display: inline;"> (</h2>
+                                                                                <c:if test="${(p.afterPoint - p.beforePoint) >= 0}" >
+                                                                                    <h2 style="color: green; display: inline;"> +${p.afterPoint - p.beforePoint}</h2>
+                                                                                </c:if>
+                                                                                <c:if test="${(p.afterPoint - p.beforePoint) < 0}" >
+                                                                                    <h2 style="color: red; display: inline;"> ${p.afterPoint - p.beforePoint}</h2>
+                                                                                </c:if>
+                                                                                <h2 style="color: black; display: inline;"> )</h2>
+                                                                            </td>
+                                                                        </tr>
+                                                                    </table>
+                                                                </c:if>
+
+                                                            </c:if>
+                                                        </c:forEach> 
+
+                                                    </c:if>
+                                                    <c:if test="${empty contest}">
+                                                        Bạn chưa tham gia trận đấu nào :(
+                                                    </c:if>
 
                                                 </div>
                                             </div>
@@ -244,17 +262,17 @@
                                 </div>
                             </div>
                         </div>
+                    </div>
 
 
 
+                    </section>
 
-                        </section>
-
-                        </body>
-                        <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-                        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
-                        <script src="FE/lib/easing/easing.min.js"></script>
-                        <script src="FE/lib/waypoints/waypoints.min.js"></script>
-                        <script src="FE/lib/counterup/counterup.min.js"></script>
-                        <script src="FE/lib/owlcarousel/owl.carousel.min.js"></script>
-                        </html>
+                    </body>
+                    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+                    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+                    <script src="FE/lib/easing/easing.min.js"></script>
+                    <script src="FE/lib/waypoints/waypoints.min.js"></script>
+                    <script src="FE/lib/counterup/counterup.min.js"></script>
+                    <script src="FE/lib/owlcarousel/owl.carousel.min.js"></script>
+                    </html>
