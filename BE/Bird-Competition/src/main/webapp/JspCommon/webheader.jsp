@@ -77,7 +77,7 @@
                             <form action="DispatchServlet" method="POST">
                                 
                                 <button class="dropdown-item" name="btAction" value="UserProfile">Trang cá nhân</button>
-                                <a class="dropdown-item" href="birdprofile.html">Bộ sưu tập</a>
+                                <button class="dropdown-item" name="btAction" value="ShowAllBirds">Bộ Sưu Tập</button>
                                 <a class="dropdown-item" href="addnewbird.jsp">Thêm chim</a>
                                 <button class="dropdown-item" name="btAction" value="MatchHistory">Lịch sử đấu</button>
                                 <button class="dropdown-item" name="btAction" value="PaymentHistory">Lịch sử giao dịch</button>

@@ -10,6 +10,7 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -53,7 +54,7 @@ public class UpdateProfileServlet extends HttpServlet {
                 HttpSession session = request.getSession();
                 User tempresult = dao.GetUserInfo(username);
                 session.setAttribute("USER", tempresult);
-                
+                request.setAttribute("msg", "success");
                 url = "userprofile.jsp";
             }
             
@@ -63,7 +64,8 @@ public class UpdateProfileServlet extends HttpServlet {
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(UpdateProfileServlet.class.getName()).log(Level.SEVERE, null, ex);
         }finally{
-            response.sendRedirect(url);
+             RequestDispatcher rd = request.getRequestDispatcher(url);
+             rd.forward(request, response);
         }
     }
 

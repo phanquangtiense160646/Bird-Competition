@@ -13,11 +13,11 @@
                     </div>
                     <div class="d-flex mb-2">
                         <i class="bi bi-envelope-open text-primary me-2"></i>
-                        <p class="mb-0">info@example.com</p>
+                        <p class="mb-0">birdfight@compe.com</p>
                     </div>
                     <div class="d-flex mb-2">
                         <i class="bi bi-telephone text-primary me-2"></i>
-                        <p class="mb-0">+012 345 67890</p>
+                        <p class="mb-0">+123 321 333</p>
                     </div>
                     <div class="d-flex mt-4">
                         <a class="btn btn-primary btn-square rounded-circle me-2" href="#"><i
@@ -36,15 +36,15 @@
                         <a class="text-secondary mb-2" href="#"><i
                                 class="bi bi-arrow-right text-primary me-2"></i>Home</a>
                         <a class="text-secondary mb-2" href="#"><i
-                                class="bi bi-arrow-right text-primary me-2"></i>About Us</a>
+                                class="bi bi-arrow-right text-primary me-2"></i>Bảng Xếp Hạng</a>
                         <a class="text-secondary mb-2" href="#"><i
-                                class="bi bi-arrow-right text-primary me-2"></i>Class Schedule</a>
+                                class="bi bi-arrow-right text-primary me-2"></i>Lịch Thi Đấu</a>
                         <a class="text-secondary mb-2" href="#"><i
-                                class="bi bi-arrow-right text-primary me-2"></i>Our Trainers</a>
+                                class="bi bi-arrow-right text-primary me-2"></i>Hội Viên</a>
                         <a class="text-secondary mb-2" href="#"><i
-                                class="bi bi-arrow-right text-primary me-2"></i>Latest Blog</a>
+                                class="bi bi-arrow-right text-primary me-2"></i>Luật Thi Đấu</a>
                         <a class="text-secondary" href="#"><i
-                                class="bi bi-arrow-right text-primary me-2"></i>Contact Us</a>
+                                class="bi bi-arrow-right text-primary me-2"></i>Liên Hệ</a>
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-12 pt-0 pt-lg-5 mb-5">
@@ -53,15 +53,15 @@
                         <a class="text-secondary mb-2" href="#"><i
                                 class="bi bi-arrow-right text-primary me-2"></i>Home</a>
                         <a class="text-secondary mb-2" href="#"><i
-                                class="bi bi-arrow-right text-primary me-2"></i>About Us</a>
+                                class="bi bi-arrow-right text-primary me-2"></i>Bảng Xếp Hạng</a>
                         <a class="text-secondary mb-2" href="#"><i
-                                class="bi bi-arrow-right text-primary me-2"></i>Class Schedule</a>
+                                class="bi bi-arrow-right text-primary me-2"></i>Lịch Thi Đấu</a>
                         <a class="text-secondary mb-2" href="#"><i
-                                class="bi bi-arrow-right text-primary me-2"></i>Our Trainers</a>
+                                class="bi bi-arrow-right text-primary me-2"></i>Feedback</a>
                         <a class="text-secondary mb-2" href="#"><i
-                                class="bi bi-arrow-right text-primary me-2"></i>Latest Blog</a>
+                                class="bi bi-arrow-right text-primary me-2"></i>Tin Tức</a>
                         <a class="text-secondary" href="#"><i
-                                class="bi bi-arrow-right text-primary me-2"></i>Contact Us</a>
+                                class="bi bi-arrow-right text-primary me-2"></i>Liên Hệ</a>
                     </div>
                 </div>
             </div>

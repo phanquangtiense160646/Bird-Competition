@@ -57,6 +57,7 @@ public class GetBirdInfoServlet extends HttpServlet {
         } finally {
             RequestDispatcher rd = request.getRequestDispatcher(url);
             rd.forward(request, response);
+            
         }
 
     }
