@@ -3,31 +3,31 @@ package com.birdcompetition.controller.web;
 import java.io.IOException;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
-    import javax.servlet.http.HttpServlet;
-    import javax.servlet.http.HttpServletRequest;
-    import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+/**
+ *
+ * @author Admin
+ */
+public class DispatchServlet extends HttpServlet {
 
     /**
+     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
+     * methods.
      *
-     * @author Admin
+     * @param request servlet request
+     * @param response servlet response
+     * @throws ServletException if a servlet-specific error occurs
+     * @throws IOException if an I/O error occurs
      */
-    public class DispatchServlet extends HttpServlet {
-
-        /**
-         * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-         * methods.
-         *
-         * @param request servlet request
-         * @param response servlet response
-         * @throws ServletException if a servlet-specific error occurs
-         * @throws IOException if an I/O error occurs
-         */
-        protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-                throws ServletException, IOException {
-            response.setContentType("text/html;charset=UTF-8");
-            String button = request.getParameter("btAction");
-            String url = "";
-            try {
+    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        response.setContentType("text/html;charset=UTF-8");
+        String button = request.getParameter("btAction");
+        String url = "";
+        try {
             if (button == null) {
                 url = "StartServlet";
             } else if (button.equals("PostLogin")) {
@@ -58,22 +58,40 @@ import javax.servlet.ServletException;
                 url = "CheckCodeServlet";
             } else if (button.equals("cRegister")) {
                 url = "CRegisterServlet";
-            } else if (button.equals("MatchHistory")){
+            } else if (button.equals("MatchHistory")) {
                 url = "GetContestListServlet";
             } else if (button.equals("createSchedule")) {
                 url = "AddScheduleServlet";
-            } else if (button.equals("PaymentHistory")){
+            } else if (button.equals("PaymentHistory")) {
                 url = "PaymentHistoryServlet";
-            } else if (button.equals("MatchHistory")){
+            } else if (button.equals("MatchHistory")) {
                 url = "GetContestListServlet";
-            } else if (button.equals("Membership")){
+            } else if (button.equals("Membership")) {
                 url = "MembershipServlet";
-            } else if (button.equals("VipRegis")){
+            } else if (button.equals("VipRegis")) {
                 url = "MembershipRegisterServlet";
-            } else if (button.equals("VipUpdate")){
+            } else if (button.equals("VipUpdate")) {
                 url = "MembershipUpdateServlet";
-            } else if (button.equals("Logout")){
+            } else if (button.equals("Logout")) {
                 url = "LogoutServlet";
+            } else if (button.equals("BirdList")) {
+                url = "GetBirdServlet";
+            } else if (button.equals("ManageSchedule")) {
+                url = "ManageSchedule";
+            } else if (button.equals("UserProfile")) {
+                url = "UserProfileServlet";
+            } else if (button.equals("Update Profile")) {
+                url = "UpdateProfileServlet";
+            } else if (button.equals("Add Image")) {
+                url = "AddImageServlet";
+            } else if (button.equals("BirdProfile")) {
+                url = "GetBirdInfoServlet";
+            } else if (button.equals("PostPayment")) {
+                url = "PostPayment";
+            } else if (button.equals("ShowAllBirds")) {
+                url = "GetBirdServlet";
+            } else if (button.equals("DeleteBird")) {
+                url = "DeleteBirdServlet";
             }
         } finally {
             RequestDispatcher rd = request.getRequestDispatcher(url);

@@ -37,10 +37,8 @@ public class LogoutServlet extends HttpServlet {
             if (session != null) {
                 session.invalidate();
             }
-        } catch (Exception e) {
-            // Xử lý ngoại lệ nếu cần
 
-        } finally {
+        }finally{
             response.sendRedirect("StartServlet");
         }
     }

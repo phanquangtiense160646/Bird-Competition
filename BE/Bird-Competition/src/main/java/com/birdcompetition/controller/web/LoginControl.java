@@ -1,11 +1,11 @@
-/*
+    /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
 package com.birdcompetition.controller.web;
 
-import com.birdcompetition.dal.UserDAO;
+import com.birdcompetition.dal.DAO;
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -14,11 +14,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import com.birdcompetition.model.User;
 import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.http.HttpSession;
-
+import java.util.logging.Level;
+import java.util.logging.Logger;
 /**
  *
  * @author 84366
@@ -40,11 +39,12 @@ public class LoginControl extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         String username = request.getParameter("user");
         String password = request.getParameter("pass");
-        String url = "Login.jsp";
+        String url = "Login2.jsp";
+        
 
         try {
-
-            UserDAO dao = new UserDAO();
+        if(username != null && password != null){
+           DAO dao = new DAO();
             User result = dao.checkLogin(username, password);
 
             if (result != null) {
@@ -59,7 +59,9 @@ public class LoginControl extends HttpServlet {
             } else {
                 String msg = "Incorrect Username or Password";
                 request.setAttribute("msg", msg);
-            }
+            } 
+        }
+            
         } catch (SQLException ex) {
             log("Login_SQL: " + ex.getMessage());
         } catch (ClassNotFoundException ex) {

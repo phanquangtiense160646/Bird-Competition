@@ -4,13 +4,18 @@
  */
 package com.birdcompetition.controller.web;
 
+import com.birdcompetition.bird.BirdDAO;
+import com.birdcompetition.bird.BirdDTO;
 import java.io.IOException;
-import java.io.PrintWriter;
+import java.sql.SQLException;
+import java.util.List;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -31,14 +36,31 @@ public class GetBirdInfoServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
+        String id = request.getParameter("txtBirdID");
         String url = "";
-        try  {
-            
-        }finally{
+        try {
+
+            BirdDAO dao = new BirdDAO();
+            BirdDTO result = dao.getBirdInfo(id);
+
+            if (result != null) {
+                HttpSession session = request.getSession();
+                session.setAttribute("BIRD", result);
+                url = "birdprofile.jsp";
+            } else {
+                url = "biloi.html";
+            }
+        } catch (SQLException ex) {
+            log("Login_SQL: " + ex.getMessage());
+        } catch (ClassNotFoundException ex) {
+            log("Login_ClassNotFound: " + ex.getMessage());
+        } finally {
+            RequestDispatcher rd = request.getRequestDispatcher(url);
+            rd.forward(request, response);
             
         }
-    }
 
+    }
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.

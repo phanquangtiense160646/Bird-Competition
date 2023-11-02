@@ -1,5 +1,5 @@
 
-package com.vnpay.common;
+package com.birdcompetition.vnpay;
 
 import java.io.UnsupportedEncodingException;
 import java.nio.charset.StandardCharsets;
@@ -22,7 +22,7 @@ import javax.servlet.http.HttpServletRequest;
 public class Config {
 
     public static String vnp_PayUrl = "https://sandbox.vnpayment.vn/paymentv2/vpcpay.html";
-    public static String vnp_ReturnUrl = "http://localhost:8080/Bird-Competition/vnpay_pay.jsp";
+    public static String vnp_ReturnUrl = "http://localhost:8080/Bird-Competition/vnpay_return.jsp";
     public static String vnp_TmnCode = "4A1QR9UC";
     public static String secretKey = "BMNIHDDZAGQMIOTAXUGGEXNCKWMOTDXB";
     public static String vnp_ApiUrl = "https://sandbox.vnpayment.vn/merchant_webapi/api/transaction";

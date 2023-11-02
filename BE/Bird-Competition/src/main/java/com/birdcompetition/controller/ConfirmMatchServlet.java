@@ -74,9 +74,7 @@ public class ConfirmMatchServlet extends HttpServlet {
                 }
 
             }
-//            scheduleDao.setStatus(matchId, 4);
-//            HttpSession session = request.getSession();
-//            session.setAttribute("Message", "success");
+            scheduleDao.setStatus(matchId, 4);
 
         } catch (SQLException ex) {
             Logger.getLogger(ConfirmMatchServlet.class.getName()).log(Level.SEVERE, null, ex);

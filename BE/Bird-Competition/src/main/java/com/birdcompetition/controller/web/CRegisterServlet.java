@@ -7,8 +7,6 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
 import java.util.UUID;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -36,59 +34,74 @@ public class CRegisterServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        String birdId = request.getParameter("cboBird");
+        String combine = request.getParameter("cboBird");
         String contestId = request.getParameter("hiddenContestId");
+        String pointCombine = request.getParameter("hiddenPoint");
         String url = "ScheduleServlet";
         int count = 0;
+        String mes = "";
+
         try {
-            System.out.println("birdId: " + birdId + " contestID: " + contestId);
             HttpSession session = request.getSession();
-            if (birdId != null) {
-                int id = Integer.parseInt(birdId);
-                int contestID = Integer.parseInt(contestId);
-                CRegisterDAO dao = new CRegisterDAO();
-                dao.getBirdInContest(contestID);
-                List<BirdContestDTO> birdContestList = dao.getListBirdContest();
-                /*Check existence Bird*/
-                if (birdContestList != null) {
-                    for (BirdContestDTO birdContestDTO : birdContestList) {
-                        if (birdContestDTO.getBirdId() == id) {
-                            count++;
+            if (combine != null) {
+                String[] cboBird = combine.split(",");
+                String[] point = pointCombine.split("-");
+                int minPoint = Integer.parseInt(point[0].trim());
+                int maxPoint = Integer.parseInt(point[1].trim());
+                int birdPoint = Integer.parseInt(cboBird[1]);
+                String birdId = cboBird[0];
+                /*check require point*/
+                if (birdPoint >= minPoint && birdPoint <= maxPoint) {
+                    int id = Integer.parseInt(birdId);
+                    int contestID = Integer.parseInt(contestId);
+                    CRegisterDAO dao = new CRegisterDAO();
+                    dao.getBirdInContest(contestID);
+                    List<BirdContestDTO> birdContestList = dao.getListBirdContest();
+                    /*Check existence Bird*/
+                    if (birdContestList != null) {
+                        for (BirdContestDTO birdContestDTO : birdContestList) {
+                            if (birdContestDTO.getBirdId() == id) {
+                                count++;
+                            }
                         }
                     }
-                }
-                //insert
-                if (count == 0) {
-                    int beforePoint = 0;
-                    List<BirdDTO> listBird = (List<BirdDTO>) session.getAttribute("OWN_BIRD");
-                    for (BirdDTO birdDTO : listBird) {
-                        if (birdDTO.getBirdID() == id) {
-                            beforePoint = birdDTO.getPoint();
-                            break;
+                    //insert
+                    if (count == 0) {
+                        
+                        int beforePoint = 0;
+                        List<BirdDTO> listBird = (List<BirdDTO>) session.getAttribute("OWN_BIRD");
+                        for (BirdDTO birdDTO : listBird) {
+                            if (birdDTO.getBirdID() == id) {
+                                beforePoint = birdDTO.getPoint();
+                                break;
+                            }
                         }
+                        session.setAttribute("BIRD_ID", id);
+                        session.setAttribute("BEFORE_POINT", beforePoint);
+                        session.setAttribute("CONTEST_ID", contestId);
+                        url = "VnPayServlet";
+//                        String checkInCode = UUID.randomUUID().toString().substring(0, 10);
+//                        BirdContestDTO dto = new BirdContestDTO(id, contestId,
+//                                0, beforePoint, 0, true, false, checkInCode);
+//                        dao.cRegisterInsert(dto);
+//                        mes = "success";
+                    } else {
+                        mes = "error";
                     }
-                    String checkInCode = UUID.randomUUID().toString().substring(0, 10);
-                    BirdContestDTO dto = new BirdContestDTO(id, contestId,
-                            0, beforePoint, 0, true, false, checkInCode);
-                    dao.cRegisterInsert(dto);
-                    String mes = "success";
-                    session.setAttribute("MES", mes);
                 } else {
-                    String mes = "error";
-                    session.setAttribute("MES", mes);
+                    mes = "fail";
                 }
             } else {
-                String mes = "fail";
-                session.setAttribute("MES", mes);
+                mes = "fail";
             }
-
+            request.setAttribute("MES", mes);
         } catch (SQLException ex) {
             log("CRegister_SQL: " + ex.getMessage());
-//               ex.printStackTrace();
         } catch (ClassNotFoundException ex) {
             log("CRegister_ClassNotFound: " + ex.getMessage());
         } finally {
-            response.sendRedirect(url);
+            RequestDispatcher rd = request.getRequestDispatcher(url);
+            rd.forward(request, response);
         }
     }
 

@@ -1,14 +1,12 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package com.birdcompetition.bird;
+
+import java.io.Serializable;
 
 /**
  *
  * @author Admin
  */
-public class BirdContestDTO {
+public class BirdContestDTO implements Serializable{
     private int birdId;
     private String contestId;
     private int rank;

@@ -13,7 +13,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Add Bird</title>
         <link href="FE/img/favicon.ico" rel="icon">
-
+        <link rel="stylesheet" href="FE/css/toast.css">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css"
               integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
 
@@ -58,7 +58,7 @@
     </head>
 
     <body class="">
-               <jsp:include page="JspCommon/webheader.jsp"/>
+        <jsp:include page="JspCommon/webheader.jsp"/>
         <section class="h-25 gradient-custom-2">
             <div class="container py-5 h-100">
                 <div class="row d-flex justify-content-center align-items-center h-100">
@@ -90,10 +90,10 @@
                                       style="width: 150px; z-index: 1; margin-left: 10px;"> -->
 
 
-<!--                                    <button type="button" class="btn btn-outline-dark" data-mdb-ripple-color="dark"
-                                            style="z-index: 1; margin-left: 17px;">
-                                        View Profile
-                                    </button>-->
+                                    <!--                                    <button type="button" class="btn btn-outline-dark" data-mdb-ripple-color="dark"
+                                                                                style="z-index: 1; margin-left: 17px;">
+                                                                            View Profile
+                                                                        </button>-->
 
 
                                     <input id="file" type="file" onchange="loadFile(event)" />
@@ -152,11 +152,11 @@
                                                                            value="" name="birdSpecie">
                                                                 </div>
                                                                 <!--                                                                 Form Group (BirdAge)-->
-<!--                                                                <div class="col-md-6">
-                                                                    <label class="small mb-1" for="inputBirdAge">ID</label>
-                                                                    <input class="form-control" id="inputBirdAge" type="text" placeholder="Nhập ID chim (for example: B00)"
-                                                                           value="" name="birdId">
-                                                                </div>-->
+                                                                <!--                                                                <div class="col-md-6">
+                                                                                                                                    <label class="small mb-1" for="inputBirdAge">ID</label>
+                                                                                                                                    <input class="form-control" id="inputBirdAge" type="text" placeholder="Nhập ID chim (for example: B00)"
+                                                                                                                                           value="" name="birdId">
+                                                                                                                                </div>-->
 
                                                             </div>
 
@@ -206,22 +206,30 @@
                                                             </div>
                                                         </form>
                                                     </div>
-                                                    ${msg}
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                    </section>
-
-                                    <script src="FE/js/addbird.js"></script>
-
-                                    </body>
-                                    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-                                    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
-                                    <script src="FE/lib/easing/easing.min.js"></script>
-                                    <script src="FE/lib/waypoints/waypoints.min.js"></script>
-                                    <script src="FE/lib/counterup/counterup.min.js"></script>
-                                    <script src="FE/lib/owlcarousel/owl.carousel.min.js"></script>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </section>
+    <h6 id="toastmes">${msg}</h6>
+    <div id="toast"></div>
 
 
-                                    </html>
+
+</body>
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="FE/lib/easing/easing.min.js"></script>
+<script src="FE/lib/waypoints/waypoints.min.js"></script>
+<script src="FE/lib/counterup/counterup.min.js"></script>
+<script src="FE/lib/owlcarousel/owl.carousel.min.js"></script>
+<script src="FE/js/addnewbird.js"></script>
+<script src="FE/js/addbird.js"></script>   
+
+</html>
