@@ -40,13 +40,13 @@
         </li>
         
         <li class="nav-item">
-            <a class="nav-link" href="AdminPage/Pages/AccountManagement.html">
+            <a class="nav-link" href="Pages/AccountManagement.html">
                 <i class="fas fa-fw fa-table"></i>
                 <span>Quản lý tài khoản</span></a>
         </li>
 
         <li class="nav-item">
-            <a class="nav-link" href="AdminPage/Pages/BirdManagement.html">
+            <a class="nav-link" href="Pages/BirdManagement.html">
                 <i class="fas fa-fw fa-table"></i>
                 <span>Quản lý danh sách Chim</span></a>
         </li>

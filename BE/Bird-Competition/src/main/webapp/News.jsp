@@ -47,21 +47,21 @@
             </div>
         </div>
         <!-- Hero End -->
-
-
+        
+ 
         <!-- Blog Start -->
-        <div class="col-lg-8">
+        <div class="col-lg-9">
             <div class="row g-5">
                 <!-- Khung Tong -->
                 <c:set var="newsList" value="${sessionScope.NEWS}"/>
                 <c:if test="${not empty newsList}">
-                    
+
                     <c:forEach items="${newsList}" var="o">
-                        <div class="col-md-6">
+                        <div class="col-md-5">
                             <div class="blog-item">
 
                                 <div class="position-relative overflow-hidden rounded-top">
-                                    <img class="img-fluid" src="FE/img/Hoithichimmorong01.jpg" alt="">
+                                    <img class="img-fluid" src="FE/img/${o.photo}" alt="">
                                 </div>
                                 <div class="bg-dark d-flex align-items-center rounded-bottom p-4">
                                     <a href="${o.getLinkOfNews()}">
@@ -73,129 +73,25 @@
                     </c:forEach>
                 </c:if>
                 <c:if test="${empty newsList}">
-                    <h1>CHua co</h1>
+                    <h1>Chưa có tin</h1>
                 </c:if>
-
-
-<!--                <div class="col-md-6">
-                    <div class="blog-item">
-                        <div class="position-relative overflow-hidden rounded-top">
-                            <img class="img-fluid" src="FE/img/4d13efeb00abdef587ba8-f2eaaed080ef4a81bfc4e69d6d75a200.jpg" alt="">
-                        </div>
-                        <div class="bg-dark d-flex align-items-center rounded-bottom p-4">
-                            <div class="flex-shrink-0 text-center text-secondary border-end border-secondary pe-3 me-3">
-                                <span>01</span>
-                                <h6 class="text-light text-uppercase mb-0">January</h6>
-                                <span>2045</span>
-                            </div>
-
-                            <a href="https://truyenhinhnghean.vn/van-hoa-giai-tri/202302/hap-dan-hoi-thi-chim-chao-mao-dau-hot-tai-le-hoi-den-con-669118b/">
-                                <a class="h5 text-uppercase text-light" href="https://truyenhinhnghean.vn/van-hoa-giai-tri/202302/hap-dan-hoi-thi-chim-chao-mao-dau-hot-tai-le-hoi-den-con-669118b/">
-                                    Hấp dẫn hội thi tiếng hót chim chào mào</h4></a>
-
-                            </a>
-
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="blog-item">
-                        <div class="position-relative overflow-hidden rounded-top">
-                            <img class="img-fluid" src="img/636915931.jpg" alt="">
-                        </div>
-                        <div class="bg-dark d-flex align-items-center rounded-bottom p-4">
-                            <div class="flex-shrink-0 text-center text-secondary border-end border-secondary pe-3 me-3">
-                                <span>01</span>
-                                <h6 class="text-light text-uppercase mb-0">January</h6>
-                                <span>2045</span>
-                            </div>
-                            <a class="h5 text-uppercase text-light" href="">Sed amet tempor amet sit kasd sea lorem</h4></a> 
-                            <a href="https://thanhphohaiphong.gov.vn/hoi-thi-chim-chao-mao-dau-hot-lien-tinh-lan-thu-vi-nam-2023-thu-hut-dong-dao-cac-nghe-nhan-choi-chim-canh.html">
-                                <p class="text-light text-uppercase mb-0">Hội thi chim Chào Mào đấu hót liên tỉnh lần thứ VI năm 2023 thu hút đông đảo các nghệ nhân chơi chim cảnh</p> </a>
-
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="blog-item">
-                        <div class="position-relative overflow-hidden rounded-top">
-                            <img class="img-fluid" src="img/050317 (1).jpg" alt="">
-                        </div>
-                        <div class="bg-dark d-flex align-items-center rounded-bottom p-4">
-                            <div class="flex-shrink-0 text-center text-secondary border-end border-secondary pe-3 me-3">
-                                <span>01</span>
-                                <h6 class="text-light text-uppercase mb-0">January</h6>
-                                <span>2045</span>
-                            </div>
-                            <a class="h5 text-uppercase text-light" href="">Sed amet tempor amet sit kasd sea lorem</h4></a> 
-                            <a href="https://truyenhinhnghean.vn/van-hoa-giai-tri/202302/hap-dan-hoi-thi-chim-chao-mao-dau-hot-tai-le-hoi-den-con-669118b/">
-                                <p class="text-light text-uppercase mb-0">Hấp dẫn hội thi chim chào mào đấu hót tại lễ hội đền Cờn</p>
-                            </a>
-
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="blog-item">
-                        <div class="position-relative overflow-hidden rounded-top">
-                            <img class="img-fluid" src="img/hinh-anh-chim-chao-mao.jpg" alt="">
-                        </div>
-                        <div class="bg-dark d-flex align-items-center rounded-bottom p-4">
-                            <div class="flex-shrink-0 text-center text-secondary border-end border-secondary pe-3 me-3">
-                                <span>01</span>
-                                <h6 class="text-light text-uppercase mb-0">January</h6>
-                                <span>2045</span>
-                            </div>
-                            <a class="h5 text-uppercase text-light" href="">Sed amet tempor amet sit kasd sea lorem</h4></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="blog-item">
-                        <div class="position-relative overflow-hidden rounded-top">
-                            <img class="img-fluid" src="img/hinh-anh-chim-chao-mao.jpg" alt="">
-                        </div>
-                        <div class="bg-dark d-flex align-items-center rounded-bottom p-4">
-                            <div class="flex-shrink-0 text-center text-secondary border-end border-secondary pe-3 me-3">
-                                <span>01</span>
-                                <h6 class="text-light text-uppercase mb-0">January</h6>
-                                <span>2045</span>
-                            </div>
-                            <a class="h5 text-uppercase text-light" href="">Sed amet tempor amet sit kasd sea lorem</h4></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="blog-item">
-                        <div class="position-relative overflow-hidden rounded-top">
-                            <img class="img-fluid" src="img/hinh-anh-chim-chao-mao.jpg" alt="">
-                        </div>
-                        <div class="bg-dark d-flex align-items-center rounded-bottom p-4">
-                            <div class="flex-shrink-0 text-center text-secondary border-end border-secondary pe-3 me-3">
-                                <span>01</span>
-                                <h6 class="text-light text-uppercase mb-0">January</h6>
-                                <span>2045</span>
-                            </div>
-                            <a class="h5 text-uppercase text-light" href="">Sed amet tempor amet sit kasd sea lorem</h4></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="blog-item">
-                        <div class="position-relative overflow-hidden rounded-top">
-                            <img class="img-fluid" src="img/hinh-anh-chim-chao-mao.jpg" alt="">
-                        </div>
-                        <div class="bg-dark d-flex align-items-center rounded-bottom p-4">
-                            <div class="flex-shrink-0 text-center text-secondary border-end border-secondary pe-3 me-3">
-                                <span>01</span>
-                                <h6 class="text-light text-uppercase mb-0">January</h6>
-                                <span>2045</span>
-                            </div>
-                            <a class="h5 text-uppercase text-light" href="">Sed amet tempor amet sit kasd sea lorem</h4></a>
-                        </div>
-                    </div>
-                </div> -->
-                <div class="col-12">
+                <!--                
+                                <div class="col-md-6">
+                                    <div class="blog-item">
+                                        <div class="position-relative overflow-hidden rounded-top">
+                                            <img class="img-fluid" src="img/hinh-anh-chim-chao-mao.jpg" alt="">
+                                        </div>
+                                        <div class="bg-dark d-flex align-items-center rounded-bottom p-4">
+                                            <div class="flex-shrink-0 text-center text-secondary border-end border-secondary pe-3 me-3">
+                                                <span>01</span>
+                                                <h6 class="text-light text-uppercase mb-0">January</h6>
+                                                <span>2045</span>
+                                            </div>
+                                            <a class="h5 text-uppercase text-light" href="">Sed amet tempor amet sit kasd sea lorem</h4></a>
+                                        </div>
+                                    </div>
+                                </div> -->
+<!--                <div class="col-12">
                     <nav aria-label="Page navigation">
                         <ul class="pagination pagination-lg justify-content-center m-0">
                             <li class="page-item disabled">
@@ -208,12 +104,12 @@
                             <li class="page-item"><a class="page-link" href="#">3</a></li>
                             <li class="page-item">
                                 <a class="page-link" href="#" aria-label="Next">
-                                    <span aria-hidden="true"><i class="bi bi-arrow-right"></i></span>
+                                    <span aria- hidden="true"><i class="bi bi-arrow-right"></i></span>
                                 </a>
                             </li>
                         </ul>
                     </nav>
-                </div>
+                </div>-->
             </div>
         </div>
         <!-- Blog list End -->
@@ -221,12 +117,12 @@
         <!-- Sidebar Start -->
         <div class="col-lg-4">
             <!-- Search Form Start -->
-            <div class="mb-5">
+<!--            <div class="mb-5">
                 <div class="input-group">
                     <input type="text" class="form-control p-3" placeholder="Keyword">
                     <button class="btn btn-primary px-4"><i class="bi bi-search"></i></button>
                 </div>
-            </div>
+            </div>-->
             <!-- Search Form End -->
 
             <!-- Category Start -->
@@ -243,7 +139,7 @@
             <!-- Category End -->
 
             <!-- Recent Post Start -->
-            <!-- <div class="mb-5">
+<!--             <div class="mb-5">
                 <h3 class="text-uppercase mb-4">Recent Post</h3>
                 <div class="bg-dark rounded p-4">
                     <div class="d-flex overflow-hidden mb-3">

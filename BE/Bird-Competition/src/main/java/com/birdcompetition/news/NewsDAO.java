@@ -108,7 +108,7 @@ public class NewsDAO {
                     Date date = rs.getDate("date");
                     String descrip = rs.getString("Description");
                     String newsLink = rs.getString("LinkOfNews");
-                    String photo = rs.getString("Photo");
+                    String photo = rs.getString("PhotoPath");
                     String idUser = rs.getString("IdUser");
 
                     NewsDTO dto = new NewsDTO(id, newsName, date, descrip, newsLink, photo, idUser);
@@ -134,6 +134,13 @@ public class NewsDAO {
         }
         return result;
     }
+//    public static void main(String[] args) throws SQLException, ClassNotFoundException {
+//        NewsDAO dao = new NewsDAO();
+//        List<NewsDTO> list = dao.getNews();
+//        for (NewsDTO newsDTO : list) {
+//            System.out.println(newsDTO);
+//        }
+//    }
 
 
     public NewsDTO getNewsById(int id)

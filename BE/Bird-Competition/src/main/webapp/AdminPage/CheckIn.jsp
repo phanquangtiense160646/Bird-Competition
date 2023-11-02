@@ -38,7 +38,6 @@
 
         <jsp:include page="Menu.jsp"/>
 
-
         <!-- Begin Page Content -->
         <c:set var="checkin" value="${requestScope.CHECKIN}" />
 
