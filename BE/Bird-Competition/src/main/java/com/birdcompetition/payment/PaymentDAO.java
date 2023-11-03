@@ -83,6 +83,14 @@ public class PaymentDAO {
         }
 
     }
+    public static void main(String[] args) throws SQLException, ClassNotFoundException {
+        PaymentDAO dao = new PaymentDAO();
+        List<PaymentDTO> list = dao.getPaymentList1();
+        for (PaymentDTO paymentDTO : list) {
+            System.out.println(paymentDTO);
+        }
+        
+    }
 
     public List<PaymentDTO> getPaymentList1()
             throws SQLException, ClassNotFoundException {
@@ -97,9 +105,9 @@ public class PaymentDAO {
             if (con != null) {
                 //2. Crate SQL String
                 String sql = "Select * "
-                        + "From OrderDetail ";
-                       
-
+                        + "From OrderDetail "
+                        + "Full outer join Products "
+                        + "On OrderDetail.IdProduct = Products.IdProduct ";
                 //3. Create Statement Object
                 stm = con.prepareStatement(sql);
               
@@ -121,6 +129,7 @@ public class PaymentDAO {
 //                           idBird, idBird, maxPoint, idBird, factor, 
 //                           beforePoint, afterPoint, result, location, nameOfBird, specie);
                     PaymentDTO dto = new PaymentDTO(price, orderDate, NameOfProducts);
+//                    System.out.println("DTo" + dto );
                     //5.2 add data to list
                     if (this.paymentList == null) {
                         this.paymentList = new ArrayList<>();
@@ -140,7 +149,7 @@ public class PaymentDAO {
             }
         }
         return result;
+        
     }
-    
-
+   
 }
