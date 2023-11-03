@@ -9,7 +9,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import javax.naming.NamingException;
 
 /**
  *
@@ -62,9 +61,10 @@ public class ScheduleDAO implements Serializable {
                     int contestStatus = rs.getInt("StatusOfContest");
                     int maxPar = rs.getInt("MaxParticipant");
 //                    String maxBird = rs.getString("");
-                    ScheduleDTO dto = new ScheduleDTO(id, name, date, locationId, status,
-                            factor, minPoint, maxPoint, fee, userId, location,
-                            contestStatus, maxPar, "");
+                    int currentPar = getParticipants(id);
+                    ScheduleDTO dto = new ScheduleDTO(id, name, date, locationId, status, 
+                            factor, minPoint, maxPoint, fee, userId, location, 
+                            contestStatus, currentPar, maxPar, "");
                     scheduleList.add(dto);
                 }
             }
@@ -245,7 +245,7 @@ public class ScheduleDAO implements Serializable {
     }
 
     public boolean setStatus(int id, int status)
-            throws SQLException, NamingException, ClassNotFoundException {
+            throws SQLException, ClassNotFoundException {
         Connection con = null;
         PreparedStatement stm = null;
         boolean result = false;
@@ -334,5 +334,47 @@ public class ScheduleDAO implements Serializable {
             }
         }
         return result;
+    }
+
+    public int getParticipants(int contestId)
+            throws SQLException, ClassNotFoundException {
+        Connection con = null;
+        PreparedStatement stm = null;
+        ResultSet rs = null;
+        int result = 0;
+
+        try {
+            //1.Make connection
+            con = DBHelper.getConnection();
+            //check 
+            if (con != null) {
+                //2.Creat SQL String 
+                String sql = "Select count(IdContest) as Parcipants "
+                        + "From BirdContest "
+                        + "Where IdContest = ? ";
+                //3.Create Statement Object
+                stm = con.prepareStatement(sql);
+                stm.setInt(1, contestId);
+                //4.Exercute Query
+                rs = stm.executeQuery();
+
+                //5.Process
+                if (rs.next()) {
+                    result = rs.getInt("Parcipants");
+                }
+            }
+        } finally {
+            if (rs != null) {
+                rs.close();
+            }
+            if (stm != null) {
+                stm.close();
+            }
+            if (con != null) {
+                con.close();
+            }
+        }
+        return result;
+
     }
 }

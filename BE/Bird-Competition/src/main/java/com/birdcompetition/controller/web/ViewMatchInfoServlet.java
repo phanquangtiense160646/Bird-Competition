@@ -49,10 +49,12 @@ public class ViewMatchInfoServlet extends HttpServlet {
                 ScheduleDAO scheduleDao = new ScheduleDAO();
                 ScheduleDTO dto = scheduleDao.getScheduleById(idContest);
                 request.setAttribute("SCHEDULE_DTO", dto);
-                CRegisterDAO cRDao = new CRegisterDAO();
-                cRDao.getBirdInContest(idContest);
-                List<BirdContestDTO> listBird = cRDao.getListBirdContest();
-                request.setAttribute("LIST_BIRD", listBird);
+                
+                //lay cai list ra show
+//                CRegisterDAO cRDao = new CRegisterDAO();
+//                cRDao.getBirdInContest(idContest);
+//                List<BirdContestDTO> listBird = cRDao.getListBirdContest();
+//                request.setAttribute("LIST_BIRD", listBird);
             }
 
         } catch (SQLException ex) {

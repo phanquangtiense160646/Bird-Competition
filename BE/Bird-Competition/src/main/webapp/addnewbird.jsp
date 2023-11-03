@@ -67,9 +67,9 @@
                             <div class="rounded-top text-white d-flex flex-row" style="background-color: #000000; height:200px;">
                                 <div class="ms-4 mt-5 d-flex flex-column profile-pic" style="width: 150px;">
 
-                                    <div class="edit-pic">
-                                        <form action="upload.php" method="post" enctype="multipart/form-data">
-                                            <label for="fileToUpload" class=" mt-4 mb-2">
+<!--                                    <div class="edit-pic">
+                                       
+                                            
                                                 <div class="profile-pic">
                                                     <img
                                                         src="https://images.dolenglish.vn/rs:auto:::0/w:1440/q:70/aHR0cHM6Ly9zdWlqbTljbG91b2JqLnZjZG4uY2xvdWQvUFVCTElDL01FRElBLzFiNTFmNjI4LWNmNTktNDg5MS1iZGIyLWQ3M2MwODcxOGIwMi5qcGc="
@@ -77,17 +77,16 @@
                                                     <span class="glyphicon glyphicon-camera"></span>
                                                     <span>Change Image</span>
                                                 </div>
-                                            </label>
-                                            <input type="File" name="fileToUpload" id="fileToUpload">
-                                        </form>
-                                    </div>
+                                            
+                                        
+                                    </div>-->
 
 
 
-                                    <!-- <img
-                                      src="https://scontent.fsgn2-5.fna.fbcdn.net/v/t39.30808-1/331044364_1135565673791935_1693572774874518896_n.jpg?stp=c0.0.241.240a_dst-jpg_p240x240&_nc_cat=104&ccb=1-7&_nc_sid=fe8171&_nc_ohc=TXcwpKt4QK0AX_9toxW&_nc_ht=scontent.fsgn2-5.fna&_nc_e2o=s&oh=00_AfD0Xd7axgyl8Ex23jGXKvXEQGNbysWHsZ3zx9ymtvlsdQ&oe=652637DB"
+                                    <img
+                                      src="https://images.dolenglish.vn/rs:auto:::0/w:1440/q:70/aHR0cHM6Ly9zdWlqbTljbG91b2JqLnZjZG4uY2xvdWQvUFVCTElDL01FRElBLzFiNTFmNjI4LWNmNTktNDg5MS1iZGIyLWQ3M2MwODcxOGIwMi5qcGc="
                                       alt="Generic placeholder image" class="img-fluid img-thumbnail mt-4 mb-2"
-                                      style="width: 150px; z-index: 1; margin-left: 10px;"> -->
+                                      style="width: 150px; height: 140px; z-index: 1; margin-left: 10px;"> 
 
 
                                     <!--                                    <button type="button" class="btn btn-outline-dark" data-mdb-ripple-color="dark"
@@ -96,7 +95,7 @@
                                                                         </button>-->
 
 
-                                    <input id="file" type="file" onchange="loadFile(event)" />
+                                    
                                 </div>
                                 <div class="ms-3" style="margin-top: 130px; margin-left: 30px;">
                                     <h5 style="color: #f8f9fa;"></h5>
@@ -125,8 +124,9 @@
                                     <span class="centered-text">
                                         <p class="lead fw-normal mb-1">Add New Bird</p>
                                     </span>
-
-
+                                    
+                                    
+                                    
                                     <div class="container-xl px-4 mt-4">
 
                                         <hr class="mt-0 mb-4">
@@ -136,7 +136,10 @@
                                                 <div class="card mb-4">
                                                     <div class="card-header">New Bird Details</div>
                                                     <div class="card-body">
-                                                        <form action="DispatchServlet">
+                                                        
+                                                        
+                                                        <form action="DispatchServlet" >
+                                                            
                                                             <!-- Form Group (birdname)-->
                                                             <div class="mb-3">
                                                                 <label class="small mb-1" for="inputBirdname">Tên chim</label>
@@ -206,8 +209,10 @@
                                                             </div>
                                                         </form>
                                                     </div>
+                                                                
                                                 </div>
                                             </div>
+                                                                
                                         </div>
                                     </div>
                                 </div>
@@ -216,7 +221,9 @@
                     </div>
                 </div>
             </div>
+                                                                
     </section>
+                                                                
     <h6 id="toastmes">${msg}</h6>
     <div id="toast"></div>
 

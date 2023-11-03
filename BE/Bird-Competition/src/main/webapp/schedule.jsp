@@ -113,7 +113,7 @@
                                                         số người đăng kí:
                                                         <span class="text-uppercase text-primary mb-0"
                                                               style="display: inline;">
-                                                            10/15</span>
+                                                            ${scheduleDto.currentPar}/${scheduleDto.maxPar}</span>
                                                     </p>
                                                     <input type="hidden" name="hiddenContestId"
                                                            value="${scheduleDto.id}" />
@@ -161,7 +161,7 @@
                                                     số người đăng kí:
                                                     <span class="text-uppercase text-primary mb-0"
                                                           style="display: inline;">
-                                                        10/15</span>
+                                                        ${scheduleDto.currentPar}/${scheduleDto.maxPar}</span>
                                                 </p>
                                                 </br><button class="btn btn-primary btn-viewInfo px-5"
                                                              style="margin-top: 10px;">Xem thông tin</button>
@@ -206,7 +206,7 @@
                                                     số người đăng kí:
                                                     <span class="text-uppercase text-primary mb-0"
                                                           style="display: inline;">
-                                                        10/15</span>
+                                                        ${scheduleDto.currentPar}/${scheduleDto.maxPar}</span>
                                                 </p>
                                                 <input class="idHide" type="hidden"
                                                        value="${scheduleDto.id}" /></br>
@@ -245,7 +245,7 @@
                                                     số người đăng kí:
                                                     <span class="text-uppercase text-danger mb-0"
                                                           style="display: inline;">
-                                                        10/15</span>
+                                                        ${scheduleDto.currentPar}/${scheduleDto.maxPar}</span>
                                                 </p>
                                                 <button class="btn btn-danger px-5"
                                                         style="margin-top: 10px;">Hết hạn đăng kí</button>
