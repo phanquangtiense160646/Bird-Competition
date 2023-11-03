@@ -92,8 +92,19 @@ public class DispatchServlet extends HttpServlet {
                 url = "GetBirdServlet";
             } else if (button.equals("DeleteBird")) {
                 url = "DeleteBirdServlet";
+<<<<<<< HEAD
+            }else if(button.equals("Blog")){
+                url = "NewServlet";
+            }else if (button.equals("Rule")){
+                url = "RuleServlet";
+            }else if (button.equals("FeedBack")){
+                
+            }else if(button.equals("Dashboard")){
+                url = "PaymentAdminServlet";
+=======
             } else if(button.equals("Add Image")){
                 url = "UploadPhotoServlet";
+>>>>>>> 52df2d42fb404bb1e13dc67686d0d5469b9f0ba6
             }
         } finally {
             RequestDispatcher rd = request.getRequestDispatcher(url);

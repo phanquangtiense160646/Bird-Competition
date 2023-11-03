@@ -41,7 +41,7 @@ public class ScheduleServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        String url = "schedule.jsp";
+        String url = "News.jsp";
         try {
             HttpSession session = request.getSession();
             /*lich thi dau*/

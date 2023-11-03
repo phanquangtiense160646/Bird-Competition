@@ -1,14 +1,16 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
- */
+
 package com.birdcompetition.controller.web;
 
+
+
+import com.birdcompetition.bird.BirdDAO;
+import com.birdcompetition.bird.BirdDTO;
 import com.birdcompetition.model.User;
-import com.birdcompetition.payment.PaymentDAO;
-import com.birdcompetition.payment.PaymentDTO;
+import com.birdcompetition.news.NewsDAO;
+import com.birdcompetition.news.NewsDTO;
+
 import java.io.IOException;
-import java.io.PrintWriter;
+
 import java.sql.SQLException;
 import java.util.List;
 import java.util.logging.Level;
@@ -23,10 +25,10 @@ import javax.servlet.http.HttpSession;
 
 /**
  *
- * @author admin
+ * @author MSI
  */
-@WebServlet(name = "PaymentHistoryServlet", urlPatterns = {"/PaymentHistoryServlet"})
-public class PaymentHistoryServlet extends HttpServlet {
+@WebServlet(name = "NewServlet", urlPatterns = {"/NewServlet"})
+public class NewsServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -38,28 +40,27 @@ public class PaymentHistoryServlet extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+            throws ServletException, IOException, SQLException, ClassNotFoundException{
         response.setContentType("text/html;charset=UTF-8");
-        String url = "paymenthistory.jsp";
-        try {
-            HttpSession session = request.getSession();
-            List<PaymentDTO> paymentList;
+       String url = null;
+      try {
+         
+            
+            List<NewsDTO> newsList;
 
-            PaymentDAO dao = new PaymentDAO();
-            User user = (User) session.getAttribute("USER");
-            dao.getPaymentList(user.getUserName());
-            paymentList = dao.getPaymentList1();
-            System.out.println("lise size: " + paymentList.size());
-            session.setAttribute("OWN_PAYMENT", paymentList);
-            int totalPrice = 0;
-            for (PaymentDTO paymentDTO : paymentList) {
-                totalPrice = totalPrice + paymentDTO.getPrice();
-                System.out.println("total: " + totalPrice);
-                request.setAttribute("TOTAL", totalPrice);
+            NewsDAO dao = new NewsDAO();
+            List<NewsDTO> result = dao.getNews();
+            
+            if(result != null){
+                HttpSession session = request.getSession();
+                
+                session.setAttribute("NEWS", result);
+                url = "News.jsp";
             }
 
         } catch (SQLException ex) {
-            log("ScheduleServlet_SQL: " + ex.getMessage());
+//            log("ScheduleServlet_SQL: " + ex.getMessage());
+            ex.printStackTrace();
         } catch (ClassNotFoundException ex) {
             log("ScheduleServlet_ClassNotFound: " + ex.getMessage());
         } finally {
@@ -82,7 +83,13 @@ public class PaymentHistoryServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        try {
+            processRequest(request, response);
+        } catch (SQLException ex) {
+            Logger.getLogger(NewsServlet.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(NewsServlet.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
@@ -96,7 +103,13 @@ public class PaymentHistoryServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        try {
+            processRequest(request, response);
+        } catch (SQLException ex) {
+            Logger.getLogger(NewsServlet.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(NewsServlet.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**

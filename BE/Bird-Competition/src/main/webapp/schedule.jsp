@@ -403,7 +403,6 @@
 
 
         </script>
-
         <div id="toast">
         </div>
         <!-- end schedule script and toast -->
