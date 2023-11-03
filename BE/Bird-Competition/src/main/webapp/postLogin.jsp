@@ -50,7 +50,7 @@
             <div id="header-carousel" class="carousel slide" data-bs-ride="carousel">
                 <div class="carousel-inner">
                     <div class="carousel-item active">
-                        <img class="w-100" src="FE/img/hinh-anh-chim-chao-mao.jpg" alt="Image">
+                        <img class="w-100" src="FE/img/defaultpic.jpg" alt="Image">
                         <div
                             class="carousel-caption d-flex flex-column align-items-center justify-content-center">
                             <div class="p-3" style="max-width: 900px;">
