@@ -42,7 +42,7 @@ public class ReturnServlet extends HttpServlet {
             String trueType = type.substring(0, 4);
 
             if (trueType.equals("DKTD")) {
-                request.setAttribute("MES", "fail");
+                request.setAttribute("MES", "fail1");
                 url = "ScheduleServlet";
             } else if (trueType.equals("DKMB") || trueType.equals("UDMB")) {
                 request.setAttribute("Message", "fail");
