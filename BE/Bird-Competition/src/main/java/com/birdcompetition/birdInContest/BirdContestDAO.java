@@ -48,7 +48,7 @@ public class BirdContestDAO {
                         + "Where BirdContest.IdContest = ? "
                         + "and BirdContest.IdBird = Bird.IdBird "
                         + "and Bird.IdMember = Member.IdMember "
-                        + "and BirdContest.CheckIn = 'true' ";
+                        + "and BirdContest.CheckIn = 'true' "
                 //3.Create Statement Object
                 stm = con.prepareStatement(sql);
                 stm.setInt(1, matchId);
