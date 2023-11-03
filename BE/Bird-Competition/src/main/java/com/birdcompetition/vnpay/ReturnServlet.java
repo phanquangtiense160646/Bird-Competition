@@ -44,8 +44,11 @@ public class ReturnServlet extends HttpServlet {
             if (trueType.equals("DKTD")) {
                 request.setAttribute("MES", "fail");
                 url = "ScheduleServlet";
-            } else if (trueType.equals("DKMB") || trueType.equals("UDMB")) {
-                request.setAttribute("Message", "fail");
+            } else if (trueType.equals("DKMB")) {
+                request.setAttribute("Message", "regisFail");
+                url = "MembershipServlet";
+            } else if (trueType.equals("UDMB")) {
+                 request.setAttribute("Message", "updateFail");
                 url = "MembershipServlet";
             }
         } finally {

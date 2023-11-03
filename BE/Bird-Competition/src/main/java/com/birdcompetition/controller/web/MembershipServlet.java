@@ -48,6 +48,9 @@ public class MembershipServlet extends HttpServlet {
 
             MembershipDAO dao = new MembershipDAO();
             if (user.getVipType() != null) {
+                MembershipDTO membership = dao.getMember(memberId);
+                request.setAttribute("EXPIRED", membership.getDayExpired());
+
                 if (!dao.checkSession(memberId)) {
                     user.setVipType(null);
                     //hamf set trong DB
@@ -55,17 +58,16 @@ public class MembershipServlet extends HttpServlet {
                     session.setAttribute("USER", user);
                     request.setAttribute("Message", "overdate");
                 }
-                
-                MembershipDTO membership = dao.getMember(memberId);
-                request.setAttribute("EXPIRED", membership.getDayExpired());
-                
-                int vip2 = dao.updatePack(memberId, "2");
-                request.setAttribute("VIP2", vip2);
-                int vip3 = dao.updatePack(memberId, "3");
-                request.setAttribute("VIP3", vip3);
 
-        
             }
+            int vip2 = 0;
+            int vip3 = 0;
+            if (user.getVipType() != null) {
+                vip2 = dao.updatePack(memberId, "2");
+                vip3 = dao.updatePack(memberId, "3");
+            }
+            request.setAttribute("VIP2", vip2);
+            request.setAttribute("VIP3", vip3);
 
         } catch (SQLException ex) {
             Logger.getLogger(MembershipServlet.class.getName()).log(Level.SEVERE, null, ex);

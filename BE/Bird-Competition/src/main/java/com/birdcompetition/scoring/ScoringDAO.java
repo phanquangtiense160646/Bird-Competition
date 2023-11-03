@@ -5,6 +5,9 @@
 package com.birdcompetition.scoring;
 
 import com.birdcompetition.birdInContest.BirdContestDTO;
+import com.birdcompetition.schedule.ScheduleDAO;
+import com.birdcompetition.schedule.ScheduleDTO;
+import java.sql.SQLException;
 import java.util.Collections;
 import java.util.List;
 
@@ -14,9 +17,10 @@ import java.util.List;
  */
 public class ScoringDAO {
 
-    public List<BirdContestDTO> Scoring(List<BirdContestDTO> list) {
+    public List<BirdContestDTO> Scoring(List<BirdContestDTO> list, double factor) {
         ScoringDTO scoring = new ScoringDTO(list);
         double central = scoring.getCentral();
+
         int sumInTop = 0;
         int sumOutTop = 0;
         for (BirdContestDTO bird : list) {
@@ -28,8 +32,9 @@ public class ScoringDAO {
                 bird.setStdPoint(stdPoint);
                 bird.setEloPoint(eloPoint);
 
-                sumInTop = sumInTop + eloPoint + stdPoint;
-                bird.setPostPoint(bird.getPrePoint() + stdPoint + eloPoint);
+                sumInTop = sumInTop + (int) (eloPoint * factor) + stdPoint;
+                int afterpoint = bird.getPrePoint() + stdPoint + (int) (eloPoint * factor);
+                bird.setPostPoint(afterpoint);
 
             } else if (order > central) { // Out top
                 int stdPoint = calStdpointLose(bird, scoring);
@@ -37,8 +42,8 @@ public class ScoringDAO {
                 bird.setStdPoint(stdPoint);
                 bird.setEloPoint(eloPoint);
 
-                sumOutTop = sumOutTop + eloPoint + stdPoint;
-                int afterpoint = bird.getPrePoint() + stdPoint + eloPoint;
+                sumOutTop = sumOutTop + (int) (eloPoint * factor) + stdPoint;
+                int afterpoint = bird.getPrePoint() + stdPoint + (int) (eloPoint * factor);
                 if (afterpoint <= 0) {
                     afterpoint = 0;
                 }
@@ -52,12 +57,15 @@ public class ScoringDAO {
             for (BirdContestDTO bird : list) {
                 if (bird.getOrder() == 1) {
                     bird.setPostPoint(bird.getPostPoint() + gap);
+                    bird.setEloPoint(bird.getEloPoint() + gap);
                 }
             }
         } else if (gap <= 0) {
             for (BirdContestDTO bird : list) {
                 if (bird.getOrder() == scoring.getMatchSize()) {
                     bird.setPostPoint(bird.getPostPoint() + gap);
+                    bird.setEloPoint(bird.getEloPoint() + gap);
+
                 }
             }
         }

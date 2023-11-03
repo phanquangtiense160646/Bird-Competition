@@ -252,7 +252,7 @@
             <div>
                 <div class="col">
                     <div class="col-10">
-                        <button class="view-more_bt">Xem thêm</button>
+                        <!--<button class="view-more_bt">Xem thêm</button>-->
                     </div>
                 </div>
             </div>
@@ -321,7 +321,8 @@
 
 
             <!-- Footer Start -->
-          
+                  <jsp:include page="JspCommon/webfooter.jsp"/>
+
             <!-- Footer End -->
 
 
