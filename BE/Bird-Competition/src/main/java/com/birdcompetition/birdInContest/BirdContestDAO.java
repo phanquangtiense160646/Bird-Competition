@@ -90,6 +90,64 @@ public class BirdContestDAO {
             }
         }
     }
+    public void getBirdList(int matchId)
+            throws SQLException, ClassNotFoundException {
+        Connection con = null;
+        PreparedStatement stm = null;
+        ResultSet rs = null;
+
+        try {
+            //1.Make connection
+            con = DBHelper.getConnection();
+            //check 
+            if (con != null) {
+                //2.Creat SQL String 
+                String sql = "Select BirdContest.*, Bird.Point , Bird.NameOfBird, Member.FullName, Member.IdMember "
+                        + "From BirdContest, Bird, Member "
+                        + "Where BirdContest.IdContest = ? "
+                        + "and BirdContest.IdBird = Bird.IdBird "
+                        + "and Bird.IdMember = Member.IdMember "
+                        + "and BirdContest.CheckIn = 'true'";
+                //3.Create Statement Object
+                stm = con.prepareStatement(sql);
+                stm.setInt(1, matchId);
+
+                //4.Exercute Query
+                rs = stm.executeQuery();
+                //5.Process
+                while (rs.next()) {
+                    String birdId = rs.getString("IdBird");
+                    String matchID = rs.getString("IdContest");
+                    int order = rs.getInt("Rank");
+                    int prePoint = rs.getInt("BeforePoint");
+                    int postPoint = rs.getInt("AfterPoint");
+                    Boolean checkIn = rs.getBoolean("CheckIn");
+                    String checkInCode = rs.getString("CheckInCode");
+                    String birdName = rs.getString("NameOfBird");
+                    String trainerName = rs.getString("FullName");
+                    String memberId = rs.getString("IdMember");
+
+                    BirdContestDTO dto = new BirdContestDTO(birdId, matchID, order, prePoint, postPoint, true, checkInCode, birdName, trainerName, memberId);
+//                    System.out.println(dto.toString());
+
+                    if (this.joinerList == null) {
+                        this.joinerList = new ArrayList<>();
+                    }
+                    joinerList.add(dto);
+                }
+            }
+        } finally {
+            if (rs != null) {
+                rs.close();
+            }
+            if (stm != null) {
+                stm.close();
+            }
+            if (con != null) {
+                con.close();
+            }
+        }
+    }
 
     public boolean setAfterMatch(int id, int order, int prePoint, int postPoint, int matchId)
             throws SQLException, NamingException, ClassNotFoundException {

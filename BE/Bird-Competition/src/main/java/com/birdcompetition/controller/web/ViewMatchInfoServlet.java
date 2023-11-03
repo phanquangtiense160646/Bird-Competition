@@ -4,16 +4,14 @@
  */
 package com.birdcompetition.controller.web;
 
-import com.birdcompetition.bird.BirdContestDTO;
-import com.birdcompetition.registerCompetition.CRegisterDAO;
+
+import com.birdcompetition.birdInContest.BirdContestDAO;
+import com.birdcompetition.birdInContest.BirdContestDTO;
 import com.birdcompetition.schedule.ScheduleDAO;
 import com.birdcompetition.schedule.ScheduleDTO;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.sql.SQLException;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -51,10 +49,10 @@ public class ViewMatchInfoServlet extends HttpServlet {
                 request.setAttribute("SCHEDULE_DTO", dto);
                 
                 //lay cai list ra show
-//                CRegisterDAO cRDao = new CRegisterDAO();
-//                cRDao.getBirdInContest(idContest);
-//                List<BirdContestDTO> listBird = cRDao.getListBirdContest();
-//                request.setAttribute("LIST_BIRD", listBird);
+                BirdContestDAO birdContestDao = new BirdContestDAO();
+                birdContestDao.getBirdList(idContest);
+                List<BirdContestDTO> listBird = birdContestDao.getList();
+                request.setAttribute("LIST_BIRD", listBird);
             }
 
         } catch (SQLException ex) {

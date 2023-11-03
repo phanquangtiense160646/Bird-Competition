@@ -204,7 +204,7 @@
                                                     <p class="schedule-value text-uppercase text-light mb-3">
                                                         ${scheduleDto.fee}</p>
                                                     </c:if>
-                                                    <c:if test="${user.vipType == 3}">
+                                                    <c:if test="${user.vipType == 1}">
                                                     <p class="schedule-value text-uppercase text-light mb-0">Điểm
                                                         yêu cầu: <span style="color: gold;" class="text-decoration-line-through">${scheduleDto.minPoint} - ${scheduleDto.maxPoint}</span></p>
                                                     <p class="schedule-value text-uppercase text-light mb-0">
@@ -224,7 +224,7 @@
                                                     <p class="schedule-value text-uppercase text-light mb-3">
                                                         ${scheduleDto.getSilverFee()}</p>
                                                     </c:if>
-                                                    <c:if test="${user.vipType == 1}">
+                                                    <c:if test="${user.vipType == 3}">
                                                     <p class="schedule-value text-uppercase text-light mb-0">Điểm
                                                         yêu cầu: <span style="color: gold;" class="text-decoration-line-through">${scheduleDto.minPoint} - ${scheduleDto.maxPoint}</span>
                                                         </br><span>Không giới hạn</span>
