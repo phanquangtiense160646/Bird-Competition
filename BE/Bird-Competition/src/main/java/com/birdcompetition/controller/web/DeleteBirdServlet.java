@@ -8,7 +8,6 @@ import com.birdcompetition.bird.BirdDAO;
 import com.birdcompetition.bird.BirdDTO;
 import com.birdcompetition.model.User;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.sql.SQLException;
 import java.util.List;
 import java.util.logging.Level;
@@ -40,7 +39,7 @@ public class DeleteBirdServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        String id = request.getParameter("txtBirdId");
+        String id = request.getParameter("txtBirdID");
         String url = "biloi.html";
         try {
             //1. call method
@@ -48,6 +47,7 @@ public class DeleteBirdServlet extends HttpServlet {
             BirdDAO dao = new BirdDAO();
             //1.2 call DAO's method
             boolean result = dao.deleteBird(id);
+            
             //2. process Result
             if (result) {
                 //2.1 call the search function again using URL Rewriting
