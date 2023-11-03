@@ -24,7 +24,7 @@ public class ContestDAO {
         return contestList;
     }
     
-    public void getContestList(String userName)
+    public void getContestList(String memberId)
         throws SQLException, ClassNotFoundException{
         Connection con = null;
         PreparedStatement stm = null;
@@ -37,7 +37,8 @@ public class ContestDAO {
             con = DBHelper.getConnection();
             if(con != null){
                 //2. Crate SQL String
-                String sql = "Select * "
+                String sql = "Select Contest.IdContest, NameOfContest, Date, Location.LocationId, Contest.Status, Factor, MinPoint, MaxPoint, " +
+                             "ParticipatingFee, Bird.IdBird, BeforePoint, AfterPoint, Location.Location, NameOfBird, Species, CheckInCode, Contest.StatusOfContest "
                         + "From Contest "
                         + "Full outer join BirdContest "
                         + "On Contest.IdContest = BirdContest.IdContest "
@@ -45,12 +46,12 @@ public class ContestDAO {
                         + "On BirdContest.IdBird = Bird.IdBird "
                         + "Full outer join Location "
                         + "On Contest.LocationId = Location.LocationId "
-                        + "Where UserName = ?"
+                        + "Where Bird.IdMember = ? and StatusOfContest is not null "
                         + "ORDER BY Date ASC";
                         
                 //3. Create Statement Object
                 stm = con.prepareStatement(sql);
-                stm.setString(1, userName);
+                stm.setString(1, memberId);
                 
                 //4. Execute query
                 rs = stm.executeQuery();
@@ -74,12 +75,13 @@ public class ContestDAO {
                    String nameOfBird = rs.getString("NameOfBird");
                    String specie = rs.getString("Species");
                    String checkInCode = rs.getString("CheckInCode");
+                   int statusOfContest = rs.getInt("StatusOfContest");
                    //5.1.2 add data to list
 //                   ContestDTO dto = new ContestDTO(idContest, nameOfContest, date, 
 //                           locationId, status, factor, minPoint, maxPoint, participatingFee, 
 //                           idBird, idBird, maxPoint, idBird, factor, 
 //                           beforePoint, afterPoint, result, location, nameOfBird, specie);
-                   ContestDTO dto = new ContestDTO(idContest, nameOfContest, date, locationId, status, factor, minPoint, maxPoint, participatingFee, idBird, beforePoint, afterPoint, location, nameOfBird, specie, checkInCode );
+                   ContestDTO dto = new ContestDTO(idContest, nameOfContest, date, locationId, status, factor, minPoint, maxPoint, participatingFee, idBird, beforePoint, afterPoint, location, nameOfBird, specie, checkInCode, statusOfContest );
                    //5.2 add data to list
                    if (this.contestList == null){
                     this.contestList = new ArrayList<>();   

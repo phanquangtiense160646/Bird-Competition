@@ -19,7 +19,7 @@ import javax.naming.NamingException;
  *
  * @author 84366
  */
-public class DAO extends DBHelper{
+public class DAO extends DBHelper {
 
     public User checkLogin(String username, String password)
             throws SQLException, ClassNotFoundException {
@@ -35,11 +35,13 @@ public class DAO extends DBHelper{
             //check 
             if (con != null) {
                 //2.Creat SQL String 
-            String query = "select * from [dbo].[User] "
-                    + "FULL OUTER JOIN Member "
-                    + "ON [dbo].[User].UserName = Member.IdMember "
-                    + "where UserName = ? " 
-                    + " and UserPassword = ?";
+                String query = "select * from [dbo].[User] a "
+                        + "FULL OUTER JOIN Member b "
+                        + "ON a.UserName = b.IdMember "
+                        + "FULL OUTER JOIN MemberShip c "
+                        + "ON b.IdMember = c.IdMember "
+                        + "WHERE UserName = ? "
+                        + "AND UserPassword = ? ";
                 //3.Create Statement Object
                 stm = con.prepareStatement(query);
                 stm.setString(1, username);
@@ -57,8 +59,10 @@ public class DAO extends DBHelper{
                     String country = rs.getString("Country");
                     int phone = rs.getInt("Phone");
                     String gender = rs.getString("Gender");
-                    
-                    result = new User(username, password, gmail, role, idmember, fullname, dateofbirth, country, phone, gender);
+                    String vipType = rs.getString("TypeOfMemberShip");
+
+                    result = new User(username, password,
+                            gmail, role, idmember, fullname, dateofbirth, country, phone, gender, vipType);
                 }//end username and password is verified 
             }
         } finally {
@@ -74,6 +78,7 @@ public class DAO extends DBHelper{
         }
         return result;
     }
+
     
         public boolean UpdateProfile(String username, String fullname, 
                 String password, String email, String phone, String idmember)
@@ -136,18 +141,18 @@ public class DAO extends DBHelper{
             //check 
             if (con != null) {
                 //2.Creat SQL String 
-            String query = "select * from [dbo].[User] " +
-                    "where UserName = ? " ;
+                String query = "select * from [dbo].[User] "
+                        + "where UserName = ? ";
                 //3.Create Statement Object
                 stm = con.prepareStatement(query);
                 stm.setString(1, username);
-                
+
                 //4.Exercute Query
                 rs = stm.executeQuery();
                 //5.Process
                 if (rs.next()) {
-                    
-                    result = new User(username, username, username, 0, query, username, query, query, 0, query);
+
+                    result = new User(username, username, username, 0, query, username, query, query, 0, query, null);
                 }//end username and password is verified 
             }
         } finally {
@@ -163,7 +168,7 @@ public class DAO extends DBHelper{
         }
         return result;
     }
-    
+
 //    public void signup(String user, String pass) {
 //    Connection con = null;
 //    PreparedStatement stm = null;
@@ -192,25 +197,23 @@ public class DAO extends DBHelper{
 //        }
 //    }
 //}
-    
     public void registerUser(User user) {
         Connection con = null;
         PreparedStatement stm = null;
 
         try {
             con = DBHelper.getConnection();
-            String query = "insert into [dbo].[User]\n" +
-                        "values(?,?,?,0,0)";
+            String query = "insert into [dbo].[User]\n"
+                    + "values(?,?,?,0,0)";
             stm = con.prepareStatement(query);
-            
+
             stm.setString(1, user.getUserName());
             stm.setString(2, user.getUserPassword()); // Đây là một giá trị tùy bạn muốn đặt cho UserGmail.
             stm.setString(3, user.getUserGmail());
             stm.setInt(4, user.getUserRole());
-            
+
             stm.executeUpdate();
 
-            
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
@@ -228,9 +231,9 @@ public class DAO extends DBHelper{
 
     }
 
-    public boolean createAccount(User user)throws SQLException, 
+    public boolean createAccount(User user) throws SQLException,
             NamingException,
-            ClassNotFoundException{
+            ClassNotFoundException {
         Connection con = null;
         PreparedStatement stm = null;
         boolean result = false;
@@ -260,7 +263,7 @@ public class DAO extends DBHelper{
                 //end username and password is verified 
             }
 
-            } finally {
+        } finally {
 
             if (stm != null) {
                 stm.close();
@@ -271,6 +274,7 @@ public class DAO extends DBHelper{
         }
         return result;
     }
+
     
     public User GetUserInfo(String username)
             throws SQLException, ClassNotFoundException {
@@ -306,7 +310,7 @@ public class DAO extends DBHelper{
                     int phone = rs.getInt("Phone");
                     String gender = rs.getString("Gender");
                     
-                    result = new User(username, password, gmail, role, idmember, fullname, dateofbirth, country, phone, gender);
+                    result = new User(username, password, gmail, role, idmember, fullname, dateofbirth, country, phone, gender, null);
                 }//end username and password is verified 
             }
         } finally {

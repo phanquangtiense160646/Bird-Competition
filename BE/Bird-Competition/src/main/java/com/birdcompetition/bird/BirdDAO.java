@@ -57,9 +57,10 @@ public class BirdDAO implements Serializable {
                     int lose = rs.getInt("Lose");
                     int tie = rs.getInt("Tie");
                     int matchNumber = rs.getInt("MatchNumber");
+                    String memberId = rs.getString("IdMember");
                     String trainer = rs.getString("FullName");
 
-                    BirdDTO dto = new BirdDTO(name, speices, point, trainer, "photo", win, lose, tie, matchNumber, 0);
+                    BirdDTO dto = new BirdDTO(name, speices, point, trainer, memberId, "photo", win, lose, tie, matchNumber, 0);
                     if (this.birdList == null) {
                         this.birdList = new ArrayList<>();
                     }
@@ -119,7 +120,6 @@ public class BirdDAO implements Serializable {
                 //4. Execute query
                 rs = stm.executeQuery();
                 //5. Process
-                this.birdList = new ArrayList<>();
                 while (rs.next()) {
                     int birdId = rs.getInt("IdBird");
                     String name = rs.getString("NameOfBird");
@@ -135,6 +135,9 @@ public class BirdDAO implements Serializable {
 
                     BirdDTO dto = new BirdDTO(birdId, name, speices, point, true, ownerId, ownerId, win, lose, tie, matchNumber);
 //                    System.out.println(dto.toString());
+                    if (this.birdList == null) {
+                        this.birdList = new ArrayList<>();
+                    }
                     this.birdList.add(dto);
                 }//end map DB to DTO
                 sort(birdList);
@@ -153,6 +156,63 @@ public class BirdDAO implements Serializable {
 
     }
 
+    public BirdDTO getBirdById(int id)
+            throws SQLException, ClassNotFoundException {
+        Connection con = null;
+        PreparedStatement stm = null;
+        ResultSet rs = null;
+        BirdDTO dto = new BirdDTO();
+        System.out.println("get bird");
+
+        try {
+            //1. Make connection
+            con = DBHelper.getConnection();
+            if (con != null) {
+                //2. Crate SQL String
+                String sql = "Select * From Bird Where IdBird = ? ";
+
+                //3. Create Statement Object
+                stm = con.prepareStatement(sql);
+                stm.setInt(1, id);
+
+                //4. Execute query
+                rs = stm.executeQuery();
+                //5. Process
+                if (rs.next()) {
+                    int birdId = rs.getInt("IdBird");
+                    String name = rs.getString("NameOfBird");
+                    String speices = rs.getString("Species");
+                    int point = rs.getInt("Point");
+                    String ownerId = rs.getString("IdMember");
+                    int win = rs.getInt("Win");
+                    int lose = rs.getInt("Lose");
+                    int tie = rs.getInt("Tie");
+                    int matchNumber = rs.getInt("MatchNumber");
+                    //5.1.2 add data to list
+
+                    dto = new BirdDTO(birdId, name, speices, point, true, ownerId, ownerId, win, lose, tie, matchNumber);
+
+                } else {
+                    dto = null;
+                }
+
+            }//end connection í available
+        } finally {
+            if (rs != null) {
+                rs.close();
+            }
+            if (stm != null) {
+                stm.close();
+            }
+            if (con != null) {
+                con.close();
+            }
+        }
+        System.out.println("get bird ok");
+
+        return dto;
+    }
+
     void sort(List list) {
         Collections.sort(list, (BirdDTO b1, BirdDTO b2) -> -b1.compareTo(b2));
     }
@@ -169,7 +229,7 @@ public class BirdDAO implements Serializable {
                 String sql = "INSERT INTO Bird (NameOfBird, Species, Point, Status, IdMember, Win, Lose, Tie, MatchNumber) VALUES (?, ?, 1000, 'true', ?, 0, 0, 0, 0)";
                 //3. Create Statement Object
                 stm = con.prepareStatement(sql);
-                
+
                 stm.setString(1, bird.getBirdName());
                 stm.setString(2, bird.getSpecies());
                 stm.setString(3, bird.getMemberID());
@@ -192,12 +252,24 @@ public class BirdDAO implements Serializable {
         }
         return result;
     }
-    public boolean setPoint(int id, int point)
+
+    public boolean setBirdAfterMatch(int id, int point, int status)
             throws SQLException, NamingException, ClassNotFoundException {
         Connection con = null;
         PreparedStatement stm = null;
         boolean result = false;
-
+        BirdDTO bird = getBirdById(id);
+        int win = bird.getWin();
+        int lose = bird.getLose();
+        int tie = bird.getTie();
+        if (status == 1) {
+            win = bird.getWin() + 1;
+        } else if (status == -1) {
+            lose = bird.getLose() + 1;
+        } else {
+            tie = bird.getTie() + 1;
+        }
+        int totalMatch = win + lose + tie;
         BirdContestDTO dto = new BirdContestDTO();
         try {
             //1.Make connection
@@ -205,13 +277,21 @@ public class BirdDAO implements Serializable {
             if (con != null) {
                 //2. Create SQL String 
                 String sql = "UPDATE Bird "
-                        + "SET Point = ? "
+                        + "SET Point = ?, "
+                        + "Win = ?, "
+                        + "Lose = ?, "
+                        + "Tie = ?, "
+                        + "MatchNumber = ? "
                         + "WHERE IdBird = ? ";
                 //3. Create Statement Object
                 stm = con.prepareStatement(sql);
                 stm.setInt(1, point);
-                stm.setInt(2, id);
-          
+                stm.setInt(2, win);
+                stm.setInt(3, lose);
+                stm.setInt(4, tie);
+                stm.setInt(5, totalMatch);
+                stm.setInt(6, id);
+
                 //4. Execute Query
                 int exercute = stm.executeUpdate();
                 //5. Process
@@ -227,7 +307,9 @@ public class BirdDAO implements Serializable {
             if (con != null) {
                 con.close();
             }
+        
         }
+        System.out.println("ok");
         return result;
     }
 

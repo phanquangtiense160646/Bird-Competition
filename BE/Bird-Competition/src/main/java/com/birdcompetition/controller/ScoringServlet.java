@@ -6,6 +6,7 @@ package com.birdcompetition.controller;
 
 import com.birdcompetition.birdInContest.BirdContestDAO;
 import com.birdcompetition.birdInContest.BirdContestDTO;
+import com.birdcompetition.scoring.ScoringDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
@@ -64,11 +65,12 @@ public class ScoringServlet extends HttpServlet {
                     bird.setOrder(order);
                 }
 
-                dao.Scoring(matchId, joiner);
-                List<BirdContestDTO> result = dao.getList();
-//                msg = "success";
+                ScoringDAO ScoringDao = new ScoringDAO();
+                List<BirdContestDTO> result = ScoringDao.Scoring(joiner);
 
                 request.setAttribute("SCORING", result);
+                msg = "success";
+
             }
             request.setAttribute("Message", msg);
 

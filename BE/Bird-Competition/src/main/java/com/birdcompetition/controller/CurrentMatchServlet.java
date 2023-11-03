@@ -24,7 +24,7 @@ import javax.servlet.http.HttpSession;
  * @author Danh
  */
 @WebServlet(name = "HappeningMatchServlet", urlPatterns = {"/HappeningMatchServlet"})
-public class HappeningMatchServlet extends HttpServlet {
+public class CurrentMatchServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -48,11 +48,19 @@ public class HappeningMatchServlet extends HttpServlet {
             List<ScheduleDTO> result = dao.getList();
 //            System.out.println("size: " + result.size() );
             session.setAttribute("HAPPENING", result);
+            
+            String action = (String) request.getAttribute("action");
+            System.out.println("action: " + action);
+            if (action != null) {
+                request.setAttribute("Message", "success");
+
+            }
+            
 
         } catch (SQLException ex) {
-            Logger.getLogger(HappeningMatchServlet.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(CurrentMatchServlet.class.getName()).log(Level.SEVERE, null, ex);
         } catch (ClassNotFoundException ex) {
-            Logger.getLogger(HappeningMatchServlet.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(CurrentMatchServlet.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
             RequestDispatcher rd = request.getRequestDispatcher(url);
             rd.forward(request, response);

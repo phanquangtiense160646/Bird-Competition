@@ -17,13 +17,16 @@ public class BirdContestDTO implements Serializable, Comparable<BirdContestDTO>{
    private String checkInCode;
    private String birdName;
    private String trainer;
+   private String memberID;
+   private int stdPoint;;
+   private int eloPoint;;
 
     public BirdContestDTO() {
     }
 
 
 
-    public BirdContestDTO(String birdID, String matchID, int order, int prePoint, int postPoint, boolean checkIn, String checkInCode, String birdName, String trainer) {
+    public BirdContestDTO(String birdID, String matchID, int order, int prePoint, int postPoint, boolean checkIn, String checkInCode, String birdName, String trainer, String memberID) {
         this.birdID = birdID;
         this.matchID = matchID;
         this.order = order;
@@ -33,6 +36,33 @@ public class BirdContestDTO implements Serializable, Comparable<BirdContestDTO>{
         this.checkInCode = checkInCode;
         this.birdName = birdName;
         this.trainer = trainer;
+        this.memberID = memberID;
+        this.stdPoint = 0;
+        this.eloPoint = 0;
+    }
+
+    public String getMemberID() {
+        return memberID;
+    }
+
+    public void setMemberID(String memberID) {
+        this.memberID = memberID;
+    }
+
+    public int getStdPoint() {
+        return stdPoint;
+    }
+
+    public void setStdPoint(int stdPoint) {
+        this.stdPoint = stdPoint;
+    }
+
+    public int getEloPoint() {
+        return eloPoint;
+    }
+
+    public void setEloPoint(int eloPoint) {
+        this.eloPoint = eloPoint;
     }
 
     

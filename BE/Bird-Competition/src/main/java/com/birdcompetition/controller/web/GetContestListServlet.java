@@ -5,6 +5,7 @@
 package com.birdcompetition.controller.web;
 
 
+import com.birdcompetition.bird.BirdDTO;
 import com.birdcompetition.contest.ContestDAO;
 import com.birdcompetition.contest.ContestDTO;
 import com.birdcompetition.model.User;

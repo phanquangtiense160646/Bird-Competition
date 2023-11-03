@@ -1,27 +1,30 @@
-package com.birdcompetition.controller;
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
+ */
+package com.birdcompetition.controller.web;
 
-import com.birdcompetition.bird.BirdDAO;
-import com.birdcompetition.bird.BirdDTO;
+import com.birdcompetition.membership.MembershipDAO;
+import com.birdcompetition.model.User;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
-import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.naming.NamingException;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
  * @author Danh
  */
-@WebServlet(name = "SearchLeaderBoardServlet", urlPatterns = {"/SearchLeaderBoardServlet"})
-public class SearchLeaderBoardServlet extends HttpServlet {
+@WebServlet(name = "MembershipRegisterServlet", urlPatterns = {"/MembershipRegisterServlet"})
+public class MembershipRegisterServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -35,35 +38,29 @@ public class SearchLeaderBoardServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-//        String url = "LeaderBoardServlet";
-        String url = "leaderboard.jsp";
-
-        String searchValue = request.getParameter("txtSearchValue");
+        String type = request.getParameter("txtType");
+        HttpSession session = request.getSession();
         try {
-                BirdDAO dao = new BirdDAO();
-//                dao.searchBird(searchValue);
-//                List<BirdDTO> searchList = dao.getBirdList();
-//                request.setAttribute("SEARCH_RS", searchList);
-//                dao.resetBirdList();
-                dao.resetBirdList();
-                dao.displayLeaderboard();
-                List<BirdDTO> result = dao.getBirdList();
-                request.setAttribute("LEADER_BOARD", result);
-                if (!searchValue.trim().isEmpty()) {
-                    List<BirdDTO> searchList = dao.search(searchValue);
-                    request.setAttribute("SEARCH_RS", searchList);
+            MembershipDAO dao = new MembershipDAO();
+            User user = (User) session.getAttribute("USER");
+            String memberId = user.getIdMember();
+
+            if (user.getVipType() == null) {
+                if (dao.VipRegister(memberId, type)) {
+                    String msg = "success";
+                    request.setAttribute("Message", msg);
+
+                    user.setVipType(type);
+                    session.setAttribute("USER", user);
                 }
-                
-                
+            }
 
         } catch (SQLException ex) {
-            Logger.getLogger(SearchLeaderBoardServlet.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(MembershipRegisterServlet.class.getName()).log(Level.SEVERE, null, ex);
         } catch (ClassNotFoundException ex) {
-            Logger.getLogger(SearchLeaderBoardServlet.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (NamingException ex) {
-            Logger.getLogger(SearchLeaderBoardServlet.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(MembershipRegisterServlet.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
-            RequestDispatcher rd = request.getRequestDispatcher(url);
+            RequestDispatcher rd = request.getRequestDispatcher("MembershipServlet");
             rd.forward(request, response);
         }
     }
