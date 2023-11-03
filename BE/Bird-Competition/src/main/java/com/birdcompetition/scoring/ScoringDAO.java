@@ -5,9 +5,6 @@
 package com.birdcompetition.scoring;
 
 import com.birdcompetition.birdInContest.BirdContestDTO;
-import com.birdcompetition.schedule.ScheduleDAO;
-import com.birdcompetition.schedule.ScheduleDTO;
-import java.sql.SQLException;
 import java.util.Collections;
 import java.util.List;
 

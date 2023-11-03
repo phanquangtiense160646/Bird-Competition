@@ -65,9 +65,11 @@
                             <div class="rounded-top text-white d-flex flex-row" style="background-color: #000000; height:200px;">
                                 <div class="ms-4 mt-5 d-flex flex-column" style="width: 150px;">
                                     <img
-                                        src="FE/img/manager.png"
+                                        src="FE/img/${sessionScope.BIRD.photoPath}"
                                         alt="Generic placeholder image" class="img-fluid img-thumbnail mt-4 mb-2"
                                         style="width: 150px; z-index: 1; margin-left: 10px;"> 
+                                    
+                                    
 
 
 
@@ -82,7 +84,7 @@
 
 
                             <div class="p-4 text-black" style="background-color: #f8f9fa;">
-
+                                
 
                                 <!--                                 <form action="" style="z-index: 1; padding-top: 20px; padding-left:17px">
                                                                                 <button class="btn btn-outline-dark" data-mdb-ripple-color="dark"
@@ -129,7 +131,20 @@
                                                 <div class="card mb-4">
                                                     <div class="card-header"></div>
                                                     <div class="card-body">
+                                                        <form action="UploadPhotoServlet" method="POST" enctype="multipart/form-data">
+                                                             <div style="mb-5">
+                                                            <input type="hidden" name="birdID" value="${sessionScope.BIRD.birdID}" />
+                                                             <input type="file" name="image" class="form-control">
+                                                             <input class="btn border mt-3 mb-3" type="submit" value="Cập Nhật">
+                                                             <input type="hidden" name="txtBirdID" value="${sessionScope.BIRD.birdID}" />
+                                                             </div>
+                                                        </form>
                                                         <form action="DispatchServlet">
+                                                            
+                                                            
+                                                       
+                                                           
+                                
                                                             <!-- Form Group (birdname)-->
                                                             <div class="mb-3">
                                                                 <label class="small mb-1" for="inputBirdname">Tên chim</label>
@@ -162,9 +177,9 @@
                                                                            value="${sessionScope.BIRD.birdName}" readonly>
                                                                 </div>
                                                                 <div class="col-md-6">
-                                                                    <label class="small mb-1" for="inputGender">Tình trạng sức khỏe</label>
-                                                                    <input class="form-control" id="inputGender" type="text"
-                                                                           value="${sessionScope.BIRD.birdName}" readonly>  
+                                                                    <label class="small mb-1" for="inputGender">ID Chim</label>
+                                                                    <input class="form-control" type="text"
+                                                                    value="${sessionScope.BIRD.birdID}" name="txtBirdID" readonly>  
                                                                 </div>
                                                             </div>
 
@@ -183,7 +198,7 @@
                                                                        placeholder="Thông tin khác" value="${sessionScope.BIRD.birdName}" readonly="">
                                                             </div>
 
-                                                            <input type="hidden" name="txtBirdId" value="${sessionScope.BIRD.birdID}" />
+                                                            <input type="hidden" value="${sessionScope.BIRD.birdID}" />
                                                             <button class="btn btn-outline-dark" data-mdb-ripple-color="dark"
                                                                     style="z-index: 0; " name="btAction" value="DeleteBird">
                                                                     Xóa Chim

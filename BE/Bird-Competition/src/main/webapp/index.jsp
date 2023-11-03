@@ -87,7 +87,6 @@
                         </div>
                     </div>
                     <nav class="navbar navbar-expand-lg bg-dark navbar-dark p-3 p-lg-0 px-lg-5">
-        
                         <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
                             <span class="navbar-toggler-icon"></span>
                         </button>
@@ -109,7 +108,6 @@
                                 <a href="contact.html" class="nav-item nav-link">Liên Hệ</a>
                             </div>
                             <a href="login" class="btn btn-primary py-md-3 px-md-5 d-none d-lg-block">Login/Signup</a>
-        
                         </div>
                     </nav>
                 </div>
@@ -122,7 +120,7 @@
             <div id="header-carousel" class="carousel slide" data-bs-ride="carousel">
                 <div class="carousel-inner">
                     <div class="carousel-item active">
-                        <img class="w-100" src="FE/img/hinh-anh-chim-chao-mao.jpg" alt="Image">
+                        <img class="w-100" src="FE/img/defaultpic.jpg" alt="Image">
                         <div
                             class="carousel-caption d-flex flex-column align-items-center justify-content-center">
                             <div class="p-3" style="max-width: 900px;">
@@ -232,7 +230,7 @@
                         <div class="col-lg-4 col-md-6">
                             <div class="team-item position-relative">
                                 <div class="position-relative overflow-hidden rounded">
-                                    <img class="img-fluid w-100" src="FE/img/daddyHuy.jpg" alt="">
+                                    <img class="img-fluid w-100" src="${leaderboard[1].photoPath}" alt="">
                                     <div class="team-overlay">
                                         <div class="align-items-center justify-content-start">
                                             <h6 class="text-uppercase text-light mb-3"> Điểm:
@@ -255,7 +253,7 @@
                         <div class="col-lg-4 col-md-6">
                             <div class="team-item position-relative">
                                 <div class="position-relative overflow-hidden rounded">
-                                    <img class="img-fluid w-100" src="FE/img/thuanDam.jpg" alt="">
+                                    <img class="img-fluid w-100" src="${leaderboard[0].photoPath}" alt="">
                                     <div class="team-overlay">
                                         <div class="align-items-center justify-content-start">
                                             <h6 class="text-uppercase text-light mb-3"> Điểm:
@@ -277,7 +275,7 @@
                         <div class="col-lg-4 col-md-6">
                             <div class="team-item position-relative">
                                 <div class="position-relative overflow-hidden rounded">
-                                    <img class="img-fluid w-100" src="FE/img/eDanh.jpg" alt="">
+                                    <img class="img-fluid w-100" src="${leaderboard[2].photoPath}" alt="">
                                     <div class="team-overlay">
                                         <div class="align-items-center justify-content-start">
                                             <h6 class="text-uppercase text-light mb-3"> Điểm:
@@ -467,7 +465,7 @@
         <!-- Membership Start -->
 
         <!-- News Start -->
-        <div id="news" class="container-fluid p-5">
+        <!-- <div id="news" class="container-fluid p-5">
             <div class="mb-5 text-center">
                 <h5 class="text-primary text-uppercase">Tin tức</h5>
                 <h1 class="display-3 text-uppercase mb-0">Tin tức mới nhất</h1>
@@ -540,7 +538,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> -->
         <!-- News End -->
 
         <!-- Feedback start -->

@@ -75,7 +75,7 @@
                                                         
                                                     </form>
                                                 </div>
-                                                <img src="https://tmso.baotanglamdong.com.vn/wp-content/uploads/2021/10/CHAO-MAO-DIT-DO-3.jpg">
+                                                <img src="FE/img/${p.photoPath}">
                                                 <p class="birdname" style="font-weight: bold; text-align:center;">${p.birdName}</p>
                                                 
                                             </div>
@@ -90,7 +90,7 @@
                                                             
                                                         </form>
                                                     </div>
-                                                    <img src="https://tmso.baotanglamdong.com.vn/wp-content/uploads/2021/10/CHAO-MAO-DIT-DO-3.jpg">
+                                                    <img src="FE/img/${birdList[nextIndex].photoPath}">
                                                     <p class="birdname" style="font-weight: bold; text-align:center;">${birdList[nextIndex].birdName}
                                                     </p>
                                                 </div>

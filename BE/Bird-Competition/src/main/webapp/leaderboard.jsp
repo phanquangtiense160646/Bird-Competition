@@ -84,7 +84,7 @@
                                 <tbody>
                                     <!-- Loop -->
                                     <c:forEach items="${searchList}" var="dto" varStatus="counter">
-                                        <tr class="list__row" data-image="FE/img/thuanphuong.jpg" data-win= ${dto.win} data-lose= ${dto.lose} data-tie= ${dto.tie} data-match= "${dto.matchNumber}">
+                                        <tr class="list__row" data-image="${dto.photoPath}" data-win= ${dto.win} data-lose= ${dto.lose} data-tie= ${dto.tie} data-match= "${dto.matchNumber}">
                                             <td class="list__cell" style="background: #CED4DA; color:#868E96;">
                                                 <span class="list__value"> ${dto.rank}</span>
                                                 <!--<small class="list__label">Hạng</small>-->
@@ -138,7 +138,7 @@
                     <div class="col-lg-4 col-md-6">
                         <div class="team-item position-relative">
                             <div class="position-relative overflow-hidden rounded">
-                                <img class="img-fluid w-100" src="FE/img/daddyHuy.jpg" alt="">
+                                <img class="img-fluid w-100" src="${leaderboard[1].photoPath}" alt="">
                                 <div class="team-overlay">
                                     <div class="align-items-center justify-content-start">
                                         <h6 class="text-uppercase text-light mb-3"> Điểm: ${leaderboard[1].point}</h6>
@@ -158,7 +158,7 @@
                     <div class="col-lg-4 col-md-6">
                         <div class="team-item position-relative">
                             <div class="position-relative overflow-hidden rounded">
-                                <img class="img-fluid w-100" src="FE/img/thuanDam.jpg" alt="">
+                                <img class="img-fluid w-100" src="${leaderboard[0].photoPath}" alt="">
                                 <div class="team-overlay">
                                     <div class="align-items-center justify-content-start">
                                         <h6 class="text-uppercase text-light mb-3"> Điểm: ${leaderboard[0].point}</h6>
@@ -177,7 +177,7 @@
                     <div class="col-lg-4 col-md-6">
                         <div class="team-item position-relative">
                             <div class="position-relative overflow-hidden rounded">
-                                <img class="img-fluid w-100" src="FE/img/eDanh.jpg" alt="">
+                                <img class="img-fluid w-100" src="${leaderboard[2].photoPath}" alt="">
                                 <div class="team-overlay">
                                     <div class="align-items-center justify-content-start">
                                         <h6 class="text-uppercase text-light mb-3"> Điểm: ${leaderboard[2].point}</h6>
@@ -221,7 +221,7 @@
 
                             <c:forEach var="i" begin="0" end="${size -1 }" step="1">
 
-                                <tr class="list__row" data-image="FE/img/thuanphuong.jpg" data-win= ${leaderboard.get(i).win} data-lose= ${leaderboard.get(i).lose} data-tie= ${leaderboard.get(i).tie} data-match= "${leaderboard.get(i).matchNumber}">
+                                <tr class="list__row" data-image="${leaderboard.get(i).photoPath}" data-win= ${leaderboard.get(i).win} data-lose= ${leaderboard.get(i).lose} data-tie= ${leaderboard.get(i).tie} data-match= "${leaderboard.get(i).matchNumber}">
                                     <td class="list__cell">
                                         <span class="list__value"> ${leaderboard.get(i).rank}</span>
                                         <!--<small class="list__label">Hạng</small>-->
@@ -289,7 +289,7 @@
                                 <tbody>
                                     <!-- Loop -->
                                     <c:forEach items="${persionalLb}" var="dto" varStatus="counter">
-                                        <tr class="list__row" data-image="FE/img/thuanphuong.jpg" data-win= ${dto.win} data-lose= ${dto.lose} data-tie= ${dto.tie} data-match= "${dto.matchNumber}">
+                                        <tr class="list__row" data-image="${dto.photoPath}" data-win= ${dto.win} data-lose= ${dto.lose} data-tie= ${dto.tie} data-match= "${dto.matchNumber}">
                                             <td class="list__cell" >
                                                 <span class="list__value"> ${dto.rank}</span>
                                                 <!--<small class="list__label">Hạng</small>-->

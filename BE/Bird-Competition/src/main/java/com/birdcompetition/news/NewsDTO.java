@@ -34,12 +34,15 @@ public class NewsDTO {
 
     
 
-    public NewsDTO(String NameOfNews, String photo, String Description, String LinkOfNews) {
+   
+
+    public NewsDTO(String NameOfNews, Date date, String LinkOfNews, String Photo) {
         this.NameOfNews = NameOfNews;
-        this.Photo = photo;
-        this.Description = Description;
+        this.date = date;
         this.LinkOfNews = LinkOfNews;
+        this.Photo = Photo;
     }
+    
 
     public String getNameOfNews() {
         return NameOfNews;
@@ -96,6 +99,7 @@ public class NewsDTO {
     public void setIdNews(int IdNews) {
         this.IdNews = IdNews;
     }
+    
 
     @Override
     public String toString() {

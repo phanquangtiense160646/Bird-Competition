@@ -27,7 +27,7 @@
 
         <!-- Custom styles for this template -->
         <link href="AdminPage/css/sb-admin-2.min.css" rel="stylesheet">
-        <link href="AdminPage/css/matchResult.css" rel="stylesheet">
+        <!-- <link href="AdminPage/css/matchResult.css" rel="stylesheet"> -->
 
         <!-- Custom styles for this page -->
         <link href="AdminPage/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">

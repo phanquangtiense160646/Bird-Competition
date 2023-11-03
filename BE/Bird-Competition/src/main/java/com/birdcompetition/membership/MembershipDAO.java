@@ -1,7 +1,6 @@
 package com.birdcompetition.membership;
 
 import com.birdcompetition.birdInContest.BirdContestDTO;
-import com.birdcompetition.schedule.ScheduleDTO;
 import com.birdcompetition.util.DBHelper;
 import java.sql.Connection;
 import java.sql.Date;
@@ -9,7 +8,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDate;
-import java.time.temporal.ChronoUnit;
 import java.util.Calendar;
 import java.util.logging.Level;
 import java.util.logging.Logger;

@@ -92,7 +92,7 @@
                                                         số người đăng kí:
                                                         <span class="text-uppercase text-primary mb-0"
                                                               style="display: inline;">
-                                                            10/15</span>
+                                                             ${scheduleDto.currentPar}/${scheduleDto.maxPar}</span>
                                                     </p>
                                                 </div>
                                                      <form action="CheckCodeServlet" method="post">

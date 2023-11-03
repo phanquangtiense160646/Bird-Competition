@@ -44,24 +44,30 @@ public class PaymentHistoryServlet extends HttpServlet {
         try {
             HttpSession session = request.getSession();
             List<PaymentDTO> paymentList;
-            
-                PaymentDAO dao = new PaymentDAO();
-                User user = (User) session.getAttribute("USER");
-                dao.getPaymentList(user.getUserName());
-                paymentList = dao.getPaymentList();
-                session.setAttribute("OWN_PAYMENT", paymentList);
-            
+
+            PaymentDAO dao = new PaymentDAO();
+            User user = (User) session.getAttribute("USER");
+            dao.getPaymentList(user.getUserName());
+            paymentList = dao.getPaymentList1();
+            System.out.println("lise size: " + paymentList.size());
+            session.setAttribute("OWN_PAYMENT", paymentList);
+            int totalPrice = 0;
+            for (PaymentDTO paymentDTO : paymentList) {
+                totalPrice = totalPrice + paymentDTO.getPrice();
+                System.out.println("total: " + totalPrice);
+                request.setAttribute("TOTAL", totalPrice);
+            }
+
         } catch (SQLException ex) {
             log("ScheduleServlet_SQL: " + ex.getMessage());
         } catch (ClassNotFoundException ex) {
             log("ScheduleServlet_ClassNotFound: " + ex.getMessage());
-        }finally {
+        } finally {
 //            response.sendRedirect(url);
-                RequestDispatcher rd = request.getRequestDispatcher(url);
-                rd.forward(request, response);
+            RequestDispatcher rd = request.getRequestDispatcher(url);
+            rd.forward(request, response);
         }
-        
-        
+
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

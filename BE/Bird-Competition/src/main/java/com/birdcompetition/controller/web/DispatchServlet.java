@@ -48,8 +48,6 @@ public class DispatchServlet extends HttpServlet {
                 url = "ConfirmMatchServlet";
             } else if (button.equals("MatchResult")) {
                 url = "UpdateResultServlet";
-            } else if (button.equals("Preparing")) {
-                url = "PreparingMatchServlet";
             } else if (button.equals("schedule")) {
                 url = "ScheduleServlet";
             } else if (button.equals("AddBird")) {
@@ -66,9 +64,7 @@ public class DispatchServlet extends HttpServlet {
                 url = "AddScheduleServlet";
             } else if (button.equals("PaymentHistory")) {
                 url = "PaymentHistoryServlet";
-            } else if (button.equals("MatchHistory")) {
-                url = "GetContestListServlet";
-            } else if (button.equals("Membership")) {
+            }  else if (button.equals("Membership")) {
                 url = "MembershipServlet";
             } else if (button.equals("VipRegis")) {
                 url = "MembershipRegisterServlet";
@@ -84,8 +80,6 @@ public class DispatchServlet extends HttpServlet {
                 url = "UserProfileServlet";
             } else if (button.equals("Update Profile")) {
                 url = "UpdateProfileServlet";
-            } else if (button.equals("Add Image")) {
-                url = "AddImageServlet";
             } else if (button.equals("BirdProfile")) {
                 url = "GetBirdInfoServlet";
             } else if (button.equals("PostPayment")) {
@@ -94,6 +88,17 @@ public class DispatchServlet extends HttpServlet {
                 url = "GetBirdServlet";
             } else if (button.equals("DeleteBird")) {
                 url = "DeleteBirdServlet";
+            } else if (button.equals("Blog")) {
+                url = "NewServlet";
+            } else if (button.equals("Rule")) {
+                url = "RuleServlet";
+            } else if (button.equals("FeedBack")) {
+                
+            } else if (button.equals("Dashboard")) {
+                url = "PaymentAdminServlet";
+            } else if (button.equals("Add Image")) {
+                url = "UploadPhotoServlet";
+
             }
         } finally {
             RequestDispatcher rd = request.getRequestDispatcher(url);

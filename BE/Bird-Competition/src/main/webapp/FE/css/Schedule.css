@@ -58,7 +58,7 @@ html {
 }
 
 .schedule-detail, .shedule-form {
-    background-color: f4f5f8;
+    background-color: #f4f5f8;
 }
 
 .update-result, .update-form {
@@ -88,5 +88,8 @@ html {
 }
 
 .hideBId {
+    display: none;
+}
+.hidden_price {
     display: none;
 }

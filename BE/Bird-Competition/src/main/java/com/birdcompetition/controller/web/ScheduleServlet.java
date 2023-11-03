@@ -8,9 +8,12 @@ import com.birdcompetition.schedule.ScheduleDTO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
+import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.naming.NamingException;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -45,11 +48,28 @@ public class ScheduleServlet extends HttpServlet {
             ScheduleDAO scheduleDao = new ScheduleDAO();
             scheduleDao.getSchedule();
             List<ScheduleDTO> listSchedule = scheduleDao.getList();
+            for (ScheduleDTO scheduleDTO : listSchedule) {
+                if (scheduleDTO.getStatusOfContest() == 1) {
+                    LocalDate date1 = LocalDate.now();
+                    LocalDate date2 = scheduleDTO.getDate().toLocalDate();
+                    long daysBetween = ChronoUnit.DAYS.between(date1, date2);
+                    int contestId = scheduleDTO.getId();
+                    if (scheduleDTO.getCurrentPar() < (scheduleDTO.getMaxPar() / 2) && daysBetween <= 3) {
+                        scheduleDao.setStatus(contestId, 4);
+                    } else if (daysBetween <= 3 || scheduleDTO.getCurrentPar() == scheduleDTO.getMaxPar()) {
+                        scheduleDao.setStatus(contestId, 2);
+                    }
+
+                }
+            }
+            //get again
+            scheduleDao.getSchedule();
+            listSchedule = scheduleDao.getList();
             session.setAttribute("SCHEDULE", listSchedule);
             /*danh sach chim dk*/
             BirdDAO dao = new BirdDAO();
             User user = (User) session.getAttribute("USER");
-            dao.getBirdByMemberId(user.getIdMember());
+            dao.getBirdByMemberId1(user.getIdMember());
             List<BirdDTO> birdList = dao.getBirdList();
             session.setAttribute("OWN_BIRD", birdList);
 

@@ -2,22 +2,29 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
  */
-package com.birdcompetition.controller.web;
+package com.birdcompetition.controller;
 
+import com.birdcompetition.model.User;
+import com.birdcompetition.payment.PaymentDAO;
+import com.birdcompetition.payment.PaymentDTO;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.SQLException;
+import java.util.List;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
- * @author admin
+ * @author MSI
  */
-@WebServlet(name = "AddImageServlet", urlPatterns = {"/AddImageServlet"})
-public class AddImageServlet extends HttpServlet {
+@WebServlet(name = "PaymentAdminServlet", urlPatterns = {"/PaymentAdminServlet"})
+public class PaymentAdminServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -31,21 +38,37 @@ public class AddImageServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet AddImageServlet</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet AddImageServlet at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
+        String url = "AdminPage/index.jsp";
+        try {
+            HttpSession session = request.getSession();
+            List<PaymentDTO> paymentList;
+
+            PaymentDAO dao = new PaymentDAO();
+            User user = (User) session.getAttribute("USER");
+            dao.getPaymentList(user.getUserName());
+            paymentList = dao.getPaymentList1();
+            System.out.println("lise size: " + paymentList.size());
+            session.setAttribute("OWN_PAYMENT", paymentList);
+            int totalPrice = 0;
+            for (PaymentDTO paymentDTO : paymentList) {
+                totalPrice = totalPrice + paymentDTO.getPrice();
+                System.out.println("total: " + totalPrice);
+                request.setAttribute("TOTAL", totalPrice);
+            }
+
+        } catch (SQLException ex) {
+            log("ScheduleServlet_SQL: " + ex.getMessage());
+        } catch (ClassNotFoundException ex) {
+            log("ScheduleServlet_ClassNotFound: " + ex.getMessage());
+        } finally {
+//            response.sendRedirect(url);
+            RequestDispatcher rd = request.getRequestDispatcher(url);
+            rd.forward(request, response);
         }
+
     }
 
-    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
+// <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
      *
@@ -72,8 +95,6 @@ public class AddImageServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
-        
-        System.out.println("In do post method");
     }
 
     /**
