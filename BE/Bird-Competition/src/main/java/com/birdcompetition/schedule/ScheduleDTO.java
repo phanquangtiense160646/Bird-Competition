@@ -181,6 +181,15 @@ public class ScheduleDTO implements Serializable {
     public int getFee() {
         return fee;
     }
+    public String getBronzeFee() {
+        return String.format("%.0f", fee - fee * 0.1);
+    }
+    public String getSilverFee() {
+        return String.format("%.0f", fee - fee * 0.15);
+    }
+    public String getGoldFee() {
+        return String.format("%.0f", fee - fee * 0.2);
+    }
 
     public void setFee(int fee) {
         this.fee = fee;
