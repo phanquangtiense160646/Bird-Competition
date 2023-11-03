@@ -91,5 +91,11 @@ public class PaymentDTO implements Serializable{
         this.NameOfProducts = NameOfProducts;
     }
 
+    @Override
+    public String toString() {
+        return "PaymentDTO{" + "idOrder=" + idOrder + ", idMember=" + idMember + ", idProduct=" + idProduct + ", price=" + price + ", orderDate=" + orderDate + ", NameOfProducts=" + NameOfProducts + '}';
+    }
+    
+
    
 }

@@ -19,20 +19,20 @@
         <!-- Icon Font Stylesheet -->
         <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.0/css/all.min.css" rel="stylesheet">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
-        <link href="lib/flaticon/font/flaticon.css" rel="stylesheet">
+        <link href="FE/lib/flaticon/font/flaticon.css" rel="stylesheet">
 
         <!-- Libraries Stylesheet -->
-        <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+        <link href="FE/lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
 
         <!-- Customized Bootstrap Stylesheet -->
-        <link href="css/bootstrap.min.css" rel="stylesheet">
+        <link href="FE/css/bootstrap.min.css" rel="stylesheet">
 
         <!-- Template Stylesheet -->
         <link href="css/style.css" rel="stylesheet">
     </head>
     <body>
          <!-- Header Start -->
-        <jsp:include page="JspCommon/webheader.jsp"/>
+                <jsp:include page="JspCommon/webheader.jsp"/>
         <!-- Header End -->
 
 
@@ -164,8 +164,7 @@
             <!-- Footer End -->
 
 
-            <!-- Back to Top -->
-            <a href="#" class="btn btn-dark py-3 fs-4 back-to-top"><i class="bi bi-arrow-up"></i></a>
+           
 
 
             <!-- JavaScript Libraries -->

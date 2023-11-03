@@ -47,8 +47,8 @@
             </div>
         </div>
         <!-- Hero End -->
-        
- 
+
+
         <!-- Blog Start -->
         <div class="col-lg-9">
             <div class="row g-5">
@@ -75,6 +75,8 @@
                 <c:if test="${empty newsList}">
                     <h1>Chưa có tin</h1>
                 </c:if>
+                
+
                 <!--                
                                 <div class="col-md-6">
                                     <div class="blog-item">
@@ -91,25 +93,25 @@
                                         </div>
                                     </div>
                                 </div> -->
-<!--                <div class="col-12">
-                    <nav aria-label="Page navigation">
-                        <ul class="pagination pagination-lg justify-content-center m-0">
-                            <li class="page-item disabled">
-                                <a class="page-link" href="#" aria-label="Previous">
-                                    <span aria-hidden="true"><i class="bi bi-arrow-left"></i></span>
-                                </a>
-                            </li>
-                            <li class="page-item active"><a class="page-link" href="#">1</a></li>
-                            <li class="page-item"><a class="page-link" href="#">2</a></li>
-                            <li class="page-item"><a class="page-link" href="#">3</a></li>
-                            <li class="page-item">
-                                <a class="page-link" href="#" aria-label="Next">
-                                    <span aria- hidden="true"><i class="bi bi-arrow-right"></i></span>
-                                </a>
-                            </li>
-                        </ul>
-                    </nav>
-                </div>-->
+                <!--                <div class="col-12">
+                                    <nav aria-label="Page navigation">
+                                        <ul class="pagination pagination-lg justify-content-center m-0">
+                                            <li class="page-item disabled">
+                                                <a class="page-link" href="#" aria-label="Previous">
+                                                    <span aria-hidden="true"><i class="bi bi-arrow-left"></i></span>
+                                                </a>
+                                            </li>
+                                            <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                                            <li class="page-item"><a class="page-link" href="#">2</a></li>
+                                            <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                            <li class="page-item">
+                                                <a class="page-link" href="#" aria-label="Next">
+                                                    <span aria- hidden="true"><i class="bi bi-arrow-right"></i></span>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </nav>
+                                </div>-->
             </div>
         </div>
         <!-- Blog list End -->
@@ -117,12 +119,12 @@
         <!-- Sidebar Start -->
         <div class="col-lg-4">
             <!-- Search Form Start -->
-<!--            <div class="mb-5">
-                <div class="input-group">
-                    <input type="text" class="form-control p-3" placeholder="Keyword">
-                    <button class="btn btn-primary px-4"><i class="bi bi-search"></i></button>
-                </div>
-            </div>-->
+            <!--            <div class="mb-5">
+                            <div class="input-group">
+                                <input type="text" class="form-control p-3" placeholder="Keyword">
+                                <button class="btn btn-primary px-4"><i class="bi bi-search"></i></button>
+                            </div>
+                        </div>-->
             <!-- Search Form End -->
 
             <!-- Category Start -->
@@ -139,36 +141,36 @@
             <!-- Category End -->
 
             <!-- Recent Post Start -->
-<!--             <div class="mb-5">
-                <h3 class="text-uppercase mb-4">Recent Post</h3>
-                <div class="bg-dark rounded p-4">
-                    <div class="d-flex overflow-hidden mb-3">
-                        <img class="img-fluid flex-shrink-0 rounded-start" src="img/blog-1.jpg" style="width: 75px;" alt="">
-                        <a href="" class="d-flex align-items-center bg-light rounded-end h5 text-uppercase p-3 mb-0">Sed amet tempor amet sit kasd sea lorem
-                        </a>
-                    </div>
-                    <div class="d-flex overflow-hidden mb-3">
-                        <img class="img-fluid flex-shrink-0 rounded-start" src="img/blog-2.jpg" style="width: 75px;" alt="">
-                        <a href="" class="d-flex align-items-center bg-light rounded-end h5 text-uppercase p-3 mb-0">Sed amet tempor amet sit kasd sea lorem
-                        </a>
-                    </div>
-                    <div class="d-flex overflow-hidden mb-3">
-                        <img class="img-fluid flex-shrink-0 rounded-start" src="img/blog-3.jpg" style="width: 75px;" alt="">
-                        <a href="" class="d-flex align-items-center bg-light rounded-end h5 text-uppercase p-3 mb-0">Sed amet tempor amet sit kasd sea lorem
-                        </a>
-                    </div>
-                    <div class="d-flex overflow-hidden mb-3">
-                        <img class="img-fluid flex-shrink-0 rounded-start" src="img/blog-1.jpg" style="width: 75px;" alt="">
-                        <a href="" class="d-flex align-items-center bg-light rounded-end h5 text-uppercase p-3 mb-0">Sed amet tempor amet sit kasd sea lorem
-                        </a>
-                    </div>
-                    <div class="d-flex overflow-hidden">
-                        <img class="img-fluid flex-shrink-0 rounded-start" src="img/blog-2.jpg" style="width: 75px;" alt="">
-                        <a href="" class="d-flex align-items-center bg-light rounded-end h5 text-uppercase p-3 mb-0">Sed amet tempor amet sit kasd sea lorem
-                        </a>
-                    </div>
-                </div>
-            </div> -->
+            <!--             <div class="mb-5">
+                            <h3 class="text-uppercase mb-4">Recent Post</h3>
+                            <div class="bg-dark rounded p-4">
+                                <div class="d-flex overflow-hidden mb-3">
+                                    <img class="img-fluid flex-shrink-0 rounded-start" src="img/blog-1.jpg" style="width: 75px;" alt="">
+                                    <a href="" class="d-flex align-items-center bg-light rounded-end h5 text-uppercase p-3 mb-0">Sed amet tempor amet sit kasd sea lorem
+                                    </a>
+                                </div>
+                                <div class="d-flex overflow-hidden mb-3">
+                                    <img class="img-fluid flex-shrink-0 rounded-start" src="img/blog-2.jpg" style="width: 75px;" alt="">
+                                    <a href="" class="d-flex align-items-center bg-light rounded-end h5 text-uppercase p-3 mb-0">Sed amet tempor amet sit kasd sea lorem
+                                    </a>
+                                </div>
+                                <div class="d-flex overflow-hidden mb-3">
+                                    <img class="img-fluid flex-shrink-0 rounded-start" src="img/blog-3.jpg" style="width: 75px;" alt="">
+                                    <a href="" class="d-flex align-items-center bg-light rounded-end h5 text-uppercase p-3 mb-0">Sed amet tempor amet sit kasd sea lorem
+                                    </a>
+                                </div>
+                                <div class="d-flex overflow-hidden mb-3">
+                                    <img class="img-fluid flex-shrink-0 rounded-start" src="img/blog-1.jpg" style="width: 75px;" alt="">
+                                    <a href="" class="d-flex align-items-center bg-light rounded-end h5 text-uppercase p-3 mb-0">Sed amet tempor amet sit kasd sea lorem
+                                    </a>
+                                </div>
+                                <div class="d-flex overflow-hidden">
+                                    <img class="img-fluid flex-shrink-0 rounded-start" src="img/blog-2.jpg" style="width: 75px;" alt="">
+                                    <a href="" class="d-flex align-items-center bg-light rounded-end h5 text-uppercase p-3 mb-0">Sed amet tempor amet sit kasd sea lorem
+                                    </a>
+                                </div>
+                            </div>
+                        </div> -->
             <!-- Recent Post End -->
 
             <!-- Tags Start -->
