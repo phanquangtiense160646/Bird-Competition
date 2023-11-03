@@ -172,7 +172,8 @@ public class BirdDAO implements Serializable {
             if (con != null) {
                 //2. Crate SQL String
                 String sql = "Select * From Bird "
-                        + "Where IdMember = ?";
+                        + "Where IdMember = ? "
+                        + "Order by Point DESC ";
 
                 //3. Create Statement Object
                 stm = con.prepareStatement(sql);
