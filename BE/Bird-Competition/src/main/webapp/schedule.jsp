@@ -104,7 +104,7 @@
                                                     <p class="schedule-value text-uppercase text-light mb-0">
                                                         Điểm yêu cầu:</p>
                                                     <p class="schedule-value text-uppercase text-light mb-0">
-                                                        ${scheduleDto.minPoint} - ${scheduleDto.maxPoint} </p>
+                                                        ${scheduleDto.minPoint} ~ ${scheduleDto.maxPoint} </p>
                                                     <p class="schedule-value text-uppercase text-light mt-3 mb-0">Phí
                                                         đăng kí(VND):</p>
                                                     <p class="schedule-value text-uppercase text-light mb-3">
@@ -152,7 +152,7 @@
                                                 <p class="schedule-value text-uppercase text-light mb-0">Điểm
                                                     yêu cầu:</p>
                                                 <p class="schedule-value text-uppercase text-light mb-0">
-                                                    ${scheduleDto.minPoint} - ${scheduleDto.maxPoint} </p>
+                                                    ${scheduleDto.minPoint} ~ ${scheduleDto.maxPoint} </p>
                                                 <p class="schedule-value text-uppercase text-light mt-3 mb-0">Phí
                                                     đăng kí(VND):</p>
                                                 <p class="schedule-value text-uppercase text-light mb-3">
@@ -198,7 +198,7 @@
                                                     <p class="schedule-value text-uppercase text-light mb-0">Điểm
                                                         yêu cầu:</p>
                                                     <p class="schedule-value text-uppercase text-light mb-0">
-                                                        ${scheduleDto.minPoint} - ${scheduleDto.maxPoint} </p>
+                                                        ${scheduleDto.minPoint} ~ ${scheduleDto.maxPoint} </p>
                                                     <p class="schedule-value text-uppercase text-light mt-3 mb-0">Phí
                                                         đăng kí(VND):</p>
                                                     <p class="schedule-value text-uppercase text-light mb-3">
@@ -206,7 +206,7 @@
                                                     </c:if>
                                                     <c:if test="${user.vipType == 1}">
                                                     <p class="schedule-value text-uppercase text-light mb-0">Điểm
-                                                        yêu cầu: <span style="color: gold;" class="text-decoration-line-through">${scheduleDto.minPoint} - ${scheduleDto.maxPoint}</span></p>
+                                                        yêu cầu: <span style="color: gold;" class="text-decoration-line-through">${scheduleDto.minPoint} ~ ${scheduleDto.maxPoint}</span></p>
                                                     <p class="schedule-value text-uppercase text-light mb-0">
                                                         ${scheduleDto.minPoint - 200} - ${scheduleDto.maxPoint + 200} </p>
                                                     <p class="schedule-value text-uppercase text-light mt-3 mb-0">Phí
@@ -216,9 +216,9 @@
                                                     </c:if>
                                                     <c:if test="${user.vipType == 2}">
                                                     <p class="schedule-value text-uppercase text-light mb-0">Điểm
-                                                        yêu cầu: <span style="color: gold;" class="text-decoration-line-through">${scheduleDto.minPoint} - ${scheduleDto.maxPoint}</span></p>
+                                                        yêu cầu: <span style="color: gold;" class="text-decoration-line-through">${scheduleDto.minPoint} ~ ${scheduleDto.maxPoint}</span></p>
                                                     <p class="schedule-value text-uppercase text-light mb-0">
-                                                        ${scheduleDto.minPoint - 500} - ${scheduleDto.maxPoint + 500} </p>
+                                                        ${scheduleDto.minPoint - 500} ~ ${scheduleDto.maxPoint + 500} </p>
                                                     <p class="schedule-value text-uppercase text-light mt-3 mb-0">Phí
                                                         đăng kí(VND): <span style="color: gold;" class="text-decoration-line-through">${scheduleDto.fee}</span></p>
                                                     <p class="schedule-value text-uppercase text-light mb-3">
@@ -226,11 +226,10 @@
                                                     </c:if>
                                                     <c:if test="${user.vipType == 3}">
                                                     <p class="schedule-value text-uppercase text-light mb-0">Điểm
-                                                        yêu cầu: <span style="color: gold;" class="text-decoration-line-through">${scheduleDto.minPoint} - ${scheduleDto.maxPoint}</span>
+                                                        yêu cầu: <span style="color: gold;" class="text-decoration-line-through">${scheduleDto.minPoint} ~ ${scheduleDto.maxPoint}</span>
                                                         </br><span>Không giới hạn</span>
                                                     </p>
-                                                    <p class="schedule-value text-uppercase text-light mb-0 hidden_price">
-                                                        ${scheduleDto.minPoint - 1000000} - ${scheduleDto.maxPoint + 10000000} </p>
+                                                    <p class="schedule-value text-uppercase text-light mb-0 hidden_price">${scheduleDto.minPoint - 1000000} ~ ${scheduleDto.maxPoint + 10000000}</p>
                                                     <p class="schedule-value text-uppercase text-light mt-3 mb-0">Phí
                                                         đăng kí(VND): <span style="color: gold;" class="text-decoration-line-through">${scheduleDto.fee}</span></p>
                                                     <p class="schedule-value text-uppercase text-light mb-3">
@@ -271,7 +270,7 @@
                                                 <p class="schedule-value text-uppercase text-light mb-0">Điểm
                                                     yêu cầu:</p>
                                                 <p class="schedule-value text-uppercase text-light mb-0">
-                                                    ${scheduleDto.minPoint} - ${scheduleDto.maxPoint} </p>
+                                                    ${scheduleDto.minPoint} ~ ${scheduleDto.maxPoint} </p>
                                                 <p class="schedule-value text-uppercase text-light mt-3 mb-0">Phí
                                                     đăng kí(VND):</p>
                                                 <p class="schedule-value text-uppercase text-light mb-3">
@@ -350,6 +349,7 @@
                         fee = this.querySelector(".schedule-value:nth-of-type(10)").innerHTML;
                         registerNumber = this.querySelector(".schedule-value:nth-of-type(11) span").innerHTML;
                         hiddenId = this.querySelector(".idHide").value;
+
                     }
 
                     const birds = [];
@@ -367,6 +367,39 @@
                         text += "<option value=" + birds[i + 2] + "," + birds[i + 1] + ">" + birds[i] +
                                 ", Rank point: " + birds[i + 1] + "</option>";
                     }
+                    
+                    const myArray = pointReq.split("~");
+                    if(myArray[1].length >= 8){
+                        newDriver.innerHTML = `
+    <div> 
+    <h6 class="text-uppercase text-dark mb-3 ml-3">` + factor + `</h6>                                       
+    <h6 class="text-uppercase text-dark mb-3 ml-3">` + date + `</h6>
+    <h6 class="text-uppercase text-dark mb-3 ml-3">` + time + `</h6>
+    <h6 class="text-uppercase text-dark mb-3 ml-3">` + place + `</h6>
+    <h5 class="text-uppercase text-primary">` + tOC + `</h5>
+    <p class="text-uppercase text-secondary mb-0 ml-3">` + tOB + `</p>
+    <p class="text-uppercase text-secondary mb-0 ml-3">Điểm yêu cầu: Không giới hạn` + `</p>
+    <h6 class="text-uppercase text-dark mb-3 ml-3">Phí đăng kí(VND): ` + fee + `</h6>
+    <p class="text-uppercase text-secondary mb-0 ml-3" style="display: inline;">
+        số người đăng kí:
+    <span class="text-uppercase text-primary mb-0 ml-3" style="display: inline;">` + registerNumber + `</span>
+    </p>                     
+                    
+    <form action="DispatchServlet" method="POST">
+        <h6 class="text-uppercase text-secondary mb-3 ml-3">Chọn chim đăng ký:  
+        <select aria-label="chooseBird" name="cboBird">
+            <option selected disabled>Chim</option>
+            ` + text + `
+        </select>
+        <input type="hidden" name="hiddenContestId" value="` + hiddenId + `"></input>
+        <input type="hidden" name="hiddenPoint" value="` + pointReq + `"></input>
+        <input type="hidden" name="txtCost" value="` + fee + `"></input>
+        <input type="hidden" name="txtType" value="` + 4 + `"></input>                         
+    <button type="submit" name="btAction" value="cRegister" class="btn btn-primary px-5" style="margin-top: 10px;">Đăng kí thi đấu</button>
+     </form>
+     </div>
+    `;
+                    } else {
 
                             newDriver.innerHTML = `
             <div> 
@@ -397,6 +430,10 @@
      </form>
      </div>
     `;
+
+                    }
+
+                    
                     body.appendChild(newDriver);
                 });
             });

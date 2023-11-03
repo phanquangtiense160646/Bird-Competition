@@ -45,7 +45,8 @@ public class CRegisterServlet extends HttpServlet {
             HttpSession session = request.getSession();
             if (combine != null) {
                 String[] cboBird = combine.split(",");
-                String[] point = pointCombine.split("-");
+                String[] point = pointCombine.split("~");
+                System.out.println(point[0].trim());
                 int minPoint = Integer.parseInt(point[0].trim());
                 int maxPoint = Integer.parseInt(point[1].trim());
                 int birdPoint = Integer.parseInt(cboBird[1]);
