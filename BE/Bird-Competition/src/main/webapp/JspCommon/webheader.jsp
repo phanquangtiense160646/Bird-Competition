@@ -67,7 +67,7 @@
                                 <a href='<c:url value="/DispatchServlet?btAction=Blog"/>' class="dropdown-item">Tin Tức</a>
                             </div>
                         </div>
-                        <a href="FE/contact.html" class="nav-item nav-link">Liên Hệ</a>
+                                <a href='<c:url value="contact.jsp"/>' class="nav-item nav-link">Liên Hệ</a>
                     </div>
                     <div class="nav-item dropdown">
 
