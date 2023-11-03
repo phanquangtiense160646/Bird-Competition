@@ -47,8 +47,6 @@ public class CompleteCheckInServlet extends HttpServlet {
             
         } catch (SQLException ex) {
             Logger.getLogger(CompleteCheckInServlet.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (NamingException ex) {
-            Logger.getLogger(CompleteCheckInServlet.class.getName()).log(Level.SEVERE, null, ex);
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(CompleteCheckInServlet.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
