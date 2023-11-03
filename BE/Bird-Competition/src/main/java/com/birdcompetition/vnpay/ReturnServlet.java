@@ -2,17 +2,13 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
  */
-package com.birdcompetition.controller.web;
+package com.birdcompetition.vnpay;
 
-import com.birdcompetition.model.User;
-import com.birdcompetition.payment.PaymentDAO;
-import com.birdcompetition.payment.PaymentDTO;
+import com.birdcompetition.bird.BirdContestDTO;
+import com.birdcompetition.registerCompetition.CRegisterDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.sql.SQLException;
-import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import java.util.UUID;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -23,10 +19,10 @@ import javax.servlet.http.HttpSession;
 
 /**
  *
- * @author admin
+ * @author Danh
  */
-@WebServlet(name = "PaymentHistoryServlet", urlPatterns = {"/PaymentHistoryServlet"})
-public class PaymentHistoryServlet extends HttpServlet {
+@WebServlet(name = "ReturnServlet", urlPatterns = {"/ReturnServlet"})
+public class ReturnServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -40,34 +36,22 @@ public class PaymentHistoryServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        String url = "paymenthistory.jsp";
+        String type = request.getParameter("payType");
+        String url = "";
         try {
-            HttpSession session = request.getSession();
-            List<PaymentDTO> paymentList;
+            String trueType = type.substring(0, 4);
 
-            PaymentDAO dao = new PaymentDAO();
-            User user = (User) session.getAttribute("USER");
-            dao.getPaymentList(user.getUserName());
-            paymentList = dao.getPaymentList1();
-            System.out.println("lise size: " + paymentList.size());
-            session.setAttribute("OWN_PAYMENT", paymentList);
-            int totalPrice = 0;
-            for (PaymentDTO paymentDTO : paymentList) {
-                totalPrice = totalPrice + paymentDTO.getPrice();
-                System.out.println("total: " + totalPrice);
-                request.setAttribute("TOTAL", totalPrice);
+            if (trueType.equals("DKTD")) {
+                request.setAttribute("MES", "fail");
+                url = "ScheduleServlet";
+            } else if (trueType.equals("DKMB") || trueType.equals("UDMB")) {
+                request.setAttribute("Message", "fail");
+                url = "MembershipServlet";
             }
-
-        } catch (SQLException ex) {
-            log("ScheduleServlet_SQL: " + ex.getMessage());
-        } catch (ClassNotFoundException ex) {
-            log("ScheduleServlet_ClassNotFound: " + ex.getMessage());
         } finally {
-//            response.sendRedirect(url);
             RequestDispatcher rd = request.getRequestDispatcher(url);
             rd.forward(request, response);
         }
-
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

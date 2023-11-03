@@ -50,14 +50,10 @@ public class OrderDAO {
                     int matchNumber = rs.getInt("MatchNumber");
                     String trainer = rs.getString("FullName");
 
-                    BirdDTO dto = new BirdDTO(name, speices, point, trainer, "photo", win, lose, tie, matchNumber, 0);
-                    if (this.birdList == null) {
-                        this.birdList = new ArrayList<>();
-                    }
-                    this.birdList.add(dto);
+                   
                 }
-                sort(birdList);
-                setRank();
+               
+                
             }
         }finally{
             

@@ -34,7 +34,7 @@
 
 
         <li class="nav-item">
-            <a class="nav-link" href="AdminPage/index.jsp">
+            <a class="nav-link" href=<c:url value="/DispatchServlet?btAction=Dashboard"/>>
                 <i class="fas fa-fw fa-table"></i>
                 <span>Dashboard</span></a>
         </li>
@@ -45,11 +45,6 @@
                 <span>Quản lý tài khoản</span></a>
         </li>
 
-        <li class="nav-item">
-            <a class="nav-link" href="Pages/BirdManagement.html">
-                <i class="fas fa-fw fa-table"></i>
-                <span>Quản lý danh sách Chim</span></a>
-        </li>
 
         <li class="nav-item">
             <a class="nav-link" href='<c:url value="/DispatchServlet?btAction=ManageSchedule"/>'>
@@ -78,7 +73,7 @@
 
 
         <li class="nav-item">
-            <a class="nav-link" href="https://sandbox.vnpayment.vn/merchantv2/">
+            <a class="nav-link" href="https://sandbox.vnpayment.vn/merchantv2/" target="_blank">
                 <i class="fas fa-fw fa-table"></i>
                 <span>Quản lý thanh toán</span></a>
         </li>  

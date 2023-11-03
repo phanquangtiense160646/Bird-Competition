@@ -87,7 +87,6 @@
                         </div>
                     </div>
                     <nav class="navbar navbar-expand-lg bg-dark navbar-dark p-3 p-lg-0 px-lg-5">
-        
                         <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
                             <span class="navbar-toggler-icon"></span>
                         </button>
@@ -109,7 +108,6 @@
                                 <a href="contact.html" class="nav-item nav-link">Liên Hệ</a>
                             </div>
                             <a href="login" class="btn btn-primary py-md-3 px-md-5 d-none d-lg-block">Login/Signup</a>
-        
                         </div>
                     </nav>
                 </div>

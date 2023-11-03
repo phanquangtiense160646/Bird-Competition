@@ -43,7 +43,6 @@ public class PostPayment extends HttpServlet {
         String url = "ScheduleServlet";
         try {
             String trueType = type.substring(0, 4);
-            System.out.println(trueType);
             HttpSession session = request.getSession();
             if (trueType.equals("DKTD")) {
                 CRegisterDAO dao = new CRegisterDAO();
@@ -51,7 +50,6 @@ public class PostPayment extends HttpServlet {
                 int id = (int) session.getAttribute("BIRD_ID");
                 int beforePoint = (int) session.getAttribute("BEFORE_POINT");
                 String contestId = (String) session.getAttribute("CONTEST_ID");
-                System.out.println(id + " " + beforePoint + contestId);
                 
                 BirdContestDTO dto = new BirdContestDTO(id, contestId,
                         0, beforePoint, 0, true, false, checkInCode);
@@ -59,6 +57,12 @@ public class PostPayment extends HttpServlet {
                 String mes = "success";
                 request.setAttribute("MES", mes);
                 url = "ScheduleServlet";
+            }
+            else if (trueType.equals("DKMB")) {
+                url = "MembershipRegisterServlet";
+            }
+            else if (trueType.equals("UDMB")) {
+                url = "MembershipUpdateServlet";
             }
         }
         catch (SQLException ex) {

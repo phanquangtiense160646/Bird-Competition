@@ -38,8 +38,10 @@ public class MembershipRegisterServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        String type = request.getParameter("txtType");
         HttpSession session = request.getSession();
+        String type = (String)session.getAttribute("TYPE");
+        System.out.println("regis type: " + type);
+
         try {
             MembershipDAO dao = new MembershipDAO();
             User user = (User) session.getAttribute("USER");

@@ -38,19 +38,28 @@ public class MembershipUpdateServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        String newType = request.getParameter("txtNewType");
+//        String newType = request.getParameter("txtNewType");
         HttpSession session = request.getSession();
+        String newType = (String) session.getAttribute("TYPE");
 
         try {
+            String type = null;
+            if (newType.equals("U2")) {
+                type = "2";
+            } else if (newType.equals("U3")) {
+                type = "3";
+
+            }
+            System.out.println("type after update");
             MembershipDAO dao = new MembershipDAO();
             User user = (User) session.getAttribute("USER");
             String memberId = user.getIdMember();
             if (user.getVipType() != null) {
-                if (dao.VipUpdate(memberId, newType)) {
+                if (dao.VipUpdate(memberId, type)) {
                     String msg = "updateSuccess";
                     request.setAttribute("Message", msg);
 
-                    user.setVipType(newType);
+                    user.setVipType(type);
                     session.setAttribute("USER", user);
 
                 }

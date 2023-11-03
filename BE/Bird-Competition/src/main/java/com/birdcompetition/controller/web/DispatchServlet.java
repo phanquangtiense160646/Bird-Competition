@@ -98,6 +98,8 @@ public class DispatchServlet extends HttpServlet {
                 url = "RuleServlet";
             }else if (button.equals("FeedBack")){
                 
+            }else if(button.equals("Dashboard")){
+                url = "PaymentAdminServlet";
             }
         } finally {
             RequestDispatcher rd = request.getRequestDispatcher(url);
