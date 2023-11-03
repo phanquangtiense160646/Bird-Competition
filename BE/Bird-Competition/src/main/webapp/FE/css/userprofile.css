@@ -159,13 +159,13 @@ table {
 
 }
 
-.profile-pic img:hover {
+/*.profile-pic img:hover {
     background-color: rgba(0, 0, 0, 0.5);
     color: #fff;
     transition: all .3s ease;
     text-decoration: none;
     z-index: 555555 !important;
-}
+}*/
 
 
 /* .profile-pic span {
@@ -174,10 +174,7 @@ table {
     padding-bottom: 4.5em;
 } */
 
-form input[type="file"] {
-    display: none;
-    cursor: pointer;
-}
+
 
 .upcoming-match-box{
     display: flex;
