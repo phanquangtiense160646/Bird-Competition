@@ -16,7 +16,8 @@ import com.birdcompetition.model.User;
 import java.sql.SQLException;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.http.HttpSession;
-
+import java.util.logging.Level;
+import java.util.logging.Logger;
 /**
  *
  * @author 84366
@@ -51,7 +52,8 @@ public class LoginControl extends HttpServlet {
                 if (result.getUserRole() == 4) {
                     session.setAttribute("USER", result);
                     url = "DispatchServlet?btAction=PostLogin";
-                } else if (result.getUserRole() == 1) {
+                } else if (result.getUserRole() == 1 || result.getUserRole() == 2 || result.getUserRole() == 3) {
+                    session.setAttribute("USER", result);
                     url = "AdminPage/index.jsp";
                 }
             } else {

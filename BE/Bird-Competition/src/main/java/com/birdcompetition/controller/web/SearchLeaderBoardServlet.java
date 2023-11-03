@@ -1,20 +1,17 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
- */
 package com.birdcompetition.controller.web;
 
 import com.birdcompetition.bird.BirdDAO;
 import com.birdcompetition.bird.BirdDTO;
-import com.birdcompetition.schedule.ScheduleDAO;
-import com.birdcompetition.schedule.ScheduleDTO;
+import com.birdcompetition.model.User;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.naming.NamingException;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -24,10 +21,10 @@ import javax.servlet.http.HttpSession;
 
 /**
  *
- * @author Admin
+ * @author Danh
  */
-@WebServlet(name = "PostLoginServlet", urlPatterns = {"/PostLoginServlet"})
-public class PostLoginServlet extends HttpServlet {
+@WebServlet(name = "SearchLeaderBoardServlet", urlPatterns = {"/SearchLeaderBoardServlet"})
+public class SearchLeaderBoardServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -41,32 +38,44 @@ public class PostLoginServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        String url = "postLogin.jsp";
+//        String url = "LeaderBoardServlet";
+        String url = "leaderboard.jsp";
+
+        String searchValue = request.getParameter("txtSearchValue");
         try {
-            HttpSession session = request.getSession();
-            List<ScheduleDTO> listSchedule = (List<ScheduleDTO>) session.getAttribute("SCHEDULE");
-            if (listSchedule == null) {
-                    //Schedule
-                ScheduleDAO scheduleDao = new ScheduleDAO();
-                scheduleDao.getSchedule();
-                listSchedule = scheduleDao.getList();
-                session.setAttribute("SCHEDULE", listSchedule);
-                
-                    //Leaderboard
-                BirdDAO birdDao = new BirdDAO();
-                birdDao.displayLeaderboard();
-                List<BirdDTO> listBird = birdDao.getBirdList();
-                request.setAttribute("LEADER_BOARD", listBird);
+            BirdDAO dao = new BirdDAO();
+//                dao.searchBird(searchValue);
+//                List<BirdDTO> searchList = dao.getBirdList();
+//                request.setAttribute("SEARCH_RS", searchList);
+//                dao.resetBirdList();
+            dao.resetBirdList();
+            dao.displayLeaderboard();
+            List<BirdDTO> leaderboard = dao.getBirdList();
+            request.setAttribute("LEADER_BOARD", leaderboard);
+            if (!searchValue.trim().isEmpty()) {
+                List<BirdDTO> searchList = dao.search(searchValue);
+                request.setAttribute("SEARCH_RS", searchList);
             }
+            List<BirdDTO> persionalLb = new ArrayList<>();
+            HttpSession session = request.getSession();
+            User user = (User) session.getAttribute("USER");
+
+            for (BirdDTO bird : leaderboard) {
+                if (bird.getMemberID().equals(user.getIdMember())) {
+                    persionalLb.add(bird);
+                }
+            }
+            request.setAttribute("PERSIONAL_LB", persionalLb);
 
         } catch (SQLException ex) {
-            log("PostLoginServlet_SQL: " + ex.getMessage());
+            Logger.getLogger(SearchLeaderBoardServlet.class.getName()).log(Level.SEVERE, null, ex);
         } catch (ClassNotFoundException ex) {
-            log("PostLoginServlet_ClassNotFound: " + ex.getMessage());
+            Logger.getLogger(SearchLeaderBoardServlet.class.getName()).log(Level.SEVERE, null, ex);
         } catch (NamingException ex) {
-            Logger.getLogger("PostLoginServlet_Naming: " + ex.getMessage());
+            Logger.getLogger(SearchLeaderBoardServlet.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
-            response.sendRedirect(url);
+            RequestDispatcher rd = request.getRequestDispatcher(url);
+            rd.forward(request, response);
         }
     }
 

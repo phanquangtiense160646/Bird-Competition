@@ -30,7 +30,6 @@ public class DispatchServlet extends HttpServlet {
         try {
             if (button == null) {
                 url = "StartServlet";
-//                url = "Admin/index.html";
             } else if (button.equals("PostLogin")) {
                 url = "PostLoginServlet";
             } else if (button.equals("LeaderBoard")) {
@@ -39,6 +38,8 @@ public class DispatchServlet extends HttpServlet {
                 url = "SearchLeaderBoardServlet";
             } else if (button.equals("Current")) {
                 url = "HappeningMatchServlet";
+            } else if (button.equals("Preparing")) {
+                url = "PreparingMatchServlet";
             } else if (button.equals("UpdateResult")) {
                 url = "UpdateResultServlet";
             } else if (button.equals("Confirm")) {
@@ -63,6 +64,14 @@ public class DispatchServlet extends HttpServlet {
                 url = "AddScheduleServlet";
             } else if (button.equals("PaymentHistory")) {
                 url = "PaymentHistoryServlet";
+            } else if (button.equals("MatchHistory")) {
+                url = "GetContestListServlet";
+            } else if (button.equals("Membership")) {
+                url = "MembershipServlet";
+            } else if (button.equals("VipRegis")) {
+                url = "MembershipRegisterServlet";
+            } else if (button.equals("VipUpdate")) {
+                url = "MembershipUpdateServlet";
             } else if (button.equals("Logout")) {
                 url = "LogoutServlet";
             } else if (button.equals("BirdList")) {
@@ -73,15 +82,15 @@ public class DispatchServlet extends HttpServlet {
                 url = "UserProfileServlet";
             } else if (button.equals("Update Profile")) {
                 url = "UpdateProfileServlet";
-            } else if(button.equals("Add Image")){
+            } else if (button.equals("Add Image")) {
                 url = "AddImageServlet";
-            } else if(button.equals("BirdProfile")){
+            } else if (button.equals("BirdProfile")) {
                 url = "GetBirdInfoServlet";
-            } else if (button.equals("PostPayment")){
+            } else if (button.equals("PostPayment")) {
                 url = "PostPayment";
-            } else if(button.equals("ShowAllBirds")){
+            } else if (button.equals("ShowAllBirds")) {
                 url = "GetBirdServlet";
-            } else if(button.equals("DeleteBird")){
+            } else if (button.equals("DeleteBird")) {
                 url = "DeleteBirdServlet";
             } else if(button.equals("Add Image")){
                 url = "UploadPhotoServlet";

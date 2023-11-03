@@ -42,7 +42,7 @@
         <!-- Begin Page Content -->
         <c:set var="checkin" value="${requestScope.CHECKIN}" />
 
-        <div class="container-fluid" style="height: 500px;">
+        <div class="container-fluid" style="height: 800px;">
 
             <h1 class="h3 mb-2 text-gray-800">Update Match Result</h1>
             <p class="mb-1">Cập nhật kết quả trận đấu <a target="_blank"></p>
@@ -51,8 +51,8 @@
                 <form action="DispatchServlet" method="post">
                     <input type="hidden" name="txtMatchId" value="${param.txtMatchId}">
 
-                    <div class="d-flex justify-content-center mb-5">
-                        <input type="text" class="form-control bg-light border-0 small w-50"
+                    <div class="d-flex justify-content-center">
+                        <input type="text" class="form-control bg-light border-0 small w-25"
                                name="txtCode" value="${param.txtCode}" placeholder="Nhập Check-in Code">
 
                         <button class="btn btn-primary" type="submit" value="CheckCode" name="btAction">
@@ -66,7 +66,7 @@
                 <c:if test="${not empty checkin}">
                     <div class="d-flex justify-content-center">
                         <form action="" method="post">
-                            <div class="wrapper">
+                            <div class="wrapper d-flex">
                                 <div class="list">
                                     <!--<div class="list__header">
                                     <h1>Các chim tham gia trận này</h1>
@@ -122,15 +122,16 @@
                     <div class="d-flex justify-content-center">
 
                         <!--<input type="submit" class="btn btn-primary px-5 mt-2" value="Cập nhật" >-->
-                        <form action="ConfirmCheckInServlet" method="post">
+                        <form action="ConfirmCheckInServlet" method="post" class="mx-2">
                             <input type="hidden" value="${checkin.birdID}" name="txtId" >
-                            <input type="submit" class="btn btn-primary px-5 mt-2" value="Xác nhận">
+                            <input type="submit" class="btn btn-primary" style="width: 100px" value="Xác nhận">
 
                         </form>
+                        <!--<a href='<c:url value="/DispatchServlet?btAction=Preparing"/>' class="btn btn-primary" style="width: 100px">Quay lại</a>-->
 
-                        <form action="CheckInServlet" method="post">
+                        <form action="PreparingMatchServlet" method="post" class="mx-2">
                             <input type="hidden" name="txtMatchId" value="${param.txtMatchId}">
-                            <input type="submit" class="btn btn-primary px-5 mt-2" value="Quay lại">
+                            <input type="submit" class="btn btn-primary" style="width: 100px" value="Quay lại">
 
                         </form>
 
@@ -146,7 +147,7 @@
                     </div>
                 </div>
                 <div class="d-flex justify-content-center">
-                    <a href='<c:url value="/DispatchServlet?btAction=Current"/>' class="btn btn-primary px-5" style="margin-top: 10px;">Quay lại</a>
+                    <a href='<c:url value="/DispatchServlet?btAction=Preparing"/>' class="btn btn-primary px-5" style="margin-top: 10px;">Quay lại</a>
                 </div>
             </c:if>                 
         </c:if>

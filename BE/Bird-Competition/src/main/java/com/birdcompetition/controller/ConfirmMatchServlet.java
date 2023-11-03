@@ -19,6 +19,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -45,23 +46,35 @@ public class ConfirmMatchServlet extends HttpServlet {
         String[] orderList = request.getParameterValues("txtOrder");
         String[] beforePointList = request.getParameterValues("txtBefore");
         String[] afterPointList = request.getParameterValues("txtAfter");
-
+        String url = "HappeningMatchServlet";
         try {
             BirdContestDAO birdContestDao = new BirdContestDAO();
             ScheduleDAO scheduleDao = new ScheduleDAO();
             BirdDAO birdDao = new BirdDAO();
 
             for (int i = 0; i < birdIdList.length; i++) {
+
+                double central = (birdIdList.length + 1) / 2;
                 int id = Integer.parseInt(birdIdList[i]);
                 int order = Integer.parseInt(orderList[i]);
                 int beforePoint = Integer.parseInt(beforePointList[i]);
                 int afterPoint = Integer.parseInt(afterPointList[i]);
 
-                birdContestDao.setPoint(id, order, beforePoint, afterPoint);
-                birdDao.setPoint(id, afterPoint);
+                if (birdContestDao.setAfterMatch(id, order, beforePoint, afterPoint, matchId)) {
+                    int status = 0;
+                    if (order < central) {
+                        status = 1;
+                    } else if (order > central) {
+                        status = -1;
+                    }
+
+                    birdDao.setBirdAfterMatch(id, afterPoint, status);
+                    
+                    request.setAttribute("action", "success");
+                }
+
             }
             scheduleDao.setStatus(matchId, 4);
-            request.setAttribute("Message", "success");
 
         } catch (SQLException ex) {
             Logger.getLogger(ConfirmMatchServlet.class.getName()).log(Level.SEVERE, null, ex);
@@ -70,7 +83,7 @@ public class ConfirmMatchServlet extends HttpServlet {
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(ConfirmMatchServlet.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
-            RequestDispatcher rd = request.getRequestDispatcher("HappeningMatchServlet");
+            RequestDispatcher rd = request.getRequestDispatcher(url);
             rd.forward(request, response);
         }
     }

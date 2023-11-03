@@ -42,7 +42,7 @@ public class BirdDTO implements Serializable, Comparable<BirdDTO> {
         
     }
 
-    public BirdDTO(String birdName, String species, int point, String trainer, 
+    public BirdDTO(String birdName, String species, int point, String trainer, String memberId, 
             String photoPath, int win, int lose, int tie, int matchNumber, int rank) {
         this.birdName = birdName;
         this.species = species;
@@ -54,6 +54,7 @@ public class BirdDTO implements Serializable, Comparable<BirdDTO> {
         this.tie = tie;
         this.matchNumber = matchNumber;
         this.trainer = trainer;
+        this.memberID = memberId;
         this.rank = rank;
 
     }

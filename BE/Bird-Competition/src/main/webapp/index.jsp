@@ -41,81 +41,79 @@
 
     <body>
         <!-- Header Start -->
-<div class="container-fluid bg-dark px-0">
-    <div class="row gx-0">
-        <div class="col-lg-3 bg-dark d-none d-lg-block">
-
-
-            <a href="index.html" class="navbar-brand w-100 h-100 m-0 p-0 d-flex align-items-center justify-content-center">
-                <img src="FE/img/finallogo.png" style="width: 100px; margin-right: -40px; margin-bottom:50px;">
-                <h1 class="m-0 display-4 text-primary text-uppercase">BIRDFIGHTER</h1>
-            </a>
-
-
-
-        </div>
-        <div class="col-lg-9">
-            <div class="row gx-0 bg-secondary d-none d-lg-flex">
-                <div class="col-lg-7 px-5 text-start">
-                    <div class="h-100 d-inline-flex align-items-center py-2 me-4">
-                        <i class="fa fa-envelope text-primary me-2"></i>
-                        <h6 class="mb-0">birdfight@compe.com</h6>
-                    </div>
-                    <div class="h-100 d-inline-flex align-items-center py-2">
-                        <i class="fa fa-phone-alt text-primary me-2"></i>
-                        <h6 class="mb-0">+123 321 333</h6>
-                    </div>
+        <div class="container-fluid bg-dark px-0">
+            <div class="row gx-0">
+                <div class="col-lg-3 bg-dark d-none d-lg-block">
+        
+        
+                    <a href="index.html" class="navbar-brand w-100 h-100 m-0 p-0 d-flex align-items-center justify-content-center">
+                        <img src="FE/img/finallogo.png" style="width: 100px; margin-right: -40px; margin-bottom:50px;">
+                        <h1 class="m-0 display-4 text-primary text-uppercase">BIRDFIGHTER</h1>
+                    </a>
+        
+        
+        
                 </div>
-                <div class="col-lg-5 px-5 text-end">
-                    <div class="d-inline-flex align-items-center py-2">
-                        <a class="btn btn-light btn-square rounded-circle me-2" href="">
-                            <i class="fab fa-facebook-f"></i>
-                        </a>
-                        <a class="btn btn-light btn-square rounded-circle me-2" href="">
-                            <i class="fab fa-twitter"></i>
-                        </a>
-                        <a class="btn btn-light btn-square rounded-circle me-2" href="">
-                            <i class="fab fa-linkedin-in"></i>
-                        </a>
-                        <a class="btn btn-light btn-square rounded-circle me-2" href="">
-                            <i class="fab fa-instagram"></i>
-                        </a>
-                        <a class="btn btn-light btn-square rounded-circle" href="">
-                            <i class="fab fa-youtube"></i>
-                        </a>
-                    </div>
-                </div>
-            </div>
-            <nav class="navbar navbar-expand-lg bg-dark navbar-dark p-3 p-lg-0 px-lg-5">
-
-                <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
-                    <div class="navbar-nav mr-auto py-0">
-                        <a href="#" class="nav-item nav-link active">Home</a>
-                        <a href="#leaderboard" class="nav-item nav-link">Bảng xếp hạng</a>
-                        <a href="#schedule" class="nav-item nav-link">Lịch thi đấu</a>
-                        <a href="#member" class="nav-item nav-link">Hội viên</a>
-                        <div class="nav-item dropdown">
-                            <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
-                            <div class="dropdown-menu rounded-0 m-0">
-                                <!-- <a href="blog.html" class="dropdown-item">News</a> -->
-                                <a href="#" class="dropdown-item">Luật thi đấu</a>
-                                <a href="FE/feedback_pre.jsp" class="dropdown-item">Feedback</a>
-                                <a href="News.jsp" class="dropdown-item">Tin Tức</a>
+                <div class="col-lg-9">
+                    <div class="row gx-0 bg-secondary d-none d-lg-flex">
+                        <div class="col-lg-7 px-5 text-start">
+                            <div class="h-100 d-inline-flex align-items-center py-2 me-4">
+                                <i class="fa fa-envelope text-primary me-2"></i>
+                                <h6 class="mb-0">birdfight@compe.com</h6>
+                            </div>
+                            <div class="h-100 d-inline-flex align-items-center py-2">
+                                <i class="fa fa-phone-alt text-primary me-2"></i>
+                                <h6 class="mb-0">+123 321 333</h6>
                             </div>
                         </div>
-                        <a href="contact.html" class="nav-item nav-link">Liên Hệ</a>
+                        <div class="col-lg-5 px-5 text-end">
+                            <div class="d-inline-flex align-items-center py-2">
+                                <a class="btn btn-light btn-square rounded-circle me-2" href="">
+                                    <i class="fab fa-facebook-f"></i>
+                                </a>
+                                <a class="btn btn-light btn-square rounded-circle me-2" href="">
+                                    <i class="fab fa-twitter"></i>
+                                </a>
+                                <a class="btn btn-light btn-square rounded-circle me-2" href="">
+                                    <i class="fab fa-linkedin-in"></i>
+                                </a>
+                                <a class="btn btn-light btn-square rounded-circle me-2" href="">
+                                    <i class="fab fa-instagram"></i>
+                                </a>
+                                <a class="btn btn-light btn-square rounded-circle" href="">
+                                    <i class="fab fa-youtube"></i>
+                                </a>
+                            </div>
+                        </div>
                     </div>
-                    <a href="login" class="btn btn-primary py-md-3 px-md-5 d-none d-lg-block">Login/Signup</a>
-
+                    <nav class="navbar navbar-expand-lg bg-dark navbar-dark p-3 p-lg-0 px-lg-5">
+                        <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                        <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
+                            <div class="navbar-nav mr-auto py-0">
+                                <a href="#" class="nav-item nav-link active">Home</a>
+                                <a href="#leaderboard" class="nav-item nav-link">Bảng xếp hạng</a>
+                                <a href="#schedule" class="nav-item nav-link">Lịch thi đấu</a>
+                                <a href="#member" class="nav-item nav-link">Hội viên</a>
+                                <div class="nav-item dropdown">
+                                    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
+                                    <div class="dropdown-menu rounded-0 m-0">
+                                        <!-- <a href="blog.html" class="dropdown-item">News</a> -->
+                                        <a href="#" class="dropdown-item">Luật thi đấu</a>
+                                        <a href="FE/feedback_pre.jsp" class="dropdown-item">Feedback</a>
+                                        <a href="News.jsp" class="dropdown-item">Tin Tức</a>
+                                    </div>
+                                </div>
+                                <a href="contact.html" class="nav-item nav-link">Liên Hệ</a>
+                            </div>
+                            <a href="login" class="btn btn-primary py-md-3 px-md-5 d-none d-lg-block">Login/Signup</a>
+                        </div>
+                    </nav>
                 </div>
-            </nav>
+            </div>
         </div>
-    </div>
-</div>
-<!-- Header End -->
+        <!-- Header End -->
 
         <!-- Carousel Start -->
         <div class="container-fluid p-0 mb-5">
@@ -219,89 +217,89 @@
 
         <!-- Top Bird Start -->
         <div id="leaderboard">
-           <c:set var="leaderboard" value="${requestScope.LEADER_BOARD}" />
-        <c:if test="${not empty leaderboard}">
-            <div class="container-fluid p-5">
-                <div class="mb-5 text-center">
-                    <h5 class="text-primary text-uppercase">Top 3 chim có điểm cao nhất</h5>
-                    <h1 class="display-3 text-uppercase mb-0">Top Chim</h1>
+            <c:set var="leaderboard" value="${requestScope.LEADER_BOARD}" />
+            <c:if test="${not empty leaderboard}">
+                <div class="container-fluid p-5">
+                    <div class="mb-5 text-center">
+                        <h5 class="text-primary text-uppercase">Top 3 chim có điểm cao nhất</h5>
+                        <h1 class="display-3 text-uppercase mb-0">Top Chim</h1>
+                    </div>
+
+
+                    <div class="row g-5">
+                        <div class="col-lg-4 col-md-6">
+                            <div class="team-item position-relative">
+                                <div class="position-relative overflow-hidden rounded">
+                                    <img class="img-fluid w-100" src="FE/img/daddyHuy.jpg" alt="">
+                                    <div class="team-overlay">
+                                        <div class="align-items-center justify-content-start">
+                                            <h6 class="text-uppercase text-light mb-3"> Điểm:
+                                                ${leaderboard[1].point}</h6>
+                                            <h6 class="text-uppercase text-light mb-3"> Tỉ lệ thắng:
+                                                ${leaderboard[1].winRate()}%</h6>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="position-absolute start-0 bottom-0 w-100 rounded-bottom text-center p-4"
+                                     style="background: rgba(173, 181, 189, .9);">
+                                    <h5 class="text-uppercase text-light">${leaderboard[1].birdName}</h5>
+                                    <p class="text-uppercase text-white m-0">Top 2</p>
+                                    <p class="text-uppercase text-white m-0">Trainner: ${leaderboard[1].trainer}</p>
+
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6">
+                            <div class="team-item position-relative">
+                                <div class="position-relative overflow-hidden rounded">
+                                    <img class="img-fluid w-100" src="FE/img/thuanDam.jpg" alt="">
+                                    <div class="team-overlay">
+                                        <div class="align-items-center justify-content-start">
+                                            <h6 class="text-uppercase text-light mb-3"> Điểm:
+                                                ${leaderboard[0].point}</h6>
+                                            <h6 class="text-uppercase text-light mb-3"> Tỉ lệ thắng:
+                                                ${leaderboard[0].winRate()}%</h6>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="position-absolute start-0 bottom-0 w-100 rounded-bottom text-center p-4"
+                                     style="background: rgba(255, 218, 101, .9);">
+                                    <h5 class="text-uppercase text-light">${leaderboard[0].birdName}</h5>
+                                    <p class="text-uppercase text-white m-0">Top 1</p>
+                                    <p class="text-uppercase text-white m-0">Trainner: ${leaderboard[0].trainer}</p>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6">
+                            <div class="team-item position-relative">
+                                <div class="position-relative overflow-hidden rounded">
+                                    <img class="img-fluid w-100" src="FE/img/eDanh.jpg" alt="">
+                                    <div class="team-overlay">
+                                        <div class="align-items-center justify-content-start">
+                                            <h6 class="text-uppercase text-light mb-3"> Điểm:
+                                                ${leaderboard[2].point}</h6>
+
+                                            <h6 class="text-uppercase text-light mb-3"> Tỉ lệ thắng:
+                                                ${leaderboard[2].winRate()}%</h6>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="position-absolute start-0 bottom-0 w-100 rounded-bottom text-center p-4"
+                                     style="background: rgba(201, 147, 85, .9);">
+                                    <h5 class="text-uppercase text-light">${leaderboard[2].birdName}</h5>
+                                    <p class="text-uppercase text-white m-0">Top 3</p>
+                                    <p class="text-uppercase text-white m-0">Trainner: ${leaderboard[2].trainer}</p>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-
-
-                <div class="row g-5">
-                    <div class="col-lg-4 col-md-6">
-                        <div class="team-item position-relative">
-                            <div class="position-relative overflow-hidden rounded">
-                                <img class="img-fluid w-100" src="FE/img/daddyHuy.jpg" alt="">
-                                <div class="team-overlay">
-                                    <div class="align-items-center justify-content-start">
-                                        <h6 class="text-uppercase text-light mb-3"> Điểm:
-                                            ${leaderboard[1].point}</h6>
-                                        <h6 class="text-uppercase text-light mb-3"> Tỉ lệ thắng:
-                                            ${leaderboard[1].winRate()}%</h6>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="position-absolute start-0 bottom-0 w-100 rounded-bottom text-center p-4"
-                                 style="background: rgba(173, 181, 189, .9);">
-                                <h5 class="text-uppercase text-light">${leaderboard[1].birdName}</h5>
-                                <p class="text-uppercase text-white m-0">Top 2</p>
-                                <p class="text-uppercase text-white m-0">Trainner: ${leaderboard[1].trainer}</p>
-
-
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6">
-                        <div class="team-item position-relative">
-                            <div class="position-relative overflow-hidden rounded">
-                                <img class="img-fluid w-100" src="FE/img/thuanDam.jpg" alt="">
-                                <div class="team-overlay">
-                                    <div class="align-items-center justify-content-start">
-                                        <h6 class="text-uppercase text-light mb-3"> Điểm:
-                                            ${leaderboard[0].point}</h6>
-                                        <h6 class="text-uppercase text-light mb-3"> Tỉ lệ thắng:
-                                            ${leaderboard[0].winRate()}%</h6>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="position-absolute start-0 bottom-0 w-100 rounded-bottom text-center p-4"
-                                 style="background: rgba(255, 218, 101, .9);">
-                                <h5 class="text-uppercase text-light">${leaderboard[0].birdName}</h5>
-                                <p class="text-uppercase text-white m-0">Top 1</p>
-                                <p class="text-uppercase text-white m-0">Trainner: ${leaderboard[0].trainer}</p>
-
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6">
-                        <div class="team-item position-relative">
-                            <div class="position-relative overflow-hidden rounded">
-                                <img class="img-fluid w-100" src="FE/img/eDanh.jpg" alt="">
-                                <div class="team-overlay">
-                                    <div class="align-items-center justify-content-start">
-                                        <h6 class="text-uppercase text-light mb-3"> Điểm:
-                                            ${leaderboard[2].point}</h6>
-
-                                        <h6 class="text-uppercase text-light mb-3"> Tỉ lệ thắng:
-                                            ${leaderboard[2].winRate()}%</h6>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="position-absolute start-0 bottom-0 w-100 rounded-bottom text-center p-4"
-                                 style="background: rgba(201, 147, 85, .9);">
-                                <h5 class="text-uppercase text-light">${leaderboard[2].birdName}</h5>
-                                <p class="text-uppercase text-white m-0">Top 3</p>
-                                <p class="text-uppercase text-white m-0">Trainner: ${leaderboard[2].trainer}</p>
-
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </c:if>  
+            </c:if>  
         </div>
-       
+
         <!-- Top Bird End -->
 
 
@@ -589,7 +587,7 @@
             </div>
         </div>
         <!-- Feedback end -->
-        
+
         <jsp:include page="JspCommon/webfooter.jsp"/>
 
         <!-- JavaScript Libraries -->

@@ -100,7 +100,7 @@
                     </br>
                     <form action="DispatchServlet">
                         <input type="hidden" name="payType" value="${param.vnp_OrderInfo}" />   
-                        <button type="submit" name="btAction" value="PostPayment" class="btn btn-primary px-5" style="margin-top: 10px;">Quay lại</button>
+                        <button type="submit" name="btAction" value="PostPayment" class="btn btn-primary px-5" style="margin-top: 10px;">Tiếp tục</button>
                     </form>
                     <%
                     } else {
@@ -108,7 +108,12 @@
                     <label style="color:red;">
                         Không thành công
                     </label>
-                    </br><a href="" class="btn btn-primary px-5" style="margin-top: 10px;">Quay lại</a>
+                    </br>
+                    <form action="ReturnServlet">
+                        <input type="hidden" name="payType" value="${param.vnp_OrderInfo}" />   
+                        <button type="submit" class="btn btn-primary px-5" style="margin-top: 10px;">Quay lại</button>
+                    </form>
+
                     <%
                             }
 
