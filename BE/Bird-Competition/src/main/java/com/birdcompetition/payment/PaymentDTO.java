@@ -38,6 +38,11 @@ public class PaymentDTO implements Serializable{
         this.NameOfProducts = NameOfProducts;
     }
 
+    public PaymentDTO(int price) {
+        this.price = price;
+    }
+    
+
     public int getIdOrder() {
         return idOrder;
     }
@@ -85,6 +90,12 @@ public class PaymentDTO implements Serializable{
     public void setNameOfProducts(String NameOfProducts) {
         this.NameOfProducts = NameOfProducts;
     }
+
+    @Override
+    public String toString() {
+        return "PaymentDTO{" + "idOrder=" + idOrder + ", idMember=" + idMember + ", idProduct=" + idProduct + ", price=" + price + ", orderDate=" + orderDate + ", NameOfProducts=" + NameOfProducts + '}';
+    }
+    
 
    
 }

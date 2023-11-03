@@ -4,8 +4,10 @@
  */
 package com.birdcompetition.payment;
 
+import com.birdcompetition.news.NewsDTO;
 import com.birdcompetition.util.DBHelper;
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -84,7 +86,15 @@ public class PaymentDAO {
 
     }
 
-    public List<PaymentDTO> getPaymentList1()
+    public static void main(String[] args) throws SQLException, ClassNotFoundException {
+        PaymentDAO dao = new PaymentDAO();
+        List<PaymentDTO> list = dao.getPaymentList_price();
+        for (PaymentDTO newsDTO : list) {
+            System.out.println(newsDTO);
+        }
+    }
+
+    public List<PaymentDTO> getPaymentList_price()
             throws SQLException, ClassNotFoundException {
         Connection con = null;
         PreparedStatement stm = null;
@@ -92,42 +102,36 @@ public class PaymentDAO {
         List<PaymentDTO> result = null;
 
         try {
-            //1. Make connection
+            //1.Make connection
             con = DBHelper.getConnection();
+            //check 
             if (con != null) {
-                //2. Crate SQL String
-                String sql = "Select * "
-                        + "From OrderDetail ";
-                       
-
-                //3. Create Statement Object
+                //2.Creat SQL String 
+                String sql = "Select * \n"
+                        + "From OrderDetail \n"
+                        + "Full outer join Products \n"
+                        + "On OrderDetail.IdProduct = Products.IdProduct ";
+                //3.Create Statement Object
                 stm = con.prepareStatement(sql);
-              
 
-                //4. Execute query
+                //4.Exercute Query
                 rs = stm.executeQuery();
-                //5. Process
+                //5.Process
                 while (rs.next()) {
-                    //5.1 map
-                    //5.1.1 get data from Result Set
-                    
                     int price = rs.getInt("Price");
                     String orderDate = rs.getString("OrderDate");
                     String NameOfProducts = rs.getString("NameOfProducts");
 
-                    //5.1.2 add data to list
-//                   ContestDTO dto = new ContestDTO(idContest, nameOfContest, date, 
-//                           locationId, status, factor, minPoint, maxPoint, participatingFee, 
-//                           idBird, idBird, maxPoint, idBird, factor, 
-//                           beforePoint, afterPoint, result, location, nameOfBird, specie);
                     PaymentDTO dto = new PaymentDTO(price, orderDate, NameOfProducts);
-                    //5.2 add data to list
+
                     if (this.paymentList == null) {
                         this.paymentList = new ArrayList<>();
-                    }//end account List has not existed
-                    this.paymentList.add(dto);
-                }//end map DB to DTO
-            }//end connection í available
+                    }
+                    paymentList.add(dto);
+                }
+                return paymentList;
+            }
+
         } finally {
             if (rs != null) {
                 rs.close();
@@ -141,6 +145,5 @@ public class PaymentDAO {
         }
         return result;
     }
-    
 
 }

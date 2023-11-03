@@ -46,15 +46,18 @@ public class PaymentAdminServlet extends HttpServlet {
             PaymentDAO dao = new PaymentDAO();
             User user = (User) session.getAttribute("USER");
             dao.getPaymentList(user.getUserName());
-            paymentList = dao.getPaymentList1();
-            System.out.println("lise size: " + paymentList.size());
+            paymentList = dao.getPaymentList_price();
             session.setAttribute("OWN_PAYMENT", paymentList);
             int totalPrice = 0;
+            double actualprofit = 0;
             for (PaymentDTO paymentDTO : paymentList) {
                 totalPrice = totalPrice + paymentDTO.getPrice();
-                System.out.println("total: " + totalPrice);
                 request.setAttribute("TOTAL", totalPrice);
             }
+            actualprofit = totalPrice - (totalPrice * 0.2);
+            request.setAttribute("REAL_PROFIT", actualprofit);
+           
+            
 
         } catch (SQLException ex) {
             log("ScheduleServlet_SQL: " + ex.getMessage());
@@ -67,7 +70,6 @@ public class PaymentAdminServlet extends HttpServlet {
         }
 
     }
-
 // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.

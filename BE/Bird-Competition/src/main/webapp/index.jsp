@@ -46,13 +46,13 @@
                 <div class="col-lg-3 bg-dark d-none d-lg-block">
         
         
-                    <a href='<c:url value="/DispatchServlet?btAction=Home"/>' class="navbar-brand w-100 h-100 m-0 p-0 d-flex align-items-center justify-content-center">
+                    <a href="index.html" class="navbar-brand w-100 h-100 m-0 p-0 d-flex align-items-center justify-content-center">
                         <img src="FE/img/finallogo.png" style="width: 100px; margin-right: -40px; margin-bottom:50px;">
                         <h1 class="m-0 display-4 text-primary text-uppercase">BIRDFIGHTER</h1>
                     </a>
-        
-        
-        
+
+
+
                 </div>
                 <div class="col-lg-9">
                     <div class="row gx-0 bg-secondary d-none d-lg-flex">
@@ -100,12 +100,12 @@
                                     <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
                                     <div class="dropdown-menu rounded-0 m-0">
                                         <!-- <a href="blog.html" class="dropdown-item">News</a> -->
-                                        <a href="#" class="dropdown-item">Luật thi đấu</a>
-                                        <a href="FE/feedback_pre.jsp" class="dropdown-item">Feedback</a>
-                                        <a href="News.jsp" class="dropdown-item">Tin Tức</a>
+                                        <a href="rule_pre.jsp" class="dropdown-item">Luật thi đấu</a>
+                                        <!--<a href="FE/feedback_pre.jsp" class="dropdown-item">Feedback</a>-->
+                                        <a href="News_pre.jsp" class="dropdown-item">Tin Tức</a>
                                     </div>
                                 </div>
-                                <a href="contact.html" class="nav-item nav-link">Liên Hệ</a>
+                                <a href="contact_pre.jsp" class="nav-item nav-link">Liên Hệ</a>
                             </div>
                             <a href="login" class="btn btn-primary py-md-3 px-md-5 d-none d-lg-block">Login/Signup</a>
                         </div>

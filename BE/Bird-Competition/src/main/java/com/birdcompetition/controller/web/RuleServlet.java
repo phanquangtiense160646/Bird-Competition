@@ -37,13 +37,13 @@ public class RuleServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        String url = "News.jsp";
+        String url = "rule.jsp";
         try (PrintWriter out = response.getWriter()) {
-            HttpSession session = request.getSession();
-            RuleDAO ruleDao = new RuleDAO();
-            List<RuleDTO> listRule = ruleDao.getRuleList();
-
-            session.setAttribute("RULE", listRule);
+//            HttpSession session = request.getSession();
+//            RuleDAO ruleDao = new RuleDAO();
+//            List<RuleDTO> listRule = ruleDao.getRuleList();
+//
+//            session.setAttribute("RULE", listRule);
         } finally {
             RequestDispatcher rd = request.getRequestDispatcher(url);
             rd.forward(request, response);
