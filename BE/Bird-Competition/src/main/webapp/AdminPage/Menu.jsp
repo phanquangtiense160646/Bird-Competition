@@ -34,13 +34,13 @@
 
 
         <li class="nav-item">
-            <a class="nav-link" href="AdminPage/index.jsp">
+            <a class="nav-link" href=<c:url value="/DispatchServlet?btAction=Dashboard"/>>
                 <i class="fas fa-fw fa-table"></i>
                 <span>Dashboard</span></a>
         </li>
 
         <li class="nav-item">
-            <a class="nav-link" href="AdminPage/Pages/AccountManagement.html">
+            <a class="nav-link" href="Pages/AccountManagement.html">
                 <i class="fas fa-fw fa-table"></i>
                 <span>Quản lý tài khoản</span></a>
         </li>

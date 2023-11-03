@@ -24,12 +24,35 @@ public class ScheduleDTO implements Serializable {
     private String userId;
     private String location;
     private int statusOfContest;
+    private int currentPar;
     private int maxPar;
     private String maxBird;
 
     public ScheduleDTO() {
     }
 
+    public ScheduleDTO(int id, String name, Date date, String locationId,
+            boolean status, double factor, int minPoint, int maxPoint, int fee,
+            String userId, String location, int statusOfContest, int currentPar, int maxPar, String maxBird) {
+        this.id = id;
+        this.name = name;
+        this.date = date;
+        this.locationId = locationId;
+        this.status = status;
+        this.factor = factor;
+        this.minPoint = minPoint;
+        this.maxPoint = maxPoint;
+        this.fee = fee;
+        this.userId = userId;
+        this.location = location;
+        this.statusOfContest = statusOfContest;
+        this.currentPar = currentPar;
+        this.maxPar = maxPar;
+        this.maxBird = maxBird;
+    }
+    
+    
+    
     public ScheduleDTO(int id, String name, Date date, String locationId, 
             boolean status, double factor, int minPoint, int maxPoint, 
             int fee, String userId, String location, int statusOfContest, int maxPar, String maxBird) {
@@ -53,6 +76,14 @@ public class ScheduleDTO implements Serializable {
         this.locationId = locationId;
         this.status = status;
         this.location = location;
+    }
+
+    public int getCurrentPar() {
+        return currentPar;
+    }
+
+    public void setCurrentPar(int currentPar) {
+        this.currentPar = currentPar;
     }
 
     public String getMaxBird() {
@@ -149,6 +180,15 @@ public class ScheduleDTO implements Serializable {
 
     public int getFee() {
         return fee;
+    }
+    public String getBronzeFee() {
+        return String.format("%.0f", fee - fee * 0.1);
+    }
+    public String getSilverFee() {
+        return String.format("%.0f", fee - fee * 0.15);
+    }
+    public String getGoldFee() {
+        return String.format("%.0f", fee - fee * 0.2);
     }
 
     public void setFee(int fee) {

@@ -4,15 +4,12 @@
  */
 package com.birdcompetition.controller.web;
 
-import com.birdcompetition.model.User;
-import com.birdcompetition.payment.PaymentDAO;
-import com.birdcompetition.payment.PaymentDTO;
+import com.birdcompetition.rule.RuleDAO;
+import com.birdcompetition.rule.RuleDTO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -23,10 +20,10 @@ import javax.servlet.http.HttpSession;
 
 /**
  *
- * @author admin
+ * @author MSI
  */
-@WebServlet(name = "PaymentHistoryServlet", urlPatterns = {"/PaymentHistoryServlet"})
-public class PaymentHistoryServlet extends HttpServlet {
+@WebServlet(name = "RuleServlet", urlPatterns = {"/RuleServlet"})
+public class RuleServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -40,34 +37,17 @@ public class PaymentHistoryServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        String url = "paymenthistory.jsp";
-        try {
+        String url = "News.jsp";
+        try (PrintWriter out = response.getWriter()) {
             HttpSession session = request.getSession();
-            List<PaymentDTO> paymentList;
+            RuleDAO ruleDao = new RuleDAO();
+            List<RuleDTO> listRule = ruleDao.getRuleList();
 
-            PaymentDAO dao = new PaymentDAO();
-            User user = (User) session.getAttribute("USER");
-            dao.getPaymentList(user.getUserName());
-            paymentList = dao.getPaymentList1();
-            System.out.println("lise size: " + paymentList.size());
-            session.setAttribute("OWN_PAYMENT", paymentList);
-            int totalPrice = 0;
-            for (PaymentDTO paymentDTO : paymentList) {
-                totalPrice = totalPrice + paymentDTO.getPrice();
-                System.out.println("total: " + totalPrice);
-                request.setAttribute("TOTAL", totalPrice);
-            }
-
-        } catch (SQLException ex) {
-            log("ScheduleServlet_SQL: " + ex.getMessage());
-        } catch (ClassNotFoundException ex) {
-            log("ScheduleServlet_ClassNotFound: " + ex.getMessage());
+            session.setAttribute("RULE", listRule);
         } finally {
-//            response.sendRedirect(url);
             RequestDispatcher rd = request.getRequestDispatcher(url);
             rd.forward(request, response);
         }
-
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
