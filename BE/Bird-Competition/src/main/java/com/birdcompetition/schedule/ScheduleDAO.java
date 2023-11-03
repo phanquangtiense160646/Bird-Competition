@@ -37,7 +37,7 @@ public class ScheduleDAO implements Serializable {
                 //2.Creat SQL String 
                 String sql = "Select * "
                         + "From Contest, Location "
-                        + "Where Contest.LocationId = Location.LocationId ";
+                        + "Where Contest.LocationId = Location.LocationId Order by Date DESC";
                 //3.Create Statement Object
                 stm = con.prepareStatement(sql);
 

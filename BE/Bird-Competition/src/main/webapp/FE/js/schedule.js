@@ -66,6 +66,14 @@ function showFailToast() {
         duration: 8000
     })
 }
+function showFailToast1() {
+    toast({
+        tiltle: 'Fail',
+        message: 'Chim thi đấu của bạn không hợp lệ',
+        type: 'warning',
+        duration: 8000
+    })
+}
 function showErrorToast() {
     toast({
         tiltle: 'Lỗi',
@@ -82,6 +90,8 @@ if (mes === 'fail') {
     showSuccessToast();
 } else if (mes === 'error') {
     showErrorToast();
+} else if (mes === 'fail1') {
+    showFailToast1();
 }
 
 const activePage = document.getElementById('lichthidau');

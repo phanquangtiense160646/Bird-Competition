@@ -90,6 +90,7 @@ public class BirdContestDAO {
             }
         }
     }
+
     public void getBirdList(int matchId)
             throws SQLException, ClassNotFoundException {
         Connection con = null;
@@ -191,7 +192,7 @@ public class BirdContestDAO {
         }
         return result;
     }
-    
+
     public boolean setCheckIn(int id)
             throws SQLException, NamingException, ClassNotFoundException {
         Connection con = null;
@@ -308,7 +309,7 @@ public class BirdContestDAO {
                 //4.Exercute Query
                 rs = stm.executeQuery();
                 //5.Process
-                if(rs.next()) {
+                if (rs.next()) {
                     String birdId = rs.getString("IdBird");
                     String matchID = rs.getString("IdContest");
                     int order = rs.getInt("Rank");
@@ -324,7 +325,7 @@ public class BirdContestDAO {
                     dto = new BirdContestDTO(birdId, matchID, order, point, postPoint, checkIn, checkInCode, birdName, trainerName, memberId);
                     System.out.println("dto: " + dto.toString());
 //                    return dto;
-                }else{
+                } else {
                     dto = null;
                 }
             }
@@ -341,7 +342,8 @@ public class BirdContestDAO {
         }
         return dto;
     }
-void sort(List<BirdContestDTO> list) {
+
+    void sort(List<BirdContestDTO> list) {
         Collections.sort(list, (BirdContestDTO b1, BirdContestDTO b2) -> b1.compareTo(b2));
     }
 
