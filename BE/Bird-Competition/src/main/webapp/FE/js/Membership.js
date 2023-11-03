@@ -1,9 +1,9 @@
-function toast({
-    tiltle = '',
-    message = '',
-    type = 'info',
-    duration = 3000
-}) {
+function toast( {
+tiltle = '',
+        message = '',
+        type = 'info',
+        duration = 3000
+        }) {
     const main = document.getElementById('toast');
     if (main) {
         const toast = document.createElement('div');
@@ -44,7 +44,7 @@ function toast({
                 `;
         main.appendChild(toast);
 
-    }
+}
 }
 
 
@@ -83,13 +83,33 @@ function showOverDateToast() {
         duration: 3000
     })
 }
+function showFailRegisToast() {
+    toast({
+        tiltle: 'Fail',
+        message: 'Đăng ký gói Membership thất bại',
+        type: 'warning',
+        duration: 3000
+    })
+}
+function showFailUpdateToast() {
+    toast({
+        tiltle: 'Fail',
+        message: 'Nâng cấp gói Membership thất bại',
+        type: 'warning',
+        duration: 3000
+    })
+}
 
 var mes = document.getElementById('toastmes').innerHTML;
 if (mes === 'overdate') {
     showOverDateToast();
 } else if (mes === 'success') {
     showSuccessToast();
- } else if (mes === 'updateSuccess') {
-     showUpdateSuccessToast();
+} else if (mes === 'updateSuccess') {
+    showUpdateSuccessToast();
+} else if (mes === 'regisFail') {
+    showFailRegisToast();
+} else if (mes === 'updateFail') {
+    showFailUpdateToast();
 }
 

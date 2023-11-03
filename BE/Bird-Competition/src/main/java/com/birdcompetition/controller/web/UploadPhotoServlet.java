@@ -51,7 +51,7 @@ public class UploadPhotoServlet extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet UploadPhotoServlet</title>");            
+            out.println("<title>Servlet UploadPhotoServlet</title>");
             out.println("</head>");
             out.println("<body>");
             out.println("<h1>Servlet UploadPhotoServlet at " + request.getContextPath() + "</h1>");
@@ -74,7 +74,7 @@ public class UploadPhotoServlet extends HttpServlet {
             throws ServletException, IOException {
 //        RequestDispatcher rd = request.getRequestDispatcher("birdprofile.jsp");
 //        rd.forward(request, response);
-response.getWriter().append("Served at: ").append(request.getContextPath());
+        response.getWriter().append("Served at: ").append(request.getContextPath());
     }
 
     /**
@@ -88,85 +88,67 @@ response.getWriter().append("Served at: ").append(request.getContextPath());
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-                int id = Integer.parseInt(request.getParameter("birdID")) ;
-                System.out.println("In do post method of Add Image servlet.");
-		Part file=request.getPart("image");
-                
-                String birdId = request.getParameter("txtBirdID");
-                System.out.println(birdId);
+        int id = Integer.parseInt(request.getParameter("birdID"));
+        System.out.println("In do post method of Add Image servlet.");
+        Part file = request.getPart("image");
 
-		String imageFileName=file.getSubmittedFileName();  // get selected image file name
-		System.out.println("Selected Image File Name : "+imageFileName);
-		
-		String uploadPath="D:/Bird-Competition/BE/Bird-Competition/src/main/webapp/FE/img/"+imageFileName;  // upload path where we have to upload our actual image
-		System.out.println("Upload Path : "+uploadPath);
-                
-                
-                
-                String url = "";
-		
-		// Uploading our selected image into the images folder
-		
-		try
-		{
-		
-		FileOutputStream fos = new FileOutputStream(uploadPath);
-		InputStream is=file.getInputStream();
-		
-		byte[] data=new byte[is.available()];
-		is.read(data);
-		fos.write(data);
-		fos.close();
-                
-                
-		url = "DispatchServlet?btAction=BirdProfile&txtBirdID="+ birdId;
-		}
-		
-		catch(Exception e)
-		{
-			e.printStackTrace();
-		}finally{
-                    response.sendRedirect(url);
-                }
-		//**********************
-		
-		//getting database connection (jdbc code)
-		
-			Connection connection=null;
-		try 
-		{
-			Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-			connection=DriverManager.getConnection("jdbc:sqlserver://"
-                                + "localhost:1433;"
-                                + "databaseName=BirdCompetitionDB;"
-                                + "encrypt=true;trustServerCertificate=true;","sa","12345");
-			PreparedStatement stmt;
-			String query="Update Bird Set imageFileName = ? "
-                                + "Where IdBird = ? ";
-			stmt=connection.prepareStatement(query);
-			stmt.setString(1,imageFileName);
-                        stmt.setInt(2,id);
-			int row=stmt.executeUpdate(); // it returns no of rows affected.
-			
-			if(row>0)
-			{
-				System.out.println("Image added into database successfully.");
-			}
-			
-			else
-			{
-				System.out.println("Failed to upload image.");
-			}
-			
-			
-		}
-		catch (Exception e)
-		{
-			System.out.println(e);
-		}
-		
-	}
-    
+        String birdId = request.getParameter("txtBirdID");
+        System.out.println(birdId);
+
+        String imageFileName = file.getSubmittedFileName();  // get selected image file name
+        System.out.println("Selected Image File Name : " + imageFileName);
+
+        String uploadPath = "D:/Code/SWP Project/Bird-Competition/BE/Bird-Competition/src/main/webapp/FE/img/" + imageFileName;  // upload path where we have to upload our actual image
+        System.out.println("Upload Path : " + uploadPath);
+
+        String url = "";
+
+        // Uploading our selected image into the images folder
+        try {
+
+            FileOutputStream fos = new FileOutputStream(uploadPath);
+            InputStream is = file.getInputStream();
+
+            byte[] data = new byte[is.available()];
+            is.read(data);
+            fos.write(data);
+            fos.close();
+
+            url = "DispatchServlet?btAction=BirdProfile&txtBirdID=" + birdId;
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            response.sendRedirect(url);
+        }
+        //**********************
+
+        //getting database connection (jdbc code)
+        Connection connection = null;
+        try {
+            Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+            connection = DriverManager.getConnection("jdbc:sqlserver://"
+                    + "localhost:1433;"
+                    + "databaseName=BirdCompetitionDB;"
+                    + "encrypt=true;trustServerCertificate=true;", "sa", "12345");
+            PreparedStatement stmt;
+            String query = "Update Bird Set PhotoPath = ? "
+                    + "Where IdBird = ? ";
+            stmt = connection.prepareStatement(query);
+            stmt.setString(1, imageFileName);
+            stmt.setInt(2, id);
+            int row = stmt.executeUpdate(); // it returns no of rows affected.
+
+            if (row > 0) {
+                System.out.println("Image added into database successfully.");
+            } else {
+                System.out.println("Failed to upload image.");
+            }
+
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+
+    }
 
     /**
      * Returns a short description of the servlet.

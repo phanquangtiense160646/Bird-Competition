@@ -40,6 +40,7 @@
 
         <!-- Begin Page Content -->
         <c:set var="updateResult" value="${requestScope.SCORING}" />
+        <c:set var="factor" value="${requestScope.FACTOR}" />
         <form action="ConfirmMatchServlet" method="post">
 
             <div class="container-fluid">
@@ -118,10 +119,15 @@
                                                             <span class="list__value">${dto.prePoint}</span>
                                                         </td>
                                                         <td class="list__cell" style="color:#868E96;">
-                                                            <span class="list__value">${dto.stdPoint}</span>
+                                                            <span class="list__value">+${dto.stdPoint}</span>
                                                         </td>
                                                         <td class="list__cell" style="color:#868E96;">
-                                                            <span class="list__value">${dto.eloPoint}</span>
+                                                            <c:if test="${factor != 1}" >
+                                                                <span class="list__value">+${dto.eloPoint} × 2 </span>
+                                                            </c:if>
+                                                            <c:if test="${factor == 1}" >
+                                                                <span class="list__value">+${dto.eloPoint}</span>
+                                                            </c:if>
                                                         </td>
                                                         <td class="list__cell" style="color:#868E96;">
                                                             <span class="list__value" style="color: green;">+${dto.postPoint - dto.prePoint}</span>
@@ -207,7 +213,12 @@
                                                             <span class="list__value">${dto.stdPoint}</span>
                                                         </td>
                                                         <td class="list__cell" style="color:#868E96;">
-                                                            <span class="list__value">${dto.eloPoint}</span>
+                                                            <c:if test="${factor != 1}" >
+                                                                <span class="list__value">${dto.eloPoint} × 2 </span>
+                                                            </c:if>
+                                                            <c:if test="${factor == 1}" >
+                                                                <span class="list__value">${dto.eloPoint}</span>
+                                                            </c:if>
                                                         </td>
                                                         <td class="list__cell" style="color:#868E96;">
                                                             <span class="list__value" style="color: red;">${dto.postPoint - dto.prePoint}</span>

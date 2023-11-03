@@ -47,7 +47,7 @@ public class ContestDAO {
                         + "Full outer join Location "
                         + "On Contest.LocationId = Location.LocationId "
                         + "Where Bird.IdMember = ? and StatusOfContest is not null "
-                        + "ORDER BY Date ASC";
+                        + "ORDER BY Date DESC";
                         
                 //3. Create Statement Object
                 stm = con.prepareStatement(sql);

@@ -43,10 +43,10 @@ public class BirdDAO implements Serializable {
         try {
             con = DBHelper.getConnection();
             if (con != null) {
-                String sql = "Select NameOfBird, Species, Point, Win, Lose, Tie, MatchNumber, b.IdMember, m.FullName "
+                String sql = "Select NameOfBird, Species, Point, Win, Lose, Tie, MatchNumber, b.PhotoPath, b.IdMember, m.FullName "
                         + "From Bird b JOIN [dbo].[Member] m "
                         + "ON m.IdMember = b.IdMember "
-                        + "Where Bird.Status = 'true'";
+                        + "Where b.Status = 'true'";
                 stm = con.prepareStatement(sql);
 
                 rs = stm.executeQuery();
@@ -60,8 +60,10 @@ public class BirdDAO implements Serializable {
                     int matchNumber = rs.getInt("MatchNumber");
                     String memberId = rs.getString("IdMember");
                     String trainer = rs.getString("FullName");
+                    String photo = rs.getString("PhotoPath");
+                    String photoPath = "FE/img/" + photo;
 
-                    BirdDTO dto = new BirdDTO(name, speices, point, trainer, memberId, "photo", win, lose, tie, matchNumber, 0);
+                    BirdDTO dto = new BirdDTO(name, speices, point, trainer, memberId, photoPath, win, lose, tie, matchNumber, 0);
                     if (this.birdList == null) {
                         this.birdList = new ArrayList<>();
                     }
@@ -133,11 +135,10 @@ public class BirdDAO implements Serializable {
                     int tie = rs.getInt("Tie");
                     int matchNumber = rs.getInt("MatchNumber");
                     boolean status = rs.getBoolean("Status");
-                    String photoPath = rs.getString("imageFileName");
-                    
+                    String photoPath = rs.getString("PhotoPath");
+
 //                    String trainer = rs.getString("m.FullName");                     
                     //5.1.2 add data to list
-
                     BirdDTO dto = new BirdDTO(birdId, name, speices, point, status, ownerId, photoPath, win, lose, tie, matchNumber);
 //                    System.out.println(dto.toString());
                     if (this.birdList == null) {
@@ -160,6 +161,7 @@ public class BirdDAO implements Serializable {
         }
 
     }
+
     public void getBirdByMemberId1(String id)
             throws SQLException, ClassNotFoundException {
         Connection con = null;
@@ -290,14 +292,14 @@ public class BirdDAO implements Serializable {
             con = DBHelper.getConnection();
             if (con != null) {
                 //2. Create SQL String 
-                String sql = "INSERT INTO Bird (NameOfBird, Species, Point, Status, IdMember, Win, Lose, Tie, MatchNumber, imageFileName) VALUES (?, ?, 1000, 'true', ?, 0, 0, 0, 0, 'default.png')";
+                String sql = "INSERT INTO Bird (NameOfBird, Species, Point, Status, IdMember, Win, Lose, Tie, MatchNumber, PhotoPath) VALUES (?, ?, 1000, 'true', ?, 0, 0, 0, 0, 'default.png')";
                 //3. Create Statement Object
                 stm = con.prepareStatement(sql);
 
                 stm.setString(1, bird.getBirdName());
                 stm.setString(2, bird.getSpecies());
                 stm.setString(3, bird.getMemberID());
-                
+
                 //4. Execute Query
                 int effectRows = stm.executeUpdate();
                 //5. Process
@@ -372,7 +374,7 @@ public class BirdDAO implements Serializable {
             if (con != null) {
                 con.close();
             }
-        
+
         }
         System.out.println("ok");
         return result;
@@ -381,9 +383,7 @@ public class BirdDAO implements Serializable {
     public boolean registerCompetition() {
         return false;
     }
-    
 
-    
     public BirdDTO getBirdInfo(String birdID)
             throws SQLException, ClassNotFoundException {
         Connection con = null;
@@ -397,9 +397,9 @@ public class BirdDAO implements Serializable {
             //check 
             if (con != null) {
                 //2.Creat SQL String 
-            String query = "select * from [dbo].[Bird] "
-                    + "where Bird.IdBird = ? "
-                    + "and Bird.Status = 'true'";
+                String query = "select * from [dbo].[Bird] "
+                        + "where Bird.IdBird = ? "
+                        + "and Bird.Status = 'true'";
                 //3.Create Statement Object
                 stm = con.prepareStatement(query);
                 stm.setString(1, birdID);
@@ -417,8 +417,8 @@ public class BirdDAO implements Serializable {
                     int lose = rs.getInt("Lose");
                     int tie = rs.getInt("Tie");
                     int matchNumber = rs.getInt("MatchNumber");
-                    String photoPath = rs.getString("imageFileName");
-                    
+                    String photoPath = rs.getString("PhotoPath");
+
                     result = new BirdDTO(birdId, name, speices, point, true, ownerId, photoPath, win, lose, tie, matchNumber);
                 }
             }
@@ -451,9 +451,9 @@ public class BirdDAO implements Serializable {
                         + "Where Bird.IdBird = ? ";
                 //3. Create Statement Object
                 stm = con.prepareStatement(sql);
-                
+
                 stm.setString(1, id);
-                
+
                 //4. Execute Query
                 int exercute = stm.executeUpdate();
                 //5. Process

@@ -45,14 +45,12 @@ public class StartServlet extends HttpServlet {
         try {
             ScheduleDAO scheduleDao = new ScheduleDAO();
             scheduleDao.getSchedule();
-            
             List<ScheduleDTO> listSchedule = scheduleDao.getList();
             request.setAttribute("SCHEDULE", listSchedule);
             
             BirdDAO birdDao = new BirdDAO();
             birdDao.displayLeaderboard();
             List<BirdDTO> listBird = birdDao.getBirdList();
-
             request.setAttribute("LEADER_BOARD", listBird);
             
         } catch (SQLException ex) {

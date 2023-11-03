@@ -1,7 +1,6 @@
 package com.birdcompetition.membership;
 
 import com.birdcompetition.birdInContest.BirdContestDTO;
-import com.birdcompetition.schedule.ScheduleDTO;
 import com.birdcompetition.util.DBHelper;
 import java.sql.Connection;
 import java.sql.Date;
@@ -9,7 +8,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDate;
-import java.time.temporal.ChronoUnit;
 import java.util.Calendar;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -155,22 +153,27 @@ public class MembershipDAO {
     public boolean checkSession(String memberId) throws SQLException, ClassNotFoundException {
         MembershipDTO member = getMember(memberId);
         java.sql.Date current = getCurrenDay();
+        long dayGap = getDayBetween(member.getDayExpired(), current);
 
         if (member != null) {
-            if (member.getDayExpired().equals(current)) {
-//            return "0";
-                System.out.println("out date");
+            if (dayGap <= 0) {
                 EndMembership(memberId);
-
                 return false;
             } else {
-//            return member.getType();
-                System.out.println("on session");
                 return true;
             }
         }
         return false;
 
+    }
+
+    private long getDayBetween(Date expired, Date curent) {
+        LocalDate expiredDate = expired.toLocalDate();
+        LocalDate currentDate = curent.toLocalDate();
+
+        long dayGap = java.time.temporal.ChronoUnit.DAYS.between(currentDate, expiredDate);
+//        System.out.println("dayGap: " + dayGap);
+        return dayGap;
     }
 
     private boolean EndMembership(String memberId) throws SQLException, ClassNotFoundException {
@@ -212,18 +215,21 @@ public class MembershipDAO {
     public int updatePack(String memberId, String newType) throws SQLException {
         MembershipDTO member = getMember(memberId);
         double newCost = 0;
+//        double finalCost = 0;
         if (member.getType() != null) {
             int payed = getCost(member.getType());
-            System.out.println("payed " + payed);
             int cost = getCost(newType);
-            System.out.println("cost " + cost);
+            long dayGap = getDayBetween(member.getDayExpired(), getCurrenDay());
 
-            long remainingDay = calRemainingDays(getCurrenDay(), member.getDayExpired());
-            System.out.println("remain" + remainingDay);
-            double discount = (remainingDay / 365);
-            newCost = cost - payed * discount;
+            double discount = ((double) dayGap / 365.0);
+            newCost = (double) cost - (payed * discount);
+            newCost = roundCost(newCost);
         }
         return (int) newCost;
+    }
+
+    private double roundCost(double number) {
+        return Math.round(number / 10000) * 10000;
     }
 
     private int getCost(String type) {

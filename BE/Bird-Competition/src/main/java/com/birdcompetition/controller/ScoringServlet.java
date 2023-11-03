@@ -6,6 +6,8 @@ package com.birdcompetition.controller;
 
 import com.birdcompetition.birdInContest.BirdContestDAO;
 import com.birdcompetition.birdInContest.BirdContestDTO;
+import com.birdcompetition.schedule.ScheduleDAO;
+import com.birdcompetition.schedule.ScheduleDTO;
 import com.birdcompetition.scoring.ScoringDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -66,16 +68,19 @@ public class ScoringServlet extends HttpServlet {
                 }
 
                 ScoringDAO ScoringDao = new ScoringDAO();
-                List<BirdContestDTO> result = ScoringDao.Scoring(joiner);
-
+                ScheduleDAO contestDao = new ScheduleDAO();
+                ScheduleDTO contest = contestDao.getScheduleById(matchId);
+                double factor = contest.getFactor();
+                
+                List<BirdContestDTO> result = ScoringDao.Scoring(joiner, factor);
+                request.setAttribute("FACTOR", factor);
                 request.setAttribute("SCORING", result);
                 msg = "success";
 
             }
             request.setAttribute("Message", msg);
 
-            session.setAttribute("Message", msg);
-
+//            session.setAttribute("Message", msg);
 //            System.out.println("sau cap nhat");
 //            for (BirdContestDTO birdContestDTO : joiner) {
 //                System.out.println(birdContestDTO.toString());

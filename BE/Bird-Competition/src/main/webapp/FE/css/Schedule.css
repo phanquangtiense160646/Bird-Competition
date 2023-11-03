@@ -58,11 +58,11 @@ html {
 }
 
 .schedule-detail, .shedule-form {
-    background-color: black;
+    background-color: #f4f5f8;
 }
 
 .update-result, .update-form {
-    background-color: #DEE2E6;
+    background-color: black;
 }
 
 .update-form {

@@ -79,7 +79,7 @@
                                 <button class="dropdown-item" name="btAction" value="UserProfile">Trang cá nhân</button>
                                 <button class="dropdown-item" name="btAction" value="ShowAllBirds">Bộ Sưu Tập</button>
                                 <a class="dropdown-item" href="addnewbird.jsp">Thêm chim</a>
-                                <button class="dropdown-item" name="btAction" value="MatchHistory">Lịch sử đấu</button>
+                                <button class="dropdown-item" name="btAction" value="MatchHistory">Trận của tôi</button>
                                 <button class="dropdown-item" name="btAction" value="PaymentHistory">Lịch sử giao dịch</button>
                                 <div class="dropdown-divider"></div>
                                 <button class="dropdown-item" name="btAction" value="Logout">Đăng xuất</button>

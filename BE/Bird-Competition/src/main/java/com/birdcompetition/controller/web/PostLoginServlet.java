@@ -43,28 +43,31 @@ public class PostLoginServlet extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         String url = "postLogin.jsp";
         try {
+
             HttpSession session = request.getSession();
             List<ScheduleDTO> listSchedule = (List<ScheduleDTO>) session.getAttribute("SCHEDULE");
             if (listSchedule == null) {
-                    //Schedule
+                //Schedule
                 ScheduleDAO scheduleDao = new ScheduleDAO();
                 scheduleDao.getSchedule();
                 listSchedule = scheduleDao.getList();
                 session.setAttribute("SCHEDULE", listSchedule);
-                
-                    //Leaderboard
-                BirdDAO birdDao = new BirdDAO();
-                birdDao.displayLeaderboard();
-                List<BirdDTO> listBird = birdDao.getBirdList();
-                request.setAttribute("LEADER_BOARD", listBird);
             }
+
+            BirdDAO birdDao = new BirdDAO();
+            birdDao.resetBirdList();
+            birdDao.displayLeaderboard();
+            List<BirdDTO> listBird = birdDao.getBirdList();
+            System.out.println("leaderboard size " + listBird.size());
+            session.setAttribute("LEADER_BOARD", listBird);
 
         } catch (SQLException ex) {
             log("PostLoginServlet_SQL: " + ex.getMessage());
         } catch (ClassNotFoundException ex) {
             log("PostLoginServlet_ClassNotFound: " + ex.getMessage());
+
         } catch (NamingException ex) {
-            Logger.getLogger("PostLoginServlet_Naming: " + ex.getMessage());
+            Logger.getLogger(PostLoginServlet.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
             response.sendRedirect(url);
         }

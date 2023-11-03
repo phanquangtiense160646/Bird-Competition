@@ -87,7 +87,7 @@
                                     <c:if test="${scheduleDto.statusOfContest == 4}">
                                         <form class="col-lg-3 col-md-4 col-sm-6  btn-viewInfo" action="ViewMatchInfoServlet">
                                             <div>
-                                                <div class="bg-dark rounded text-center py-5 px-3">
+                                                <div class="bg-hero rounded text-center py-5 px-3">
                                                     <p class="schedule-value text-uppercase text-warning mb-3">Hệ
                                                         số: ${scheduleDto.factor}</p>
                                                     <p class="schedule-value text-uppercase text-light mb-3">
@@ -136,7 +136,7 @@
                                     <c:if test="${scheduleDto.statusOfContest == 3}">
 
                                         <div class="col-lg-3 col-md-4 col-sm-6  btn-viewInfo">
-                                            <div class="bg-dark rounded text-center py-5 px-3">
+                                            <div class="bg-hero rounded text-center py-5 px-3">
                                                 <p class="schedule-value text-uppercase text-success mb-3">Hệ số:
                                                     ${scheduleDto.factor}</p>
                                                 <p class="schedule-value text-uppercase text-light mb-3">Ngày:
@@ -164,8 +164,8 @@
                                                           style="display: inline;">
                                                         ${scheduleDto.currentPar}/${scheduleDto.maxPar}</span>
                                                 </p>
-                                                </br><button class="btn btn-success btn-viewInfo px-5"
-                                                             style="margin-top: 10px;">Xem thông tin</button>
+                                                </br><a href="https://www.facebook.com/birdfighter.compe/" class="btn btn-success btn-viewInfo px-5"
+                                                             style="margin-top: 10px;"  target="_blank">Xem Trực tiếp</a>
                                             </div>
                                         </div>
                                     </c:if>
@@ -181,7 +181,7 @@
                                     <c:if test="${scheduleDto.statusOfContest == 1}">
 
                                         <div class="col-lg-3 col-md-4 col-sm-6">
-                                            <div class="bg-dark rounded text-center py-5 px-3 btn-register">
+                                            <div class="bg-hero rounded text-center py-5 px-3 btn-register">
                                                 <p class="schedule-value text-uppercase text-primary mb-3">Hệ số:
                                                     ${scheduleDto.factor}</p>
                                                 <p class="schedule-value text-uppercase text-light mb-3">Ngày:
@@ -254,7 +254,7 @@
                                     <c:if test="${scheduleDto.statusOfContest == 2}">
 
                                         <div class="col-lg-3 col-md-4 col-sm-6">
-                                            <div class="bg-dark rounded text-center py-5 px-3">
+                                            <div class="bg-hero rounded text-center py-5 px-3">
                                                 <p class="schedule-value text-uppercase text-danger mb-3">Hệ số:
                                                     ${scheduleDto.factor}</p>
                                                 <p class="schedule-value text-uppercase text-light mb-3">Ngày:
@@ -372,14 +372,14 @@
                     if(myArray[1].length >= 8){
                         newDriver.innerHTML = `
     <div> 
-    <h6 class="text-uppercase text-light mb-3 ml-3">` + factor + `</h6>                                       
-    <h6 class="text-uppercase text-light mb-3 ml-3">` + date + `</h6>
-    <h6 class="text-uppercase text-light mb-3 ml-3">` + time + `</h6>
-    <h6 class="text-uppercase text-light mb-3 ml-3">` + place + `</h6>
+    <h6 class="text-uppercase text-dark mb-3 ml-3">` + factor + `</h6>                                       
+    <h6 class="text-uppercase text-dark mb-3 ml-3">` + date + `</h6>
+    <h6 class="text-uppercase text-dark mb-3 ml-3">` + time + `</h6>
+    <h6 class="text-uppercase text-dark mb-3 ml-3">` + place + `</h6>
     <h5 class="text-uppercase text-primary">` + tOC + `</h5>
     <p class="text-uppercase text-secondary mb-0 ml-3">` + tOB + `</p>
     <p class="text-uppercase text-secondary mb-0 ml-3">Điểm yêu cầu: Không giới hạn` + `</p>
-    <h6 class="text-uppercase text-light mb-3 ml-3">Phí đăng kí(VND): ` + fee + `</h6>
+    <h6 class="text-uppercase text-dark mb-3 ml-3">Phí đăng kí(VND): ` + fee + `</h6>
     <p class="text-uppercase text-secondary mb-0 ml-3" style="display: inline;">
         số người đăng kí:
     <span class="text-uppercase text-primary mb-0 ml-3" style="display: inline;">` + registerNumber + `</span>
@@ -401,20 +401,20 @@
     `;
                     } else {
 
-                        newDriver.innerHTML = `
-    <div> 
-    <h6 class="text-uppercase text-light mb-3 ml-3">` + factor + `</h6>                                       
-    <h6 class="text-uppercase text-light mb-3 ml-3">` + date + `</h6>
-    <h6 class="text-uppercase text-light mb-3 ml-3">` + time + `</h6>
-    <h6 class="text-uppercase text-light mb-3 ml-3">` + place + `</h6>
-    <h5 class="text-uppercase text-primary">` + tOC + `</h5>
-    <p class="text-uppercase text-secondary mb-0 ml-3">` + tOB + `</p>
-    <p class="text-uppercase text-secondary mb-0 ml-3">Điểm yêu cầu: ` + pointReq + `</p>
-    <h6 class="text-uppercase text-light mb-3 ml-3">Phí đăng kí(VND): ` + fee + `</h6>
-    <p class="text-uppercase text-secondary mb-0 ml-3" style="display: inline;">
-        số người đăng kí:
-    <span class="text-uppercase text-primary mb-0 ml-3" style="display: inline;">` + registerNumber + `</span>
-    </p>                     
+                            newDriver.innerHTML = `
+            <div> 
+            <h6 class="text-uppercase text-dark mb-3 ml-3">` + factor + `</h6>                                       
+            <h6 class="text-uppercase text-dark mb-3 ml-3">` + date + `</h6>
+            <h6 class="text-uppercase text-dark mb-3 ml-3">` + time + `</h6>
+            <h6 class="text-uppercase text-dark mb-3 ml-3">` + place + `</h6>
+            <h5 class="text-uppercase text-primary">` + tOC + `</h5>
+            <p class="text-uppercase text-secondary mb-0 ml-3">` + tOB + `</p>
+            <p class="text-uppercase text-secondary mb-0 ml-3">Điểm yêu cầu: ` + pointReq + `</p>
+            <h6 class="text-uppercase text-dark mb-3 ml-3">Phí đăng kí(VND): ` + fee + `</h6>
+            <p class="text-uppercase text-secondary mb-0 ml-3" style="display: inline;">
+                số người đăng kí:
+            <span class="text-uppercase text-primary mb-0 ml-3" style="display: inline;">` + registerNumber + `</span>
+            </p>                     
                     
     <form action="DispatchServlet" method="POST">
         <h6 class="text-uppercase text-secondary mb-3 ml-3">Chọn chim đăng ký:  

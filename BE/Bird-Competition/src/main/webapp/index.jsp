@@ -7,7 +7,7 @@
 
     <head>
         <meta charset="utf-8">
-        <title>DaGaChien</title>
+        <title>Home</title>
         <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
         <!-- Favicon -->
@@ -44,8 +44,8 @@
         <div class="container-fluid bg-dark px-0">
             <div class="row gx-0">
                 <div class="col-lg-3 bg-dark d-none d-lg-block">
-
-
+        
+        
                     <a href="index.html" class="navbar-brand w-100 h-100 m-0 p-0 d-flex align-items-center justify-content-center">
                         <img src="FE/img/finallogo.png" style="width: 100px; margin-right: -40px; margin-bottom:50px;">
                         <h1 class="m-0 display-4 text-primary text-uppercase">BIRDFIGHTER</h1>
@@ -92,7 +92,7 @@
                         </button>
                         <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
                             <div class="navbar-nav mr-auto py-0">
-                                <a href="#" class="nav-item nav-link active">Home</a>
+                                <a href='<c:url value="/DispatchServlet?btAction=Home"/>' class="nav-item nav-link active">Home</a>
                                 <a href="#leaderboard" class="nav-item nav-link">Bảng xếp hạng</a>
                                 <a href="#schedule" class="nav-item nav-link">Lịch thi đấu</a>
                                 <a href="#member" class="nav-item nav-link">Hội viên</a>
@@ -230,7 +230,7 @@
                         <div class="col-lg-4 col-md-6">
                             <div class="team-item position-relative">
                                 <div class="position-relative overflow-hidden rounded">
-                                    <img class="img-fluid w-100" src="FE/img/daddyHuy.jpg" alt="">
+                                    <img class="img-fluid w-100" src="${leaderboard[1].photoPath}" alt="">
                                     <div class="team-overlay">
                                         <div class="align-items-center justify-content-start">
                                             <h6 class="text-uppercase text-light mb-3"> Điểm:
@@ -253,7 +253,7 @@
                         <div class="col-lg-4 col-md-6">
                             <div class="team-item position-relative">
                                 <div class="position-relative overflow-hidden rounded">
-                                    <img class="img-fluid w-100" src="FE/img/thuanDam.jpg" alt="">
+                                    <img class="img-fluid w-100" src="${leaderboard[0].photoPath}" alt="">
                                     <div class="team-overlay">
                                         <div class="align-items-center justify-content-start">
                                             <h6 class="text-uppercase text-light mb-3"> Điểm:
@@ -275,7 +275,7 @@
                         <div class="col-lg-4 col-md-6">
                             <div class="team-item position-relative">
                                 <div class="position-relative overflow-hidden rounded">
-                                    <img class="img-fluid w-100" src="FE/img/eDanh.jpg" alt="">
+                                    <img class="img-fluid w-100" src="${leaderboard[2].photoPath}" alt="">
                                     <div class="team-overlay">
                                         <div class="align-items-center justify-content-start">
                                             <h6 class="text-uppercase text-light mb-3"> Điểm:
@@ -432,7 +432,7 @@
                     <div class="bg-light rounded text-center p-5">
                         <i class="fa-solid fa-medal display-1 medal3"></i>
                         <h3 class="text-uppercase my-4">Bronze Member</h3>
-                        <p>Gói 1 tháng</p>
+                        <p>Gói thành viên Đồng</p>
                         <a class="text-uppercase" href="memberShip.html#registration">Tham gia ngay<i
                                 class="bi bi-arrow-right"></i></a>
                     </div>
@@ -441,7 +441,7 @@
                     <div class="bg-light rounded text-center p-5">
                         <i class="fa-solid fa-medal display-1 medal1"></i>
                         <h1 class="text-uppercase my-4">Gold Member</h1>
-                        <p>Gói 12 tháng</p>
+                        <p>Gói thành viên Vàng</p>
                         <a class="text-uppercase" href="memberShip.html#registration">Tham gia ngay<i
                                 class="bi bi-arrow-right"></i></a>
                     </div>
@@ -450,7 +450,7 @@
                     <div class="bg-light rounded text-center p-5">
                         <i class="fa-solid fa-medal display-1"></i>
                         <h3 class="text-uppercase my-4">Silver Member</h3>
-                        <p>Gói 3 tháng</p>
+                        <p>Gói thành viên Bạc</p>
                         <a class="text-uppercase" href="memberShip.html#registration">Tham gia ngay<i
                                 class="bi bi-arrow-right"></i></a>
                     </div>
