@@ -204,16 +204,18 @@
                                                     <p class="schedule-value text-uppercase text-light mb-3">
                                                         ${scheduleDto.fee}</p>
                                                     </c:if>
+                                                    <!-- bronze -->
                                                     <c:if test="${user.vipType == 1}">
                                                     <p class="schedule-value text-uppercase text-light mb-0">Điểm
                                                         yêu cầu: <span style="color: gold;" class="text-decoration-line-through">${scheduleDto.minPoint} ~ ${scheduleDto.maxPoint}</span></p>
                                                     <p class="schedule-value text-uppercase text-light mb-0">
-                                                        ${scheduleDto.minPoint - 200} - ${scheduleDto.maxPoint + 200} </p>
+                                                        ${scheduleDto.minPoint - 200} ~ ${scheduleDto.maxPoint + 200} </p>
                                                     <p class="schedule-value text-uppercase text-light mt-3 mb-0">Phí
                                                         đăng kí(VND): <span style="color: gold;" class="text-decoration-line-through">${scheduleDto.fee}</span></p>
                                                     <p class="schedule-value text-uppercase text-light mb-3">
                                                         ${scheduleDto.getBronzeFee()}</p>
                                                     </c:if>
+                                                    <!-- silver -->
                                                     <c:if test="${user.vipType == 2}">
                                                     <p class="schedule-value text-uppercase text-light mb-0">Điểm
                                                         yêu cầu: <span style="color: gold;" class="text-decoration-line-through">${scheduleDto.minPoint} ~ ${scheduleDto.maxPoint}</span></p>
@@ -224,6 +226,7 @@
                                                     <p class="schedule-value text-uppercase text-light mb-3">
                                                         ${scheduleDto.getSilverFee()}</p>
                                                     </c:if>
+                                                    <!-- gold -->
                                                     <c:if test="${user.vipType == 3}">
                                                     <p class="schedule-value text-uppercase text-light mb-0">Điểm
                                                         yêu cầu: <span style="color: gold;" class="text-decoration-line-through">${scheduleDto.minPoint} ~ ${scheduleDto.maxPoint}</span>
@@ -372,14 +375,14 @@
                     if(myArray[1].length >= 8){
                         newDriver.innerHTML = `
     <div> 
-    <h6 class="text-uppercase text-dark mb-3 ml-3">` + factor + `</h6>                                       
-    <h6 class="text-uppercase text-dark mb-3 ml-3">` + date + `</h6>
-    <h6 class="text-uppercase text-dark mb-3 ml-3">` + time + `</h6>
-    <h6 class="text-uppercase text-dark mb-3 ml-3">` + place + `</h6>
+    <h6 class="text-uppercase text-light mb-3 ml-3">` + factor + `</h6>                                       
+    <h6 class="text-uppercase text-light mb-3 ml-3">` + date + `</h6>
+    <h6 class="text-uppercase text-light mb-3 ml-3">` + time + `</h6>
+    <h6 class="text-uppercase text-light mb-3 ml-3">` + place + `</h6>
     <h5 class="text-uppercase text-primary">` + tOC + `</h5>
     <p class="text-uppercase text-secondary mb-0 ml-3">` + tOB + `</p>
     <p class="text-uppercase text-secondary mb-0 ml-3">Điểm yêu cầu: Không giới hạn` + `</p>
-    <h6 class="text-uppercase text-dark mb-3 ml-3">Phí đăng kí(VND): ` + fee + `</h6>
+    <h6 class="text-uppercase text-light mb-3 ml-3">Phí đăng kí(VND): ` + fee + `</h6>
     <p class="text-uppercase text-secondary mb-0 ml-3" style="display: inline;">
         số người đăng kí:
     <span class="text-uppercase text-primary mb-0 ml-3" style="display: inline;">` + registerNumber + `</span>
@@ -403,14 +406,14 @@
 
                             newDriver.innerHTML = `
             <div> 
-            <h6 class="text-uppercase text-dark mb-3 ml-3">` + factor + `</h6>                                       
-            <h6 class="text-uppercase text-dark mb-3 ml-3">` + date + `</h6>
-            <h6 class="text-uppercase text-dark mb-3 ml-3">` + time + `</h6>
-            <h6 class="text-uppercase text-dark mb-3 ml-3">` + place + `</h6>
+            <h6 class="text-uppercase text-light mb-3 ml-3">` + factor + `</h6>                                       
+            <h6 class="text-uppercase text-light mb-3 ml-3">` + date + `</h6>
+            <h6 class="text-uppercase text-light mb-3 ml-3">` + time + `</h6>
+            <h6 class="text-uppercase text-light mb-3 ml-3">` + place + `</h6>
             <h5 class="text-uppercase text-primary">` + tOC + `</h5>
             <p class="text-uppercase text-secondary mb-0 ml-3">` + tOB + `</p>
             <p class="text-uppercase text-secondary mb-0 ml-3">Điểm yêu cầu: ` + pointReq + `</p>
-            <h6 class="text-uppercase text-dark mb-3 ml-3">Phí đăng kí(VND): ` + fee + `</h6>
+            <h6 class="text-uppercase text-light mb-3 ml-3">Phí đăng kí(VND): ` + fee + `</h6>
             <p class="text-uppercase text-secondary mb-0 ml-3" style="display: inline;">
                 số người đăng kí:
             <span class="text-uppercase text-primary mb-0 ml-3" style="display: inline;">` + registerNumber + `</span>
