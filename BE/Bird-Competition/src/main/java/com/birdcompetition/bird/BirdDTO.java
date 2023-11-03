@@ -81,6 +81,7 @@ public class BirdDTO implements Serializable, Comparable<BirdDTO> {
         this.point = point;
         this.status = status;
         this.memberID = memberID;
+        
     }
 
     

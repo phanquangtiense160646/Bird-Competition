@@ -110,7 +110,10 @@ public class BirdDAO implements Serializable {
             con = DBHelper.getConnection();
             if (con != null) {
                 //2. Crate SQL String
-                String sql = "Select * From Bird Where IdMember = ?";
+                String sql = "Select * From Bird "
+                        + "Full outer join BirdImage "
+                        + "On Bird.IdBird = BirdImage.IdBird "
+                        + "Where IdMember = ?";
 
                 //3. Create Statement Object
                 stm = con.prepareStatement(sql);
@@ -130,10 +133,11 @@ public class BirdDAO implements Serializable {
                     int lose = rs.getInt("Lose");
                     int tie = rs.getInt("Tie");
                     int matchNumber = rs.getInt("MatchNumber");
+                    String photoPath = rs.getString("imageFileName");
 //                    String trainer = rs.getString("m.FullName");                     
                     //5.1.2 add data to list
 
-                    BirdDTO dto = new BirdDTO(birdId, name, speices, point, true, ownerId, ownerId, win, lose, tie, matchNumber);
+                    BirdDTO dto = new BirdDTO(birdId, name, speices, point, true, ownerId, photoPath, win, lose, tie, matchNumber);
 //                    System.out.println(dto.toString());
                     this.birdList.add(dto);
                 }//end map DB to DTO
@@ -251,7 +255,9 @@ public class BirdDAO implements Serializable {
             if (con != null) {
                 //2.Creat SQL String 
             String query = "select * from [dbo].[Bird] "
-                    + "where IdBird = ? ";
+                    + "Full outer join BirdImage "
+                    + "On [dbo].[Bird].IdBird = BirdImage.IdBird "
+                    + "where Bird.IdBird = ? ";
                 //3.Create Statement Object
                 stm = con.prepareStatement(query);
                 stm.setString(1, birdID);
@@ -269,8 +275,9 @@ public class BirdDAO implements Serializable {
                     int lose = rs.getInt("Lose");
                     int tie = rs.getInt("Tie");
                     int matchNumber = rs.getInt("MatchNumber");
+                    String photoPath = rs.getString("imageFileName");
                     
-                    result = new BirdDTO(birdId, name, speices, point, true, ownerId, ownerId, win, lose, tie, matchNumber);
+                    result = new BirdDTO(birdId, name, speices, point, true, ownerId, photoPath, win, lose, tie, matchNumber);
                 }
             }
         } finally {
