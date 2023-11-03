@@ -133,11 +133,69 @@ public class BirdDAO implements Serializable {
                     int lose = rs.getInt("Lose");
                     int tie = rs.getInt("Tie");
                     int matchNumber = rs.getInt("MatchNumber");
+                    boolean status = rs.getBoolean("Status");
                     String photoPath = rs.getString("imageFileName");
 //                    String trainer = rs.getString("m.FullName");                     
                     //5.1.2 add data to list
 
-                    BirdDTO dto = new BirdDTO(birdId, name, speices, point, true, ownerId, photoPath, win, lose, tie, matchNumber);
+                    BirdDTO dto = new BirdDTO(birdId, name, speices, point, status, ownerId, photoPath, win, lose, tie, matchNumber);
+//                    System.out.println(dto.toString());
+                    if (this.birdList == null) {
+                        this.birdList = new ArrayList<>();
+                    }
+                    this.birdList.add(dto);
+                }//end map DB to DTO
+                sort(birdList);
+            }//end connection í available
+        } finally {
+            if (rs != null) {
+                rs.close();
+            }
+            if (stm != null) {
+                stm.close();
+            }
+            if (con != null) {
+                con.close();
+            }
+        }
+
+    }
+    public void getBirdByMemberId1(String id)
+            throws SQLException, ClassNotFoundException {
+        Connection con = null;
+        PreparedStatement stm = null;
+        ResultSet rs = null;
+
+        try {
+            //1. Make connection
+            con = DBHelper.getConnection();
+            if (con != null) {
+                //2. Crate SQL String
+                String sql = "Select * From Bird "
+                        + "Where IdMember = ?";
+
+                //3. Create Statement Object
+                stm = con.prepareStatement(sql);
+                stm.setString(1, id);
+
+                //4. Execute query
+                rs = stm.executeQuery();
+                //5. Process
+                while (rs.next()) {
+                    int birdId = rs.getInt("IdBird");
+                    String name = rs.getString("NameOfBird");
+                    String speices = rs.getString("Species");
+                    int point = rs.getInt("Point");
+                    String ownerId = rs.getString("IdMember");
+                    int win = rs.getInt("Win");
+                    int lose = rs.getInt("Lose");
+                    int tie = rs.getInt("Tie");
+                    int matchNumber = rs.getInt("MatchNumber");
+                    boolean status = rs.getBoolean("Status");
+//                    String trainer = rs.getString("m.FullName");                     
+                    //5.1.2 add data to list
+
+                    BirdDTO dto = new BirdDTO(birdId, name, speices, point, status, ownerId, null, win, lose, tie, matchNumber);
 //                    System.out.println(dto.toString());
                     if (this.birdList == null) {
                         this.birdList = new ArrayList<>();

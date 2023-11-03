@@ -356,7 +356,9 @@
             <c:set var="ownBird" value="${sessionScope.OWN_BIRD}"/>
             <c:if test="${not empty ownBird}">
                 <c:forEach var="bird" items="${ownBird}" varStatus="counter">
+                    <c:if test="${bird.status == true }">
                     birds.push("${bird.birdName}", "${bird.point}", "${bird.birdID}");
+                    </c:if>
                 </c:forEach>
             </c:if>
                     let text = "";
