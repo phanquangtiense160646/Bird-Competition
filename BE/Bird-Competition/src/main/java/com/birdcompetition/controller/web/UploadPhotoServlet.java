@@ -4,11 +4,15 @@
  */
 package com.birdcompetition.controller.web;
 
+import com.birdcompetition.bird.BirdDAO;
+import com.birdcompetition.bird.BirdDTO;
+import com.birdcompetition.model.User;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.PrintWriter;
-
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -19,6 +23,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import javax.servlet.http.Part;
 
 /**
@@ -87,12 +92,17 @@ response.getWriter().append("Served at: ").append(request.getContextPath());
                 System.out.println("In do post method of Add Image servlet.");
 		Part file=request.getPart("image");
                 
+                String birdId = request.getParameter("txtBirdID");
+                System.out.println(birdId);
 
 		String imageFileName=file.getSubmittedFileName();  // get selected image file name
 		System.out.println("Selected Image File Name : "+imageFileName);
 		
 		String uploadPath="D:/Bird-Competition/BE/Bird-Competition/src/main/webapp/FE/img/"+imageFileName;  // upload path where we have to upload our actual image
 		System.out.println("Upload Path : "+uploadPath);
+                
+                
+                
                 String url = "";
 		
 		// Uploading our selected image into the images folder
@@ -107,7 +117,9 @@ response.getWriter().append("Served at: ").append(request.getContextPath());
 		is.read(data);
 		fos.write(data);
 		fos.close();
-		url = "birdprofile.jsp";
+                
+                
+		url = "DispatchServlet?btAction=BirdProfile&txtBirdID="+ birdId;
 		}
 		
 		catch(Exception e)
@@ -129,7 +141,8 @@ response.getWriter().append("Served at: ").append(request.getContextPath());
                                 + "databaseName=BirdCompetitionDB;"
                                 + "encrypt=true;trustServerCertificate=true;","sa","12345");
 			PreparedStatement stmt;
-			String query="Insert into Bird(imageFileName) values(?)";
+			String query="Update Bird Set imageFileName = ? "
+                                + "Where IdBird = ? ";
 			stmt=connection.prepareStatement(query);
 			stmt.setString(1,imageFileName);
                         stmt.setInt(2,id);

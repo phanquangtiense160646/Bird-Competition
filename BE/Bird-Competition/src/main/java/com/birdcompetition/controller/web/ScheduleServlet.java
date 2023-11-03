@@ -69,13 +69,12 @@ public class ScheduleServlet extends HttpServlet {
             /*danh sach chim dk*/
             BirdDAO dao = new BirdDAO();
             User user = (User) session.getAttribute("USER");
-            dao.getBirdByMemberId(user.getIdMember());
+            dao.getBirdByMemberId1(user.getIdMember());
             List<BirdDTO> birdList = dao.getBirdList();
             session.setAttribute("OWN_BIRD", birdList);
 
         } catch (SQLException ex) {
-//            log("ScheduleServlet_SQL: " + ex.getMessage());
-                ex.printStackTrace();
+            log("ScheduleServlet_SQL: " + ex.getMessage());
         } catch (ClassNotFoundException ex) {
             log("ScheduleServlet_ClassNotFound: " + ex.getMessage());
         } finally {
