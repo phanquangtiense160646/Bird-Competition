@@ -301,6 +301,10 @@
         <!-- Template Javascript -->
         <script src="FE/js/main.js"></script>
         <script src="FE/js/Membership.js"></script>
+        <script>
+            const activePage = document.getElementById('mbship');
+            activePage.classList.add('active')
+        </script>
     </body>
 
 </html>

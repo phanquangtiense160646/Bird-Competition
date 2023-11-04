@@ -341,6 +341,10 @@
             <!-- Template Javascript -->
             <script src="FE/js/main.js"></script>
             <script src="FE/js/leaderboard.js"></script>
+            <script>
+                const activePage = document.getElementById('bangxephang');
+                activePage.classList.add('active')
+            </script>
 
     </body>
 
