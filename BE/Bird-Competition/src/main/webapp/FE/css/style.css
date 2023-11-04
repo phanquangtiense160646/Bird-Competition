@@ -179,7 +179,6 @@ h6,
 
 .schedule-detail {
     position: relative;
-    background: black;
     width: 900px;
     min-height: 200px;
     max-width: calc(100% - 32px);
