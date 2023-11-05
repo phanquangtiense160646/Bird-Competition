@@ -90,6 +90,14 @@ function showErrorToast() {
         duration: 8000
     })
 }
+function showErrorMaxBirdToast() {
+    toast({
+        tiltle: 'Thông tin',
+        message: 'Đã đạt số lồng tối đa',
+        type: 'info',
+        duration: 8000
+    })
+}
 
 var mes = document.getElementById('toastmes').innerHTML;
 if (mes === 'fail') {
@@ -102,6 +110,8 @@ if (mes === 'fail') {
     showFailToast1();
 } else if (mes === 'fail2') {
     showFailToast2();
+} else if (mes == 'maxBError') {
+    showErrorMaxBirdToast();
 }
 
 const activePage = document.getElementById('lichthidau');

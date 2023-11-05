@@ -101,9 +101,9 @@ public class AddScheduleServlet extends HttpServlet {
                     errors.setFactorErr("Hệ số không được trống");
                 } else {
                     dfactor = Double.parseDouble(factor);
-                    if (dfactor > 2) {
+                    if (dfactor > 2 || dfactor < 0) {
                         foundErr = true;
-                        errors.setFactorErr("Hệ số <= 2");
+                        errors.setFactorErr("0 < Hệ số <= 2");
                     }
                 }//end check fator
                 if (maxBird.isEmpty()) {
@@ -111,9 +111,9 @@ public class AddScheduleServlet extends HttpServlet {
                     errors.setMaxBirdInContestErr("Số lượng chim tham gia không được trống");
                 } else {
                     maxB = Integer.parseInt(maxBird);
-                    if (maxB > 3) {
+                    if (maxB > 3 || maxB < 0) {
                         foundErr = true;
-                        errors.setMaxBirdInContestErr("Số lượng chim tham gia <= 3");
+                        errors.setMaxBirdInContestErr("0 < Số lượng chim tham gia <= 3");
                     }
                 }//end check maxBird
                 if (fee.isEmpty()) {
