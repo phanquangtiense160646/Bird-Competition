@@ -629,7 +629,11 @@
 
         <!-- Template Javascript -->
         <script src="FE/js/main.js"></script>
-        <script src="FE/js/postLogin.js"></script>
+        <script>
+            const activePage = document.getElementById('home_page');
+            activePage.classList.add('active')
+        </script>
+
 
     </body>
 

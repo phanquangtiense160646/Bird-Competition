@@ -101,9 +101,9 @@ public class AddScheduleServlet extends HttpServlet {
                     errors.setFactorErr("Hệ số không được trống");
                 } else {
                     dfactor = Double.parseDouble(factor);
-                    if (dfactor > 2) {
+                    if (dfactor > 2 || dfactor < 0) {
                         foundErr = true;
-                        errors.setFactorErr("Hệ số <= 2");
+                        errors.setFactorErr("0 < Hệ số <= 2");
                     }
                 }//end check fator
                 if (maxBird.isEmpty()) {
@@ -111,18 +111,20 @@ public class AddScheduleServlet extends HttpServlet {
                     errors.setMaxBirdInContestErr("Số lượng chim tham gia không được trống");
                 } else {
                     maxB = Integer.parseInt(maxBird);
-                    if (maxB > 3) {
+                    if (maxB > 3 || maxB < 0) {
                         foundErr = true;
-                        errors.setMaxBirdInContestErr("Số lượng chim tham gia <= 3");
+                        errors.setMaxBirdInContestErr("0 < Số lượng chim tham gia <= 3");
                     }
                 }//end check maxBird
                 if (fee.isEmpty()) {
                     foundErr = true;
                     errors.setFeeErr("Phí không được trống");
-                }
+                } else if(fee.length() <5) {
+                    errors.setFeeErr("Phí phải lớn hơn hoặc bằng 10.000(vnd)");
+                } 
                 if (place == null) {
                     foundErr = true;
-                    errors.setPlaceErr("Place không được trống");
+                    errors.setPlaceErr("Địa điểm không được trống");
                 }
                 if (foundErr) {
                     request.setAttribute("CREATE_ERRORS", errors);

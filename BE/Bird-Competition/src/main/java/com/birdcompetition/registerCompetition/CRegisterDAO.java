@@ -1,7 +1,7 @@
 package com.birdcompetition.registerCompetition;
 
-import com.birdcompetition.bird.BirdContestDTO;
 
+import com.birdcompetition.bird.BirdContestDTO;
 import com.birdcompetition.util.DBHelper;
 import java.io.Serializable;
 import java.sql.Connection;
@@ -81,9 +81,9 @@ public class CRegisterDAO implements Serializable {
             //check 
             if (con != null) {
                 //2.Creat SQL String 
-                String sql = "Select * "
-                        + "From BirdContest "
-                        + "Where IdContest = ? ";
+                String sql = "Select BirdContest.IdBird, IdContest, IdMember "
+                        + "From BirdContest, Bird "
+                        + "Where IdContest = ? and BirdContest.IdBird = Bird.IdBird ";
                 //3.Create Statement Object
                 stm = con.prepareStatement(sql);
                 stm.setInt(1, contestId);
@@ -94,12 +94,9 @@ public class CRegisterDAO implements Serializable {
                 this.listBirdContest = new ArrayList<>();
                 while (rs.next()) {
                     int birdId = rs.getInt("IdBird");
-                    int rank = rs.getInt("Rank");
-                    int beforePoint = rs.getInt("BeforePoint");
-                    int afterPoint = rs.getInt("AfterPoint");
+                    String idMem = rs.getString("IdMember");
                     String contestID = contestId + "";
-                    BirdContestDTO dto = new BirdContestDTO(birdId, contestID, rank, beforePoint, 
-                            afterPoint, true, true, null);
+                    BirdContestDTO dto = new BirdContestDTO(birdId, contestID, idMem);
                     this.listBirdContest.add(dto);
                 }
             }
