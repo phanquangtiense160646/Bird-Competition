@@ -186,11 +186,11 @@
                 <div class="card mb-4">
                     <div class="card-header">Account Details</div>
                     <div class="card-body">
-                        <form action="DispatchServlet" method="post" enctype="multipart/form-data" style="align-items: center">
+<!--                        <form action="DispatchServlet" method="post" enctype="multipart/form-data" style="align-items: center">
                              <label for="fileInput" style="color: blue"><u class="">Choose a File</u></label>
                              <input type="file" id="fileInput" name="image">
                              <input type="submit" value="Add Image">
-                         </form>
+                         </form>-->
                         <form action="DispatchServlet" method="GET" >
                             <!-- Form Group (username)-->
                             <div class="mb-3">

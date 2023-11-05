@@ -55,7 +55,7 @@ public class DispatchServlet extends HttpServlet {
             } else if (button.equals("CheckCode")) {
                 url = "CheckInServlet";
             } else if (button.equals("CheckIn")) {
-                url = "CheckCodeServlet";
+                url = "PrepareCheckInServlet";
             } else if (button.equals("cRegister")) {
                 url = "CRegisterServlet";
             } else if (button.equals("MatchHistory")) {

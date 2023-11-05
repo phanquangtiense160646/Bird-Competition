@@ -8,7 +8,9 @@ import com.birdcompetition.schedule.ScheduleDAO;
 import com.birdcompetition.schedule.ScheduleDTO;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.Array;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -38,22 +40,33 @@ public class PreparingMatchServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-         response.setContentType("text/html;charset=UTF-8");
-        
+        response.setContentType("text/html;charset=UTF-8");
+
         HttpSession session = request.getSession();
         String url = "AdminPage/PreparingMatch.jsp";
         try {
             ScheduleDAO dao = new ScheduleDAO();
             dao.getScheduleByStatus(2);
-//            dao.getSchedule();
             List<ScheduleDTO> result = dao.getList();
-//            System.out.println("size: " + result.size() );
-            session.setAttribute("PREPARING", result);
+
+            List<ScheduleDTO> preparingMatch = new ArrayList<>();
+            if (!result.isEmpty()) {
+                for (ScheduleDTO schedule : result) {
+                    long dayGap = dao.getDayBetween(schedule.getDate());
+                    if (dayGap == 0 && schedule.getCurrentPar() >= 4) {
+                        preparingMatch.add(schedule);
+                    } else if (dayGap < 0 || schedule.getCurrentPar() < 4) {
+                        dao.setStatus(schedule.getId(), 0);
+                    }
+                }
+            }
+
+            session.setAttribute("PREPARING", preparingMatch);
 
         } catch (SQLException ex) {
-            Logger.getLogger(CurrentMatchServlet.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(OnGoingMatchServlet.class.getName()).log(Level.SEVERE, null, ex);
         } catch (ClassNotFoundException ex) {
-            Logger.getLogger(CurrentMatchServlet.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(OnGoingMatchServlet.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
             RequestDispatcher rd = request.getRequestDispatcher(url);
             rd.forward(request, response);

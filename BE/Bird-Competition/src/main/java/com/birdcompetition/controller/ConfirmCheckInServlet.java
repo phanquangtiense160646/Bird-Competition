@@ -39,13 +39,15 @@ public class ConfirmCheckInServlet extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
 
         int id = Integer.parseInt(request.getParameter("txtId"));
+        int matchId = Integer.parseInt(request.getParameter("txtMatchId"));
         String url = "PreparingMatchServlet";
 
         try {
-            BirdContestDAO dao = new BirdContestDAO();;
-            dao.setCheckIn(id);
-
-            request.setAttribute("Message", "success");
+            BirdContestDAO dao = new BirdContestDAO();
+            boolean action = dao.setCheckIn(id, matchId);
+            if (action) {
+                request.setAttribute("Message", "success");
+            }
 
         } catch (SQLException ex) {
             Logger.getLogger(ConfirmCheckInServlet.class.getName()).log(Level.SEVERE, null, ex);

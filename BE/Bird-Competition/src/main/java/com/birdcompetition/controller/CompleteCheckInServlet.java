@@ -42,9 +42,17 @@ public class CompleteCheckInServlet extends HttpServlet {
 
         try {
             ScheduleDAO dao = new ScheduleDAO();
-            dao.setStatus(matchId, 3);
-            request.setAttribute("Message", "complete");
-            
+//            int paticipant = dao.getParticipants(matchId);
+            int checkedIn = dao.getCheckedInParticipant(matchId);
+
+            if (checkedIn < 4) {
+                request.setAttribute("Message", "notEnough");
+
+            } else {
+                dao.setStatus(matchId, 3);
+                request.setAttribute("Message", "complete");
+            }
+
         } catch (SQLException ex) {
             Logger.getLogger(CompleteCheckInServlet.class.getName()).log(Level.SEVERE, null, ex);
         } catch (ClassNotFoundException ex) {

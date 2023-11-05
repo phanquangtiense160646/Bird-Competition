@@ -101,7 +101,7 @@ public class UploadPhotoServlet extends HttpServlet {
         String uploadPath = "D:/Code/SWP Project/Bird-Competition/BE/Bird-Competition/src/main/webapp/FE/img/" + imageFileName;  // upload path where we have to upload our actual image
         System.out.println("Upload Path : " + uploadPath);
 
-        String url = "";
+        String url = "birdprofile.jsp";
 
         // Uploading our selected image into the images folder
         try {
