@@ -37,6 +37,7 @@ public class ScheduleServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
+        String past = request.getParameter("past");
         String url = "schedule.jsp";
         try {
             HttpSession session = request.getSession();
@@ -68,6 +69,9 @@ public class ScheduleServlet extends HttpServlet {
             dao.getBirdByMemberId1(user.getIdMember());
             List<BirdDTO> birdList = dao.getBirdList();
             session.setAttribute("OWN_BIRD", birdList);
+            if(past != null && past.equals("1")) {
+                url = "schedule_1.jsp";
+            }
 
         } catch (SQLException ex) {
             log("ScheduleServlet_SQL: " + ex.getMessage());
