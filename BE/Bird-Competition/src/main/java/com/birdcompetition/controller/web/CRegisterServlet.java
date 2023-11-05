@@ -37,6 +37,7 @@ public class CRegisterServlet extends HttpServlet {
         String combine = request.getParameter("cboBird");
         String contestId = request.getParameter("hiddenContestId");
         String pointCombine = request.getParameter("hiddenPoint");
+        String maxBirdJoin = request.getParameter("hiddenMaxBird");
         String url = "ScheduleServlet";
         int count = 0;
         String mes = "";
@@ -90,7 +91,7 @@ public class CRegisterServlet extends HttpServlet {
                         mes = "error";
                     }
                 } else {
-                    mes = "fail";
+                    mes = "fail2";
                 }
             } else {
                 mes = "fail";

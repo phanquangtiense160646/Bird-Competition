@@ -60,11 +60,11 @@ public class ScheduleDAO implements Serializable {
                     String location = rs.getString("Location");
                     int contestStatus = rs.getInt("StatusOfContest");
                     int maxPar = rs.getInt("MaxParticipant");
-//                    String maxBird = rs.getString("");
+                    String maxBird = rs.getString("MaxBirdJoin");
                     int currentPar = getParticipants(id);
                     ScheduleDTO dto = new ScheduleDTO(id, name, date, locationId, status, 
                             factor, minPoint, maxPoint, fee, userId, location, 
-                            contestStatus, currentPar, maxPar, "");
+                            contestStatus, currentPar, maxPar, maxBird);
                     scheduleList.add(dto);
                 }
             }

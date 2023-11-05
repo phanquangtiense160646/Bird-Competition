@@ -84,6 +84,7 @@
                             <c:set var="scheduleData" value="${sessionScope.SCHEDULE}" />
                             <c:if test="${not empty scheduleData}">
                                 <c:forEach var="scheduleDto" items="${scheduleData}" varStatus="counter">
+                                    <!--End-->
                                     <c:if test="${scheduleDto.statusOfContest == 4}">
                                         <form class="col-lg-3 col-md-4 col-sm-6  btn-viewInfo" action="ViewMatchInfoServlet">
                                             <div>
@@ -111,6 +112,13 @@
                                                         ${scheduleDto.fee}</p>
                                                     <p class="schedule-value text-uppercase text-secondary mb-0"
                                                        style="display: inline;">
+                                                        số lồng tối đa:
+                                                        <span class="text-uppercase text-warning mb-0"
+                                                              style="display: inline;">
+                                                            ${scheduleDto.maxBird}</span>
+                                                    </p><br>    
+                                                    <p class="schedule-value text-uppercase text-secondary mb-0"
+                                                       style="display: inline;">
                                                         số người đăng kí:
                                                         <span class="text-uppercase text-warning mb-0"
                                                               style="display: inline;">
@@ -133,6 +141,7 @@
                             <c:set var="scheduleData" value="${sessionScope.SCHEDULE}" />
                             <c:if test="${not empty scheduleData}">
                                 <c:forEach var="scheduleDto" items="${scheduleData}" varStatus="counter">
+                                    <!--Going-->
                                     <c:if test="${scheduleDto.statusOfContest == 3}">
 
                                         <div class="col-lg-3 col-md-4 col-sm-6  btn-viewInfo">
@@ -159,13 +168,20 @@
                                                     ${scheduleDto.fee}</p>
                                                 <p class="schedule-value text-uppercase text-secondary mb-0"
                                                    style="display: inline;">
+                                                    số lồng tối đa:
+                                                    <span class="text-uppercase text-success mb-0"
+                                                          style="display: inline;">
+                                                        ${scheduleDto.maxBird}</span>
+                                                </p><br>    
+                                                <p class="schedule-value text-uppercase text-secondary mb-0"
+                                                   style="display: inline;">
                                                     số người đăng kí:
                                                     <span class="text-uppercase text-success mb-0"
                                                           style="display: inline;">
                                                         ${scheduleDto.currentPar}/${scheduleDto.maxPar}</span>
                                                 </p>
                                                 </br><a href="https://www.facebook.com/birdfighter.compe/" class="btn btn-success btn-viewInfo px-5"
-                                                             style="margin-top: 10px;"  target="_blank">Xem Trực tiếp</a>
+                                                        style="margin-top: 10px;"  target="_blank">Xem Trực tiếp</a>
                                             </div>
                                         </div>
                                     </c:if>
@@ -178,6 +194,7 @@
                             <c:set var="scheduleData" value="${sessionScope.SCHEDULE}" />
                             <c:if test="${not empty scheduleData}">
                                 <c:forEach var="scheduleDto" items="${scheduleData}" varStatus="counter">
+                                    <!--Register-->
                                     <c:if test="${scheduleDto.statusOfContest == 1}">
 
                                         <div class="col-lg-3 col-md-4 col-sm-6">
@@ -204,8 +221,8 @@
                                                     <p class="schedule-value text-uppercase text-light mb-3">
                                                         ${scheduleDto.fee}</p>
                                                     </c:if>
-                                                    <!-- bronze -->
-                                                    <c:if test="${user.vipType == 1}">
+                                                <!-- bronze -->
+                                                <c:if test="${user.vipType == 1}">
                                                     <p class="schedule-value text-uppercase text-light mb-0">Điểm
                                                         yêu cầu: <span style="color: gold;" class="text-decoration-line-through">${scheduleDto.minPoint} ~ ${scheduleDto.maxPoint}</span></p>
                                                     <p class="schedule-value text-uppercase text-light mb-0">
@@ -215,8 +232,8 @@
                                                     <p class="schedule-value text-uppercase text-light mb-3">
                                                         ${scheduleDto.getBronzeFee()}</p>
                                                     </c:if>
-                                                    <!-- silver -->
-                                                    <c:if test="${user.vipType == 2}">
+                                                <!-- silver -->
+                                                <c:if test="${user.vipType == 2}">
                                                     <p class="schedule-value text-uppercase text-light mb-0">Điểm
                                                         yêu cầu: <span style="color: gold;" class="text-decoration-line-through">${scheduleDto.minPoint} ~ ${scheduleDto.maxPoint}</span></p>
                                                     <p class="schedule-value text-uppercase text-light mb-0">
@@ -226,8 +243,8 @@
                                                     <p class="schedule-value text-uppercase text-light mb-3">
                                                         ${scheduleDto.getSilverFee()}</p>
                                                     </c:if>
-                                                    <!-- gold -->
-                                                    <c:if test="${user.vipType == 3}">
+                                                <!-- gold -->
+                                                <c:if test="${user.vipType == 3}">
                                                     <p class="schedule-value text-uppercase text-light mb-0">Điểm
                                                         yêu cầu: <span style="color: gold;" class="text-decoration-line-through">${scheduleDto.minPoint} ~ ${scheduleDto.maxPoint}</span>
                                                         </br><span>Không giới hạn</span>
@@ -238,7 +255,13 @@
                                                     <p class="schedule-value text-uppercase text-light mb-3">
                                                         ${scheduleDto.getGoldFee()}</p>
                                                     </c:if>
-
+                                                <p class="schedule-value text-uppercase text-secondary mb-0"
+                                                   style="display: inline;">
+                                                    số lồng tối đa:
+                                                    <span class="text-uppercase text-primary mb-0"
+                                                          style="display: inline;">
+                                                        ${scheduleDto.maxBird}</span>
+                                                </p><br>
                                                 <p class="schedule-value text-uppercase text-secondary mb-0"
                                                    style="display: inline;">
                                                     số người đăng kí:
@@ -254,6 +277,7 @@
                                             </div>
                                         </div>
                                     </c:if>
+                                    <!--Expried-->
                                     <c:if test="${scheduleDto.statusOfContest == 2}">
 
                                         <div class="col-lg-3 col-md-4 col-sm-6">
@@ -278,6 +302,13 @@
                                                     đăng kí(VND):</p>
                                                 <p class="schedule-value text-uppercase text-light mb-3">
                                                     ${scheduleDto.fee}</p>
+                                                <p class="schedule-value text-uppercase text-secondary mb-0"
+                                                   style="display: inline;">
+                                                    số lồng tối đa:
+                                                    <span class="text-uppercase text-danger mb-0"
+                                                          style="display: inline;">
+                                                        ${scheduleDto.maxBird}</span>
+                                                </p><br>    
                                                 <p class="schedule-value text-uppercase text-secondary mb-0"
                                                    style="display: inline;">
                                                     số người đăng kí:
@@ -339,7 +370,7 @@
                     const newDriver = document.createElement('div');
                     newDriver.classList = 'schedule-detail';
 
-                    var factor, date, time, place, tOC, tOB, registerNumber, pointReq, hiddenId, fee;
+                    var factor, date, time, place, tOC, tOB, registerNumber, pointReq = "", hiddenId, fee, maxB;
 
                     if (this.querySelector(".schedule-value:nth-of-type(1)") !== null) {
                         factor = this.querySelector(".schedule-value:nth-of-type(1)").innerHTML;
@@ -350,7 +381,8 @@
                         tOB = this.querySelector(".schedule-value:nth-of-type(6)").innerHTML;
                         pointReq = this.querySelector(".schedule-value:nth-of-type(8)").innerHTML;
                         fee = this.querySelector(".schedule-value:nth-of-type(10)").innerHTML;
-                        registerNumber = this.querySelector(".schedule-value:nth-of-type(11) span").innerHTML;
+                        maxB = this.querySelector(".schedule-value:nth-of-type(11) span").innerHTML;
+                        registerNumber = this.querySelector(".schedule-value:nth-of-type(12) span").innerHTML;
                         hiddenId = this.querySelector(".idHide").value;
 
                     }
@@ -360,19 +392,18 @@
             <c:if test="${not empty ownBird}">
                 <c:forEach var="bird" items="${ownBird}" varStatus="counter">
                     <c:if test="${bird.status == true }">
-                    birds.push("${bird.birdName}", "${bird.point}", "${bird.birdID}");
+                    birds.push({birdName: '${bird.birdName}', birdPoint: '${bird.point}', birdID: '${bird.birdID}'});
                     </c:if>
                 </c:forEach>
             </c:if>
                     let text = "";
 
-                    for (let i = 0; i < birds.length; i = i + 3) {
-                        text += "<option value=" + birds[i + 2] + "," + birds[i + 1] + ">" + birds[i] +
-                                ", Rank point: " + birds[i + 1] + "</option>";
+                    for (let i = 0; i < birds.length; i++) {
+                        text += "<option value=" + birds[i].birdID + "," + birds[i].birdPoint + ">" + birds[i].birdName +
+                                ", Rank point: " + birds[i].birdPoint + "</option>";
                     }
-                    
-                    const myArray = pointReq.split("~");
-                    if(myArray[1].length >= 8){
+                    const myArray = pointReq.trim().split('~');
+                    if (myArray[1]?.length >= 8) {
                         newDriver.innerHTML = `
     <div> 
     <h6 class="text-uppercase text-light mb-3 ml-3">` + factor + `</h6>                                       
@@ -383,6 +414,10 @@
     <p class="text-uppercase text-secondary mb-0 ml-3">` + tOB + `</p>
     <p class="text-uppercase text-secondary mb-0 ml-3">Điểm yêu cầu: Không giới hạn` + `</p>
     <h6 class="text-uppercase text-light mb-3 ml-3">Phí đăng kí(VND): ` + fee + `</h6>
+    <p class="text-uppercase text-secondary mb-0 ml-3" style="display: inline;">
+        số lồng tối đa:
+    <span class="text-uppercase text-primary mb-0 ml-3" style="display: inline;">` + maxB + `</span>
+    </p><br> 
     <p class="text-uppercase text-secondary mb-0 ml-3" style="display: inline;">
         số người đăng kí:
     <span class="text-uppercase text-primary mb-0 ml-3" style="display: inline;">` + registerNumber + `</span>
@@ -396,6 +431,7 @@
         </select>
         <input type="hidden" name="hiddenContestId" value="` + hiddenId + `"></input>
         <input type="hidden" name="hiddenPoint" value="` + pointReq + `"></input>
+        <input type="hidden" name="hiddenMaxBird" value="` + maxB + `"></input>
         <input type="hidden" name="txtCost" value="` + fee + `"></input>
         <input type="hidden" name="txtType" value="` + 4 + `"></input>                         
     <button type="submit" name="btAction" value="cRegister" class="btn btn-primary px-5" style="margin-top: 10px;">Đăng kí thi đấu</button>
@@ -404,7 +440,7 @@
     `;
                     } else {
 
-                            newDriver.innerHTML = `
+                        newDriver.innerHTML = `
             <div> 
             <h6 class="text-uppercase text-light mb-3 ml-3">` + factor + `</h6>                                       
             <h6 class="text-uppercase text-light mb-3 ml-3">` + date + `</h6>
@@ -414,6 +450,10 @@
             <p class="text-uppercase text-secondary mb-0 ml-3">` + tOB + `</p>
             <p class="text-uppercase text-secondary mb-0 ml-3">Điểm yêu cầu: ` + pointReq + `</p>
             <h6 class="text-uppercase text-light mb-3 ml-3">Phí đăng kí(VND): ` + fee + `</h6>
+            <p class="text-uppercase text-secondary mb-0 ml-3" style="display: inline;">
+                 số lồng tối đa:
+            <span class="text-uppercase text-primary mb-0 ml-3" style="display: inline;">` + maxB + `</span>
+            </p><br> 
             <p class="text-uppercase text-secondary mb-0 ml-3" style="display: inline;">
                 số người đăng kí:
             <span class="text-uppercase text-primary mb-0 ml-3" style="display: inline;">` + registerNumber + `</span>
@@ -427,6 +467,7 @@
         </select>
         <input type="hidden" name="hiddenContestId" value="` + hiddenId + `"></input>
         <input type="hidden" name="hiddenPoint" value="` + pointReq + `"></input>
+        <input type="hidden" name="hiddenMaxBird" value="` + maxB + `"></input>
         <input type="hidden" name="txtCost" value="` + fee + `"></input>
         <input type="hidden" name="txtType" value="` + 4 + `"></input>                         
     <button type="submit" name="btAction" value="cRegister" class="btn btn-primary px-5" style="margin-top: 10px;">Đăng kí thi đấu</button>
@@ -436,7 +477,7 @@
 
                     }
 
-                    
+
                     body.appendChild(newDriver);
                 });
             });

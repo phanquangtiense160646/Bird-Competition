@@ -190,6 +190,9 @@ h6,
     justify-content: flex-start;
     transition: all 300ms ease;
 }
+.schedule-value {
+    font-family: 'Oswald', sans-serif;
+}
 
 .team-item img {
     transition: .5s;

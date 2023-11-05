@@ -52,15 +52,15 @@ function toast({
 function showSuccessToast() {
     toast({
         tiltle: 'Success',
-        message: 'Đăng kí thành công, Xem CHECK_IN_CODE ở mục Match',
+        message: 'Đăng kí thành công, Xem CHECK_IN_CODE ở mục Trận của tôi',
         type: 'success',
-        duration: 20000
+        duration: 10000
     })
 }
 
 function showFailToast() {
     toast({
-        tiltle: 'Fail',
+        tiltle: 'Lỗi',
         message: 'Chim thi đấu của bạn không hợp lệ',
         type: 'warning',
         duration: 8000
@@ -68,15 +68,23 @@ function showFailToast() {
 }
 function showFailToast1() {
     toast({
-        tiltle: 'Fail',
+        tiltle: 'Lỗi',
         message: 'Chim thi đấu của bạn không hợp lệ',
+        type: 'warning',
+        duration: 8000
+    })
+}
+function showFailToast2() {
+    toast({
+        tiltle: 'Lỗi',
+        message: 'Chim thi đấu vượt quá điểm cho phép <br> hoặc Số lượng tham gia đã đủ',
         type: 'warning',
         duration: 8000
     })
 }
 function showErrorToast() {
     toast({
-        tiltle: 'Lỗi',
+        tiltle: 'Thông tin',
         message: 'Chim đã được đăng kí vào cuộc thi này',
         type: 'info',
         duration: 8000
@@ -92,6 +100,8 @@ if (mes === 'fail') {
     showErrorToast();
 } else if (mes === 'fail1') {
     showFailToast1();
+} else if (mes === 'fail2') {
+    showFailToast2();
 }
 
 const activePage = document.getElementById('lichthidau');

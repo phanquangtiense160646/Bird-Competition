@@ -119,10 +119,12 @@ public class AddScheduleServlet extends HttpServlet {
                 if (fee.isEmpty()) {
                     foundErr = true;
                     errors.setFeeErr("Phí không được trống");
-                }
+                } else if(fee.length() <5) {
+                    errors.setFeeErr("Phí phải lớn hơn hoặc bằng 10.000(vnd)");
+                } 
                 if (place == null) {
                     foundErr = true;
-                    errors.setPlaceErr("Place không được trống");
+                    errors.setPlaceErr("Địa điểm không được trống");
                 }
                 if (foundErr) {
                     request.setAttribute("CREATE_ERRORS", errors);
