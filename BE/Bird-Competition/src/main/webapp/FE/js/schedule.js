@@ -77,7 +77,7 @@ function showFailToast1() {
 function showFailToast2() {
     toast({
         tiltle: 'Lỗi',
-        message: 'Chim thi đấu vượt quá điểm cho phép <br> hoặc Số lượng tham gia đã đủ',
+        message: 'Chim thi đấu vượt quá điểm cho phép',
         type: 'warning',
         duration: 8000
     })
