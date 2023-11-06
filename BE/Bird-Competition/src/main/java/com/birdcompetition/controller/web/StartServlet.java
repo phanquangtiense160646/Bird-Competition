@@ -49,7 +49,7 @@ public class StartServlet extends HttpServlet {
             request.setAttribute("SCHEDULE", listSchedule);
             
             BirdDAO birdDao = new BirdDAO();
-            birdDao.displayLeaderboard();
+            birdDao.getLeaderboard();
             List<BirdDTO> listBird = birdDao.getBirdList();
             request.setAttribute("LEADER_BOARD", listBird);
             

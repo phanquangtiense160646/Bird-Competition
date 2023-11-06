@@ -34,7 +34,7 @@ public class BirdDAO implements Serializable {
         birdList = null;
     }
 
-    public void displayLeaderboard()
+    public void getLeaderboard()
             throws SQLException, NamingException, ClassNotFoundException {
         Connection con = null;
         PreparedStatement stm = null;
@@ -227,15 +227,15 @@ public class BirdDAO implements Serializable {
         PreparedStatement stm = null;
         ResultSet rs = null;
         BirdDTO dto = new BirdDTO();
-        System.out.println("get bird");
 
+        
         try {
             //1. Make connection
             con = DBHelper.getConnection();
             if (con != null) {
                 //2. Crate SQL String
                 String sql = "Select * From Bird "
-                        + "Where IdBird = ? and Bird.Status = 'true'";
+                        + "Where IdBird = ? and Bird.Status = 'true' ";
 
                 //3. Create Statement Object
                 stm = con.prepareStatement(sql);
@@ -274,7 +274,65 @@ public class BirdDAO implements Serializable {
                 con.close();
             }
         }
-        System.out.println("get bird ok");
+        
+
+        return dto;
+    }
+    
+    private BirdDTO getBirdForMatch(int id)
+            throws SQLException, ClassNotFoundException {
+        Connection con = null;
+        PreparedStatement stm = null;
+        ResultSet rs = null;
+        BirdDTO dto = new BirdDTO();
+
+        
+        try {
+            //1. Make connection
+            con = DBHelper.getConnection();
+            if (con != null) {
+                //2. Crate SQL String
+                String sql = "Select * From Bird "
+                        + "Where IdBird = ?";
+
+                //3. Create Statement Object
+                stm = con.prepareStatement(sql);
+                stm.setInt(1, id);
+
+                //4. Execute query
+                rs = stm.executeQuery();
+                //5. Process
+                if (rs.next()) {
+                    int birdId = rs.getInt("IdBird");
+                    String name = rs.getString("NameOfBird");
+                    String speices = rs.getString("Species");
+                    int point = rs.getInt("Point");
+                    String ownerId = rs.getString("IdMember");
+                    int win = rs.getInt("Win");
+                    int lose = rs.getInt("Lose");
+                    int tie = rs.getInt("Tie");
+                    int matchNumber = rs.getInt("MatchNumber");
+                    //5.1.2 add data to list
+
+                    dto = new BirdDTO(birdId, name, speices, point, true, ownerId, ownerId, win, lose, tie, matchNumber);
+
+                } else {
+                    dto = null;
+                }
+
+            }//end connection í available
+        } finally {
+            if (rs != null) {
+                rs.close();
+            }
+            if (stm != null) {
+                stm.close();
+            }
+            if (con != null) {
+                con.close();
+            }
+        }
+        
 
         return dto;
     }
@@ -323,18 +381,18 @@ public class BirdDAO implements Serializable {
         return result;
     }
 
-    public boolean setBirdAfterMatch(int id, int point, int status)
+    public boolean AfterMatchUpdate(int id, int point, int status)
             throws SQLException, NamingException, ClassNotFoundException {
         Connection con = null;
         PreparedStatement stm = null;
         boolean result = false;
-        BirdDTO bird = getBirdById(id);
+        BirdDTO bird = getBirdForMatch(id);
         int win = bird.getWin();
         int lose = bird.getLose();
         int tie = bird.getTie();
         if (status == 1) {
             win = bird.getWin() + 1;
-        } else if (status == -1) {
+        } else if (status == 3) {
             lose = bird.getLose() + 1;
         } else {
             tie = bird.getTie() + 1;
@@ -379,7 +437,7 @@ public class BirdDAO implements Serializable {
             }
 
         }
-        System.out.println("ok");
+        System.out.println(" bird after match ok");
         return result;
     }
 

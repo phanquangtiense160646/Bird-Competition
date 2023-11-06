@@ -1,4 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -21,7 +23,7 @@
   <div class="container" id="container">
     <div class="form-container register-container">
       <form>
-        <h1>Register here.</h1>
+        <h1>Đăng ký ngay</h1>
         <div class="form-control">
           <input name="txtUsername" type="text" id="user-username" placeholder="Username" />
           <small id="username-error"></small>
@@ -39,12 +41,12 @@
         </div>
 
         <div class="form-control">
-          <input name="txtFullname" type="text" id="user-name" placeholder="Fullname" />
+          <input name="txtFullname" type="text" id="user-name" placeholder="Họ Tên" />
           <small id="fullname-error"></small>
           <span></span>
         </div>
 
-        <button class="btn btn-primary btn-block" type="submit" value="submit">Register</button>
+        <button class="btn btn-primary btn-block" type="submit" value="submit">Đăng kí</button>
         <span>or use your account</span>
         <div class="social-container">
 
@@ -56,7 +58,7 @@
 
     <div class="form-container login-container" id="logreg-forms">
       <form class="form-signin" action="login" method="post">
-        <h1>Login here.</h1>
+        <h1>Đăng nhập</h1>
         <div class="form-control2">
           <input name="user" type="user" id="inputUser" class="form-control" placeholder="Username" required=""
             autofocus="" />
@@ -72,16 +74,16 @@
 
        
         
-            <p style="text-align: center;"><span class="text-black">${msg}</span></p>
+            <p style="text-align: center; color: red;"><span class="text-danger">${msg}</span></p>
        
 
         <div class="content">
           <div class="checkbox">
-            <input type="checkbox" name="checkbox" id="checkbox" />
-            <label for="">Remember me</label>
+            <!--<input type="checkbox" name="checkbox" id="checkbox" />-->
+            <!--<label for="">Remember me</label>-->
           </div>
           <div class="pass-link">
-            <a href="#">Forgot password</a>
+            <!--<a href="#">Forgot password</a>-->
           </div>
         </div>
         <button class="btn btn-success btn-block" type="submit" value="submit">Login</button>
@@ -103,21 +105,21 @@
           </h1>
           <p>If you have an account, login here and have fun</p>
           <button class="ghost" id="login">
-            Login
+            Đăng nhập
             <i class="fa-solid fa-arrow-left"></i>
           </button>
         </div>
 
         <div class="overlay-panel overlay-right">
           <h1 class="title">
-            Start your <br />
-            journey now
+            Bắt đầu <br />
+            hành trình của bạn
           </h1>
           <p>
-            If you don'n have an account yet, join us and start your journey
+           <!--Nếu bạn chưa có tài khoản, tham gia với chúng tôi và bắt đầu hành trình của bạn-->   
           </p>
           <button class="ghost" id="register">
-            Register
+            Đăng ký
             <i class="fa-solid fa-arrow-right"></i>
           </button>
         </div>

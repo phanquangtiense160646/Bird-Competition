@@ -52,7 +52,7 @@ function toast({
 function showSuccessToast() {
     toast({
         tiltle: 'Success',
-        message: 'Tạo lịch thi đấu thành công!',
+        message: 'Tạo lịch thi đấu thành công!<br>Lịch được đưa vào danh sách duyệt',
         type: 'success',
         duration: 8000
     })

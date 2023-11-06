@@ -4,8 +4,6 @@
  */
 package com.birdcompetition.controller;
 
-import com.birdcompetition.birdInContest.BirdContestDAO;
-import com.birdcompetition.birdInContest.BirdContestDTO;
 import com.birdcompetition.schedule.ScheduleDAO;
 import com.birdcompetition.schedule.ScheduleDTO;
 import java.io.IOException;
@@ -20,13 +18,14 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
- * @author Danh
+ * @author Admin
  */
-@WebServlet(name = "UpdateResultServlet", urlPatterns = {"/UpdateResultServlet"})
-public class UpdateResultServlet extends HttpServlet {
+@WebServlet(name = "PendingSchedule", urlPatterns = {"/PendingSchedule"})
+public class PendingSchedule extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -40,21 +39,19 @@ public class UpdateResultServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-
-        int matchId = Integer.parseInt(request.getParameter("txtMatchId"));
-        String url = "AdminPage/MatchResult.jsp";
+        String scheduleId = request.getParameter("contestId");
+        String url = "AdminPage/editSchedule.jsp";
         try {
-            BirdContestDAO joinerDao = new BirdContestDAO();
-            joinerDao.getJoiner(matchId);
-
-            List<BirdContestDTO> result = joinerDao.getList();
-            request.setAttribute("JOINER", result);
-
+            ScheduleDAO dao = new ScheduleDAO();
+            int contestId = Integer.parseInt(scheduleId);
+            ScheduleDTO dto = dao.getScheduleById(contestId);
+            request.getSession().setAttribute("SCHEDULE_DATA", dto);
+            
         } catch (SQLException ex) {
-            Logger.getLogger(UpdateResultServlet.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(PendingSchedule.class.getName()).log(Level.SEVERE, null, ex);
         } catch (ClassNotFoundException ex) {
-            Logger.getLogger(UpdateResultServlet.class.getName()).log(Level.SEVERE, null, ex);
-        } finally {
+            Logger.getLogger(PendingSchedule.class.getName()).log(Level.SEVERE, null, ex);
+        }finally {
             RequestDispatcher rd = request.getRequestDispatcher(url);
             rd.forward(request, response);
         }

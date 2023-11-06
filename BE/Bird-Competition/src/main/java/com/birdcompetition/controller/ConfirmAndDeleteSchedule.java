@@ -4,14 +4,10 @@
  */
 package com.birdcompetition.controller;
 
-import com.birdcompetition.birdInContest.BirdContestDAO;
-import com.birdcompetition.birdInContest.BirdContestDTO;
 import com.birdcompetition.schedule.ScheduleDAO;
-import com.birdcompetition.schedule.ScheduleDTO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
-import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.RequestDispatcher;
@@ -23,10 +19,10 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  *
- * @author Danh
+ * @author Admin
  */
-@WebServlet(name = "UpdateResultServlet", urlPatterns = {"/UpdateResultServlet"})
-public class UpdateResultServlet extends HttpServlet {
+@WebServlet(name = "ConfirmAndDeleteSchedule", urlPatterns = {"/ConfirmAndDeleteSchedule"})
+public class ConfirmAndDeleteSchedule extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -40,20 +36,24 @@ public class UpdateResultServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-
-        int matchId = Integer.parseInt(request.getParameter("txtMatchId"));
-        String url = "AdminPage/MatchResult.jsp";
+        String idContest = request.getParameter("contestId");
+        String option = request.getParameter("option");
+        String url = "ManageSchedule?pending=1";
         try {
-            BirdContestDAO joinerDao = new BirdContestDAO();
-            joinerDao.getJoiner(matchId);
-
-            List<BirdContestDTO> result = joinerDao.getList();
-            request.setAttribute("JOINER", result);
+            ScheduleDAO scheduleDao = new ScheduleDAO();
+            int id = Integer.parseInt(idContest);
+            if (option.equals("confirm")) {
+                scheduleDao.setStatus(id, 1);
+                request.setAttribute("MES", "confirmSuccess");
+            } else if (option.equals("delete")) {
+                scheduleDao.setStatus(id, 0);
+                request.setAttribute("MES", "deleteSuccess");
+            }
 
         } catch (SQLException ex) {
-            Logger.getLogger(UpdateResultServlet.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ConfirmAndDeleteSchedule.class.getName()).log(Level.SEVERE, null, ex);
         } catch (ClassNotFoundException ex) {
-            Logger.getLogger(UpdateResultServlet.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ConfirmAndDeleteSchedule.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
             RequestDispatcher rd = request.getRequestDispatcher(url);
             rd.forward(request, response);

@@ -55,9 +55,9 @@ public class DispatchServlet extends HttpServlet {
             } else if (button.equals("CheckCode")) {
                 url = "CheckInServlet";
             } else if (button.equals("CheckIn")) {
-                url = "CheckCodeServlet";
+                url = "PrepareCheckInServlet";
             } else if (button.equals("cRegister")) {
-                url = "CRegisterServlet";
+                url = "CRegisterServlet1";
             } else if (button.equals("MatchHistory")) {
                 url = "GetContestListServlet";
             } else if (button.equals("createSchedule")) {
@@ -98,12 +98,21 @@ public class DispatchServlet extends HttpServlet {
                 url = "PaymentAdminServlet";
             } else if (button.equals("Add Image")) {
                 url = "UploadPhotoServlet";
+<<<<<<< HEAD
             } else if (button.equals("AddLocation")){
                 url = "AddLocationServlet";
             } else if (button.equals("ManageLocation")){
                 url = "GetLocationList";
             } else if(button.equals("DeleteLocation")){
                 url = "DeleteLocationServlet";
+=======
+            } else if (button.equals("editSchedule")) {
+                url = "UpdateSchedule";
+            } else if (button.equals("pendingSchedule")) {
+                url = "PendingSchedule";
+            } else if (button.equals("confirmAndDeleteSchedule")) {
+                url = "ConfirmAndDeleteSchedule";
+>>>>>>> 2ff0efb9cd539eb06845306314f496a16cec0bed
             }
         } finally {
             RequestDispatcher rd = request.getRequestDispatcher(url);

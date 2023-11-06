@@ -1,5 +1,7 @@
-package com.birdcompetition.schedule;
+ package com.birdcompetition.schedule;
 
+import com.birdcompetition.birdInContest.BirdContestDAO;
+import com.birdcompetition.birdInContest.BirdContestDTO;
 import com.birdcompetition.util.DBHelper;
 import java.io.Serializable;
 import java.sql.Connection;
@@ -7,6 +9,7 @@ import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -60,11 +63,11 @@ public class ScheduleDAO implements Serializable {
                     String location = rs.getString("Location");
                     int contestStatus = rs.getInt("StatusOfContest");
                     int maxPar = rs.getInt("MaxParticipant");
-//                    String maxBird = rs.getString("");
+                    String maxBird = rs.getString("MaxBirdJoin");
                     int currentPar = getParticipants(id);
                     ScheduleDTO dto = new ScheduleDTO(id, name, date, locationId, status, 
                             factor, minPoint, maxPoint, fee, userId, location, 
-                            contestStatus, currentPar, maxPar, "");
+                            contestStatus, currentPar, maxPar, maxBird);
                     scheduleList.add(dto);
                 }
             }
@@ -169,6 +172,12 @@ public class ScheduleDAO implements Serializable {
                             status, factor, minPoint, maxPoint, fee, userId,
                             location, contestStatus, maxPar, "");
 
+                    int currentPar = getParticipants(id);
+                    int checkedIn = getCheckedInParticipant(id);
+                    dto.setCurrentPar(currentPar);
+                    dto.setCheckedIn(checkedIn);
+
+//                    dto.setCheckedIn(getCheckedInParticipant(id));
                     scheduleList.add(dto);
                 }
             }
@@ -184,6 +193,21 @@ public class ScheduleDAO implements Serializable {
             }
         }
 
+    }
+
+    public int getCheckedInParticipant(int matchID) throws SQLException, ClassNotFoundException {
+
+        BirdContestDAO birdContest = new BirdContestDAO();
+        birdContest.getJoiner(matchID);
+        List<BirdContestDTO> participant = birdContest.getList();
+        int parNumber = 0;
+
+        if (participant != null) {
+
+            parNumber = participant.size();
+
+        }
+        return parNumber;
     }
 
     public ScheduleDTO getScheduleById(int contestId)
@@ -223,11 +247,11 @@ public class ScheduleDAO implements Serializable {
                     String location = rs.getString("Location");
                     int contestStatus = rs.getInt("StatusOfContest");
                     int maxPar = rs.getInt("MaxParticipant");
-//                    String maxBird = rs.getString("");
+                    String maxBird = rs.getString("MaxBirdJoin");
 
                     match = new ScheduleDTO(contestId, name, date, locationId, status,
                             factor, minPoint, maxPoint, fee, userId, location,
-                            contestStatus, maxPar, "");
+                            contestStatus, maxPar, maxBird);
                 }
             }
         } finally {
@@ -297,9 +321,9 @@ public class ScheduleDAO implements Serializable {
 
                 String sql = "Insert Into Contest("
                         + "NameOfContest, Date, LocationId, Status, Factor, MinPoint, "
-                        + "MaxPoint, MaxParticipant, ParticipatingFee, IdRule, UserName, StatusOfContest"
+                        + "MaxPoint, MaxParticipant, ParticipatingFee, IdRule, UserName, StatusOfContest, MaxBirdJoin"
                         + ") Values("
-                        + "?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?"
+                        + "?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?"
                         + ")";
                 //3.Create Statement Object
                 stm = con.prepareStatement(sql);
@@ -315,7 +339,61 @@ public class ScheduleDAO implements Serializable {
                 stm.setString(10, "1");
                 stm.setString(11, dto.getUserId());
                 stm.setInt(12, dto.getStatusOfContest());
+                stm.setString(13, dto.getMaxBird());
 
+                //4.Exercute Query
+                int exercute = stm.executeUpdate();
+                //5.Process
+                if (exercute > 0) {
+                    result = true;
+                }
+                //end username and password is verified 
+            }
+        } finally {
+
+            if (stm != null) {
+                stm.close();
+            }
+            if (con != null) {
+                con.close();
+            }
+        }
+        return result;
+    }
+    public boolean contestUpdate(ScheduleDTO dto)
+            throws SQLException, ClassNotFoundException {
+        Connection con = null;
+        PreparedStatement stm = null;
+        boolean result = false;
+
+        try {
+            //1.Make connection
+            con = DBHelper.getConnection();
+            //check 
+            if (con != null) {
+                //2.Creat SQL String 
+
+                String sql = "UPDATE Contest "
+                        + "SET NameOfContest = ?, Date = ?, LocationId = ?, Status = ?, Factor = ?, MinPoint = ?, "
+                            + "MaxPoint = ?, MaxParticipant = ?, ParticipatingFee = ?, IdRule = ?, "
+                            + "UserName = ?, StatusOfContest = ?, MaxBirdJoin = ? "
+                        + "WHERE IdContest = ? ";
+                //3.Create Statement Object
+                stm = con.prepareStatement(sql);
+                stm.setString(1, dto.getName());
+                stm.setDate(2, dto.getDate());
+                stm.setString(3, dto.getLocationId());
+                stm.setBoolean(4, true);
+                stm.setDouble(5, dto.getFactor());
+                stm.setInt(6, dto.getMinPoint());
+                stm.setInt(7, dto.getMaxPoint());
+                stm.setInt(8, dto.getMaxPar());
+                stm.setInt(9, dto.getFee());
+                stm.setString(10, "1");
+                stm.setString(11, dto.getUserId());
+                stm.setInt(12, dto.getStatusOfContest());
+                stm.setString(13, dto.getMaxBird());
+                stm.setInt(14, dto.getId());
                 //4.Exercute Query
                 int exercute = stm.executeUpdate();
                 //5.Process
@@ -376,5 +454,20 @@ public class ScheduleDAO implements Serializable {
         }
         return result;
 
+    }
+
+    public long getDayBetween(Date fightDate) {
+        LocalDate expiredDate = fightDate.toLocalDate();
+        LocalDate currentDate = getCurrenDay().toLocalDate();
+
+        long dayGap = java.time.temporal.ChronoUnit.DAYS.between(currentDate, expiredDate);
+        System.out.println("dayGap: " + dayGap);
+        return dayGap;
+    }
+
+    private Date getCurrenDay() {
+        LocalDate localDate = LocalDate.now();
+        java.sql.Date date = Date.valueOf(localDate);
+        return date;
     }
 }

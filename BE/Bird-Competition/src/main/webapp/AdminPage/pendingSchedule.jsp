@@ -26,9 +26,9 @@
             rel="stylesheet">
 
         <!-- Custom styles for this template -->
-        <link href="css/sb-admin-2.min.css" rel="stylesheet">
-        <link href="css/matchResult.css" rel="stylesheet">
-        <link href="css/toast.css" rel="stylesheet">
+        <link href="AdminPage/css/sb-admin-2.min.css" rel="stylesheet">
+        <link href="AdminPage/css/matchResult.css" rel="stylesheet">
+        <link href="AdminPage/css/toast.css" rel="stylesheet">
 
 
 
@@ -46,14 +46,10 @@
             <h1 class="h3 mb-2 text-gray-800">Schedule Management</h1>
             <p class="mb-4">Quản lý lịch thi đấu <a target="_blank">
             </p>
-            <a href='<c:url value="/DispatchServlet?btAction=createSchedule"/>' class="btn btn-primary btn-user btn-block">
-                Tạo lịch</a>
-            <a href='<c:url value="/DispatchServlet?btAction=ManageSchedule&pending=1"/>' class="btn btn-primary btn-user btn-block">
-                Danh sách duyệt</a>    
             <!-- DataTales Example -->
             <div class="card shadow mb-4">
                 <div class="card-header py-3">
-                    <h6 class="m-0 font-weight-bold text-primary">Lịch hiện tại</h6>
+                    <h6 class="m-0 font-weight-bold text-primary">Danh sách duyệt</h6>
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">
@@ -70,6 +66,7 @@
                                     <th>Max Participant</th>
                                     <th>Participation Fee</th>
                                     <th>Status</th>
+                                    <th>Option</th>
                                 </tr>
                             </thead>
                             <tfoot>
@@ -84,13 +81,14 @@
                                     <th>Max Participant</th>
                                     <th>Participation Fee</th>
                                     <th>Status</th>
+                                    <th>Option</th>
                                 </tr>
                             </tfoot>
                             <tbody>
                                 <c:set var="scheduleData" value="${sessionScope.SCHEDULE}"/>
                                 <c:if test="${not empty scheduleData}">
                                     <c:forEach var="scheduleDto" items="${scheduleData}" varStatus="counter">
-                                        <c:if test="${scheduleDto.statusOfContest != 5 && scheduleDto.statusOfContest != 0}">
+                                        <c:if test="${scheduleDto.statusOfContest == 5}">
                                             <tr>
                                                 <td>${scheduleDto.id}</td>
                                                 <td>${scheduleDto.name}</td>
@@ -102,14 +100,32 @@
                                                 <td>${scheduleDto.maxPar}</td>
                                                 <td>${scheduleDto.fee}</td>
                                                 <td>
-                                                    <c:if test="${scheduleDto.statusOfContest == 1}">Sắp diễn ra</c:if>
-                                                    <c:if test="${scheduleDto.statusOfContest == 2}">Hết hạn đăng kí</c:if>
-                                                    <c:if test="${scheduleDto.statusOfContest == 3}">Đang diễn ra</c:if>
-                                                    <c:if test="${scheduleDto.statusOfContest == 4}">Đã diễn ra</c:if>
-                                               </td>
+                                                    Đang chờ xử lý
+                                                </td>
+                                                <td>
+                                                    <c:url var="editLink" value="DispatchServlet">
+                                                        <c:param name="btAction" value="pendingSchedule"/>
+                                                        <c:param name="contestId" value="${scheduleDto.id}"/>
+                                                    </c:url>
+                                                    <c:url var="confirmLink" value="DispatchServlet">
+                                                        <c:param name="btAction" value="confirmAndDeleteSchedule"/>
+                                                        <c:param name="contestId" value="${scheduleDto.id}"/>
+                                                        <c:param name="option" value="confirm"/>
+                                                    </c:url>
+                                                    <c:url var="deleteLink" value="DispatchServlet">
+                                                        <c:param name="btAction" value="confirmAndDeleteSchedule"/>
+                                                        <c:param name="contestId" value="${scheduleDto.id}"/>
+                                                        <c:param name="option" value="delete"/>
+                                                    </c:url>
+                                                    <a href="${editLink}" 
+                                                       class="btn btn-primary btn-user btn-block">Chỉnh sửa</a>
+                                                    <a href="${deleteLink}" 
+                                                       class="btn btn-primary btn-user btn-block">Xóa</a>
+                                                    <a href="${confirmLink}" 
+                                                       class="btn btn-primary btn-user btn-block">Duyệt</a>
+                                                </td>
                                             </tr>
                                         </c:if>
-
                                     </c:forEach>
                                 </c:if>
                             </tbody>
@@ -185,7 +201,7 @@
 
 <!-- Page level custom scripts -->
 <script src="AdminPage/js/demo/datatables-demo.js"></script>
-<script src="AdminPage/js/manageSchedule.js"></script>
+<script src="AdminPage/js/pendingSchedule.js"></script>
 
 
 </body>

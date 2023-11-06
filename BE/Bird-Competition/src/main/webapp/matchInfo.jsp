@@ -206,7 +206,7 @@
 
 
 
-                <a href='<c:url value="/DispatchServlet?btAction=schedule"/>' class="btn btn-primary">Quay lại</a>
+                <a href='<c:url value="/DispatchServlet?btAction=schedule&past=1"/>' class="btn btn-primary">Quay lại</a>
             </div>
 
 

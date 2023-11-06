@@ -49,57 +49,60 @@ function toast({
 
 
 
-function showCompleteToast() {
-    toast({
-        tiltle: 'Success',
-        message: 'Đã hoàn tất Check-in',
-        type: 'success',
-        duration: 3000
-    })
-}
 function showSuccessToast() {
     toast({
         tiltle: 'Success',
-        message: 'Chech-in thành công vào trận đâu',
+        message: 'Chỉnh sửa lịch thi đấu thành công!',
         type: 'success',
-        duration: 3000
+        duration: 8000
+    })
+}
+function showSuccessToast1() {
+    toast({
+        tiltle: 'Success',
+        message: 'Duyệt lịch thi đấu thành công!',
+        type: 'success',
+        duration: 8000
+    })
+}
+function showSuccessToast2() {
+    toast({
+        tiltle: 'Success',
+        message: 'Xóa lịch thi đấu thành công!',
+        type: 'success',
+        duration: 8000
     })
 }
 
 function showFailToast() {
     toast({
         tiltle: 'Fail',
-        message: 'Sai format thứ hạng',
+        message: 'Chim thi đấu của bạn không hợp lệ',
         type: 'warning',
-        duration: 3000
-    })
-}
-
-function showNotEnoughToast() {
-    toast({
-        tiltle: 'Fail',
-        message: 'Số lượng checked-in quá ít',
-        type: 'warning',
-        duration: 3000
+        duration: 8000
     })
 }
 function showErrorToast() {
     toast({
         tiltle: 'Lỗi',
-        message: '...',
+        message: 'Chim đã được đăng kí vào cuộc thi này',
         type: 'info',
-        duration: 3000
+        duration: 8000
     })
 }
 
 var mes = document.getElementById('toastmes').innerHTML;
 if (mes === 'fail') {
     showFailToast();
-} else if (mes === 'complete') {
-    showCompleteToast();
 } else if (mes === 'success') {
     showSuccessToast();
-} else if (mes === 'notEnough') {
-    showNotEnoughToast();
+} else if (mes === 'error') {
+    showErrorToast();
+} else if (mes === 'confirmSuccess') {
+    showSuccessToast1();
+} else if (mes === 'deleteSuccess') {
+    showSuccessToast2();
 }
+
+
 
