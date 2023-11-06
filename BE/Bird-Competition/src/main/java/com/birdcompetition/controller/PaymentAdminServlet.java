@@ -6,6 +6,7 @@ package com.birdcompetition.controller;
 
 import com.birdcompetition.bird.BirdDAO;
 import com.birdcompetition.bird.BirdDTO;
+import com.birdcompetition.feedback.FeedBackDAO;
 import com.birdcompetition.model.User;
 import com.birdcompetition.payment.PaymentDAO;
 import com.birdcompetition.payment.PaymentDTO;
@@ -54,6 +55,7 @@ public class PaymentAdminServlet extends HttpServlet {
             BirdDAO birddao = new BirdDAO();
             ScheduleDAO scheduledao = new ScheduleDAO();
             User user = (User) session.getAttribute("USER");
+            FeedBackDAO fbdao = new FeedBackDAO();
             
             dao.getPaymentList(user.getUserName());
            
@@ -83,8 +85,12 @@ public class PaymentAdminServlet extends HttpServlet {
             //Total bird
             int totalbird =  birddao.getBirds();
             request.setAttribute("LISTBIRD", totalbird);
-            //
-            
+            //Total feedback
+            int totalfb = fbdao.getParticipants();
+            request.setAttribute("FEEDBACK", totalfb);
+            //Total Order
+            int totalorder = dao.getParticipants();
+            request.setAttribute("ORDER", totalorder);
             
            
             

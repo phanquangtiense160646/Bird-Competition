@@ -98,19 +98,19 @@ public class DispatchServlet extends HttpServlet {
                 url = "PaymentAdminServlet";
             } else if (button.equals("Add Image")) {
                 url = "UploadPhotoServlet";
-<<<<<<< HEAD
             } else if (button.equals("Add Feedback")){
                 url = "AddFeedbackServlet";
-            } 
-=======
             } else if (button.equals("editSchedule")) {
                 url = "UpdateSchedule";
             } else if (button.equals("pendingSchedule")) {
                 url = "PendingSchedule";
             } else if (button.equals("confirmAndDeleteSchedule")) {
                 url = "ConfirmAndDeleteSchedule";
+            }else if(button.equals("ManageFeedBack")){
+                url = "ManageFeedbackServlet";
+            }else if(button.equals("DeleteFeedback")){
+                url = "DeleteFeedbackServlet";
             }
->>>>>>> 2ff0efb9cd539eb06845306314f496a16cec0bed
         } finally {
             RequestDispatcher rd = request.getRequestDispatcher(url);
             rd.forward(request, response);

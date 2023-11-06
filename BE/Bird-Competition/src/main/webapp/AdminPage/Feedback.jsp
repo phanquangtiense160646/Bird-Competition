@@ -30,36 +30,60 @@
     <body id="page-top">
         <jsp:include page="Menu.jsp"/>
         <!-- Page Wrapper -->
-        <div id="wrapper">
+        <div class="container-fluid">
+
+            <!-- Page Heading -->
+            <h1 class="h3 mb-2 text-gray-800">Feedback Management</h1>
+            <p class="mb-4">Quản lý phản hồi <a target="_blank">
+            </p>
+            
             <!-- DataTales Example -->
             <div class="card shadow mb-4">
                 <div class="card-header py-3">
-                    <h6 class="m-0 font-weight-bold text-primary">Phản Hồi Từ Người Dùng</h6>
+                    <h6 class="m-0 font-weight-bold text-primary">FeedBack</h6>
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">
                         <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                             <thead>
                                 <tr>
-                                    <th>Member Id</th>
-                                    <th>Description</th>
-                                    <th>Delete</th>
-
+                                    <th>Contest Id</th>
+                                    <th>Name Of Contest</th>
+                                    <th>Action</th>
+                                    
                                 </tr>
                             </thead>
-
+                            <tfoot>
+                                <tr>
+                                    <th>Contest Id</th>
+                                    <th>Name Of Contest</th>
+                                    <th>Action</th>
+                                    
+                                </tr>
+                            </tfoot>
                             <tbody>
-                                <c:set var="feedbackData" value="${sessionScope.FEEDBACK}"/>
+                                <c:set var="feedbackData" value="${requestScope.FEEDBACK}"/>
                                 <c:if test="${not empty feedbackData}">
-                                    <c:forEach var="feedbackDto" items="${feedbackData}" varStatus="counter">
-                                        <tr>
-                                            <td>${feedbackDto.IdMember}</td>
-                                            <td>${feedbackDto.Description}</td>
-                                            <td>${feedbackDto.Description}</td>
-                                            
-                                        </tr>
+                                    <c:forEach var="feedbackDto" items="${feedbackData}" >
+                                        
+                                            <tr>
+                                                <td>${feedbackDto.getIdMember()}</td>
+                                                <td>${feedbackDto.getDescription()}</td>
+                                                <td>
+                                                <c:url var="deleteLink" value="DispatchServlet">
+                                                    <c:param name="btAction" value="DeleteFeedback"/>
+                                                    <c:param name="txtID" value="${feedbackDto.getIdMember()}"/>
+                                                </c:url>
+                                                <a href="${deleteLink}">Delete</a>
+                                            </td>
+                                            </tr>
+                                        
+
                                     </c:forEach>
                                 </c:if>
+                                    <c:if test="${empty feedbackData}">
+                                        Dcmm
+                                    </c:if>
                             </tbody>
                         </table>
                     </div>
@@ -117,22 +141,23 @@
 </div>
 
 <!-- Bootstrap core JavaScript-->
-<script src="vendor/jquery/jquery.min.js"></script>
-<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="AdminPage/vendor/jquery/jquery.min.js"></script>
+<script src="AdminPage/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
 <!-- Core plugin JavaScript-->
-<script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+<script src="AdminPage/vendor/jquery-easing/jquery.easing.min.js"></script>
 
 <!-- Custom scripts for all pages-->
-<script src="js/sb-admin-2.min.js"></script>
+<script src="AdminPage/js/sb-admin-2.min.js"></script>
 
 <!-- Page level plugins -->
-<script src="vendor/chart.js/Chart.min.js"></script>
+<script src="AdminPage/vendor/datatables/jquery.dataTables.min.js"></script>
+<script src="AdminPage/vendor/datatables/dataTables.bootstrap4.min.js"></script>
 
 <!-- Page level custom scripts -->
-<script src="js/demo/chart-area-demo.js"></script>
-<script src="js/demo/chart-pie-demo.js"></script>
-<script src="js/demo/chart-bar-demo.js"></script>
+<script src="AdminPage/js/demo/datatables-demo.js"></script>
+<script src="FE/js/completeCheckIn.js"></script>
+
 
 </body>
 </html>

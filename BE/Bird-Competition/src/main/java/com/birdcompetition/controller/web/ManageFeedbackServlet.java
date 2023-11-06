@@ -6,6 +6,7 @@ package com.birdcompetition.controller.web;
 
 import com.birdcompetition.feedback.FeedBackDAO;
 import com.birdcompetition.feedback.FeedBackDTO;
+import com.birdcompetition.model.User;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
@@ -38,14 +39,16 @@ public class ManageFeedbackServlet extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         String url = "AdminPage/Feedback.jsp";
         try {
-           List<FeedBackDTO> feedbackList;
-           FeedBackDAO dao =  new FeedBackDAO();
-           
-           feedbackList = dao.getList();
-           if(feedbackList != null){
-               HttpSession session = request.getSession();
-               session.setAttribute("FEEDBACK", feedbackList);
-           }
+            HttpSession session = request.getSession();
+            User u = (User) session.getAttribute("USER");
+            FeedBackDAO dao = new FeedBackDAO();
+            List<FeedBackDTO> feedbackList = dao.getFeedback();
+            feedbackList.size();
+            System.out.println("size:" + feedbackList.size());
+            
+//            session.setAttribute("FEEDBACK", feedbackList);
+            request.setAttribute("FEEDBACK", feedbackList);
+            session.setAttribute("USER", u);
             
         } catch (Exception e) {
         }finally{

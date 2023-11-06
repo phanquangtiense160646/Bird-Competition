@@ -14,7 +14,7 @@
     <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
         <!-- Sidebar - Brand -->
-        <a class="sidebar-brand d-flex align-items-center justify-content-center" href="indexAdmin.html">
+        <a class="sidebar-brand d-flex align-items-center justify-content-center" href='<c:url value="/DispatchServlet?btAction=Dashboard"/>'>
             <div class="sidebar-brand-icon rotate-n-15">
                 <i class="fas fa-laugh-wink"></i>
             </div>
@@ -71,7 +71,7 @@
                     <span>Check-in</span></a>
             </li> 
             <li class="nav-item">
-                <!--<a class="nav-link" href='<c:url value="/DispatchServlet?btAction=Preparing"/>'>-->
+                <!--<a class="nav-link" href='<c:url value="/DispatchServlet?btAction=ManageFeedBack"/>'>-->
                 <a class="nav-link" href="ManageFeedbackServlet">
                     <i class="fas fa-fw fa-table"></i>
                     <span>Feed Back</span></a>

@@ -101,7 +101,7 @@
                             <a href="contact_pre.jsp" class="nav-item nav-link">Liên Hệ</a>
 
                         </div>
-                            <a href="Login2.jsp" class="btn btn-primary py-md-3 px-md-5 d-none d-lg-block">Login/Signup</a>
+                        <a href="Login2.jsp" class="btn btn-primary py-md-3 px-md-5 d-none d-lg-block">Login/Signup</a>
                     </div>
                 </nav>
             </div>
@@ -135,47 +135,29 @@
                     <h5 class="text-primary text-uppercase">Đánh giá</h5>
                     <h1 class="display-3 text-uppercase text-light mb-0">Phản hồi từ người dùng</h1>
                 </div>
+                <c:set var="feedback" value="${requestScope.FEEDBACK}" /> 
+                <c:set var="size" value="${10}" />
+
+                <c:if test="${feedback.size() <= size}">
+                    <c:set var="size" value="${feedback.size()}" />
+                </c:if>
                 <div class="owl-carousel testimonial-carousel">
-                    <c:set var="feedback" value="${requestScope.FEEDBACK}"/>
-                    <c:set var="user" value="${sessionScope.USER}"/>
-                    <c:if test=" ${not empty feedback}">
-                        <c:forEach items="${feedback}" var="o">
+                    <c:if test="${not empty feedback}">
+                        <c:forEach var="i" begin="0" end="${size -1 }" step="1">
+
                             <div class="testimonial-item">
-                                <p class="fs-4 fw-normal text-light mb-4"><i class="fa fa-quote-left text-primary me-3"></i>${o.Description}</p>
+                                <p class="fs-4 fw-normal text-light mb-4"><i 
+                                        class="fa fa-quote-left text-primary me-3"></i>${feedback.get(i).getDescription()}</p>
                                 <div class="d-flex align-items-center">
-                                    <img class="img-fluid rounded-circle" src="img/daddyHuy.jpg" alt="">
+
                                     <div class="ps-4">
-                                        <h5 class="text-uppercase text-light">${user.userName}</h5>
+                                        <h5 class="text-uppercase text-light">${feedback.get(i).getIdMember()}</h5>
                                         <span class="text-uppercase text-secondary">Trainer</span>
                                     </div>
                                 </div>
                             </div>
                         </c:forEach>
                     </c:if>
-                    <c:if test="${empty feedback}">
-                        <h1>Chưa có tin</h1>
-                    </c:if>
-
-                    <!--                    <div class="testimonial-item">
-                                            <p class="fs-4 fw-normal text-light mb-4"><i class="fa fa-quote-left text-primary me-3"></i>Chuyên nghiệp tạo nên uy tín.</p>
-                                            <div class="d-flex align-items-center">
-                                                <img class="img-fluid rounded-circle" src="img/danhtran.jpg" alt="">
-                                                <div class="ps-4">
-                                                    <h5 class="text-uppercase text-light">Danh Trần</h5>
-                                                    <span class="text-uppercase text-secondary">Trainer</span>
-                                                </div>
-                                            </div>
-                                        </div>-->
-                    <!--                    <div class="testimonial-item">
-                                            <p class="fs-4 fw-normal text-light mb-4"><i class="fa fa-quote-left text-primary me-3"></i>Sẽ có thể tiếp tục tham gia vào giải sắp tới.</p>
-                                            <div class="d-flex align-items-center">
-                                                <img class="img-fluid rounded-circle" src="img/thuanDam.jpg" alt="">
-                                                <div class="ps-4">
-                                                    <h5 class="text-uppercase text-light">Thuận Thiên</h5>
-                                                    <span class="text-uppercase text-secondary">Trainer</span>
-                                                </div>
-                                            </div>
-                                        </div>-->
                 </div>
             </div>
         </div>
@@ -188,133 +170,120 @@
             <div class="bg-dark p-5">
                 <form>
                     <div class="row g-3">
-                        <!-- <div class="col-6">
-                            <input type="text" class="form-control bg-light border-0 px-4" placeholder="Tên của bạn" style="height: 55px;">
-                        </div>
-                        <div class="col-6">
-                            <input type="email" class="form-control bg-light border-0 px-4" placeholder="Email" style="height: 55px;">
-                        </div>
-                        <div class="col-12">
-                            <input type="text" class="form-control bg-light border-0 px-4" placeholder="Tiêu đề" style="height: 55px;">
-                        </div>
-                        <div class="col-12">
-                            <textarea class="form-control bg-light border-0 px-4 py-3" rows="4" placeholder="Nội dung"></textarea>
-                        </div> -->
-                        <div class="col-12">
-                            <!-- <button class="btn btn-primary w-100 py-3" type="submit">Đăng Nhập Để Gửi Feedback</button> -->
-                            <a href="Login2.jsp" class="btn btn-primary py-md-3 px-md-5 d-none d-lg-block">Đăng Nhập
-                                Để Gửi Feedback
-                            </a>
-                        </div>
+
+                        <a href="Login2.jsp" class="btn btn-primary py-md-3 px-md-5 d-none d-lg-block">Đăng Nhập
+                            Để Gửi Feedback
+                        </a>
+                    </div>
+            </div>
+            </form>
+        </div>
+    </div>
+    <!-- <div class="col-lg-6">
+        <iframe class="w-100"
+            src="https://maps.google.com/maps?width=600&amp;height=400&amp;hl=en&amp;q=FPT University HCMC&amp;t=&amp;z=14&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"
+            frameborder="0" style="height: 457px; border:0;" allowfullscreen="" aria-hidden="false"
+            tabindex="0"></iframe>
+    </div> -->
+</div>
+<!-- Give Feedback end -->
+
+<!-- Footer Start -->
+<div class="container-fluid bg-dark text-secondary px-5 mt-5">
+    <div class="row gx-5">
+        <div class="col-lg-8 col-md-6">
+            <div class="row gx-5">
+                <div class="col-lg-4 col-md-12 pt-5 mb-5">
+                    <h4 class="text-uppercase text-light mb-4">Get In Touch</h4>
+                    <div class="d-flex mb-2">
+                        <i class="bi bi-geo-alt text-primary me-2"></i>
+                        <p class="mb-0">FPT University, Lô E2a-7, Đường D1, Đ. D1, Long Thạnh Mỹ, Thành Phố Thủ Đức, Thành phố Hồ Chí Minh</p>
+                    </div>
+                    <div class="d-flex mb-2">
+                        <i class="bi bi-envelope-open text-primary me-2"></i>
+                        <p class="mb-0">info@example.com</p>
+                    </div>
+                    <div class="d-flex mb-2">
+                        <i class="bi bi-telephone text-primary me-2"></i>
+                        <p class="mb-0">+012 345 67890</p>
+                    </div>
+                    <div class="d-flex mt-4">
+                        <a class="btn btn-primary btn-square rounded-circle me-2" href="#"><i class="fab fa-twitter"></i></a>
+                        <a class="btn btn-primary btn-square rounded-circle me-2" href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a class="btn btn-primary btn-square rounded-circle me-2" href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a class="btn btn-primary btn-square rounded-circle" href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-12 pt-0 pt-lg-5 mb-5">
+                    <h4 class="text-uppercase text-light mb-4">Quick Links</h4>
+                    <div class="d-flex flex-column justify-content-start">
+                        <a class="text-secondary mb-2" href="#"><i class="bi bi-arrow-right text-primary me-2"></i>Home</a>
+                        <a class="text-secondary mb-2" href="#"><i class="bi bi-arrow-right text-primary me-2"></i>About Us</a>
+                        <a class="text-secondary mb-2" href="#"><i class="bi bi-arrow-right text-primary me-2"></i>Class Schedule</a>
+                        <a class="text-secondary mb-2" href="#"><i class="bi bi-arrow-right text-primary me-2"></i>Our Trainers</a>
+                        <a class="text-secondary mb-2" href="#"><i class="bi bi-arrow-right text-primary me-2"></i>Latest Blog</a>
+                        <a class="text-secondary" href="#"><i class="bi bi-arrow-right text-primary me-2"></i>Contact Us</a>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-12 pt-0 pt-lg-5 mb-5">
+                    <h4 class="text-uppercase text-light mb-4">Popular Links</h4>
+                    <div class="d-flex flex-column justify-content-start">
+                        <a class="text-secondary mb-2" href="#"><i class="bi bi-arrow-right text-primary me-2"></i>Home</a>
+                        <a class="text-secondary mb-2" href="#"><i class="bi bi-arrow-right text-primary me-2"></i>About Us</a>
+                        <a class="text-secondary mb-2" href="#"><i class="bi bi-arrow-right text-primary me-2"></i>Class Schedule</a>
+                        <a class="text-secondary mb-2" href="#"><i class="bi bi-arrow-right text-primary me-2"></i>Our Trainers</a>
+                        <a class="text-secondary mb-2" href="#"><i class="bi bi-arrow-right text-primary me-2"></i>Latest Blog</a>
+                        <a class="text-secondary" href="#"><i class="bi bi-arrow-right text-primary me-2"></i>Contact Us</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4 col-md-6">
+            <div class="d-flex flex-column align-items-center justify-content-center text-center h-100 bg-primary p-5">
+                <h4 class="text-uppercase text-white mb-4">Newsletter</h4>
+                <h6 class="text-uppercase text-white">Subscribe Our Newsletter</h6>
+                <p class="text-light">Amet justo diam dolor rebum lorem sit stet sea justo kasd</p>
+                <form action="">
+                    <div class="input-group">
+                        <input type="text" class="form-control border-white p-3" placeholder="Your Email">
+                        <button class="btn btn-dark">Sign Up</button>
                     </div>
                 </form>
             </div>
         </div>
-        <!-- <div class="col-lg-6">
-            <iframe class="w-100"
-                src="https://maps.google.com/maps?width=600&amp;height=400&amp;hl=en&amp;q=FPT University HCMC&amp;t=&amp;z=14&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"
-                frameborder="0" style="height: 457px; border:0;" allowfullscreen="" aria-hidden="false"
-                tabindex="0"></iframe>
-        </div> -->
     </div>
-    <!-- Give Feedback end -->
-
-    <!-- Footer Start -->
-    <div class="container-fluid bg-dark text-secondary px-5 mt-5">
-        <div class="row gx-5">
-            <div class="col-lg-8 col-md-6">
-                <div class="row gx-5">
-                    <div class="col-lg-4 col-md-12 pt-5 mb-5">
-                        <h4 class="text-uppercase text-light mb-4">Get In Touch</h4>
-                        <div class="d-flex mb-2">
-                            <i class="bi bi-geo-alt text-primary me-2"></i>
-                            <p class="mb-0">FPT University, Lô E2a-7, Đường D1, Đ. D1, Long Thạnh Mỹ, Thành Phố Thủ Đức, Thành phố Hồ Chí Minh</p>
-                        </div>
-                        <div class="d-flex mb-2">
-                            <i class="bi bi-envelope-open text-primary me-2"></i>
-                            <p class="mb-0">info@example.com</p>
-                        </div>
-                        <div class="d-flex mb-2">
-                            <i class="bi bi-telephone text-primary me-2"></i>
-                            <p class="mb-0">+012 345 67890</p>
-                        </div>
-                        <div class="d-flex mt-4">
-                            <a class="btn btn-primary btn-square rounded-circle me-2" href="#"><i class="fab fa-twitter"></i></a>
-                            <a class="btn btn-primary btn-square rounded-circle me-2" href="#"><i class="fab fa-facebook-f"></i></a>
-                            <a class="btn btn-primary btn-square rounded-circle me-2" href="#"><i class="fab fa-linkedin-in"></i></a>
-                            <a class="btn btn-primary btn-square rounded-circle" href="#"><i class="fab fa-instagram"></i></a>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-12 pt-0 pt-lg-5 mb-5">
-                        <h4 class="text-uppercase text-light mb-4">Quick Links</h4>
-                        <div class="d-flex flex-column justify-content-start">
-                            <a class="text-secondary mb-2" href="#"><i class="bi bi-arrow-right text-primary me-2"></i>Home</a>
-                            <a class="text-secondary mb-2" href="#"><i class="bi bi-arrow-right text-primary me-2"></i>About Us</a>
-                            <a class="text-secondary mb-2" href="#"><i class="bi bi-arrow-right text-primary me-2"></i>Class Schedule</a>
-                            <a class="text-secondary mb-2" href="#"><i class="bi bi-arrow-right text-primary me-2"></i>Our Trainers</a>
-                            <a class="text-secondary mb-2" href="#"><i class="bi bi-arrow-right text-primary me-2"></i>Latest Blog</a>
-                            <a class="text-secondary" href="#"><i class="bi bi-arrow-right text-primary me-2"></i>Contact Us</a>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-12 pt-0 pt-lg-5 mb-5">
-                        <h4 class="text-uppercase text-light mb-4">Popular Links</h4>
-                        <div class="d-flex flex-column justify-content-start">
-                            <a class="text-secondary mb-2" href="#"><i class="bi bi-arrow-right text-primary me-2"></i>Home</a>
-                            <a class="text-secondary mb-2" href="#"><i class="bi bi-arrow-right text-primary me-2"></i>About Us</a>
-                            <a class="text-secondary mb-2" href="#"><i class="bi bi-arrow-right text-primary me-2"></i>Class Schedule</a>
-                            <a class="text-secondary mb-2" href="#"><i class="bi bi-arrow-right text-primary me-2"></i>Our Trainers</a>
-                            <a class="text-secondary mb-2" href="#"><i class="bi bi-arrow-right text-primary me-2"></i>Latest Blog</a>
-                            <a class="text-secondary" href="#"><i class="bi bi-arrow-right text-primary me-2"></i>Contact Us</a>
-                        </div>
-                    </div>
-                </div>
+</div>
+<div class="container-fluid py-4 py-lg-0 px-5" style="background: #111111;">
+    <div class="row gx-5">
+        <div class="col-lg-8">
+            <div class="py-lg-4 text-center">
+                <p class="text-secondary mb-0">&copy; <a class="text-light fw-bold" href="#">Your Site Name</a>. All Rights Reserved.</p>
             </div>
-            <div class="col-lg-4 col-md-6">
-                <div class="d-flex flex-column align-items-center justify-content-center text-center h-100 bg-primary p-5">
-                    <h4 class="text-uppercase text-white mb-4">Newsletter</h4>
-                    <h6 class="text-uppercase text-white">Subscribe Our Newsletter</h6>
-                    <p class="text-light">Amet justo diam dolor rebum lorem sit stet sea justo kasd</p>
-                    <form action="">
-                        <div class="input-group">
-                            <input type="text" class="form-control border-white p-3" placeholder="Your Email">
-                            <button class="btn btn-dark">Sign Up</button>
-                        </div>
-                    </form>
-                </div>
+        </div>
+        <div class="col-lg-4">
+            <div class="py-lg-4 text-center credit">
+                <p class="text-light mb-0">Designed by <a class="text-light fw-bold" href="https://htmlcodex.com">HTML Codex</a></p>
             </div>
         </div>
     </div>
-    <div class="container-fluid py-4 py-lg-0 px-5" style="background: #111111;">
-        <div class="row gx-5">
-            <div class="col-lg-8">
-                <div class="py-lg-4 text-center">
-                    <p class="text-secondary mb-0">&copy; <a class="text-light fw-bold" href="#">Your Site Name</a>. All Rights Reserved.</p>
-                </div>
-            </div>
-            <div class="col-lg-4">
-                <div class="py-lg-4 text-center credit">
-                    <p class="text-light mb-0">Designed by <a class="text-light fw-bold" href="https://htmlcodex.com">HTML Codex</a></p>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Footer End -->
+</div>
+<!-- Footer End -->
 
 
-    <!-- Back to Top -->
-    <a href="#" class="btn btn-dark py-3 fs-4 back-to-top"><i class="bi bi-arrow-up"></i></a>
+<!-- Back to Top -->
+<a href="#" class="btn btn-dark py-3 fs-4 back-to-top"><i class="bi bi-arrow-up"></i></a>
 
 
-    <!-- JavaScript Libraries -->
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="FE/lib/easing/easing.min.js"></script>
-    <script src="FE/lib/waypoints/waypoints.min.js"></script>
-    <script src="FE/lib/counterup/counterup.min.js"></script>
-    <script src="FE/lib/owlcarousel/owl.carousel.min.js"></script>
+<!-- JavaScript Libraries -->
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="FE/lib/easing/easing.min.js"></script>
+<script src="FE/lib/waypoints/waypoints.min.js"></script>
+<script src="FE/lib/counterup/counterup.min.js"></script>
+<script src="FE/lib/owlcarousel/owl.carousel.min.js"></script>
 
-    <!-- Template Javascript -->
-    <script src="FE/js/main.js"></script>
+<!-- Template Javascript -->
+<script src="FE/js/main.js"></script>
 </body>
 
 </html>

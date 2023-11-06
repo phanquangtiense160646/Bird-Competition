@@ -4,13 +4,15 @@
  */
 package com.birdcompetition.feedback;
 
-import java.sql.Date;
+import java.io.Serializable;
+
+
 
 /**
  *
  * @author MSI
  */
-public class FeedBackDTO {
+public class FeedBackDTO implements Serializable{
     private String IdMember;
     private String Description;
     
@@ -47,6 +49,7 @@ public class FeedBackDTO {
         return "FeedBackDTO{" + "IdMember=" + IdMember + ", Description=" + Description + '}';
     }
 
+   
    
    
 

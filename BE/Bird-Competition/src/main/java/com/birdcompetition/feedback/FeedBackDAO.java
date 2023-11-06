@@ -4,6 +4,7 @@
  */
 package com.birdcompetition.feedback;
 
+import com.birdcompetition.news.NewsDTO;
 import com.birdcompetition.util.DBHelper;
 import java.io.Serializable;
 import java.sql.Connection;
@@ -69,8 +70,98 @@ public class FeedBackDAO implements Serializable {
 
         }
     }
+    public List<FeedBackDTO> getFeedback()
+            throws SQLException, ClassNotFoundException {
+        Connection con = null;
+        PreparedStatement stm = null;
+        ResultSet rs = null;
+        List<FeedBackDTO> result = null;
 
-    public boolean insertFeedback(FeedBackDTO feedback) throws ClassNotFoundException, SQLException {
+        try {
+            //1.Make connection
+            con = DBHelper.getConnection();
+            //check 
+            if (con != null) {
+                //2.Creat SQL String 
+                String sql = "Select * "
+                        + "From FeedBack\n";
+                //3.Create Statement Object
+                stm = con.prepareStatement(sql);
+
+                //4.Exercute Query
+                rs = stm.executeQuery();
+                //5.Process
+                while (rs.next()) {
+                    
+                    String idMember = rs.getString("IdMember");
+                    String descrip = rs.getString("Description");
+
+                    FeedBackDTO dto = new FeedBackDTO(idMember, descrip);
+
+                    if (this.feedbackList == null) {
+                        this.feedbackList = new ArrayList<>();
+                    }
+                    feedbackList.add(dto);
+                }
+                return feedbackList;
+            }
+
+        } finally {
+            if (rs != null) {
+                rs.close();
+            }
+            if (stm != null) {
+                stm.close();
+            }
+            if (con != null) {
+                con.close();
+            }
+        }
+        return result;
+    }
+     public int getParticipants()
+            throws SQLException, ClassNotFoundException {
+        Connection con = null;
+        PreparedStatement stm = null;
+        ResultSet rs = null;
+        int result = 0;
+
+        try {
+            //1.Make connection
+            con = DBHelper.getConnection();
+            //check 
+            if (con != null) {
+                //2.Creat SQL String 
+                String sql = "Select count(IdMember) as Parcipants "
+                        + "From FeedBack ";
+                        
+                //3.Create Statement Object
+                stm = con.prepareStatement(sql);
+                
+                //4.Exercute Query
+                rs = stm.executeQuery();
+
+                //5.Process
+                if (rs.next()) {
+                    result = rs.getInt("Parcipants");
+                }
+            }
+        } finally {
+            if (rs != null) {
+                rs.close();
+            }
+            if (stm != null) {
+                stm.close();
+            }
+            if (con != null) {
+                con.close();
+            }
+        }
+        return result;
+
+    }
+
+    public boolean insertFeedback(String IdMember, String Description ) throws ClassNotFoundException, SQLException {
         Connection con = null;
         PreparedStatement stm = null;
         boolean result = false;
@@ -83,8 +174,8 @@ public class FeedBackDAO implements Serializable {
                 //3. Create Statement Object
                 stm = con.prepareStatement(sql);
 
-                stm.setString(1, feedback.getIdMember());
-                stm.setString(2, feedback.getDescription());
+                stm.setString(1, IdMember);
+                stm.setString(2, Description);
 
                 //4. Execute Query
                 int effectRows = stm.executeUpdate();
@@ -104,6 +195,41 @@ public class FeedBackDAO implements Serializable {
                 con.close();
             }
 
+        }
+        return result;
+    }
+    public boolean deleteFeedback(String id)
+            throws SQLException,  ClassNotFoundException {
+        Connection con = null;
+        PreparedStatement stm = null;
+        boolean result = false;
+        try {
+            //1.Make connection
+            con = DBHelper.getConnection();
+            if (con != null) {
+                //2. Create SQL String 
+                String sql = "Delete FeedBack\n"
+                        + "Where IdMember = ? ";
+                //3. Create Statement Object
+                stm = con.prepareStatement(sql);
+
+                stm.setString(1, id);
+
+                //4. Execute Query
+                int exercute = stm.executeUpdate();
+                //5. Process
+                if (exercute > 0) {
+                    return true;
+                }
+            }//end username and password is verified
+        }//end connection is available
+        finally {
+            if (stm != null) {
+                stm.close();
+            }
+            if (con != null) {
+                con.close();
+            }
         }
         return result;
     }

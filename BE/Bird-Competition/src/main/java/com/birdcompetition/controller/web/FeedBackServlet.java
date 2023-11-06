@@ -45,10 +45,14 @@ public class FeedBackServlet extends HttpServlet {
             HttpSession session = request.getSession();
             User u = (User) session.getAttribute("USER");
             FeedBackDAO dao = new FeedBackDAO();
-            List<FeedBackDTO> feedbackList = dao.getList();
+            List<FeedBackDTO> feedbackList = dao.getFeedback();
+            feedbackList.size();
+            System.out.println("size:" + feedbackList.size());
             
-            session.setAttribute("FEEDBACK", feedbackList);
+//            session.setAttribute("FEEDBACK", feedbackList);
+            request.setAttribute("FEEDBACK", feedbackList);
             session.setAttribute("USER", u);
+            
 
         } catch (Exception e) {
         } finally {

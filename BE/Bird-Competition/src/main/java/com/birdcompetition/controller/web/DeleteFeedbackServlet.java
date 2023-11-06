@@ -6,13 +6,12 @@ package com.birdcompetition.controller.web;
 
 import com.birdcompetition.feedback.FeedBackDAO;
 import com.birdcompetition.feedback.FeedBackDTO;
-import com.birdcompetition.model.User;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.sql.Date;
 import java.sql.SQLException;
-import javafx.scene.chart.PieChart;
-import javax.servlet.RequestDispatcher;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -24,8 +23,8 @@ import javax.servlet.http.HttpSession;
  *
  * @author MSI
  */
-@WebServlet(name = "AddFeedbackServlet", urlPatterns = {"/AddFeedbackServlet"})
-public class AddFeedbackServlet extends HttpServlet {
+@WebServlet(name = "DeleteFeedbackServlet", urlPatterns = {"/DeleteFeedbackServlet"})
+public class DeleteFeedbackServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -39,34 +38,33 @@ public class AddFeedbackServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-       
-        String des = request.getParameter("txtDescription");
-        String url = "";
-        request.setCharacterEncoding("UTF-8");
-        
-        
+        String id = request.getParameter("txtID");
+        String url = null;
         try {
-            
-            HttpSession session = request.getSession();
-            User user = (User) session.getAttribute("USER");
+            //1. call method
+            //1.1. new DAO
             FeedBackDAO dao = new FeedBackDAO();
-            
-            boolean result = dao.insertFeedback(user.getIdMember(),des);
-            if(result){
-                url = "FeedBackServlet";
-                String msg = "success";
-                request.setAttribute("msg", msg);
-            }else {
-                String msg = "fail";
-                request.setAttribute("msg",msg);
-            }
-            
-            
-        } catch (ClassNotFoundException | SQLException e) {
-            
-        }finally{
-            RequestDispatcher rd = request.getRequestDispatcher(url);
-            rd.forward(request, response);
+            //1.2 call DAO's method
+            boolean result = dao.deleteFeedback(id);
+
+            //2. process Result
+            if (result) {
+                //2.1 call the search function again using URL Rewriting
+                HttpSession session = request.getSession();
+                java.util.List<FeedBackDTO> feedbackList;
+                dao.getFeedback();
+                feedbackList = dao.getFeedback();
+                session.setAttribute("FEEDBACK", feedbackList);
+                url = "ManageFeedbackServlet";
+                //2.2. go to error page
+            }//end delete action is successful
+
+        } catch (SQLException ex) {
+            Logger.getLogger(DeleteFeedbackServlet.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(DeleteFeedbackServlet.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            response.sendRedirect(url);
         }
     }
 
