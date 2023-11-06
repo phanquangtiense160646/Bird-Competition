@@ -52,7 +52,23 @@ function toast({
 function showSuccessToast() {
     toast({
         tiltle: 'Success',
-        message: 'Tạo lịch thi đấu thành công!<br>Lịch được đưa vào danh sách duyệt',
+        message: 'Chỉnh sửa lịch thi đấu thành công!',
+        type: 'success',
+        duration: 8000
+    })
+}
+function showSuccessToast1() {
+    toast({
+        tiltle: 'Success',
+        message: 'Duyệt lịch thi đấu thành công!',
+        type: 'success',
+        duration: 8000
+    })
+}
+function showSuccessToast2() {
+    toast({
+        tiltle: 'Success',
+        message: 'Xóa lịch thi đấu thành công!',
         type: 'success',
         duration: 8000
     })
@@ -82,6 +98,10 @@ if (mes === 'fail') {
     showSuccessToast();
 } else if (mes === 'error') {
     showErrorToast();
+} else if (mes === 'confirmSuccess') {
+    showSuccessToast1();
+} else if (mes === 'deleteSuccess') {
+    showSuccessToast2();
 }
 
 
