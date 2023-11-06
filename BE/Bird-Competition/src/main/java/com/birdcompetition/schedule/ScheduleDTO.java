@@ -53,6 +53,7 @@ public class ScheduleDTO implements Serializable {
     
     
     
+    
     public ScheduleDTO(int id, String name, Date date, String locationId, 
             boolean status, double factor, int minPoint, int maxPoint, 
             int fee, String userId, String location, int statusOfContest, int maxPar, String maxBird) {

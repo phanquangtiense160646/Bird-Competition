@@ -98,7 +98,12 @@ public class DispatchServlet extends HttpServlet {
                 url = "PaymentAdminServlet";
             } else if (button.equals("Add Image")) {
                 url = "UploadPhotoServlet";
-
+            } else if (button.equals("AddLocation")){
+                url = "AddLocationServlet";
+            } else if (button.equals("ManageLocation")){
+                url = "GetLocationList";
+            } else if(button.equals("DeleteLocation")){
+                url = "DeleteLocationServlet";
             }
         } finally {
             RequestDispatcher rd = request.getRequestDispatcher(url);

@@ -66,6 +66,7 @@ public class ScheduleServlet extends HttpServlet {
             scheduleDao.getSchedule();
             listSchedule = scheduleDao.getList();
             session.setAttribute("SCHEDULE", listSchedule);
+            
             /*danh sach chim dk*/
             BirdDAO dao = new BirdDAO();
             User user = (User) session.getAttribute("USER");
