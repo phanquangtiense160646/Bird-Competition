@@ -57,8 +57,10 @@ html {
     }
 }
 
-.schedule-detail, .shedule-form {
-    background-color: #f4f5f8;
+.shedule-form {
+    background: linear-gradient(rgba(34, 36, 41, .92), rgba(34, 36, 41, .9)), url(chaomao-bg.jpg) top center no-repeat;
+    background-size: cover;
+    border-radius: 5%;
 }
 
 .update-result, .update-form {
@@ -68,11 +70,6 @@ html {
 .update-form {
     border-radius: 5%;
 }
-
-.shedule-form {
-    border-radius: 5%;
-}
-
 
 .schedule-header, .schedule-body {
         padding: 1rem;

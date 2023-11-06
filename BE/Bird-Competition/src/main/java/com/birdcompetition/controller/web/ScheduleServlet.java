@@ -6,14 +6,10 @@ import com.birdcompetition.model.User;
 import com.birdcompetition.schedule.ScheduleDAO;
 import com.birdcompetition.schedule.ScheduleDTO;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.naming.NamingException;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -41,6 +37,7 @@ public class ScheduleServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
+        String past = request.getParameter("past");
         String url = "schedule.jsp";
         try {
             HttpSession session = request.getSession();
@@ -72,6 +69,9 @@ public class ScheduleServlet extends HttpServlet {
             dao.getBirdByMemberId1(user.getIdMember());
             List<BirdDTO> birdList = dao.getBirdList();
             session.setAttribute("OWN_BIRD", birdList);
+            if(past != null && past.equals("1")) {
+                url = "schedule_1.jsp";
+            }
 
         } catch (SQLException ex) {
             log("ScheduleServlet_SQL: " + ex.getMessage());

@@ -48,7 +48,7 @@ public class LeaderBoardServlet extends HttpServlet {
             BirdDAO dao = new BirdDAO();
 
             dao.resetBirdList();
-            dao.displayLeaderboard();
+            dao.getLeaderboard();
             List<BirdDTO> leaderboard = dao.getBirdList();
             request.setAttribute("LEADER_BOARD", leaderboard);
 

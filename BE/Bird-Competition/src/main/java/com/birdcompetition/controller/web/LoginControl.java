@@ -16,8 +16,6 @@ import com.birdcompetition.model.User;
 import java.sql.SQLException;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.http.HttpSession;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 /**
  *
  * @author 84366

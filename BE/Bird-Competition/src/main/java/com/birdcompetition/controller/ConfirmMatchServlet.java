@@ -46,34 +46,33 @@ public class ConfirmMatchServlet extends HttpServlet {
         String[] orderList = request.getParameterValues("txtOrder");
         String[] beforePointList = request.getParameterValues("txtBefore");
         String[] afterPointList = request.getParameterValues("txtAfter");
+
         String url = "HappeningMatchServlet";
         try {
             BirdContestDAO birdContestDao = new BirdContestDAO();
             ScheduleDAO scheduleDao = new ScheduleDAO();
             BirdDAO birdDao = new BirdDAO();
+            double central = (birdIdList.length + 1) / 2;
 
             for (int i = 0; i < birdIdList.length; i++) {
 
-                double central = (birdIdList.length + 1) / 2;
                 int id = Integer.parseInt(birdIdList[i]);
                 int order = Integer.parseInt(orderList[i]);
                 int beforePoint = Integer.parseInt(beforePointList[i]);
                 int afterPoint = Integer.parseInt(afterPointList[i]);
 
-                if (birdContestDao.setAfterMatch(id, order, beforePoint, afterPoint, matchId)) {
-                    int status = 0;
+
+                if (birdContestDao.AfterMatchUpdate(id, order, beforePoint, afterPoint, matchId)) {
+                    int status = 2;
                     if (order < central) {
                         status = 1;
                     } else if (order > central) {
-                        status = -1;
+                        status = 3;
                     }
-
-                    birdDao.setBirdAfterMatch(id, afterPoint, status);
-                    
-                    request.setAttribute("action", "success");
+                    birdDao.AfterMatchUpdate(id, afterPoint, status);
                 }
-
             }
+            request.setAttribute("action", "success");
             scheduleDao.setStatus(matchId, 4);
 
         } catch (SQLException ex) {

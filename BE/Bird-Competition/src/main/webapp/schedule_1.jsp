@@ -66,7 +66,7 @@
                 <ul
                     class="nav nav-pills d-inline-flex justify-content-center bg-dark text-uppercase rounded-pill mb-5">
                     <li class="nav-item">
-                        <a class="nav-link rounded-pill text-white" data-bs-toggle="pill" href="#tab-0">Đã diễn
+                        <a class="nav-link rounded-pill text-white active" data-bs-toggle="pill" href="#tab-0">Đã diễn
                             ra</a>
                     </li>
                     <li class="nav-item">
@@ -74,12 +74,12 @@
                             diễn ra</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link rounded-pill text-white active" data-bs-toggle="pill"
+                        <a class="nav-link rounded-pill text-white" data-bs-toggle="pill"
                            href="#tab-2">Sắp diễn ra</a>
                     </li>
                 </ul>
                 <div class="tab-content">
-                    <div id="tab-0" class="tab-pane fade show p-0">
+                    <div id="tab-0" class="tab-pane fade show p-0 active">
                         <div class="row g-5">
                             <c:set var="scheduleData" value="${sessionScope.SCHEDULE}" />
                             <c:if test="${not empty scheduleData}">
@@ -189,7 +189,7 @@
                             </c:if>
                         </div>
                     </div>
-                    <div id="tab-2" class="tab-pane fade show p-0 active">
+                    <div id="tab-2" class="tab-pane fade show p-0">
                         <div class="row g-5">
                             <c:set var="scheduleData" value="${sessionScope.SCHEDULE}" />
                             <c:if test="${not empty scheduleData}">

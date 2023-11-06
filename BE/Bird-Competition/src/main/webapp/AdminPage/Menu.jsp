@@ -7,6 +7,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <!-- Page Wrapper -->
+<c:set var="user" value="${sessionScope.USER}"/>
 <div id="wrapper">
 
     <!-- Sidebar -->
@@ -28,62 +29,67 @@
 
 
         <!-- Heading -->
-        <div class="sidebar-heading">
-            Staff
-        </div>
+        <c:if test="${user.userRole == 1}" >
+            <li class="nav-item">
+                <a class="nav-link" href="">
+                    <i class="fas fa-fw fa-table"></i>
+                    <span>Quản lý tài khoản</span></a>
+            </li>
+        </c:if>
+        <c:if test="${user.userRole == 3 or user.userRole == 2}" >
+
+            <div class="sidebar-heading">
+                Staff
+            </div>
 
 
-        <li class="nav-item">
-            <a class="nav-link" href=<c:url value="/DispatchServlet?btAction=Dashboard"/>>
-                <i class="fas fa-fw fa-table"></i>
-                <span>Dashboard</span></a>
-        </li>
-
-        <li class="nav-item">
-            <a class="nav-link" href="Pages/AccountManagement.html">
-                <i class="fas fa-fw fa-table"></i>
-                <span>Quản lý tài khoản</span></a>
-        </li>
+            <li class="nav-item">
+                <a class="nav-link" href=<c:url value="/DispatchServlet?btAction=Dashboard"/>>
+                    <i class="fas fa-fw fa-table"></i>
+                    <span>Dashboard</span></a>
+            </li>
 
 
-        <li class="nav-item">
-            <a class="nav-link" href='<c:url value="/DispatchServlet?btAction=ManageSchedule"/>'>
-                <i class="fas fa-fw fa-table"></i>
-                <span>Quản lý lịch thi đấu</span></a>
-        </li>      
 
 
-        <li class="nav-item">
-            <a class="nav-link" href="HappeningMatchServlet">
-                <i class="fas fa-fw fa-table"></i>
-                <span>Cập nhật kết quả trận đấu</span></a>
-        </li> 
-        <li class="nav-item">
-            <!--<a class="nav-link" href='<c:url value="/DispatchServlet?btAction=Preparing"/>'>-->
-            <a class="nav-link" href="PreparingMatchServlet">
-                <i class="fas fa-fw fa-table"></i>
-                <span>Check-in</span></a>
-        </li> 
-        <!-- Divider -->
-        <hr class="sidebar-divider d-none d-md-block">
-        <!-- Heading -->
-        <div class="sidebar-heading">
-            Manager
-        </div>
+            <li class="nav-item">
+                <a class="nav-link" href='<c:url value="/DispatchServlet?btAction=ManageSchedule"/>'>
+                    <i class="fas fa-fw fa-table"></i>
+                    <span>Quản lý lịch thi đấu</span></a>
+            </li>      
 
 
-        <li class="nav-item">
-            <a class="nav-link" href="https://sandbox.vnpayment.vn/merchantv2/" target="_blank">
-                <i class="fas fa-fw fa-table"></i>
-                <span>Quản lý thanh toán</span></a>
-        </li>  
+            <li class="nav-item">
+                <a class="nav-link" href="HappeningMatchServlet">
+                    <i class="fas fa-fw fa-table"></i>
+                    <span>Cập nhật kết quả trận đấu</span></a>
+            </li> 
+            <li class="nav-item">
+                <!--<a class="nav-link" href='<c:url value="/DispatchServlet?btAction=Preparing"/>'>-->
+                <a class="nav-link" href="PreparingMatchServlet">
+                    <i class="fas fa-fw fa-table"></i>
+                    <span>Check-in</span></a>
+            </li> 
+        </c:if>
+        <c:if test="${user.userRole == 2 }" >
+            <hr class="sidebar-divider d-none d-md-block">
+            <div class="sidebar-heading">
+                Manager
+            </div>
 
-        <li class="nav-item">
-            <a class="nav-link" href="">
-                <i class="fas fa-fw fa-table"></i>
-                <span>Quản lý Luật thi</span></a>
-        </li>   
 
+            <li class="nav-item">
+                <a class="nav-link" href="https://sandbox.vnpayment.vn/merchantv2/" target="_blank">
+                    <i class="fas fa-fw fa-table"></i>
+                    <span>Quản lý thanh toán</span></a>
+            </li>  
+
+            <li class="nav-item">
+                <a class="nav-link" href="">
+                    <i class="fas fa-fw fa-table"></i>
+                    <span>Quản lý Luật thi</span></a>
+            </li>   
+        </c:if>
         <!-- Divider -->
         <hr class="sidebar-divider d-none d-md-block">
 
@@ -152,17 +158,20 @@
 
 
                     <!-- Nav Item - User Information -->
-                    <li class="nav-item dropdown no-arrow">
+                    <li class="nav-item dropdown no-arrow  h-100">
                         <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <c:set var="user" value="${sessionScope.USER}"/>
-                            <span class="btn btn-primary nav-link dropdown-toggle h-75" style="width: 100px;">${user.userName}</span>
+                            <span class="btn btn-primary h-50" style="width: 100px;">${user.userName}</span>
+
+
                             <%--<c:if test="${user.userRole == 1}">Admin</c:if>--%>
                             <%--<c:if test="${user.userRole == 2}">Manager</c:if>--%>
                             <%--<c:if test="${user.userRole == 3}">Staff</c:if>--%>
-                            
-                           
+                            <!--<div class="d-flex justify-content-center">
+                                <small class="">Admin</small>
+                            </div>-->
                         </a>
+
                         <!-- Dropdown - User Information -->
                         <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
                              aria-labelledby="userDropdown">
@@ -181,4 +190,5 @@
                 </ul>
 
             </nav>
+
             <!-- End of Topbar -->

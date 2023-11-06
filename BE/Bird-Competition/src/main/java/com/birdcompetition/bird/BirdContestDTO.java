@@ -15,6 +15,7 @@ public class BirdContestDTO implements Serializable{
     private boolean status;
     private boolean checkIn;
     private String checkinCode;
+    private String idMember;
 
     public BirdContestDTO() {
     }
@@ -29,6 +30,20 @@ public class BirdContestDTO implements Serializable{
         this.status = status;
         this.checkIn = checkIn;
         this.checkinCode = checkinCode;
+    }
+
+    public BirdContestDTO(int birdId, String contestId, String idMember) {
+        this.birdId = birdId;
+        this.contestId = contestId;
+        this.idMember = idMember;
+    }
+
+    public String getIdMember() {
+        return idMember;
+    }
+
+    public void setIdMember(String idMember) {
+        this.idMember = idMember;
     }
     
 
