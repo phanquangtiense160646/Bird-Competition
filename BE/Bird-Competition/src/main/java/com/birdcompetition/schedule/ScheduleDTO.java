@@ -53,18 +53,10 @@ public class ScheduleDTO implements Serializable {
         this.maxBird = maxBird;
         this.checkedIn = 0;
     }
-<<<<<<< HEAD
-    
-    
-    
-    
-    public ScheduleDTO(int id, String name, Date date, String locationId, 
-            boolean status, double factor, int minPoint, int maxPoint, 
-=======
 
     public ScheduleDTO(int id, String name, Date date, String locationId,
             boolean status, double factor, int minPoint, int maxPoint,
->>>>>>> 2ff0efb9cd539eb06845306314f496a16cec0bed
+
             int fee, String userId, String location, int statusOfContest, int maxPar, String maxBird) {
         this.id = id;
         this.name = name;
