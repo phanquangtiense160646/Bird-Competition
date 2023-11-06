@@ -190,5 +190,11 @@ public class NewsDAO {
         }
         return news;
     }
+    public void insertNews(){
+        
+    }
+     public void updateNews(){
+        
+    }
 
 }

@@ -97,7 +97,7 @@
                                         <a href="News_pre.jsp" class="dropdown-item">Tin Tức</a>
                                     </div>
                                 </div>
-                                        <a href="contact.jsp" class="nav-item nav-link">Liên Hệ</a>
+                                        <a href="contact_pre.jsp" class="nav-item nav-link">Liên Hệ</a>
                             </div>
                             <div class="nav-item dropdown">
 
