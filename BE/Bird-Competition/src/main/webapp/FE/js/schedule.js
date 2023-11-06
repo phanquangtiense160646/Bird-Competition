@@ -68,8 +68,8 @@ function showFailToast() {
 }
 function showFailToast1() {
     toast({
-        tiltle: 'Lỗi',
-        message: 'Chim thi đấu của bạn không hợp lệ',
+        tiltle: 'Fail',
+        message: 'Bạn chưa thanh toán',
         type: 'warning',
         duration: 8000
     })

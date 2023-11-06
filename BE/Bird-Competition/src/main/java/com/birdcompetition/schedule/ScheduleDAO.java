@@ -1,5 +1,7 @@
-package com.birdcompetition.schedule;
+ package com.birdcompetition.schedule;
 
+import com.birdcompetition.birdInContest.BirdContestDAO;
+import com.birdcompetition.birdInContest.BirdContestDTO;
 import com.birdcompetition.util.DBHelper;
 import java.io.Serializable;
 import java.sql.Connection;
@@ -7,6 +9,7 @@ import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -169,6 +172,12 @@ public class ScheduleDAO implements Serializable {
                             status, factor, minPoint, maxPoint, fee, userId,
                             location, contestStatus, maxPar, "");
 
+                    int currentPar = getParticipants(id);
+                    int checkedIn = getCheckedInParticipant(id);
+                    dto.setCurrentPar(currentPar);
+                    dto.setCheckedIn(checkedIn);
+
+//                    dto.setCheckedIn(getCheckedInParticipant(id));
                     scheduleList.add(dto);
                 }
             }
@@ -184,6 +193,21 @@ public class ScheduleDAO implements Serializable {
             }
         }
 
+    }
+
+    public int getCheckedInParticipant(int matchID) throws SQLException, ClassNotFoundException {
+
+        BirdContestDAO birdContest = new BirdContestDAO();
+        birdContest.getJoiner(matchID);
+        List<BirdContestDTO> participant = birdContest.getList();
+        int parNumber = 0;
+
+        if (participant != null) {
+
+            parNumber = participant.size();
+
+        }
+        return parNumber;
     }
 
     public ScheduleDTO getScheduleById(int contestId)
@@ -430,5 +454,20 @@ public class ScheduleDAO implements Serializable {
         }
         return result;
 
+    }
+
+    public long getDayBetween(Date fightDate) {
+        LocalDate expiredDate = fightDate.toLocalDate();
+        LocalDate currentDate = getCurrenDay().toLocalDate();
+
+        long dayGap = java.time.temporal.ChronoUnit.DAYS.between(currentDate, expiredDate);
+        System.out.println("dayGap: " + dayGap);
+        return dayGap;
+    }
+
+    private Date getCurrenDay() {
+        LocalDate localDate = LocalDate.now();
+        java.sql.Date date = Date.valueOf(localDate);
+        return date;
     }
 }

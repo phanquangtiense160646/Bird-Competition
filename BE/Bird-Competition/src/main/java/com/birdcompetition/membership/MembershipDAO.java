@@ -152,8 +152,7 @@ public class MembershipDAO {
 
     public boolean checkSession(String memberId) throws SQLException, ClassNotFoundException {
         MembershipDTO member = getMember(memberId);
-        java.sql.Date current = getCurrenDay();
-        long dayGap = getDayBetween(member.getDayExpired(), current);
+        long dayGap = getDayBetween(member.getDayExpired());
 
         if (member != null) {
             if (dayGap <= 0) {
@@ -167,9 +166,9 @@ public class MembershipDAO {
 
     }
 
-    private long getDayBetween(Date expired, Date curent) {
+    private long getDayBetween(Date expired) {
         LocalDate expiredDate = expired.toLocalDate();
-        LocalDate currentDate = curent.toLocalDate();
+        LocalDate currentDate = getCurrenDay().toLocalDate();
 
         long dayGap = java.time.temporal.ChronoUnit.DAYS.between(currentDate, expiredDate);
 //        System.out.println("dayGap: " + dayGap);
@@ -219,7 +218,7 @@ public class MembershipDAO {
         if (member.getType() != null) {
             int payed = getCost(member.getType());
             int cost = getCost(newType);
-            long dayGap = getDayBetween(member.getDayExpired(), getCurrenDay());
+            long dayGap = getDayBetween(member.getDayExpired());
 
             double discount = ((double) dayGap / 365.0);
             newCost = (double) cost - (payed * discount);
@@ -242,13 +241,13 @@ public class MembershipDAO {
         }
         return 0;
     }
-
-    public static long calRemainingDays(Date date1, Date date2) {
-        LocalDate localDate1 = date1.toLocalDate();
-        LocalDate localDate2 = date2.toLocalDate();
-
-        return Math.abs(localDate1.toEpochDay() - localDate2.toEpochDay());
-    }
+//
+//    public static long calRemainingDays(Date date1, Date date2) {
+//        LocalDate localDate1 = date1.toLocalDate();
+//        LocalDate localDate2 = date2.toLocalDate();
+//
+//        return Math.abs(localDate1.toEpochDay() - localDate2.toEpochDay());
+//    }
 
     private Date getCurrenDay() {
         LocalDate localDate = LocalDate.now();

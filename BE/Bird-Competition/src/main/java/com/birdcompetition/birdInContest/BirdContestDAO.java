@@ -12,6 +12,7 @@ import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -67,10 +68,10 @@ public class BirdContestDAO {
                     String checkInCode = rs.getString("CheckInCode");
                     String birdName = rs.getString("NameOfBird");
                     String trainerName = rs.getString("FullName");
+//                    String trainer = rs.getString("IdMember");
                     String memberId = rs.getString("IdMember");
 
                     BirdContestDTO dto = new BirdContestDTO(birdId, matchID, order, point, postPoint, true, checkInCode, birdName, trainerName, memberId);
-//                    System.out.println(dto.toString());
 
                     if (this.joinerList == null) {
                         this.joinerList = new ArrayList<>();
@@ -150,7 +151,7 @@ public class BirdContestDAO {
         }
     }
 
-    public boolean setAfterMatch(int id, int order, int prePoint, int postPoint, int matchId)
+    public boolean AfterMatchUpdate(int id, int order, int prePoint, int postPoint, int matchId)
             throws SQLException, NamingException, ClassNotFoundException {
         Connection con = null;
         PreparedStatement stm = null;
@@ -165,7 +166,7 @@ public class BirdContestDAO {
                 String sql = "UPDATE BirdContest "
                         + "SET Rank = ?, "
                         + "BeforePoint = ?, "
-                        + "AfterPoint = ? "
+                        + "AfterPoint = ?   "
                         + "WHERE IdBird = ? and IdContest = ?";
                 //3. Create Statement Object
                 stm = con.prepareStatement(sql);
@@ -193,7 +194,7 @@ public class BirdContestDAO {
         return result;
     }
 
-    public boolean setCheckIn(int id)
+    public boolean setCheckIn(int id, int matchId)
             throws SQLException, NamingException, ClassNotFoundException {
         Connection con = null;
         PreparedStatement stm = null;
@@ -207,10 +208,11 @@ public class BirdContestDAO {
                 //2. Create SQL String 
                 String sql = "UPDATE BirdContest "
                         + "SET CheckIn = 'true' "
-                        + "WHERE IdBird = ? ";
+                        + "WHERE IdBird = ? and IdContest = ? ";
                 //3. Create Statement Object
                 stm = con.prepareStatement(sql);
                 stm.setInt(1, id);
+                stm.setInt(2, matchId);
                 //4. Execute Query
                 int exercute = stm.executeUpdate();
                 //5. Process
@@ -282,7 +284,7 @@ public class BirdContestDAO {
         return true;
     }
 
-    public BirdContestDTO getCheckIn(String code, int matchId)
+    public BirdContestDTO checkCheckIn(String code, int matchId)
             throws SQLException, ClassNotFoundException {
         Connection con = null;
         PreparedStatement stm = null;
@@ -342,6 +344,8 @@ public class BirdContestDAO {
         }
         return dto;
     }
+
+
 
     void sort(List<BirdContestDTO> list) {
         Collections.sort(list, (BirdContestDTO b1, BirdContestDTO b2) -> b1.compareTo(b2));

@@ -67,15 +67,28 @@
                                 <a href='<c:url value="/DispatchServlet?btAction=Blog"/>' class="dropdown-item">Tin Tức</a>
                             </div>
                         </div>
-                                <a href='<c:url value="contact.jsp"/>' class="nav-item nav-link">Liên Hệ</a>
+                        <a href='<c:url value="contact.jsp"/>' class="nav-item nav-link">Liên Hệ</a>
                     </div>
                     <div class="nav-item dropdown">
+                        <c:set var="user" value="${sessionScope.USER}"/>
+                        <c:if test="${user.getVipType() eq '1'}" >
+                            <a href="#" class="btn btn-primary nav-link dropdown-toggle" data-bs-toggle="dropdown" style="width: 150px;">${user.userName}
+                            </a>
+                        </c:if>
+                        <c:if test="${user.getVipType() eq '2'}" >
+                            <a href="#" class="btn btn-primary nav-link dropdown-toggle" data-bs-toggle="dropdown" style="width: 150px;">${user.userName}</a>
+                        </c:if>
+                        <c:if test="${user.getVipType() eq '3'}" >
+                            <a href="#" class="btn btn-primary nav-link dropdown-toggle" data-bs-toggle="dropdown" style="width: 150px;">${user.userName}</a>
 
-                        <a href="#" class="btn btn-primary nav-link dropdown-toggle" data-bs-toggle="dropdown" style="width: 150px;">${sessionScope.USER.userName}</a>
+                        </c:if>
+                        <c:if test="${user.vipType == null}" >
+                            <a href="#" class="btn btn-primary nav-link dropdown-toggle" data-bs-toggle="dropdown" style="width: 150px;">${user.userName}</a>
+                        </c:if>
                         <div class="dropdown-menu rounded-0 m-0">
 
                             <form action="DispatchServlet" method="POST">
-                                
+
                                 <button class="dropdown-item" name="btAction" value="UserProfile">Trang cá nhân</button>
                                 <button class="dropdown-item" name="btAction" value="ShowAllBirds">Bộ Sưu Tập</button>
                                 <a class="dropdown-item" href="addnewbird.jsp">Thêm chim</a>

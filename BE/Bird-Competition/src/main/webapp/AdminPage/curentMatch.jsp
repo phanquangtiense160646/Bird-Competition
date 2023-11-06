@@ -63,7 +63,7 @@
                         <div class="tab-content">
                             <div id="tab-1" class="tab-pane fade show p-0 active">
                                 <div class="row g-5 d-flex justify-content-center">
-                              
+
                                     <c:forEach var="scheduleDto" items="${happening}" varStatus="counter">
 
                                         <div class="col-lg-3 col-md-4 col-sm-6  btn-viewInfo">
@@ -86,15 +86,14 @@
                                                         yêu cầu:</p>
                                                     <p class="schedule-value text-uppercase text-light mb-3">
                                                         ${scheduleDto.minPoint} - ${scheduleDto.maxPoint} </p>
-                                                    <p class="schedule-value text-uppercase text-light mb-3">
-                                                        ${scheduleDto.fee}</p>
                                                     <p class="schedule-value text-uppercase text-secondary mb-0"
                                                        style="display: inline;">
-                                                        số người đăng kí:
+                                                        số chim tham gia:
                                                         <span class="text-uppercase text-primary mb-0"
                                                               style="display: inline;">
-                                                             ${scheduleDto.currentPar}/${scheduleDto.maxPar}</span>
+                                                            ${scheduleDto.checkedIn}</span>
                                                     </p>
+
                                                 </div>
                                                 <form action="UpdateResultServlet" method="post">
                                                     <input type="hidden" name="txtMatchId" value="${scheduleDto.id}">
@@ -112,7 +111,7 @@
             <c:if test="${empty happening}">
                 <div class="container-fluid p-5">
                     <div class="mb-5 text-center">
-                        <h6 class="display-3 text-uppercase mb-0">Không có trận đấu đang diễn ra</h6>
+                        <h2 class="text-uppercase mb-0">Không có trận đấu đang diễn ra</h2>
                     </div>
                 </div>
             </c:if>

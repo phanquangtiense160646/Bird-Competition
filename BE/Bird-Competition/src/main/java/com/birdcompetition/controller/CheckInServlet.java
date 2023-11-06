@@ -9,6 +9,7 @@ import com.birdcompetition.birdInContest.BirdContestDTO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.RequestDispatcher;
@@ -38,11 +39,14 @@ public class CheckInServlet extends HttpServlet {
             throws ServletException, IOException {
         int matchId = Integer.parseInt(request.getParameter("txtMatchId"));
         String checkInCode = request.getParameter("txtCode");
-        String url = "AdminPage/CheckIn.jsp";
+        String url = "PrepareCheckInServlet";
         try {
             BirdContestDAO dao = new BirdContestDAO();
-            BirdContestDTO checkInBird = dao.getCheckIn(checkInCode, matchId);
+
+            BirdContestDTO checkInBird = dao.checkCheckIn(checkInCode, matchId);
             request.setAttribute("CHECKIN", checkInBird);
+
+           
 
         } catch (SQLException ex) {
             Logger.getLogger(CheckInServlet.class.getName()).log(Level.SEVERE, null, ex);

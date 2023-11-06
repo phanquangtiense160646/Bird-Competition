@@ -4,12 +4,9 @@
  */
 package com.birdcompetition.controller;
 
-import com.birdcompetition.birdInContest.BirdContestDAO;
-import com.birdcompetition.birdInContest.BirdContestDTO;
 import com.birdcompetition.schedule.ScheduleDAO;
 import com.birdcompetition.schedule.ScheduleDTO;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.sql.SQLException;
 import java.util.List;
 import java.util.logging.Level;
@@ -20,13 +17,14 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
  * @author Danh
  */
-@WebServlet(name = "UpdateResultServlet", urlPatterns = {"/UpdateResultServlet"})
-public class UpdateResultServlet extends HttpServlet {
+@WebServlet(name = "HappeningMatchServlet", urlPatterns = {"/HappeningMatchServlet"})
+public class OnGoingMatchServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -41,19 +39,23 @@ public class UpdateResultServlet extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
 
-        int matchId = Integer.parseInt(request.getParameter("txtMatchId"));
-        String url = "AdminPage/MatchResult.jsp";
+        HttpSession session = request.getSession();
+        String url = "AdminPage/curentMatch.jsp";
         try {
-            BirdContestDAO joinerDao = new BirdContestDAO();
-            joinerDao.getJoiner(matchId);
+            ScheduleDAO dao = new ScheduleDAO();
+            dao.getScheduleByStatus(3);
+            List<ScheduleDTO> result = dao.getList();
+            session.setAttribute("HAPPENING", result);
 
-            List<BirdContestDTO> result = joinerDao.getList();
-            request.setAttribute("JOINER", result);
+            String action = (String) request.getAttribute("action");
+            if (action != null) {
+                request.setAttribute("Message", "success");
+            }
 
         } catch (SQLException ex) {
-            Logger.getLogger(UpdateResultServlet.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(OnGoingMatchServlet.class.getName()).log(Level.SEVERE, null, ex);
         } catch (ClassNotFoundException ex) {
-            Logger.getLogger(UpdateResultServlet.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(OnGoingMatchServlet.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
             RequestDispatcher rd = request.getRequestDispatcher(url);
             rd.forward(request, response);

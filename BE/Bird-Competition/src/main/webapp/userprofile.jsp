@@ -129,7 +129,7 @@
                                         <div class="row g-2">
                                             <div class="box col mb-5">
                                                
-                                                <img src="https://tmso.baotanglamdong.com.vn/wp-content/uploads/2021/10/CHAO-MAO-DIT-DO-3.jpg"
+                                                <img src="FE/img/${p.photoPath}"
                                                      >
                                                 <p class="birdname" style="font-weight: bold; text-align:center;">${p.birdName}</p>
                                             </div>
@@ -137,7 +137,7 @@
 
                                                 <div class="box col mb-5 ">
                                                    
-                                                    <img src="https://tmso.baotanglamdong.com.vn/wp-content/uploads/2021/10/CHAO-MAO-DIT-DO-3.jpg"
+                                                    <img src="FE/img/${birdList[nextIndex].photoPath}"
                                                          >
                                                     <p class="birdname" style="font-weight: bold; text-align:center;">${birdList[nextIndex].birdName}</p>
                                                 </div>
@@ -186,11 +186,11 @@
                 <div class="card mb-4">
                     <div class="card-header">Account Details</div>
                     <div class="card-body">
-                        <form action="DispatchServlet" method="post" enctype="multipart/form-data" style="align-items: center">
+<!--                        <form action="DispatchServlet" method="post" enctype="multipart/form-data" style="align-items: center">
                              <label for="fileInput" style="color: blue"><u class="">Choose a File</u></label>
                              <input type="file" id="fileInput" name="image">
                              <input type="submit" value="Add Image">
-                         </form>
+                         </form>-->
                         <form action="DispatchServlet" method="GET" >
                             <!-- Form Group (username)-->
                             <div class="mb-3">

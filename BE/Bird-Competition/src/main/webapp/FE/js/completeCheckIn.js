@@ -74,6 +74,15 @@ function showFailToast() {
         duration: 3000
     })
 }
+
+function showNotEnoughToast() {
+    toast({
+        tiltle: 'Fail',
+        message: 'Số lượng checked-in quá ít',
+        type: 'warning',
+        duration: 3000
+    })
+}
 function showErrorToast() {
     toast({
         tiltle: 'Lỗi',
@@ -89,8 +98,8 @@ if (mes === 'fail') {
 } else if (mes === 'complete') {
     showCompleteToast();
 } else if (mes === 'success') {
-    showSuccessToast()();
-// } else if (mes === 'error') {
-//     showErrorToast();
+    showSuccessToast();
+} else if (mes === 'notEnough') {
+    showNotEnoughToast();
 }
 

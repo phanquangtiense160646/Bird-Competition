@@ -56,7 +56,7 @@
                     <div class="tab-class text-center">
                         <ul class="nav nav-pills d-inline-flex justify-content-center bg-dark text-uppercase rounded-pill mb-5">
                             <li class="nav-item">
-                                <a class="nav-link rounded-pill text-white active" data-bs-toggle="pill" href="#tab-1">các trận đấu sắp diễn ra</a>
+                                <a class="nav-link rounded-pill text-white active" data-bs-toggle="pill" href="#tab-1">các trận đấu sắp diễn ra hôm nay</a>
                             </li>
                         </ul>
                         <div class="tab-content">
@@ -69,8 +69,7 @@
                                             <div class="bg-dark rounded text-center py-5 px-3">
                                                 <div style="height: 400px">
 
-                                                    <p class="schedule-value text-uppercase text-info mb-3">Hệ số:
-                                                        ${scheduleDto.factor}</p>
+                                                 
                                                     <p class="schedule-value text-uppercase text-light mb-3">Ngày:
                                                         ${scheduleDto.getDateFormat()}</p>
                                                     <p class="schedule-value text-uppercase text-light mb-3"> Giờ:
@@ -85,17 +84,16 @@
                                                         yêu cầu:</p>
                                                     <p class="schedule-value text-uppercase text-light mb-3">
                                                         ${scheduleDto.minPoint} - ${scheduleDto.maxPoint} </p>
-                                                    <p class="schedule-value text-uppercase text-light mb-3">
-                                                        ${scheduleDto.fee}</p>
-                                                    <p class="schedule-value text-uppercase text-secondary mb-0"
-                                                       style="display: inline;">
-                                                        số người đăng kí:
-                                                        <span class="text-uppercase text-primary mb-0"
-                                                              style="display: inline;">
-                                                             ${scheduleDto.currentPar}/${scheduleDto.maxPar}</span>
-                                                    </p>
+                                                       <p class="schedule-value text-uppercase text-info mb-3">Hệ số:
+                                                        ${scheduleDto.factor}</p>
+                                                 
+                                                    <p class="schedule-value text-uppercase text-secondary mb-0">
+                                                        checked-in/ đã đăng kí:</p>
+                                                        <p class="text-uppercase text-primary mb-0">
+                                                             ${scheduleDto.checkedIn}/${scheduleDto.currentPar}</p>
+                                                    
                                                 </div>
-                                                     <form action="CheckCodeServlet" method="post">
+                                                     <form action="PrepareCheckInServlet" method="post">
                                                     <input type="hidden" name="txtMatchId" value="${scheduleDto.id}">
                                                     <input type="submit" class="btn btn-primary px-5 mt-2" value="Check-in">
                                                     <!--<a href="<c:url value="/DispatchServlet?btAction=CheckIn"/>" class="btn btn-primary px-5 mt-2">Check-in</a>-->
@@ -117,7 +115,7 @@
             <c:if test="${empty preparing}">
                 <div class="container-fluid p-5">
                     <div class="mb-5 text-center">
-                        <h6 class="display-3 text-uppercase mb-0">Không có trận đấu sắp diễn ra</h6>
+                        <h2 class="text-uppercase mb-0">Không có trận đấu sắp diễn ra</h2>
                     </div>
                 </div>
             </c:if>

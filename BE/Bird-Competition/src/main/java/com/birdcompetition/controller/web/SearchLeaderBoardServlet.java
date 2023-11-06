@@ -49,7 +49,7 @@ public class SearchLeaderBoardServlet extends HttpServlet {
 //                request.setAttribute("SEARCH_RS", searchList);
 //                dao.resetBirdList();
             dao.resetBirdList();
-            dao.displayLeaderboard();
+            dao.getLeaderboard();
             List<BirdDTO> leaderboard = dao.getBirdList();
             request.setAttribute("LEADER_BOARD", leaderboard);
             if (!searchValue.trim().isEmpty()) {

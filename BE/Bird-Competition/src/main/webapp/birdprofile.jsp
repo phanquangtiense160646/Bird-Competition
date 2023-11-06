@@ -112,6 +112,10 @@
                                         <p class="mb-1 h5">${sessionScope.BIRD.lose}</p>
                                         <p class="small text-muted mb-0">Lose</p>
                                     </div>
+                                    <div>
+                                        <p class="mb-1 h5 ml-3">${sessionScope.BIRD.tie}</p>
+                                        <p class="small text-muted mb-0 ml-3">Tie</p>
+                                    </div>
                                 </div>
                             </div>
                             <div class="card-body p-4 text-black">
