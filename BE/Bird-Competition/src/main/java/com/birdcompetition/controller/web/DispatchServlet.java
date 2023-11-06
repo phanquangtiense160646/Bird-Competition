@@ -100,6 +100,12 @@ public class DispatchServlet extends HttpServlet {
                 url = "UploadPhotoServlet";
             } else if (button.equals("Add Feedback")){
                 url = "AddFeedbackServlet";
+            } else if (button.equals("AddLocation")){
+                url = "AddLocationServlet";
+            } else if (button.equals("ManageLocation")){
+                url = "GetLocationList";
+            } else if(button.equals("DeleteLocation")){
+                url = "DeleteLocationServlet";
             } else if (button.equals("editSchedule")) {
                 url = "UpdateSchedule";
             } else if (button.equals("pendingSchedule")) {
@@ -110,6 +116,7 @@ public class DispatchServlet extends HttpServlet {
                 url = "ManageFeedbackServlet";
             }else if(button.equals("DeleteFeedback")){
                 url = "DeleteFeedbackServlet";
+
             }
         } finally {
             RequestDispatcher rd = request.getRequestDispatcher(url);

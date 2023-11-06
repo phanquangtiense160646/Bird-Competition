@@ -17,7 +17,7 @@
         <meta name="description" content="">
         <meta name="author" content="">
 
-        <title>Schedule Management</title>
+        <title>Location Management</title>
 
         <!-- Custom fonts for this template -->
         <link href="AdminPage/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -44,74 +44,55 @@
 
             <!-- Page Heading -->
             <h1 class="h3 mb-2 text-gray-800">Schedule Management</h1>
-            <p class="mb-4">Quản lý lịch thi đấu <a target="_blank">
+            <p class="mb-4">Quản lý địa điểm thi đấu <a target="_blank">
             </p>
-            <a href='<c:url value="/DispatchServlet?btAction=createSchedule"/>' class="btn btn-primary btn-user btn-block">
-                Tạo lịch</a>
-            <a href='<c:url value="/DispatchServlet?btAction=ManageSchedule&pending=1"/>' class="btn btn-primary btn-user btn-block">
-                Danh sách duyệt</a>    
+            <a href="addLocation.jsp" class="btn btn-primary btn-user btn-block">
+                Thêm địa điểm thi đấu</a>
             <!-- DataTales Example -->
             <div class="card shadow mb-4">
                 <div class="card-header py-3">
-                    <h6 class="m-0 font-weight-bold text-primary">Lịch hiện tại</h6>
+                    <h6 class="m-0 font-weight-bold text-primary">All Location</h6>
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">
                         <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                             <thead>
                                 <tr>
-                                    <th>Contest Id</th>
-                                    <th>Name Of Contest</th>
-                                    <th>Date Of Contest</th>
-                                    <th>Location</th>
-                                    <th>Factor</th>
-                                    <th>Min Point</th>
-                                    <th>Max Point</th>
-                                    <th>Max Participant</th>
-                                    <th>Participation Fee</th>
-                                    <th>Status</th>
+                                    <th>Location Id</th>
+                                    <th>Location Detail</th>
+                                    <th>Location Map</th>
+                                    <th></th>
+
                                 </tr>
                             </thead>
                             <tfoot>
                                 <tr>
-                                    <th>Contest Id</th>
-                                    <th>Name Of Contest</th>
-                                    <th>Date Of Contest</th>
-                                    <th>Location</th>
-                                    <th>Factor</th>
-                                    <th>Min Point</th>
-                                    <th>Max Point</th>
-                                    <th>Max Participant</th>
-                                    <th>Participation Fee</th>
-                                    <th>Status</th>
+                                    <th>Location Id</th>
+                                    <th>Location Detail</th>
+                                    <th>Location Map</th>
+                                    <th></th>
+
                                 </tr>
                             </tfoot>
                             <tbody>
-                                <c:set var="scheduleData" value="${sessionScope.SCHEDULE}"/>
-                                <c:if test="${not empty scheduleData}">
-                                    <c:forEach var="scheduleDto" items="${scheduleData}" varStatus="counter">
-                                        <c:if test="${scheduleDto.statusOfContest != 5 && scheduleDto.statusOfContest != 0}">
-                                            <tr>
-                                                <td>${scheduleDto.id}</td>
-                                                <td>${scheduleDto.name}</td>
-                                                <td>${scheduleDto.date}</td>
-                                                <td>${scheduleDto.location}</td>
-                                                <td>${scheduleDto.factor}</td>
-                                                <td>${scheduleDto.minPoint}</td>
-                                                <td>${scheduleDto.maxPoint}</td>
-                                                <td>${scheduleDto.maxPar}</td>
-                                                <td>${scheduleDto.fee}</td>
-                                                <td>
-                                                    <c:if test="${scheduleDto.statusOfContest == 1}">Sắp diễn ra</c:if>
-                                                    <c:if test="${scheduleDto.statusOfContest == 2}">Hết hạn đăng kí</c:if>
-                                                    <c:if test="${scheduleDto.statusOfContest == 3}">Đang diễn ra</c:if>
-                                                    <c:if test="${scheduleDto.statusOfContest == 4}">Đã diễn ra</c:if>
-                                               </td>
-                                            </tr>
-                                        </c:if>
+                                <c:set var="location" value="${sessionScope.LOCATION}"/>
+                                <c:if test="${not empty location}">
+                                    <c:forEach var="l" items="${location}" varStatus="counter">
+                                        <tr>
+                                            <td>${l.locationId}</td>
+                                            <td>${l.location}</td>
+                                            <td>${l.linkMap}</td>
+                                            <td>
 
-                                    </c:forEach>
-                                </c:if>
+                                            </td>
+                                            <c:url var="deleteLink" value="DispatchServlet">
+                                                <c:param name="btAction" value="DeleteLocation"/>
+                                                <c:param name="txtID" value="${l.locationId}"/>
+                                            </c:url>
+                                    <a href="${deleteLink}">Delete</a>
+                                    </tr>
+                                </c:forEach>
+                            </c:if>
                             </tbody>
                         </table>
                     </div>

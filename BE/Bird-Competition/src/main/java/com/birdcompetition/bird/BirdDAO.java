@@ -346,13 +346,16 @@ public class BirdDAO implements Serializable {
             con = DBHelper.getConnection();
             if (con != null) {
                 //2. Create SQL String 
-                String sql = "INSERT INTO Bird (NameOfBird, Species, Point, Status, IdMember, Win, Lose, Tie, MatchNumber, PhotoPath) VALUES (?, ?, 1000, 'true', ?, 0, 0, 0, 0, 'default.png')";
+                String sql = "INSERT INTO Bird (NameOfBird, Species, Point, Status, IdMember, Win, Lose, Tie, MatchNumber, PhotoPath, Gender, Description) VALUES (?, ?, 1000, 'true', ?, 0, 0, 0, 0, 'default.png', ?, ?)";
                 //3. Create Statement Object
                 stm = con.prepareStatement(sql);
 
                 stm.setString(1, bird.getBirdName());
                 stm.setString(2, bird.getSpecies());
                 stm.setString(3, bird.getMemberID());
+                stm.setString(4, bird.getGender());
+                stm.setString(5, bird.getDescription());
+                
 
                 //4. Execute Query
                 int effectRows = stm.executeUpdate();

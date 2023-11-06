@@ -50,7 +50,21 @@
             </li>
 
 
+<<<<<<< HEAD
+        <li class="nav-item">
+            <a class="nav-link" href='<c:url value="/DispatchServlet?btAction=ManageSchedule"/>'>
+                <i class="fas fa-fw fa-table"></i>
+                <span>Quản lý lịch thi đấu</span></a>
+        </li>      
+        
+        <li class="nav-item">
+            <a class="nav-link" href=<c:url value="/DispatchServlet?btAction=ManageLocation"/>>
+                <i class="fas fa-fw fa-table"></i>
+                <span>Quản lí địa điểm thi đấu</span></a>
+        </li>
+=======
 
+>>>>>>> 2ff0efb9cd539eb06845306314f496a16cec0bed
 
             <li class="nav-item">
                 <a class="nav-link" href='<c:url value="/DispatchServlet?btAction=ManageSchedule"/>'>

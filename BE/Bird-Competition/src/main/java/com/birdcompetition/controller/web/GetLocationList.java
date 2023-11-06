@@ -4,16 +4,11 @@
  */
 package com.birdcompetition.controller.web;
 
-
-import com.birdcompetition.bird.BirdDTO;
-import com.birdcompetition.contest.ContestDAO;
-import com.birdcompetition.contest.ContestDTO;
-import com.birdcompetition.model.User;
-import com.birdcompetition.schedule.ScheduleDTO;
+import com.birdcompetition.location.LocationDAO;
+import com.birdcompetition.location.LocationDTO;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -25,8 +20,8 @@ import javax.servlet.http.HttpSession;
  *
  * @author admin
  */
-@WebServlet(name = "GetContestListServlet", urlPatterns = {"/GetContestListServlet"})
-public class GetContestListServlet extends HttpServlet {
+@WebServlet(name = "GetLocationList", urlPatterns = {"/GetLocationList"})
+public class GetLocationList extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -40,28 +35,28 @@ public class GetContestListServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        String url = "matchhistory.jsp";
-        try {
+        String url = "";
+try {
             HttpSession session = request.getSession();
-            List<ContestDTO> contestList;
+            List<LocationDTO> locationList;
+
+            LocationDAO dao = new LocationDAO();
             
-                ContestDAO dao = new ContestDAO();
-                User user = (User) session.getAttribute("USER");
-                dao.getContestList(user.getUserName());
-                contestList = dao.getContestList();
-                session.setAttribute("OWN_CONTEST", contestList);
-            
+            dao.getAllLocation();
+            locationList = dao.getLocationList();
+            session.setAttribute("LOCATION", locationList);
+            url = "manageLocation.jsp";
         } catch (SQLException ex) {
-            log("ScheduleServlet_SQL: " + ex.getMessage());
+//            log("ScheduleServlet_SQL: " + ex.getMessage());
+            ex.printStackTrace();
         } catch (ClassNotFoundException ex) {
             log("ScheduleServlet_ClassNotFound: " + ex.getMessage());
-        }finally {
-//            response.sendRedirect(url);
-                RequestDispatcher rd = request.getRequestDispatcher(url);
-                rd.forward(request, response);
+        } finally {
+            response.sendRedirect(url);
+//            RequestDispatcher rd = request.getRequestDispatcher(url);
+//            rd.forward(request, response);
         }
-        
-        
+
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
