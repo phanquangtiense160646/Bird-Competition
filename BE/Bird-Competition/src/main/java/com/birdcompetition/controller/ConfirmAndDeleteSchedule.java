@@ -5,12 +5,9 @@
 package com.birdcompetition.controller;
 
 import com.birdcompetition.schedule.ScheduleDAO;
-import com.birdcompetition.schedule.ScheduleDTO;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.sql.Date;
 import java.sql.SQLException;
-import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.RequestDispatcher;
@@ -19,14 +16,13 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 /**
  *
  * @author Admin
  */
-@WebServlet(name = "ManageSchedule", urlPatterns = {"/ManageSchedule"})
-public class ManageSchedule extends HttpServlet {
+@WebServlet(name = "ConfirmAndDeleteSchedule", urlPatterns = {"/ConfirmAndDeleteSchedule"})
+public class ConfirmAndDeleteSchedule extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -40,27 +36,25 @@ public class ManageSchedule extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        String url = "AdminPage/manageSchedule.jsp";
-        String pending = request.getParameter("pending");
+        String idContest = request.getParameter("contestId");
+        String option = request.getParameter("option");
+        String url = "ManageSchedule?pending=1";
         try {
-            if (pending != null && pending.equals("1")) {
-                url = "AdminPage/pendingSchedule.jsp";
-            }
-            HttpSession session = request.getSession();
             ScheduleDAO scheduleDao = new ScheduleDAO();
-            scheduleDao.getSchedule();
-            List<ScheduleDTO> listSchedule = scheduleDao.getList();
-            session.setAttribute("SCHEDULE", listSchedule);
-            
-            scheduleDao.getLocation();
-            listSchedule = scheduleDao.getList();
-            session.setAttribute("LOCATION", listSchedule);
-            
+            int id = Integer.parseInt(idContest);
+            if (option.equals("confirm")) {
+                scheduleDao.setStatus(id, 1);
+                request.setAttribute("MES", "confirmSuccess");
+            } else if (option.equals("delete")) {
+                scheduleDao.setStatus(id, 0);
+                request.setAttribute("MES", "deleteSuccess");
+            }
+
         } catch (SQLException ex) {
-            log("ManageSchedule_SQL: " + ex.getMessage());
+            Logger.getLogger(ConfirmAndDeleteSchedule.class.getName()).log(Level.SEVERE, null, ex);
         } catch (ClassNotFoundException ex) {
-            log("ManageSchedule_ClassNotFound: " + ex.getMessage());
-        }finally {
+            Logger.getLogger(ConfirmAndDeleteSchedule.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
             RequestDispatcher rd = request.getRequestDispatcher(url);
             rd.forward(request, response);
         }

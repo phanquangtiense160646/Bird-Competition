@@ -1,13 +1,21 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
+ */
 package com.birdcompetition.controller;
 
 import com.birdcompetition.schedule.ScheduleDAO;
 import com.birdcompetition.schedule.ScheduleDTO;
 import com.birdcompetition.schedule.ScheduleError;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.sql.Date;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -19,8 +27,8 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Admin
  */
-@WebServlet(name = "AddScheduleServlet", urlPatterns = {"/AddScheduleServlet"})
-public class AddScheduleServlet extends HttpServlet {
+@WebServlet(name = "UpdateSchedule", urlPatterns = {"/UpdateSchedule"})
+public class UpdateSchedule extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -43,17 +51,15 @@ public class AddScheduleServlet extends HttpServlet {
         String maxPar = request.getParameter("txtmaxPar");
         String maxBird = request.getParameter("txtmaxBirdJoin");
         String fee = request.getParameter("txtfee");
+        String scheduleId = request.getParameter("hidContestId");
+        
         boolean foundErr = false;
         ScheduleError errors = new ScheduleError();
         double dfactor = 0;
         int min = 0, max = 0, maxP = 0, maxB = 0;
 
-        String url = "AdminPage/createSchedule.jsp";
+        String url = "AdminPage/editSchedule.jsp";
         try {
-            if (date == null && name == null && minPoint == null && maxPoint == null
-                    && maxPar == null && factor == null && maxBird == null && fee == null) {
-               
-            } else {
                 if (date.isEmpty()) {
                     foundErr = true;
                     errors.setDateErr("Date không được trống");
@@ -133,21 +139,22 @@ public class AddScheduleServlet extends HttpServlet {
                     ScheduleDAO dao = new ScheduleDAO();
                     Date sqlDate = Date.valueOf(LocalDate.parse(date));
                     int feee = Integer.parseInt(fee);
-                    ScheduleDTO dto = new ScheduleDTO(0, name, sqlDate, place, true, dfactor,
+                    int contestId = Integer.parseInt(scheduleId);
+                    ScheduleDTO dto = new ScheduleDTO(contestId, name, sqlDate, place, true, dfactor,
                             min, max, feee, "manager", place, 5, maxP, maxBird);
-                    boolean result = dao.contestInsert(dto);
+                    boolean result = dao.contestUpdate(dto);
                     //3. Process Result
                     if (result) {
-                        url = "ManageSchedule";
+                        url = "ManageSchedule?pending=1";
                         request.setAttribute("MES", "success");
                     }//create successful
                 }// no error occur
-            }
+            
 
         } catch (SQLException ex) {
-            log("AddSchedule_SQL: " + ex.getMessage());
+            log("UpdateSchedule_SQL: " + ex.getMessage());
         } catch (ClassNotFoundException ex) {
-            log("AddSchedule_ClassNotFound: " + ex.getMessage());
+            log("UpdateSchedule_ClassNotFound: " + ex.getMessage());
         } finally {
             RequestDispatcher rd = request.getRequestDispatcher(url);
             rd.forward(request, response);
