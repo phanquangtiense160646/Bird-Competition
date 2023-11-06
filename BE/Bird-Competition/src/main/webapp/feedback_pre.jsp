@@ -3,14 +3,14 @@
 <%@page contentType="text/html" pageEncoding="UTF-8" %>
 
 <head>
-    
+
     <title>Feedback</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="Free HTML Templates" name="keywords">
     <meta content="Free HTML Templates" name="description">
 
     <!-- Favicon -->
-    <link href="img/favicon.ico" rel="icon">
+    <link href="FE/img/favicon.ico" rel="icon">
 
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -22,106 +22,99 @@
     <link href="lib/flaticon/font/flaticon.css" rel="stylesheet">
 
     <!-- Libraries Stylesheet -->
-    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+    <link href="FE/lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
 
     <!-- Customized Bootstrap Stylesheet -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="FE/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Template Stylesheet -->
-    <link href="css/style.css" rel="stylesheet">
+    <link href="FE/css/style.css" rel="stylesheet">
 </head>
 
 <body>
 
- <!-- Header Start -->
- <div class="container-fluid bg-dark px-0">
-    <div class="row gx-0">
-        <div class="col-lg-3 bg-dark d-none d-lg-block">
-            
-                
-            <a href="postlogin.jsp" class="navbar-brand w-100 h-100 m-0 p-0 d-flex align-items-center justify-content-center">
-                <img src="img/finallogo.png" style="width: 100px; margin-right: -40px; margin-bottom:50px;">
-                <h1 class="m-0 display-4 text-primary text-uppercase">BIRDFIGHTER</h1>
-            </a>
+    <!-- Header Start -->
+    <div class="container-fluid bg-dark px-0">
+        <div class="row gx-0">
+            <div class="col-lg-3 bg-dark d-none d-lg-block">
 
-            
-            
-        </div>
-        <div class="col-lg-9">
-            <div class="row gx-0 bg-secondary d-none d-lg-flex">
-                <div class="col-lg-7 px-5 text-start">
-                    <div class="h-100 d-inline-flex align-items-center py-2 me-4">
-                        <i class="fa fa-envelope text-primary me-2"></i>
-                        <h6 class="mb-0">birdfight@compe.com</h6>
-                    </div>
-                    <div class="h-100 d-inline-flex align-items-center py-2">
-                        <i class="fa fa-phone-alt text-primary me-2"></i>
-                        <h6 class="mb-0">+123 321 333</h6>
-                    </div>
-                </div>
-                <div class="col-lg-5 px-5 text-end">
-                    <div class="d-inline-flex align-items-center py-2">
-                        <a class="btn btn-light btn-square rounded-circle me-2" href="">
-                            <i class="fab fa-facebook-f"></i>
-                        </a>
-                        <a class="btn btn-light btn-square rounded-circle me-2" href="">
-                            <i class="fab fa-twitter"></i>
-                        </a>
-                        <a class="btn btn-light btn-square rounded-circle me-2" href="">
-                            <i class="fab fa-linkedin-in"></i>
-                        </a>
-                        <a class="btn btn-light btn-square rounded-circle me-2" href="">
-                            <i class="fab fa-instagram"></i>
-                        </a>
-                        <a class="btn btn-light btn-square rounded-circle" href="">
-                            <i class="fab fa-youtube"></i>
-                        </a>
-                    </div>
-                </div>
+
+                <a href="#" class="navbar-brand w-100 h-100 m-0 p-0 d-flex align-items-center justify-content-center">
+                    <img src="FE/img/finallogo.png" style="width: 100px; margin-right: -40px; margin-bottom:50px;">
+                    <h1 class="m-0 display-4 text-primary text-uppercase">BIRDFIGHTER</h1>
+                </a>
+
+
+
             </div>
-            <nav class="navbar navbar-expand-lg bg-dark navbar-dark p-3 p-lg-0 px-lg-5">
-                
-                <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
-                    <div class="navbar-nav mr-auto py-0">
-                        <a href="index.jsp" class="nav-item nav-link">Home</a>
-                        <a href="leaderboard.jsp" class="nav-item nav-link">Bảng xếp hạng</a>
-                        <a href="schedule.jsp" class="nav-item nav-link">Lịch thi đấu</a>
-                        <a href="memberShip.jsp" class="nav-item nav-link">Hội viên</a>
-                        <div class="nav-item dropdown">
-                            <a href="#" class="nav-link dropdown-toggle active" data-bs-toggle="dropdown">Pages</a>
-                            <div class="dropdown-menu rounded-0 m-0">
-                                <a href="news.jsp" class="dropdown-item">News</a>
-                                <a href="rules.jsp" class="dropdown-item">Luật thi đấu</a>
-                                <a href="feedback.jsp" class="dropdown-item active">Feedback</a>
-                            </div>
+            <div class="col-lg-9">
+                <div class="row gx-0 bg-secondary d-none d-lg-flex">
+                    <div class="col-lg-7 px-5 text-start">
+                        <div class="h-100 d-inline-flex align-items-center py-2 me-4">
+                            <i class="fa fa-envelope text-primary me-2"></i>
+                            <h6 class="mb-0">birdfight@compe.com</h6>
                         </div>
-                        <a href="contact.jsp" class="nav-item nav-link">Liên Hệ</a>
-                        <div class="nav-item dropdown">
-                            <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Quản lý</a>
-                            <div class="dropdown-menu rounded-0 m-0">
-                                <a href="updateRule.jsp" class="dropdown-item">Luật thi đấu</a>
-                                <a href="" class="dropdown-item">Lịch thi đấu</a>
-                                <a href="matchResult.html" class="dropdown-item">Kết quả trận đấu</a>
-                            </div>
+                        <div class="h-100 d-inline-flex align-items-center py-2">
+                            <i class="fa fa-phone-alt text-primary me-2"></i>
+                            <h6 class="mb-0">+123 321 333</h6>
                         </div>
                     </div>
-                    <a href="Login.jsp" class="btn btn-primary py-md-3 px-md-5 d-none d-lg-block">Login/Signup</a>
+                    <div class="col-lg-5 px-5 text-end">
+                        <div class="d-inline-flex align-items-center py-2">
+                            <a class="btn btn-light btn-square rounded-circle me-2" href="">
+                                <i class="fab fa-facebook-f"></i>
+                            </a>
+                            <a class="btn btn-light btn-square rounded-circle me-2" href="">
+                                <i class="fab fa-twitter"></i>
+                            </a>
+                            <a class="btn btn-light btn-square rounded-circle me-2" href="">
+                                <i class="fab fa-linkedin-in"></i>
+                            </a>
+                            <a class="btn btn-light btn-square rounded-circle me-2" href="">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                            <a class="btn btn-light btn-square rounded-circle" href="">
+                                <i class="fab fa-youtube"></i>
+                            </a>
+                        </div>
+                    </div>
                 </div>
-            </nav>
+                <nav class="navbar navbar-expand-lg bg-dark navbar-dark p-3 p-lg-0 px-lg-5">
+
+                    <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
+                        <div class="navbar-nav mr-auto py-0">
+                            <a href='<c:url value="/DispatchServlet?btAction=Home"/>' class="nav-item nav-link">Home</a>
+                            <a href='<c:url value="/DispatchServlet?btAction=Home"/>'class="nav-item nav-link">Bảng xếp hạng</a>
+                            <a href='<c:url value="/DispatchServlet?btAction=Home"/>'class="nav-item nav-link">Lịch Thi Đấu</a>
+                            <a href='<c:url value="/DispatchServlet?btAction=Home"/>' class="nav-item nav-link">Hội viên</a>
+                            <div class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle active" data-bs-toggle="dropdown">Pages</a>
+                                <div class="dropdown-menu rounded-0 m-0">
+                                    <a href="News_pre.jsp" class="dropdown-item">News</a>
+                                    <a href="rule_pre.jsp" class="dropdown-item">Luật thi đấu</a>
+                                    <a href="#" class="dropdown-item active">Feedback</a>
+                                </div>
+                            </div>
+                            <a href="contact_pre.jsp" class="nav-item nav-link">Liên Hệ</a>
+
+                        </div>
+                            <a href="Login2.jsp" class="btn btn-primary py-md-3 px-md-5 d-none d-lg-block">Login/Signup</a>
+                    </div>
+                </nav>
+            </div>
         </div>
     </div>
-</div>
-<!-- Header End -->
+    <!-- Header End -->
 
     <!-- Hero Start -->
     <div class="container-fluid bg-primary p-5 bg-hero mb-5">
         <div class="row py-5">
             <div class="col-12 text-center">
                 <h1 class="display-2 text-uppercase text-white mb-md-4">Feedback</h1>
-                <a href="index.html" class="btn btn-primary py-md-3 px-md-5 me-3">Home</a>
+                <a href="index.jsp" class="btn btn-primary py-md-3 px-md-5 me-3">Home</a>
                 <a href="#feedback" class="btn btn-light py-md-3 px-md-5">Gửi Feedback</a>
             </div>
         </div>
@@ -134,7 +127,7 @@
         <div class="row g-0">
             <div class="col-lg-6" style="min-height: 500px;">
                 <div class="position-relative h-100">
-                    <img class="position-absolute w-100 h-100" src="img/bird_player.png" style="object-fit: cover;">
+                    <img class="position-absolute w-100 h-100" src="FE/img/bird_player.png" style="object-fit: cover;">
                 </div>
             </div>
             <div class="col-lg-6 bg-dark p-5">
@@ -143,36 +136,46 @@
                     <h1 class="display-3 text-uppercase text-light mb-0">Phản hồi từ người dùng</h1>
                 </div>
                 <div class="owl-carousel testimonial-carousel">
-                    <div class="testimonial-item">
-                        <p class="fs-4 fw-normal text-light mb-4"><i class="fa fa-quote-left text-primary me-3"></i>Tạo được một sân chơi rất hay và bổ ích.</p>
-                        <div class="d-flex align-items-center">
-                            <img class="img-fluid rounded-circle" src="img/daddyHuy.jpg" alt="">
-                            <div class="ps-4">
-                                <h5 class="text-uppercase text-light">emhuythichchoichim</h5>
-                                <span class="text-uppercase text-secondary">Trainer</span>
+                    <c:set var="feedback" value="${requestScope.FEEDBACK}"/>
+                    <c:set var="user" value="${sessionScope.USER}"/>
+                    <c:if test=" ${not empty feedback}">
+                        <c:forEach items="${feedback}" var="o">
+                            <div class="testimonial-item">
+                                <p class="fs-4 fw-normal text-light mb-4"><i class="fa fa-quote-left text-primary me-3"></i>${o.Description}</p>
+                                <div class="d-flex align-items-center">
+                                    <img class="img-fluid rounded-circle" src="img/daddyHuy.jpg" alt="">
+                                    <div class="ps-4">
+                                        <h5 class="text-uppercase text-light">${user.userName}</h5>
+                                        <span class="text-uppercase text-secondary">Trainer</span>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                    </div>
-                    <div class="testimonial-item">
-                        <p class="fs-4 fw-normal text-light mb-4"><i class="fa fa-quote-left text-primary me-3"></i>Chuyên nghiệp tạo nên uy tín.</p>
-                        <div class="d-flex align-items-center">
-                            <img class="img-fluid rounded-circle" src="img/danhtran.jpg" alt="">
-                            <div class="ps-4">
-                                <h5 class="text-uppercase text-light">Danh Trần</h5>
-                                <span class="text-uppercase text-secondary">Trainer</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="testimonial-item">
-                        <p class="fs-4 fw-normal text-light mb-4"><i class="fa fa-quote-left text-primary me-3"></i>Sẽ có thể tiếp tục tham gia vào giải sắp tới.</p>
-                        <div class="d-flex align-items-center">
-                            <img class="img-fluid rounded-circle" src="img/thuanDam.jpg" alt="">
-                            <div class="ps-4">
-                                <h5 class="text-uppercase text-light">Thuận Thiên</h5>
-                                <span class="text-uppercase text-secondary">Trainer</span>
-                            </div>
-                        </div>
-                    </div>
+                        </c:forEach>
+                    </c:if>
+                    <c:if test="${empty feedback}">
+                        <h1>Chưa có tin</h1>
+                    </c:if>
+
+                    <!--                    <div class="testimonial-item">
+                                            <p class="fs-4 fw-normal text-light mb-4"><i class="fa fa-quote-left text-primary me-3"></i>Chuyên nghiệp tạo nên uy tín.</p>
+                                            <div class="d-flex align-items-center">
+                                                <img class="img-fluid rounded-circle" src="img/danhtran.jpg" alt="">
+                                                <div class="ps-4">
+                                                    <h5 class="text-uppercase text-light">Danh Trần</h5>
+                                                    <span class="text-uppercase text-secondary">Trainer</span>
+                                                </div>
+                                            </div>
+                                        </div>-->
+                    <!--                    <div class="testimonial-item">
+                                            <p class="fs-4 fw-normal text-light mb-4"><i class="fa fa-quote-left text-primary me-3"></i>Sẽ có thể tiếp tục tham gia vào giải sắp tới.</p>
+                                            <div class="d-flex align-items-center">
+                                                <img class="img-fluid rounded-circle" src="img/thuanDam.jpg" alt="">
+                                                <div class="ps-4">
+                                                    <h5 class="text-uppercase text-light">Thuận Thiên</h5>
+                                                    <span class="text-uppercase text-secondary">Trainer</span>
+                                                </div>
+                                            </div>
+                                        </div>-->
                 </div>
             </div>
         </div>
@@ -199,7 +202,7 @@
                         </div> -->
                         <div class="col-12">
                             <!-- <button class="btn btn-primary w-100 py-3" type="submit">Đăng Nhập Để Gửi Feedback</button> -->
-                            <a href="Login.jsp" class="btn btn-primary py-md-3 px-md-5 d-none d-lg-block">Đăng Nhập
+                            <a href="Login2.jsp" class="btn btn-primary py-md-3 px-md-5 d-none d-lg-block">Đăng Nhập
                                 Để Gửi Feedback
                             </a>
                         </div>

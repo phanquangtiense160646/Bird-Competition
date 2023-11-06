@@ -13,6 +13,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -26,7 +28,7 @@ public class FeedBackDAO implements Serializable {
         return feedbackList;
     }
 
-    public void getFeedBack()
+    public void getFeedBackList()
             throws SQLException, ClassNotFoundException {
         Connection con = null;
         PreparedStatement stm = null;
@@ -36,8 +38,7 @@ public class FeedBackDAO implements Serializable {
             con = DBHelper.getConnection();
             if (con != null) {
                 //2.Creat SQL String 
-                String sql = "Select * "
-                        + "From FeedBack\n";
+                String sql = "select * from FeedBack ";
                 //3.Create Statement Object
                 stm = con.prepareStatement(sql);
                 //4.Exercute Query
@@ -46,10 +47,8 @@ public class FeedBackDAO implements Serializable {
                 while (rs.next()) {
                     String idMember = rs.getString("IdMember");
                     String descrip = rs.getString("Description");
-                    Date date = rs.getDate("date");
-                    boolean status = rs.getBoolean("Status");
 
-                    FeedBackDTO dto = new FeedBackDTO(idMember, descrip, date, status);
+                    FeedBackDTO dto = new FeedBackDTO(idMember, descrip);
 
                     if (this.feedbackList == null) {
                         this.feedbackList = new ArrayList<>();
@@ -70,6 +69,42 @@ public class FeedBackDAO implements Serializable {
 
         }
     }
-   
 
+    public boolean insertFeedback(FeedBackDTO feedback) throws ClassNotFoundException, SQLException {
+        Connection con = null;
+        PreparedStatement stm = null;
+        boolean result = false;
+        try { //1. Make connection
+            con = DBHelper.getConnection();
+            if (con != null) {
+                //2. Create SQL String 
+                String sql = "Insert into FeedBack(IdMember, Description)\n"
+                        + "Values(?,?)";
+                //3. Create Statement Object
+                stm = con.prepareStatement(sql);
+
+                stm.setString(1, feedback.getIdMember());
+                stm.setString(2, feedback.getDescription());
+
+                //4. Execute Query
+                int effectRows = stm.executeUpdate();
+                //5. Process
+                if (effectRows > 0) {
+                    result = true;
+                }
+
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(FeedBackDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            if (stm != null) {
+                stm.close();
+            }
+            if (con != null) {
+                con.close();
+            }
+
+        }
+        return result;
+    }
 }

@@ -70,6 +70,12 @@
                     <i class="fas fa-fw fa-table"></i>
                     <span>Check-in</span></a>
             </li> 
+            <li class="nav-item">
+                <!--<a class="nav-link" href='<c:url value="/DispatchServlet?btAction=Preparing"/>'>-->
+                <a class="nav-link" href="ManageFeedbackServlet">
+                    <i class="fas fa-fw fa-table"></i>
+                    <span>Feed Back</span></a>
+            </li> 
         </c:if>
         <c:if test="${user.userRole == 2 }" >
             <hr class="sidebar-divider d-none d-md-block">

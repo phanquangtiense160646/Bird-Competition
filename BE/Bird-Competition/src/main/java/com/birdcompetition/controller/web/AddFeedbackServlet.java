@@ -2,20 +2,30 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
  */
-package com.birdcompetition.controller;
+package com.birdcompetition.controller.web;
 
+import com.birdcompetition.feedback.FeedBackDAO;
+import com.birdcompetition.feedback.FeedBackDTO;
+import com.birdcompetition.model.User;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.Date;
+import java.sql.SQLException;
+import javafx.scene.chart.PieChart;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
  * @author MSI
  */
-public class AddFeedBackServlet extends HttpServlet {
+@WebServlet(name = "AddFeedbackServlet", urlPatterns = {"/AddFeedbackServlet"})
+public class AddFeedbackServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -29,7 +39,30 @@ public class AddFeedBackServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
+        String idMember = request.getParameter("idMember");
+        String des = request.getParameter("Description");
+        String url = "";
         
+        try {
+            FeedBackDAO dao = new FeedBackDAO();
+            FeedBackDTO dto = new FeedBackDTO(idMember, des);
+            boolean result = dao.insertFeedback(dto);
+            if(result){
+                url = "Feedback.jsp";
+                String msg = "success";
+                request.setAttribute("msg", msg);
+            }else {
+                String msg = "fail";
+                request.setAttribute("msg",msg);
+            }
+            
+            
+        } catch (ClassNotFoundException | SQLException e) {
+            
+        }finally{
+            RequestDispatcher rd = request.getRequestDispatcher(url);
+            rd.forward(request, response);
+        }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

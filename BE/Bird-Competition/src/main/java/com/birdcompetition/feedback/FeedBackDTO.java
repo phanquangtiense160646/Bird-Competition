@@ -13,17 +13,17 @@ import java.sql.Date;
 public class FeedBackDTO {
     private String IdMember;
     private String Description;
-    private Date date;
-    private boolean Status;
+    
+  
 
     public FeedBackDTO() {
     }
 
-    public FeedBackDTO(String IdMember, String Description, Date date, boolean Status) {
+    public FeedBackDTO(String IdMember, String Description) {
         this.IdMember = IdMember;
         this.Description = Description;
-        this.date = date;
-        this.Status = Status;
+        
+        
     }
 
     public String getIdMember() {
@@ -42,26 +42,16 @@ public class FeedBackDTO {
         this.Description = Description;
     }
 
-    public Date getDate() {
-        return date;
-    }
-
-    public void setDate(Date date) {
-        this.date = date;
-    }
-
-    public boolean isStatus() {
-        return Status;
-    }
-
-    public void setStatus(boolean Status) {
-        this.Status = Status;
-    }
-
     @Override
     public String toString() {
-        return "FeedBackDTO{" + "IdMember=" + IdMember + ", Description=" + Description + ", date=" + date + ", Status=" + Status + '}';
+        return "FeedBackDTO{" + "IdMember=" + IdMember + ", Description=" + Description + '}';
     }
+
+   
+   
+
+    
+
     
     
 }

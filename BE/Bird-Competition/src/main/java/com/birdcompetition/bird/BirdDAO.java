@@ -228,7 +228,6 @@ public class BirdDAO implements Serializable {
         ResultSet rs = null;
         BirdDTO dto = new BirdDTO();
 
-        
         try {
             //1. Make connection
             con = DBHelper.getConnection();
@@ -274,11 +273,10 @@ public class BirdDAO implements Serializable {
                 con.close();
             }
         }
-        
 
         return dto;
     }
-    
+
     private BirdDTO getBirdForMatch(int id)
             throws SQLException, ClassNotFoundException {
         Connection con = null;
@@ -286,7 +284,6 @@ public class BirdDAO implements Serializable {
         ResultSet rs = null;
         BirdDTO dto = new BirdDTO();
 
-        
         try {
             //1. Make connection
             con = DBHelper.getConnection();
@@ -332,7 +329,6 @@ public class BirdDAO implements Serializable {
                 con.close();
             }
         }
-        
 
         return dto;
     }
@@ -529,5 +525,47 @@ public class BirdDAO implements Serializable {
             }
         }
         return result;
+    }
+
+    public int getBirds()
+            throws SQLException, ClassNotFoundException {
+        Connection con = null;
+        PreparedStatement stm = null;
+        ResultSet rs = null;
+        int result = 0;
+
+        try {
+            //1.Make connection
+            con = DBHelper.getConnection();
+            //check 
+            if (con != null) {
+                //2.Creat SQL String 
+                String sql = "Select count(IdBird) as Parcipants \n"
+                        + "From Bird";
+
+                //3.Create Statement Object
+                stm = con.prepareStatement(sql);
+
+                //4.Exercute Query
+                rs = stm.executeQuery();
+
+                //5.Process
+                if (rs.next()) {
+                    result = rs.getInt("Parcipants");
+                }
+            }
+        } finally {
+            if (rs != null) {
+                rs.close();
+            }
+            if (stm != null) {
+                stm.close();
+            }
+            if (con != null) {
+                con.close();
+            }
+        }
+        return result;
+
     }
 }

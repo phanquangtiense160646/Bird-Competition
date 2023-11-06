@@ -4,13 +4,18 @@
  */
 package com.birdcompetition.controller;
 
+import com.birdcompetition.bird.BirdDAO;
+import com.birdcompetition.bird.BirdDTO;
 import com.birdcompetition.model.User;
 import com.birdcompetition.payment.PaymentDAO;
 import com.birdcompetition.payment.PaymentDTO;
+import com.birdcompetition.schedule.ScheduleDAO;
+import com.birdcompetition.schedule.ScheduleDTO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
 import java.util.List;
+import javax.ejb.Schedule;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -42,20 +47,45 @@ public class PaymentAdminServlet extends HttpServlet {
         try {
             HttpSession session = request.getSession();
             List<PaymentDTO> paymentList;
+            List<BirdDTO> birdList;
+            List<ScheduleDTO> scheduleList;
 
             PaymentDAO dao = new PaymentDAO();
+            BirdDAO birddao = new BirdDAO();
+            ScheduleDAO scheduledao = new ScheduleDAO();
             User user = (User) session.getAttribute("USER");
+            
             dao.getPaymentList(user.getUserName());
+           
+            scheduleList = scheduledao.getList();
+                    
             paymentList = dao.getPaymentList_price();
+            birdList = birddao.getBirdList();
+            
+            
             session.setAttribute("OWN_PAYMENT", paymentList);
+            //Total Price
             int totalPrice = 0;
             double actualprofit = 0;
             for (PaymentDTO paymentDTO : paymentList) {
-                totalPrice = totalPrice + paymentDTO.getPrice();
+                 totalPrice = totalPrice + paymentDTO.getPrice();
                 request.setAttribute("TOTAL", totalPrice);
             }
+            //Total accPrice
             actualprofit = totalPrice - (totalPrice * 0.2);
             request.setAttribute("REAL_PROFIT", actualprofit);
+            //Total member
+            int totalmem = paymentList.size();
+            request.setAttribute("LISTMEM", totalmem);
+            //Total schedule
+            int total = scheduledao.getParticipants();
+            request.setAttribute("SCHEDULELIST",total);
+            //Total bird
+            int totalbird =  birddao.getBirds();
+            request.setAttribute("LISTBIRD", totalbird);
+            //
+            
+            
            
             
 

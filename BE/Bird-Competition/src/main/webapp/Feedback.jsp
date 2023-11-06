@@ -54,7 +54,7 @@
         <div class="row g-0">
             <div class="col-lg-6" style="min-height: 500px;">
                 <div class="position-relative h-100">
-                    <img class="position-absolute w-100 h-100" src="img/bird_player.png" style="object-fit: cover;">
+                    <img class="position-absolute w-100 h-100" src="FE/img/bird_player.png" style="object-fit: cover;">
                 </div>
             </div>
             <div class="col-lg-6 bg-dark p-5">
@@ -63,17 +63,26 @@
                     <h1 class="display-3 text-uppercase text-light mb-0">Phản hồi từ người dùng</h1>
                 </div>
                 <div class="owl-carousel testimonial-carousel">
-                    <div class="testimonial-item">
-                        <p class="fs-4 fw-normal text-light mb-4"><i class="fa fa-quote-left text-primary me-3"></i>Tạo được một sân chơi rất hay và bổ ích.</p>
-                        <div class="d-flex align-items-center">
-                            <img class="img-fluid rounded-circle" src="img/daddyHuy.jpg" alt="">
-                            <div class="ps-4">
-                                <h5 class="text-uppercase text-light">emhuythichchoichim</h5>
-                                <span class="text-uppercase text-secondary">Trainer</span>
+                    <c:set var="feedback" value="${requestScope.FEEDBACK}"/>
+                    <c:set var="user" value="${requestScope.USER}"/>
+                    <c:if test=" ${not empty feedback && not empty user }">
+                        <c:forEach items="${feedback}" var="fb">
+                            <div class="testimonial-item">
+                                <p class="fs-4 fw-normal text-light mb-4"><i class="fa fa-quote-left text-primary me-3"></i>${fb.Description}</p>
+                                <div class="d-flex align-items-center">
+                                    <img class="img-fluid rounded-circle" src="img/daddyHuy.jpg" alt="">
+                                    <div class="ps-4">
+                                        <h5 class="text-uppercase text-light">${fb.IdMember}</h5>
+                                        <span class="text-uppercase text-secondary">Trainer</span>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                    </div>
-                    <div class="testimonial-item">
+                        </c:forEach>
+                    </c:if>
+                    <c:if test="${empty feedback}">
+                        <h1 style="color: white">Chưa có tin</h1>
+                    </c:if>
+<!--                    <div class="testimonial-item">
                         <p class="fs-4 fw-normal text-light mb-4"><i class="fa fa-quote-left text-primary me-3"></i>Chuyên nghiệp tạo nên uy tín.</p>
                         <div class="d-flex align-items-center">
                             <img class="img-fluid rounded-circle" src="img/danhtran.jpg" alt="">
@@ -92,7 +101,7 @@
                                 <span class="text-uppercase text-secondary">Trainer</span>
                             </div>
                         </div>
-                    </div>
+                    </div>-->
                 </div>
             </div>
         </div>
@@ -103,22 +112,22 @@
     <div class="row g-0, d-flex justify-content-center" id="feedback">
         <div class="col-lg-6">
             <div class="bg-dark p-5">
-                <form>
+                <form action="DispatchServlet" method="post">
                     <div class="row g-3">
-                        <div class="col-6">
+<!--                        <div class="col-6">
                             <input type="text" class="form-control bg-light border-0 px-4" placeholder="Tên của bạn" style="height: 55px;">
                         </div>
                         <div class="col-6">
                             <input type="email" class="form-control bg-light border-0 px-4" placeholder="Email" style="height: 55px;">
+-->                        </div>
+                        <div class="col-12">
+                            <input type="hidden" class="form-control bg-light border-0 px-4"name="idMember" value="${sessionScope.USER.idMember}" style="height: 55px;">
                         </div>
                         <div class="col-12">
-                            <input type="text" class="form-control bg-light border-0 px-4" placeholder="Tiêu đề" style="height: 55px;">
+                            <textarea class="form-control bg-light border-0 px-4 py-3" rows="4" name="Description" placeholder="Nội dung"></textarea>
                         </div>
                         <div class="col-12">
-                            <textarea class="form-control bg-light border-0 px-4 py-3" rows="4" placeholder="Nội dung"></textarea>
-                        </div>
-                        <div class="col-12">
-                            <button class="btn btn-primary w-100 py-3" type="submit">Gửi Feedback</button>
+                            <button class="btn btn-primary w-100 py-3" type="submit" name="Add Feedback">Gửi Feedback</button>
                         </div>
                     </div>
                 </form>
