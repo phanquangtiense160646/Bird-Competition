@@ -130,7 +130,8 @@
                                                                     </tr>
                                                                     <tr>
                                                                         <td><small>Địa điểm:</small></td>
-                                                                        <td>${p.location}</td>
+                                                                        <a href="${p.linkMap}">${p.location}</a>
+                                                                        <p>${p.linkMap}</p>
                                                                     </tr>
                                                                     <tr>
                                                                         <td><small>Min Point:</small></td>
@@ -201,7 +202,9 @@
                                                                         </tr>
                                                                         <tr>
                                                                             <td><small>Địa điểm:</small></td>
-                                                                            <td>${p.location}</td>
+                                                                            <td><a href="${p.linkMap}" style="color: black; text-decoration: underline orange 3px;">${p.location}</a></td>
+                                                                            
+                                                                            
                                                                         </tr>
                                                                         <tr>
                                                                             <td><small>Min Point:</small></td>

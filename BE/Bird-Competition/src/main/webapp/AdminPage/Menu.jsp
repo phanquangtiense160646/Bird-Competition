@@ -55,7 +55,7 @@
                     <span>Quản lý lịch thi đấu</span></a>
             </li>      
             <li class="nav-item">
-                <a class="nav-link" href=<c:url value="/DispatchServlet?btAction=ManageLocation"/>>
+                <a class="nav-link" href='<c:url value="/DispatchServlet?btAction=ManageLocation"/>'>
                     <i class="fas fa-fw fa-table"></i>
                     <span>Quản lí địa điểm thi đấu</span></a>
             </li>

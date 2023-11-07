@@ -38,7 +38,7 @@ public class ContestDAO {
             if(con != null){
                 //2. Crate SQL String
                 String sql = "Select Contest.IdContest, NameOfContest, Date, Location.LocationId, Contest.Status, Factor, MinPoint, MaxPoint, " +
-                             "ParticipatingFee, Bird.IdBird, BeforePoint, AfterPoint, Location.Location, NameOfBird, Species, CheckInCode, Contest.StatusOfContest, Contest.MaxParticipant "
+                             "ParticipatingFee, Bird.IdBird, BeforePoint, AfterPoint, Location.Location, NameOfBird, Species, CheckInCode, Contest.StatusOfContest, Contest.MaxParticipant, Location.LinkMap "
                         + "From Contest "
                         + "Full outer join BirdContest "
                         + "On Contest.IdContest = BirdContest.IdContest "
@@ -78,12 +78,13 @@ public class ContestDAO {
                    int statusOfContest = rs.getInt("StatusOfContest");
                    int maxPar = rs.getInt("MaxParticipant");
                    int currentPar = getParticipants(idContest);
+                   String linkmap = rs.getString("LinkMap");
                    //5.1.2 add data to list
 //                   ContestDTO dto = new ContestDTO(idContest, nameOfContest, date, 
 //                           locationId, status, factor, minPoint, maxPoint, participatingFee, 
 //                           idBird, idBird, maxPoint, idBird, factor, 
 //                           beforePoint, afterPoint, result, location, nameOfBird, specie);
-                   ContestDTO dto = new ContestDTO(idContest, nameOfContest, date, locationId, status, factor, minPoint, maxPoint, participatingFee, idBird, beforePoint, afterPoint, location, nameOfBird, specie, checkInCode, statusOfContest, currentPar, maxPar);
+                   ContestDTO dto = new ContestDTO(idContest, nameOfContest, date, locationId, status, factor, minPoint, maxPoint, participatingFee, idBird, beforePoint, afterPoint, location, nameOfBird, specie, checkInCode, statusOfContest, currentPar, maxPar, linkmap);
                    //5.2 add data to list
                    if (this.contestList == null){
                     this.contestList = new ArrayList<>();   

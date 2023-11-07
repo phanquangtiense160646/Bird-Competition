@@ -26,9 +26,9 @@
             rel="stylesheet">
 
         <!-- Custom styles for this template -->
-        <link href="css/sb-admin-2.min.css" rel="stylesheet">
-        <link href="css/matchResult.css" rel="stylesheet">
-        <link href="css/toast.css" rel="stylesheet">
+        <link href="AdminPage/css/sb-admin-2.min.css" rel="stylesheet">
+        <link href="AdminPage/matchResult.css" rel="stylesheet">
+        <link href="AdminPage/toast.css" rel="stylesheet">
 
 
 
@@ -46,7 +46,8 @@
             <h1 class="h3 mb-2 text-gray-800">Schedule Management</h1>
             <p class="mb-4">Quản lý địa điểm thi đấu <a target="_blank">
             </p>
-            <a href="addLocation.jsp" class="btn btn-primary btn-user btn-block">
+            <a href="AdminPage/addLocation.jsp" class="btn btn-primary btn-user btn-block">
+
                 Thêm địa điểm thi đấu</a>
             <!-- DataTales Example -->
             <div class="card shadow mb-4">
@@ -70,6 +71,7 @@
                                     <th>Location Id</th>
                                     <th>Location Detail</th>
                                     <th>Location Map</th>
+                                    
                                     <th></th>
 
                                 </tr>
@@ -82,15 +84,15 @@
                                             <td>${l.locationId}</td>
                                             <td>${l.location}</td>
                                             <td>${l.linkMap}</td>
+                                            
                                             <td>
-                                                <c:url var="deleteLink" value="DispatchServlet">
-                                                    <c:param name="btAction" value="DeleteLocation"/>
+                                                <c:url var="deleteLink" value="/DispatchServlet?btAction=DeleteLocation">
                                                     <c:param name="txtID" value="${l.locationId}"/>
                                                 </c:url>
                                                 <a href="${deleteLink}">Delete</a>
                                             </td>
-
                                         </tr>
+
                                     </c:forEach>
                                 </c:if>
                             </tbody>

@@ -46,12 +46,13 @@ public class AddLocationServlet extends HttpServlet {
         
         try {
             LocationDAO dao = new LocationDAO();
-            LocationDTO dto = new LocationDTO(location);
+            LocationDTO dto = new LocationDTO(location, linkmap);
             boolean result = dao.addLocation(dto);
             if(result){
                 
-                String msg = "success";
+                String msg = "msg";
                 request.setAttribute("msg", msg);
+                url = "GetLocationList";
             }else{
                 String msg = "fail";
                 request.setAttribute("msg", msg);

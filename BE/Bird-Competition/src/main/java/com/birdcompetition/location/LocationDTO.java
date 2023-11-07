@@ -4,11 +4,13 @@
  */
 package com.birdcompetition.location;
 
+import java.io.Serializable;
+
 /**
  *
  * @author admin
  */
-public class LocationDTO {
+public class LocationDTO implements Serializable{
     private int locationId;
     private String location;
     private String linkMap;
