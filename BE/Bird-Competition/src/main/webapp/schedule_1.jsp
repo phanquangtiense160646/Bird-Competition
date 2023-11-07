@@ -94,7 +94,7 @@
                                                     <p class="schedule-value text-uppercase text-light mb-3">
                                                         Ngày: ${scheduleDto.getDateFormat()}</p>
                                                     <p class="schedule-value text-uppercase text-light mb-3">
-                                                        Giờ: 2.00am - 5.00am</p>
+                                                        Giờ: ${scheduleDto.startTime} - ${scheduleDto.endTime}</p>
                                                     <p class="schedule-value text-uppercase text-light mb-3">Địa
                                                         điểm: ${scheduleDto.location}</p>
                                                     <p class="schedule-value text-uppercase text-warning">
@@ -151,7 +151,7 @@
                                                 <p class="schedule-value text-uppercase text-light mb-3">Ngày:
                                                     ${scheduleDto.getDateFormat()}</p>
                                                 <p class="schedule-value text-uppercase text-light mb-3"> Giờ:
-                                                    2.00am - 5.00am</p>
+                                                    ${scheduleDto.startTime} - ${scheduleDto.endTime}</p>
                                                 <p class="schedule-value text-uppercase text-light mb-3">Địa
                                                     điểm: ${scheduleDto.location}</p>
                                                 <p class="schedule-value text-uppercase text-success">
@@ -204,7 +204,7 @@
                                                 <p class="schedule-value text-uppercase text-light mb-3">Ngày:
                                                     ${scheduleDto.getDateFormat()}</p>
                                                 <p class="schedule-value text-uppercase text-light mb-3"> Giờ:
-                                                    2.00am - 5.00am</p>
+                                                    ${scheduleDto.startTime} - ${scheduleDto.endTime}</p>
                                                 <p class="schedule-value text-uppercase text-light mb-3">Địa
                                                     điểm: ${scheduleDto.location}</p>
                                                 <p class="schedule-value text-uppercase text-primary">
@@ -287,7 +287,7 @@
                                                 <p class="schedule-value text-uppercase text-light mb-3">Ngày:
                                                     ${scheduleDto.getDateFormat()}</p>
                                                 <p class="schedule-value text-uppercase text-light mb-3"> Giờ:
-                                                    2.00am - 5.00am</p>
+                                                    ${scheduleDto.startTime} - ${scheduleDto.endTime}</p>
                                                 <p class="schedule-value text-uppercase text-light mb-3">Địa
                                                     điểm: ${scheduleDto.location}</p>
                                                 <p class="schedule-value text-uppercase text-danger">

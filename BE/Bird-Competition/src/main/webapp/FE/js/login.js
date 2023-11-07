@@ -37,20 +37,6 @@ function showSuccess(input) {
     small.innerText = ''
 }
 
-// Check email is valid
-function checkEmail(email) {
-    const emailRegex = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/;
-    return emailRegex.test(email);
-}
-
-email.addEventListener("input", function(){
-    if (!checkEmail(email.value)) {
-        emailError.textContent = "*Email is not valid"
-    }else {
-        emailError.textContent = "";
-    }
-})
-
 // Check length input user name
 username.addEventListener("input", function(){
     if (username.value.length < 4) {
@@ -127,19 +113,6 @@ function showSuccess2(input) {
     small2.innerText = '';
 }
 
-// Check email is valid
-function checkEmail2(lgEmail) {
-    const emailRegex2 = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/;
-    return emailRegex2.test(lgEmail);
-}
-
-lgEmail.addEventListener("input", function(){
-    if (!checkEmail2(lgEmail.value)) {
-        lgEmailError.textContent = "*Email is not valid"
-    }else {
-        lgEmailError.textContent = "";
-    }
-})
 
 // Check length input passwrod
 lgPassword.addEventListener("input", function(){

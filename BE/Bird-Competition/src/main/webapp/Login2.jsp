@@ -25,12 +25,12 @@
       <form>
         <h1>Đăng ký ngay</h1>
         <div class="form-control">
-          <input name="txtUsername" type="text" id="user-username" placeholder="Username" />
+          <input name="txtUsername" type="text" id="username" placeholder="Username" />
           <small id="username-error"></small>
           <span></span>
         </div>
         <div class="form-control">
-          <input name="txtPassword" type="text" id="user-pass" placeholder="Password" />
+          <input name="txtPassword" type="text" id="password" placeholder="Password" />
           <small id="password-error"></small>
           <span></span>
         </div>

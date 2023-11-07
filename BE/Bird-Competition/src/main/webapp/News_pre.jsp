@@ -84,16 +84,16 @@
                         </button>
                         <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
                             <div class="navbar-nav mr-auto py-0">
-                                <a href="index.jsp" class="nav-item nav-link">Home</a>
-                                <a href="index.jsp" class="nav-item nav-link">Bảng xếp hạng</a>
-                                <a href="index.jsp" class="nav-item nav-link">Lịch thi đấu</a>
-                                <a href="index.jsp" class="nav-item nav-link">Hội viên</a>
+                                <a href='<c:url value="/DispatchServlet?btAction=Home"/>'class="nav-item nav-link">Home</a>
+                                <a href='<c:url value="/DispatchServlet?btAction=Home"/>' class="nav-item nav-link">Bảng xếp hạng</a>
+                                <a href='<c:url value="/DispatchServlet?btAction=Home"/>' class="nav-item nav-link">Lịch thi đấu</a>
+                                <a href='<c:url value="/DispatchServlet?btAction=Home"/>' class="nav-item nav-link">Hội viên</a>
                                 <div class="nav-item dropdown">
                                     <a href="#" id="cactrangdropdown" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
                                     <div class="dropdown-menu rounded-0 m-0">
 
                                         <a href= "rule_pre.jsp"class="dropdown-item">Luật thi đấu</a>
-                                        <!--                            <a href= ""class="dropdown-item">Feedback</a>-->
+                                        <a href= "feedback_pre.jsp"class="dropdown-item">Feedback</a>
                                         <a href= "#"class="dropdown-item">Tin Tức</a>
                                     </div>
                                 </div>

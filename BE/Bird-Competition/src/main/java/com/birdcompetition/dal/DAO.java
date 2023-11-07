@@ -232,7 +232,6 @@ public class DAO extends DBHelper {
     }
 
     public boolean createAccount(User user) throws SQLException,
-            NamingException,
             ClassNotFoundException {
         Connection con = null;
         PreparedStatement stm = null;
@@ -252,7 +251,7 @@ public class DAO extends DBHelper {
             stm = con.prepareStatement(query);
             
             stm.setString(1, user.getUserName());
-            stm.setString(2, user.getUserPassword()); // Đây là một giá trị tùy bạn muốn đặt cho UserGmail.
+            stm.setString(2, user.getUserPassword());
             stm.setString(3, user.getUserGmail());
             stm.setInt(4, user.getUserRole());
             

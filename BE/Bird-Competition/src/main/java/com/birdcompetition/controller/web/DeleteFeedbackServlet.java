@@ -2,20 +2,29 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
  */
-package com.birdcompetition.controller;
+package com.birdcompetition.controller.web;
 
+import com.birdcompetition.feedback.FeedBackDAO;
+import com.birdcompetition.feedback.FeedBackDTO;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.SQLException;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
  * @author MSI
  */
-public class AddFeedBackServlet extends HttpServlet {
+@WebServlet(name = "DeleteFeedbackServlet", urlPatterns = {"/DeleteFeedbackServlet"})
+public class DeleteFeedbackServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -29,7 +38,34 @@ public class AddFeedBackServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        
+        String id = request.getParameter("txtID");
+        String url = null;
+        try {
+            //1. call method
+            //1.1. new DAO
+            FeedBackDAO dao = new FeedBackDAO();
+            //1.2 call DAO's method
+            boolean result = dao.deleteFeedback(id);
+
+            //2. process Result
+            if (result) {
+                //2.1 call the search function again using URL Rewriting
+                HttpSession session = request.getSession();
+                java.util.List<FeedBackDTO> feedbackList;
+                dao.getFeedback();
+                feedbackList = dao.getFeedback();
+                session.setAttribute("FEEDBACK", feedbackList);
+                url = "ManageFeedbackServlet";
+                //2.2. go to error page
+            }//end delete action is successful
+
+        } catch (SQLException ex) {
+            Logger.getLogger(DeleteFeedbackServlet.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(DeleteFeedbackServlet.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            response.sendRedirect(url);
+        }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
