@@ -73,7 +73,7 @@
                                                     <p class="schedule-value text-uppercase text-light mb-3">Ngày:
                                                         ${scheduleDto.getDateFormat()}</p>
                                                     <p class="schedule-value text-uppercase text-light mb-3"> Giờ:
-                                                        ${scheduleDto.timeStart} - ${scheduleDto.timeEnd} </p>
+                                                        ${scheduleDto.startTime} - ${scheduleDto.endTime} </p>
                                                     <p class="schedule-value text-uppercase text-light mb-3">Địa
                                                         điểm: ${scheduleDto.location}</p>
                                                     <p class="schedule-value text-uppercase text-primary">

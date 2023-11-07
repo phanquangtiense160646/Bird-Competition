@@ -295,11 +295,19 @@ public class ScheduleDTO implements Serializable {
         return currentTime;
     }
 
-    public boolean isAfterTime( Time timeEnd) {
+    public boolean isAfterTime(Time timeEnd) {
         LocalTime currentTime = getCurrentTime().toLocalTime();
         LocalTime comparisonTime = timeEnd.toLocalTime();
 
         boolean isBefore = currentTime.isAfter(comparisonTime);
+        return isBefore;
+    }
+    
+    public boolean isAfterTime(LocalTime timeEnd) {
+        LocalTime currentTime = getCurrentTime().toLocalTime();
+//        LocalTime comparisonTime = timeEnd.toLocalTime();
+
+        boolean isBefore = currentTime.isAfter(timeEnd);
         return isBefore;
     }
 

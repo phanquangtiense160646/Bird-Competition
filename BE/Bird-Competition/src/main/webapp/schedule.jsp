@@ -36,6 +36,7 @@
         <link href="FE/css/style.css" rel="stylesheet">
         <link href="FE/css/Schedule.css" rel="stylesheet">
         <link href="FE/css/toast.css" rel="stylesheet">
+        <script src="https://kit.fontawesome.com/96a8e8f111.js" crossorigin="anonymous"></script>
     </head>
 
     <body>

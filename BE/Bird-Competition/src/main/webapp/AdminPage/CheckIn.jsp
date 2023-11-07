@@ -127,7 +127,7 @@
                 <c:if test="${empty participant}">
                     <div class="container-fluid p-5">
                         <div class="mb-5 text-center">
-                            <h6 class="display-3 mb-0">Chưa có chim check-in vào trận</h6>
+                            <h2 class=" mb-0">Chưa có chim check-in vào trận</h2>
                         </div>
                     </div>
 

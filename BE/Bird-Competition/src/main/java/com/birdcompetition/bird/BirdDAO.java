@@ -61,7 +61,7 @@ public class BirdDAO implements Serializable {
                     String memberId = rs.getString("IdMember");
                     String trainer = rs.getString("FullName");
                     String photo = rs.getString("PhotoPath");
-                    String photoPath = "FE/img/" + photo;
+                    String photoPath = photo;
 
                     BirdDTO dto = new BirdDTO(name, speices, point, trainer, memberId, photoPath, win, lose, tie, matchNumber, 0);
                     if (this.birdList == null) {

@@ -36,7 +36,7 @@
             <h1 class="h3 mb-2 text-gray-800">Feedback Management</h1>
             <p class="mb-4">Quản lý phản hồi <a target="_blank">
             </p>
-            
+
             <!-- DataTales Example -->
             <div class="card shadow mb-4">
                 <div class="card-header py-3">
@@ -47,43 +47,43 @@
                         <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                             <thead>
                                 <tr>
-                                    <th>Contest Id</th>
-                                    <th>Name Of Contest</th>
+                                    <th>Người gửi</th>
+                                    <th>Nội dung</th>
                                     <th>Action</th>
-                                    
+
                                 </tr>
                             </thead>
                             <tfoot>
                                 <tr>
-                                    <th>Contest Id</th>
-                                    <th>Name Of Contest</th>
+                                    <th>Người gửi</th>
+                                    <th>Nội dung</th>
                                     <th>Action</th>
-                                    
+
                                 </tr>
                             </tfoot>
                             <tbody>
                                 <c:set var="feedbackData" value="${requestScope.FEEDBACK}"/>
                                 <c:if test="${not empty feedbackData}">
                                     <c:forEach var="feedbackDto" items="${feedbackData}" >
-                                        
-                                            <tr>
-                                                <td>${feedbackDto.getIdMember()}</td>
-                                                <td>${feedbackDto.getDescription()}</td>
-                                                <td>
+
+                                        <tr>
+                                            <td>${feedbackDto.getIdMember()}</td>
+                                            <td>${feedbackDto.getDescription()}</td>
+                                            <td>
                                                 <c:url var="deleteLink" value="DispatchServlet">
                                                     <c:param name="btAction" value="DeleteFeedback"/>
                                                     <c:param name="txtID" value="${feedbackDto.getIdMember()}"/>
                                                 </c:url>
                                                 <a href="${deleteLink}">Delete</a>
                                             </td>
-                                            </tr>
-                                        
+                                        </tr>
+
 
                                     </c:forEach>
                                 </c:if>
-                                    <c:if test="${empty feedbackData}">
-                                        Dcmm
-                                    </c:if>
+                                <c:if test="${empty feedbackData}">
+                                    Dcmm
+                                </c:if>
                             </tbody>
                         </table>
                     </div>

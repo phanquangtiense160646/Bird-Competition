@@ -11,7 +11,7 @@
 
         <!-- Favicon -->
         <link href="img/favicon.ico" rel="icon">
-
+        <script src="https://kit.fontawesome.com/96a8e8f111.js" crossorigin="anonymous"></script>
         <!-- Google Web Fonts -->
         <link rel="preconnect" href="https://fonts.gstatic.com">
         <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Rubik&display=swap" rel="stylesheet"> 
@@ -46,7 +46,7 @@
                         <li class="nav-item w-50">
                             <a class="nav-link btn btn-primary py-md-3 px-md-5 me-3 active" data-bs-toggle="pill" href="#pills-1">Thi Hót</a>
                         </li>
-                
+
                         <li class="nav-item w-50">
                             <a class="nav-link btn btn-primary py-md-3 px-md-5 me-3" data-bs-toggle="pill" href="#pills-2">Cách tính điểm</a>
                         </li>
@@ -118,7 +118,7 @@
                         <h1 class="text-uppercase mb-4">Cách tính điểm</h1>
 
                         <p class="text-black">
-                          cách tính điểm
+                            cách tính điểm
                         </p>
 
 
