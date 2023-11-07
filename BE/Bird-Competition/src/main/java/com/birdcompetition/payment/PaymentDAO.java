@@ -86,13 +86,13 @@ public class PaymentDAO {
 
     }
 
-    public static void main(String[] args) throws SQLException, ClassNotFoundException {
-        PaymentDAO dao = new PaymentDAO();
-        List<PaymentDTO> list = dao.getPaymentList_price();
-        for (PaymentDTO newsDTO : list) {
-            System.out.println(newsDTO);
-        }
-    }
+//    public static void main(String[] args) throws SQLException, ClassNotFoundException {
+//        PaymentDAO dao = new PaymentDAO();
+//        List<PaymentDTO> list = dao.getPaymentList_price();
+//        for (PaymentDTO newsDTO : list) {
+//            System.out.println(newsDTO);
+//        }
+//    }
 
     public List<PaymentDTO> getPaymentList_price()
             throws SQLException, ClassNotFoundException {

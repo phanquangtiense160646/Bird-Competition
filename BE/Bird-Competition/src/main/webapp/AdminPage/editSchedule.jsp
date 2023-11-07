@@ -47,7 +47,7 @@
                     <c:set var="data" value="${sessionScope.SCHEDULE_DATA}"/>
                     <form action='<c:url value="/DispatchServlet"/>' class="user">
                         <div class="form-group row">
-                            <div class="col-sm-6 mb-3 mb-sm-0">
+                            <div class="col-sm-4 mb-3 mb-sm-0">
                                 <label class="small mb-1">Ngày thi đấu:</label>
                                 <input type="date" class="form-control form-control-user" id="datePickerId"
                                        value="${data.date}" name="date">
@@ -56,14 +56,23 @@
                                     <label class="small mb-1" style="color: red;">${errors.dateErr}</label>
                                 </c:if>
                             </div>
-                            <div class="col-sm-6">
-                                <label class="small mb-1">Hệ số:</label>
-                                <input type="number" class="form-control form-control-user" id="contestFactor"
-                                       placeholder="Hệ số" value="${data.factor}" name="txtfactor">
-                                <c:if test="${not empty errors.factorErr}">
-                                    <label class="small mb-1" style="color: red;">${errors.factorErr}</label>
+                            <div class="col-sm-4">
+                                <label class="small mb-1">Thời gian bắt đầu:</label>
+                                <input type="time" class="form-control form-control-user" id="contestFactor"
+                                       placeholder="Bắt đầu" value="${data.startTime}" name="sTime">
+                                <c:if test="${not empty errors.sTimeErr}">
+                                    <label class="small mb-1" style="color: red;">${errors.sTimeErr}</label>
                                 </c:if>
                             </div>
+                            <div class="col-sm-4">
+                                <label class="small mb-1">Thời gian kết thúc:</label>
+                                <input type="time" class="form-control form-control-user" id="contestFactor"
+                                       placeholder="Kết thúc" value="${data.endTime}" name="eTime">
+                                <c:if test="${not empty errors.eTimeErr}">
+                                    <label class="small mb-1" style="color: red;">${errors.eTimeErr}</label>
+                                </c:if>
+                            </div>    
+
 
                         </div>
                         <div class="form-group">
@@ -110,13 +119,23 @@
                                 </c:if>
                             </div>
                         </div>
-                        <div class="form-group">
-                            <label class="small mb-1">Phí tham gia:</label>
-                            <input type="number" class="form-control form-control-user" id="fee"
-                                   placeholder="Phí" value="${data.fee}" name="txtfee">
-                            <c:if test="${not empty errors.feeErr}">
-                                <label class="small mb-1" style="color: red;">${errors.feeErr}</label>
-                            </c:if>
+                        <div class="form-group row">
+                            <div class="col-sm-6 mb-3 mb-sm-0">
+                                <label class="small mb-1">Phí tham gia:</label>
+                                <input type="number" class="form-control form-control-user" id="fee"
+                                       placeholder="Phí" value="${data.fee}" name="txtfee">
+                                <c:if test="${not empty errors.feeErr}">
+                                    <label class="small mb-1" style="color: red;">${errors.feeErr}</label>
+                                </c:if>
+                            </div>
+                            <div class="col-sm-6">
+                                <label class="small mb-1">Hệ số:</label>
+                                <input type="number" class="form-control form-control-user" id="contestFactor"
+                                       placeholder="Hệ số" value="${data.factor}" name="txtfactor">
+                                <c:if test="${not empty errors.factorErr}">
+                                    <label class="small mb-1" style="color: red;">${errors.factorErr}</label>
+                                </c:if>
+                            </div>
                         </div>
                         Chọn địa điểm tham gia: <select aria-label="chooseBird" name="cboBird">
                             <option selected disabled>Địa điểm</option>

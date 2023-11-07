@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.sql.Date;
 import java.sql.SQLException;
 import java.time.LocalDate;
+import java.time.LocalTime;
 import java.time.temporal.ChronoUnit;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -43,6 +44,8 @@ public class AddScheduleServlet extends HttpServlet {
         String maxPar = request.getParameter("txtmaxPar");
         String maxBird = request.getParameter("txtmaxBirdJoin");
         String fee = request.getParameter("txtfee");
+        String startTime = request.getParameter("sTime");
+        String endTime = request.getParameter("eTime");
         boolean foundErr = false;
         ScheduleError errors = new ScheduleError();
         double dfactor = 0;
@@ -51,12 +54,28 @@ public class AddScheduleServlet extends HttpServlet {
         String url = "AdminPage/createSchedule.jsp";
         try {
             if (date == null && name == null && minPoint == null && maxPoint == null
-                    && maxPar == null && factor == null && maxBird == null && fee == null) {
-               
+                    && maxPar == null && factor == null && maxBird == null && fee == null && startTime == null && endTime == null) {
+
             } else {
+                if (startTime.isEmpty() || endTime.isEmpty()) {
+                    foundErr = true;
+                    errors.setsTimeErr("Thời gian bắt đầu không được trống");
+                    errors.seteTimeErr("Thời gian kết thúc không được trống");
+                } else {
+                    LocalTime stime = LocalTime.parse(startTime);
+                    LocalTime etime = LocalTime.parse(endTime);
+                    long minutesBetween = ChronoUnit.MINUTES.between(stime, etime);
+                    if (stime.compareTo(etime) > 0) {
+                        foundErr = true;
+                        errors.setsTimeErr("Thời gian bắt đầu phải < thời gian kết thúc");
+                    } else if(minutesBetween < 180 || minutesBetween > 360) {
+                        foundErr = true;
+                        errors.setsTimeErr("Thời gian diễn ra phải từ 3 - 6 tiếng");
+                    }
+                }
                 if (date.isEmpty()) {
                     foundErr = true;
-                    errors.setDateErr("Date không được trống");
+                    errors.setDateErr("Ngày không được trống");
                 } else {
                     LocalDate date1 = LocalDate.now();
                     LocalDate date2 = LocalDate.parse(date);
@@ -72,18 +91,18 @@ public class AddScheduleServlet extends HttpServlet {
                 }//end check name
                 if (minPoint.isEmpty() || maxPoint.isEmpty()) {
                     foundErr = true;
-                    errors.setMinPointErr("Min point không được trống");
-                    errors.setMaxPointErr("Max point không được trống");
+                    errors.setMinPointErr("Điểm tối thiểu không được trống");
+                    errors.setMaxPointErr("Điểm tối đa không được trống");
                 } else {
                     min = Integer.parseInt(minPoint);
                     max = Integer.parseInt(maxPoint);
                     if (min < 0 || max < 0) {
                         foundErr = true;
-                        errors.setMinPointErr("Min point không được < 0");
-                        errors.setMaxPointErr("Max point không được < 0");
-                    } else if (max - min > 300) {
-                        errors.setMinPointErr("Min point - Max point chêch lệch < 300");
-                        errors.setMaxPointErr("Min point - Max point chêch lệch < 300");
+                        errors.setMinPointErr("Điểm tối thiểu không được < 0");
+                        errors.setMaxPointErr("Điểm tối đa không được < 0");
+                    } else if (max - min > 300 || max < min) {
+                        errors.setMinPointErr("Min point - Max point chêch lệch < 300, max > min");
+                        errors.setMaxPointErr("Min point - Max point chêch lệch < 300, max > min");
                     }
                 }//end check min max point
                 if (maxPar.isEmpty()) {
@@ -119,9 +138,9 @@ public class AddScheduleServlet extends HttpServlet {
                 if (fee.isEmpty()) {
                     foundErr = true;
                     errors.setFeeErr("Phí không được trống");
-                } else if(fee.length() <5) {
+                } else if (fee.length() < 5) {
                     errors.setFeeErr("Phí phải lớn hơn hoặc bằng 10.000(vnd)");
-                } 
+                }
                 if (place == null) {
                     foundErr = true;
                     errors.setPlaceErr("Địa điểm không được trống");
@@ -133,8 +152,11 @@ public class AddScheduleServlet extends HttpServlet {
                     ScheduleDAO dao = new ScheduleDAO();
                     Date sqlDate = Date.valueOf(LocalDate.parse(date));
                     int feee = Integer.parseInt(fee);
+                    LocalTime stime = LocalTime.parse(startTime);
+                    LocalTime etime = LocalTime.parse(endTime);
                     ScheduleDTO dto = new ScheduleDTO(0, name, sqlDate, place, true, dfactor,
-                            min, max, feee, "manager", place, 5, maxP, maxBird);
+                            min, max, feee, "manager", place, 5, maxP,
+                            maxBird, stime, etime);
                     boolean result = dao.contestInsert(dto);
                     //3. Process Result
                     if (result) {

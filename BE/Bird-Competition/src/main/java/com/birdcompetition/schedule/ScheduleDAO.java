@@ -9,7 +9,9 @@ import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Time;
 import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -65,10 +67,13 @@ public class ScheduleDAO implements Serializable {
                     int maxPar = rs.getInt("MaxParticipant");
                     String maxBird = rs.getString("MaxBirdJoin");
                     int currentPar = getParticipants(id);
-                    ScheduleDTO dto = new ScheduleDTO(id, name, date, locationId, status, 
-                            factor, minPoint, maxPoint, fee, userId, location, 
-                            contestStatus, currentPar, maxPar, maxBird);
-                    scheduleList.add(dto);
+                    LocalTime sTime = rs.getTime("StartTime").toLocalTime();
+                    LocalTime eTime = rs.getTime("EndTime").toLocalTime();
+                    ScheduleDTO dto = new ScheduleDTO(id, name, date, locationId, 
+                            status, factor, minPoint, maxPoint, eTime, sTime, 
+                            fee, userId, location, contestStatus, currentPar, maxPar, 
+                            maxBird, 0);
+                    scheduleList.add(dto);  
                 }
             }
         } finally {
@@ -170,7 +175,7 @@ public class ScheduleDAO implements Serializable {
 
                     ScheduleDTO dto = new ScheduleDTO(id, name, date, locationId,
                             status, factor, minPoint, maxPoint, fee, userId,
-                            location, contestStatus, maxPar, "");
+                            location, contestStatus, maxPar, "", null, null);
 
                     int currentPar = getParticipants(id);
                     int checkedIn = getCheckedInParticipant(id);
@@ -248,10 +253,11 @@ public class ScheduleDAO implements Serializable {
                     int contestStatus = rs.getInt("StatusOfContest");
                     int maxPar = rs.getInt("MaxParticipant");
                     String maxBird = rs.getString("MaxBirdJoin");
-
+                    LocalTime sTime = rs.getTime("StartTime").toLocalTime();
+                    LocalTime eTime = rs.getTime("EndTime").toLocalTime();
                     match = new ScheduleDTO(contestId, name, date, locationId, status,
                             factor, minPoint, maxPoint, fee, userId, location,
-                            contestStatus, maxPar, maxBird);
+                            contestStatus, maxPar, maxBird, sTime, eTime);
                 }
             }
         } finally {
@@ -321,9 +327,10 @@ public class ScheduleDAO implements Serializable {
 
                 String sql = "Insert Into Contest("
                         + "NameOfContest, Date, LocationId, Status, Factor, MinPoint, "
-                        + "MaxPoint, MaxParticipant, ParticipatingFee, IdRule, UserName, StatusOfContest, MaxBirdJoin"
+                        + "MaxPoint, MaxParticipant, ParticipatingFee, IdRule, UserName, "
+                        + "StatusOfContest, MaxBirdJoin, StartTime, EndTime"
                         + ") Values("
-                        + "?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?"
+                        + "?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?"
                         + ")";
                 //3.Create Statement Object
                 stm = con.prepareStatement(sql);
@@ -340,7 +347,8 @@ public class ScheduleDAO implements Serializable {
                 stm.setString(11, dto.getUserId());
                 stm.setInt(12, dto.getStatusOfContest());
                 stm.setString(13, dto.getMaxBird());
-
+                stm.setTime(14, Time.valueOf(dto.getStartTime()));
+                stm.setTime(15, Time.valueOf(dto.getEndTime()));
                 //4.Exercute Query
                 int exercute = stm.executeUpdate();
                 //5.Process
@@ -376,7 +384,7 @@ public class ScheduleDAO implements Serializable {
                 String sql = "UPDATE Contest "
                         + "SET NameOfContest = ?, Date = ?, LocationId = ?, Status = ?, Factor = ?, MinPoint = ?, "
                             + "MaxPoint = ?, MaxParticipant = ?, ParticipatingFee = ?, IdRule = ?, "
-                            + "UserName = ?, StatusOfContest = ?, MaxBirdJoin = ? "
+                            + "UserName = ?, StatusOfContest = ?, MaxBirdJoin = ?, StartTime = ?, EndTime = ? "
                         + "WHERE IdContest = ? ";
                 //3.Create Statement Object
                 stm = con.prepareStatement(sql);
@@ -393,7 +401,9 @@ public class ScheduleDAO implements Serializable {
                 stm.setString(11, dto.getUserId());
                 stm.setInt(12, dto.getStatusOfContest());
                 stm.setString(13, dto.getMaxBird());
-                stm.setInt(14, dto.getId());
+                stm.setTime(14, Time.valueOf(dto.getStartTime()));
+                stm.setTime(15, Time.valueOf(dto.getEndTime()));
+                stm.setInt(16, dto.getId());
                 //4.Exercute Query
                 int exercute = stm.executeUpdate();
                 //5.Process

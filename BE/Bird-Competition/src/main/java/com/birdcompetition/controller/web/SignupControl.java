@@ -39,19 +39,19 @@ public class SignupControl extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        
+
         String user = request.getParameter("txtUsername");
         String pass = request.getParameter("txtPassword");
         String re_pass = request.getParameter("txtConfirm");
         String fullname = request.getParameter("txtFullname");
         boolean foundErr = false;
         RegistrationCreateError errors = new RegistrationCreateError();
-        
+
 //            if(!pass.equals(re_pass)){
 //            request.setAttribute("error_message", "Tên tài khoản đã tồn tại hoặc mật khẩu không khớp");
 //            RequestDispatcher dispatcher = request.getRequestDispatcher("SignupControl.jsp");
 //            dispatcher.forward(request, response);
-     try {
+        try {
             //1. Check all user's error
             if (user.trim().length() < 6 || user.trim().length() > 20) {
                 foundErr = true;
@@ -73,7 +73,7 @@ public class SignupControl extends HttpServlet {
             } else {
                 //2. call DAO
                 DAO dao = new DAO();
-                
+
                 User u = new User(fullname, re_pass, user, 0, user, fullname, user, user, 0, user, null);
                 boolean result = dao.createAccount(u);
                 //3. Process Result
@@ -87,10 +87,8 @@ public class SignupControl extends HttpServlet {
             errors.setUsernameIsExisted(user + " is existed");
             request.setAttribute("CREATE_ERRORS", errors);
 
-        } catch (NamingException ex) {
-            log("CreateNewAccount_Naming" + ex.getMessage());
         } catch (ClassNotFoundException ex) {
-            Logger.getLogger(SignupControl.class.getName()).log(Level.SEVERE, null, ex);
+            log("CreateNewAccount_ClassNotFound" + ex.getMessage());
         } finally {
             RequestDispatcher rd = request.getRequestDispatcher("Login2.jsp");
             rd.forward(request, response);
