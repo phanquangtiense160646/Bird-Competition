@@ -93,11 +93,11 @@
                                     <div class="dropdown-menu rounded-0 m-0">
                                         <!-- <a href="blog.html" class="dropdown-item">News</a> -->
                                         <a href="#"class="dropdown-item">Luật thi đấu</a>
-        <!--                            <a href='<c:url value="/DispatchServlet?btAction=FeedBack"/>' class="dropdown-item">Feedback</a>-->
+                                        <a href="feedback_pre.jsp" class="dropdown-item">Feedback</a>
                                         <a href="News_pre.jsp" class="dropdown-item">Tin Tức</a>
                                     </div>
                                 </div>
-                                        <a href="contact.jsp" class="nav-item nav-link">Liên Hệ</a>
+                                <a href="contact_pre.jsp" class="nav-item nav-link">Liên Hệ</a>
                             </div>
                             <div class="nav-item dropdown">
 

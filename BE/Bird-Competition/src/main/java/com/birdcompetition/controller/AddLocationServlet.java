@@ -4,18 +4,28 @@
  */
 package com.birdcompetition.controller;
 
+
+import com.birdcompetition.location.LocationDAO;
+import com.birdcompetition.location.LocationDTO;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.naming.NamingException;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
  *
- * @author MSI
+ * @author admin
  */
-public class AddFeedBackServlet extends HttpServlet {
+@WebServlet(name = "AddLocationServlet", urlPatterns = {"/AddLocationServlet"})
+public class AddLocationServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -29,7 +39,32 @@ public class AddFeedBackServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
+        String location = request.getParameter("txtLocation");
+        String linkmap = request.getParameter("txtLinkGoogleMap");
         
+        String url = "AdminPage/addLocation.jsp";
+        
+        try {
+            LocationDAO dao = new LocationDAO();
+            LocationDTO dto = new LocationDTO(location);
+            boolean result = dao.addLocation(dto);
+            if(result){
+                
+                String msg = "success";
+                request.setAttribute("msg", msg);
+            }else{
+                String msg = "fail";
+                request.setAttribute("msg", msg);
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(AddLocationServlet.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (NamingException ex) {
+            Logger.getLogger(AddLocationServlet.class.getName()).log(Level.SEVERE, null, ex);
+        }finally{
+            RequestDispatcher rd = request.getRequestDispatcher(url);
+            rd.forward(request, response);
+        }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

@@ -147,7 +147,7 @@
 
                                                                     <tr>
                                                                         <td><small>Số người tham gia:</small></td>
-                                                                        <td>5/10</td>
+                                                                        <td>${p.currentPar}/${p.maxPar}</td>
                                                                     </tr>
 
                                                                     <tr>
@@ -193,23 +193,23 @@
                                                                     <table class="match-box-content border-bottom">
                                                                         <tr>
                                                                             <td><small>Tên cuộc thi:</small></td>
-                                                                            <td><p style="color: orange">${p.nameOfContest}</p></td>
+                                                                            <td><h4 style="color: orange">${p.nameOfContest}</h4></td>
                                                                         </tr>
                                                                         <tr>
                                                                             <td><small>Checkin Code:</small></td>
-                                                                            <td><p>${p.checkInCode}</p></td>
+                                                                            <td>${p.checkInCode}</td>
                                                                         </tr>
                                                                         <tr>
                                                                             <td><small>Địa điểm:</small></td>
-                                                                            <td><p>${p.location}</p></td>
+                                                                            <td>${p.location}</td>
                                                                         </tr>
                                                                         <tr>
                                                                             <td><small>Min Point:</small></td>
-                                                                            <td><p>${p.minPoint}</p></td>
+                                                                            <td>${p.minPoint}</td>
                                                                         </tr>
                                                                         <tr>
                                                                             <td><small>Max Point:</small></td>
-                                                                            <td><p>${p.maxPoint}</p></td>
+                                                                            <td>${p.maxPoint}</td>
                                                                         </tr>
                                                                         <tr>
                                                                             <td><small>Ngày diễn ra:</small></td>
@@ -218,18 +218,18 @@
 
                                                                         <tr>
                                                                             <td><small>Số người tham gia:</small></td>
-                                                                            <td><p>5/10</p></td>
+                                                                            <td>${p.currentPar}/${p.maxPar}</td>
                                                                         </tr>
 
                                                                         <tr>
                                                                             <td><small>Chim tham gia:</small></td>
-                                                                            <td><h5>${p.nameOfBird}</h5></td>
+                                                                            <td>${p.nameOfBird}</td>
                                                                         </tr>
 
                                                                         <tr style="">
-                                                                            <td><h1 style="color: green;">Kết quả</h1></td>
+                                                                            <td><h4 style="color: green;">Kết quả</h4></td>
 
-                                                                            <td style=""><p style="color: black;"> Point: ${p.afterPoint} </p></td>
+                                                                            <td style="color: black;"> Điểm: ${p.afterPoint} </td>
                                                                             <td>
                                                                                 
                                                                                 <c:if test="${(p.afterPoint - p.beforePoint) >= 0}" >

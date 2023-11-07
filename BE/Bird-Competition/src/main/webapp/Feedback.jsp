@@ -2,6 +2,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8" %>
 
+
 <head>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="Free HTML Templates" name="keywords">
@@ -54,7 +55,7 @@
         <div class="row g-0">
             <div class="col-lg-6" style="min-height: 500px;">
                 <div class="position-relative h-100">
-                    <img class="position-absolute w-100 h-100" src="img/bird_player.png" style="object-fit: cover;">
+                    <img class="position-absolute w-100 h-100" src="FE/img/bird_player.png" style="object-fit: cover;">
                 </div>
             </div>
             <div class="col-lg-6 bg-dark p-5">
@@ -62,37 +63,29 @@
                     <h5 class="text-primary text-uppercase">Đánh giá</h5>
                     <h1 class="display-3 text-uppercase text-light mb-0">Phản hồi từ người dùng</h1>
                 </div>
+                <c:set var="feedback" value="${requestScope.FEEDBACK}" /> 
+                <c:set var="size" value="${10}" />
+
+                <c:if test="${feedback.size() <= size}">
+                    <c:set var="size" value="${feedback.size()}" />
+                </c:if>
                 <div class="owl-carousel testimonial-carousel">
-                    <div class="testimonial-item">
-                        <p class="fs-4 fw-normal text-light mb-4"><i class="fa fa-quote-left text-primary me-3"></i>Tạo được một sân chơi rất hay và bổ ích.</p>
-                        <div class="d-flex align-items-center">
-                            <img class="img-fluid rounded-circle" src="img/daddyHuy.jpg" alt="">
-                            <div class="ps-4">
-                                <h5 class="text-uppercase text-light">emhuythichchoichim</h5>
-                                <span class="text-uppercase text-secondary">Trainer</span>
+                    <c:if test="${not empty feedback}">
+                        <c:forEach var="i" begin="0" end="${size -1 }" step="1">
+
+                            <div class="testimonial-item">
+                                <p class="fs-4 fw-normal text-light mb-4"><i 
+                                        class="fa fa-quote-left text-primary me-3"></i>${feedback.get(i).getDescription()}</p>
+                                <div class="d-flex align-items-center">
+
+                                    <div class="ps-4">
+                                        <h5 class="text-uppercase text-light">${feedback.get(i).getIdMember()}</h5>
+                                        <span class="text-uppercase text-secondary">Trainer</span>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                    </div>
-                    <div class="testimonial-item">
-                        <p class="fs-4 fw-normal text-light mb-4"><i class="fa fa-quote-left text-primary me-3"></i>Chuyên nghiệp tạo nên uy tín.</p>
-                        <div class="d-flex align-items-center">
-                            <img class="img-fluid rounded-circle" src="img/danhtran.jpg" alt="">
-                            <div class="ps-4">
-                                <h5 class="text-uppercase text-light">Danh Trần</h5>
-                                <span class="text-uppercase text-secondary">Trainer</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="testimonial-item">
-                        <p class="fs-4 fw-normal text-light mb-4"><i class="fa fa-quote-left text-primary me-3"></i>Sẽ có thể tiếp tục tham gia vào giải sắp tới.</p>
-                        <div class="d-flex align-items-center">
-                            <img class="img-fluid rounded-circle" src="img/thuanDam.jpg" alt="">
-                            <div class="ps-4">
-                                <h5 class="text-uppercase text-light">Thuận Thiên</h5>
-                                <span class="text-uppercase text-secondary">Trainer</span>
-                            </div>
-                        </div>
-                    </div>
+                        </c:forEach>
+                    </c:if>
                 </div>
             </div>
         </div>
@@ -103,56 +96,53 @@
     <div class="row g-0, d-flex justify-content-center" id="feedback">
         <div class="col-lg-6">
             <div class="bg-dark p-5">
-                <form>
-                    <div class="row g-3">
-                        <div class="col-6">
-                            <input type="text" class="form-control bg-light border-0 px-4" placeholder="Tên của bạn" style="height: 55px;">
-                        </div>
-                        <div class="col-6">
-                            <input type="email" class="form-control bg-light border-0 px-4" placeholder="Email" style="height: 55px;">
-                        </div>
-                        <div class="col-12">
-                            <input type="text" class="form-control bg-light border-0 px-4" placeholder="Tiêu đề" style="height: 55px;">
-                        </div>
-                        <div class="col-12">
-                            <textarea class="form-control bg-light border-0 px-4 py-3" rows="4" placeholder="Nội dung"></textarea>
-                        </div>
-                        <div class="col-12">
-                            <button class="btn btn-primary w-100 py-3" type="submit">Gửi Feedback</button>
-                        </div>
+                <form action="AddFeedbackServlet" method="post">
+                  
+                    <div style="text-align: center">
+                        <h2 style="color: white"  >Nhập Phản Hồi Của Bạn Cho Chúng Tôi</h2>
+                    </div>
+
+                    <div class="col-12">
+                        <textarea class="form-control bg-light border-0 px-4 py-3" rows="4" name="txtDescription" placeholder="Nội dung"></textarea>
+                    </div>
+                    <div class="col-12">
+                        <button class="btn btn-primary w-100 py-3" type="submit" name="Add Feedback">Gửi Feedback</button>
                     </div>
                 </form>
+
             </div>
+
         </div>
-        <!-- <div class="col-lg-6">
-            <iframe class="w-100"
-                src="https://maps.google.com/maps?width=600&amp;height=400&amp;hl=en&amp;q=FPT University HCMC&amp;t=&amp;z=14&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"
-                frameborder="0" style="height: 457px; border:0;" allowfullscreen="" aria-hidden="false"
-                tabindex="0"></iframe>
-        </div> -->
     </div>
-    <!-- Give Feedback end -->
+    <!-- <div class="col-lg-6">
+        <iframe class="w-100"
+            src="https://maps.google.com/maps?width=600&amp;height=400&amp;hl=en&amp;q=FPT University HCMC&amp;t=&amp;z=14&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"
+            frameborder="0" style="height: 457px; border:0;" allowfullscreen="" aria-hidden="false"
+            tabindex="0"></iframe>
+    </div> -->
+</div>
+<!-- Give Feedback end -->
 
-    <!-- Footer Start -->
-        <jsp:include page="JspCommon/webfooter.jsp"/>
+<!-- Footer Start -->
+<jsp:include page="JspCommon/webfooter.jsp"/>
 
-    <!-- Footer End -->
-
-
-    <!-- Back to Top -->
-    <a href="#" class="btn btn-dark py-3 fs-4 back-to-top"><i class="bi bi-arrow-up"></i></a>
+<!-- Footer End -->
 
 
-    <!-- JavaScript Libraries -->
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="FE/lib/easing/easing.min.js"></script>
-    <script src="FE/lib/waypoints/waypoints.min.js"></script>
-    <script src="FE/lib/counterup/counterup.min.js"></script>
-    <script src="FE/lib/owlcarousel/owl.carousel.min.js"></script>
+<!-- Back to Top -->
+<a href="#" class="btn btn-dark py-3 fs-4 back-to-top"><i class="bi bi-arrow-up"></i></a>
 
-    <!-- Template Javascript -->
-    <script src="FE/js/main.js"></script>
+
+<!-- JavaScript Libraries -->
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="FE/lib/easing/easing.min.js"></script>
+<script src="FE/lib/waypoints/waypoints.min.js"></script>
+<script src="FE/lib/counterup/counterup.min.js"></script>
+<script src="FE/lib/owlcarousel/owl.carousel.min.js"></script>
+
+<!-- Template Javascript -->
+<script src="FE/js/main.js"></script>
 </body>
 
 </html>

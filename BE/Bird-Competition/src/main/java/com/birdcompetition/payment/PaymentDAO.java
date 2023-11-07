@@ -86,13 +86,54 @@ public class PaymentDAO {
 
     }
 
-//    public static void main(String[] args) throws SQLException, ClassNotFoundException {
-//        PaymentDAO dao = new PaymentDAO();
-//        List<PaymentDTO> list = dao.getPaymentList_price();
-//        for (PaymentDTO newsDTO : list) {
-//            System.out.println(newsDTO);
-//        }
-//    }
+    public static void main(String[] args) throws SQLException, ClassNotFoundException {
+        PaymentDAO dao = new PaymentDAO();
+        List<PaymentDTO> list = dao.getPaymentList_price();
+        for (PaymentDTO newsDTO : list) {
+            System.out.println(newsDTO);
+        }
+    }
+     public int getParticipants()
+            throws SQLException, ClassNotFoundException {
+        Connection con = null;
+        PreparedStatement stm = null;
+        ResultSet rs = null;
+        int result = 0;
+
+        try {
+            //1.Make connection
+            con = DBHelper.getConnection();
+            //check 
+            if (con != null) {
+                //2.Creat SQL String 
+                String sql = "Select count(IdOrder) as Parcipants "
+                        + "From OrderDetail ";
+                        
+                //3.Create Statement Object
+                stm = con.prepareStatement(sql);
+                
+                //4.Exercute Query
+                rs = stm.executeQuery();
+
+                //5.Process
+                if (rs.next()) {
+                    result = rs.getInt("Parcipants");
+                }
+            }
+        } finally {
+            if (rs != null) {
+                rs.close();
+            }
+            if (stm != null) {
+                stm.close();
+            }
+            if (con != null) {
+                con.close();
+            }
+        }
+        return result;
+
+    }
 
     public List<PaymentDTO> getPaymentList_price()
             throws SQLException, ClassNotFoundException {
