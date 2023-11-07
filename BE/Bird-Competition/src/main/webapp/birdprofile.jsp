@@ -133,15 +133,11 @@
                                                         </form>
                                                         <form action="DispatchServlet">
 
-
-
-
-
                                                             <!-- Form Group (birdname)-->
                                                             <div class="mb-3">
                                                                 <label class="small mb-1" for="inputBirdname">Tên chim</label>
                                                                 <input class="form-control" id="inputBirdname" type="text"
-                                                                       value="${sessionScope.BIRD.birdName}" style="background-color:white;" readonly>
+                                                                       value="${sessionScope.BIRD.birdName}" style="background-color:white;" name="txtName">
                                                             </div>
                                                             <!-- Form Row-->
                                                             <div class="row gx-3 mb-3">
@@ -196,14 +192,19 @@
                                                             <div class="mb-3">
                                                                 <label class="small mb-1" for="inputOtherInfo">Thông tin khác (nếu có)</label>
                                                                 <input class="form-control" id="inputOtherInfo" type="text"
-                                                                       placeholder="Thông tin khác" value="${sessionScope.BIRD.description}" style="background-color:white;" readonly="">
+                                                                       placeholder="Thông tin khác" value="${sessionScope.BIRD.description}" style="background-color:white;" name="txtDescription">
                                                             </div>
 
                                                             <input type="hidden" value="${sessionScope.BIRD.birdID}" />
                                                             <button class="btn btn-outline-dark" data-mdb-ripple-color="dark"
+                                                                    style="z-index: 0; background-color: white;" name="btAction" value="UpdateBird">
+                                                                Cập nhật thông tin
+                                                            </button>
+                                                            <button class="btn btn-outline-dark" data-mdb-ripple-color="dark"
                                                                     style="z-index: 0; background-color: white;" name="btAction" value="DeleteBird">
                                                                 Xóa Chim
                                                             </button>
+                                                            
                                                         </form>
 
                                                     </div>
