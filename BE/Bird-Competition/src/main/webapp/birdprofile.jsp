@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!--<!DOCTYPE html>-->
 <html>
@@ -68,11 +69,6 @@
                                         src="FE/img/${sessionScope.BIRD.photoPath}"
                                         alt="Generic placeholder image" class="img-fluid img-thumbnail mt-4 mb-2"
                                         style="width: 150px; z-index: 1; margin-left: 10px;"> 
-                                    
-                                    
-
-
-
                                 </div>
                                 <div class="ms-3" style="margin-top: 130px; margin-left: 30px;">
                                     <h5 style="color: #f8f9fa;"></h5>
@@ -125,7 +121,7 @@
                                         <p class="lead fw-normal mb-1">Bird Profile</p>
                                     </span>
 
-
+                                    
                                     <div class="container-xl px-4 mt-4">
 
                                         <hr class="mt-0 mb-4">
@@ -133,15 +129,24 @@
                                             <div class="col-xl-12 border-bottom">
                                                 <!-- Account details card-->
                                                 <div class="card mb-4">
-                                                    <div class="card-header"></div>
+                                                    <div class="card-header">
+                                                        
+                                                       
+                                
+                                                        
+                                                        
+                                                        
+                                                    </div>
                                                     <div class="card-body">
-                                                        <form action="UploadPhotoServlet" method="POST" enctype="multipart/form-data">
+                                                        <form action="ImageUploadServlet" method="POST" enctype="multipart/form-data">
                                                              <div style="mb-5">
-                                                            <input type="hidden" name="birdID" value="${sessionScope.BIRD.birdID}" />
-                                                             <input type="file" name="image" class="form-control">
-                                                             <input class="btn border mt-3 mb-3" type="submit" value="Cập Nhật">
-                                                             <input type="hidden" name="txtBirdID" value="${sessionScope.BIRD.birdID}" />
+                                                             <input type="hidden" name="birdID" value="${sessionScope.BIRD.birdID}" />
+                                                             <input type="file" name="image" class="form-control" style="background-color:white;">
+                                                             <input class="btn border mt-3 mb-3 btn-outline-dark " type="submit" value="Cập Nhật" >
+                                                             
                                                              </div>
+                                                             <p style="color: red">${requestScope.mes}</p>
+                                                             
                                                         </form>
                                                         <form action="DispatchServlet">
                                                             
@@ -153,7 +158,7 @@
                                                             <div class="mb-3">
                                                                 <label class="small mb-1" for="inputBirdname">Tên chim</label>
                                                                 <input class="form-control" id="inputBirdname" type="text"
-                                                                       value="${sessionScope.BIRD.birdName}" readonly>
+                                                                       value="${sessionScope.BIRD.birdName}" style="background-color:white;" readonly>
                                                             </div>
                                                             <!-- Form Row-->
                                                             <div class="row gx-3 mb-3">
@@ -161,7 +166,7 @@
                                                                 <div class="col-md-12">
                                                                     <label class="small mb-1" for="inputSpecies">Loài chim</label>
                                                                     <input class="form-control" id="inputSpecies" type="text" 
-                                                                           value="${sessionScope.BIRD.species}" readonly>
+                                                                           value="${sessionScope.BIRD.species}" style="background-color:white;" readonly>
                                                                 </div>
 
                                                             </div>
@@ -170,20 +175,29 @@
                                                                 <div class="col-md-12">
                                                                     <label class="small mb-1">Điểm Rank</label>
                                                                     <input class="form-control" id="inputBirdAge" type="text" 
-                                                                           value="${sessionScope.BIRD.point}" readonly>
+                                                                           value="${sessionScope.BIRD.point}" style="background-color:white;" readonly>
                                                                 </div>
                                                             </div>
                                                             <div class="row gx-3 mb-3">
                                                                 <!-- Form Group (Gender)-->
                                                                 <div class="col-md-6">
-                                                                    <label class="small mb-1" for="inputGender">Giới tính</label>
-                                                                    <input class="form-control" id="inputGender" type="text"
-                                                                           value="${sessionScope.BIRD.birdName}" readonly>
+                                                                    <c:if test="${sessionScope.BIRD.gender == 1}">
+                                                                        <label class="small mb-1" for="inputGender">Giới tính</label>
+                                                                        <input class="form-control" id="inputGender" type="text"
+                                                                           value="Đực" style="background-color:white;" readonly>
+                                                                    </c:if>
+                                                                    <c:if test="${sessionScope.BIRD.gender == 0}">
+                                                                        <label class="small mb-1" for="inputGender">Giới tính</label>
+                                                                        <input class="form-control" id="inputGender" type="text"
+                                                                           value="Cái" style="background-color:white;" readonly>
+                                                                    </c:if>
+                                                                    
+                                                                    
                                                                 </div>
                                                                 <div class="col-md-6">
                                                                     <label class="small mb-1" for="inputGender">ID Chim</label>
                                                                     <input class="form-control" type="text"
-                                                                    value="${sessionScope.BIRD.birdID}" name="txtBirdID" readonly>  
+                                                                    value="${sessionScope.BIRD.birdID}" name="txtBirdID" style="background-color:white;" readonly>  
                                                                 </div>
                                                             </div>
 
@@ -199,12 +213,12 @@
                                                             <div class="mb-3">
                                                                 <label class="small mb-1" for="inputOtherInfo">Thông tin khác (nếu có)</label>
                                                                 <input class="form-control" id="inputOtherInfo" type="text"
-                                                                       placeholder="Thông tin khác" value="${sessionScope.BIRD.birdName}" readonly="">
+                                                                       placeholder="Thông tin khác" value="${sessionScope.BIRD.description}" style="background-color:white;" readonly="">
                                                             </div>
 
                                                             <input type="hidden" value="${sessionScope.BIRD.birdID}" />
                                                             <button class="btn btn-outline-dark" data-mdb-ripple-color="dark"
-                                                                    style="z-index: 0; " name="btAction" value="DeleteBird">
+                                                                    style="z-index: 0; background-color: white;" name="btAction" value="DeleteBird">
                                                                     Xóa Chim
                                                             </button>
                                                         </form>

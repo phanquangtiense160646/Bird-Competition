@@ -127,7 +127,7 @@
                                         <c:set var="nextIndex" value="${loop.index + 1}" />
 
                                         <div class="row g-2">
-                                            <div class="box col mb-5">
+                                            <div class="box col mb-5" style="object-fit: cover">
                                                
                                                 <img src="FE/img/${p.photoPath}"
                                                      >

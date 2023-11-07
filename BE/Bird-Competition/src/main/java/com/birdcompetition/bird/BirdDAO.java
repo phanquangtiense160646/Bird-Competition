@@ -479,8 +479,10 @@ public class BirdDAO implements Serializable {
                     int tie = rs.getInt("Tie");
                     int matchNumber = rs.getInt("MatchNumber");
                     String photoPath = rs.getString("PhotoPath");
+                    String gender = rs.getString("Gender");
+                    String description = rs.getString("Description");
 
-                    result = new BirdDTO(birdId, name, speices, point, true, ownerId, photoPath, win, lose, tie, matchNumber);
+                    result = new BirdDTO(birdId, name, speices, point, true, ownerId, photoPath, win, lose, tie, matchNumber, gender, description);
                 }
             }
         } finally {

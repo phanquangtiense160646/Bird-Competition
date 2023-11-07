@@ -75,7 +75,8 @@
                                                         
                                                     </form>
                                                 </div>
-                                                <img src="FE/img/${p.photoPath}">
+                                                 
+                                                <img src="${p.photoPath}">
                                                 <p class="birdname" style="font-weight: bold; text-align:center;">${p.birdName}</p>
                                                 
                                             </div>

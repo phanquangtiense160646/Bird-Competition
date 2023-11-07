@@ -83,16 +83,16 @@
                                             <td>${l.location}</td>
                                             <td>${l.linkMap}</td>
                                             <td>
-
+                                                <c:url var="deleteLink" value="DispatchServlet">
+                                                    <c:param name="btAction" value="DeleteLocation"/>
+                                                    <c:param name="txtID" value="${l.locationId}"/>
+                                                </c:url>
+                                                <a href="${deleteLink}">Delete</a>
                                             </td>
-                                            <c:url var="deleteLink" value="DispatchServlet">
-                                                <c:param name="btAction" value="DeleteLocation"/>
-                                                <c:param name="txtID" value="${l.locationId}"/>
-                                            </c:url>
-                                    <a href="${deleteLink}">Delete</a>
-                                    </tr>
-                                </c:forEach>
-                            </c:if>
+
+                                        </tr>
+                                    </c:forEach>
+                                </c:if>
                             </tbody>
                         </table>
                     </div>
