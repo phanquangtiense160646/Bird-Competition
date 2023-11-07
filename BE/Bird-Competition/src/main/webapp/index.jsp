@@ -107,7 +107,7 @@
                                 </div>
                                 <a href="contact_pre.jsp" class="nav-item nav-link">Liên Hệ</a>
                             </div>
-                            <a href="login" class="btn btn-primary py-md-3 px-md-5 d-none d-lg-block">Login/Signup</a>
+                            <a href="login" class="btn btn-primary py-md-3 px-md-5 d-none d-lg-block h-75">Login/Signup</a>
                         </div>
                     </nav>
                 </div>

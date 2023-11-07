@@ -1,4 +1,4 @@
- package com.birdcompetition.schedule;
+package com.birdcompetition.schedule;
 
 import com.birdcompetition.birdInContest.BirdContestDAO;
 import com.birdcompetition.birdInContest.BirdContestDTO;
@@ -9,7 +9,9 @@ import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Time;
 import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -65,8 +67,8 @@ public class ScheduleDAO implements Serializable {
                     int maxPar = rs.getInt("MaxParticipant");
                     String maxBird = rs.getString("MaxBirdJoin");
                     int currentPar = getParticipants(id);
-                    ScheduleDTO dto = new ScheduleDTO(id, name, date, locationId, status, 
-                            factor, minPoint, maxPoint, fee, userId, location, 
+                    ScheduleDTO dto = new ScheduleDTO(id, name, date, locationId, status,
+                            factor, minPoint, maxPoint, fee, userId, location,
                             contestStatus, currentPar, maxPar, maxBird);
                     scheduleList.add(dto);
                 }
@@ -142,7 +144,7 @@ public class ScheduleDAO implements Serializable {
                 //2.Creat SQL String 
                 String sql = "Select * "
                         + "From Contest, Location "
-                        + "Where Contest.LocationId = Location.LocationId and StatusOfContest = ?";
+                        + "Where Contest.LocationId = Location.LocationId and StatusOfContest = ? ";
                 //3.Create Statement Object
                 stm = con.prepareStatement(sql);
 //                stm.setInt(1, contestStatus);
@@ -166,11 +168,13 @@ public class ScheduleDAO implements Serializable {
                     String userId = rs.getString("UserName");
                     String location = rs.getString("Location");
                     int maxPar = rs.getInt("MaxParticipant");
+                    Time timeStart = rs.getTime("StartTime");
+                    Time timeEnd = rs.getTime("EndTime");
                     //                    String maxBird = rs.getString("");
 
                     ScheduleDTO dto = new ScheduleDTO(id, name, date, locationId,
                             status, factor, minPoint, maxPoint, fee, userId,
-                            location, contestStatus, maxPar, "");
+                            location, contestStatus, maxPar, "", timeStart, timeEnd);
 
                     int currentPar = getParticipants(id);
                     int checkedIn = getCheckedInParticipant(id);
@@ -247,11 +251,13 @@ public class ScheduleDAO implements Serializable {
                     String location = rs.getString("Location");
                     int contestStatus = rs.getInt("StatusOfContest");
                     int maxPar = rs.getInt("MaxParticipant");
+                    Time timeStart = rs.getTime("StartTime");
+                    Time timeEnd = rs.getTime("EndTime");
 //                    String maxBird = rs.getString("");
 
                     match = new ScheduleDTO(contestId, name, date, locationId, status,
                             factor, minPoint, maxPoint, fee, userId, location,
-                            contestStatus, maxPar, "");
+                            contestStatus, maxPar, "", timeStart, timeEnd);
                 }
             }
         } finally {
@@ -415,5 +421,24 @@ public class ScheduleDAO implements Serializable {
         LocalDate localDate = LocalDate.now();
         java.sql.Date date = Date.valueOf(localDate);
         return date;
+    }
+
+//    public double getCurrentTime() {
+//        LocalTime now = LocalTime.now();
+//        int hour = now.getHour();
+//        int minute = now.getMinute();
+//        int second = now.getSecond();
+//
+//        double timeAsInteger = hour + (double) (minute / 100.0);
+////        System.out.println("hour:" + hour);
+////        System.out.println("minute:" + minute);
+////        System.out.println("time: " + timeAsInteger);
+//        return timeAsInteger;
+//    }
+    public Time getCurrentTime() {
+        java.util.Date utilDate = new java.util.Date();
+        Time currentTime = new Time(utilDate.getTime());
+
+        return currentTime;
     }
 }

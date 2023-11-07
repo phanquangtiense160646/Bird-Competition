@@ -134,7 +134,7 @@ public class AddScheduleServlet extends HttpServlet {
                     Date sqlDate = Date.valueOf(LocalDate.parse(date));
                     int feee = Integer.parseInt(fee);
                     ScheduleDTO dto = new ScheduleDTO(0, name, sqlDate, factor, true, dfactor,
-                            min, max, feee, "manager", place, 1, maxP, maxBird);
+                            min, max, feee, "manager", place, 1, maxP, maxBird, null, null);
                     boolean result = dao.contestInsert(dto);
                     //3. Process Result
                     if (result) {

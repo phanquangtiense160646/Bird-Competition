@@ -69,21 +69,25 @@
                         </div>
                         <a href='<c:url value="contact.jsp"/>' class="nav-item nav-link">Liên Hệ</a>
                     </div>
-                    <div class="nav-item dropdown">
+                    <div class="nav-item dropdown d-inline-flex">
                         <c:set var="user" value="${sessionScope.USER}"/>
                         <c:if test="${user.getVipType() eq '1'}" >
-                            <a href="#" class="btn btn-primary nav-link dropdown-toggle" data-bs-toggle="dropdown" style="width: 150px;">${user.userName}
-                            </a>
+                            <p class="btn p-0 h-75" style="width: 70px; font-size: small; background-color: #ff9539; color: black; margin-right:5px">Bronze Member</p>
+                            <a href="#" class="btn btn-primary nav-link dropdown-toggle h-75" data-bs-toggle="dropdown" style="width: 150px;">${user.userName} </a>
                         </c:if>
                         <c:if test="${user.getVipType() eq '2'}" >
-                            <a href="#" class="btn btn-primary nav-link dropdown-toggle" data-bs-toggle="dropdown" style="width: 150px;">${user.userName}</a>
+                            <p class="btn p-0 h-75 ml-2" style="width: 70px; font-size: small; background-color: #686a6f; color: black; margin-right:5px">Silver Member</p>
+                            <a href="#" class="btn btn-primary nav-link dropdown-toggle h-75" data-bs-toggle="dropdown" style="width: 150px;">${user.userName}
+                            </a>
+
                         </c:if>
                         <c:if test="${user.getVipType() eq '3'}" >
-                            <a href="#" class="btn btn-primary nav-link dropdown-toggle" data-bs-toggle="dropdown" style="width: 150px;">${user.userName}</a>
+                            <p class="btn p-0 h-75 ml-2" style="width: 70px; font-size: small; background-color: #686a6f; color: black; margin-right:5px">Gold Member</p>
+                            <a href="#" class="btn btn-primary nav-link dropdown-toggle h-75" data-bs-toggle="dropdown" style="width: 150px;">${user.userName}</a>
 
                         </c:if>
                         <c:if test="${user.vipType == null}" >
-                            <a href="#" class="btn btn-primary nav-link dropdown-toggle" data-bs-toggle="dropdown" style="width: 150px;">${user.userName}</a>
+                            <a href="#" class="btn btn-primary nav-link dropdown-toggle h-75" data-bs-toggle="dropdown" style="width: 150px;">${user.userName}</a>
                         </c:if>
                         <div class="dropdown-menu rounded-0 m-0">
 

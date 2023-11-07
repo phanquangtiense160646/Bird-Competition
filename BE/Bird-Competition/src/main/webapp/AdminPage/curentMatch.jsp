@@ -42,6 +42,7 @@
         <!-- Begin Page Content -->
 
         <c:set var="happening" value="${sessionScope.HAPPENING}"/>
+        <c:set var="current" value="${sessionScope.CURENT_TIME}"/>
         <c:set var="msg" value="${requestScope.Message}" />
 
         <div class="container-fluid">
@@ -65,40 +66,51 @@
                                 <div class="row g-5 d-flex justify-content-center">
 
                                     <c:forEach var="scheduleDto" items="${happening}" varStatus="counter">
-
                                         <div class="col-lg-3 col-md-4 col-sm-6  btn-viewInfo">
                                             <div class="bg-dark rounded text-center py-5 px-3">
-                                                <div style="height: 400px">
+                                                <div style="height: 180px">
 
                                                     <p class="schedule-value text-uppercase text-info mb-3">Hệ số:
                                                         ${scheduleDto.factor}</p>
                                                     <p class="schedule-value text-uppercase text-light mb-3">Ngày:
                                                         ${scheduleDto.getDateFormat()}</p>
                                                     <p class="schedule-value text-uppercase text-light mb-3"> Giờ:
-                                                        2.00am - 5.00am</p>
+                                                        ${scheduleDto.timeStart} - ${scheduleDto.timeEnd} </p>
                                                     <p class="schedule-value text-uppercase text-light mb-3">Địa
                                                         điểm: ${scheduleDto.location}</p>
+                                                </div>
+                                                <div style="height: 60px">
                                                     <p class="schedule-value text-uppercase text-primary">
                                                         ${scheduleDto.name}</p>
-                                                    <p class="schedule-value text-uppercase text-secondary mb-0">
-                                                        Loại chim: Chào mào</p>
-                                                    <p class="schedule-value text-uppercase text-light mb-0">Điểm
-                                                        yêu cầu:</p>
-                                                    <p class="schedule-value text-uppercase text-light mb-3">
-                                                        ${scheduleDto.minPoint} - ${scheduleDto.maxPoint} </p>
-                                                    <p class="schedule-value text-uppercase text-secondary mb-0"
-                                                       style="display: inline;">
-                                                        số chim tham gia:
-                                                        <span class="text-uppercase text-primary mb-0"
-                                                              style="display: inline;">
-                                                            ${scheduleDto.checkedIn}</span>
-                                                    </p>
-
                                                 </div>
-                                                <form action="UpdateResultServlet" method="post">
-                                                    <input type="hidden" name="txtMatchId" value="${scheduleDto.id}">
-                                                    <input type="submit" class="btn btn-primary px-5 mt-2" value="Cập nhật kết quả">
-                                                </form>
+
+                                                <p class="schedule-value text-uppercase text-secondary mb-0">
+                                                    Loại chim: Chào mào</p>
+                                                <p class="schedule-value text-uppercase text-light mb-0">Điểm
+                                                    yêu cầu:</p>
+                                                <p class="schedule-value text-uppercase text-light mb-3">
+                                                    ${scheduleDto.minPoint} - ${scheduleDto.maxPoint} </p>
+                                                <p class="schedule-value text-uppercase text-secondary mb-0"
+                                                   style="display: inline;">
+                                                    số chim tham gia:
+                                                    <span class="text-uppercase text-primary mb-0"
+                                                          style="display: inline;">
+                                                        ${scheduleDto.checkedIn}</span>
+                                                </p>
+
+                                                <c:if test="${!scheduleDto.isAfterTime(scheduleDto.timeStart)}" >
+                                                    <input type="submit" class="btn btn-secondary px-5 mt-2" value="Chưa diễn ra">
+                                                </c:if>
+                                                <c:if test="${scheduleDto.isAfterTime(scheduleDto.timeStart) and !scheduleDto.isAfterTime(scheduleDto.timeEnd)}" >
+                                                    <input type="submit" class="btn btn-secondary px-5 mt-2" value="Đang diễn ra">
+                                                </c:if>
+                                                <c:if test="${scheduleDto.isAfterTime(scheduleDto.timeEnd)}" >
+                                                    <form action="UpdateResultServlet" method="post">
+                                                        <input type="hidden" name="txtMatchId" value="${scheduleDto.id}">
+                                                        <input type="submit" class="btn btn-primary px-5 mt-2" value="Cập nhật kết quả">
+                                                    </form>
+                                                </c:if>
+
                                             </div>
                                         </div>
                                     </c:forEach>

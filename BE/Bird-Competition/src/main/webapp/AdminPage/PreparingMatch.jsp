@@ -62,38 +62,39 @@
                         <div class="tab-content">
                             <div id="tab-1" class="tab-pane fade show p-0 active">
                                 <div class="row g-5 d-flex justify-content-center">
-                                 
+
                                     <c:forEach var="scheduleDto" items="${preparing}" varStatus="counter">
 
                                         <div class="col-lg-3 col-md-4 col-sm-6  btn-viewInfo">
                                             <div class="bg-dark rounded text-center py-5 px-3">
-                                                <div style="height: 400px">
+                                                <div style="height: 250px">
 
-                                                 
+
                                                     <p class="schedule-value text-uppercase text-light mb-3">Ngày:
                                                         ${scheduleDto.getDateFormat()}</p>
                                                     <p class="schedule-value text-uppercase text-light mb-3"> Giờ:
-                                                        2.00am - 5.00am</p>
+                                                        ${scheduleDto.timeStart} - ${scheduleDto.timeEnd} </p>
                                                     <p class="schedule-value text-uppercase text-light mb-3">Địa
                                                         điểm: ${scheduleDto.location}</p>
                                                     <p class="schedule-value text-uppercase text-primary">
                                                         ${scheduleDto.name}</p>
-                                                    <p class="schedule-value text-uppercase text-secondary mb-0">
-                                                        Loại chim: Chào mào</p>
-                                                    <p class="schedule-value text-uppercase text-light mb-0">Điểm
-                                                        yêu cầu:</p>
-                                                    <p class="schedule-value text-uppercase text-light mb-3">
-                                                        ${scheduleDto.minPoint} - ${scheduleDto.maxPoint} </p>
-                                                       <p class="schedule-value text-uppercase text-info mb-3">Hệ số:
-                                                        ${scheduleDto.factor}</p>
-                                                 
-                                                    <p class="schedule-value text-uppercase text-secondary mb-0">
-                                                        checked-in/ đã đăng kí:</p>
-                                                        <p class="text-uppercase text-primary mb-0">
-                                                             ${scheduleDto.checkedIn}/${scheduleDto.currentPar}</p>
-                                                    
                                                 </div>
-                                                     <form action="PrepareCheckInServlet" method="post">
+
+                                                <p class="schedule-value text-uppercase text-secondary mb-0">
+                                                    Loại chim: Chào mào</p>
+                                                <p class="schedule-value text-uppercase text-light mb-0">Điểm
+                                                    yêu cầu:</p>
+                                                <p class="schedule-value text-uppercase text-light mb-3">
+                                                    ${scheduleDto.minPoint} - ${scheduleDto.maxPoint} </p>
+                                                <p class="schedule-value text-uppercase text-info mb-3">Hệ số:
+                                                    ${scheduleDto.factor}</p>
+
+                                                <p class="schedule-value text-uppercase text-secondary mb-0">
+                                                    checked-in/ đã đăng kí:</p>
+                                                <p class="text-uppercase text-primary mb-0">
+                                                    ${scheduleDto.checkedIn}/${scheduleDto.currentPar}</p>
+
+                                                <form action="PrepareCheckInServlet" method="post">
                                                     <input type="hidden" name="txtMatchId" value="${scheduleDto.id}">
                                                     <input type="submit" class="btn btn-primary px-5 mt-2" value="Check-in">
                                                     <!--<a href="<c:url value="/DispatchServlet?btAction=CheckIn"/>" class="btn btn-primary px-5 mt-2">Check-in</a>-->
