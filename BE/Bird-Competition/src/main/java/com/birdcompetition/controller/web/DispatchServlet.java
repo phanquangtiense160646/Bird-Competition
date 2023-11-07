@@ -116,7 +116,8 @@ public class DispatchServlet extends HttpServlet {
                 url = "ManageFeedbackServlet";
             }else if(button.equals("DeleteFeedback")){
                 url = "DeleteFeedbackServlet";
-
+            }else if(button.equals("UpdateBird")){
+                url = "UpdateBirdProfileServlet";
             }
         } finally {
             RequestDispatcher rd = request.getRequestDispatcher(url);

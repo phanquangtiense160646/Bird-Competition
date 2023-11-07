@@ -572,4 +572,45 @@ public class BirdDAO implements Serializable {
         return result;
 
     }
+    
+    public boolean UpdateBirdProfile(String birdId, String birdName, String description)
+            throws SQLException {
+        Connection con = null;
+        PreparedStatement stm = null;
+        boolean result = false;
+        try {
+            //1.Make connection
+            con = DBHelper.getConnection();
+            if (con != null) {
+                //2. Create SQL String 
+                String sql = "UPDATE [dbo].[Bird] "
+                        + "SET NameOfBird = ?, Description = ? "
+                        + "WHERE IdBird = ? ";
+                       
+                //3. Create Statement Object
+                stm = con.prepareStatement(sql);
+                stm.setString(1, birdName);
+                stm.setString(2, description);
+                stm.setString(3, birdId);
+                
+                //4. Execute Query
+                int exercute = stm.executeUpdate();
+                //5. Process
+                if (exercute > 0) {
+                    return true;
+                }
+            }//end username and password is verified
+        }//end connection is available   
+        catch (ClassNotFoundException ex) {
+            Logger.getLogger(BirdDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }        finally {
+            if (stm != null) {
+                stm.close();
+            }
+            if (con != null) {
+                con.close();
+            }
+        }
+        return result;
+    }
 }
