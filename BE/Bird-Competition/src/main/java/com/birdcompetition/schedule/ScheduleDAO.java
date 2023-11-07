@@ -67,10 +67,13 @@ public class ScheduleDAO implements Serializable {
                     int maxPar = rs.getInt("MaxParticipant");
                     String maxBird = rs.getString("MaxBirdJoin");
                     int currentPar = getParticipants(id);
-                    ScheduleDTO dto = new ScheduleDTO(id, name, date, locationId, status,
-                            factor, minPoint, maxPoint, fee, userId, location,
-                            contestStatus, currentPar, maxPar, maxBird);
-                    scheduleList.add(dto);
+                    LocalTime sTime = rs.getTime("StartTime").toLocalTime();
+                    LocalTime eTime = rs.getTime("EndTime").toLocalTime();
+                    ScheduleDTO dto = new ScheduleDTO(id, name, date, locationId, 
+                            status, factor, minPoint, maxPoint, eTime, sTime, 
+                            fee, userId, location, contestStatus, currentPar, maxPar, 
+                            maxBird, 0);
+                    scheduleList.add(dto);  
                 }
             }
         } finally {
@@ -172,9 +175,9 @@ public class ScheduleDAO implements Serializable {
                     Time timeEnd = rs.getTime("EndTime");
                     //                    String maxBird = rs.getString("");
 
-                    ScheduleDTO dto = new ScheduleDTO(id, name, date, locationId,
-                            status, factor, minPoint, maxPoint, fee, userId,
-                            location, contestStatus, maxPar, "", timeStart, timeEnd);
+                    ScheduleDTO dto = new ScheduleDTO(id, name, date, locationId, status, factor, minPoint, maxPoint, fee, 
+                            userId, location, contestStatus, maxPar, "", timeEnd, timeEnd);
+                    
 
                     int currentPar = getParticipants(id);
                     int checkedIn = getCheckedInParticipant(id);
@@ -251,13 +254,12 @@ public class ScheduleDAO implements Serializable {
                     String location = rs.getString("Location");
                     int contestStatus = rs.getInt("StatusOfContest");
                     int maxPar = rs.getInt("MaxParticipant");
-                    Time timeStart = rs.getTime("StartTime");
-                    Time timeEnd = rs.getTime("EndTime");
-//                    String maxBird = rs.getString("");
-
+                    String maxBird = rs.getString("MaxBirdJoin");
+                    LocalTime sTime = rs.getTime("StartTime").toLocalTime();
+                    LocalTime eTime = rs.getTime("EndTime").toLocalTime();
                     match = new ScheduleDTO(contestId, name, date, locationId, status,
                             factor, minPoint, maxPoint, fee, userId, location,
-                            contestStatus, maxPar, "", timeStart, timeEnd);
+                            contestStatus, maxPar, maxBird, sTime, eTime);
                 }
             }
         } finally {
@@ -327,9 +329,10 @@ public class ScheduleDAO implements Serializable {
 
                 String sql = "Insert Into Contest("
                         + "NameOfContest, Date, LocationId, Status, Factor, MinPoint, "
-                        + "MaxPoint, MaxParticipant, ParticipatingFee, IdRule, UserName, StatusOfContest"
+                        + "MaxPoint, MaxParticipant, ParticipatingFee, IdRule, UserName, "
+                        + "StatusOfContest, MaxBirdJoin, StartTime, EndTime"
                         + ") Values("
-                        + "?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?"
+                        + "?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?"
                         + ")";
                 //3.Create Statement Object
                 stm = con.prepareStatement(sql);
@@ -345,7 +348,64 @@ public class ScheduleDAO implements Serializable {
                 stm.setString(10, "1");
                 stm.setString(11, dto.getUserId());
                 stm.setInt(12, dto.getStatusOfContest());
+                stm.setString(13, dto.getMaxBird());
+                stm.setTime(14, Time.valueOf(dto.getStartTime()));
+                stm.setTime(15, Time.valueOf(dto.getEndTime()));
+                //4.Exercute Query
+                int exercute = stm.executeUpdate();
+                //5.Process
+                if (exercute > 0) {
+                    result = true;
+                }
+                //end username and password is verified 
+            }
+        } finally {
 
+            if (stm != null) {
+                stm.close();
+            }
+            if (con != null) {
+                con.close();
+            }
+        }
+        return result;
+    }
+    public boolean contestUpdate(ScheduleDTO dto)
+            throws SQLException, ClassNotFoundException {
+        Connection con = null;
+        PreparedStatement stm = null;
+        boolean result = false;
+
+        try {
+            //1.Make connection
+            con = DBHelper.getConnection();
+            //check 
+            if (con != null) {
+                //2.Creat SQL String 
+
+                String sql = "UPDATE Contest "
+                        + "SET NameOfContest = ?, Date = ?, LocationId = ?, Status = ?, Factor = ?, MinPoint = ?, "
+                            + "MaxPoint = ?, MaxParticipant = ?, ParticipatingFee = ?, IdRule = ?, "
+                            + "UserName = ?, StatusOfContest = ?, MaxBirdJoin = ?, StartTime = ?, EndTime = ? "
+                        + "WHERE IdContest = ? ";
+                //3.Create Statement Object
+                stm = con.prepareStatement(sql);
+                stm.setString(1, dto.getName());
+                stm.setDate(2, dto.getDate());
+                stm.setString(3, dto.getLocationId());
+                stm.setBoolean(4, true);
+                stm.setDouble(5, dto.getFactor());
+                stm.setInt(6, dto.getMinPoint());
+                stm.setInt(7, dto.getMaxPoint());
+                stm.setInt(8, dto.getMaxPar());
+                stm.setInt(9, dto.getFee());
+                stm.setString(10, "1");
+                stm.setString(11, dto.getUserId());
+                stm.setInt(12, dto.getStatusOfContest());
+                stm.setString(13, dto.getMaxBird());
+                stm.setTime(14, Time.valueOf(dto.getStartTime()));
+                stm.setTime(15, Time.valueOf(dto.getEndTime()));
+                stm.setInt(16, dto.getId());
                 //4.Exercute Query
                 int exercute = stm.executeUpdate();
                 //5.Process
@@ -407,6 +467,47 @@ public class ScheduleDAO implements Serializable {
         return result;
 
     }
+    public int getParticipants()
+            throws SQLException, ClassNotFoundException {
+        Connection con = null;
+        PreparedStatement stm = null;
+        ResultSet rs = null;
+        int result = 0;
+
+        try {
+            //1.Make connection
+            con = DBHelper.getConnection();
+            //check 
+            if (con != null) {
+                //2.Creat SQL String 
+                String sql = "Select count(IdContest) as Parcipants "
+                        + "From BirdContest ";
+                        
+                //3.Create Statement Object
+                stm = con.prepareStatement(sql);
+                
+                //4.Exercute Query
+                rs = stm.executeQuery();
+
+                //5.Process
+                if (rs.next()) {
+                    result = rs.getInt("Parcipants");
+                }
+            }
+        } finally {
+            if (rs != null) {
+                rs.close();
+            }
+            if (stm != null) {
+                stm.close();
+            }
+            if (con != null) {
+                con.close();
+            }
+        }
+        return result;
+
+    }
 
     public long getDayBetween(Date fightDate) {
         LocalDate expiredDate = fightDate.toLocalDate();
@@ -416,7 +517,7 @@ public class ScheduleDAO implements Serializable {
         System.out.println("dayGap: " + dayGap);
         return dayGap;
     }
-
+    
     private Date getCurrenDay() {
         LocalDate localDate = LocalDate.now();
         java.sql.Date date = Date.valueOf(localDate);

@@ -48,6 +48,8 @@
             </p>
             <a href='<c:url value="/DispatchServlet?btAction=createSchedule"/>' class="btn btn-primary btn-user btn-block">
                 Tạo lịch</a>
+            <a href='<c:url value="/DispatchServlet?btAction=ManageSchedule&pending=1"/>' class="btn btn-primary btn-user btn-block">
+                Danh sách duyệt</a>    
             <!-- DataTales Example -->
             <div class="card shadow mb-4">
                 <div class="card-header py-3">
@@ -88,24 +90,26 @@
                                 <c:set var="scheduleData" value="${sessionScope.SCHEDULE}"/>
                                 <c:if test="${not empty scheduleData}">
                                     <c:forEach var="scheduleDto" items="${scheduleData}" varStatus="counter">
-                                        <tr>
-                                            <td>${scheduleDto.id}</td>
-                                            <td>${scheduleDto.name}</td>
-                                            <td>${scheduleDto.date}</td>
-                                            <td>${scheduleDto.location}</td>
-                                            <td>${scheduleDto.factor}</td>
-                                            <td>${scheduleDto.minPoint}</td>
-                                            <td>${scheduleDto.maxPoint}</td>
-                                            <td>${scheduleDto.maxPar}</td>
-                                            <td>${scheduleDto.fee}</td>
-                                            <td>
-                                                <c:if test="${scheduleDto.statusOfContest == 1}">Sắp diễn ra</c:if>
-                                                <c:if test="${scheduleDto.statusOfContest == 2}">Hết hạn đăng kí</c:if>
-                                                <c:if test="${scheduleDto.statusOfContest == 3}">Đang diễn ra</c:if>
-                                                <c:if test="${scheduleDto.statusOfContest == 4}">Đã diễn ra</c:if>
-                                                </td>
-
+                                        <c:if test="${scheduleDto.statusOfContest != 5 && scheduleDto.statusOfContest != 0}">
+                                            <tr>
+                                                <td>${scheduleDto.id}</td>
+                                                <td>${scheduleDto.name}</td>
+                                                <td>${scheduleDto.date}</td>
+                                                <td>${scheduleDto.location}</td>
+                                                <td>${scheduleDto.factor}</td>
+                                                <td>${scheduleDto.minPoint}</td>
+                                                <td>${scheduleDto.maxPoint}</td>
+                                                <td>${scheduleDto.maxPar}</td>
+                                                <td>${scheduleDto.fee}</td>
+                                                <td>
+                                                    <c:if test="${scheduleDto.statusOfContest == 1}">Sắp diễn ra</c:if>
+                                                    <c:if test="${scheduleDto.statusOfContest == 2}">Hết hạn đăng kí</c:if>
+                                                    <c:if test="${scheduleDto.statusOfContest == 3}">Đang diễn ra</c:if>
+                                                    <c:if test="${scheduleDto.statusOfContest == 4}">Đã diễn ra</c:if>
+                                               </td>
                                             </tr>
+                                        </c:if>
+
                                     </c:forEach>
                                 </c:if>
                             </tbody>

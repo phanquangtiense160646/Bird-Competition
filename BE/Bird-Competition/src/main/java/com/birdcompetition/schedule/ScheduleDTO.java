@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package com.birdcompetition.schedule;
 
 import java.io.Serializable;
@@ -23,6 +19,7 @@ public class ScheduleDTO implements Serializable {
     private boolean status;
     private double factor;
     private int minPoint, maxPoint;
+    private LocalTime endTime, startTime;
     private int fee;
     private String userId;
     private String location;
@@ -37,9 +34,10 @@ public class ScheduleDTO implements Serializable {
     public ScheduleDTO() {
     }
 
-    public ScheduleDTO(int id, String name, Date date, String locationId,
-            boolean status, double factor, int minPoint, int maxPoint, int fee,
-            String userId, String location, int statusOfContest, int currentPar, int maxPar, String maxBird) {
+    public ScheduleDTO(int id, String name, Date date, String locationId, 
+            boolean status, double factor, int minPoint, int maxPoint, LocalTime endTime, 
+            LocalTime startTime, int fee, String userId, String location, int statusOfContest, 
+            int currentPar, int maxPar, String maxBird, int checkedIn) {
         this.id = id;
         this.name = name;
         this.date = date;
@@ -48,6 +46,8 @@ public class ScheduleDTO implements Serializable {
         this.factor = factor;
         this.minPoint = minPoint;
         this.maxPoint = maxPoint;
+        this.endTime = endTime;
+        this.startTime = startTime;
         this.fee = fee;
         this.userId = userId;
         this.location = location;
@@ -59,8 +59,8 @@ public class ScheduleDTO implements Serializable {
     }
 
     public ScheduleDTO(int id, String name, Date date, String locationId,
-            boolean status, double factor, int minPoint, int maxPoint,
-            int fee, String userId, String location, int statusOfContest, int maxPar, String maxBird, Time startTime, Time endTime) {
+            boolean status, double factor, int minPoint, int maxPoint, int fee,
+            String userId, String location, int statusOfContest, int maxPar, String maxBird,Time startTime, Time endTime) {
         this.id = id;
         this.name = name;
         this.date = date;
@@ -76,9 +76,49 @@ public class ScheduleDTO implements Serializable {
         this.maxPar = maxPar;
         this.maxBird = maxBird;
         this.checkedIn = 0;
-        this.timeStart = startTime;
+         this.timeStart = startTime;
         this.timeEnd = endTime;
+    }
 
+    public ScheduleDTO(int id, String name, Date date, String locationId,
+            boolean status, double factor, int minPoint, int maxPoint,
+            int fee, String userId, String location, int statusOfContest, int maxPar, 
+            String maxBird, LocalTime start, LocalTime end) {
+        this.id = id;
+        this.name = name;
+        this.date = date;
+        this.locationId = locationId;
+        this.status = status;
+        this.factor = factor;
+        this.minPoint = minPoint;
+        this.maxPoint = maxPoint;
+        this.fee = fee;
+        this.userId = userId;
+        this.location = location;
+        this.statusOfContest = statusOfContest;
+        this.maxPar = maxPar;
+        this.maxBird = maxBird;
+        this.startTime = start;
+        this.endTime = end;
+        this.checkedIn = 0;
+       
+
+    }
+
+    public LocalTime getEndTime() {
+        return endTime;
+    }
+
+    public void setEndTime(LocalTime endTime) {
+        this.endTime = endTime;
+    }
+
+    public LocalTime getStartTime() {
+        return startTime;
+    }
+
+    public void setStartTime(LocalTime startTime) {
+        this.startTime = startTime;
     }
 
     public int getCheckedIn() {

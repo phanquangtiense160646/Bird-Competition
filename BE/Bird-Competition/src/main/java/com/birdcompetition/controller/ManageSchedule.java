@@ -41,7 +41,11 @@ public class ManageSchedule extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         String url = "AdminPage/manageSchedule.jsp";
+        String pending = request.getParameter("pending");
         try {
+            if (pending != null && pending.equals("1")) {
+                url = "AdminPage/pendingSchedule.jsp";
+            }
             HttpSession session = request.getSession();
             ScheduleDAO scheduleDao = new ScheduleDAO();
             scheduleDao.getSchedule();

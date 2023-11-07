@@ -20,8 +20,26 @@ public class ScheduleError implements Serializable{
     private String maxBirdInContestErr;
     private String feeErr;
     private String placeErr;
+    private String sTimeErr;
+    private String eTimeErr;
 
     public ScheduleError() {
+    }
+
+    public String getsTimeErr() {
+        return sTimeErr;
+    }
+
+    public void setsTimeErr(String sTimeErr) {
+        this.sTimeErr = sTimeErr;
+    }
+
+    public String geteTimeErr() {
+        return eTimeErr;
+    }
+
+    public void seteTimeErr(String eTimeErr) {
+        this.eTimeErr = eTimeErr;
     }
     
     public String getDateErr() {

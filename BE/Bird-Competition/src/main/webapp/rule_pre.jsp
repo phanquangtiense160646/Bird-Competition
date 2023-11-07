@@ -93,11 +93,11 @@
                                     <div class="dropdown-menu rounded-0 m-0">
                                         <!-- <a href="blog.html" class="dropdown-item">News</a> -->
                                         <a href="#"class="dropdown-item">Luật thi đấu</a>
-        <!--                            <a href='<c:url value="/DispatchServlet?btAction=FeedBack"/>' class="dropdown-item">Feedback</a>-->
+                                        <a href="feedback_pre.jsp" class="dropdown-item">Feedback</a>
                                         <a href="News_pre.jsp" class="dropdown-item">Tin Tức</a>
                                     </div>
                                 </div>
-                                        <a href="contact.jsp" class="nav-item nav-link">Liên Hệ</a>
+                                <a href="contact_pre.jsp" class="nav-item nav-link">Liên Hệ</a>
                             </div>
                             <div class="nav-item dropdown">
 
@@ -111,21 +111,19 @@
         </div>
         <!-- Header End -->
 
-        <!-- Hero Start -->
+       <!-- Hero Start -->
         <div class="container-fluid bg-primary p-5 bg-hero mb-2">
             <div class="row py-5">
                 <div class="col-12 text-center">
                     <h1 class="display-flex text-uppercase text-white mb-md-4">Luật thi đấu</h1>
 
                     <ul class="nav nav-pills justify-content-between">
-                        <li class="nav-item w-25">
+                        <li class="nav-item w-50">
                             <a class="nav-link btn btn-primary py-md-3 px-md-5 me-3 active" data-bs-toggle="pill" href="#pills-1">Thi Hót</a>
                         </li>
-                        <li class="nav-item w-25">
-                            <a class="nav-link btn btn-primary py-md-3 px-md-5 me-3" data-bs-toggle="pill" href="#pills-2">Thi Chọi</a>
-                        </li>
-                        <li class="nav-item w-25">
-                            <a class="nav-link btn btn-primary py-md-3 px-md-5 me-3" data-bs-toggle="pill" href="#pills-3">Cách tính điểm</a>
+                
+                        <li class="nav-item w-50">
+                            <a class="nav-link btn btn-primary py-md-3 px-md-5 me-3" data-bs-toggle="pill" href="#pills-2">Cách tính điểm</a>
                         </li>
                     </ul>
                 </div>
@@ -192,30 +190,10 @@
                 </div>
                 <div class="tab-pane fade" id="pills-2">
                     <div class="mb-5">
-                        <h1 class="text-uppercase mb-4">Luật thi đấu Họa Mi - thể thức thi Chọi</h1>
+                        <h1 class="text-uppercase mb-4">Cách tính điểm</h1>
 
-                        <p class="text-black"> 1- Chim được đặt lên bàn chọi, mở cửa lồng áp sát vào cửa công,đánh nhau qua song xuốt 
-                            Trọng tài ( căn cứ vào số thứ tự đã bốc thăm ) để gọi tên chủ chim và số thứ tự
-                            2- Trận chọi được bắt đầu từ khi tấm ngăn chắn cửa công được Trọng tài phụ rút lên.
-                            3- Khi 2 con Chim va vào nhau để chọi thì Trọng tài cho đồng hồ chạy, cứ 1 vòng phút thì tính là 100 điểm.
-                            4- Khi 2 con chim đang đánh và 1 trong 2 con lơi ra không còn chạm vào nhau nữa thì đồng ngắt,chạm vào chọi thì đồng hồ lại chạy.
-                            5- Khi 2 con chim chỉ đánh đòn mỏ DÍNH BẤT KÌ BỘ PHẬN THÂN THỂ NÀO VỚI NHAU thì Trọng tài để đồng hồ tự chạy tính điểm.
-                            6- Khi 2 con không chịu giáp chọi , Trọng tài sẽ đếm con nào nhảy xuống cửa công trước 4 lần ( chưa chạm mỏ ) hoặc 3 lần ( đã chạm mỏ )được ở lại. số lần nhảy xuống không chính diện và ko sát cửa công thì không được tính.
-                            7- Nếu giáp choi hoặc choi rồi lơi ra , 2 con nhảy lên cầu hót , sau 15 giây không con nào xuống cửa công, Trọng tài sẽ dõng dạc đếm từ 1 đến 20, trong thời gian đó con nào xuống cửa công trước con đó được ở lại.
-                            8- Hai con chim đang chọi, một con lơi ra không chịu vào chọi hoặc lên cầu hót, con kia vẫn lùng sục trước cửa công sau 15 giây, Tròng tài sẽ đếm từ 1 đến 20 mà con lơi ra ko chịu vào chọi thì con đứng trước cửa công sẽ được ở lại.
-                            9- Khi 2 con chim không chịu chọi hoặc chọi rồi lơi ra, lên cầu hót. Trọng tài đếm số lần nhảy xuống cửa công hoặc đếm từ 1 đến 20 mà vẫn không có con nào xuống chọi, Trọng tài sẽ trao đổi với 2 chủ chim nếu 1 trong 2 chủ chim nhường thì thôi. Ngược lại k ai chịu ,Trọng tài sẽ ra lệnh rút then mở khóa cửa công để thông lồng chọn con chim thắng được ở lại.khi thông lồng 2 con chim vò nhau,đồng hồ chạy tự động!con nào thắng ở lại!
-                            Nếu 2 con cùng k chọi.nếu là cặp số 1 và số 2. Cả 2 chủ chim k chịu thông lồng phân thắng bại thì cả 2 cặp chim đều phải hạ.nhường chỗ cho cặp 3-4!
-                            Nếu cặp số 1 đánh với cặp số 2 ,nếu thắng thì 1 trong 2 con sẽ ở lại tiếp con số 3,trong trường hợp này nếu cả 2 con cùng k xuống thì sẽ loại cặp số 3 vì thành tích cặp số 1 hoặc cặp số 2 đang ở trên bàn hơn vì đã đuổi dc 1 con!
-                            10- 2 con chim đang chọi, sau khi Trọng tài áp dụng mọi điều luật ( đếm số lần, đếm từ 1 đến 20 mà vẫn không có kết quả thì con nào có nhiều điểm hơn và thành tích hơn con đó được ở lại. Nếu 2 con bằng số điểm nhau thì con có số lần chiến thắng chim khác ở trong sới chọi nhiều hơn được ở lại. Nếu tất cả đều = nhau thì bốc thăm.
-                            11- 2 con chim đang chọi, 1 con lên cầu ăn hoặc uống thì Trọng tài không tính vào thời gian chọi kể cả đếm.
-                            Nếu 1 con lên cầu ăn,con còn lại vẫn chờ cửa và k lên cầu ăn trọng tài cũng không được đếm và cũng k dc tính vào thời gian chọi
-                            Nếu 2 con cùng lên cầu ăn. 2 con đều ngừng ăn và lơi khỏi cóng cám và nước thì bắt đầu tính luật như bình thường
-                            Nếu thời gian đang đếm 1-15 chim không ăn uống. Nhưng chim lại uống hoặc ăn thì phải dừng. Ngừng ăn thì lại đếm nối tiếp đến khi đủ 15
-                            Nếu cả 2 con ăn xong,con nào xuống cửa trước trong khi con kia không xuống,trọng tài có thể đếm 1-15 hoặc con kia đảo cầu 3 lần,con đảo cầu thắng.
-                            12- khi 2 con chim đang chọi, một con lách cửa công sang lồng con kia, thời gian chọi vẫn được tính điểm.
-                            14- 2 con chim chọi, con nào thắng ở lại sẽ được cộng thêm 1 điểm.
-                            15-2 con chim đang chọi,1 con giãn ra lên cầu trước,con kia lên cầu sau và cả 2 con đều không xuống nữa thì trọng tài sẽ xử(con lên cầu sau thắng)
-                            16- Trong hội thi, còn nào có số điểm cộng dồn cao nhất sẽ được giải nhất sau đó nhì và 3. Sau giải ba là giải Trung Cách ( có thể thứ tự từ trung cách 1 đến 4 tùy theo độ lớn của giải ), còn chim ở lại cuối cùng không còn chim đánh tiếp được nhận giải điện quân.
+                        <p class="text-black">
+                          cách tính điểm
                         </p>
 
 
