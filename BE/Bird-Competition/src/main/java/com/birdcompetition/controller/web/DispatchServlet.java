@@ -105,7 +105,7 @@ public class DispatchServlet extends HttpServlet {
             } else if (button.equals("ManageLocation")){
                 url = "GetLocationList";
             } else if(button.equals("DeleteLocation")){
-                url = "DeleteLocationServlet";
+                url = "DeleteLLocationServlet";
             } else if (button.equals("editSchedule")) {
                 url = "UpdateSchedule";
             } else if (button.equals("pendingSchedule")) {
@@ -116,7 +116,8 @@ public class DispatchServlet extends HttpServlet {
                 url = "ManageFeedbackServlet";
             }else if(button.equals("DeleteFeedback")){
                 url = "DeleteFeedbackServlet";
-
+            }else if(button.equals("UpdateBird")){
+                url = "UpdateBirdProfileServlet";
             }
         } finally {
             RequestDispatcher rd = request.getRequestDispatcher(url);

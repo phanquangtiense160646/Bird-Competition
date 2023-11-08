@@ -63,7 +63,7 @@
             <div class="container py-5 h-100">
                 <div class="row d-flex justify-content-center align-items-center h-100 ">
                     <div class="col col-lg-9 col-xl-7">
-                        <div class="card" style="background-image: url('FE/img/chaomao-bg (1).jpg'); background-repeat: no-repeat;
+                        <div class="card" style="background-image: url('FE/img/formbg.jpg'); background-repeat: no-repeat;
                                                                             background-size: cover;">
                             
                             
@@ -81,7 +81,7 @@
 
                                         <hr class="mt-0 mb-4">
                                         <div class="row">
-                                            <div class="col-xl-12 border-bottom">
+                                            <div class="col-xl-12">
                                                 <!-- Account details card-->
                                                 <div class="card mb-4 " style="background-color: rgba(0, 0, 0, 0.4);">
                                                     <div class="card-header text-white">New Bird Details</div>
@@ -164,9 +164,9 @@
                                                             <!-- Save changes button-->
 
                                                             <div class="d-flex justify-content-between">
-                                                                <button class="btn btn-outline-light text-white" data-mdb-ripple-color="dark" onclick="customNavigate()">
+<!--                                                                <button class="btn btn-outline-light text-white" data-mdb-ripple-color="dark">
                                                                     Back
-                                                                </button>
+                                                                </button>-->
 
                                                                 <script>
                                                                     function customNavigate() {

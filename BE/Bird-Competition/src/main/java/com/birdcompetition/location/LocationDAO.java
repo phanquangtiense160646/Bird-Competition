@@ -31,11 +31,12 @@ public class LocationDAO {
             con = DBHelper.getConnection();
             if (con != null) {
                 //2. Create SQL String 
-                String sql = "INSERT INTO Location (Location, Status) VALUES (?, 'true')";
+                String sql = "INSERT INTO Location (Location, LinkMap, Status) VALUES (?, ?, 'true')";
                 //3. Create Statement Object
                 stm = con.prepareStatement(sql);
 
                 stm.setString(1, location.getLocation());
+                stm.setString(2, location.getLinkMap());
                 
                 
 
@@ -86,13 +87,14 @@ public class LocationDAO {
                 rs = stm.executeQuery();
                 //5. Process
                 while (rs.next()) {
-                    int id = rs.getInt("LocationID");
+                    int id = rs.getInt("LocationId");
                     String location = rs.getString("Location");
-                    String linkmap = rs.getString("MapLink");
+                    String linkmap = rs.getString("LinkMap");
+                    
 
 //                    String trainer = rs.getString("m.FullName");                     
                     //5.1.2 add data to list
-                    LocationDTO dto = new LocationDTO(location, linkmap);
+                    LocationDTO dto = new LocationDTO(id, location, linkmap);
 //                    System.out.println(dto.toString());
                     if (this.locationList == null) {
                         this.locationList = new ArrayList<>();

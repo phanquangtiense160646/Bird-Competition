@@ -4,11 +4,14 @@
  */
 package com.birdcompetition.controller.web;
 
-import com.birdcompetition.location.LocationDAO;
-import com.birdcompetition.location.LocationDTO;
+import com.birdcompetition.bird.BirdDAO;
+import com.birdcompetition.bird.BirdDTO;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.sql.SQLException;
-import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -20,8 +23,8 @@ import javax.servlet.http.HttpSession;
  *
  * @author admin
  */
-@WebServlet(name = "GetLocationList", urlPatterns = {"/GetLocationList"})
-public class GetLocationList extends HttpServlet {
+@WebServlet(name = "UpdateBirdProfileServlet", urlPatterns = {"/UpdateBirdProfileServlet"})
+public class UpdateBirdProfileServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -35,30 +38,35 @@ public class GetLocationList extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        String url = "";
-try {
-            HttpSession session = request.getSession();
-            List<LocationDTO> locationList;
-
-            LocationDAO dao = new LocationDAO();
+        String id = request.getParameter("txtBirdID");
+        String name = request.getParameter("txtName");
+        String description = request.getParameter("txtDescription");
+        String url = "biloi.html";
+        try{
+           
+            BirdDAO dao = new BirdDAO();
             
-            dao.getAllLocation();
-            locationList = dao.getLocationList();
-            session.setAttribute("LOCATION", locationList);
-            url = "manageLocation.jsp";
+            boolean result = dao.UpdateBirdProfile(id, name, description);
+            
+            if (result) {
+                HttpSession session = request.getSession();
+                BirdDTO tempresult = dao.getBirdInfo(id);
+                session.setAttribute("BIRD", tempresult);
+                request.setAttribute("msg", "success");
+                url = "birdprofile.jsp";
+            }
+            
+           
+
         } catch (SQLException ex) {
-//            log("ScheduleServlet_SQL: " + ex.getMessage());
-            ex.printStackTrace();
+            Logger.getLogger(UpdateBirdProfileServlet.class.getName()).log(Level.SEVERE, null, ex);
         } catch (ClassNotFoundException ex) {
-            log("ScheduleServlet_ClassNotFound: " + ex.getMessage());
-        } finally {
-            response.sendRedirect(url);
-//            RequestDispatcher rd = request.getRequestDispatcher(url);
-//            rd.forward(request, response);
+            Logger.getLogger(UpdateBirdProfileServlet.class.getName()).log(Level.SEVERE, null, ex);
+        }finally{
+             RequestDispatcher rd = request.getRequestDispatcher(url);
+             rd.forward(request, response);
         }
-
     }
-
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.

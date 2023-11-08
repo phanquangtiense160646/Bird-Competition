@@ -44,7 +44,7 @@
                     <div class="text-center">
                         <h1 class="h4 text-gray-900 mb-4">Thêm địa điểm thi đấu</h1>
                     </div>
-                    <form action='<c:url value="/DispatchServlet"/>'>
+                    <form action='<c:url value="/DispatchServlet?btAction=AddLocation"/>'>
                         
                         <div class="form-group">
                             <label class="small mb-1">Địa điểm chi tiết:</label>
@@ -64,7 +64,7 @@
                         </div>
                         <div class="form-group">
                             <label class="small mb-1">Thông tin thêm:</label>
-                            <input type="number" class="form-control form-control-user"
+                            <input type="text" class="form-control form-control-user"
                                    placeholder="Thông tin thêm" value="" name="description">
                            
                         </div>

@@ -103,6 +103,7 @@ public class UpdateSchedule extends HttpServlet {
                     errors.setMinPointErr("Min point không được < 0");
                     errors.setMaxPointErr("Max point không được < 0");
                 } else if (max - min > 300) {
+                    foundErr = true;
                     errors.setMinPointErr("Min point - Max point chêch lệch < 300");
                     errors.setMaxPointErr("Min point - Max point chêch lệch < 300");
                 }

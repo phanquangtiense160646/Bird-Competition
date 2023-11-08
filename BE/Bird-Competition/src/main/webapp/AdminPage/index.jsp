@@ -30,7 +30,7 @@
 
     </head>
 
-    <body id="page-top">
+    <body id="page-top" style="height: 600px;">
 
         <jsp:include page="Menu.jsp"/>
 
@@ -59,10 +59,10 @@
                                     <div class="h5 mb-0 font-weight-bold text-gray-800">
                                         <c:set var="total" value="${requestScope.TOTAL}"/>
                                         <c:if test="${ empty total}">
-                                            Rong
+                                            Empty
                                         </c:if>
                                         <c:if test="${not empty total}">
-                                            <p>${total}</p>
+                                            <p>${total/1000}00.000</p>
                                         </c:if>
 
                                     </div>
@@ -87,10 +87,10 @@
                                     <div class="h5 mb-0 font-weight-bold text-gray-800">
                                         <c:set var="total" value="${requestScope.REAL_PROFIT}"/>
                                         <c:if test="${ empty total}">
-                                            Rong
+                                            Empty
                                         </c:if>
                                         <c:if test="${not empty total}">
-                                            <p>${total}</p>
+                                            <p>${total/1000}00.000</p>
                                         </c:if>
                                     </div>
                                 </div>
@@ -240,16 +240,16 @@
 
             <!-- Content Row -->
 
-            <div class="row">
+<!--            <div class="row">
 
-                <!-- Area Chart -->
+                 Area Chart 
                 <div class="col-xl-8 col-lg-7">
                     <div class="card shadow mb-4">
-                        <!-- Card Header - Dropdown -->
+                         Card Header - Dropdown 
                         <div
                             class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
                             <h6 class="m-0 font-weight-bold text-primary">Earnings Overview</h6>
-                            <!--                            <div class="dropdown no-arrow">
+                                                        <div class="dropdown no-arrow">
                                                             <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
                                                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                                                 <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
@@ -262,9 +262,9 @@
                                                                 <div class="dropdown-divider"></div>
                                                                 <a class="dropdown-item" href="#">Something else here</a>
                                                             </div>
-                                                        </div>-->
+                                                        </div>
                         </div>
-                        <!-- Card Body -->
+                         Card Body 
                         <div class="card-body">
                             <div class="chart-area">
                                 <canvas id="myAreaChart"></canvas>
@@ -273,10 +273,10 @@
                     </div>
                 </div>
 
-                <!-- Pie Chart -->
+                 Pie Chart 
                 <div class="col-xl-4 col-lg-5">
                     <div class="card shadow mb-4">
-                        <!-- Card Header - Dropdown -->
+                         Card Header - Dropdown 
                         <div
                             class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
                             <h6 class="m-0 font-weight-bold text-primary">Revenue Sources</h6>
@@ -295,7 +295,7 @@
                                 </div>
                             </div>
                         </div>
-                        <!-- Card Body -->
+                         Card Body 
                         <div class="card-body">
                             <div class="chart-pie pt-4 pb-2">
                                 <canvas id="myPieChart"></canvas>
@@ -316,11 +316,11 @@
                 </div>
             </div>
 
-            <!-- Content Row -->
+             Content Row 
             <div class="row">
 
-                <!-- Content Column -->
-                <div class="col-lg-6 mb-4">
+                 Content Column 
+                <div class="col-lg-6 mb-4">-->
 
                     <!-- Project Card Example -->
                     <!--                    <div class="card shadow mb-4">
@@ -429,9 +429,9 @@
                                             </div>
                                         </div>-->
 
-                </div>
+<!--                </div>
 
-                <div class="col-lg-6 mb-4">
+                <div class="col-lg-6 mb-4">-->
 
                     <!-- Illustrations -->
                     <!--                    <div class="card shadow mb-4">
@@ -465,24 +465,24 @@
                                                     Bootstrap framework, especially the utility classes.</p>
                                             </div>
                                         </div>-->
-
+<!--
                 </div>
             </div>
 
         </div>
-        <!-- /.container-fluid -->
+         /.container-fluid 
 
-    </div>
+    </div>-->
     <!-- End of Main Content -->
 
     <!-- Footer -->
-    <footer class="sticky-footer bg-white">
+<!--    <footer class="sticky-footer bg-white">
         <div class="container my-auto">
             <div class="copyright text-center my-auto">
                 <span>Copyright &copy; Your Website 2021</span>
             </div>
         </div>
-    </footer>
+    </footer>-->
     <!-- End of Footer -->
 
 </div>

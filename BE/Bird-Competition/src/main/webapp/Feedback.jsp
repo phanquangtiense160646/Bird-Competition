@@ -10,7 +10,7 @@
 
     <!-- Favicon -->
     <link href="FE/img/favicon.ico" rel="icon">
-
+<script src="https://kit.fontawesome.com/96a8e8f111.js" crossorigin="anonymous"></script>
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Rubik&display=swap" rel="stylesheet"> 
@@ -96,7 +96,7 @@
     <div class="row g-0, d-flex justify-content-center" id="feedback">
         <div class="col-lg-6">
             <div class="bg-dark p-5">
-                <form action="AddFeedbackServlet" method="post">
+                <form action="AddFeedbackServlet" method="get">
                   
                     <div style="text-align: center">
                         <h2 style="color: white"  >Nhập Phản Hồi Của Bạn Cho Chúng Tôi</h2>

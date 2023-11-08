@@ -7,7 +7,7 @@ package com.birdcompetition.controller.web;
 import com.birdcompetition.location.LocationDAO;
 import com.birdcompetition.location.LocationDTO;
 import java.io.IOException;
-import java.io.PrintWriter;
+
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -18,6 +18,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import java.util.List;
+import javax.servlet.RequestDispatcher;
 
 /**
  *
@@ -39,7 +41,7 @@ public class DeleteLLocationServlet extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         String id = request.getParameter("txtID");
-        String url = "biloi.html";
+        String url = "AdminPage/manageLocation.jsp";
         try {
             //1. call method
             //1.1. new DAO
@@ -49,13 +51,11 @@ public class DeleteLLocationServlet extends HttpServlet {
             
             //2. process Result
             if (result) {
-                //2.1 call the search function again using URL Rewriting
-                HttpSession session = request.getSession();
-            java.util.List<LocationDTO> locationList;
+            HttpSession session = request.getSession();
+            List<LocationDTO> locationList;
             dao.getAllLocation();
             locationList = dao.getLocationList();
             session.setAttribute("LOCATION", locationList);
-                url = "showallbirds.jsp";
                 //2.2. go to error page
             }//end delete action is successful
         } catch (SQLException ex) {
@@ -65,7 +65,8 @@ public class DeleteLLocationServlet extends HttpServlet {
         } catch (NamingException ex) {
             Logger.getLogger(DeleteLLocationServlet.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
-            response.sendRedirect(url);
+            RequestDispatcher rd = request.getRequestDispatcher(url);
+            rd.forward(request, response);
         }
     }
 

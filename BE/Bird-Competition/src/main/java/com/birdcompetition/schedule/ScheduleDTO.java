@@ -2,6 +2,7 @@ package com.birdcompetition.schedule;
 
 import java.io.Serializable;
 import java.sql.Date;
+import java.sql.Time;
 import java.text.SimpleDateFormat;
 import java.time.LocalTime;
 
@@ -27,6 +28,8 @@ public class ScheduleDTO implements Serializable {
     private int maxPar;
     private String maxBird;
     private int checkedIn;
+    private Time timeStart;
+    private Time timeEnd;
 
     public ScheduleDTO() {
     }
@@ -57,7 +60,7 @@ public class ScheduleDTO implements Serializable {
 
     public ScheduleDTO(int id, String name, Date date, String locationId,
             boolean status, double factor, int minPoint, int maxPoint, int fee,
-            String userId, String location, int statusOfContest, int currentPar, int maxPar, String maxBird) {
+            String userId, String location, int statusOfContest, int maxPar, String maxBird,Time startTime, Time endTime) {
         this.id = id;
         this.name = name;
         this.date = date;
@@ -70,10 +73,11 @@ public class ScheduleDTO implements Serializable {
         this.userId = userId;
         this.location = location;
         this.statusOfContest = statusOfContest;
-        this.currentPar = currentPar;
         this.maxPar = maxPar;
         this.maxBird = maxBird;
         this.checkedIn = 0;
+         this.timeStart = startTime;
+        this.timeEnd = endTime;
     }
 
     public ScheduleDTO(int id, String name, Date date, String locationId,
@@ -97,6 +101,7 @@ public class ScheduleDTO implements Serializable {
         this.startTime = start;
         this.endTime = end;
         this.checkedIn = 0;
+       
 
     }
 
@@ -235,6 +240,22 @@ public class ScheduleDTO implements Serializable {
         return fee;
     }
 
+    public Time getTimeStart() {
+        return timeStart;
+    }
+
+    public void setTimeStart(Time timeStart) {
+        this.timeStart = timeStart;
+    }
+
+    public Time getTimeEnd() {
+        return timeEnd;
+    }
+
+    public void setTimeEnd(Time timeEnd) {
+        this.timeEnd = timeEnd;
+    }
+
     public String getBronzeFee() {
         return String.format("%.0f", fee - fee * 0.1);
     }
@@ -265,6 +286,29 @@ public class ScheduleDTO implements Serializable {
 
     public void setLocation(String location) {
         this.location = location;
+    }
+
+    private Time getCurrentTime() {
+        java.util.Date utilDate = new java.util.Date();
+        Time currentTime = new Time(utilDate.getTime());
+
+        return currentTime;
+    }
+
+    public boolean isAfterTime(Time timeEnd) {
+        LocalTime currentTime = getCurrentTime().toLocalTime();
+        LocalTime comparisonTime = timeEnd.toLocalTime();
+
+        boolean isBefore = currentTime.isAfter(comparisonTime);
+        return isBefore;
+    }
+    
+    public boolean isAfterTime(LocalTime timeEnd) {
+        LocalTime currentTime = getCurrentTime().toLocalTime();
+//        LocalTime comparisonTime = timeEnd.toLocalTime();
+
+        boolean isBefore = currentTime.isAfter(timeEnd);
+        return isBefore;
     }
 
     @Override

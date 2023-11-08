@@ -34,6 +34,7 @@ public class ContestDTO implements Serializable {
     private String checkInCode;
     private int currentPar;
     private int maxPar;
+    private String linkMap;
 
   
 
@@ -54,6 +55,14 @@ public class ContestDTO implements Serializable {
 
     public void setMaxPar(int maxPar) {
         this.maxPar = maxPar;
+    }
+
+    public String getLinkMap() {
+        return linkMap;
+    }
+
+    public void setLinkMap(String linkMap) {
+        this.linkMap = linkMap;
     }
 
    
@@ -89,7 +98,7 @@ public class ContestDTO implements Serializable {
     public ContestDTO(String idContest, String nameOfContest, String date, 
             String locationId, boolean status, double factor, int minPoint, 
             int maxPoint, double participatingFee, String idBird, int beforePoint, 
-            int afterPoint, String location, String nameOfBird, String species, String checkInCode, int statusOfContest, int currentPar, int maxPar ) {
+            int afterPoint, String location, String nameOfBird, String species, String checkInCode, int statusOfContest, int currentPar, int maxPar, String linkMap) {
         this.idContest = idContest;
         this.nameOfContest = nameOfContest;
         this.date = date;
@@ -109,6 +118,7 @@ public class ContestDTO implements Serializable {
         this.statusOfContest = statusOfContest;
         this.currentPar = currentPar;
         this.maxPar = maxPar;
+        this.linkMap = linkMap;
         
     }
 
