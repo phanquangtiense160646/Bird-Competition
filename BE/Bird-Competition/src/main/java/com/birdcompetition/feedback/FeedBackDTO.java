@@ -16,8 +16,6 @@ public class FeedBackDTO implements Serializable{
     private int IdFeedback;
     private String IdMember;
     private String Description;
-    
-  
 
     public FeedBackDTO() {
     }

@@ -1,11 +1,3 @@
-<<<<<<< HEAD
-<%-- Document : Menu.jsp Created on : Oct 27, 2023, 11:18:58 PM Author : Danh --%>
-    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-        <%@page contentType="text/html" pageEncoding="UTF-8" %>
-            <!DOCTYPE html>
-            <!-- Page Wrapper -->
-            <div id="wrapper">
-=======
 <%-- 
     Document   : Menu.jsp
     Created on : Oct 27, 2023, 11:18:58 PM
@@ -17,19 +9,12 @@
 <!-- Page Wrapper -->
 <c:set var="user" value="${sessionScope.USER}"/>
 <div id="wrapper">
->>>>>>> 8adada0e4acd1f1a25b890d13401cf9bccb44119
 
                 <!-- Sidebar -->
                 <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
 
-                    <!-- Sidebar - Brand -->
-                    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="indexAdmin.html">
-                        <div class="sidebar-brand-icon rotate-n-15">
-                            <i class="fas fa-laugh-wink"></i>
-                        </div>
-                        <div class="sidebar-brand-text mx-3">BirdFighter Admin <sup></sup></div>
-                    </a>
+                    
 
         <!-- Sidebar - Brand -->
         <a class="sidebar-brand d-flex align-items-center justify-content-center" href='<c:url value="/DispatchServlet?btAction=Dashboard"/>'>

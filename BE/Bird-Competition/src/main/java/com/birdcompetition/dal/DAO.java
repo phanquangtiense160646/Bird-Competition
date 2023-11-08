@@ -29,8 +29,9 @@ public class DAO extends DBHelper{
         
     public User checkLogin(String username, String password)
             throws SQLException, ClassNotFoundException {
-
-
+        Connection con = null;
+        PreparedStatement stm = null;
+        ResultSet rs = null;
 //        boolean result = false;
         User result = null;
 
@@ -40,7 +41,7 @@ public class DAO extends DBHelper{
             //check 
             if (con != null) {
                 //2.Creat SQL String 
-            String query = "select * from [dbo].[User] a "
+                String query = "select * from [dbo].[User] a "
                         + "FULL OUTER JOIN Member b "
                         + "ON a.UserName = b.IdMember "
                         + "FULL OUTER JOIN MemberShip c "
@@ -64,8 +65,10 @@ public class DAO extends DBHelper{
                     String country = rs.getString("Country");
                     int phone = rs.getInt("Phone");
                     String gender = rs.getString("Gender");
-                    String viptype = rs.getString("vipType");
-                    result = new User(username, password, gmail, role, idmember, fullname, dateofbirth, country, phone, gender, viptype);
+                    String vipType = rs.getString("TypeOfMemberShip");
+
+                    result = new User(username, password,
+                            gmail, role, idmember, fullname, dateofbirth, country, phone, gender, vipType);
                 }//end username and password is verified 
             }
         } finally {
@@ -81,8 +84,6 @@ public class DAO extends DBHelper{
         }
         return result;
     }
-    
-      
 
 
     public boolean UpdateProfile(String username, String fullname,

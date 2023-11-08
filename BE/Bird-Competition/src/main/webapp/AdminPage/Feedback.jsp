@@ -72,7 +72,7 @@
                                             <td>
                                                 <c:url var="deleteLink" value="DispatchServlet">
                                                     <c:param name="btAction" value="DeleteFeedback"/>
-                                                    <c:param name="txtID" value="${feedbackDto.getIdFeedback()}"/>
+                                                    <c:param name="txtID" value="${feedbackDto.getIdMember()}"/>
                                                 </c:url>
                                                 <a href="${deleteLink}">Delete</a>
                                             </td>
