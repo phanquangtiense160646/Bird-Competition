@@ -79,10 +79,9 @@ public class DAO extends DBHelper {
         return result;
     }
 
-    
-        public boolean UpdateProfile(String username, String fullname, 
-                String password, String email, String phone, String idmember)
-            throws SQLException {
+    public boolean UpdateProfile(String username, String fullname,
+            String password, String email, String phone, String idmember)
+            throws SQLException, ClassNotFoundException {
         Connection con = null;
         PreparedStatement stm = null;
         boolean result = false;
@@ -101,11 +100,11 @@ public class DAO extends DBHelper {
                 stm = con.prepareStatement(sql);
                 stm.setString(1, password);
                 stm.setString(2, email);
-                stm.setString(3,username);
+                stm.setString(3, username);
                 stm.setString(4, fullname);
                 stm.setString(5, phone);
                 stm.setString(6, idmember);
-                
+
                 //4. Execute Query
                 int exercute = stm.executeUpdate();
                 //5. Process
@@ -114,9 +113,7 @@ public class DAO extends DBHelper {
                 }
             }//end username and password is verified
         }//end connection is available   
-        catch (ClassNotFoundException ex) {
-            Logger.getLogger(DAO.class.getName()).log(Level.SEVERE, null, ex);
-        }        finally {
+        finally {
             if (stm != null) {
                 stm.close();
             }
@@ -126,7 +123,7 @@ public class DAO extends DBHelper {
         }
         return result;
     }
-   
+
     public User checkUserExist(String username)
             throws SQLException, NamingException, ClassNotFoundException {
         Connection con = null;
@@ -240,21 +237,18 @@ public class DAO extends DBHelper {
         try {
             //1.Make connection
             con = DBHelper.getConnection();
-            if (con != null){
-            //String query = "insert into [dbo].[User]\n" +
-            //            "values(?,?,?,0,0)";
-            
-            String query = "insert into [dbo].[User](UserName, UserPassword, UserGmail, UserRole, Status)\n" +
-                        "values(?,?,?,0,0)";
-            
-            
-            stm = con.prepareStatement(query);
-            
-            stm.setString(1, user.getUserName());
-            stm.setString(2, user.getUserPassword());
-            stm.setString(3, user.getUserGmail());
-            stm.setInt(4, user.getUserRole());
-            
+            if (con != null) {
+                String query = "Insert into [dbo].[User](UserName, UserPassword, UserRole, Status) "
+                        + "Values(?,?,4,1) "
+                        + "Insert into [dbo].[Member](IdMember, FullName, Phone, Status) "
+                        + "Values(?,'name',0,1)";
+
+                stm = con.prepareStatement(query);
+
+                stm.setString(1, user.getUserName());
+                stm.setString(2, user.getUserPassword());
+                stm.setString(3, user.getUserName());
+
                 int exercute = stm.executeUpdate();
                 if (exercute > 0) {
                     result = true;
@@ -274,7 +268,6 @@ public class DAO extends DBHelper {
         return result;
     }
 
-    
     public User GetUserInfo(String username)
             throws SQLException, ClassNotFoundException {
         Connection con = null;
@@ -288,10 +281,10 @@ public class DAO extends DBHelper {
             //check 
             if (con != null) {
                 //2.Creat SQL String 
-            String query = "select * from [dbo].[User] "
-                    + "FULL OUTER JOIN Member "
-                    + "ON [dbo].[User].UserName = Member.IdMember "
-                    + "where UserName = ? ";
+                String query = "select * from [dbo].[User] "
+                        + "FULL OUTER JOIN Member "
+                        + "ON [dbo].[User].UserName = Member.IdMember "
+                        + "where UserName = ? ";
                 //3.Create Statement Object
                 stm = con.prepareStatement(query);
                 stm.setString(1, username);
@@ -308,7 +301,7 @@ public class DAO extends DBHelper {
                     String country = rs.getString("Country");
                     int phone = rs.getInt("Phone");
                     String gender = rs.getString("Gender");
-                    
+
                     result = new User(username, password, gmail, role, idmember, fullname, dateofbirth, country, phone, gender, null);
                 }//end username and password is verified 
             }
@@ -325,6 +318,4 @@ public class DAO extends DBHelper {
         }
         return result;
     }
-}    
-
-            
+}

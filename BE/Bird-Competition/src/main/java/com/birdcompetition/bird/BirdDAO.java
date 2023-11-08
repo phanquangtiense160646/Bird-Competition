@@ -146,7 +146,6 @@ public class BirdDAO implements Serializable {
                     }
                     this.birdList.add(dto);
                 }//end map DB to DTO
-                sort(birdList);
             }//end connection í available
         } finally {
             if (rs != null) {
