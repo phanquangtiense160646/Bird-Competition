@@ -14,7 +14,7 @@ import java.io.Serializable;
 public class RegistrationCreateError implements Serializable{
     private String usernameLengthErr;
     private String passwordLengthErr;
-    private String fullNameLengthErr;
+    private String gmailLengthErr;
     private String confirmLengthErr;
     private String usernameIsExisted;
 
@@ -52,15 +52,15 @@ public class RegistrationCreateError implements Serializable{
     /**
      * @return the fullNameLengthErr
      */
-    public String getFullNameLengthErr() {
-        return fullNameLengthErr;
+    public String getGmailLengthErr() {
+        return gmailLengthErr;
     }
 
     /**
      * @param fullNameLengthErr the fullNameLengthErr to set
      */
-    public void setFullNameLengthErr(String fullNameLengthErr) {
-        this.fullNameLengthErr = fullNameLengthErr;
+    public void setGmailLengthErr(String fullNameLengthErr) {
+        this.gmailLengthErr = fullNameLengthErr;
     }
 
     /**

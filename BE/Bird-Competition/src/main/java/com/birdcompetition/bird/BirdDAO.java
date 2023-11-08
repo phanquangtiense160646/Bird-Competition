@@ -61,7 +61,7 @@ public class BirdDAO implements Serializable {
                     String memberId = rs.getString("IdMember");
                     String trainer = rs.getString("FullName");
                     String photo = rs.getString("PhotoPath");
-                    String photoPath = "FE/img/" + photo;
+                    String photoPath = photo;
 
                     BirdDTO dto = new BirdDTO(name, speices, point, trainer, memberId, photoPath, win, lose, tie, matchNumber, 0);
                     if (this.birdList == null) {
@@ -146,7 +146,6 @@ public class BirdDAO implements Serializable {
                     }
                     this.birdList.add(dto);
                 }//end map DB to DTO
-                sort(birdList);
             }//end connection í available
         } finally {
             if (rs != null) {
@@ -205,7 +204,6 @@ public class BirdDAO implements Serializable {
                     }
                     this.birdList.add(dto);
                 }//end map DB to DTO
-                sort(birdList);
             }//end connection í available
         } finally {
             if (rs != null) {
@@ -228,7 +226,6 @@ public class BirdDAO implements Serializable {
         ResultSet rs = null;
         BirdDTO dto = new BirdDTO();
 
-        
         try {
             //1. Make connection
             con = DBHelper.getConnection();
@@ -274,11 +271,10 @@ public class BirdDAO implements Serializable {
                 con.close();
             }
         }
-        
 
         return dto;
     }
-    
+
     private BirdDTO getBirdForMatch(int id)
             throws SQLException, ClassNotFoundException {
         Connection con = null;
@@ -286,7 +282,6 @@ public class BirdDAO implements Serializable {
         ResultSet rs = null;
         BirdDTO dto = new BirdDTO();
 
-        
         try {
             //1. Make connection
             con = DBHelper.getConnection();
@@ -332,7 +327,6 @@ public class BirdDAO implements Serializable {
                 con.close();
             }
         }
-        
 
         return dto;
     }
@@ -350,13 +344,16 @@ public class BirdDAO implements Serializable {
             con = DBHelper.getConnection();
             if (con != null) {
                 //2. Create SQL String 
-                String sql = "INSERT INTO Bird (NameOfBird, Species, Point, Status, IdMember, Win, Lose, Tie, MatchNumber, PhotoPath) VALUES (?, ?, 1000, 'true', ?, 0, 0, 0, 0, 'default.png')";
+                String sql = "INSERT INTO Bird (NameOfBird, Species, Point, Status, IdMember, Win, Lose, Tie, MatchNumber, PhotoPath, Gender, Description) VALUES (?, ?, 1000, 'true', ?, 0, 0, 0, 0, 'default.png', ?, ?)";
                 //3. Create Statement Object
                 stm = con.prepareStatement(sql);
 
                 stm.setString(1, bird.getBirdName());
                 stm.setString(2, bird.getSpecies());
                 stm.setString(3, bird.getMemberID());
+                stm.setString(4, bird.getGender());
+                stm.setString(5, bird.getDescription());
+                
 
                 //4. Execute Query
                 int effectRows = stm.executeUpdate();
@@ -476,8 +473,10 @@ public class BirdDAO implements Serializable {
                     int tie = rs.getInt("Tie");
                     int matchNumber = rs.getInt("MatchNumber");
                     String photoPath = rs.getString("PhotoPath");
+                    String gender = rs.getString("Gender");
+                    String description = rs.getString("Description");
 
-                    result = new BirdDTO(birdId, name, speices, point, true, ownerId, photoPath, win, lose, tie, matchNumber);
+                    result = new BirdDTO(birdId, name, speices, point, true, ownerId, photoPath, win, lose, tie, matchNumber, gender, description);
                 }
             }
         } finally {
@@ -521,6 +520,89 @@ public class BirdDAO implements Serializable {
             }//end username and password is verified
         }//end connection is available   
         finally {
+            if (stm != null) {
+                stm.close();
+            }
+            if (con != null) {
+                con.close();
+            }
+        }
+        return result;
+    }
+
+    public int getBirds()
+            throws SQLException, ClassNotFoundException {
+        Connection con = null;
+        PreparedStatement stm = null;
+        ResultSet rs = null;
+        int result = 0;
+
+        try {
+            //1.Make connection
+            con = DBHelper.getConnection();
+            //check 
+            if (con != null) {
+                //2.Creat SQL String 
+                String sql = "Select count(IdBird) as Parcipants \n"
+                        + "From Bird";
+
+                //3.Create Statement Object
+                stm = con.prepareStatement(sql);
+
+                //4.Exercute Query
+                rs = stm.executeQuery();
+
+                //5.Process
+                if (rs.next()) {
+                    result = rs.getInt("Parcipants");
+                }
+            }
+        } finally {
+            if (rs != null) {
+                rs.close();
+            }
+            if (stm != null) {
+                stm.close();
+            }
+            if (con != null) {
+                con.close();
+            }
+        }
+        return result;
+
+    }
+    
+    public boolean UpdateBirdProfile(String birdId, String birdName, String description)
+            throws SQLException {
+        Connection con = null;
+        PreparedStatement stm = null;
+        boolean result = false;
+        try {
+            //1.Make connection
+            con = DBHelper.getConnection();
+            if (con != null) {
+                //2. Create SQL String 
+                String sql = "UPDATE [dbo].[Bird] "
+                        + "SET NameOfBird = ?, Description = ? "
+                        + "WHERE IdBird = ? ";
+                       
+                //3. Create Statement Object
+                stm = con.prepareStatement(sql);
+                stm.setString(1, birdName);
+                stm.setString(2, description);
+                stm.setString(3, birdId);
+                
+                //4. Execute Query
+                int exercute = stm.executeUpdate();
+                //5. Process
+                if (exercute > 0) {
+                    return true;
+                }
+            }//end username and password is verified
+        }//end connection is available   
+        catch (ClassNotFoundException ex) {
+            Logger.getLogger(BirdDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }        finally {
             if (stm != null) {
                 stm.close();
             }

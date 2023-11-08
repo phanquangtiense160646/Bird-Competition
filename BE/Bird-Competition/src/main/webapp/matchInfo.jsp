@@ -1,7 +1,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html>
+<html lang="en">
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Match Info</title>
@@ -94,116 +94,121 @@
                                             <small class="list__label">Điểm sau trận</small>
                                         </td>
                                     </tr>
-                                    <c:forEach items="${listBird}" var="dto" varStatus="counter">
-                                        <c:if test="${dto.getOrder() < mid}">
-                                            <tr class="list__row">
-                                                <td class="list__cell d-none" style="background: #CED4DA; color:#868E96;">
-                                                </td>
-                                                <td class="list__cell" style="color:#868E96;">
-                                                    <span class="list__value"> ${dto.order} </span>
-                                                </td>
-                                                <td class="list__cell" style="color:#868E96; width: 300px;">
-                                                    <span class="list__value"> ${dto.birdName} </span>
-                                                </td>
-                                                <td class="list__cell" style="color:#868E96; width: 200px;">
-                                                    <span class="list__value">${dto.trainer}</span>
-                                                </td>
-                                                <td class="list__cell" style="color:#868E96;">
-                                                    <span class="list__value">${dto.prePoint}</span>
-                                                </td>
-                                                <td class="list__cell" style="color:#868E96;">
-                                                    <span class="list__value" style="color: green;">+${dto.postPoint - dto.prePoint}</span>
-                                                </td>
-                                                <td class="list__cell" style="color:#868E96;">
-                                                    <span class="list__value" style="font-weight: bold;">${dto.postPoint}</span>
-                                                </td>
-                                            </tr>
-                                        </c:if>
-                                        <!-- row -->
+                                    <c:if test="${not empty listBird}">
+                                        <c:forEach items="${listBird}" var="dto" varStatus="counter">
+                                            <c:if test="${dto.getOrder() < mid}">
+                                                <tr class="list__row">
+                                                    <td class="list__cell d-none" style="background: #CED4DA; color:#868E96;">
+                                                    </td>
+                                                    <td class="list__cell" style="color:#868E96;">
+                                                        <span class="list__value"> ${dto.order} </span>
+                                                    </td>
+                                                    <td class="list__cell" style="color:#868E96; width: 300px;">
+                                                        <span class="list__value"> ${dto.birdName} </span>
+                                                    </td>
+                                                    <td class="list__cell" style="color:#868E96; width: 200px;">
+                                                        <span class="list__value">${dto.trainer}</span>
+                                                    </td>
+                                                    <td class="list__cell" style="color:#868E96;">
+                                                        <span class="list__value">${dto.prePoint}</span>
+                                                    </td>
+                                                    <td class="list__cell" style="color:#868E96;">
+                                                        <span class="list__value" style="color: green;">+${dto.postPoint - dto.prePoint}</span>
+                                                    </td>
+                                                    <td class="list__cell" style="color:#868E96;">
+                                                        <span class="list__value" style="font-weight: bold;">${dto.postPoint}</span>
+                                                    </td>
+                                                </tr>
+                                            </c:if>
+                                            <!-- row -->
 
-                                        <!-- End of loop -->
+                                            <!-- End of loop -->
 
-                                    </c:forEach>
-                                    <c:forEach items="${listBird}" var="dto" varStatus="counter">
-                                        <c:if test="${dto.getOrder() == mid}">
-                                            <tr class="list__row">
-                                                <td class="list__cell d-none" style="background: #CED4DA; color:#868E96;">
-                                                    <span class="list__value"></span>
-                                                    <input type="hidden" name="txtBirdID" value="${dto.birdID}">
-                                                    <input type="hidden" name="txtOrder" value="${dto.order}">
-                                                    <input type="hidden" name="txtBefore" value="${dto.prePoint}">
-                                                    <input type="hidden" name="txtAfter" value="${dto.postPoint}">
+                                        </c:forEach>
+                                        <c:forEach items="${listBird}" var="dto" varStatus="counter">
+                                            <c:if test="${dto.getOrder() == mid}">
+                                                <tr class="list__row">
+                                                    <td class="list__cell d-none" style="background: #CED4DA; color:#868E96;">
+                                                        <span class="list__value"></span>
+                                                        <input type="hidden" name="txtBirdID" value="${dto.birdID}">
+                                                        <input type="hidden" name="txtOrder" value="${dto.order}">
+                                                        <input type="hidden" name="txtBefore" value="${dto.prePoint}">
+                                                        <input type="hidden" name="txtAfter" value="${dto.postPoint}">
 
-                                                    <small class="list__label"></small>
-                                                </td>
-                                                <td class="list__cell" style="color:#868E96;">
-                                                    <span class="list__value"> ${dto.order} </span>
-                                                </td>
-                                                <td class="list__cell" style="color:#868E96; width: 300px;">
-                                                    <span class="list__value"> ${dto.birdName} </span>
-                                                </td>
-                                                <td class="list__cell" style="color:#868E96; width: 200px;">
-                                                    <span class="list__value">${dto.trainer}</span>
-                                                </td>
-                                                <td class="list__cell" style="color:#868E96;">
-                                                    <span class="list__value">${dto.prePoint}</span>
-                                                </td>                                               
-                                                <td class="list__cell" style="color:#868E96;">
-                                                    <span class="list__value" style="color: blue;">${dto.postPoint - dto.prePoint}</span>
-                                                </td>
-                                                <td class="list__cell" style="color:#868E96;">
-                                                    <span class="list__value" style="font-weight: bold;">${dto.postPoint}</span>
-                                                </td>
-                                            </tr>
-                                        </c:if>
-                                        <!-- row -->
+                                                        <small class="list__label"></small>
+                                                    </td>
+                                                    <td class="list__cell" style="color:#868E96;">
+                                                        <span class="list__value"> ${dto.order} </span>
+                                                    </td>
+                                                    <td class="list__cell" style="color:#868E96; width: 300px;">
+                                                        <span class="list__value"> ${dto.birdName} </span>
+                                                    </td>
+                                                    <td class="list__cell" style="color:#868E96; width: 200px;">
+                                                        <span class="list__value">${dto.trainer}</span>
+                                                    </td>
+                                                    <td class="list__cell" style="color:#868E96;">
+                                                        <span class="list__value">${dto.prePoint}</span>
+                                                    </td>                                               
+                                                    <td class="list__cell" style="color:#868E96;">
+                                                        <span class="list__value" style="color: blue;">${dto.postPoint - dto.prePoint}</span>
+                                                    </td>
+                                                    <td class="list__cell" style="color:#868E96;">
+                                                        <span class="list__value" style="font-weight: bold;">${dto.postPoint}</span>
+                                                    </td>
+                                                </tr>
+                                            </c:if>
+                                            <!-- row -->
 
-                                        <!-- End of loop -->
+                                            <!-- End of loop -->
 
-                                    </c:forEach>
-                                    <c:forEach items="${listBird}" var="dto" varStatus="counter">
-                                        <c:if test="${dto.getOrder() > mid}">
-                                            <tr class="list__row" style=" width: 1000px;">
-                                                <td class="list__cell d-none" style="background: #CED4DA; color:#868E96;">
-                                                    <span class="list__value"></span>
-                                                    <input type="hidden" name="txtBirdID" value="${dto.birdID}">
-                                                    <input type="hidden" name="txtOrder" value="${dto.order}">
-                                                    <input type="hidden" name="txtBefore" value="${dto.prePoint}">
-                                                    <input type="hidden" name="txtAfter" value="${dto.postPoint}">
+                                        </c:forEach>
+                                        <c:forEach items="${listBird}" var="dto" varStatus="counter">
+                                            <c:if test="${dto.getOrder() > mid}">
+                                                <tr class="list__row" style=" width: 1000px;">
+                                                    <td class="list__cell d-none" style="background: #CED4DA; color:#868E96;">
+                                                        <span class="list__value"></span>
+                                                        <input type="hidden" name="txtBirdID" value="${dto.birdID}">
+                                                        <input type="hidden" name="txtOrder" value="${dto.order}">
+                                                        <input type="hidden" name="txtBefore" value="${dto.prePoint}">
+                                                        <input type="hidden" name="txtAfter" value="${dto.postPoint}">
 
-                                                    <small class="list__label"></small>
-                                                </td>
-                                                <td class="list__cell" style="color:#868E96;">
-                                                    <span class="list__value"> ${dto.order} </span>
-                                                </td>
-                                                <td class="list__cell" style="color:#868E96; width: 300px;">
-                                                    <span class="list__value"> ${dto.birdName} </span>
-                                                </td>
-                                                <td class="list__cell" style="color:#868E96; width: 200px;">
-                                                    <span class="list__value">${dto.trainer}</span>
-                                                </td>
-                                                <td class="list__cell" style="color:#868E96;">
-                                                    <span class="list__value">${dto.prePoint}</span>
-                                                </td>
-                                                <td class="list__cell" style="color:#868E96;">
-                                                    <span class="list__value" style="color: red;">${dto.postPoint - dto.prePoint}</span>
-                                                </td>
-                                                <td class="list__cell" style="color:#868E96;">
-                                                    <span class="list__value" style="font-weight: bold;">${dto.postPoint}</span>
-                                                </td>
-                                            </tr>
-                                        </c:if>
-                                        <!-- row -->
+                                                        <small class="list__label"></small>
+                                                    </td>
+                                                    <td class="list__cell" style="color:#868E96;">
+                                                        <span class="list__value"> ${dto.order} </span>
+                                                    </td>
+                                                    <td class="list__cell" style="color:#868E96; width: 300px;">
+                                                        <span class="list__value"> ${dto.birdName} </span>
+                                                    </td>
+                                                    <td class="list__cell" style="color:#868E96; width: 200px;">
+                                                        <span class="list__value">${dto.trainer}</span>
+                                                    </td>
+                                                    <td class="list__cell" style="color:#868E96;">
+                                                        <span class="list__value">${dto.prePoint}</span>
+                                                    </td>
+                                                    <td class="list__cell" style="color:#868E96;">
+                                                        <span class="list__value" style="color: red;">${dto.postPoint - dto.prePoint}</span>
+                                                    </td>
+                                                    <td class="list__cell" style="color:#868E96;">
+                                                        <span class="list__value" style="font-weight: bold;">${dto.postPoint}</span>
+                                                    </td>
+                                                </tr>
+                                            </c:if>
+                                            <!-- row -->
 
-                                        <!-- End of loop -->
+                                            <!-- End of loop -->
 
-                                    </c:forEach>
+                                        </c:forEach>
+                                    </c:if>
                                 </tbody>
                             </table>
                         </div>
+
                     </div>
                 </div>  
-
+                <c:if test="${empty listBird}">
+                    <h1 class="text-primary">Trận đấu không được diễn ra</h1>
+                </c:if>                    
 
 
                 <a href='<c:url value="/DispatchServlet?btAction=schedule&past=1"/>' class="btn btn-primary">Quay lại</a>

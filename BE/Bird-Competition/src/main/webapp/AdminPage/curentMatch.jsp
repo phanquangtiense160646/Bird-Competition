@@ -75,7 +75,7 @@
                                                     <p class="schedule-value text-uppercase text-light mb-3">Ngày:
                                                         ${scheduleDto.getDateFormat()}</p>
                                                     <p class="schedule-value text-uppercase text-light mb-3"> Giờ:
-                                                        ${scheduleDto.timeStart} - ${scheduleDto.timeEnd} </p>
+                                                        ${scheduleDto.startTime} - ${scheduleDto.endTime} </p>
                                                     <p class="schedule-value text-uppercase text-light mb-3">Địa
                                                         điểm: ${scheduleDto.location}</p>
                                                 </div>
@@ -98,13 +98,13 @@
                                                         ${scheduleDto.checkedIn}</span>
                                                 </p>
 
-                                                <c:if test="${!scheduleDto.isAfterTime(scheduleDto.timeStart)}" >
-                                                    <input type="submit" class="btn btn-secondary px-5 mt-2" value="Chưa diễn ra">
+                                                <c:if test="${!scheduleDto.isAfterTime(scheduleDto.startTime)}" >
+                                                    <input type="submit" class="btn btn-secondary px-5 mt-2" value="Sắp diễn ra">
                                                 </c:if>
-                                                <c:if test="${scheduleDto.isAfterTime(scheduleDto.timeStart) and !scheduleDto.isAfterTime(scheduleDto.timeEnd)}" >
+                                                <c:if test="${scheduleDto.isAfterTime(scheduleDto.startTime) and !scheduleDto.isAfterTime(scheduleDto.endTime)}" >
                                                     <input type="submit" class="btn btn-secondary px-5 mt-2" value="Đang diễn ra">
                                                 </c:if>
-                                                <c:if test="${scheduleDto.isAfterTime(scheduleDto.timeEnd)}" >
+                                                <c:if test="${scheduleDto.isAfterTime(scheduleDto.endTime)}" >
                                                     <form action="UpdateResultServlet" method="post">
                                                         <input type="hidden" name="txtMatchId" value="${scheduleDto.id}">
                                                         <input type="submit" class="btn btn-primary px-5 mt-2" value="Cập nhật kết quả">

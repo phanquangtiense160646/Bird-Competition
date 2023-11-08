@@ -59,7 +59,7 @@ public class NewsServlet extends HttpServlet {
             }
 
         } catch (SQLException ex) {
-//            log("ScheduleServlet_SQL: " + ex.getMessage());
+            log("ScheduleServlet_SQL: " + ex.getMessage());
             ex.printStackTrace();
         } catch (ClassNotFoundException ex) {
             log("ScheduleServlet_ClassNotFound: " + ex.getMessage());

@@ -40,12 +40,15 @@ public class AddBirdServlet extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         String name = request.getParameter("birdName");
         String specie = request.getParameter("birdSpecie");
+        String gender = request.getParameter("birdGender");
+        String des = request.getParameter("description");
         String idMember = request.getParameter("idMember");
+        
         String url = "";
         
         try {
             BirdDAO dao = new BirdDAO();
-            BirdDTO dto = new BirdDTO(name, specie, 1000, true, idMember);
+            BirdDTO dto = new BirdDTO(name, specie, 1000, true, idMember, gender, des);
             boolean result = dao.addBird(dto);
             if(result){
                 url = "addnewbird.jsp";

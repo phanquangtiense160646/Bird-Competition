@@ -61,80 +61,30 @@
         <jsp:include page="JspCommon/webheader.jsp"/>
         <section class="h-25 gradient-custom-2">
             <div class="container py-5 h-100">
-                <div class="row d-flex justify-content-center align-items-center h-100">
+                <div class="row d-flex justify-content-center align-items-center h-100 ">
                     <div class="col col-lg-9 col-xl-7">
-                        <div class="card">
-                            <div class="rounded-top text-white d-flex flex-row" style="background-color: #000000; height:200px;">
-                                <div class="ms-4 mt-5 d-flex flex-column profile-pic" style="width: 150px;">
-
-<!--                                    <div class="edit-pic">
-                                       
-                                            
-                                                <div class="profile-pic">
-                                                    <img
-                                                        src="https://images.dolenglish.vn/rs:auto:::0/w:1440/q:70/aHR0cHM6Ly9zdWlqbTljbG91b2JqLnZjZG4uY2xvdWQvUFVCTElDL01FRElBLzFiNTFmNjI4LWNmNTktNDg5MS1iZGIyLWQ3M2MwODcxOGIwMi5qcGc="
-                                                        class="img-fluid img-thumbnail mb-2" style="width: 150px; height: 140px; margin-left: 10px;">
-                                                    <span class="glyphicon glyphicon-camera"></span>
-                                                    <span>Change Image</span>
-                                                </div>
-                                            
-                                        
-                                    </div>-->
-
-
-
-                                    <img
-                                      src="https://images.dolenglish.vn/rs:auto:::0/w:1440/q:70/aHR0cHM6Ly9zdWlqbTljbG91b2JqLnZjZG4uY2xvdWQvUFVCTElDL01FRElBLzFiNTFmNjI4LWNmNTktNDg5MS1iZGIyLWQ3M2MwODcxOGIwMi5qcGc="
-                                      alt="Generic placeholder image" class="img-fluid img-thumbnail mt-4 mb-2"
-                                      style="width: 150px; height: 140px; z-index: 1; margin-left: 10px;"> 
-
-
-                                    <!--                                    <button type="button" class="btn btn-outline-dark" data-mdb-ripple-color="dark"
-                                                                                style="z-index: 1; margin-left: 17px;">
-                                                                            View Profile
-                                                                        </button>-->
-
-
-                                    
-                                </div>
-                                <div class="ms-3" style="margin-top: 130px; margin-left: 30px;">
-                                    <h5 style="color: #f8f9fa;"></h5>
-                                    <p></p>
-                                </div>
-                            </div>
-                            <div class="p-4 text-black" style="background-color: #f8f9fa;">
-                                <!-- <div class="d-flex justify-content-end text-center py-1">
-                                  <div>
-                                    <p class="mb-1 h5">100</p>
-                                    <p class="small text-muted mb-0">Total Match</p>
-                                  </div>
-                                  <div class="px-3">
-                                    <p class="mb-1 h5">51</p>
-                                    <p class="small text-muted mb-0">Win</p>
-                                  </div>
-                                  <div>
-                                    <p class="mb-1 h5">49</p>
-                                    <p class="small text-muted mb-0">Lose</p>
-                                  </div>
-                                </div> -->
-                            </div>
-                            <div class="card-body p-4 text-black">
-                                <div class="mb-5">
+                        <div class="card" style="background-image: url('FE/img/formbg.jpg'); background-repeat: no-repeat;
+                                                                            background-size: cover;">
+                            
+                            
+                            <div class="card-body p-4 text-black" style="background: rgba(0, 0, 0, 0.6);"    >
+                                
+                                <div class="mb-5 mt-5"  >
 
                                     <span class="centered-text">
-                                        <p class="lead fw-normal mb-1">Add New Bird</p>
+                                        <p class="lead fw-normal mb-1 text-white">Add New Bird</p>
                                     </span>
                                     
                                     
                                     
-                                    <div class="container-xl px-4 mt-4">
+                                    <div class="container-xl px-4 mt-4" > 
 
                                         <hr class="mt-0 mb-4">
                                         <div class="row">
-                                            <div class="col-xl-12 border-bottom">
+                                            <div class="col-xl-12">
                                                 <!-- Account details card-->
-                                                <div class="card mb-4">
-                                                    <div class="card-header">New Bird Details</div>
+                                                <div class="card mb-4 " style="background-color: rgba(0, 0, 0, 0.4);">
+                                                    <div class="card-header text-white">New Bird Details</div>
                                                     <div class="card-body">
                                                         
                                                         
@@ -142,7 +92,7 @@
                                                             
                                                             <!-- Form Group (birdname)-->
                                                             <div class="mb-3">
-                                                                <label class="small mb-1" for="inputBirdname">Tên chim</label>
+                                                                <label class="small mb-1 text-white" for="inputBirdname">Tên chim</label>
                                                                 <input class="form-control" type="text" placeholder="Nhập tên chim"
                                                                        name="birdName">
                                                             </div>
@@ -150,16 +100,37 @@
                                                             <div class="row gx-3 mb-3">
                                                                 <!-- Form Group (Species)-->
                                                                 <div class="col-md-12">
-                                                                    <label class="small mb-1" for="inputSpecies">Loài chim</label>
+                                                                    <label class="small mb-1 text-white" for="inputSpecies">Loài chim</label>
                                                                     <input class="form-control" id="inputSpecies" type="text" placeholder="Nhập giống chim"
-                                                                           value="" name="birdSpecie">
+                                                                           value="Chào Mào" name="birdSpecie" style="background-color: white" readonly>
                                                                 </div>
-                                                                <!--                                                                 Form Group (BirdAge)-->
-                                                                <!--                                                                <div class="col-md-6">
-                                                                                                                                    <label class="small mb-1" for="inputBirdAge">ID</label>
-                                                                                                                                    <input class="form-control" id="inputBirdAge" type="text" placeholder="Nhập ID chim (for example: B00)"
-                                                                                                                                           value="" name="birdId">
-                                                                                                                                </div>-->
+                                       
+
+                                                            </div>
+                                                            <div class="row gx-3 mb-3">
+                                                                
+                                                                <div class="col-md-12">
+                                                                    <label class="small mb-1 text-white" for="inputSpecies">Giới tính</label>
+<!--                                                                    <input class="form-control" id="inputSpecies" type="text" placeholder="Nhập giống chim"
+                                                                           value="" name="birdGender" >-->
+                                                                    <select name="birdGender" class=""
+                                                                            style="display:block;width:100%;padding:.375rem .75rem;font-size:1rem;font-weight:400;line-height:1.5;color:#686A6F;background-color:#fff;background-clip:padding-box;border:1px solid #ced4da;border-radius:.25rem;transition:border-color 0.15s ease-in-out,box-shadow 0.15s ease-in-out">
+                                                                        <option value="True">Đực</option>
+                                                                        <option value="False">Cái</option>
+                                                                    </select>
+                                                                </div>
+                                       
+
+                                                            </div>
+                                                            
+                                                            <div class="row gx-3 mb-3">
+                                                                <!-- Form Group (Species)-->
+                                                                <div class="col-md-12">
+                                                                    <label class="small mb-1 text-white" for="inputSpecies">Thông tin khác</label>
+                                                                    <input class="form-control" id="inputSpecies" type="text" placeholder="Thông tin khác"
+                                                                           name="description">
+                                                                </div>
+                                       
 
                                                             </div>
 
@@ -193,9 +164,9 @@
                                                             <!-- Save changes button-->
 
                                                             <div class="d-flex justify-content-between">
-                                                                <button class="btn btn-outline-dark" data-mdb-ripple-color="dark" onclick="customNavigate()">
+<!--                                                                <button class="btn btn-outline-light text-white" data-mdb-ripple-color="dark">
                                                                     Back
-                                                                </button>
+                                                                </button>-->
 
                                                                 <script>
                                                                     function customNavigate() {
@@ -203,7 +174,7 @@
                                                                     }
                                                                 </script>
 
-                                                                <button class="btn btn-outline-dark" data-mdb-ripple-color="dark" value="AddBird" name="btAction">
+                                                                <button class="btn btn-outline-light text-white" data-mdb-ripple-color="dark" value="AddBird" name="btAction">
                                                                     Add
                                                                 </button>
                                                             </div>

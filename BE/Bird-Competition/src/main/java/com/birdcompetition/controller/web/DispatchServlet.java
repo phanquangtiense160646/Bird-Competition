@@ -64,7 +64,7 @@ public class DispatchServlet extends HttpServlet {
                 url = "AddScheduleServlet";
             } else if (button.equals("PaymentHistory")) {
                 url = "PaymentHistoryServlet";
-            }  else if (button.equals("Membership")) {
+            } else if (button.equals("Membership")) {
                 url = "MembershipServlet";
             } else if (button.equals("VipRegis")) {
                 url = "MembershipRegisterServlet";
@@ -93,13 +93,46 @@ public class DispatchServlet extends HttpServlet {
             } else if (button.equals("Rule")) {
                 url = "RuleServlet";
             } else if (button.equals("FeedBack")) {
-                
+                url = "FeedBackServlet";
             } else if (button.equals("Dashboard")) {
                 url = "PaymentAdminServlet";
             } else if (button.equals("Add Image")) {
                 url = "UploadPhotoServlet";
-
-            }
+            } else if (button.equals("Add Feedback")){
+                url = "AddFeedbackServlet";
+            } else if (button.equals("AddLocation")){
+                url = "AddLocationServlet";
+            } else if (button.equals("ManageLocation")){
+                url = "GetLocationList";
+            } else if(button.equals("DeleteLocation")){
+                url = "DeleteLLocationServlet";
+            } else if (button.equals("editSchedule")) {
+                url = "UpdateSchedule";
+            } else if (button.equals("pendingSchedule")) {
+                url = "PendingSchedule";
+            } else if (button.equals("confirmAndDeleteSchedule")) {
+                url = "ConfirmAndDeleteSchedule";
+            }else if(button.equals("ManageFeedBack")){
+                url = "ManageFeedbackServlet";
+            }else if(button.equals("DeleteFeedback")){
+                url = "DeleteFeedbackServlet";
+            }else if(button.equals("ManageNews")){
+                url = "ManageNewsServlet";
+            }else if(button.equals("UpdateBird")){
+                url = "UpdateBirdProfileServlet";
+            } else if (button.equals("GetMember")) {
+                url = "GetMemberServlet";
+            } else if (button.equals("MemberProfile")) {
+                url = "GetMemberInfoServlet";
+            } else if (button.equals("DeleteMember")) {
+                url = "DeleteMemberServlet";
+            }  else if (button.equals("MemberProfile")) {
+                url = "GetMemberInfoServlet";
+            } else if (button.equals("login")) {
+                url = "LoginControl";
+            } else if (button.equals("ShowAllMember")) {
+                url = "GetMemberServlet";
+            }  
         } finally {
             RequestDispatcher rd = request.getRequestDispatcher(url);
             rd.forward(request, response);

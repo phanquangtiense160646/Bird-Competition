@@ -61,9 +61,9 @@
                         <div class="nav-item dropdown">
                             <a href="#" id="cactrangdropdown" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
                             <div class="dropdown-menu rounded-0 m-0">
-                                <!-- <a href="blog.html" class="dropdown-item">News</a> -->
+
                                 <a href='<c:url value="rule.jsp"/>'class="dropdown-item">Luật thi đấu</a>
-<!--                                <a href='<c:url value="/DispatchServlet?btAction=FeedBack"/>' class="dropdown-item">Feedback</a>-->
+                                <a href='<c:url value="/DispatchServlet?btAction=FeedBack"/>' class="dropdown-item">Feedback</a>
                                 <a href='<c:url value="/DispatchServlet?btAction=Blog"/>' class="dropdown-item">Tin Tức</a>
                             </div>
                         </div>
@@ -72,17 +72,20 @@
                     <div class="nav-item dropdown d-inline-flex">
                         <c:set var="user" value="${sessionScope.USER}"/>
                         <c:if test="${user.getVipType() eq '1'}" >
-                            <p class="btn p-0 h-75" style="width: 70px; font-size: small; background-color: #ff9539; color: black; margin-right:5px">Bronze Member</p>
+                            <!--<p class="btn p-0 h-75" style="width: 70px; font-size: small; background-color: #ff9539; color: black; margin-right:5px">Bronze Member</p>-->
+                            <p class="btn p-0 h-75 mr-2"><i class="fa-solid fa-medal display-1 medal3" style="font-size: 40px; margin-right: 10px"></i></p>
                             <a href="#" class="btn btn-primary nav-link dropdown-toggle h-75" data-bs-toggle="dropdown" style="width: 150px;">${user.userName} </a>
                         </c:if>
                         <c:if test="${user.getVipType() eq '2'}" >
-                            <p class="btn p-0 h-75 ml-2" style="width: 70px; font-size: small; background-color: #686a6f; color: black; margin-right:5px">Silver Member</p>
+                            <!--<p class="btn p-0 h-75 ml-2" style="width: 70px; font-size: small; background-color: #686a6f; color: black; margin-right:5px">Silver Member</p>-->
+                            <p class="btn p-0 h-75 mr-2"><i class="fa-solid fa-medal display-1" style="font-size: 40px; margin-right: 10px"></i></p>
                             <a href="#" class="btn btn-primary nav-link dropdown-toggle h-75" data-bs-toggle="dropdown" style="width: 150px;">${user.userName}
                             </a>
 
                         </c:if>
                         <c:if test="${user.getVipType() eq '3'}" >
-                            <p class="btn p-0 h-75 ml-2" style="width: 70px; font-size: small; background-color: #686a6f; color: black; margin-right:5px">Gold Member</p>
+                            <!--<p class="btn p-0 h-75 ml-2" style="width: 70px; font-size: small; background-color: #febd18; color: black; margin-right:5px">Gold Member</p>-->
+                            <p class="btn p-0 h-75 mr-2"><i class="fa-solid fa-medal display-1 medal1" style="font-size: 40px; margin-right: 10px"></i></p>
                             <a href="#" class="btn btn-primary nav-link dropdown-toggle h-75" data-bs-toggle="dropdown" style="width: 150px;">${user.userName}</a>
 
                         </c:if>

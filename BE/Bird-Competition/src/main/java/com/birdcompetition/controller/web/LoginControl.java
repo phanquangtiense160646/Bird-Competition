@@ -35,7 +35,7 @@ public class LoginControl extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        String username = request.getParameter("user");
+String username = request.getParameter("user");
         String password = request.getParameter("pass");
         String url = "Login2.jsp";
         

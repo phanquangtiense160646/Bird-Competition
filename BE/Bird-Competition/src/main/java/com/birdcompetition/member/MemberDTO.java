@@ -1,5 +1,7 @@
 package com.birdcompetition.member;
 
+import com.birdcompetition.bird.BirdDTO;
+
 /**
  *
  * @author admin
@@ -81,6 +83,11 @@ public class MemberDTO {
     public void setGender(String gender) {
         this.gender = gender;
     }
+
+    @Override
+    public String toString() {
+        return "MemberDTO{" + "id=" + id + ", fullName=" + fullName + ", dateOfBirth=" + dateOfBirth + ", country=" + country + ", phoneNumber=" + phoneNumber + ", status=" + status + ", gender=" + gender + '}';
+    }
     
-            
+      
 }

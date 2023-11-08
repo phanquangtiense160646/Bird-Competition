@@ -4,26 +4,36 @@
  */
 package com.birdcompetition.feedback;
 
-import java.sql.Date;
+import java.io.Serializable;
+
+
 
 /**
  *
  * @author MSI
  */
-public class FeedBackDTO {
+public class FeedBackDTO implements Serializable{
+    private int IdFeedback;
     private String IdMember;
     private String Description;
-    private Date date;
-    private boolean Status;
+    
+  
 
     public FeedBackDTO() {
     }
 
-    public FeedBackDTO(String IdMember, String Description, Date date, boolean Status) {
+    public FeedBackDTO(int IdFeedback, String IdMember, String Description) {
+        this.IdFeedback = IdFeedback;
         this.IdMember = IdMember;
         this.Description = Description;
-        this.date = date;
-        this.Status = Status;
+    }
+
+    public int getIdFeedback() {
+        return IdFeedback;
+    }
+
+    public void setIdFeedback(int IdFeedback) {
+        this.IdFeedback = IdFeedback;
     }
 
     public String getIdMember() {
@@ -41,27 +51,4 @@ public class FeedBackDTO {
     public void setDescription(String Description) {
         this.Description = Description;
     }
-
-    public Date getDate() {
-        return date;
-    }
-
-    public void setDate(Date date) {
-        this.date = date;
-    }
-
-    public boolean isStatus() {
-        return Status;
-    }
-
-    public void setStatus(boolean Status) {
-        this.Status = Status;
-    }
-
-    @Override
-    public String toString() {
-        return "FeedBackDTO{" + "IdMember=" + IdMember + ", Description=" + Description + ", date=" + date + ", Status=" + Status + '}';
-    }
-    
-    
 }

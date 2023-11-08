@@ -39,19 +39,19 @@ public class SignupControl extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        
+
         String user = request.getParameter("txtUsername");
         String pass = request.getParameter("txtPassword");
         String re_pass = request.getParameter("txtConfirm");
-        String fullname = request.getParameter("txtFullname");
         boolean foundErr = false;
+        String url = "dangKi.jsp";
         RegistrationCreateError errors = new RegistrationCreateError();
-        
+
 //            if(!pass.equals(re_pass)){
 //            request.setAttribute("error_message", "Tên tài khoản đã tồn tại hoặc mật khẩu không khớp");
 //            RequestDispatcher dispatcher = request.getRequestDispatcher("SignupControl.jsp");
 //            dispatcher.forward(request, response);
-     try {
+        try {
             //1. Check all user's error
             if (user.trim().length() < 6 || user.trim().length() > 20) {
                 foundErr = true;
@@ -64,21 +64,17 @@ public class SignupControl extends HttpServlet {
                 foundErr = true;
                 errors.setConfirmLengthErr("Confirm must match password");
             }
-            if (fullname.trim().length() < 2 || fullname.trim().length() > 50) {
-                foundErr = true;
-                errors.setFullNameLengthErr("Fullname 2 - 50");
-            }
             if (foundErr) {
                 request.setAttribute("CREATE_ERRORS", errors);
             } else {
                 //2. call DAO
                 DAO dao = new DAO();
-                
-                User u = new User(fullname, re_pass, user, 0, user, fullname, user, user, 0, user, null);
+
+                User u = new User(user, re_pass);
                 boolean result = dao.createAccount(u);
                 //3. Process Result
                 if (result) {
-                    response.sendRedirect("postLogin.jsp");
+                    url = "login";
                 }//create successful
             }// no error occur
 
@@ -87,12 +83,10 @@ public class SignupControl extends HttpServlet {
             errors.setUsernameIsExisted(user + " is existed");
             request.setAttribute("CREATE_ERRORS", errors);
 
-        } catch (NamingException ex) {
-            log("CreateNewAccount_Naming" + ex.getMessage());
         } catch (ClassNotFoundException ex) {
-            Logger.getLogger(SignupControl.class.getName()).log(Level.SEVERE, null, ex);
+            log("CreateNewAccount_ClassNotFound" + ex.getMessage());
         } finally {
-            RequestDispatcher rd = request.getRequestDispatcher("Login2.jsp");
+            RequestDispatcher rd = request.getRequestDispatcher(url);
             rd.forward(request, response);
         }
     }

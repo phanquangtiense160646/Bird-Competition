@@ -9,6 +9,7 @@ import com.birdcompetition.bird.BirdDTO;
 import com.birdcompetition.contest.ContestDAO;
 import com.birdcompetition.contest.ContestDTO;
 import com.birdcompetition.model.User;
+import com.birdcompetition.schedule.ScheduleDTO;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;

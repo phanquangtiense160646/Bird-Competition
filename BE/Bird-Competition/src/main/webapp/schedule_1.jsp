@@ -36,6 +36,7 @@
         <link href="FE/css/style.css" rel="stylesheet">
         <link href="FE/css/Schedule.css" rel="stylesheet">
         <link href="FE/css/toast.css" rel="stylesheet">
+        <script src="https://kit.fontawesome.com/96a8e8f111.js" crossorigin="anonymous"></script>
     </head>
 
     <body>
@@ -94,7 +95,7 @@
                                                     <p class="schedule-value text-uppercase text-light mb-3">
                                                         Ngày: ${scheduleDto.getDateFormat()}</p>
                                                     <p class="schedule-value text-uppercase text-light mb-3">
-                                                        Giờ: 2.00am - 5.00am</p>
+                                                        Giờ: ${scheduleDto.startTime} - ${scheduleDto.endTime}</p>
                                                     <p class="schedule-value text-uppercase text-light mb-3">Địa
                                                         điểm: ${scheduleDto.location}</p>
                                                     <p class="schedule-value text-uppercase text-warning">
@@ -151,7 +152,7 @@
                                                 <p class="schedule-value text-uppercase text-light mb-3">Ngày:
                                                     ${scheduleDto.getDateFormat()}</p>
                                                 <p class="schedule-value text-uppercase text-light mb-3"> Giờ:
-                                                    2.00am - 5.00am</p>
+                                                    ${scheduleDto.startTime} - ${scheduleDto.endTime}</p>
                                                 <p class="schedule-value text-uppercase text-light mb-3">Địa
                                                     điểm: ${scheduleDto.location}</p>
                                                 <p class="schedule-value text-uppercase text-success">
@@ -204,7 +205,7 @@
                                                 <p class="schedule-value text-uppercase text-light mb-3">Ngày:
                                                     ${scheduleDto.getDateFormat()}</p>
                                                 <p class="schedule-value text-uppercase text-light mb-3"> Giờ:
-                                                    2.00am - 5.00am</p>
+                                                    ${scheduleDto.startTime} - ${scheduleDto.endTime}</p>
                                                 <p class="schedule-value text-uppercase text-light mb-3">Địa
                                                     điểm: ${scheduleDto.location}</p>
                                                 <p class="schedule-value text-uppercase text-primary">
@@ -287,7 +288,7 @@
                                                 <p class="schedule-value text-uppercase text-light mb-3">Ngày:
                                                     ${scheduleDto.getDateFormat()}</p>
                                                 <p class="schedule-value text-uppercase text-light mb-3"> Giờ:
-                                                    2.00am - 5.00am</p>
+                                                    ${scheduleDto.startTime} - ${scheduleDto.endTime}</p>
                                                 <p class="schedule-value text-uppercase text-light mb-3">Địa
                                                     điểm: ${scheduleDto.location}</p>
                                                 <p class="schedule-value text-uppercase text-danger">

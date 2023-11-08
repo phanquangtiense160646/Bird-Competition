@@ -32,12 +32,42 @@ public class ContestDTO implements Serializable {
     private String nameOfBird;
     private String species;
     private String checkInCode;
-    
+    private int currentPar;
+    private int maxPar;
+    private String linkMap;
+
+  
 
     public ContestDTO() {
     }
 
-    public ContestDTO(String idContest, String nameOfContest, String date, String locationId, boolean status, double factor, int minPoint, int maxPoint, double participatingFee, String userName, String idRule, int statusOfContest, String idBird, int rank, int beforePoint, int afterPoint, boolean checkin, String location, String nameOfBird, String species) {
+    public int getCurrentPar() {
+        return currentPar;
+    }
+
+    public void setCurrentPar(int currentPar) {
+        this.currentPar = currentPar;
+    }
+
+    public int getMaxPar() {
+        return maxPar;
+    }
+
+    public void setMaxPar(int maxPar) {
+        this.maxPar = maxPar;
+    }
+
+    public String getLinkMap() {
+        return linkMap;
+    }
+
+    public void setLinkMap(String linkMap) {
+        this.linkMap = linkMap;
+    }
+
+   
+
+    public ContestDTO(String idContest, String nameOfContest, String date, String locationId, boolean status, double factor, int minPoint, int maxPoint, double participatingFee, String userName, String idRule, int statusOfContest, String idBird, int rank, int beforePoint, int afterPoint, boolean checkin, String location, String nameOfBird, String species, int currentPar) {
         this.idContest = idContest;
         this.nameOfContest = nameOfContest;
         this.date = date;
@@ -58,6 +88,8 @@ public class ContestDTO implements Serializable {
         this.location = location;
         this.nameOfBird = nameOfBird;
         this.species = species;
+        this.currentPar = currentPar;
+        
     }
 
 
@@ -66,7 +98,7 @@ public class ContestDTO implements Serializable {
     public ContestDTO(String idContest, String nameOfContest, String date, 
             String locationId, boolean status, double factor, int minPoint, 
             int maxPoint, double participatingFee, String idBird, int beforePoint, 
-            int afterPoint, String location, String nameOfBird, String species, String checkInCode, int statusOfContest ) {
+            int afterPoint, String location, String nameOfBird, String species, String checkInCode, int statusOfContest, int currentPar, int maxPar, String linkMap) {
         this.idContest = idContest;
         this.nameOfContest = nameOfContest;
         this.date = date;
@@ -84,6 +116,10 @@ public class ContestDTO implements Serializable {
         this.species = species;
         this.checkInCode = checkInCode;
         this.statusOfContest = statusOfContest;
+        this.currentPar = currentPar;
+        this.maxPar = maxPar;
+        this.linkMap = linkMap;
+        
     }
 
     public String getCheckInCode() {

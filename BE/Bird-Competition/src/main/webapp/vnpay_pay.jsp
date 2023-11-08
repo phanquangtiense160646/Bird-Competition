@@ -1,6 +1,7 @@
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html lang="en">
+<%@page contentType="text/html" pageEncoding="UTF-8" %>
+    <!DOCTYPE html>
+    <html lang="en">
+
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -10,13 +11,14 @@
         <meta name="author" content="">
         <title>Trang thanh toán </title>
         <!-- Bootstrap core CSS -->
-        <link href="assets/bootstrap.min.css" rel="stylesheet"/>
+        <link href="assets/bootstrap.min.css" rel="stylesheet" />
         <!-- Custom styles for this template -->
-        <link href="assets/jumbotron-narrow.css" rel="stylesheet">      
+        <link href="assets/jumbotron-narrow.css" rel="stylesheet">
         <script src="assets/jquery-1.11.3.min.js"></script>
 
         <style>
-            body, html {
+            body,
+            html {
                 height: 100%;
                 margin: 0;
             }
@@ -59,21 +61,20 @@
 
                 <h3 class="text-muted"></h3>
             </div>
-            <h3>THANH TOÁN PHÍ THAM GIA  </h3>
+            <h3>THANH TOÁN PHÍ THAM GIA </h3>
             <div class="table-responsive">
-                <form action="vnpayajax" id="frmCreateOrder" method="post">        
+                <form action="vnpayajax" id="frmCreateOrder" method="post">
                     <div class="form-group">
                         <label for="amount">Số tiền</label>
-                        <input class="form-control" data-val="true" 
-                               data-val-number="The field Amount must be a number." 
-                               data-val-required="The Amount field is required." id="amount" max="100000000" 
-                               min="1" name="amount" type="number" value="${requestScope.COST}" readonly/>
+                        <input class="form-control" data-val="true" data-val-number="The field Amount must be a number."
+                            data-val-required="The Amount field is required." id="amount" max="100000000" min="1"
+                            name="amount" type="number" value="${requestScope.COST}" readonly />
                     </div>
 
                     <div class="form-group">
                         <label for="paymentContent">Nội dung thanh toán</label>
-                        <textarea class="form-control" id="paymentContent" name="paymentContent" rows="3" 
-                                  readonly>${requestScope.NOI_DUNG}</textarea>
+                        <textarea class="form-control" id="paymentContent" name="paymentContent" rows="3"
+                            readonly>${requestScope.NOI_DUNG}</textarea>
 
                     </div>
 
@@ -118,30 +119,30 @@
         <link href="https://pay.vnpay.vn/lib/vnpay/vnpay.css" rel="stylesheet" />
         <script src="https://pay.vnpay.vn/lib/vnpay/vnpay.min.js"></script>
         <script type="text/javascript">
-                        $("#frmCreateOrder").submit(function () {
-                            var postData = $("#frmCreateOrder").serialize();
-                            var submitUrl = $("#frmCreateOrder").attr("action");
-                            $.ajax({
-                                type: "POST",
-                                url: submitUrl,
-                                data: postData,
-                                dataType: 'JSON',
-                                success: function (x) {
-                                    if (x.code === '00') {
-                                        if (window.vnpay) {
-                                            vnpay.open({width: 768, height: 600, url: x.data});
-                                        } else {
-                                            location.href = x.data;
-                                        }
-                                        return false;
-                                    } else {
-                                        alert(x.Message);
-                                    }
-                                }
-                            });
+            $("#frmCreateOrder").submit(function () {
+                var postData = $("#frmCreateOrder").serialize();
+                var submitUrl = $("#frmCreateOrder").attr("action");
+                $.ajax({
+                    type: "POST",
+                    url: submitUrl,
+                    data: postData,
+                    dataType: 'JSON',
+                    success: function (x) {
+                        if (x.code === '00') {
+                            if (window.vnpay) {
+                                vnpay.open({ width: 768, height: 600, url: x.data });
+                            } else {
+                                location.href = x.data;
+                            }
                             return false;
-                        });
-        </script> 
+                        } else {
+                            alert(x.Message);
+                        }
+                    }
+                });
+                return false;
+            });
+        </script>
 
         <script>
             function goBack() {
@@ -153,4 +154,5 @@
 
 
     </body>
-</html>
+
+    </html>

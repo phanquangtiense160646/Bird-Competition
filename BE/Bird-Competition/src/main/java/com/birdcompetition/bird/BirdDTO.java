@@ -21,6 +21,8 @@ public class BirdDTO implements Serializable, Comparable<BirdDTO> {
     private int matchNumber;
     private String trainer;
     private int rank;
+    private String gender;
+    private String description;
     
 
     public BirdDTO() {
@@ -38,6 +40,24 @@ public class BirdDTO implements Serializable, Comparable<BirdDTO> {
         this.lose = lose;
         this.tie = tie;
         this.matchNumber = matchNumber;
+        this.rank = 0;
+        
+    }
+    
+    public BirdDTO(int birdID, String birdName, String species, int point, boolean status, String memberID, String photoPath, int win, int lose, int tie, int matchNumber, String gender, String description) {
+        this.birdID = birdID;
+        this.birdName = birdName;
+        this.species = species;
+        this.point = point;
+        this.status = status;
+        this.memberID = memberID;
+        this.photoPath = photoPath;
+        this.win = win;
+        this.lose = lose;
+        this.tie = tie;
+        this.matchNumber = matchNumber;
+        this.gender = gender;
+        this.description = description;
         this.rank = 0;
         
     }
@@ -76,12 +96,14 @@ public class BirdDTO implements Serializable, Comparable<BirdDTO> {
         this.memberID = memberID;
     }
 
-    public BirdDTO(String birdName, String species, int point, boolean status, String memberID) {
+    public BirdDTO(String birdName, String species, int point, boolean status, String memberID, String gender, String description) {
         this.birdName = birdName;
         this.species = species;
         this.point = point;
         this.status = status;
         this.memberID = memberID;
+        this.gender = gender;
+        this.description = description;
         
     }
 
@@ -181,6 +203,24 @@ public class BirdDTO implements Serializable, Comparable<BirdDTO> {
     public void setTrainer(String trainer) {
         this.trainer = trainer;
     }
+
+    public String getGender() {
+        return gender;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+    
+    
     
     
     public int winRate() {
