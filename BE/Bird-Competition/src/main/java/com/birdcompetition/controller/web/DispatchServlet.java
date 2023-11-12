@@ -132,9 +132,12 @@ public class DispatchServlet extends HttpServlet {
                 url = "GetMemberServlet"; 
             }else if(button.equals("DeleteNews")){
                 url = "DeleteNewsServlet";
-            }else if(button.equals("UpdateNews")){
+            }else if(button.equals("Update")){
                 url = "UpdateNewsServlet";
+            }else if(button.equals("AddNews")){
+                url = "AddNewsServlet";
             }
+                
         } finally {
             RequestDispatcher rd = request.getRequestDispatcher(url);
             rd.forward(request, response);

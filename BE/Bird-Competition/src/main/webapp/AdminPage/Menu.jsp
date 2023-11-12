@@ -98,15 +98,10 @@
                     <i class="fas fa-fw fa-table"></i>
                     <span>Check-in</span></a>
             </li> 
+            
             <li class="nav-item">
                 <!--<a class="nav-link" href='<c:url value="/DispatchServlet?btAction=ManageFeedBack"/>'>-->
-                <a class="nav-link" href="ManageFeedbackServlet">
-                    <i class="fas fa-fw fa-table"></i>
-                    <span>Feed Back</span></a>
-            </li> 
-            <li class="nav-item">
-                <!--<a class="nav-link" href='<c:url value="/DispatchServlet?btAction=ManageFeedBack"/>'>-->
-                <a class="nav-link" href="ManageNewsServlet">
+                <a class="nav-link" href='<c:url value="/DispatchServlet?btAction=ManageNews"/>'>
                     <i class="fas fa-fw fa-table"></i>
                     <span>News</span></a>
             </li> 
@@ -124,11 +119,17 @@
                     <span>Quản lý thanh toán</span></a>
             </li>  
 
-            <li class="nav-item">
+<!--            <li class="nav-item">
                 <a class="nav-link" href="">
                     <i class="fas fa-fw fa-table"></i>
                     <span>Quản lý Luật thi</span></a>
-            </li>   
+            </li>   -->
+            <li class="nav-item">
+                <!--<a class="nav-link" href='<c:url value="/DispatchServlet?btAction=ManageFeedBack"/>'>-->
+                <a class="nav-link" href='<c:url value="/DispatchServlet?btAction=ManageFeedBack"/>'>
+                    <i class="fas fa-fw fa-table"></i>
+                    <span>Feed Back</span></a>
+            </li> 
         </c:if>
         <!-- Divider -->
         <hr class="sidebar-divider d-none d-md-block">

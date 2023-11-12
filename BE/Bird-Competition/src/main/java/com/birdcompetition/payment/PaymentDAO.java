@@ -43,8 +43,7 @@ public class PaymentDAO {
                 //2. Crate SQL String
                 String sql = "Select * "
                         + "From OrderDetail "
-                        + "Full outer join Products "
-                        + "On OrderDetail.IdProduct = Products.IdProduct "
+                   
                         + "Where IdMember = ?";
 
                 //3. Create Statement Object
@@ -60,7 +59,7 @@ public class PaymentDAO {
 
                     int price = rs.getInt("Price");
                     String orderDate = rs.getString("OrderDate");
-                    String NameOfProducts = rs.getString("NameOfProducts");
+                    String NameOfProducts = rs.getString("OrderName");
 
                     //5.1.2 add data to list
 //                   ContestDTO dto = new ContestDTO(idContest, nameOfContest, date, 
@@ -152,9 +151,8 @@ public class PaymentDAO {
             if (con != null) {
                 //2.Creat SQL String 
                 String sql = "Select * \n"
-                        + "From OrderDetail \n"
-                        + "Full outer join Products \n"
-                        + "On OrderDetail.IdProduct = Products.IdProduct ";
+                        + "From OrderDetail \n";
+                      
                 //3.Create Statement Object
                 stm = con.prepareStatement(sql);
 
@@ -164,7 +162,7 @@ public class PaymentDAO {
                 while (rs.next()) {
                     int price = rs.getInt("Price");
                     String orderDate = rs.getString("OrderDate");
-                    String NameOfProducts = rs.getString("NameOfProducts");
+                    String NameOfProducts = rs.getString("OrderName");
 
                     PaymentDTO dto = new PaymentDTO(price, orderDate, NameOfProducts);
 

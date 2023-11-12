@@ -77,6 +77,7 @@
                                 </tr>
                             </tfoot>
                             <tbody>
+                            
                                 <c:set var="location" value="${sessionScope.LOCATION}"/>
                                 <c:if test="${not empty location}">
                                     <c:forEach var="l" items="${location}" varStatus="counter">

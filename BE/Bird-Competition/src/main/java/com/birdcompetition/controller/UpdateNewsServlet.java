@@ -2,11 +2,14 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
  */
-package com.birdcompetition.controller.web;
+package com.birdcompetition.controller;
 
+import com.birdcompetition.bird.BirdDTO;
+import com.birdcompetition.controller.web.UpdateProfileServlet;
 import com.birdcompetition.dal.DAO;
 import com.birdcompetition.model.User;
 import com.birdcompetition.news.NewsDAO;
+import com.birdcompetition.news.NewsDTO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
@@ -54,6 +57,8 @@ public class UpdateNewsServlet extends HttpServlet {
             
             if (result) {
                 HttpSession session = request.getSession();
+                NewsDTO tempresult = dao.getNewsById(id);
+                session.setAttribute("NEWS", tempresult);
                 request.setAttribute("msg", "success");
                 url = "ManageNewsServlet";
             }
