@@ -9,6 +9,7 @@ body>div {
     top: 32px;
     right: 32px;
     z-index: 999999;
+    max-width: calc(100% - 45px);
 }
 
 .toast1 {
