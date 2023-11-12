@@ -130,6 +130,10 @@ public class DispatchServlet extends HttpServlet {
                 url = "LoginControl";
             } else if (button.equals("ShowAllMember")) {
                 url = "GetMemberServlet"; 
+            }else if(button.equals("DeleteNews")){
+                url = "DeleteNewsServlet";
+            }else if(button.equals("UpdateNews")){
+                url = "UpdateNewsServlet";
             }
         } finally {
             RequestDispatcher rd = request.getRequestDispatcher(url);

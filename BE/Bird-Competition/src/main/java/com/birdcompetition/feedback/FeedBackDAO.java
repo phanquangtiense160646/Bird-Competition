@@ -93,11 +93,11 @@ public class FeedBackDAO implements Serializable {
                 rs = stm.executeQuery();
                 //5.Process
                 while (rs.next()) {
-                    
+                    int idFeedback = rs.getInt("IdFeedback");
                     String idMember = rs.getString("IdMember");
                     String descrip = rs.getString("Description");
 
-                    FeedBackDTO dto = new FeedBackDTO(0, idMember, descrip);
+                    FeedBackDTO dto = new FeedBackDTO(idFeedback, idMember, descrip);
 
                     if (this.feedbackList == null) {
                         this.feedbackList = new ArrayList<>();

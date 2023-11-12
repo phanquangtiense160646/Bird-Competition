@@ -277,7 +277,7 @@
                         <h3 class="text-uppercase mb-4">Đăng Ký VIP</h3>
                         <div class="bg-dark rounded text-center text-light" style="padding: 30px;">
                             <p>Trở thành hội viên VIP có nhiều đặc quyền riêng và có giá ưu đãi dành cho gói tháng.</p>
-                            <a href='<c:url value="Login2.jsp"/>' class="btn btn-primary py-2 px-4">Xem Thêm</a>
+<!--                            <a href='<c:url value=""/>' class="btn btn-primary py-2 px-4">Xem Thêm</a>-->
                         </div>
                     </div>
                     <!-- Plain Text End -->

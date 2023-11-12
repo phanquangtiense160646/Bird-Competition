@@ -80,7 +80,6 @@ public class NewsDAO {
 //        }
 //
 //    }
-
     public List<NewsDTO> getNews()
             throws SQLException, ClassNotFoundException {
         Connection con = null;
@@ -142,7 +141,6 @@ public class NewsDAO {
 //        }
 //    }
 
-
     public NewsDTO getNewsById(int id)
             throws SQLException, ClassNotFoundException {
         Connection con = null;
@@ -190,11 +188,90 @@ public class NewsDAO {
         }
         return news;
     }
-    public void insertNews(){
-        
+
+    public void insertNews() {
+
     }
-     public void updateNews(){
-        
+
+    public boolean deleteNews(String id)
+            throws SQLException, ClassNotFoundException {
+        Connection con = null;
+        PreparedStatement stm = null;
+        boolean result = false;
+        try {
+            //1.Make connection
+            con = DBHelper.getConnection();
+            if (con != null) {
+                //2. Create SQL String 
+                String sql = "Delete News\n"
+                        + "Where IdNews = ? ";
+                //3. Create Statement Object
+                stm = con.prepareStatement(sql);
+
+                stm.setString(1, id);
+
+                //4. Execute Query
+                int exercute = stm.executeUpdate();
+                //5. Process
+                if (exercute > 0) {
+                    return true;
+                }
+            }//end username and password is verified
+        }//end connection is available
+        finally {
+            if (stm != null) {
+                stm.close();
+            }
+            if (con != null) {
+                con.close();
+            }
+        }
+        return result;
+    }
+
+    public boolean UpdateNews(String id, String nameofnews,
+            String date, String linknews, String photopath,String description)
+            throws SQLException, ClassNotFoundException {
+        Connection con = null;
+        PreparedStatement stm = null;
+        boolean result = false;
+        try {
+            //1.Make connection
+            con = DBHelper.getConnection();
+            if (con != null) {
+                //2. Create SQL String 
+                String sql = "Update [dbo].[News]\n"
+                        + "set [NameOfNews] =  ?,[Date] = ?,\n"
+                        + "[Description] = ? ,[LinkOfNews] = ?,\n"
+                        + "[PhotoPath] = ?\n"
+                        + "where [IdNews] = ?";
+                //3. Create Statement Object
+                stm = con.prepareStatement(sql);
+                stm.setString(1, nameofnews);
+                stm.setString(2, date);
+                stm.setString(3, description);
+                stm.setString(4, linknews);
+                stm.setString(5, photopath);
+                stm.setString(6, id);
+                
+
+                //4. Execute Query
+                int exercute = stm.executeUpdate();
+                //5. Process
+                if (exercute > 0) {
+                    return true;
+                }
+            }//end username and password is verified
+        }//end connection is available   
+        finally {
+            if (stm != null) {
+                stm.close();
+            }
+            if (con != null) {
+                con.close();
+            }
+        }
+        return result;
     }
 
 }
