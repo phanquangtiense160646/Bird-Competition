@@ -164,9 +164,9 @@
                                                             <!-- Save changes button-->
 
                                                             <div class="d-flex justify-content-between">
-                                                                <button class="btn btn-outline-light text-white" data-mdb-ripple-color="dark" onclick="customNavigate()">
+<!--                                                                <button class="btn btn-outline-light text-white" data-mdb-ripple-color="dark">
                                                                     Back
-                                                                </button>
+                                                                </button>-->
 
                                                                 <script>
                                                                     function customNavigate() {

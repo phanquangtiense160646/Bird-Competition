@@ -30,6 +30,7 @@
         <!-- Template Stylesheet -->
         <link href="FE/css/style.css" rel="stylesheet">
         <link href="FE/css/leaderboard.css" rel="stylesheet">
+        <script src="https://kit.fontawesome.com/96a8e8f111.js" crossorigin="anonymous"></script>
     </head>
 
     <body>
@@ -279,72 +280,74 @@
         <!-- Leaderboard end -->
 
         <!-- Personal Leaderboard start -->
-          <div class="wrapper">
-                    <div class="list">
-                        <div class="list__header">
-                            <h3>Bảng xếp hạng các chim của bạn</h3>
-                        </div>
-                        <div class="list__body">
-                            <table class="list__table">
-                                <tbody>
-                                    <!-- Loop -->
-                                    <c:forEach items="${persionalLb}" var="dto" varStatus="counter">
-                                        <tr class="list__row" data-image="${dto.photoPath}" data-win= ${dto.win} data-lose= ${dto.lose} data-tie= ${dto.tie} data-match= "${dto.matchNumber}">
-                                            <td class="list__cell" >
-                                                <span class="list__value"> ${dto.rank}</span>
-                                                <!--<small class="list__label">Hạng</small>-->
-                                            </td>
-                                            <td class="list__cell" >
-                                                <span class="list__value"> ${dto.birdName} </span>
-                                                <small class="list__label">Chim</small>
-                                            </td>
-                                            <td class="list__cell">
-                                                <span class="list__value d-none">${dto.memberID}</span>
-                                            </td>
-                                            <td class="list__cell">
-                                                <span class="list__value"> ${dto.point} </span>
-                                                <small class="list__label">Điểm</small>
-                                            </td>
-                                        </tr>
-                                        <!-- row -->
-                                        <!-- End of loop -->
-                                    </c:forEach>
-                                </tbody>
-                            </table>
-                        </div>
+        <c:if test="${not empty persionalLb}">
+
+            <div class="wrapper">
+                <div class="list">
+                    <div class="list__header">
+                        <h3>Bảng xếp hạng các chim của bạn</h3>
+                    </div>
+                    <div class="list__body">
+                        <table class="list__table">
+                            <tbody>
+                                <!-- Loop -->
+                                <c:forEach items="${persionalLb}" var="dto" varStatus="counter">
+                                    <tr class="list__row" data-image="${dto.photoPath}" data-win= ${dto.win} data-lose= ${dto.lose} data-tie= ${dto.tie} data-match= "${dto.matchNumber}">
+                                        <td class="list__cell" >
+                                            <span class="list__value"> ${dto.rank}</span>
+                                            <!--<small class="list__label">Hạng</small>-->
+                                        </td>
+                                        <td class="list__cell" >
+                                            <span class="list__value"> ${dto.birdName} </span>
+                                            <small class="list__label">Chim</small>
+                                        </td>
+                                        <td class="list__cell">
+                                            <span class="list__value d-none">${dto.memberID}</span>
+                                        </td>
+                                        <td class="list__cell">
+                                            <span class="list__value"> ${dto.point} </span>
+                                            <small class="list__label">Điểm</small>
+                                        </td>
+                                    </tr>
+                                    <!-- row -->
+                                    <!-- End of loop -->
+                                </c:forEach>
+                            </tbody>
+                        </table>
                     </div>
                 </div>
+            </div>
 
-                <div class="overlay"></div>
-
-            <!-- Personal Leaderboard end -->
-
-
-            <!-- Footer Start -->
-                  <jsp:include page="JspCommon/webfooter.jsp"/>
-
-            <!-- Footer End -->
+            <div class="overlay"></div>
+        </c:if>
+        <!-- Personal Leaderboard end -->
 
 
-            <!-- Back to Top -->
-            <a href="#" class="btn btn-dark py-3 fs-4 back-to-top"><i class="bi bi-arrow-up"></i></a>
+        <!-- Footer Start -->
+        <jsp:include page="JspCommon/webfooter.jsp"/>
+
+        <!-- Footer End -->
 
 
-            <!-- JavaScript Libraries -->
-            <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
-            <script src="FE/lib/easing/easing.min.js"></script>
-            <script src="FE/lib/waypoints/waypoints.min.js"></script>
-            <script src="FE/lib/counterup/counterup.min.js"></script>
-            <script src="FE/lib/owlcarousel/owl.carousel.min.js"></script>
+        <!-- Back to Top -->
+        <a href="#" class="btn btn-dark py-3 fs-4 back-to-top"><i class="bi bi-arrow-up"></i></a>
 
-            <!-- Template Javascript -->
-            <script src="FE/js/main.js"></script>
-            <script src="FE/js/leaderboard.js"></script>
-            <script>
-                const activePage = document.getElementById('bangxephang');
-                activePage.classList.add('active')
-            </script>
+
+        <!-- JavaScript Libraries -->
+        <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="FE/lib/easing/easing.min.js"></script>
+        <script src="FE/lib/waypoints/waypoints.min.js"></script>
+        <script src="FE/lib/counterup/counterup.min.js"></script>
+        <script src="FE/lib/owlcarousel/owl.carousel.min.js"></script>
+
+        <!-- Template Javascript -->
+        <script src="FE/js/main.js"></script>
+        <script src="FE/js/leaderboard.js"></script>
+        <script>
+            const activePage = document.getElementById('bangxephang');
+            activePage.classList.add('active')
+        </script>
 
     </body>
 

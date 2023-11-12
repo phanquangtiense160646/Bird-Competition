@@ -84,7 +84,9 @@ public class ContestDAO {
 //                           locationId, status, factor, minPoint, maxPoint, participatingFee, 
 //                           idBird, idBird, maxPoint, idBird, factor, 
 //                           beforePoint, afterPoint, result, location, nameOfBird, specie);
-                   ContestDTO dto = new ContestDTO(idContest, nameOfContest, date, locationId, status, factor, minPoint, maxPoint, participatingFee, idBird, beforePoint, afterPoint, location, nameOfBird, specie, checkInCode, statusOfContest, currentPar, maxPar, linkmap);
+                   ContestDTO dto = new ContestDTO(idContest, nameOfContest, date, locationId, status, 
+                           factor, minPoint, maxPoint, participatingFee, idBird, beforePoint, afterPoint, location, nameOfBird, 
+                           specie, checkInCode, statusOfContest, currentPar, maxPar, linkmap);
                    //5.2 add data to list
                    if (this.contestList == null){
                     this.contestList = new ArrayList<>();   

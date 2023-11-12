@@ -43,8 +43,8 @@ public class SignupControl extends HttpServlet {
         String user = request.getParameter("txtUsername");
         String pass = request.getParameter("txtPassword");
         String re_pass = request.getParameter("txtConfirm");
-        String fullname = request.getParameter("txtFullname");
         boolean foundErr = false;
+        String url = "dangKi.jsp";
         RegistrationCreateError errors = new RegistrationCreateError();
 
 //            if(!pass.equals(re_pass)){
@@ -64,21 +64,17 @@ public class SignupControl extends HttpServlet {
                 foundErr = true;
                 errors.setConfirmLengthErr("Confirm must match password");
             }
-            if (fullname.trim().length() < 2 || fullname.trim().length() > 50) {
-                foundErr = true;
-                errors.setFullNameLengthErr("Fullname 2 - 50");
-            }
             if (foundErr) {
                 request.setAttribute("CREATE_ERRORS", errors);
             } else {
                 //2. call DAO
                 DAO dao = new DAO();
 
-                User u = new User(fullname, re_pass, user, 0, user, fullname, user, user, user, user, null);
+                User u = new User(user, re_pass);
                 boolean result = dao.createAccount(u);
                 //3. Process Result
                 if (result) {
-                    response.sendRedirect("postLogin.jsp");
+                    url = "login";
                 }//create successful
             }// no error occur
 
@@ -90,7 +86,7 @@ public class SignupControl extends HttpServlet {
         } catch (ClassNotFoundException ex) {
             log("CreateNewAccount_ClassNotFound" + ex.getMessage());
         } finally {
-            RequestDispatcher rd = request.getRequestDispatcher("Login2.jsp");
+            RequestDispatcher rd = request.getRequestDispatcher(url);
             rd.forward(request, response);
         }
     }

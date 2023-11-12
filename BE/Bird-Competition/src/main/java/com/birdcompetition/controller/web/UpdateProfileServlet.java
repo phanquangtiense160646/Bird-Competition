@@ -43,7 +43,7 @@ public class UpdateProfileServlet extends HttpServlet {
         String gmail = request.getParameter("txtGmail");
         String phone = request.getParameter("txtPhone");
         String idmember = request.getParameter("txtUsername");
-        String url = "biloi.html";
+        String url = "";
         try{
            
             DAO dao = new DAO();

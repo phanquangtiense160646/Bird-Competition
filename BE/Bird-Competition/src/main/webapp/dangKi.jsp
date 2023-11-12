@@ -49,33 +49,27 @@
         <button class="btn btn-primary btn-block" type="submit" value="submit">Đăng kí</button>
       </form>
     </div>
-
+    <c:set var="errors" value="${requestScope.CREATE_ERRORS}"/>
     <div class="form-container login-container" id="logreg-forms">
-      <form class="formngu form-signin" action="login" method="post">
-        <h1>Đăng nhập</h1>
-        <div class="form-control2">
-          <input name="user" type="user" id="inputUser" class="form-control" placeholder="Username" required=""
-            autofocus="" />
-          <small class="email-error-2"></small>
+      <form class="formngu form-signin" action="signup" method="post">
+        <h1>Đăng ký ngay</h1>
+        <div class="form-control">
+          <input name="txtUsername" type="text" id="username" placeholder="Username" />
+          <small id="username-error">${errors.usernameLengthErr}</small>
           <span></span>
         </div>
-        <div class="form-control2">
-          <input name="pass" type="password" id="inputPassword" class="form-control" placeholder="Password"
-            required="" />
-          <small class="password-error-2"></small>
+        <div class="form-control">
+          <input name="txtPassword" type="password" id="password" placeholder="Password" />
+          <small id="password-error">${errors.passwordLengthErr}</small>
           <span></span>
         </div>
-            <p style="text-align: center; color: red;"><span class="text-danger">${msg}</span></p>
-        <div class="content">
-          <div class="checkbox">
-            <!--<input type="checkbox" name="checkbox" id="checkbox" />-->
-            <!--<label for="">Remember me</label>-->
-          </div>
-          <div class="pass-link">
-            <!--<a href="#">Forgot password</a>-->
-          </div>
+        <div class="form-control">
+          <input name="txtConfirm" type="password" id="user-repeatpass" placeholder="Re-Password" />
+          <small id="repassword-error">${errors.confirmLengthErr}</small>
+
         </div>
-        <button class="btn btn-success btn-block" type="submit" value="submit">Login</button>
+                    <span style="color: red;">${errors.usernameIsExisted}</span>
+        <button class="btn btn-primary btn-block" type="submit" value="submit">Đăng kí</button>
       </form>
     </div>
 
@@ -101,9 +95,9 @@
           <p>
            <!--Nếu bạn chưa có tài khoản, tham gia với chúng tôi và bắt đầu hành trình của bạn-->   
           </p>
-          <form action="signup">
+          <form action="login">
             <button class="ghost" id="register">
-              Đăng ký
+              Đăng nhập
               <i class="fa-solid fa-arrow-right"></i>
             </button>
           </form>

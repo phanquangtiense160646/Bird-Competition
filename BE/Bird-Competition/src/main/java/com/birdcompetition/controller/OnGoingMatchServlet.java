@@ -8,6 +8,7 @@ import com.birdcompetition.schedule.ScheduleDAO;
 import com.birdcompetition.schedule.ScheduleDTO;
 import java.io.IOException;
 import java.sql.SQLException;
+import java.sql.Time;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -46,6 +47,11 @@ public class OnGoingMatchServlet extends HttpServlet {
             dao.getScheduleByStatus(3);
             List<ScheduleDTO> result = dao.getList();
             session.setAttribute("HAPPENING", result);
+
+            Time currentTime = dao.getCurrentTime();
+    
+
+            session.setAttribute("CURENT_TIME", currentTime);
 
             String action = (String) request.getAttribute("action");
             if (action != null) {

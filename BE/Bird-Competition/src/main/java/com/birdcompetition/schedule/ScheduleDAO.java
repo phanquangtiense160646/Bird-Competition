@@ -1,4 +1,4 @@
- package com.birdcompetition.schedule;
+package com.birdcompetition.schedule;
 
 import com.birdcompetition.birdInContest.BirdContestDAO;
 import com.birdcompetition.birdInContest.BirdContestDTO;
@@ -147,7 +147,7 @@ public class ScheduleDAO implements Serializable {
                 //2.Creat SQL String 
                 String sql = "Select * "
                         + "From Contest, Location "
-                        + "Where Contest.LocationId = Location.LocationId and StatusOfContest = ?";
+                        + "Where Contest.LocationId = Location.LocationId and StatusOfContest = ? ";
                 //3.Create Statement Object
                 stm = con.prepareStatement(sql);
 //                stm.setInt(1, contestStatus);
@@ -171,11 +171,14 @@ public class ScheduleDAO implements Serializable {
                     String userId = rs.getString("UserName");
                     String location = rs.getString("Location");
                     int maxPar = rs.getInt("MaxParticipant");
+                    LocalTime timeStart = rs.getTime("StartTime").toLocalTime();
+                    LocalTime timeEnd = rs.getTime("EndTime").toLocalTime();
                     //                    String maxBird = rs.getString("");
 
-                    ScheduleDTO dto = new ScheduleDTO(id, name, date, locationId,
-                            status, factor, minPoint, maxPoint, fee, userId,
-                            location, contestStatus, maxPar, "", null, null);
+                    ScheduleDTO dto = new ScheduleDTO(id, name, date, locationId, status, factor, minPoint, maxPoint, 
+                            fee, userId, location, contestStatus, maxPar, "", timeStart, timeEnd);
+//                  
+                    
 
                     int currentPar = getParticipants(id);
                     int checkedIn = getCheckedInParticipant(id);
@@ -327,10 +330,10 @@ public class ScheduleDAO implements Serializable {
 
                 String sql = "Insert Into Contest("
                         + "NameOfContest, Date, LocationId, Status, Factor, MinPoint, "
-                        + "MaxPoint, MaxParticipant, ParticipatingFee, IdRule, UserName, "
+                        + "MaxPoint, MaxParticipant, ParticipatingFee, UserName, "
                         + "StatusOfContest, MaxBirdJoin, StartTime, EndTime"
                         + ") Values("
-                        + "?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?"
+                        + "?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?"
                         + ")";
                 //3.Create Statement Object
                 stm = con.prepareStatement(sql);
@@ -343,12 +346,11 @@ public class ScheduleDAO implements Serializable {
                 stm.setInt(7, dto.getMaxPoint());
                 stm.setInt(8, dto.getMaxPar());
                 stm.setInt(9, dto.getFee());
-                stm.setString(10, "1");
-                stm.setString(11, dto.getUserId());
-                stm.setInt(12, dto.getStatusOfContest());
-                stm.setString(13, dto.getMaxBird());
-                stm.setTime(14, Time.valueOf(dto.getStartTime()));
-                stm.setTime(15, Time.valueOf(dto.getEndTime()));
+                stm.setString(10, dto.getUserId());
+                stm.setInt(11, dto.getStatusOfContest());
+                stm.setString(12, dto.getMaxBird());
+                stm.setTime(13, Time.valueOf(dto.getStartTime()));
+                stm.setTime(14, Time.valueOf(dto.getEndTime()));
                 //4.Exercute Query
                 int exercute = stm.executeUpdate();
                 //5.Process
@@ -383,7 +385,7 @@ public class ScheduleDAO implements Serializable {
 
                 String sql = "UPDATE Contest "
                         + "SET NameOfContest = ?, Date = ?, LocationId = ?, Status = ?, Factor = ?, MinPoint = ?, "
-                            + "MaxPoint = ?, MaxParticipant = ?, ParticipatingFee = ?, IdRule = ?, "
+                            + "MaxPoint = ?, MaxParticipant = ?, ParticipatingFee = ?, "
                             + "UserName = ?, StatusOfContest = ?, MaxBirdJoin = ?, StartTime = ?, EndTime = ? "
                         + "WHERE IdContest = ? ";
                 //3.Create Statement Object
@@ -397,13 +399,12 @@ public class ScheduleDAO implements Serializable {
                 stm.setInt(7, dto.getMaxPoint());
                 stm.setInt(8, dto.getMaxPar());
                 stm.setInt(9, dto.getFee());
-                stm.setString(10, "1");
-                stm.setString(11, dto.getUserId());
-                stm.setInt(12, dto.getStatusOfContest());
-                stm.setString(13, dto.getMaxBird());
-                stm.setTime(14, Time.valueOf(dto.getStartTime()));
-                stm.setTime(15, Time.valueOf(dto.getEndTime()));
-                stm.setInt(16, dto.getId());
+                stm.setString(10, dto.getUserId());
+                stm.setInt(11, dto.getStatusOfContest());
+                stm.setString(12, dto.getMaxBird());
+                stm.setTime(13, Time.valueOf(dto.getStartTime()));
+                stm.setTime(14, Time.valueOf(dto.getEndTime()));
+                stm.setInt(15, dto.getId());
                 //4.Exercute Query
                 int exercute = stm.executeUpdate();
                 //5.Process
@@ -520,5 +521,24 @@ public class ScheduleDAO implements Serializable {
         LocalDate localDate = LocalDate.now();
         java.sql.Date date = Date.valueOf(localDate);
         return date;
+    }
+
+//    public double getCurrentTime() {
+//        LocalTime now = LocalTime.now();
+//        int hour = now.getHour();
+//        int minute = now.getMinute();
+//        int second = now.getSecond();
+//
+//        double timeAsInteger = hour + (double) (minute / 100.0);
+////        System.out.println("hour:" + hour);
+////        System.out.println("minute:" + minute);
+////        System.out.println("time: " + timeAsInteger);
+//        return timeAsInteger;
+//    }
+    public Time getCurrentTime() {
+        java.util.Date utilDate = new java.util.Date();
+        Time currentTime = new Time(utilDate.getTime());
+
+        return currentTime;
     }
 }
