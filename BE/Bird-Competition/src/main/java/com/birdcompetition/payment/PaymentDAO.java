@@ -40,8 +40,6 @@ public class PaymentDAO {
                 //2. Crate SQL String
                 String sql = "Select * "
                         + "From OrderDetail "
-                        + "Full outer join Products "
-                        + "On OrderDetail.IdProduct = Products.IdProduct "
                         + "Where IdMember = ?";
 
                 //3. Create Statement Object
@@ -57,7 +55,7 @@ public class PaymentDAO {
 
                     int price = rs.getInt("Price");
                     String orderDate = rs.getString("OrderDate");
-                    String NameOfProducts = rs.getString("NameOfProducts");
+                    String NameOfProducts = rs.getString("OrderName");
 
                     //5.1.2 add data to list
 //                   ContestDTO dto = new ContestDTO(idContest, nameOfContest, date, 

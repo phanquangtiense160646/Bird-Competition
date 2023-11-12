@@ -18,18 +18,19 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <link rel="stylesheet" href="FE/css/payment.css">
     </head>
-    <body>
-        <div class="wrapper rounded"> <nav class="navbar navbar-expand-lg navbar-dark dark d-lg-flex align-items-lg-start"> 
+    <body style="background-image: url('FE/img/defaultpic.jpg'); background-repeat: no-repeat;
+                                                                            background-size: cover;">
+        <div class="wrapper rounded" style="background: rgba(0, 0, 0, 0.6);"> <nav class="navbar navbar-expand-lg navbar-dark dark d-lg-flex align-items-lg-start" style="background: rgba(0, 0, 0, 0);"> 
                 <a class="navbar-brand" href="#">Transactions <p class="text-muted pl-1">Welcome to your transactions</p> </a> 
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation"> <span class="navbar-toggler-icon"></span> </button> 
                 <div class="collapse navbar-collapse" id="navbarNav"> 
-                    <ul class="navbar-nav ml-lg-auto"> 
+<!--                    <ul class="navbar-nav ml-lg-auto"> 
                         <li class="nav-item"> 
                             <a class="nav-link" href="#"><span class="fa fa-bell-o font-weight-bold"></span> 
                                 <span class="notify">Notifications</span> </a> </li> 
                                 <li class="nav-item "> <a href="#"><span class="fa fa-search"></span></a> 
                                     <input type="search" class="dark" placeholder="Search"> </li> 
-                    </ul> 
+                    </ul> -->
                 </div> 
             </nav> 
         
@@ -38,12 +39,12 @@
                     <li class="nav-item"> 
                         <a class="nav-link active" href="#history">History</a> 
                     </li> 
-                    <li class="nav-item"> <a class="nav-link" href="#">Reports</a> 
+                    <li class="nav-item"> <a class="nav-link" href="contact.jsp">Reports</a> 
                     </li> 
                 </ul> 
             </div> 
             <div class="table-responsive mt-3"> 
-                <table class="table table-dark table-borderless"> 
+                <table class="table table-dark table-borderless" style="background: rgba(0, 0, 0, 0.4);" >  
                     <thead> 
                         <tr> 
                             <th scope="col">Activity</th> 
@@ -58,8 +59,8 @@
                             <c:forEach items="${payment}" var="p">
                                <tr> 
                             <td scope="row"> <span class="fa mr-1"></span> ${p.getNameOfProducts()} </td> 
-                            <td><span class="fa fa-cc-mastercard"></span></td> 
-                            <td class="text-muted">${p.orderDate} 29/10/2023</td> 
+                            <td><span class="fa fa-regular fa-credit-card"></span></td> 
+                            <td class="text-muted">${p.orderDate}</td> 
                             <td class="d-flex justify-content-end align-items-center"> 
                                 <span class="fa mr-1"></span> ${p.price} </td> 
                         </tr> 
@@ -75,11 +76,10 @@
                     <nav aria-label="Page navigation example"> 
                         <ul class="pagination"> 
                             <li class="page-item">
-                                 <a class="page-link" href="userprofile.jsp" aria-label="Previous"> 
-                                    <span aria-hidden="true">&lt;Home Page</span> </a> 
+                                 <a class="page-link" href="postLogin.jsp" aria-label="Previous"> 
+                                     <span aria-hidden="true" class="text-white">&lt; Home Page</span> </a> 
                                     
                             </li> 
-                            
                         </ul> 
                     </nav> 
                 </div> 

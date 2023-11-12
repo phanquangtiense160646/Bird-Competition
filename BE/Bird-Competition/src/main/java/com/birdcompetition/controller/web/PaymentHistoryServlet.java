@@ -48,7 +48,7 @@ public class PaymentHistoryServlet extends HttpServlet {
             PaymentDAO dao = new PaymentDAO();
             User user = (User) session.getAttribute("USER");
             dao.getPaymentList(user.getUserName());
-            paymentList = dao.getPaymentList_price();
+            paymentList = dao.getPaymentList();
             session.setAttribute("OWN_PAYMENT", paymentList);
             int totalPrice = 0;
             for (PaymentDTO paymentDTO : paymentList) {
