@@ -61,6 +61,7 @@ html {
     background: linear-gradient(rgba(34, 36, 41, .92), rgba(34, 36, 41, .9)), url(chaomao-bg.jpg) top center no-repeat;
     background-size: cover;
     border-radius: 5%;
+    max-width: calc(100% - 25px);
 }
 
 .update-result, .update-form {
