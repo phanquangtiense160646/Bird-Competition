@@ -54,7 +54,7 @@
     </head>
 </head>
 
-<body class="">
+<body class="" >
     <jsp:include page="JspCommon/webheader.jsp"/>
     <section class="h-25 gradient-custom-2">
         <div class="container py-5 h-100">
