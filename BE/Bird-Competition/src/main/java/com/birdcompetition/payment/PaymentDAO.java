@@ -56,12 +56,9 @@ public class PaymentDAO {
                     int price = rs.getInt("Price");
                     String orderDate = rs.getString("OrderDate");
                     String NameOfProducts = rs.getString("OrderName");
+                    
 
-                    //5.1.2 add data to list
-//                   ContestDTO dto = new ContestDTO(idContest, nameOfContest, date, 
-//                           locationId, status, factor, minPoint, maxPoint, participatingFee, 
-//                           idBird, idBird, maxPoint, idBird, factor, 
-//                           beforePoint, afterPoint, result, location, nameOfBird, specie);
+                  
                     PaymentDTO dto = new PaymentDTO(price, orderDate, NameOfProducts);
                     //5.2 add data to list
                     if (this.paymentList == null) {
