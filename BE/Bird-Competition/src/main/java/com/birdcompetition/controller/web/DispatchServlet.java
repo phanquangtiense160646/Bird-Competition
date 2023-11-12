@@ -127,15 +127,17 @@ public class DispatchServlet extends HttpServlet {
             } else if (button.equals("DeleteMember")) {
                 url = "DeleteMemberServlet";
             } else if (button.equals("login")) {
-                url = "LoginControl";
-            } else if (button.equals("ShowAllMember")) {
-                url = "GetMemberServlet"; 
+                url = "LoginControl"; 
             }else if(button.equals("DeleteNews")){
                 url = "DeleteNewsServlet";
             }else if(button.equals("Update")){
                 url = "UpdateNewsServlet";
             }else if(button.equals("AddNews")){
                 url = "AddNewsServlet";
+            }else if (button.equals("ShowAllMember")) {
+                url = "GetMemberServlet";
+            } else if(button.equals("AdminSignUp")){
+                url = "AdminSignupControl";
             }
                 
         } finally {

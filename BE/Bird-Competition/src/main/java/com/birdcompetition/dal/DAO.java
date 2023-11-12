@@ -69,6 +69,7 @@ public class DAO extends DBHelper{
 
                     result = new User(username, password,
                             gmail, role, idmember, fullname, dateofbirth, country, phone, gender, vipType);
+
                 }//end username and password is verified 
             }
         } finally {
@@ -157,6 +158,7 @@ public class DAO extends DBHelper{
                 if (rs.next()) {
 
                     result = new User(username, username, username, 0, query, username, query, query, query, query, null);
+                    
                 }//end username and password is verified 
             }
         } finally {
@@ -399,6 +401,48 @@ public class DAO extends DBHelper{
         return false;
     }
     
+     public boolean createAdminAccount(User user) throws SQLException,
+            ClassNotFoundException {
+
+        Connection con = null;
+        PreparedStatement stm = null;
+        boolean result = false; 
+
+        try {
+            //1.Make connection
+            con = DBHelper.getConnection();
+            if (con != null){
+            //String query = "insert into [dbo].[User]\n" +
+            //            "values(?,?,?,0,0)";
+            
+            String query = "insert into [dbo].[User](UserName, UserPassword, UserRole, [dbo].[User].Status) values(?, ? , ?, 'true')";
+            
+            
+            stm = con.prepareStatement(query);
+            
+            stm.setString(1, user.getUserName());
+            stm.setString(2, user.getUserPassword());
+            stm.setInt(3, user.getUserRole());
+
+            
+                int exercute = stm.executeUpdate();
+                if (exercute > 0) {
+                    result = true;
+                }
+                //end username and password is verified 
+            }
+
+            } finally {
+
+            if (stm != null) {
+                stm.close();
+            }
+            if (con != null) {
+                con.close();
+            }
+        }
+        return result;
+    }
     
 }    
 

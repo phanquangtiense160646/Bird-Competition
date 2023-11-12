@@ -325,11 +325,12 @@ public List<UserDTO> getUser(int role){
                     String fullname = rs.getString("FullName");
                     Date dateofbirth = rs.getDate("DateOfBirth");
                     String country = rs.getString("Country");
-                    int phone = rs.getInt("Phone");
+                    String phone = rs.getString("Phone");
                     String gender = rs.getString("Gender");
                     String photopath = rs.getString("PhotoPath");
                     
-                    result = new User(fullname, gender, query, phone, idmember, fullname, photopath, country, phone, gender, query);
+                    //result = new User(fullname, gender, query, phone, idmember, fullname, photopath, country, phone, gender, query);
+                    result = new User(fullname, gender, query, 0, idmember, fullname, photopath, country, phone, gender, phone);
                 }
             }
         } finally {

@@ -4,26 +4,26 @@
  */
 package com.birdcompetition.controller;
 
-import com.birdcompetition.member.MemberDAO;
-import com.birdcompetition.member.MemberDTO;
+import com.birdcompetition.dal.DAO;
 import com.birdcompetition.model.User;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.List;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 /**
  *
  * @author 84366
  */
-@WebServlet(name = "MemberServlet", urlPatterns = {"/MemberServlet"})
-public class MemberServlet extends HttpServlet {
+@WebServlet(name = "AdminSignupControl", urlPatterns = {"/AdminSignupControl"})
+public class AdminSignupControl extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -37,26 +37,32 @@ public class MemberServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        String url = "Feedback.jsp";
-        try {
-            HttpSession session = request.getSession();
-            User u = (User) session.getAttribute("USER");
-            MemberDAO dao = new MemberDAO();
-            List<MemberDTO> memberList = dao.getAllMember();
-            memberList.size();
-            System.out.println("size:" + memberList.size());
-            
-//            session.setAttribute("FEEDBACK", feedbackList);
-            request.setAttribute("MEMBER", memberList);
-            session.setAttribute("USER", u);
-            
+        String username = request.getParameter("txtUsername");
+        String password = request.getParameter("txtPassword");
+        int role = Integer.parseInt(request.getParameter("txtRole"));
 
-        } catch (Exception e) {
+        String url = "";
+        try {
+
+            //2. call DAO
+            DAO dao = new DAO();
+           
+//            User u = new User(username, password, "", role, "", "", "", "", 0, "", "");
+            User u = new User(username, password, role);
+            boolean result = dao.createAdminAccount(u);
+            //3. Process Result
+            if (result) {
+                
+                url = "GetMemberServlet";
+            }//create successful
+        } catch (SQLException ex) {
+            Logger.getLogger(AdminSignupControl.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(AdminSignupControl.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
             RequestDispatcher rd = request.getRequestDispatcher(url);
             rd.forward(request, response);
         }
-
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
