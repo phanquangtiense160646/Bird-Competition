@@ -64,7 +64,7 @@
                     <div class="col col-lg-9 col-xl-7">
                         <div class="card">
                             <div class="rounded-top text-white d-flex flex-row" style="background-color: #000000; height:200px;">
-                                <div class="ms-4 mt-5 d-flex flex-column" style="width: 150px;">
+                                <div class="ms-4 mt-5 d-flex flex-column" style="width: 150px; height: 100%;">
                                     <img
                                         src="${sessionScope.BIRD.photoPath}"
                                         alt="Generic placeholder image" class="img-fluid img-thumbnail mt-4 mb-2"
@@ -170,6 +170,11 @@
                                                                         <input class="form-control" id="inputGender" type="text"
                                                                                value="Cái" style="background-color:white;" readonly>
                                                                     </c:if>
+                                                                    <c:if test="${sessionScope.BIRD.gender == null}">
+                                                                        <label class="small mb-1" for="inputGender">Giới tính</label>
+                                                                        <input class="form-control" id="inputGender" type="text"
+                                                                               value="Đực" style="background-color:white;" readonly>
+                                                                    </c:if>    
 
 
                                                                 </div>

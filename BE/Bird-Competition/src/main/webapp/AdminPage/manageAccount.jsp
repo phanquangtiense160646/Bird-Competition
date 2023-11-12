@@ -43,7 +43,7 @@
         <div class="container-fluid">
 
             <!-- Page Heading -->
-            <h1 class="h3 mb-2 text-gray-800">Location Management</h1>
+            <h1 class="h3 mb-2 text-gray-800">Schedule Management</h1>
             <p class="mb-4">Quản lý địa điểm thi đấu <a target="_blank">
             </p>
             <a href="AdminPage/addLocation.jsp" class="btn btn-primary btn-user btn-block">
@@ -77,7 +77,6 @@
                                 </tr>
                             </tfoot>
                             <tbody>
-                            
                                 <c:set var="location" value="${sessionScope.LOCATION}"/>
                                 <c:if test="${not empty location}">
                                     <c:forEach var="l" items="${location}" varStatus="counter">

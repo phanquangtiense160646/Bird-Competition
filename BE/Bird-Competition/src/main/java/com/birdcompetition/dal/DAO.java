@@ -63,7 +63,7 @@ public class DAO extends DBHelper{
                     String fullname = rs.getString("FullName");
                     String dateofbirth = rs.getString("DateOfBirth");
                     String country = rs.getString("Country");
-                    int phone = rs.getInt("Phone");
+                    String phone = rs.getString("Phone");
                     String gender = rs.getString("Gender");
                     String vipType = rs.getString("TypeOfMemberShip");
 
@@ -156,8 +156,7 @@ public class DAO extends DBHelper{
                 //5.Process
                 if (rs.next()) {
 
-                    result = new User(username, username, username, 0,
-                            query, username, query, query, 0, query, null);
+                    result = new User(username, username, username, 0, query, username, query, query, query, query, null);
                 }//end username and password is verified 
             }
         } finally {
@@ -343,7 +342,7 @@ public class DAO extends DBHelper{
                     String fullname = rs.getString("FullName");
                     String dateofbirth = rs.getString("DateOfBirth");
                     String country = rs.getString("Country");
-                    int phone = rs.getInt("Phone");
+                    String phone = rs.getString("Phone");
                     String gender = rs.getString("Gender");
                     String viptype = rs.getString("vipType");
                     

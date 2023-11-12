@@ -76,6 +76,11 @@
                     <i class="fas fa-fw fa-table"></i>
                     <span>Dashboard</span></a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link" href="manageAccount.jsp">
+                    <i class="fas fa-fw fa-table"></i>
+                    <span>Quản lý tài khoản</span></a>
+            </li>  
 
             <li class="nav-item">
                 <a class="nav-link" href='<c:url value="/DispatchServlet?btAction=ManageSchedule"/>'>

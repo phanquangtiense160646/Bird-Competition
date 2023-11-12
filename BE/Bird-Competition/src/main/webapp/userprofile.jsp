@@ -191,7 +191,7 @@
                              <input type="file" id="fileInput" name="image">
                              <input type="submit" value="Add Image">
                          </form>-->
-                        <form action="DispatchServlet" method="GET" >
+                        <form action="DispatchServlet" >
                             <!-- Form Group (username)-->
                             <div class="mb-3">
                                 <label class="small mb-1" for="inputUsername">Username (how your name will appear to other users on the
