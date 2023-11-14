@@ -138,6 +138,8 @@ public class DispatchServlet extends HttpServlet {
                 url = "GetMemberServlet";
             } else if(button.equals("AdminSignUp")){
                 url = "AdminSignupControl";
+            } else if(button.equals("UpdateAccount")){
+                url = "UpdateAccountServlet";
             }
                 
         } finally {

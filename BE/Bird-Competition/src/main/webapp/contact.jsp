@@ -110,7 +110,9 @@
                                 </form>
                             </div>
                         </div>-->
-            <div class="col-lg-6">
+            <div class="col-lg-6" >
+               
+                    <img class="w-100" src="FE/img/dai-hoc-fpt-tp-hcm.jpeg"/>
 
             </div>
             <div class="col-lg-6">

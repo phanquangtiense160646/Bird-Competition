@@ -40,6 +40,7 @@
 
     <body id="page-top">
         <jsp:include page="Menu.jsp"/>
+        
         <div class="container-fluid">
 
             <!-- Page Heading -->
@@ -69,10 +70,9 @@
                                     <th>Fullname</th>
                                     <th>Day of birth</th>
                                     <th>Country</th>
-                                    <th>Phone</th>
-       
+                                    <th>Phone</th>       
                                     <th>Gender</th>
-                                    <th></th>
+                                    <th>Option</th>
                                 </tr>
                             </thead>
 <!--                            <tfoot>
@@ -95,13 +95,41 @@
                                     <c:forEach var="memberDto" items="${memberData}" >
                                         
                                             <tr>
-                                                <td>${memberDto.username}</td>
-                                                <td>${memberDto.password}</td>
-                                                <td>${memberDto.getId()}</td>
-                                                <td>${memberDto.getFullName() }</td>
-                                                <td>${memberDto.getDateOfBirth()}</td>
-                                                <td>${memberDto.getCountry()}</td>
-                                                <td>${memberDto.getPhoneNumber()}</td>
+                                            <form action="DispatchServlet">    
+                                                <td>
+                                                <input type="text" name="txtUsername"    
+                                                       value="${memberDto.username}" readonly class="form-control">
+                                                </td>
+                                                
+                                                <td>
+                                                    <input type="text" name="txtPassword"
+                                                    value="${memberDto.password}" class="form-control">
+                                                </td>
+                                                
+                                                <td>
+                                                    <input type="text" name="txtId"
+                                                    value="${memberDto.getId()}" readonly class="form-control">
+                                                </td>
+                                                
+                                                <td>
+                                                    <input type="text" name="txtFullname"
+                                                    value="${memberDto.getFullName()}" class="form-control">
+                                                </td>
+                                                    
+                                                <td>
+                                                    <input type="text" name="txtDayofbirth"
+                                                    value="${memberDto.getDateOfBirth()}" readonly class="form-control">         
+                                                </td>
+                                                
+                                                <td>
+                                                    <input type="text" name="txtCountry"
+                                                    value="${memberDto.getCountry()}" class="form-control">   
+                                                </td>
+                                                
+                                                <td>
+                                                    <input type="text" name="txtPhone"
+                                                    value="${memberDto.getPhoneNumber()}">
+                                                </td>
                                                
                                                 <td>
                                                     <c:if test="${memberDto.getGender() == 1 }">
@@ -119,8 +147,13 @@
                                                 <c:url var="deleteLink" value="/DispatchServlet?btAction=DeleteMember">
                                                     <c:param name="username" value="${memberDto.username}"/>
                                                 </c:url>
-                                                <a href="${deleteLink}">Delete</a>
-                                            </td>
+                                                <a class="btn btn-primary mb-1" href="${deleteLink}">Delete</a>
+<!--                                                <input class="btn btn-primary mb-1" type="submit" name="btAction" value="UpdateAccount" />-->
+<button type="submit" name="btAction" value="UpdateAccount" class="btn btn-primary mb-1">Update</button>
+                                                </td>
+                                            
+                                        </form>    
+                                            
                                             </tr>
                                                     
 

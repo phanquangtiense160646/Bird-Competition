@@ -54,6 +54,7 @@ public class LoginControl extends HttpServlet {
                         session.setAttribute("USER", result);
                         url = "DispatchServlet?btAction=Dashboard";
                     } else if (result.getUserRole() == 1) {
+                        session.setAttribute("USER", result);
                         url = "DispatchServlet?btAction=Dashboard";
                     }
 
