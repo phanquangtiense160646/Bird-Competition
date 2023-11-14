@@ -1,12 +1,13 @@
 package com.birdcompetition.member;
 
 import com.birdcompetition.bird.BirdDTO;
+import java.io.Serializable;
 
 /**
  *
  * @author admin
  */
-public class MemberDTO {
+public class MemberDTO implements Serializable{
     private String id;
     private String fullName;
     private String dateOfBirth;
@@ -16,6 +17,7 @@ public class MemberDTO {
     private String gender;
     private String username;
     private String password;
+    private int role;
 
     public MemberDTO() {
     }
@@ -48,6 +50,25 @@ public class MemberDTO {
         this.gender = gender;
         this.username = username;
         this.password = password;
+    }
+
+    public MemberDTO(String id, String fullName, String dateOfBirth, String country, String phoneNumber, String username, String password, int role) {
+        this.id = id;
+        this.fullName = fullName;
+        this.dateOfBirth = dateOfBirth;
+        this.country = country;
+        this.phoneNumber = phoneNumber;
+        this.username = username;
+        this.password = password;
+        this.role = role;
+    }
+
+    public int getRole() {
+        return role;
+    }
+
+    public void setRole(int role) {
+        this.role = role;
     }
 
     

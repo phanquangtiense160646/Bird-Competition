@@ -61,9 +61,9 @@ public class StartServlet extends HttpServlet {
             request.setAttribute("FEEDBACK", listFeedback);
             
         } catch (SQLException ex) {
-            log("StartServlet_SQL");
+            log("StartServlet_SQL: " + ex.getMessage());
         } catch (ClassNotFoundException ex) {
-            log("StartServlet_ClassNotFound");
+            log("StartServlet_ClassNotFound: " + ex.getMessage());
         } catch (NamingException ex) {
             Logger.getLogger(StartServlet.class.getName()).log(Level.SEVERE, null, ex);
         }finally {

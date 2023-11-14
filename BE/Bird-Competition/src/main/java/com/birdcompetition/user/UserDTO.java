@@ -4,11 +4,13 @@
  */
 package com.birdcompetition.user;
 
+import java.io.Serializable;
+
 /**
  *
  * @author admin
  */
-public class UserDTO {
+public class UserDTO implements Serializable{
 
     private String name;
     private String password;
