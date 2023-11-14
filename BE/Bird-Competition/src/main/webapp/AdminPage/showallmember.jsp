@@ -40,7 +40,7 @@
 
     <body id="page-top">
         <jsp:include page="Menu.jsp"/>
-        
+
         <div class="container-fluid">
 
             <!-- Page Heading -->
@@ -49,7 +49,7 @@
             </p>
             <a href="AdminPage/adminsignup.jsp" class="btn btn-primary btn-user btn-block">
                 Tạo tài khoản</a>
-   
+
             <!-- DataTales Example -->
             <div class="card shadow mb-4">
                 <div class="card-header py-3">
@@ -60,10 +60,7 @@
                         <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                             <thead>
                                 <tr>
-<!--                                    <th>Username</th>
-                                    <th>Password</th>
-                                    <th>Gmail</th>
-                                    <th>Role</th>-->
+
                                     <th>Username</th>
                                     <th>Password</th>
                                     <th>Id Member</th>
@@ -75,93 +72,79 @@
                                     <th>Option</th>
                                 </tr>
                             </thead>
-<!--                            <tfoot>
-                                <tr>
-                                    <th>Contest Id</th>
-                                    <th>Name Of Contest</th>
-                                    <th>Date Of Contest</th>
-                                    <th>Location</th>
-                                    <th>Factor</th>
-                                    <th>Min Point</th>
-                                    <th>Max Point</th>
-                                    <th>Max Participant</th>
-                                    <th>Participation Fee</th>
-                                    <th>Status</th>
-                                </tr>
-                            </tfoot>-->
                             <tbody>
                                 <c:set var="memberData" value="${sessionScope.ulist}"/>
                                 <c:if test="${not empty memberData}">
                                     <c:forEach var="memberDto" items="${memberData}" >
-                                        
-                                            <tr>
-                                            <form action="DispatchServlet">    
-                                                <td>
-                                                <input type="text" name="txtUsername"    
-                                                       value="${memberDto.username}" readonly class="form-control">
-                                                </td>
-                                                
-                                                <td>
-                                                    <input type="text" name="txtPassword"
-                                                    value="${memberDto.password}" class="form-control">
-                                                </td>
-                                                
-                                                <td>
-                                                    <input type="text" name="txtId"
-                                                    value="${memberDto.getId()}" readonly class="form-control">
-                                                </td>
-                                                
-                                                <td>
-                                                    <input type="text" name="txtFullname"
-                                                    value="${memberDto.getFullName()}" class="form-control">
-                                                </td>
-                                                    
-                                                <td>
-                                                    <input type="text" name="txtDayofbirth"
-                                                    value="${memberDto.getDateOfBirth()}" readonly class="form-control">         
-                                                </td>
-                                                
-                                                <td>
-                                                    <input type="text" name="txtCountry"
-                                                    value="${memberDto.getCountry()}" class="form-control">   
-                                                </td>
-                                                
-                                                <td>
-                                                    <input type="text" name="txtPhone"
-                                                    value="${memberDto.getPhoneNumber()}"  class="form-control">
-                                                </td>
-                                               
-                                                <td>
-                                                    <c:if test="${memberDto.getGender() == 1 }">
-                                                        Nam
-                                                    </c:if>
-                                                    <c:if test="${memberDto.getGender() == 0 }">
-                                                        Nữ
-                                                    </c:if>
-                                                        <c:if test="${memberDto.getGender() == null }">
-                                                        Chưa xác định
-                                                    </c:if>
-                                                    
-                                                </td>
-                                                <td>
-                                                <c:url var="deleteLink" value="/DispatchServlet?btAction=DeleteMember">
-                                                    <c:param name="username" value="${memberDto.username}"/>
-                                                </c:url>
-                                                <a class="btn btn-primary mb-1" href="${deleteLink}">Delete</a>
-<!--                                                <input class="btn btn-primary mb-1" type="submit" name="btAction" value="UpdateAccount" />-->
-<button type="submit" name="btAction" value="UpdateAccount" class="btn btn-primary mb-1">Update</button>
-                                                </td>
-                                            
-                                        </form>    
-                                            
-                                            </tr>
-                                                    
 
-                                    </c:forEach>
-                                    </c:if>
-                                    <c:if test="${ empty memberData}">
-                                        Chua co du lieu
-                                    </c:if>
+                                        <tr>
+                                    <form action="DispatchServlet">    
+                                        <td>
+                                            <input type="text" name="txtUsername"    
+                                                   value="${memberDto.username}" readonly class="form-control">
+                                        </td>
+
+                                        <td>
+                                            <input type="text" name="txtPassword"
+                                                   value="${memberDto.password}" class="form-control">
+                                        </td>
+
+                                        <td>
+                                            <input type="text" name="txtId"
+                                                   value="${memberDto.getId()}" readonly class="form-control">
+                                        </td>
+
+                                        <td>
+                                            <input type="text" name="txtFullname"
+                                                   value="${memberDto.getFullName()}" class="form-control">
+                                        </td>
+
+                                        <td>
+                                            <input type="text" name="txtDayofbirth"
+                                                   value="${memberDto.getDateOfBirth()}" readonly class="form-control">         
+                                        </td>
+
+                                        <td>
+                                            <input type="text" name="txtCountry"
+                                                   value="${memberDto.getCountry()}" class="form-control">   
+                                        </td>
+
+                                        <td>
+                                            <input type="text" name="txtPhone"
+                                                   value="${memberDto.getPhoneNumber()}"  class="form-control">
+                                        </td>
+
+                                        <td>
+                                            <c:if test="${memberDto.getGender() == 1 }">
+                                                Nam
+                                            </c:if>
+                                            <c:if test="${memberDto.getGender() == 0 }">
+                                                Nữ
+                                            </c:if>
+                                            <c:if test="${memberDto.getGender() == null }">
+                                                Chưa xác định
+                                            </c:if>
+
+                                        </td>
+                                        <td>
+                                            <c:url var="deleteLink" value="/DispatchServlet?btAction=DeleteMember">
+                                                <c:param name="username" value="${memberDto.username}"/>
+                                            </c:url>
+                                            <a class="btn btn-primary mb-1" href="${deleteLink}">Delete</a>
+                                            <!--                                                <input class="btn btn-primary mb-1" type="submit" name="btAction" value="UpdateAccount" />-->
+                                            <button type="submit" name="btAction" value="UpdateAccount" class="btn btn-primary mb-1">Update</button>
+                                        </td>
+
+                                    </form>    
+
+                                    </tr>
+
+
+                                </c:forEach>
+                            </c:if>
+                            <c:if test="${ empty memberData}">
+                                Chua co du lieu
+                            </c:if>
                             </tbody>
                         </table>
                     </div>

@@ -95,7 +95,7 @@ public class BirdDAO implements Serializable {
         List<BirdDTO> searchList = new ArrayList<>();
         if (searchValue != null) {
             for (int i = 0; i < birdList.size(); i++) {
-                if (birdList.get(i).getBirdName().contains(searchValue)) {
+                if (birdList.get(i).getBirdName().toLowerCase().contains(searchValue.toLowerCase())) {
                     searchList.add(birdList.get(i));
                 }
             }
