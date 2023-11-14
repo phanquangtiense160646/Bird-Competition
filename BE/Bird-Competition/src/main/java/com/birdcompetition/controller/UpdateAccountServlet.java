@@ -50,15 +50,11 @@ public class UpdateAccountServlet extends HttpServlet {
         
         String url = "";
         try{
-           
+
             MemberDAO dao = new MemberDAO();
-            List<MemberDTO> memberList;
             boolean result = dao.UpdateAccount(username, password, idmember, fullname, country, phone);
             
             if (result) {
-                HttpSession session = request.getSession();
-                memberList = dao.getMemberList();
-                session.setAttribute("ulist", memberList);
                 request.setAttribute("msg", "success");
                 url = "GetMemberServlet";
             }

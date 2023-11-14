@@ -60,15 +60,14 @@
                         <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                             <thead>
                                 <tr>
-
                                     <th>Username</th>
                                     <th>Password</th>
                                     <th>Id Member</th>
-                                    <th>Fullname</th>
+                                    <th>Full name</th>
                                     <th>Day of birth</th>
                                     <th>Country</th>
                                     <th>Phone</th>       
-                                    <th>Gender</th>
+                                    <th>Role</th>
                                     <th>Option</th>
                                 </tr>
                             </thead>
@@ -80,8 +79,8 @@
                                         <tr>
                                     <form action="DispatchServlet">    
                                         <td>
-                                            <input type="text" name="txtUsername"    
-                                                   value="${memberDto.username}" readonly class="form-control">
+                                            ${memberDto.username}
+                                            <input type="hidden" name="txtUsername" value="${memberDto.username}" />
                                         </td>
 
                                         <td>
@@ -90,8 +89,7 @@
                                         </td>
 
                                         <td>
-                                            <input type="text" name="txtId"
-                                                   value="${memberDto.getId()}" readonly class="form-control">
+                                            ${memberDto.getId()}
                                         </td>
 
                                         <td>
@@ -100,8 +98,7 @@
                                         </td>
 
                                         <td>
-                                            <input type="text" name="txtDayofbirth"
-                                                   value="${memberDto.getDateOfBirth()}" readonly class="form-control">         
+                                            ${memberDto.getDateOfBirth()}        
                                         </td>
 
                                         <td>
@@ -115,14 +112,17 @@
                                         </td>
 
                                         <td>
-                                            <c:if test="${memberDto.getGender() == 1 }">
-                                                Nam
+                                            <c:if test="${memberDto.role == 1 }">
+                                                Admin
                                             </c:if>
-                                            <c:if test="${memberDto.getGender() == 0 }">
-                                                Nữ
+                                            <c:if test="${memberDto.role == 2 }">
+                                                Manager
                                             </c:if>
-                                            <c:if test="${memberDto.getGender() == null }">
-                                                Chưa xác định
+                                            <c:if test="${memberDto.role == 3 }">
+                                                Staff
+                                            </c:if>
+                                            <c:if test="${memberDto.role == 4 }">
+                                                Member
                                             </c:if>
 
                                         </td>
@@ -130,7 +130,9 @@
                                             <c:url var="deleteLink" value="/DispatchServlet?btAction=DeleteMember">
                                                 <c:param name="username" value="${memberDto.username}"/>
                                             </c:url>
-                                            <a class="btn btn-primary mb-1" href="${deleteLink}">Delete</a>
+                                            <c:if test="${memberDto.role != 1 }">
+                                                <a class="btn btn-primary mb-1" href="${deleteLink}">Delete</a>
+                                            </c:if>
                                             <!--                                                <input class="btn btn-primary mb-1" type="submit" name="btAction" value="UpdateAccount" />-->
                                             <button type="submit" name="btAction" value="UpdateAccount" class="btn btn-primary mb-1">Update</button>
                                         </td>

@@ -6,6 +6,7 @@ package com.birdcompetition.user;
 
 import com.birdcompetition.model.User;
 import com.birdcompetition.util.DBHelper;
+import java.io.Serializable;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
@@ -19,7 +20,7 @@ import javax.naming.NamingException;
  *
  * @author admin
  */
-public class UserDAO {
+public class UserDAO implements Serializable{
     public  List<UserDTO> getUsers() {
         List<UserDTO> list = new ArrayList<>();
         Connection cn = null;
