@@ -14,6 +14,7 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.naming.NamingException;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -40,25 +41,26 @@ public class DeleteMemberServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        String idMember = request.getParameter("txtMemberID");
-        String url = "biloi.html";
+        String username = request.getParameter("username");
+        String url = "AdminPage/showallmember.jsp";
         try {
             //1. call method
             //1.1. new DAO
             MemberDAO dao = new MemberDAO();
             //1.2 call DAO's method
-            boolean result = dao.deleteMember(idMember);
-            
+            boolean result = dao.deleteUser(username);
+
             //2. process Result
             if (result) {
                 //2.1 call the search function again using URL Rewriting
                 HttpSession session = request.getSession();
-                List<MemberDTO> birdList;
-                User user = (User) session.getAttribute("USER");
-                dao.getMemberById(user.getIdMember());
-                birdList = dao.getMemberList();
-                session.setAttribute("OWN_BIRD", birdList);
-                url = "showallbirds.jsp";
+                List<MemberDTO> memberList;
+                
+                dao.getMember();
+                memberList = dao.getMemberList();
+
+                session.setAttribute("ulist", memberList);
+                
                 //2.2. go to error page
             }//end delete action is successful
         } catch (SQLException ex) {
@@ -68,7 +70,8 @@ public class DeleteMemberServlet extends HttpServlet {
         } catch (NamingException ex) {
             Logger.getLogger(DeleteMemberServlet.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
-            response.sendRedirect(url);
+            RequestDispatcher rd = request.getRequestDispatcher(url);
+            rd.forward(request, response);
         }
     }
 

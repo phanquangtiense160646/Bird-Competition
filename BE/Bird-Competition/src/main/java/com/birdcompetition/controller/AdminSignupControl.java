@@ -53,7 +53,7 @@ public class AdminSignupControl extends HttpServlet {
             //3. Process Result
             if (result) {
                 
-                url = "GetMemberServlet";
+                url = "AdminSignUp";
             }//create successful
         } catch (SQLException ex) {
             Logger.getLogger(AdminSignupControl.class.getName()).log(Level.SEVERE, null, ex);
