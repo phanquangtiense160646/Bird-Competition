@@ -4,18 +4,23 @@
  */
 package com.birdcompetition.controller;
 
+import com.birdcompetition.member.MemberDAO;
+import com.birdcompetition.member.MemberDTO;
 import com.birdcompetition.user.UserDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.naming.NamingException;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -36,37 +41,38 @@ public class UpdateAccountServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        String name = request.getParameter("txtUsername");
+        String username = request.getParameter("txtUsername");
         String password = request.getParameter("txtPassword");
-        String admin = request.getParameter("chkAdmin");
-        String searchValue = request.getParameter("lastSearchValue");        
-        String url = "biloi.html";
-        try {
-            boolean role = false;
-            if (admin != null) {
-                role = true;
-            }
-
-            //call model
-            UserDAO dao = new UserDAO();
-            boolean result = dao.updateAccount(name, password, role);
-            //process result
-
+        String idmember = request.getParameter("txtUsername");
+        String fullname = request.getParameter("txtFullname");   
+        String country = request.getParameter("txtCountry"); 
+        String phone = request.getParameter("txtPhone"); 
+        
+        String url = "";
+        try{
+           
+            MemberDAO dao = new MemberDAO();
+            List<MemberDTO> memberList;
+            boolean result = dao.UpdateAccount(username, password, idmember, fullname, country, phone);
+            
             if (result) {
-                url = "DispatchServlet"
-                        + "?btAction=Search"
-                        + "&txtSearchValue=" + searchValue;
+                HttpSession session = request.getSession();
+                memberList = dao.getMemberList();
+                session.setAttribute("ulist", memberList);
+                request.setAttribute("msg", "success");
+                url = "GetMemberServlet";
             }
-
+            
+           
         } catch (SQLException ex) {
-            log("UpdateAccount_SQL " + ex.getMessage());
-        } catch (NamingException ex) {
-            log("UpdateAccount_Naming " + ex.getMessage());
+            Logger.getLogger(UpdateAccountServlet.class.getName()).log(Level.SEVERE, null, ex);
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(UpdateAccountServlet.class.getName()).log(Level.SEVERE, null, ex);
-        } finally {
-            response.sendRedirect(url);
+        }finally{
+             RequestDispatcher rd = request.getRequestDispatcher(url);
+             rd.forward(request, response);
         }
+        
     }
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**

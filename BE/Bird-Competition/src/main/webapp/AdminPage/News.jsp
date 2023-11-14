@@ -99,7 +99,7 @@
                                         
                                         <tr>
                                     <form action="DispatchServlet">
-                                        <td>${news.getIdNews()}
+                                            <td>${news.getIdNews()}
                                                 <input type="hidden" name ="txtID" value="${news.getIdNews()}">
                                             </td>
                                             <td>

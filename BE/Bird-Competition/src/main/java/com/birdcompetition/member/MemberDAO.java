@@ -76,7 +76,7 @@ public class MemberDAO {
             if (con != null) {
                 //2.Creat SQL String 
                 String query = "select * from [dbo].[Member] "
-                        + "where IdMember = ? "
+                        + "where [dbo].[Member].IdMember = ? "
                         + "and Status = 'true'";
 
                 stm = con.prepareStatement(query);
@@ -219,42 +219,43 @@ public class MemberDAO {
 
     }
 
-    public boolean deleteMember(String idMember)
-            throws SQLException, NamingException, ClassNotFoundException {
-        Connection con = null;
-        PreparedStatement stm = null;
-        boolean result = false;
-        try {
-            //1.Make connection
-            con = DBHelper.getConnection();
-            if (con != null) {
-                //2. Create SQL String 
-                String sql = "Delete From [dbo].[Member] "
-                        + "Where IdMember = ?";
-                //3. Create Statement Object
-                stm = con.prepareStatement(sql);
-
-                stm.setString(1, idMember);
-
-                //4. Execute Query
-                int exercute = stm.executeUpdate();
-                //5. Process
-                if (exercute > 0) {
-                    return true;
-                }
-            }//end username and password is verified
-        }//end connection is available   
-        finally {
-            if (stm != null) {
-                stm.close();
-            }
-            if (con != null) {
-                con.close();
-            }
-        }
-        return result;
-    }
-
+//    public boolean deleteMember(String idMember)
+//            throws SQLException, NamingException, ClassNotFoundException {
+//        Connection con = null;
+//        PreparedStatement stm = null;
+//        boolean result = false;
+//        try {
+//            //1.Make connection
+//            con = DBHelper.getConnection();
+//            if (con != null) {
+//                //2. Create SQL String 
+//                String sql = "Update From [dbo].[User] "
+//                        + "Set [dbo].[User].Status = 'false' "
+//                        + "Where UserName = ? "
+//                        + "";
+//                //3. Create Statement Object
+//                stm = con.prepareStatement(sql);
+//
+//                stm.setString(1, idMember);
+//
+//                //4. Execute Query
+//                int exercute = stm.executeUpdate();
+//                //5. Process
+//                if (exercute > 0) {
+//                    return true;
+//                }
+//            }//end username and password is verified
+//        }//end connection is available   
+//        finally {
+//            if (stm != null) {
+//                stm.close();
+//            }
+//            if (con != null) {
+//                con.close();
+//            }
+//        }
+//        return result;
+//    }
     public List<MemberDTO> getMember() throws SQLException, ClassNotFoundException {
 
         Connection con = null;
@@ -281,9 +282,8 @@ public class MemberDAO {
                     String dateofbirth = rs.getString("DateOfBirth");
                     String country = rs.getString("Country");
                     String phone = rs.getString("Phone");
-                    
+
                     String gender = rs.getString("Gender");
-                    
 
                     MemberDTO dto = new MemberDTO(memberId, fullname, dateofbirth, country, phone, gender, username, password);
                     if (this.memberList == null) {
@@ -313,11 +313,8 @@ public class MemberDAO {
 //        for (MemberDTO memberDTO : list) {
 //            System.out.println("Size :   "+list.size());
 //        }
-       
-    
-    
-    
-     public boolean deleteUser(String username)
+
+    public boolean deleteUser(String username)
             throws SQLException, NamingException, ClassNotFoundException {
         Connection con = null;
         PreparedStatement stm = null;
@@ -354,5 +351,51 @@ public class MemberDAO {
         }
         return result;
     }
+
+    public boolean UpdateAccount(String username, String password, String idmember,
+            String fullname, String country, String phone)
+            throws SQLException, ClassNotFoundException {
+        Connection con = null;
+        PreparedStatement stm = null;
+        boolean result = false;
+        try {
+            //1.Make connection
+            con = DBHelper.getConnection();
+            if (con != null) {
+                //2. Create SQL String 
+                String sql = "UPDATE [dbo].[User] "
+                        + "Set [dbo].[User].UserPassword = ? "
+                        + "Where [dbo].[User].UserName = ? "
+                        + "Update Member "
+                        + "Set FullName = ?, "
+                        + "Country = ?, Phone = ? "
+                        + "Where IdMember = ? ";
+                
+                //3. Create Statement Object
+                stm = con.prepareStatement(sql);
+                stm.setString(1, password);
+                stm.setString(2, username);
+                stm.setString(3, fullname);
+                stm.setString(4, country);
+                stm.setString(5, phone);
+                stm.setString(6, idmember);
+                //4. Execute Query
+                int exercute = stm.executeUpdate();
+                //5. Process
+                if (exercute > 0) {
+                    return true;
+                }
+            }//end username and password is verified
+        }//end connection is available   
+        finally {
+            if (stm != null) {
+                stm.close();
+            }
+            if (con != null) {
+                con.close();
+            }
+        }
+        return result;
     }
 
+}

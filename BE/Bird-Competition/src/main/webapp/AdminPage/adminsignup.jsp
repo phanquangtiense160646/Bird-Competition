@@ -17,7 +17,7 @@
         <meta name="description" content="">
         <meta name="author" content="">
 
-        <title>Create Schedule</title>
+        <title>Create Account</title>
 
         <!-- Custom fonts for this template -->
         <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -61,13 +61,20 @@
                             <select id="" name="txtRole" class="form-control ">
                                 <option value="3">Staff</option>
                                 <option value="2">Manager</option>
+                                <option value="1">Admin</option>
                                 
                             </select>
                         </div>
 
                         <hr>
+                        
                         <button type="submit" class="btn btn-primary btn-user btn-block" name="btAction">
                             Đăng ký</button>
+                        
+                        <a href="javascript:history.back()" class="btn btn-secondary btn-user btn-block">
+                            Quay lại
+                        </a>
+                        
                     </form>
 
                 </div>
