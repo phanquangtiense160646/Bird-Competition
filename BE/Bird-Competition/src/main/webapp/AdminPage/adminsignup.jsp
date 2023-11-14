@@ -67,8 +67,9 @@
                         </div>
 
                         <hr>
-                        
-                        <button type="submit" class="btn btn-primary btn-user btn-block" name="btAction">
+                        <c:set var="errors" value="${requestScope.CREATE_ERRORS}"/>
+                        <span style="color: red;">${errors.usernameIsExisted}</span>
+                        <button type="submit" class="btn btn-primary btn-user btn-block">
                             Đăng ký</button>
                         
                         <a href="javascript:history.back()" class="btn btn-secondary btn-user btn-block">
