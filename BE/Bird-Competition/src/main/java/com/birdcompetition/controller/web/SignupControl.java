@@ -53,7 +53,8 @@ public class SignupControl extends HttpServlet {
 //            dispatcher.forward(request, response);
         try {
             //1. Check all user's error
-            if (user.trim().length() < 6 || user.trim().length() > 20) {
+            if (user != null && pass != null && re_pass != null){
+                if (user.trim().length() < 6 || user.trim().length() > 20) {
                 foundErr = true;
                 errors.setUsernameLengthErr("Username have to 6-20");
             }
@@ -77,6 +78,7 @@ public class SignupControl extends HttpServlet {
                     url = "login";
                 }//create successful
             }// no error occur
+            }
 
         } catch (SQLException ex) {
             log("CreateNewAccount_SQL " + ex.getMessage());
