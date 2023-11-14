@@ -83,12 +83,12 @@
                                 </div>
                             </div>
                             <div class=" pt-5 pl-4 text-black" style="background-color: #f8f9fa;">
-                                <form action="#editprofile-dialog" style="z-index: 1;">
-                                    <button class="btn btn-outline-dark" data-mdb-ripple-color="dark"
+                                
+                                <a href="#editprofile-dialog" class="btn btn-outline-dark" data-mdb-ripple-color="dark"
                                             style="z-index: 0; margin-left: 17px;">
                                         Edit profile
-                                    </button>
-                                </form>
+                                </a>
+                                
                                 <form action="DispatchServlet" style="z-index: 1;">
                                     <button class="btn btn-outline-dark" data-mdb-ripple-color="dark"
                                             style="z-index: 0; margin-left: 17px;" 
