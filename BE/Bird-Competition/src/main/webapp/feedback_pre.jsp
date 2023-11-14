@@ -34,79 +34,78 @@
 <body>
 
     <!-- Header Start -->
-    <div class="container-fluid bg-dark px-0">
-        <div class="row gx-0">
-            <div class="col-lg-3 bg-dark d-none d-lg-block">
+     <div class="container-fluid bg-dark px-0">
+            <div class="row gx-0">
+                <div class="col-lg-3 bg-dark d-none d-lg-block">
+        
+        
+                    <a href="index.html" class="navbar-brand w-100 h-100 m-0 p-0 d-flex align-items-center justify-content-center">
+                        <img src="FE/img/finallogo.png" style="width: 100px; margin-right: -40px; margin-bottom:50px;">
+                        <h1 class="m-0 display-4 text-primary text-uppercase">BIRDFIGHTER</h1>
+                    </a>
 
 
-                <a href="#" class="navbar-brand w-100 h-100 m-0 p-0 d-flex align-items-center justify-content-center">
-                    <img src="FE/img/finallogo.png" style="width: 100px; margin-right: -40px; margin-bottom:50px;">
-                    <h1 class="m-0 display-4 text-primary text-uppercase">BIRDFIGHTER</h1>
-                </a>
 
-
-
-            </div>
-            <div class="col-lg-9">
-                <div class="row gx-0 bg-secondary d-none d-lg-flex">
-                    <div class="col-lg-7 px-5 text-start">
-                        <div class="h-100 d-inline-flex align-items-center py-2 me-4">
-                            <i class="fa fa-envelope text-primary me-2"></i>
-                            <h6 class="mb-0">birdfight@compe.com</h6>
-                        </div>
-                        <div class="h-100 d-inline-flex align-items-center py-2">
-                            <i class="fa fa-phone-alt text-primary me-2"></i>
-                            <h6 class="mb-0">+123 321 333</h6>
-                        </div>
-                    </div>
-                    <div class="col-lg-5 px-5 text-end">
-                        <div class="d-inline-flex align-items-center py-2">
-                            <a class="btn btn-light btn-square rounded-circle me-2" href="">
-                                <i class="fab fa-facebook-f"></i>
-                            </a>
-                            <a class="btn btn-light btn-square rounded-circle me-2" href="">
-                                <i class="fab fa-twitter"></i>
-                            </a>
-                            <a class="btn btn-light btn-square rounded-circle me-2" href="">
-                                <i class="fab fa-linkedin-in"></i>
-                            </a>
-                            <a class="btn btn-light btn-square rounded-circle me-2" href="">
-                                <i class="fab fa-instagram"></i>
-                            </a>
-                            <a class="btn btn-light btn-square rounded-circle" href="">
-                                <i class="fab fa-youtube"></i>
-                            </a>
-                        </div>
-                    </div>
                 </div>
-                <nav class="navbar navbar-expand-lg bg-dark navbar-dark p-3 p-lg-0 px-lg-5">
-
-                    <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-                    <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
-                        <div class="navbar-nav mr-auto py-0">
-                            <a href='<c:url value="/DispatchServlet?btAction=Home"/>' class="nav-item nav-link">Home</a>
-                            <a href='<c:url value="/DispatchServlet?btAction=Home"/>'class="nav-item nav-link">Bảng xếp hạng</a>
-                            <a href='<c:url value="/DispatchServlet?btAction=Home"/>'class="nav-item nav-link">Lịch Thi Đấu</a>
-                            <a href='<c:url value="/DispatchServlet?btAction=Home"/>' class="nav-item nav-link">Hội viên</a>
-                            <div class="nav-item dropdown">
-                                <a href="#" class="nav-link dropdown-toggle active" data-bs-toggle="dropdown">Pages</a>
-                                <div class="dropdown-menu rounded-0 m-0">
-                                    <a href="News_pre.jsp" class="dropdown-item">Tin Tức</a>
-                                    <a href="rule_pre.jsp" class="dropdown-item">Luật thi đấu</a>
-                                    <a href="#" class="dropdown-item active">Feedback</a>
-                                </div>
+                <div class="col-lg-9">
+                    <div class="row gx-0 bg-secondary d-none d-lg-flex">
+                        <div class="col-lg-7 px-5 text-start">
+                            <div class="h-100 d-inline-flex align-items-center py-2 me-4">
+                                <i class="fa fa-envelope text-primary me-2"></i>
+                                <h6 class="mb-0">birdfight@compe.com</h6>
                             </div>
-                            <a href="contact_pre.jsp" class="nav-item nav-link">Liên Hệ</a>
-
+                            <div class="h-100 d-inline-flex align-items-center py-2">
+                                <i class="fa fa-phone-alt text-primary me-2"></i>
+                                <h6 class="mb-0">+123 321 333</h6>
+                            </div>
                         </div>
-                        <a href="Login2.jsp" class="btn btn-primary py-md-3 px-md-5 d-none d-lg-block">Login/Signup</a>
+                        <div class="col-lg-5 px-5 text-end">
+                            <div class="d-inline-flex align-items-center py-2">
+                                <a class="btn btn-light btn-square rounded-circle me-2" href="">
+                                    <i class="fab fa-facebook-f"></i>
+                                </a>
+                                <a class="btn btn-light btn-square rounded-circle me-2" href="">
+                                    <i class="fab fa-twitter"></i>
+                                </a>
+                                <a class="btn btn-light btn-square rounded-circle me-2" href="">
+                                    <i class="fab fa-linkedin-in"></i>
+                                </a>
+                                <a class="btn btn-light btn-square rounded-circle me-2" href="">
+                                    <i class="fab fa-instagram"></i>
+                                </a>
+                                <a class="btn btn-light btn-square rounded-circle" href="">
+                                    <i class="fab fa-youtube"></i>
+                                </a>
+                            </div>
+                        </div>
                     </div>
-                </nav>
+                    <nav class="navbar navbar-expand-lg bg-dark navbar-dark p-3 p-lg-0 px-lg-5">
+                        <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                        <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
+                            <div class="navbar-nav mr-auto py-0">
+                                <a href='<c:url value="/DispatchServlet?btAction=Home"/>' class="nav-item nav-link active">Home</a>
+                                <a href='<c:url value="/DispatchServlet?btAction=LeaderBoard"/>' class="nav-item nav-link">Bảng xếp hạng</a>
+                                <a href='<c:url value="/DispatchServlet?btAction=Home"/>#schedule' class="nav-item nav-link">Lịch thi đấu</a>
+                                <a href='<c:url value="/DispatchServlet?btAction=Home"/>#member' class="nav-item nav-link">Hội viên</a>
+                                <div class="nav-item dropdown">
+                                    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
+                                    <div class="dropdown-menu rounded-0 m-0">
+                                        <!-- <a href="blog.html" class="dropdown-item">News</a> -->
+                                        <a href="rule_pre.jsp" class="dropdown-item">Luật thi đấu</a>
+                                        <a href='<c:url value="/DispatchServlet?btAction=FeedBack"/>' class="dropdown-item">Feedback</a>
+                                        <a href='<c:url value="/DispatchServlet?btAction=Blog"/>' class="dropdown-item">Tin Tức</a>
+                                    </div>
+                                </div>
+                                <a href="contact_pre.jsp" class="nav-item nav-link">Liên Hệ</a>
+                            </div>
+                            <a href="Login2.jsp" class="btn btn-primary py-md-3 px-md-5 d-none d-lg-block">Login/Signup</a>
+                        </div>
+                    </nav>
+                </div>
             </div>
         </div>
-    </div>
     <!-- Header End -->
 
     <!-- Hero Start -->
@@ -165,9 +164,9 @@
     <!-- Testimonial End -->
 
     <!-- Give Feedback start -->
-    <div class="row g-0, d-flex justify-content-center" id="feedback">
+    <div class="row g-0, d-flex justify-content-center" id="feedback" >
         <div class="col-lg-6">
-            <div class="bg-dark p-5">
+            <div class="bg-dark p-5" style="border-radius: 15px">
                 <form>
                     <div class="row g-3">
 

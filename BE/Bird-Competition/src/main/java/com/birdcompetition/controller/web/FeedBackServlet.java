@@ -40,19 +40,22 @@ public class FeedBackServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, SQLException, ClassNotFoundException {
         response.setContentType("text/html;charset=UTF-8");
-        String url = "Feedback.jsp";
+        String url = null;
         try {
             HttpSession session = request.getSession();
-            User u = (User) session.getAttribute("USER");
+            User user = (User) session.getAttribute("USER");
+
             FeedBackDAO dao = new FeedBackDAO();
             List<FeedBackDTO> feedbackList = dao.getFeedback();
             feedbackList.size();
-            System.out.println("size:" + feedbackList.size());
-            
-//            session.setAttribute("FEEDBACK", feedbackList);
             request.setAttribute("FEEDBACK", feedbackList);
-            session.setAttribute("USER", u);
-            
+
+            if (user != null) {
+                url = "Feedback.jsp";
+                request.setAttribute("USER", user);
+            } else if (user == null) {
+                url = "feedback_pre.jsp";
+            }
 
         } catch (Exception e) {
         } finally {

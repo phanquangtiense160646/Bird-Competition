@@ -128,7 +128,7 @@
                                                 
                                                 <td>
                                                     <input type="text" name="txtPhone"
-                                                    value="${memberDto.getPhoneNumber()}">
+                                                    value="${memberDto.getPhoneNumber()}"  class="form-control">
                                                 </td>
                                                
                                                 <td>

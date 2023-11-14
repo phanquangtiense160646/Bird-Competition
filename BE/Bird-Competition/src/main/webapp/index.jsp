@@ -94,15 +94,15 @@
                             <div class="navbar-nav mr-auto py-0">
                                 <a href='<c:url value="/DispatchServlet?btAction=Home"/>' class="nav-item nav-link active">Home</a>
                                 <a href='<c:url value="/DispatchServlet?btAction=LeaderBoard"/>' class="nav-item nav-link">Bảng xếp hạng</a>
-                                <a href="#schedule" class="nav-item nav-link">Lịch thi đấu</a>
-                                <a href="#member" class="nav-item nav-link">Hội viên</a>
+                                <a href='<c:url value="/DispatchServlet?btAction=Home"/>#schedule' class="nav-item nav-link">Lịch thi đấu</a>
+                                <a href='<c:url value="/DispatchServlet?btAction=Home"/>#member' class="nav-item nav-link">Hội viên</a>
                                 <div class="nav-item dropdown">
                                     <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
                                     <div class="dropdown-menu rounded-0 m-0">
                                         <!-- <a href="blog.html" class="dropdown-item">News</a> -->
                                         <a href="rule_pre.jsp" class="dropdown-item">Luật thi đấu</a>
-                                        <a href="feedback_pre.jsp" class="dropdown-item">Feedback</a>
-                                        <a href="News_pre.jsp" class="dropdown-item">Tin Tức</a>
+                                        <a href='<c:url value="/DispatchServlet?btAction=FeedBack"/>' class="dropdown-item">Feedback</a>
+                                        <a href='<c:url value="/DispatchServlet?btAction=Blog"/>' class="dropdown-item">Tin Tức</a>
                                     </div>
                                 </div>
                                 <a href="contact_pre.jsp" class="nav-item nav-link">Liên Hệ</a>
@@ -318,11 +318,11 @@
                             ra</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link rounded-pill text-white active" data-bs-toggle="pill"
+                        <a class="nav-link rounded-pill text-white " data-bs-toggle="pill"
                            href="#tab-1">Đang diễn ra</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link rounded-pill text-white" data-bs-toggle="pill" href="#tab-2">Sắp diễn
+                        <a class="nav-link rounded-pill text-white active" data-bs-toggle="pill" href="#tab-2">Sắp diễn
                             ra</a>
                     </li>
                 </ul>
@@ -384,7 +384,7 @@
                             </c:if>
                         </div>
                     </div>
-                    <div id="tab-1" class="tab-pane fade show p-0 active">
+                    <div id="tab-1" class="tab-pane fade show p-0 ">
                         <div class="row g-5">
                             <c:set var="scheduleData" value="${requestScope.SCHEDULE}" />
                             <c:if test="${not empty scheduleData}">
@@ -437,7 +437,7 @@
                             </c:if>
                         </div>
                     </div>
-                    <div id="tab-2" class="tab-pane fade show p-0">
+                    <div id="tab-2" class="tab-pane fade show p-0 active">
                         <div class="row g-5">
                             <c:set var="scheduleData" value="${requestScope.SCHEDULE}" />
                             <c:if test="${not empty scheduleData}">
@@ -688,7 +688,7 @@
         <!-- News End -->
 
         <!-- Feedback start -->
-        <div class="container-fluid p-0" style="margin: 90px 0;">
+<!--        <div class="container-fluid p-0" style="margin: 90px 0;">
             <div class="row g-0">
                 <div class="col-lg-6" style="min-height: 500px;">
                     <div class="position-relative h-100">
@@ -745,8 +745,47 @@
                     </div>
                 </div>
             </div>
+        </div>-->
+<div class="container-fluid p-0" style="margin: 90px 0;">
+        <div class="row g-0">
+            <div class="col-lg-6" style="min-height: 500px;">
+                <div class="position-relative h-100">
+                    <img class="position-absolute w-100 h-100" src="FE/img/bird_player.png" style="object-fit: cover;">
+                </div>
+            </div>
+            <div class="col-lg-6 bg-dark p-5">
+                <div class="mb-5">
+                    <h5 class="text-primary text-uppercase">Đánh giá</h5>
+                    <h1 class="display-3 text-uppercase text-light mb-0">Phản hồi từ người dùng</h1>
+                </div>
+                <c:set var="feedback" value="${requestScope.FEEDBACK}" /> 
+                <c:set var="size" value="${10}" />
+
+                <c:if test="${feedback.size() <= size}">
+                    <c:set var="size" value="${feedback.size()}" />
+                </c:if>
+                <div class="owl-carousel testimonial-carousel">
+                    <c:if test="${not empty feedback}">
+                        <c:forEach var="i" begin="0" end="${size -1 }" step="1">
+
+                            <div class="testimonial-item">
+                                <p class="fs-4 fw-normal text-light mb-4"><i 
+                                        class="fa fa-quote-left text-primary me-3"></i>${feedback.get(i).getDescription()}</p>
+                                <div class="d-flex align-items-center">
+
+                                    <div class="ps-4">
+                                        <h5 class="text-uppercase text-light">${feedback.get(i).getIdMember()}</h5>
+                                        <span class="text-uppercase text-secondary">Trainer</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </c:forEach>
+                    </c:if>
+                </div>
+            </div>
         </div>
-        <!-- Feedback end -->
+    </div>
+<!--         Feedback end -->
 
         <jsp:include page="JspCommon/webfooter.jsp"/>
 

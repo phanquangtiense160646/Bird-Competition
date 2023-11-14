@@ -36,7 +36,7 @@
     <body>
      
         <!-- Header Start -->
-        <div class="container-fluid bg-dark px-0">
+         <div class="container-fluid bg-dark px-0">
             <div class="row gx-0">
                 <div class="col-lg-3 bg-dark d-none d-lg-block">
         
@@ -96,13 +96,13 @@
                                     <div class="dropdown-menu rounded-0 m-0">
                                         <!-- <a href="blog.html" class="dropdown-item">News</a> -->
                                         <a href="rule_pre.jsp" class="dropdown-item">Luật thi đấu</a>
-                                        <a href="feedback_pre.jsp" class="dropdown-item">Feedback</a>
-                                        <a href="News_pre.jsp" class="dropdown-item">Tin Tức</a>
+                                        <a href='<c:url value="/DispatchServlet?btAction=FeedBack"/>' class="dropdown-item">Feedback</a>
+                                        <a href='<c:url value="/DispatchServlet?btAction=Blog"/>' class="dropdown-item">Tin Tức</a>
                                     </div>
                                 </div>
                                 <a href="contact_pre.jsp" class="nav-item nav-link">Liên Hệ</a>
                             </div>
-                            <a href="login" class="btn btn-primary py-md-3 px-md-5 d-none d-lg-block h-75">Login/Signup</a>
+                            <a href="Login2.jsp" class="btn btn-primary py-md-3 px-md-5 d-none d-lg-block">Login/Signup</a>
                         </div>
                     </nav>
                 </div>

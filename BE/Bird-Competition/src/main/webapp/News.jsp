@@ -54,7 +54,7 @@
                 <div class="col-lg-8">
                     <div class="row g-5">
 
-                        <c:set var="newsList" value="${sessionScope.NEWS}"/>
+                        <c:set var="newsList" value="${requestScope.NEWS}"/>
                         <c:if test="${not empty newsList}">
 
                             <c:forEach items="${newsList}" var="o">
@@ -91,36 +91,21 @@
                     <div class="mb-5">
                         <h3 class="text-uppercase mb-4">Thể Loại</h3>
                         <div class="d-flex flex-column justify-content-start bg-dark rounded p-4">
-                            <a class="fs-5 fw-bold text-light text-uppercase mb-2" href="#"><i class="bi bi-arrow-right text-primary me-2"></i>Chim Chào Mào</a>
-                            <a class="fs-5 fw-bold text-light text-uppercase mb-2" href="#"><i class="bi bi-arrow-right text-primary me-2"></i>Thi Hót</a>
-                            <a class="fs-5 fw-bold text-light text-uppercase mb-2" href="#"><i class="bi bi-arrow-right text-primary me-2"></i>Thi Bề Ngoài</a>
-                            <!-- <a class="fs-5 fw-bold text-light text-uppercase mb-2" href="#"><i class="bi bi-arrow-right text-primary me-2"></i>Keyword Research</a>
-                            <a class="fs-5 fw-bold text-light text-uppercase" href="#"><i class="bi bi-arrow-right text-primary me-2"></i>Email Marketing</a> -->
+                            <p class="fs-5 fw-bold text-light text-uppercase mb-2" >Chim Chào Mào</p>
+                            <p class="fs-5 fw-bold text-light text-uppercase mb-2" >Thi Hót</p>
+                            <p class="fs-5 fw-bold text-light text-uppercase mb-2" >Thi Bề Ngoài</p>
+                           
                         </div>
                     </div>
                     <!-- Category End -->
 
-
-
-                    <!-- Tags Start -->
-                    <div class="mb-5">
-                        <h3 class="text-uppercase mb-4">Tag Cloud</h3>
-                        <div class="d-flex flex-wrap m-n1">
-                            <a href="" class="btn btn-dark m-1">Thiết Kế</a>
-                            <a href="" class="btn btn-dark m-1">Hội Chim</a>
-                            <a href="" class="btn btn-dark m-1">Marketing</a>
-                            <a href="" class="btn btn-dark m-1">CEO</a>
-
-                        </div>
-                    </div>
-                    <!-- Tags End -->
 
                     <!-- Plain Text Start -->
                     <div>
                         <h3 class="text-uppercase mb-4">Đăng Ký VIP</h3>
                         <div class="bg-dark rounded text-center text-light" style="padding: 30px;">
                             <p>Trở thành hội viên VIP có nhiều đặc quyền riêng và có giá ưu đãi dành cho gói tháng.</p>
-                            <a href='<c:url value=""/>' class="btn btn-primary py-2 px-4">Xem Thêm</a>
+                            <a href='<c:url value="/DispatchServlet?btAction=Membership"/>' class="btn btn-primary py-2 px-4">Xem Thêm</a>
                         </div>
                     </div>
                     <!-- Plain Text End -->
