@@ -70,7 +70,7 @@ public class SignupControl extends HttpServlet {
                 //2. call DAO
                 DAO dao = new DAO();
 
-                User u = new User(user, re_pass);
+                User u = new User(user, re_pass, user, 0, user, url, user, url, pass, user, pass);
                 boolean result = dao.createAccount(u);
                 //3. Process Result
                 if (result) {
