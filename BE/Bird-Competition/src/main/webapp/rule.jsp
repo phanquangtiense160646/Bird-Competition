@@ -72,6 +72,7 @@
                             Phía TT cần đếm số lồng và xác nhận với BTC(chủ trường chim) để điều chỉnh giải thưởng-kèm thông báo công khai trước khi bắt đầu cuộc thi. 
                             Không thêm-bớt lồng sau khi phía TT đã thông báo cuộc thi chính thức bắt đầu. 
                         </p>
+                        <br/>
                         <p class="text-primary">2. Quy tắc chấm điểm đạt hay không đạt trong cuộc thi chào mào </p>
                         <p class="text-black">Cơ bản để chấm đạt hay không phía TT cần thỏa thuận để thống nhất với nhau, tiêu chí đạt hay không sẽ chia ra 3 loại: Thái độ thi đấu-Giọng hót thi đấu-Dáng bộ thi đấu 
                             2.1 Thái độ thi đấu 
@@ -86,6 +87,7 @@
                             Đạt: Bộ chim to-dài, dáng đứng thi đấu đẹp(bung cánh-xòe đuôi-cúp C-Đuôi tôm), mào dựng đứng.
                             Không đạt: Phình lông, thiếu đuôi cánh nhiều(trên 30%), xuất hiện lỗi: lộn, ngoái-ngữa, bu nóc, cắn chân, cắn lông, cắn nan
                         </p>
+                        <br/>
                         <p class="text-primary">3. Quy tắc đối với quý anh em nghệ nhân và khán giả </p>
                         <p class="text-black">
                             Chủ chim: Kiểm tra và đảm bảo an toàn về chim-lồng. Thức ăn, thức uống đầy đủ cho chim trong suốt quá trình thi đấu cho đến vòng bắt tay(vào top 10) mới được chêm thêm hoặc lấy ra thức ăn thức uống trong lồng. 
@@ -94,6 +96,7 @@
                             Tin tưởng-tôn trọng mọi quyết định của các trọng tài 
                             Trường hợp có vấn đề thắc mắc-cần điều chỉnh hoặc có ý kiến khác cần gặp BTC để xác nhận, xem xét và giải quyết 
                         </p>
+                        <br/>
                         <p class="text-primary">4. Cách chấm điểm-hạ chim trong các vòng </p>
                         <p class="text-black">
                             Loại trực tiếp: Đối với những chú chim có tật lỗi sau: Lộn-ngoái-ngữa nặng, tắm cóng, tắm khô. 
@@ -117,10 +120,20 @@
                     <div class="mb-5">
                         <h1 class="text-uppercase mb-4">Cách tính điểm</h1>
 
-                        <p class="text-black">
-                            cách tính điểm
+                        <p class="text-black"> A: Điểm cố định
+                            Điểm cộng cố định sẽ là 5 cho người chơi đầu tiên có thứ hạng trên trung bình (0 cho người có thứ hạng trung bình) sau đó cộng 5 cho mỗi hạng tiếp theo, và cộng thêm 5 cho người chơi có thứ hạng cao nhất
+                            Tương tự với điểm trừ, và cũng trừ thêm 5 với người đứng cuối
                         </p>
+                        <p class="text-black">B: Điểm hệ số elo
+                            Người chơi sau khi có điểm cộng/ trừ cố định sẽ cộng/trừ thêm điểm hệ số elo
 
+                            Điểm hệ số elo sẽ được tính dựa theo điểm của người chơi so với điểm trung bình của các người chơi trong trận.
+                            Đầu tiên mỗi người chơi tham gia sẽ góp 5 điểm vào tổng điểm elo.
+                            Sau đó tổng điểm này sẽ được chia đều cho những người chơi trong Top và out Top theo tỉ lệ điểm của họ so với điểm trung bình.
+                        </p>
+                        <p class="text-black">C: Điểm sau cùng
+                            Sau cùng, điểm cộng/trừ của mỗi người sẽ là tổng từ 2 phần A và B.
+                        </p>
 
                     </div>      
 

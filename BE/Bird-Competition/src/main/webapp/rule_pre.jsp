@@ -192,10 +192,20 @@
                     <div class="mb-5">
                         <h1 class="text-uppercase mb-4">Cách tính điểm</h1>
 
-                        <p class="text-black">
-                          cách tính điểm
+                        <p class="text-black"> A: Điểm cố định
+                            Điểm cộng cố định sẽ là 5 cho người chơi đầu tiên có thứ hạng trên trung bình (0 cho người có thứ hạng trung bình) sau đó cộng 5 cho mỗi hạng tiếp theo, và cộng thêm 5 cho người chơi có thứ hạng cao nhất
+                            Tương tự với điểm trừ, và cũng trừ thêm 5 với người đứng cuối
                         </p>
+                        <p class="text-black">B: Điểm hệ số elo
+                            Người chơi sau khi có điểm cộng/ trừ cố định sẽ cộng/trừ thêm điểm hệ số elo
 
+                            Điểm hệ số elo sẽ được tính dựa theo điểm của người chơi so với điểm trung bình của các người chơi trong trận.
+                            Đầu tiên mỗi người chơi tham gia sẽ góp 5 điểm vào tổng điểm elo.
+                            Sau đó tổng điểm này sẽ được chia đều cho những người chơi trong Top và out Top theo tỉ lệ điểm của họ so với điểm trung bình.
+                        </p>
+                        <p class="text-black">C: Điểm sau cùng
+                            Sau cùng, điểm cộng/trừ của mỗi người sẽ là tổng từ 2 phần A và B.
+                        </p>
 
                     </div>      
 
