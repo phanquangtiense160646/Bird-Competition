@@ -99,6 +99,8 @@
                     </label>
                     </br>
                     <form action="DispatchServlet">
+                        
+                        <input type="hidden" name="cost" value="${param["vnp_Amount"]/100}" />   
                         <input type="hidden" name="payType" value="${param.vnp_OrderInfo}" />   
                         <button type="submit" name="btAction" value="PostPayment" class="btn btn-primary px-5" style="margin-top: 10px;">Tiếp tục</button>
                     </form>

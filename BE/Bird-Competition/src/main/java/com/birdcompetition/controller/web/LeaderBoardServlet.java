@@ -55,16 +55,18 @@ public class LeaderBoardServlet extends HttpServlet {
             List<BirdDTO> persionalLb = new ArrayList<>();
             HttpSession session = request.getSession();
             User user = (User) session.getAttribute("USER");
-            if (user != null) {
-                        for (BirdDTO bird : leaderboard) {
-                if (bird.getMemberID().equals(user.getIdMember())) {
-                    persionalLb.add(bird);
-                }
-            }
-            request.setAttribute("PERSIONAL_LB", persionalLb);
 
+            if (user != null) {
+                for (BirdDTO bird : leaderboard) {
+                    if (bird.getMemberID().equals(user.getIdMember())) {
+                        persionalLb.add(bird);
+                    }
+                }
+                request.setAttribute("PERSIONAL_LB", persionalLb);
+            } else if (user == null) {
+                url = "leaderboard_pre.jsp";
             }
-    
+
         } catch (SQLException ex) {
             Logger.getLogger(LeaderBoardServlet.class.getName()).log(Level.SEVERE, null, ex);
         } catch (ClassNotFoundException ex) {

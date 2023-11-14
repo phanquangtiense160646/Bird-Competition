@@ -4,16 +4,18 @@
  */
 package com.birdcompetition.news;
 
+import java.io.Serializable;
 import java.sql.Date;
+import java.time.LocalDate;
 
 /**
  *
  * @author MSI
  */
-public class NewsDTO {
+public class NewsDTO implements Serializable{
     private int IdNews;
     private String NameOfNews;
-    private Date date;
+    private LocalDate date;
     private String Description;
     private String LinkOfNews;
     private String Photo;
@@ -22,7 +24,7 @@ public class NewsDTO {
     public NewsDTO() {
     }
 
-    public NewsDTO(int IdNews, String NameOfNews, Date date, String Description, String LinkOfNews, String Photo, String IdUser) {
+    public NewsDTO(int IdNews, String NameOfNews, LocalDate date, String Description, String LinkOfNews, String Photo, String IdUser) {
         this.IdNews = IdNews;
         this.NameOfNews = NameOfNews;
         this.date = date;
@@ -36,7 +38,7 @@ public class NewsDTO {
 
    
 
-    public NewsDTO(String NameOfNews, Date date, String LinkOfNews, String Photo) {
+    public NewsDTO(String NameOfNews, LocalDate date, String LinkOfNews, String Photo) {
         this.NameOfNews = NameOfNews;
         this.date = date;
         this.LinkOfNews = LinkOfNews;
@@ -52,11 +54,11 @@ public class NewsDTO {
         this.NameOfNews = NameOfNews;
     }
 
-    public Date getDate() {
+    public LocalDate getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(LocalDate date) {
         this.date = date;
     }
 

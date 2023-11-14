@@ -93,21 +93,21 @@
                         <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
                             <div class="navbar-nav mr-auto py-0">
                                 <a href='<c:url value="/DispatchServlet?btAction=Home"/>' class="nav-item nav-link active">Home</a>
-                                <a href="#leaderboard" class="nav-item nav-link">Bảng xếp hạng</a>
-                                <a href="#schedule" class="nav-item nav-link">Lịch thi đấu</a>
-                                <a href="#member" class="nav-item nav-link">Hội viên</a>
+                                <a href='<c:url value="/DispatchServlet?btAction=LeaderBoard"/>' class="nav-item nav-link">Bảng xếp hạng</a>
+                                <a href='<c:url value="/DispatchServlet?btAction=Home"/>#schedule' class="nav-item nav-link">Lịch thi đấu</a>
+                                <a href='<c:url value="/DispatchServlet?btAction=Home"/>#member' class="nav-item nav-link">Hội viên</a>
                                 <div class="nav-item dropdown">
                                     <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
                                     <div class="dropdown-menu rounded-0 m-0">
                                         <!-- <a href="blog.html" class="dropdown-item">News</a> -->
                                         <a href="rule_pre.jsp" class="dropdown-item">Luật thi đấu</a>
-                                        <a href="feedback_pre.jsp" class="dropdown-item">Feedback</a>
-                                        <a href="News_pre.jsp" class="dropdown-item">Tin Tức</a>
+                                        <a href='<c:url value="/DispatchServlet?btAction=FeedBack"/>' class="dropdown-item">Feedback</a>
+                                        <a href='<c:url value="/DispatchServlet?btAction=Blog"/>' class="dropdown-item">Tin Tức</a>
                                     </div>
                                 </div>
                                 <a href="contact_pre.jsp" class="nav-item nav-link">Liên Hệ</a>
                             </div>
-                            <a href="login" class="btn btn-primary py-md-3 px-md-5 d-none d-lg-block h-75">Login/Signup</a>
+                            <a href="Login2.jsp" class="btn btn-primary py-md-3 px-md-5 d-none d-lg-block">Login/Signup</a>
                         </div>
                     </nav>
                 </div>
@@ -318,11 +318,11 @@
                             ra</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link rounded-pill text-white active" data-bs-toggle="pill"
+                        <a class="nav-link rounded-pill text-white " data-bs-toggle="pill"
                            href="#tab-1">Đang diễn ra</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link rounded-pill text-white" data-bs-toggle="pill" href="#tab-2">Sắp diễn
+                        <a class="nav-link rounded-pill text-white active" data-bs-toggle="pill" href="#tab-2">Sắp diễn
                             ra</a>
                     </li>
                 </ul>
@@ -384,7 +384,7 @@
                             </c:if>
                         </div>
                     </div>
-                    <div id="tab-1" class="tab-pane fade show p-0 active">
+                    <div id="tab-1" class="tab-pane fade show p-0 ">
                         <div class="row g-5">
                             <c:set var="scheduleData" value="${requestScope.SCHEDULE}" />
                             <c:if test="${not empty scheduleData}">
@@ -437,7 +437,7 @@
                             </c:if>
                         </div>
                     </div>
-                    <div id="tab-2" class="tab-pane fade show p-0">
+                    <div id="tab-2" class="tab-pane fade show p-0 active">
                         <div class="row g-5">
                             <c:set var="scheduleData" value="${requestScope.SCHEDULE}" />
                             <c:if test="${not empty scheduleData}">
@@ -579,7 +579,7 @@
                         <i class="fa-solid fa-medal display-1 medal3"></i>
                         <h3 class="text-uppercase my-4">Bronze Member</h3>
                         <p>Gói thành viên Đồng</p>
-                        <a class="text-uppercase" href="memberShip.html#registration">Tham gia ngay<i
+                        <a class="text-uppercase" href="Login2.jsp">Tham gia ngay<i
                                 class="bi bi-arrow-right"></i></a>
                     </div>
                 </div>
@@ -588,7 +588,7 @@
                         <i class="fa-solid fa-medal display-1 medal1"></i>
                         <h1 class="text-uppercase my-4">Gold Member</h1>
                         <p>Gói thành viên Vàng</p>
-                        <a class="text-uppercase" href="memberShip.html#registration">Tham gia ngay<i
+                        <a class="text-uppercase" href="Login2.jsp">Tham gia ngay<i
                                 class="bi bi-arrow-right"></i></a>
                     </div>
                 </div>
@@ -597,7 +597,7 @@
                         <i class="fa-solid fa-medal display-1"></i>
                         <h3 class="text-uppercase my-4">Silver Member</h3>
                         <p>Gói thành viên Bạc</p>
-                        <a class="text-uppercase" href="memberShip.html#registration">Tham gia ngay<i
+                        <a class="text-uppercase" href="Login2.jsp">Tham gia ngay<i
                                 class="bi bi-arrow-right"></i></a>
                     </div>
                 </div>
@@ -688,7 +688,7 @@
         <!-- News End -->
 
         <!-- Feedback start -->
-        <div class="container-fluid p-0" style="margin: 90px 0;">
+<!--        <div class="container-fluid p-0" style="margin: 90px 0;">
             <div class="row g-0">
                 <div class="col-lg-6" style="min-height: 500px;">
                     <div class="position-relative h-100">
@@ -704,26 +704,40 @@
                     <div class="owl-carousel testimonial-carousel">
                         <div class="testimonial-item">
                             <p class="fs-4 fw-normal text-light mb-4"><i
-                                    class="fa fa-quote-left text-primary me-3"></i>Dolores sed duo clita tempor
-                                justo dolor et stet lorem kasd labore dolore lorem ipsum. At lorem lorem magna
-                                ut et, nonumy et labore et tempor diam tempor erat dolor rebum sit ipsum.</p>
+                                    class="fa fa-quote-left text-primary me-3"></i> Trận đấu hay và cảm xúc</p>
                             <div class="d-flex align-items-center">
-                                <img class="img-fluid rounded-circle" src="FE/img/testimonial-1.jpg" alt="">
                                 <div class="ps-4">
-                                    <h5 class="text-uppercase text-light">Client Name</h5>
+                                    <h5 class="text-uppercase text-light">DanhTran  </h5>
                                     <span class="text-uppercase text-secondary">Profession</span>
                                 </div>
                             </div>
                         </div>
                         <div class="testimonial-item">
                             <p class="fs-4 fw-normal text-light mb-4"><i
-                                    class="fa fa-quote-left text-primary me-3"></i>Dolores sed duo clita tempor
-                                justo dolor et stet lorem kasd labore dolore lorem ipsum. At lorem lorem magna
-                                ut et, nonumy et labore et tempor diam tempor erat dolor rebum sit ipsum.</p>
+                                    class="fa fa-quote-left text-primary me-3"></i> Chim đẹp và hót tốt</p>
                             <div class="d-flex align-items-center">
-                                <img class="img-fluid rounded-circle" src="FE/img/testimonial-2.jpg" alt="">
                                 <div class="ps-4">
-                                    <h5 class="text-uppercase text-light">Client Name</h5>
+                                    <h5 class="text-uppercase text-light">HuyBui</h5>
+                                    <span class="text-uppercase text-secondary">Profession</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="testimonial-item">
+                            <p class="fs-4 fw-normal text-light mb-4"><i
+                                    class="fa fa-quote-left text-primary me-3"></i> Trọng tài chưa đủ chuyên môn</p>
+                            <div class="d-flex align-items-center">
+                                <div class="ps-4">
+                                    <h5 class="text-uppercase text-light">KhangNguye</h5>
+                                    <span class="text-uppercase text-secondary">Profession</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="testimonial-item">
+                            <p class="fs-4 fw-normal text-light mb-4"><i
+                                    class="fa fa-quote-left text-primary me-3"></i> Chuyên nghiệp trong tổ chức</p>
+                            <div class="d-flex align-items-center">
+                                <div class="ps-4">
+                                    <h5 class="text-uppercase text-light">HiepThuan </h5>
                                     <span class="text-uppercase text-secondary">Profession</span>
                                 </div>
                             </div>
@@ -731,8 +745,47 @@
                     </div>
                 </div>
             </div>
+        </div>-->
+<div class="container-fluid p-0" style="margin: 90px 0;">
+        <div class="row g-0">
+            <div class="col-lg-6" style="min-height: 500px;">
+                <div class="position-relative h-100">
+                    <img class="position-absolute w-100 h-100" src="FE/img/bird_player.png" style="object-fit: cover;">
+                </div>
+            </div>
+            <div class="col-lg-6 bg-dark p-5">
+                <div class="mb-5">
+                    <h5 class="text-primary text-uppercase">Đánh giá</h5>
+                    <h1 class="display-3 text-uppercase text-light mb-0">Phản hồi từ người dùng</h1>
+                </div>
+                <c:set var="feedback" value="${requestScope.FEEDBACK}" /> 
+                <c:set var="size" value="${10}" />
+
+                <c:if test="${feedback.size() <= size}">
+                    <c:set var="size" value="${feedback.size()}" />
+                </c:if>
+                <div class="owl-carousel testimonial-carousel">
+                    <c:if test="${not empty feedback}">
+                        <c:forEach var="i" begin="0" end="${size -1 }" step="1">
+
+                            <div class="testimonial-item">
+                                <p class="fs-4 fw-normal text-light mb-4"><i 
+                                        class="fa fa-quote-left text-primary me-3"></i>${feedback.get(i).getDescription()}</p>
+                                <div class="d-flex align-items-center">
+
+                                    <div class="ps-4">
+                                        <h5 class="text-uppercase text-light">${feedback.get(i).getIdMember()}</h5>
+                                        <span class="text-uppercase text-secondary">Trainer</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </c:forEach>
+                    </c:if>
+                </div>
+            </div>
         </div>
-        <!-- Feedback end -->
+    </div>
+<!--         Feedback end -->
 
         <jsp:include page="JspCommon/webfooter.jsp"/>
 

@@ -59,13 +59,18 @@ public class SearchLeaderBoardServlet extends HttpServlet {
             List<BirdDTO> persionalLb = new ArrayList<>();
             HttpSession session = request.getSession();
             User user = (User) session.getAttribute("USER");
-
-            for (BirdDTO bird : leaderboard) {
-                if (bird.getMemberID().equals(user.getIdMember())) {
-                    persionalLb.add(bird);
+            if (user != null) {
+                for (BirdDTO bird : leaderboard) {
+                    if (bird.getMemberID().equals(user.getIdMember())) {
+                        persionalLb.add(bird);
+                    }
                 }
+                request.setAttribute("PERSIONAL_LB", persionalLb);
+                
+            }  else if (user == null) {
+                url = "leaderboard_pre.jsp";
             }
-            request.setAttribute("PERSIONAL_LB", persionalLb);
+
 
         } catch (SQLException ex) {
             Logger.getLogger(SearchLeaderBoardServlet.class.getName()).log(Level.SEVERE, null, ex);
@@ -79,7 +84,7 @@ public class SearchLeaderBoardServlet extends HttpServlet {
         }
     }
 
-    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
+// <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
      *

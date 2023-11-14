@@ -46,10 +46,11 @@ public class FeedBackDAO implements Serializable {
                 rs = stm.executeQuery();
                 //5.Process
                 while (rs.next()) {
+                    int idfeedback = rs.getInt("IdFeedback");
                     String idMember = rs.getString("IdMember");
                     String descrip = rs.getString("Description");
 
-                    FeedBackDTO dto = new FeedBackDTO(idMember, descrip);
+                    FeedBackDTO dto = new FeedBackDTO(idfeedback, idMember, descrip);
 
                     if (this.feedbackList == null) {
                         this.feedbackList = new ArrayList<>();
@@ -92,11 +93,11 @@ public class FeedBackDAO implements Serializable {
                 rs = stm.executeQuery();
                 //5.Process
                 while (rs.next()) {
-                    
+                    int idFeedback = rs.getInt("IdFeedback");
                     String idMember = rs.getString("IdMember");
                     String descrip = rs.getString("Description");
 
-                    FeedBackDTO dto = new FeedBackDTO(idMember, descrip);
+                    FeedBackDTO dto = new FeedBackDTO(idFeedback, idMember, descrip);
 
                     if (this.feedbackList == null) {
                         this.feedbackList = new ArrayList<>();
@@ -173,7 +174,6 @@ public class FeedBackDAO implements Serializable {
                         + "Values(?,?)";
                 //3. Create Statement Object
                 stm = con.prepareStatement(sql);
-
                 stm.setString(1, IdMember);
                 stm.setString(2, Description);
 
@@ -209,7 +209,7 @@ public class FeedBackDAO implements Serializable {
             if (con != null) {
                 //2. Create SQL String 
                 String sql = "Delete FeedBack\n"
-                        + "Where IdMember = ? ";
+                        + "Where IdFeedback = ? ";
                 //3. Create Statement Object
                 stm = con.prepareStatement(sql);
 

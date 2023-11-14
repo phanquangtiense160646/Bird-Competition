@@ -45,17 +45,19 @@ public class NewsServlet extends HttpServlet {
        String url = null;
       try {
          
-            
-            List<NewsDTO> newsList;
+            HttpSession session = request.getSession();
+            User user = (User) session.getAttribute("USER");
+           
 
             NewsDAO dao = new NewsDAO();
-            List<NewsDTO> result = dao.getNews();
+            List<NewsDTO> newsList = dao.getNews();
+            request.setAttribute("NEWS", newsList);
             
-            if(result != null){
-                HttpSession session = request.getSession();
-                
-                session.setAttribute("NEWS", result);
+            if (user != null) {
                 url = "News.jsp";
+                request.setAttribute("USER", user);
+            } else if (user == null) {
+                url = "News_pre.jsp";
             }
 
         } catch (SQLException ex) {

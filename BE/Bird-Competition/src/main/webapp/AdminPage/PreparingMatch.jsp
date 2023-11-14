@@ -93,17 +93,21 @@
                                                     checked-in/ đã đăng kí:</p>
                                                 <p class="text-uppercase text-primary mb-0">
                                                     ${scheduleDto.checkedIn}/${scheduleDto.currentPar}</p>
+                                                    <c:if test="${!scheduleDto.isAfterTime(scheduleDto.startTime)}" >
+                                                    <form action="PrepareCheckInServlet" method="post">
+                                                        <input type="hidden" name="txtMatchId" value="${scheduleDto.id}">
+                                                        <input type="submit" class="btn btn-primary px-5 mt-2" value="Check-in">
+                                                        <!--<a href="<c:url value="/DispatchServlet?btAction=CheckIn"/>" class="btn btn-primary px-5 mt-2">Check-in</a>-->
+                                                    </form>
+                                                    <form action="CompleteCheckInServlet" method="post">
+                                                        <input type="hidden" name="txtMatchId" value="${scheduleDto.id}">
+                                                        <input type="submit" class="btn btn-primary px-5 mt-2" value="Hoàn tất Check-in">
 
-                                                <form action="PrepareCheckInServlet" method="post">
-                                                    <input type="hidden" name="txtMatchId" value="${scheduleDto.id}">
-                                                    <input type="submit" class="btn btn-primary px-5 mt-2" value="Check-in">
-                                                    <!--<a href="<c:url value="/DispatchServlet?btAction=CheckIn"/>" class="btn btn-primary px-5 mt-2">Check-in</a>-->
-                                                </form>
-                                                <form action="CompleteCheckInServlet" method="post">
-                                                    <input type="hidden" name="txtMatchId" value="${scheduleDto.id}">
-                                                    <input type="submit" class="btn btn-primary px-5 mt-2" value="Hoàn tất Check-in">
-
-                                                </form>
+                                                    </form>
+                                                </c:if>
+                                                <c:if test="${scheduleDto.isAfterTime(scheduleDto.startTime)}" >
+                                                    <input type="submit" class="btn btn-secondary px-5 mt-2" value="Hết hạn check-in">
+                                                </c:if>
                                             </div>
                                         </div>
                                     </c:forEach>

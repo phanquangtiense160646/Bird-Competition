@@ -18,29 +18,23 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <link rel="stylesheet" href="FE/css/payment.css">
     </head>
-    <body style="background-image: url('FE/img/defaultpic.jpg'); background-repeat: no-repeat;
-                                                                            background-size: cover;">
+    <body style="background-image: url('FE/img/defaultpic.jpg');
+          background-repeat: no-repeat;background-size: cover;">
         <div class="wrapper rounded" style="background: rgba(0, 0, 0, 0.6);"> <nav class="navbar navbar-expand-lg navbar-dark dark d-lg-flex align-items-lg-start" style="background: rgba(0, 0, 0, 0);"> 
-                <a class="navbar-brand" href="#">Transactions <p class="text-muted pl-1">Welcome to your transactions</p> </a> 
+                <a class="navbar-brand" href="#">Lịch sửa giao dịch <p class="text-muted pl-1">Lịch sử giao dịch của bạn</p> </a> 
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation"> <span class="navbar-toggler-icon"></span> </button> 
                 <div class="collapse navbar-collapse" id="navbarNav"> 
-<!--                    <ul class="navbar-nav ml-lg-auto"> 
-                        <li class="nav-item"> 
-                            <a class="nav-link" href="#"><span class="fa fa-bell-o font-weight-bold"></span> 
-                                <span class="notify">Notifications</span> </a> </li> 
-                                <li class="nav-item "> <a href="#"><span class="fa fa-search"></span></a> 
-                                    <input type="search" class="dark" placeholder="Search"> </li> 
-                    </ul> -->
+
                 </div> 
             </nav> 
         
             <div class="d-flex justify-content-between align-items-center mt-3"> 
                 <ul class="nav nav-tabs w-75"> 
                     <li class="nav-item"> 
-                        <a class="nav-link active" href="#history">History</a> 
+                        <a class="nav-link active" href="#history">Giao dịch của bạn</a> 
                     </li> 
-                    <li class="nav-item"> <a class="nav-link" href="contact.jsp">Reports</a> 
-                    </li> 
+<!--                    <li class="nav-item"> <a class="nav-link" href="contact.jsp">Reports</a> 
+                    </li> -->
                 </ul> 
             </div> 
             <div class="table-responsive mt-3"> 

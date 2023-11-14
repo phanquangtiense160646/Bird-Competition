@@ -2,14 +2,18 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
  */
-package com.birdcompetition.controller.web;
+package com.birdcompetition.controller;
 
-import com.birdcompetition.feedback.FeedBackDAO;
-import com.birdcompetition.feedback.FeedBackDTO;
+import com.birdcompetition.member.MemberDAO;
+import com.birdcompetition.member.MemberDTO;
 import com.birdcompetition.model.User;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.SQLException;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.naming.NamingException;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -20,10 +24,10 @@ import javax.servlet.http.HttpSession;
 
 /**
  *
- * @author MSI
+ * @author 84366
  */
-@WebServlet(name = "ManageFeedbackServlet", urlPatterns = {"/ManageFeedbackServlet"})
-public class ManageFeedbackServlet extends HttpServlet {
+@WebServlet(name = "DeleteMemberServlet", urlPatterns = {"/DeleteMemberServlet"})
+public class DeleteMemberServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -37,21 +41,35 @@ public class ManageFeedbackServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        String url = "AdminPage/Feedback.jsp";
+        String username = request.getParameter("username");
+        String url = "AdminPage/showallmember.jsp";
         try {
-            HttpSession session = request.getSession();
-            User u = (User) session.getAttribute("USER");
-            FeedBackDAO dao = new FeedBackDAO();
-            List<FeedBackDTO> feedbackList = dao.getFeedback();
-            feedbackList.size();
-            System.out.println("size:" + feedbackList.size());
-            
-//            session.setAttribute("FEEDBACK", feedbackList);
-            request.setAttribute("FEEDBACK", feedbackList);
-            session.setAttribute("USER", u);
-            
-        } catch (Exception e) {
-        }finally{
+            //1. call method
+            //1.1. new DAO
+            MemberDAO dao = new MemberDAO();
+            //1.2 call DAO's method
+            boolean result = dao.deleteUser(username);
+
+            //2. process Result
+            if (result) {
+                //2.1 call the search function again using URL Rewriting
+                HttpSession session = request.getSession();
+                List<MemberDTO> memberList;
+                
+                dao.getMember();
+                memberList = dao.getMemberList();
+
+                session.setAttribute("ulist", memberList);
+                
+                //2.2. go to error page
+            }//end delete action is successful
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(DeleteMemberServlet.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (NamingException ex) {
+            Logger.getLogger(DeleteMemberServlet.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
             RequestDispatcher rd = request.getRequestDispatcher(url);
             rd.forward(request, response);
         }

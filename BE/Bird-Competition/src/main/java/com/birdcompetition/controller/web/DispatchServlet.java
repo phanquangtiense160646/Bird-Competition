@@ -116,9 +116,32 @@ public class DispatchServlet extends HttpServlet {
                 url = "ManageFeedbackServlet";
             }else if(button.equals("DeleteFeedback")){
                 url = "DeleteFeedbackServlet";
+            }else if(button.equals("ManageNews")){
+                url = "ManageNewsServlet";
             }else if(button.equals("UpdateBird")){
                 url = "UpdateBirdProfileServlet";
+            } else if (button.equals("GetMember")) {
+                url = "GetMemberServlet";
+            } else if (button.equals("MemberProfile")) {
+                url = "GetMemberInfoServlet";
+            } else if (button.equals("DeleteMember")) {
+                url = "DeleteMemberServlet";
+            } else if (button.equals("login")) {
+                url = "LoginControl"; 
+            }else if(button.equals("DeleteNews")){
+                url = "DeleteNewsServlet";
+            }else if(button.equals("Update")){
+                url = "UpdateNewsServlet";
+            }else if(button.equals("AddNews")){
+                url = "AddNewsServlet";
+            }else if (button.equals("ShowAllMember")) {
+                url = "GetMemberServlet";
+            } else if(button.equals("AdminSignUp")){
+                url = "AdminSignupControl";
+            } else if(button.equals("UpdateAccount")){
+                url = "UpdateAccountServlet";
             }
+                
         } finally {
             RequestDispatcher rd = request.getRequestDispatcher(url);
             rd.forward(request, response);

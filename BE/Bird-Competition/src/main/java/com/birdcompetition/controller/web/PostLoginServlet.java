@@ -58,7 +58,6 @@ public class PostLoginServlet extends HttpServlet {
             birdDao.resetBirdList();
             birdDao.getLeaderboard();
             List<BirdDTO> listBird = birdDao.getBirdList();
-            System.out.println("leaderboard size " + listBird.size());
             session.setAttribute("LEADER_BOARD", listBird);
 
         } catch (SQLException ex) {

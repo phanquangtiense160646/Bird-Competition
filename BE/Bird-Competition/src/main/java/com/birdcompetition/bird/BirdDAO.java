@@ -344,7 +344,7 @@ public class BirdDAO implements Serializable {
             con = DBHelper.getConnection();
             if (con != null) {
                 //2. Create SQL String 
-                String sql = "INSERT INTO Bird (NameOfBird, Species, Point, Status, IdMember, Win, Lose, Tie, MatchNumber, PhotoPath, Gender, Description) VALUES (?, ?, 1000, 'true', ?, 0, 0, 0, 0, 'default.png', ?, ?)";
+                String sql = "INSERT INTO Bird (NameOfBird, Species, Point, Status, IdMember, Win, Lose, Tie, MatchNumber, PhotoPath, Gender, Description) VALUES (?, ?, 1000, 'true', ?, 0, 0, 0, 0, 'FE/img/defaultforsure.png', ?, ?)";
                 //3. Create Statement Object
                 stm = con.prepareStatement(sql);
 
@@ -431,7 +431,8 @@ public class BirdDAO implements Serializable {
             }
 
         }
-        System.out.println(" bird after match ok");
+        
+        
         return result;
     }
 

@@ -5,6 +5,7 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -34,79 +35,78 @@
         <link href="FE/css/style.css" rel="stylesheet">
     </head>
     <!-- Header Start -->
-    <div class="container-fluid bg-dark px-0">
-        <div class="row gx-0">
-            <div class="col-lg-3 bg-dark d-none d-lg-block">
+     <div class="container-fluid bg-dark px-0">
+            <div class="row gx-0">
+                <div class="col-lg-3 bg-dark d-none d-lg-block">
+        
+        
+                    <a href="index.html" class="navbar-brand w-100 h-100 m-0 p-0 d-flex align-items-center justify-content-center">
+                        <img src="FE/img/finallogo.png" style="width: 100px; margin-right: -40px; margin-bottom:50px;">
+                        <h1 class="m-0 display-4 text-primary text-uppercase">BIRDFIGHTER</h1>
+                    </a>
 
 
-                <a href="postlogin.jsp" class="navbar-brand w-100 h-100 m-0 p-0 d-flex align-items-center justify-content-center">
-                    <img src="FE/img/finallogo.png" style="width: 100px; margin-right: -40px; margin-bottom:50px;">
-                    <h1 class="m-0 display-4 text-primary text-uppercase">BIRDFIGHTER</h1>
-                </a>
 
-
-
-            </div>
-            <div class="col-lg-9">
-                <div class="row gx-0 bg-secondary d-none d-lg-flex">
-                    <div class="col-lg-7 px-5 text-start">
-                        <div class="h-100 d-inline-flex align-items-center py-2 me-4">
-                            <i class="fa fa-envelope text-primary me-2"></i>
-                            <h6 class="mb-0">birdfight@compe.com</h6>
-                        </div>
-                        <div class="h-100 d-inline-flex align-items-center py-2">
-                            <i class="fa fa-phone-alt text-primary me-2"></i>
-                            <h6 class="mb-0">+123 321 333</h6>
-                        </div>
-                    </div>
-                    <div class="col-lg-5 px-5 text-end">
-                        <div class="d-inline-flex align-items-center py-2">
-                            <a class="btn btn-light btn-square rounded-circle me-2" href="">
-                                <i class="fab fa-facebook-f"></i>
-                            </a>
-                            <a class="btn btn-light btn-square rounded-circle me-2" href="">
-                                <i class="fab fa-twitter"></i>
-                            </a>
-                            <a class="btn btn-light btn-square rounded-circle me-2" href="">
-                                <i class="fab fa-linkedin-in"></i>
-                            </a>
-                            <a class="btn btn-light btn-square rounded-circle me-2" href="">
-                                <i class="fab fa-instagram"></i>
-                            </a>
-                            <a class="btn btn-light btn-square rounded-circle" href="">
-                                <i class="fab fa-youtube"></i>
-                            </a>
-                        </div>
-                    </div>
                 </div>
-                <nav class="navbar navbar-expand-lg bg-dark navbar-dark p-3 p-lg-0 px-lg-5">
-
-                    <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-                    <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
-                        <div class="navbar-nav mr-auto py-0">
-                            <a href="index.jsp" class="nav-item nav-link">Home</a>
-                            <a href="index.jsp" class="nav-item nav-link">Bảng xếp hạng</a>
-                            <a href="index.jsp" class="nav-item nav-link">Lịch thi đấu</a>
-                            <a href="index.jsp" class="nav-item nav-link">Hội viên</a>
-                            <div class="nav-item dropdown">
-                                <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
-                                <div class="dropdown-menu rounded-0 m-0">
-                                    <a href= "rule_pre.jsp"class="dropdown-item">Luật thi đấu</a>
-                                    <a href= "feedback_pre.jsp"class="dropdown-item">Feedback</a>
-                                    <a href= "News_pre.jsp"class="dropdown-item">Tin Tức</a>
-                                </div>
+                <div class="col-lg-9">
+                    <div class="row gx-0 bg-secondary d-none d-lg-flex">
+                        <div class="col-lg-7 px-5 text-start">
+                            <div class="h-100 d-inline-flex align-items-center py-2 me-4">
+                                <i class="fa fa-envelope text-primary me-2"></i>
+                                <h6 class="mb-0">birdfight@compe.com</h6>
                             </div>
-                            <a href="#" class="nav-item nav-link active">Liên Hệ</a>
-
+                            <div class="h-100 d-inline-flex align-items-center py-2">
+                                <i class="fa fa-phone-alt text-primary me-2"></i>
+                                <h6 class="mb-0">+123 321 333</h6>
+                            </div>
                         </div>
-                        <a href="login" class="btn btn-primary py-md-3 px-md-5 d-none d-lg-block">Login/Signup</a>
+                        <div class="col-lg-5 px-5 text-end">
+                            <div class="d-inline-flex align-items-center py-2">
+                                <a class="btn btn-light btn-square rounded-circle me-2" href="">
+                                    <i class="fab fa-facebook-f"></i>
+                                </a>
+                                <a class="btn btn-light btn-square rounded-circle me-2" href="">
+                                    <i class="fab fa-twitter"></i>
+                                </a>
+                                <a class="btn btn-light btn-square rounded-circle me-2" href="">
+                                    <i class="fab fa-linkedin-in"></i>
+                                </a>
+                                <a class="btn btn-light btn-square rounded-circle me-2" href="">
+                                    <i class="fab fa-instagram"></i>
+                                </a>
+                                <a class="btn btn-light btn-square rounded-circle" href="">
+                                    <i class="fab fa-youtube"></i>
+                                </a>
+                            </div>
+                        </div>
                     </div>
-                </nav>
+                    <nav class="navbar navbar-expand-lg bg-dark navbar-dark p-3 p-lg-0 px-lg-5">
+                        <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                        <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
+                            <div class="navbar-nav mr-auto py-0">
+                                <a href='<c:url value="/DispatchServlet?btAction=Home"/>' class="nav-item nav-link active">Home</a>
+                                <a href='<c:url value="/DispatchServlet?btAction=LeaderBoard"/>' class="nav-item nav-link">Bảng xếp hạng</a>
+                                <a href='<c:url value="/DispatchServlet?btAction=Home"/>#schedule' class="nav-item nav-link">Lịch thi đấu</a>
+                                <a href='<c:url value="/DispatchServlet?btAction=Home"/>#member' class="nav-item nav-link">Hội viên</a>
+                                <div class="nav-item dropdown">
+                                    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
+                                    <div class="dropdown-menu rounded-0 m-0">
+                                        <!-- <a href="blog.html" class="dropdown-item">News</a> -->
+                                        <a href="rule_pre.jsp" class="dropdown-item">Luật thi đấu</a>
+                                        <a href='<c:url value="/DispatchServlet?btAction=FeedBack"/>' class="dropdown-item">Feedback</a>
+                                        <a href='<c:url value="/DispatchServlet?btAction=Blog"/>' class="dropdown-item">Tin Tức</a>
+                                    </div>
+                                </div>
+                                <a href="contact_pre.jsp" class="nav-item nav-link">Liên Hệ</a>
+                            </div>
+                            <a href="Login2.jsp" class="btn btn-primary py-md-3 px-md-5 d-none d-lg-block">Login/Signup</a>
+                        </div>
+                    </nav>
+                </div>
             </div>
         </div>
-    </div>
     <!-- Header End -->
 
 
@@ -123,7 +123,7 @@
     <!-- Hero End -->
 
 
-    <!-- Contact Start -->
+      <!-- Contact Start -->
     <div class="container-fluid p-5">
         <div class="mb-5 text-center">
             <h5 class="text-primary text-uppercase">Liên lạc với chúng tôi</h5>
@@ -159,28 +159,33 @@
             </div>
         </div>
         <div class="row g-0" id="msg">
-            <div class="col-lg-6">
-                <div class="bg-dark p-5">
-                    <form>
-                        <div class="row g-3">
-                            <div class="col-6">
-                                <input type="text" class="form-control bg-light border-0 px-4" placeholder="Tên" style="height: 55px;">
+            <!--            <div class="col-lg-6">
+                            <div class="bg-dark p-5">
+                                <form>
+                                    <div class="row g-3">
+                                        <div class="col-6">
+                                            <input type="text" class="form-control bg-light border-0 px-4" placeholder="Tên" style="height: 55px;">
+                                        </div>
+                                        <div class="col-6">
+                                            <input type="email" class="form-control bg-light border-0 px-4" placeholder="Email" style="height: 55px;">
+                                        </div>
+                                        <div class="col-12">
+                                            <input type="text" class="form-control bg-light border-0 px-4" placeholder="Tiêu đề" style="height: 55px;">
+                                        </div>
+                                        <div class="col-12">
+                                            <textarea class="form-control bg-light border-0 px-4 py-3" rows="4" placeholder="Nội dung"></textarea>
+                                        </div>
+                                        <div class="col-12">
+                                            <button class="btn btn-primary w-100 py-3" type="submit">Gửi lời nhắn</button>
+                                        </div>
+                                    </div>
+                                </form>
                             </div>
-                            <div class="col-6">
-                                <input type="email" class="form-control bg-light border-0 px-4" placeholder="Email" style="height: 55px;">
-                            </div>
-                            <div class="col-12">
-                                <input type="text" class="form-control bg-light border-0 px-4" placeholder="Tiêu đề" style="height: 55px;">
-                            </div>
-                            <div class="col-12">
-                                <textarea class="form-control bg-light border-0 px-4 py-3" rows="4" placeholder="Nội dung"></textarea>
-                            </div>
-                            <div class="col-12">
-                                <button class="btn btn-primary w-100 py-3" type="submit">Gửi lời nhắn</button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
+                        </div>-->
+            <div class="col-lg-6" >
+               
+                    <img class="w-100" src="FE/img/dai-hoc-fpt-tp-hcm.jpeg"/>
+
             </div>
             <div class="col-lg-6">
                 <iframe class="w-100"
@@ -194,84 +199,84 @@
 
 
     <!-- Footer Start -->
-    <div class="container-fluid bg-dark text-secondary px-5 mt-5">
-        <div class="row gx-5">
-            <div class="col-lg-8 col-md-6">
-                <div class="row gx-5">
-                    <div class="col-lg-4 col-md-12 pt-5 mb-5">
-                        <h4 class="text-uppercase text-light mb-4">Get In Touch</h4>
-                        <div class="d-flex mb-2">
-                            <i class="bi bi-geo-alt text-primary me-2"></i>
-                            <p class="mb-0">FPT University, Lô E2a-7, Đường D1, Đ. D1, Long Thạnh Mỹ, Thành Phố Thủ Đức, Thành phố Hồ Chí Minh</p>
-                        </div>
-                        <div class="d-flex mb-2">
-                            <i class="bi bi-envelope-open text-primary me-2"></i>
-                            <p class="mb-0">info@example.com</p>
-                        </div>
-                        <div class="d-flex mb-2">
-                            <i class="bi bi-telephone text-primary me-2"></i>
-                            <p class="mb-0">+012 345 67890</p>
-                        </div>
-                        <div class="d-flex mt-4">
-                            <a class="btn btn-primary btn-square rounded-circle me-2" href="#"><i class="fab fa-twitter"></i></a>
-                            <a class="btn btn-primary btn-square rounded-circle me-2" href="#"><i class="fab fa-facebook-f"></i></a>
-                            <a class="btn btn-primary btn-square rounded-circle me-2" href="#"><i class="fab fa-linkedin-in"></i></a>
-                            <a class="btn btn-primary btn-square rounded-circle" href="#"><i class="fab fa-instagram"></i></a>
-                        </div>
+   <div class="container-fluid bg-dark text-secondary px-5 mt-5">
+    <div class="row gx-5">
+        <div class="col-lg-12 col-md-12">
+            <div class="row gx-5">
+                <div class="col-lg-4 col-md-12 pt-5 mb-5">
+                    <h4 class="text-uppercase text-light mb-4">Get In Touch</h4>
+                    <div class="d-flex mb-2">
+                        <i class="bi bi-geo-alt text-primary me-2"></i>
+                        <p class="mb-0">FPT University, Lô E2a-7, Đường D1, Đ. D1, Long Thạnh Mỹ, Thành
+                            Phố Thủ Đức, Thành phố Hồ Chí Minh</p>
                     </div>
-                    <div class="col-lg-4 col-md-12 pt-0 pt-lg-5 mb-5">
-                        <h4 class="text-uppercase text-light mb-4">Quick Links</h4>
-                        <div class="d-flex flex-column justify-content-start">
-                            <a class="text-secondary mb-2" href="#"><i class="bi bi-arrow-right text-primary me-2"></i>Home</a>
-                            <a class="text-secondary mb-2" href="#"><i class="bi bi-arrow-right text-primary me-2"></i>About Us</a>
-                            <a class="text-secondary mb-2" href="#"><i class="bi bi-arrow-right text-primary me-2"></i>Class Schedule</a>
-                            <a class="text-secondary mb-2" href="#"><i class="bi bi-arrow-right text-primary me-2"></i>Our Trainers</a>
-                            <a class="text-secondary mb-2" href="#"><i class="bi bi-arrow-right text-primary me-2"></i>Latest Blog</a>
-                            <a class="text-secondary" href="#"><i class="bi bi-arrow-right text-primary me-2"></i>Contact Us</a>
-                        </div>
+                    <div class="d-flex mb-2">
+                        <i class="bi bi-envelope-open text-primary me-2"></i>
+                        <p class="mb-0">birdfight@compe.com</p>
                     </div>
-                    <div class="col-lg-4 col-md-12 pt-0 pt-lg-5 mb-5">
-                        <h4 class="text-uppercase text-light mb-4">Popular Links</h4>
-                        <div class="d-flex flex-column justify-content-start">
-                            <a class="text-secondary mb-2" href="#"><i class="bi bi-arrow-right text-primary me-2"></i>Home</a>
-                            <a class="text-secondary mb-2" href="#"><i class="bi bi-arrow-right text-primary me-2"></i>About Us</a>
-                            <a class="text-secondary mb-2" href="#"><i class="bi bi-arrow-right text-primary me-2"></i>Class Schedule</a>
-                            <a class="text-secondary mb-2" href="#"><i class="bi bi-arrow-right text-primary me-2"></i>Our Trainers</a>
-                            <a class="text-secondary mb-2" href="#"><i class="bi bi-arrow-right text-primary me-2"></i>Latest Blog</a>
-                            <a class="text-secondary" href="#"><i class="bi bi-arrow-right text-primary me-2"></i>Contact Us</a>
-                        </div>
+                    <div class="d-flex mb-2">
+                        <i class="bi bi-telephone text-primary me-2"></i>
+                        <p class="mb-0">+123 321 333</p>
+                    </div>
+                    <div class="d-flex mt-4">
+                        <a class="btn btn-primary btn-square rounded-circle me-2" href="#"><i
+                                class="fab fa-twitter"></i></a>
+                        <a class="btn btn-primary btn-square rounded-circle me-2" href="#"><i
+                                class="fab fa-facebook-f"></i></a>
+                        <a class="btn btn-primary btn-square rounded-circle me-2" href="#"><i
+                                class="fab fa-linkedin-in"></i></a>
+                        <a class="btn btn-primary btn-square rounded-circle" href="#"><i
+                                class="fab fa-instagram"></i></a>
                     </div>
                 </div>
-            </div>
-            <div class="col-lg-4 col-md-6">
-                <div class="d-flex flex-column align-items-center justify-content-center text-center h-100 bg-primary p-5">
-                    <h4 class="text-uppercase text-white mb-4">Newsletter</h4>
-                    <h6 class="text-uppercase text-white">Subscribe Our Newsletter</h6>
-                    <p class="text-light">Amet justo diam dolor rebum lorem sit stet sea justo kasd</p>
-                    <form action="">
-                        <div class="input-group">
-                            <input type="text" class="form-control border-white p-3" placeholder="Your Email">
-                            <button class="btn btn-dark">Sign Up</button>
-                        </div>
-                    </form>
+                <div class="col-lg-4 col-md-12 pt-0 pt-lg-5 mb-5">
+                    <h4 class="text-uppercase text-light mb-4">Quick Links</h4>
+                    <div class="d-flex flex-column justify-content-start">
+                        <a class="text-secondary mb-2" href="#"><i
+                                class="bi bi-arrow-right text-primary me-2"></i>Home</a>
+                        <a class="text-secondary mb-2" href="#"><i
+                                class="bi bi-arrow-right text-primary me-2"></i>Bảng Xếp Hạng</a>
+                        <a class="text-secondary mb-2" href="#"><i
+                                class="bi bi-arrow-right text-primary me-2"></i>Lịch Thi Đấu</a>
+                        <a class="text-secondary mb-2" href="#"><i
+                                class="bi bi-arrow-right text-primary me-2"></i>Hội Viên</a>
+                        <a class="text-secondary mb-2" href="#"><i
+                                class="bi bi-arrow-right text-primary me-2"></i>Luật Thi Đấu</a>
+                        <a class="text-secondary" href="#"><i
+                                class="bi bi-arrow-right text-primary me-2"></i>Liên Hệ</a>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-12 pt-0 pt-lg-5 mb-5">
+                    <h4 class="text-uppercase text-light mb-4">Popular Links</h4>
+                    <div class="d-flex flex-column justify-content-start">
+                        <a class="text-secondary mb-2" href="#"><i
+                                class="bi bi-arrow-right text-primary me-2"></i>Home</a>
+                        <a class="text-secondary mb-2" href="#"><i
+                                class="bi bi-arrow-right text-primary me-2"></i>Bảng Xếp Hạng</a>
+                        <a class="text-secondary mb-2" href="#"><i
+                                class="bi bi-arrow-right text-primary me-2"></i>Lịch Thi Đấu</a>
+                        <a class="text-secondary mb-2" href="#"><i
+                                class="bi bi-arrow-right text-primary me-2"></i>Feedback</a>
+                        <a class="text-secondary mb-2" href="#"><i
+                                class="bi bi-arrow-right text-primary me-2"></i>Tin Tức</a>
+                        <a class="text-secondary" href="#"><i
+                                class="bi bi-arrow-right text-primary me-2"></i>Liên Hệ</a>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-    <div class="container-fluid py-4 py-lg-0 px-5" style="background: #111111;">
-        <div class="row gx-5">
-            <div class="col-lg-8">
-                <div class="py-lg-4 text-center">
-                    <p class="text-secondary mb-0">&copy; <a class="text-light fw-bold" href="#">Your Site Name</a>. All Rights Reserved.</p>
-                </div>
-            </div>
-            <div class="col-lg-4">
-                <div class="py-lg-4 text-center credit">
-                    <p class="text-light mb-0">Designed by <a class="text-light fw-bold" href="https://htmlcodex.com">HTML Codex</a></p>
-                </div>
+</div>
+<div class="container-fluid py-4 py-lg-0 px-5" style="background: #111111;">
+    <div class="row gx-5">
+        <div class="col-lg-12">
+            <div class="py-lg-4 text-center">
+                <p class="text-secondary mb-0">&copy; <a class="text-light fw-bold"
+                                                         href="#">BIRDFIGHTER</a>. All Rights Reserved.</p>
             </div>
         </div>
     </div>
+</div>
     <!-- Footer End -->
 
 

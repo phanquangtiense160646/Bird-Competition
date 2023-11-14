@@ -38,11 +38,11 @@ public class UpdateProfileServlet extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         String username = request.getParameter("txtUsername");
-        String fullname = request.getParameter("txtFullname");
-        String password = request.getParameter("txtPassword");
-        String gmail = request.getParameter("txtGmail");
-        String phone = request.getParameter("txtPhone");
-        String idmember = request.getParameter("txtUsername");
+        String fullname = request.getParameter("txtFullname").trim();
+        String password = request.getParameter("txtPassword").trim();
+        String gmail = request.getParameter("txtGmail").trim();
+        String phone = request.getParameter("txtPhone").trim();
+        String idmember = request.getParameter("txtUsername").trim();
         String url = "";
         try{
            
