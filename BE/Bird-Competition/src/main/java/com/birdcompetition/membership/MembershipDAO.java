@@ -8,11 +8,19 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class MembershipDAO {
+
+    private List<MembershipDTO> memberShipList;
+
+    public List<MembershipDTO> getList() {
+        return memberShipList;
+    }
 
     public boolean VipUpdate(String memberId, String type) throws SQLException, ClassNotFoundException {
 
@@ -262,4 +270,94 @@ public class MembershipDAO {
         calendar.add(Calendar.MONTH, amount);
         return new Date(calendar.getTime().getTime());
     }
+
+    private List<MembershipDTO> getListMemberShip() throws SQLException, ClassNotFoundException {
+        Connection con = null;
+        PreparedStatement stm = null;
+        ResultSet rs = null;
+
+        List<MembershipDTO> result = null;
+
+        try {
+            //1.Make connection
+            con = DBHelper.getConnection();
+            //check 
+            if (con != null) {
+                //2.Creat SQL String 
+                String sql = "Select * "
+                        + "From MemberShip\n";
+                //3.Create Statement Object
+                stm = con.prepareStatement(sql);
+                //4.Exercute Query
+                rs = stm.executeQuery();
+                while (rs.next()) {
+                    String id = rs.getString("IdMember");
+                    Date dateSignUp = rs.getDate("DateSignUp");
+                    String typeOfMember = rs.getString("TypeOfMemberShip");
+                    Date dateExpried = rs.getDate("DateExpired");
+
+                    MembershipDTO dto = new MembershipDTO(id, typeOfMember, dateSignUp, dateExpried);
+
+                    if (this.memberShipList == null) {
+                        this.memberShipList = new ArrayList<>();
+                    }
+                    memberShipList.add(dto);
+                }
+                return memberShipList;
+            }
+        } finally {
+            if (rs != null) {
+                rs.close();
+            }
+            if (stm != null) {
+                stm.close();
+            }
+            if (con != null) {
+                con.close();
+            }
+        }
+        return result;
+    }
+    public int getParticipants()
+            throws SQLException, ClassNotFoundException {
+        Connection con = null;
+        PreparedStatement stm = null;
+        ResultSet rs = null;
+        int result = 0;
+
+        try {
+            //1.Make connection
+            con = DBHelper.getConnection();
+            //check 
+            if (con != null) {
+                //2.Creat SQL String 
+                String sql = "Select count(IdMember) as Parcipants "
+                        + "From MemberShip ";
+                        
+                //3.Create Statement Object
+                stm = con.prepareStatement(sql);
+                
+                //4.Exercute Query
+                rs = stm.executeQuery();
+
+                //5.Process
+                if (rs.next()) {
+                    result = rs.getInt("Parcipants");
+                }
+            }
+        } finally {
+            if (rs != null) {
+                rs.close();
+            }
+            if (stm != null) {
+                stm.close();
+            }
+            if (con != null) {
+                con.close();
+            }
+        }
+        return result;
+
+    }
+
 }

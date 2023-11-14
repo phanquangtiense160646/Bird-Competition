@@ -7,6 +7,8 @@ package com.birdcompetition.controller;
 import com.birdcompetition.bird.BirdDAO;
 import com.birdcompetition.bird.BirdDTO;
 import com.birdcompetition.feedback.FeedBackDAO;
+import com.birdcompetition.membership.MembershipDAO;
+import com.birdcompetition.membership.MembershipDTO;
 import com.birdcompetition.model.User;
 import com.birdcompetition.payment.PaymentDAO;
 import com.birdcompetition.payment.PaymentDTO;
@@ -47,14 +49,19 @@ public class PaymentAdminServlet extends HttpServlet {
         String url = "AdminPage/index.jsp";
         try {
             HttpSession session = request.getSession();
+            
             List<PaymentDTO> paymentList;
             List<BirdDTO> birdList;
             List<ScheduleDTO> scheduleList;
+            List<MembershipDTO> memberShipList;
 
             PaymentDAO dao = new PaymentDAO();
             BirdDAO birddao = new BirdDAO();
             ScheduleDAO scheduledao = new ScheduleDAO();
+            MembershipDAO memberShipdao = new MembershipDAO();
+            
             User user = (User) session.getAttribute("USER");
+            
             FeedBackDAO fbdao = new FeedBackDAO();
             
             dao.getPaymentList(user.getUserName());
@@ -63,6 +70,7 @@ public class PaymentAdminServlet extends HttpServlet {
                     
             paymentList = dao.getPaymentList_price();
             birdList = birddao.getBirdList();
+            memberShipList = memberShipdao.getList();
             
             
             session.setAttribute("OWN_PAYMENT", paymentList);
@@ -91,6 +99,10 @@ public class PaymentAdminServlet extends HttpServlet {
             //Total Order
             int totalorder = dao.getParticipants();
             request.setAttribute("ORDER", totalorder);
+            //Total MemberShip
+            int totalMemberShip = memberShipdao.getParticipants();
+            request.setAttribute("MEMBERSHIP", totalMemberShip);
+            
             
            
             
