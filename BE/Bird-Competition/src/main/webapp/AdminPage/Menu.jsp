@@ -66,7 +66,12 @@
             <li class="nav-item">
                 <a class="nav-link" href=<c:url value="/DispatchServlet?btAction=ShowAllMember"/>>
                     <i class="fas fa-fw fa-table"></i>
-                    <span>Quản lý tài khoản</span></a>
+                    <span>Quản lý người dùng</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href=<c:url value="/DispatchServlet?btAction=ShowAllStaffMember"/>>
+                    <i class="fas fa-fw fa-table"></i>
+                    <span>Quản lý nhân sự</span></a>
             </li>
         </c:if>
         <c:if test="${user.userRole == 3 or user.userRole == 2}" >

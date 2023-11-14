@@ -57,7 +57,7 @@
                         <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                             <thead>
                                 <tr>
-                                    <th>Id FeedBack</th>
+                                    <!--<th>Id FeedBack</th>-->
                                     <th>Người gửi</th>
                                     <th>Nội dung</th>
                                     <th>Action</th>
@@ -66,7 +66,7 @@
                             </thead>
                             <tfoot>
                                 <tr>
-                                    <th>Id FeedBack</th>
+                                    <!--<th>Id FeedBack</th>-->
                                     <th>Người gửi</th>
                                     <th>Nội dung</th>
                                     <th>Action</th>
@@ -79,7 +79,7 @@
                                     <c:forEach var="feedbackDto" items="${feedbackData}" >
 
                                         <tr>
-                                            <td>${feedbackDto.getIdFeedback()}</td>
+                                            <!--<td>${feedbackDto.getIdFeedback()}</td>-->
                                             <td>${feedbackDto.getIdMember()}</td>
                                             <td>${feedbackDto.getDescription()}</td>
                                             <td>
@@ -87,7 +87,7 @@
                                                     <c:param name="btAction" value="DeleteFeedback"/>
                                                     <c:param name="txtID" value="${feedbackDto.getIdFeedback()}"/>
                                                 </c:url>
-                                                <a href="${deleteLink}">Delete</a>
+                                                <a  class="btn btn-primary" href="${deleteLink}">Delete</a>
                                             </td>
                                         </tr>
 

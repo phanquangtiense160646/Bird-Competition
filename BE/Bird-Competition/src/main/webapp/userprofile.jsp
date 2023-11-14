@@ -11,15 +11,15 @@
     <head>
         <style>
 
-</style>
+        </style>
         <script src="FE/js/main.js"></script>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Profile</title>
         <link href="FE/img/favicon.ico" rel="icon">
-        
+
         <link href="FE/css/toast.css" rel="stylesheet">
-        
+
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css"
               integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
 
@@ -66,14 +66,14 @@
                         <div class="card">
                             <div class="rounded-top text-white d-flex flex-row" style="background-color: #000000; height:200px;">
                                 <div class="ms-4 mt-5 d-flex flex-column" style="width: 150px;">
-                                    
+
                                     <img
                                         src="FE/img/manager.png"
                                         class="img-fluid img-thumbnail mt-4 mb-2"
                                         style="width: 150px; z-index: 1; margin-left: 10px;">
-                                    
-                                    
-                                    
+
+
+
 
                                 </div>
 
@@ -84,17 +84,17 @@
                             </div>
                             <div class=" pt-5 pl-4 text-black" style="background-color: #f8f9fa;">
                                 <form action="#editprofile-dialog" style="z-index: 1;">
-                                        <button class="btn btn-outline-dark" data-mdb-ripple-color="dark"
-                                                style="z-index: 0; margin-left: 17px;">
-                                            Edit profile
-                                        </button>
-                                    </form>
+                                    <button class="btn btn-outline-dark" data-mdb-ripple-color="dark"
+                                            style="z-index: 0; margin-left: 17px;">
+                                        Edit profile
+                                    </button>
+                                </form>
                                 <form action="DispatchServlet" style="z-index: 1;">
-                                        <button class="btn btn-outline-dark" data-mdb-ripple-color="dark"
-                                                style="z-index: 0; margin-left: 17px;" 
-                                                name="btAction" value="MatchHistory">
-                                            Match History
-                                        </button>
+                                    <button class="btn btn-outline-dark" data-mdb-ripple-color="dark"
+                                            style="z-index: 0; margin-left: 17px;" 
+                                            name="btAction" value="MatchHistory">
+                                        Match History
+                                    </button>
                                 </form>
                                 <img src="FE/img/tt7.png" style="width: 50%; float: right; position: absolute; top: 200; right: -30;" />
                             </div>
@@ -116,63 +116,64 @@
                                     <form action="DispatchServlet">
                                         <button class="mb-0 btn btn-outline-dark btn-primary" name="btAction" value="BirdList">Show all</button>
                                     </form>
-                                    
+
                                 </div>
-                            <c:set var="count" value="0" />            
-                            <c:set var="birdList" value="${sessionScope.OWN_BIRD}"/>
-                            <c:if test="${not empty birdList}">                   
-                                <c:forEach items="${birdList}" var="p" varStatus="loop"> 
-                                    <c:if test="${count lt 4}">
-                                       <c:if test="${loop.index % 2 == 0}">
-                                        <c:set var="nextIndex" value="${loop.index + 1}" />
+                                <c:set var="count" value="0" />            
+                                <c:set var="birdList" value="${sessionScope.OWN_BIRD}"/>
+                                <c:if test="${not empty birdList}">                   
+                                    <c:forEach items="${birdList}" var="p" varStatus="loop"> 
+                                        <c:if test="${count lt 4}">
+                                            <c:if test="${loop.index % 2 == 0}">
+                                                <c:set var="nextIndex" value="${loop.index + 1}" />
 
-                                        <div class="row g-2">
-                                            <div class="box col mb-5" style="object-fit: cover">
-                                               
-                                                <img src="${p.photoPath}"
-                                                     >
-                                                <p class="birdname" style="font-weight: bold; text-align:center;">${p.birdName}</p>
-                                            </div>
-                                            <c:if test="${nextIndex <= birdList.size() - 1}">
+                                                <div class="row g-2">
+                                                    <div class="box col mb-5" style="object-fit: cover">
 
-                                                <div class="box col mb-5 ">
-                                                   
-                                                    <img src="${birdList[nextIndex].photoPath}"
-                                                         >
-                                                    <p class="birdname" style="font-weight: bold; text-align:center;">${birdList[nextIndex].birdName}</p>
-                                                </div>
+                                                        <img src="${p.photoPath}"
+                                                             >
+                                                        <p class="birdname" style="font-weight: bold; text-align:center;">${p.birdName}</p>
+                                                    </div>
+                                                    <c:if test="${nextIndex <= birdList.size() - 1}">
+
+                                                        <div class="box col mb-5 ">
+
+                                                            <img src="${birdList[nextIndex].photoPath}"
+                                                                 >
+                                                            <p class="birdname" style="font-weight: bold; text-align:center;">${birdList[nextIndex].birdName}</p>
+                                                        </div>
+                                                    </c:if>
+                                                    <c:if test="${nextIndex > birdList.size() - 1}">
+                                                        <div class="box col mb-5"></div>
+                                                    </c:if>
+
+
+
+                                                </c:if>
+
+                                                <c:set var="count" value="${count + 1}" />
                                             </c:if>
-                                            <c:if test="${nextIndex > birdList.size() - 1}">
-                                                <div class="box col mb-5"></div>
-                                            </c:if>
-
-
-
-                                        </c:if>
-
-                                      <c:set var="count" value="${count + 1}" />
-                                      </c:if>
-                                    </c:forEach>
-                                </c:if>    
-                                <c:if test="${empty birdList}">
-                                    <h2>
-                                        Chưa có chim trong bộ sưu tập
-                                    </h2>
-                                </c:if>           
+                                        </c:forEach>
+                                    </c:if>    
+                                    <c:if test="${empty birdList}">
+                                        <h2>
+                                            Chưa có chim trong bộ sưu tập
+                                        </h2>
+                                    </c:if>           
+                                </div>
                             </div>
+
                         </div>
-                       
                     </div>
                 </div>
             </div>
-            </div>
         </section>
-         
-<h6 id="toastmes">${msg}</h6>
-<div id="toast"></div>
+        <c:set var="msg" value="${requestScope.msg}"/>
+
+        <h6 id="toastmes">${msg}</h6>
+        <div id="toast"></div>
 
 
-        
+
 
         <!-- Edit profile dialog  -->
         <div class="dialog overlay rounded" id="editprofile-dialog">
@@ -186,11 +187,11 @@
                 <div class="card mb-4">
                     <div class="card-header">Account Details</div>
                     <div class="card-body">
-<!--                        <form action="DispatchServlet" method="post" enctype="multipart/form-data" style="align-items: center">
-                             <label for="fileInput" style="color: blue"><u class="">Choose a File</u></label>
-                             <input type="file" id="fileInput" name="image">
-                             <input type="submit" value="Add Image">
-                         </form>-->
+                        <!--                        <form action="DispatchServlet" method="post" enctype="multipart/form-data" style="align-items: center">
+                                                     <label for="fileInput" style="color: blue"><u class="">Choose a File</u></label>
+                                                     <input type="file" id="fileInput" name="image">
+                                                     <input type="submit" value="Add Image">
+                                                 </form>-->
                         <form action="DispatchServlet" >
                             <!-- Form Group (username)-->
                             <div class="mb-3">
@@ -198,10 +199,10 @@
                                     site)</label>
                                 <input class="form-control" type="hidden" name="txtUsername" 
                                        value="${sessionScope.USER.userName}"> 
-                                 <input class="form-control" type="text" name="txtUsername" 
+                                <input class="form-control" type="text" name="txtUsername" 
                                        value="${sessionScope.USER.userName}" readonly>
                             </div>
-                             
+
                             <!-- Form Row-->
                             <div class="row gx-3 mb-3">
 
@@ -241,8 +242,8 @@
                             <div class="d-flex justify-content-center">
                                 <input type="submit" value="Update Profile" name="btAction" class="btn btn-primary"/>
                             </div>
-                            
-                           
+
+
                         </form>
                     </div>
                 </div>
@@ -250,21 +251,21 @@
 
         </div>
 
-    
-    <div class="dialog overlay" id="my-dialog">
-        <a href="#close-dialog" class="overlay-close"></a>
-        <div id="close-dialog" class="dialog-body">
-            <a href="#close-dialog" class="dialog-close-btn">&times;</a>
+
+        <div class="dialog overlay" id="my-dialog">
+            <a href="#close-dialog" class="overlay-close"></a>
+            <div id="close-dialog" class="dialog-body">
+                <a href="#close-dialog" class="dialog-close-btn">&times;</a>
+            </div>
         </div>
-    </div>
 
 
-</body>
-<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
-<script src="FE/lib/easing/easing.min.js"></script>
-<script src="FE/lib/waypoints/waypoints.min.js"></script>
-<script src="FE/lib/counterup/counterup.min.js"></script>
-<script src="FE/lib/owlcarousel/owl.carousel.min.js"></script>
-<script src="FE/js/updateprofile.js"></script>
+    </body>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="FE/lib/easing/easing.min.js"></script>
+    <script src="FE/lib/waypoints/waypoints.min.js"></script>
+    <script src="FE/lib/counterup/counterup.min.js"></script>
+    <script src="FE/lib/owlcarousel/owl.carousel.min.js"></script>
+    <script src="FE/js/updateprofile.js"></script>
 </html>

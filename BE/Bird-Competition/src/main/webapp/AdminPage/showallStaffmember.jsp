@@ -47,8 +47,8 @@
             <h1 class="h3 mb-2 text-gray-800">Account Management</h1>
             <p class="mb-4">Quản lý tài khoản <a target="_blank">
             </p>
-            <!--            <a href="AdminPage/adminsignup.jsp" class="btn btn-primary btn-user btn-block">
-                            Tạo tài khoản</a>-->
+            <a href="AdminPage/adminsignup.jsp" class="btn btn-primary btn-user btn-block">
+                Tạo tài khoản</a>
 
             <!-- DataTales Example -->
             <div class="card shadow mb-4">
@@ -62,12 +62,12 @@
                                 <tr>
                                     <th>Username</th>
                                     <th>Password</th>
-                                    <!--<th>Id Member</th>-->
+<!--                                    <th>Id Member</th>
                                     <th>Full name</th>
-<!--                                    <th>DoB</th>
-                                    <th>Country</th>-->
-                                    <th>Phone</th>       
-                                    <th>Membership</th>
+                                    <th>Day of birth</th>
+                                    <th>Country</th>
+                                    <th>Phone</th>       -->
+                                    <th>Role</th>
                                     <th>Option</th>
                                 </tr>
                             </thead>
@@ -75,7 +75,7 @@
                                 <c:set var="memberData" value="${sessionScope.ulist}"/>
                                 <c:if test="${not empty memberData}">
                                     <c:forEach var="memberDto" items="${memberData}" >
-                                        <c:if test="${memberDto.role == 4}">
+                                        <c:if test="${memberDto.role != 4}">
 
                                             <tr>
                                         <form action="DispatchServlet">    
@@ -91,26 +91,26 @@
 
 <!--                                            <td>
                                                 ${memberDto.getId()}
-                                            </td>-->
+                                            </td>
 
                                             <td>
                                                 <input type="text" name="txtFullname"
                                                        value="${memberDto.getFullName()}" class="form-control">
                                             </td>
 
-<!--                                            <td>
+                                            <td>
                                                 ${memberDto.getDateOfBirth()}        
                                             </td>
 
                                             <td>
                                                 <input type="text" name="txtCountry"
                                                        value="${memberDto.getCountry()}" class="form-control">   
-                                            </td>-->
+                                            </td>
 
                                             <td>
                                                 <input type="text" name="txtPhone"
                                                        value="${memberDto.getPhoneNumber()}"  class="form-control">
-                                            </td>
+                                            </td>-->
 
                                             <td>
                                                 <c:if test="${memberDto.role == 1 }">
@@ -123,21 +123,7 @@
                                                     Staff
                                                 </c:if>
                                                 <c:if test="${memberDto.role == 4 }">
-                                                    <!--                                                    Member-->
-                                                    <c:if test="${memberDto.membership eq '1' }">
-                                                        Bronze
-                                                    </c:if>
-                                                    <c:if test="${memberDto.membership eq '2' }">
-                                                        Silver
-                                                    </c:if>
-                                                    <c:if test="${memberDto.membership eq '3' }">
-                                                        Gold
-                                                    </c:if>
-                                                    <c:if test="${memberDto.membership == null }">
-                                                        Member
-                                                    </c:if>
-
-
+                                                    Member
                                                 </c:if>
 
                                             </td>
@@ -145,10 +131,7 @@
                                                 <c:url var="deleteLink" value="/DispatchServlet?btAction=DeleteMember">
                                                     <c:param name="username" value="${memberDto.username}"/>
                                                 </c:url>
-                                                <c:if test="${memberDto.role == 1}">
-                                                    <a class="btn btn-secondary mb-1" href="">Delete</a>
-                                                </c:if>
-                                                <c:if test="${memberDto.role != 1}">
+                                                <c:if test="${memberDto.role != 1 }">
                                                     <a class="btn btn-primary mb-1" href="${deleteLink}">Delete</a>
                                                 </c:if>
                                                 <!--                                                <input class="btn btn-primary mb-1" type="submit" name="btAction" value="UpdateAccount" />-->

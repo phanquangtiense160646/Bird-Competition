@@ -6,11 +6,9 @@ package com.birdcompetition.controller;
 
 import com.birdcompetition.member.MemberDAO;
 import com.birdcompetition.member.MemberDTO;
-import com.birdcompetition.model.User;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -24,10 +22,10 @@ import javax.servlet.http.HttpSession;
 
 /**
  *
- * @author 84366
+ * @author Danh
  */
-@WebServlet(name = "GetMemberServlet", urlPatterns = {"/GetMemberServlet"})
-public class GetMemberServlet extends HttpServlet {
+@WebServlet(name = "GetStaffMemberServlet", urlPatterns = {"/GetStaffMemberServlet"})
+public class GetStaffMemberServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -41,27 +39,21 @@ public class GetMemberServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        MemberDAO dao = new MemberDAO();
+       MemberDAO dao = new MemberDAO();
         List<MemberDTO> memberList;
-        List<MemberDTO> userList = new ArrayList<>();
-        String url = "AdminPage/showallmember.jsp";
+        String url = "AdminPage/showallStaffmember.jsp";
         try {
             HttpSession session = request.getSession();
             dao.getMember();
             memberList = dao.getMemberList();
-            for (MemberDTO member : memberList) {
-                String type = dao.getMembership(member.getId());
-                member.setMembership(type);
-                userList.add(member);
-            }
-
-            session.setAttribute("ulist", userList);
+           
+            session.setAttribute("ulist", memberList);
 //            System.out.println("Memberlist size : " + memberList.size());
 
         } catch (SQLException ex) {
-            Logger.getLogger(GetMemberServlet.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(GetStaffMemberServlet.class.getName()).log(Level.SEVERE, null, ex);
         } catch (ClassNotFoundException ex) {
-            Logger.getLogger(GetMemberServlet.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(GetStaffMemberServlet.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
 
             RequestDispatcher rd = request.getRequestDispatcher(url);
@@ -69,7 +61,7 @@ public class GetMemberServlet extends HttpServlet {
         }
     }
 
-// <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
+    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
      *

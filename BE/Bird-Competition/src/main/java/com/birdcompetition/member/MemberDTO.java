@@ -18,6 +18,7 @@ public class MemberDTO implements Serializable{
     private String username;
     private String password;
     private int role;
+    private String membership;
 
     public MemberDTO() {
     }
@@ -147,6 +148,14 @@ public class MemberDTO implements Serializable{
 
     public void setGender(String gender) {
         this.gender = gender;
+    }
+
+    public String getMembership() {
+        return membership;
+    }
+
+    public void setMembership(String membership) {
+        this.membership = membership;
     }
 
     @Override

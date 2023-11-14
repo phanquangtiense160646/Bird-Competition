@@ -136,6 +136,8 @@ public class DispatchServlet extends HttpServlet {
                 url = "AddNewsServlet";
             }else if (button.equals("ShowAllMember")) {
                 url = "GetMemberServlet";
+            }else if (button.equals("ShowAllStaffMember")) {
+                url = "GetStaffMemberServlet";
             } else if(button.equals("AdminSignUp")){
                 url = "AdminSignupControl";
             } else if(button.equals("UpdateAccount")){

@@ -62,19 +62,21 @@
                                 <option value="3">Staff</option>
                                 <option value="2">Manager</option>
                                 <option value="1">Admin</option>
-                                
+
                             </select>
                         </div>
 
                         <hr>
-                        
+                        <c:set var="errors" value="${requestScope.CREATE_ERRORS}"/>
+                        <span style="color: red;">${errors.usernameIsExisted}</span>
+
                         <button type="submit" class="btn btn-primary btn-user btn-block" name="btAction">
-                            Đăng ký</button>
-                        
+                            Tạo</button>
+
                         <a href="javascript:history.back()" class="btn btn-secondary btn-user btn-block">
                             Quay lại
                         </a>
-                        
+
                     </form>
 
                 </div>

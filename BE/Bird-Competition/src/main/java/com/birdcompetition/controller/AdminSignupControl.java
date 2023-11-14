@@ -5,6 +5,7 @@
 package com.birdcompetition.controller;
 
 import com.birdcompetition.dal.DAO;
+import com.birdcompetition.dal.RegistrationCreateError;
 import com.birdcompetition.model.User;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -40,23 +41,25 @@ public class AdminSignupControl extends HttpServlet {
         String username = request.getParameter("txtUsername");
         String password = request.getParameter("txtPassword");
         int role = Integer.parseInt(request.getParameter("txtRole"));
+        RegistrationCreateError errors = new RegistrationCreateError();
 
-        String url = "";
+        String url = "AdminPage/adminsignup.jsp";
         try {
 
             //2. call DAO
             DAO dao = new DAO();
-           
+
 //            User u = new User(username, password, "", role, "", "", "", "", 0, "", "");
             User u = new User(username, password, role);
             boolean result = dao.createAdminAccount(u);
             //3. Process Result
             if (result) {
-                
-                url = "GetMemberServlet";
+                url = "GetStaffMemberServlet";
             }//create successful
         } catch (SQLException ex) {
-            Logger.getLogger(AdminSignupControl.class.getName()).log(Level.SEVERE, null, ex);
+            log("AddMember_SQL " + ex.getMessage());
+            errors.setUsernameIsExisted(username + " is existed");
+            request.setAttribute("CREATE_ERRORS", errors);
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(AdminSignupControl.class.getName()).log(Level.SEVERE, null, ex);
         } finally {

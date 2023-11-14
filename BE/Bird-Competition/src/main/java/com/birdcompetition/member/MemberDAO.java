@@ -1,17 +1,22 @@
 package com.birdcompetition.member;
 
 import com.birdcompetition.bird.BirdDTO;
+import com.birdcompetition.membership.MembershipDAO;
+import com.birdcompetition.membership.MembershipDTO;
 import com.birdcompetition.model.User;
 import com.birdcompetition.user.UserDTO;
 import com.birdcompetition.util.DBHelper;
 import java.io.Serializable;
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.naming.NamingException;
 
 /**
@@ -68,6 +73,53 @@ public class MemberDAO implements Serializable {
                 con.close();
             }
         }
+    }
+
+    public String getMembership(String memberId) throws SQLException {
+        Connection con = null;
+        PreparedStatement stm = null;
+        ResultSet rs = null;
+        String type = null;
+        try {
+            //1.Make connection
+            con = DBHelper.getConnection();
+            //check 
+            if (con != null) {
+                //2.Creat SQL String 
+                String sql = "Select * "
+                        + "From MemberShip "
+                        + "Where IdMember = ? ";
+                //3.Create Statement Object
+                stm = con.prepareStatement(sql);
+//                stm.setInt(1, contestStatus);
+                stm.setString(1, memberId);
+
+                //4.Exercute Query
+                rs = stm.executeQuery();
+                //5.Process
+                if (rs.next()) {
+                    type = rs.getString("TypeOfMemberShip");
+
+                } else {
+                    type = null;
+                }
+            }
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(MembershipDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(MembershipDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            if (rs != null) {
+                rs.close();
+            }
+            if (stm != null) {
+                stm.close();
+            }
+            if (con != null) {
+                con.close();
+            }
+        }
+        return type;
     }
 
     //list
@@ -291,8 +343,7 @@ public class MemberDAO implements Serializable {
                     String country = rs.getString("Country");
                     String phone = rs.getString("Phone");
 
-
-                    MemberDTO dto = new MemberDTO(memberId, fullname, 
+                    MemberDTO dto = new MemberDTO(memberId, fullname,
                             dateofbirth, country, phone, username, password, role);
                     if (this.memberList == null) {
                         this.memberList = new ArrayList<>();

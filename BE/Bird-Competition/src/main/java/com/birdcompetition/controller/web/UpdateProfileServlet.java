@@ -54,6 +54,7 @@ public class UpdateProfileServlet extends HttpServlet {
                 HttpSession session = request.getSession();
                 User tempresult = dao.GetUserInfo(username);
                 session.setAttribute("USER", tempresult);
+                
                 request.setAttribute("msg", "success");
                 url = "UserProfileServlet";
             }
