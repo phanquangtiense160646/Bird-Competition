@@ -2,20 +2,27 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
  */
-package com.birdcompetition.controller;
 
+
+import com.birdcompetition.news.NewsDAO;
+import com.birdcompetition.news.NewsDTO;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.SQLException;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
  * @author MSI
  */
-public class AddFeedBackServlet extends HttpServlet {
+@WebServlet(name = "ManageNewsServlet", urlPatterns = {"/ManageNewsServlet"})
+public class ManageNewsServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -29,7 +36,33 @@ public class AddFeedBackServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        
+         String url = null;
+      try {
+         
+            
+            java.util.List<NewsDTO> newsList;
+
+            NewsDAO dao = new NewsDAO();
+            java.util.List<NewsDTO> result = dao.getNews();
+            
+            if(result != null){
+                HttpSession session = request.getSession();
+                
+                session.setAttribute("NEWS", result);
+                url = "AdminPage/News.jsp";
+            }
+
+        } catch (SQLException ex) {
+            log("ScheduleServlet_SQL: " + ex.getMessage());
+            ex.printStackTrace();
+        } catch (ClassNotFoundException ex) {
+            log("ScheduleServlet_ClassNotFound: " + ex.getMessage());
+        } finally {
+//            response.sendRedirect(url);
+            RequestDispatcher rd = request.getRequestDispatcher(url);
+            rd.forward(request, response);
+        }
+
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

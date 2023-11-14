@@ -4,29 +4,30 @@
  */
 package com.birdcompetition.controller;
 
-import com.birdcompetition.location.LocationDAO;
-import com.birdcompetition.location.LocationDTO;
-import com.birdcompetition.news.NewsDAO;
-import com.birdcompetition.news.NewsDTO;
+import com.birdcompetition.dal.DAO;
+import com.birdcompetition.member.MemberDAO;
+import com.birdcompetition.member.MemberDTO;
+import com.birdcompetition.user.UserDAO;
+import com.birdcompetition.user.UserDTO;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.sql.Date;
 import java.sql.SQLException;
-import java.time.LocalDate;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.naming.NamingException;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
  *
- * @author MSI
+ * @author 84366
  */
-public class AddNewsServlet extends HttpServlet {
+@WebServlet(name = "AddMemberServlet", urlPatterns = {"/AddMemberServlet"})
+public class AddMemberServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -38,38 +39,37 @@ public class AddNewsServlet extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+            throws ServletException, IOException  {
         response.setContentType("text/html;charset=UTF-8");
-        String name = request.getParameter("txtNameOfNews");
-        LocalDate date = LocalDate.parse(request.getParameter("txtDate"));
-        String descrip = request.getParameter("txtDescription");
-        String link = request.getParameter("txtLink");
-        String photo = request.getParameter("txtPhotoPath");
+        String name = request.getParameter("username");
+        String password = request.getParameter("password");
+        String gmail = request.getParameter("gmail");
+        String role = request.getParameter("role");
         String url = "";
-        try {
-            NewsDAO dao = new NewsDAO();
-            NewsDTO dto = new NewsDTO(name, date, link, photo);
-            boolean result = dao.addNews(name, date, descrip, link, photo);
-            if (result) {
-
-                String msg = "msg";
-                request.setAttribute("msg", msg);
-                url = "AdminPage/News.jsp";
-            } else {
-                String msg = "fail";
-                request.setAttribute("msg", msg);
-            }
+        try {        
+        UserDAO dao = new UserDAO();
+        UserDTO dto = new UserDTO(name, password, gmail, 0, true);
+        boolean result = dao.insertAccount(dto);
+        if(result){
+            url = "addnewaccount.jsp";
+            String msg = "success";
+            request.setAttribute("msg", msg);
+        }else{
+            String msg = "fail";
+            request.setAttribute("msg", msg);
+        }
+    
         } catch (SQLException ex) {
-            Logger.getLogger(AddNewsServlet.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(AddMemberServlet.class.getName()).log(Level.SEVERE, null, ex);
         } catch (NamingException ex) {
-            Logger.getLogger(AddNewsServlet.class.getName()).log(Level.SEVERE, null, ex);
-        } finally {
+            Logger.getLogger(AddMemberServlet.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(AddMemberServlet.class.getName()).log(Level.SEVERE, null, ex);
+        }finally{
             RequestDispatcher rd = request.getRequestDispatcher(url);
             rd.forward(request, response);
         }
-
     }
-
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.

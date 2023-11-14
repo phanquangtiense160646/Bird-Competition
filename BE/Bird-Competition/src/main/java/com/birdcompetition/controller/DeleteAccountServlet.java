@@ -4,29 +4,25 @@
  */
 package com.birdcompetition.controller;
 
-import com.birdcompetition.location.LocationDAO;
-import com.birdcompetition.location.LocationDTO;
-import com.birdcompetition.news.NewsDAO;
-import com.birdcompetition.news.NewsDTO;
+import com.birdcompetition.user.UserDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.sql.Date;
 import java.sql.SQLException;
-import java.time.LocalDate;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.naming.NamingException;
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
  *
- * @author MSI
+ * @author 84366
  */
-public class AddNewsServlet extends HttpServlet {
+@WebServlet(name = "DeleteAccountServlet", urlPatterns = {"/DeleteAccountServlet"})
+public class DeleteAccountServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -40,34 +36,37 @@ public class AddNewsServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        String name = request.getParameter("txtNameOfNews");
-        LocalDate date = LocalDate.parse(request.getParameter("txtDate"));
-        String descrip = request.getParameter("txtDescription");
-        String link = request.getParameter("txtLink");
-        String photo = request.getParameter("txtPhotoPath");
-        String url = "";
+        String name = request.getParameter("pk");
+        String searchValue = request.getParameter("lastSearchValue");
+        
+        String url = "biloi.html";
         try {
-            NewsDAO dao = new NewsDAO();
-            NewsDTO dto = new NewsDTO(name, date, link, photo);
-            boolean result = dao.addNews(name, date, descrip, link, photo);
-            if (result) {
-
-                String msg = "msg";
-                request.setAttribute("msg", msg);
-                url = "AdminPage/News.jsp";
-            } else {
-                String msg = "fail";
-                request.setAttribute("msg", msg);
+            //1. call Model
+            //1.1 new DAO
+            UserDAO dao = new UserDAO();
+            //1.2 call DAO's method 
+            boolean result = dao.deleteAccount(name);
+            
+            //2. process Result 
+            if(result) {
+            //2.1 call the Search function again using URL Rewriting 
+            url = "DispatchServlet"
+                    + "?btAction=Search" 
+                    + "&txtSearchValue=" + searchValue;
+            
             }
+            //2.2 go error page
+            
         } catch (SQLException ex) {
-            Logger.getLogger(AddNewsServlet.class.getName()).log(Level.SEVERE, null, ex);
+            log("DelectAccount_SQL " + ex.getMessage());
         } catch (NamingException ex) {
-            Logger.getLogger(AddNewsServlet.class.getName()).log(Level.SEVERE, null, ex);
-        } finally {
-            RequestDispatcher rd = request.getRequestDispatcher(url);
-            rd.forward(request, response);
+            log("DelectAccount_Naming " + ex.getMessage());
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(DeleteAccountServlet.class.getName()).log(Level.SEVERE, null, ex);
+        }finally{
+            response.sendRedirect(url);
+            
         }
-
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

@@ -6,12 +6,33 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
+<head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta name="description" content="">
+        <meta name="author" content="">
+
+        <title>Admin</title>
+
+        <!-- Custom fonts for this template-->
+        <link href="AdminPage/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+        <link
+            href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+            rel="stylesheet">
+
+        <!-- Custom styles for this template-->
+        <link href="AdminPage/css/sb-admin-2.min.css" rel="stylesheet">
+    </head>
 <!-- Page Wrapper -->
 <c:set var="user" value="${sessionScope.USER}"/>
 <div id="wrapper">
 
     <!-- Sidebar -->
     <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+
+
+
 
         <!-- Sidebar - Brand -->
         <a class="sidebar-brand d-flex align-items-center justify-content-center" href='<c:url value="/DispatchServlet?btAction=Dashboard"/>'>
@@ -21,6 +42,7 @@
             <div class="sidebar-brand-text mx-3">BirdFighter Admin <sup></sup></div>
         </a>
 
+
         <!-- Divider -->
         <hr class="sidebar-divider my-0">
 
@@ -28,10 +50,16 @@
         <hr class="sidebar-divider d-none d-md-block">
 
 
+
+        
+       
+        <!-- Divider -->
+        <hr class="sidebar-divider d-none d-md-block">
+
         <!-- Heading -->
         <c:if test="${user.userRole == 1}" >
             <li class="nav-item">
-                <a class="nav-link" href="">
+                <a class="nav-link" href=<c:url value="/DispatchServlet?btAction=ShowAllMember"/>>
                     <i class="fas fa-fw fa-table"></i>
                     <span>Quản lý tài khoản</span></a>
             </li>
@@ -75,11 +103,12 @@
                     <i class="fas fa-fw fa-table"></i>
                     <span>Check-in</span></a>
             </li> 
+            
             <li class="nav-item">
                 <!--<a class="nav-link" href='<c:url value="/DispatchServlet?btAction=ManageFeedBack"/>'>-->
-                <a class="nav-link" href="ManageFeedbackServlet">
+                <a class="nav-link" href='<c:url value="/DispatchServlet?btAction=ManageNews"/>'>
                     <i class="fas fa-fw fa-table"></i>
-                    <span>Feed Back</span></a>
+                    <span>News</span></a>
             </li> 
         </c:if>
         <c:if test="${user.userRole == 2 }" >
@@ -95,14 +124,21 @@
                     <span>Quản lý thanh toán</span></a>
             </li>  
 
-            <li class="nav-item">
+<!--            <li class="nav-item">
                 <a class="nav-link" href="">
                     <i class="fas fa-fw fa-table"></i>
                     <span>Quản lý Luật thi</span></a>
-            </li>   
+            </li>   -->
+            <li class="nav-item">
+                <!--<a class="nav-link" href='<c:url value="/DispatchServlet?btAction=ManageFeedBack"/>'>-->
+                <a class="nav-link" href='<c:url value="/DispatchServlet?btAction=ManageFeedBack"/>'>
+                    <i class="fas fa-fw fa-table"></i>
+                    <span>Feed Back</span></a>
+            </li> 
         </c:if>
         <!-- Divider -->
         <hr class="sidebar-divider d-none d-md-block">
+
 
 
 
@@ -128,17 +164,17 @@
 
                 <!-- Topbar Search -->
                 <!--                <form
-                                    class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
-                                    <div class="input-group">
-                                        <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..."
-                                               aria-label="Search" aria-describedby="basic-addon2">
-                                        <div class="input-group-append">
-                                            <button class="btn btn-primary" type="button">
-                                                <i class="fas fa-search fa-sm"></i>
-                                            </button>
-                                        </div>
-                                    </div>
-                                </form>-->
+                        class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
+                        <div class="input-group">
+                            <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..."
+                                   aria-label="Search" aria-describedby="basic-addon2">
+                            <div class="input-group-append">
+                                <button class="btn btn-primary" type="button">
+                                    <i class="fas fa-search fa-sm"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </form>-->
 
                 <!-- Topbar Navbar -->
                 <ul class="navbar-nav ml-auto">
@@ -168,38 +204,65 @@
                     </li>
 
 
+
                     <!-- Nav Item - User Information -->
-                    <li class="nav-item dropdown no-arrow  h-100">
+                    <li class="nav-item dropdown no-arrow">
                         <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <span class="btn btn-primary h-50" style="width: 100px;">${user.userName}</span>
-
-
+                            <c:set var="user" value="${sessionScope.USER}" />
+                            <span class="btn btn-primary nav-link dropdown-toggle h-75"
+                                  style="width: 100px;">${user.userName}</span>
                             <%--<c:if test="${user.userRole == 1}">Admin</c:if>--%>
                             <%--<c:if test="${user.userRole == 2}">Manager</c:if>--%>
                             <%--<c:if test="${user.userRole == 3}">Staff</c:if>--%>
-                            <!--<div class="d-flex justify-content-center">
-                                <small class="">Admin</small>
-                            </div>-->
-                        </a>
 
-                        <!-- Dropdown - User Information -->
+
+                        </a>
+<!--                         Dropdown - User Information 
                         <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
                              aria-labelledby="userDropdown">
-                            <!--                            <a class="dropdown-item" href="#">
-                                                            <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
-                                                            Profile
-                                                        </a>-->
-                            <!--<div class="dropdown-divider"></div>-->
-                            <a class="dropdown-item" href='<c:url value="/DispatchServlet?btAction=Logout"/>'>
-                                <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
-                                Logout
-                            </a>
-                        </div>
-                    </li>
+                                                        <a class="dropdown-item" href="#">
+=======
+                            <!-- Nav Item - User Information 
+                            <li class="nav-item dropdown no-arrow  h-100">
+                                <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
+                                   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <span class="btn btn-primary h-50" style="width: 100px;">${user.userName}</span>
+
+
+                                    <%--<c:if test="${user.userRole == 1}">Admin</c:if>--%>
+                                    <%--<c:if test="${user.userRole == 2}">Manager</c:if>--%>
+                                    <%--<c:if test="${user.userRole == 3}">Staff</c:if>--%>
+                                    <div class="d-flex justify-content-center">
+                                        <small class="">Admin</small>
+                                    </div>
+                                </a>-->
+
+                                <!-- Dropdown - User Information -->
+                                <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
+                                     aria-labelledby="userDropdown">
+                                    <!--                            <a class="dropdown-item" href="#">
+        >>>>>>> 8adada0e4acd1f1a25b890d13401cf9bccb44119
+                                                                    <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+                                                                    Profile
+                                                                </a>-->
+                                    <!--<div class="dropdown-divider"></div>-->
+                                    <a class="dropdown-item"
+                                       href='<c:url value="/DispatchServlet?btAction=Logout"/>'>
+                                        <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                                        Logout
+                                    </a>
+                                </div>
+                            </li>
 
                 </ul>
+
+
+            </nav>
+            <!-- End of Topbar -->
 
             </nav>
 
             <!-- End of Topbar -->
+            
+

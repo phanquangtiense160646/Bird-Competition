@@ -145,8 +145,8 @@
         </div>
         <!-- About End -->
 
-       <div id="leaderboard">
-           <c:set var="leaderboard" value="${sessionScope.LEADER_BOARD}" />
+        <div id="leaderboard">
+            <c:set var="leaderboard" value="${sessionScope.LEADER_BOARD}" />
             <c:if test="${not empty leaderboard}">
                 <div class="container-fluid p-5">
                     <div class="mb-5 text-center">
@@ -537,7 +537,7 @@
         <!-- Membership Start -->
 
         <!-- News Start -->
-        <div id="news" class="container-fluid p-5">
+<!--        <div id="news" class="container-fluid p-5">
             <div class="mb-5 text-center">
                 <h5 class="text-primary text-uppercase">Tin tức</h5>
                 <h1 class="display-3 text-uppercase mb-0">Tin tức mới nhất</h1>
@@ -606,7 +606,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div>-->
         <!-- News End -->
 
         <!-- Feedback start -->
@@ -626,26 +626,40 @@
                     <div class="owl-carousel testimonial-carousel">
                         <div class="testimonial-item">
                             <p class="fs-4 fw-normal text-light mb-4"><i
-                                    class="fa fa-quote-left text-primary me-3"></i>Dolores sed duo clita tempor
-                                justo dolor et stet lorem kasd labore dolore lorem ipsum. At lorem lorem magna
-                                ut et, nonumy et labore et tempor diam tempor erat dolor rebum sit ipsum.</p>
+                                    class="fa fa-quote-left text-primary me-3"></i> Trận đấu hay và cảm xúc</p>
                             <div class="d-flex align-items-center">
-                                <img class="img-fluid rounded-circle" src="img/testimonial-1.jpg" alt="">
                                 <div class="ps-4">
-                                    <h5 class="text-uppercase text-light">Client Name</h5>
+                                    <h5 class="text-uppercase text-light">DanhTran  </h5>
                                     <span class="text-uppercase text-secondary">Profession</span>
                                 </div>
                             </div>
                         </div>
                         <div class="testimonial-item">
                             <p class="fs-4 fw-normal text-light mb-4"><i
-                                    class="fa fa-quote-left text-primary me-3"></i>Dolores sed duo clita tempor
-                                justo dolor et stet lorem kasd labore dolore lorem ipsum. At lorem lorem magna
-                                ut et, nonumy et labore et tempor diam tempor erat dolor rebum sit ipsum.</p>
+                                    class="fa fa-quote-left text-primary me-3"></i> Chim đẹp và hót tốt</p>
                             <div class="d-flex align-items-center">
-                                <img class="img-fluid rounded-circle" src="img/testimonial-2.jpg" alt="">
                                 <div class="ps-4">
-                                    <h5 class="text-uppercase text-light">Client Name</h5>
+                                    <h5 class="text-uppercase text-light">HuyBui</h5>
+                                    <span class="text-uppercase text-secondary">Profession</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="testimonial-item">
+                            <p class="fs-4 fw-normal text-light mb-4"><i
+                                    class="fa fa-quote-left text-primary me-3"></i> Trọng tài chưa đủ chuyên môn</p>
+                            <div class="d-flex align-items-center">
+                                <div class="ps-4">
+                                    <h5 class="text-uppercase text-light">KhangNguye</h5>
+                                    <span class="text-uppercase text-secondary">Profession</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="testimonial-item">
+                            <p class="fs-4 fw-normal text-light mb-4"><i
+                                    class="fa fa-quote-left text-primary me-3"></i> Chuyên nghiệp trong tổ chức</p>
+                            <div class="d-flex align-items-center">
+                                <div class="ps-4">
+                                    <h5 class="text-uppercase text-light">HiepThuan </h5>
                                     <span class="text-uppercase text-secondary">Profession</span>
                                 </div>
                             </div>
@@ -672,11 +686,11 @@
                             </div>
                             <div class="d-flex mb-2">
                                 <i class="bi bi-envelope-open text-primary me-2"></i>
-                                <p class="mb-0">info@example.com</p>
+                                <p class="mb-0">birdfight@compe.com</p>
                             </div>
                             <div class="d-flex mb-2">
                                 <i class="bi bi-telephone text-primary me-2"></i>
-                                <p class="mb-0">+012 345 67890</p>
+                                <p class="mb-0">+123 321 333</p>
                             </div>
                             <div class="d-flex mt-4">
                                 <a class="btn btn-primary btn-square rounded-circle me-2" href="#"><i
@@ -695,15 +709,15 @@
                                 <a class="text-secondary mb-2" href="#"><i
                                         class="bi bi-arrow-right text-primary me-2"></i>Home</a>
                                 <a class="text-secondary mb-2" href="#"><i
-                                        class="bi bi-arrow-right text-primary me-2"></i>About Us</a>
+                                        class="bi bi-arrow-right text-primary me-2"></i>Bảng Xếp Hạng</a>
                                 <a class="text-secondary mb-2" href="#"><i
-                                        class="bi bi-arrow-right text-primary me-2"></i>Class Schedule</a>
+                                        class="bi bi-arrow-right text-primary me-2"></i>Lịch Thi Đấu</a>
                                 <a class="text-secondary mb-2" href="#"><i
-                                        class="bi bi-arrow-right text-primary me-2"></i>Our Trainers</a>
+                                        class="bi bi-arrow-right text-primary me-2"></i>Hội Viên</a>
                                 <a class="text-secondary mb-2" href="#"><i
-                                        class="bi bi-arrow-right text-primary me-2"></i>Latest Blog</a>
+                                        class="bi bi-arrow-right text-primary me-2"></i>Luật Thi Đấu</a>
                                 <a class="text-secondary" href="#"><i
-                                        class="bi bi-arrow-right text-primary me-2"></i>Contact Us</a>
+                                        class="bi bi-arrow-right text-primary me-2"></i>Liên Hệ</a>
                             </div>
                         </div>
                         <div class="col-lg-4 col-md-12 pt-0 pt-lg-5 mb-5">
@@ -712,15 +726,15 @@
                                 <a class="text-secondary mb-2" href="#"><i
                                         class="bi bi-arrow-right text-primary me-2"></i>Home</a>
                                 <a class="text-secondary mb-2" href="#"><i
-                                        class="bi bi-arrow-right text-primary me-2"></i>About Us</a>
+                                        class="bi bi-arrow-right text-primary me-2"></i>Bảng Xếp Hạng</a>
                                 <a class="text-secondary mb-2" href="#"><i
-                                        class="bi bi-arrow-right text-primary me-2"></i>Class Schedule</a>
+                                        class="bi bi-arrow-right text-primary me-2"></i>Lịch Thi Đấu</a>
                                 <a class="text-secondary mb-2" href="#"><i
-                                        class="bi bi-arrow-right text-primary me-2"></i>Our Trainers</a>
+                                        class="bi bi-arrow-right text-primary me-2"></i>Feedback</a>
                                 <a class="text-secondary mb-2" href="#"><i
-                                        class="bi bi-arrow-right text-primary me-2"></i>Latest Blog</a>
+                                        class="bi bi-arrow-right text-primary me-2"></i>Tin Tức</a>
                                 <a class="text-secondary" href="#"><i
-                                        class="bi bi-arrow-right text-primary me-2"></i>Contact Us</a>
+                                        class="bi bi-arrow-right text-primary me-2"></i>Liên Hệ</a>
                             </div>
                         </div>
                     </div>

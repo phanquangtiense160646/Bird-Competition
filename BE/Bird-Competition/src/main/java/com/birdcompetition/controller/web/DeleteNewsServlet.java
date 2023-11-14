@@ -2,31 +2,30 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
  */
-package com.birdcompetition.controller;
+package com.birdcompetition.controller.web;
 
-import com.birdcompetition.location.LocationDAO;
-import com.birdcompetition.location.LocationDTO;
+import com.birdcompetition.feedback.FeedBackDAO;
+import com.birdcompetition.feedback.FeedBackDTO;
 import com.birdcompetition.news.NewsDAO;
 import com.birdcompetition.news.NewsDTO;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.sql.Date;
 import java.sql.SQLException;
-import java.time.LocalDate;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.naming.NamingException;
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
  * @author MSI
  */
-public class AddNewsServlet extends HttpServlet {
+@WebServlet(name = "DeleteNewsServlet", urlPatterns = {"/DeleteNewsServlet"})
+public class DeleteNewsServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -40,34 +39,34 @@ public class AddNewsServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        String name = request.getParameter("txtNameOfNews");
-        LocalDate date = LocalDate.parse(request.getParameter("txtDate"));
-        String descrip = request.getParameter("txtDescription");
-        String link = request.getParameter("txtLink");
-        String photo = request.getParameter("txtPhotoPath");
-        String url = "";
+         String id = request.getParameter("txtID");
+        String url = null;
         try {
+            //1. call method
+            //1.1. new DAO
             NewsDAO dao = new NewsDAO();
-            NewsDTO dto = new NewsDTO(name, date, link, photo);
-            boolean result = dao.addNews(name, date, descrip, link, photo);
+            //1.2 call DAO's method
+            boolean result = dao.deleteNews(id);
+
+            //2. process Result
             if (result) {
+                //2.1 call the search function again using URL Rewriting
+                HttpSession session = request.getSession();
+                java.util.List<NewsDTO> newsList;
+                dao.getList();
+                newsList = dao.getList();
+                session.setAttribute("NEWS", newsList);
+                url = "ManageNewsServlet";
+                //2.2. go to error page
+            }//end delete action is successful
 
-                String msg = "msg";
-                request.setAttribute("msg", msg);
-                url = "AdminPage/News.jsp";
-            } else {
-                String msg = "fail";
-                request.setAttribute("msg", msg);
-            }
         } catch (SQLException ex) {
-            Logger.getLogger(AddNewsServlet.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (NamingException ex) {
-            Logger.getLogger(AddNewsServlet.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(DeleteFeedbackServlet.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(DeleteFeedbackServlet.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
-            RequestDispatcher rd = request.getRequestDispatcher(url);
-            rd.forward(request, response);
+            response.sendRedirect(url);
         }
-
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

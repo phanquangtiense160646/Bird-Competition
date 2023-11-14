@@ -107,7 +107,7 @@
                                 </div>
                                 <a href="contact_pre.jsp" class="nav-item nav-link">Liên Hệ</a>
                             </div>
-                            <a href="login" class="btn btn-primary py-md-3 px-md-5 d-none d-lg-block h-75">Login/Signup</a>
+                            <a href="Login2.jsp" class="btn btn-primary py-md-3 px-md-5 d-none d-lg-block">Login/Signup</a>
                         </div>
                     </nav>
                 </div>
@@ -704,26 +704,40 @@
                     <div class="owl-carousel testimonial-carousel">
                         <div class="testimonial-item">
                             <p class="fs-4 fw-normal text-light mb-4"><i
-                                    class="fa fa-quote-left text-primary me-3"></i>Dolores sed duo clita tempor
-                                justo dolor et stet lorem kasd labore dolore lorem ipsum. At lorem lorem magna
-                                ut et, nonumy et labore et tempor diam tempor erat dolor rebum sit ipsum.</p>
+                                    class="fa fa-quote-left text-primary me-3"></i> Trận đấu hay và cảm xúc</p>
                             <div class="d-flex align-items-center">
-                                <img class="img-fluid rounded-circle" src="FE/img/testimonial-1.jpg" alt="">
                                 <div class="ps-4">
-                                    <h5 class="text-uppercase text-light">Client Name</h5>
+                                    <h5 class="text-uppercase text-light">DanhTran  </h5>
                                     <span class="text-uppercase text-secondary">Profession</span>
                                 </div>
                             </div>
                         </div>
                         <div class="testimonial-item">
                             <p class="fs-4 fw-normal text-light mb-4"><i
-                                    class="fa fa-quote-left text-primary me-3"></i>Dolores sed duo clita tempor
-                                justo dolor et stet lorem kasd labore dolore lorem ipsum. At lorem lorem magna
-                                ut et, nonumy et labore et tempor diam tempor erat dolor rebum sit ipsum.</p>
+                                    class="fa fa-quote-left text-primary me-3"></i> Chim đẹp và hót tốt</p>
                             <div class="d-flex align-items-center">
-                                <img class="img-fluid rounded-circle" src="FE/img/testimonial-2.jpg" alt="">
                                 <div class="ps-4">
-                                    <h5 class="text-uppercase text-light">Client Name</h5>
+                                    <h5 class="text-uppercase text-light">HuyBui</h5>
+                                    <span class="text-uppercase text-secondary">Profession</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="testimonial-item">
+                            <p class="fs-4 fw-normal text-light mb-4"><i
+                                    class="fa fa-quote-left text-primary me-3"></i> Trọng tài chưa đủ chuyên môn</p>
+                            <div class="d-flex align-items-center">
+                                <div class="ps-4">
+                                    <h5 class="text-uppercase text-light">KhangNguye</h5>
+                                    <span class="text-uppercase text-secondary">Profession</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="testimonial-item">
+                            <p class="fs-4 fw-normal text-light mb-4"><i
+                                    class="fa fa-quote-left text-primary me-3"></i> Chuyên nghiệp trong tổ chức</p>
+                            <div class="d-flex align-items-center">
+                                <div class="ps-4">
+                                    <h5 class="text-uppercase text-light">HiepThuan </h5>
                                     <span class="text-uppercase text-secondary">Profession</span>
                                 </div>
                             </div>

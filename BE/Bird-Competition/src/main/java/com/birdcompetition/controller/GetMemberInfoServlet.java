@@ -4,29 +4,29 @@
  */
 package com.birdcompetition.controller;
 
-import com.birdcompetition.location.LocationDAO;
-import com.birdcompetition.location.LocationDTO;
-import com.birdcompetition.news.NewsDAO;
-import com.birdcompetition.news.NewsDTO;
+import com.birdcompetition.dal.DAO;
+import com.birdcompetition.member.MemberDAO;
+import com.birdcompetition.member.MemberDTO;
+import com.birdcompetition.user.UserDAO;
+import com.birdcompetition.user.UserDTO;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.sql.Date;
 import java.sql.SQLException;
-import java.time.LocalDate;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.naming.NamingException;
+import java.util.List;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
- * @author MSI
+ * @author 84366
  */
-public class AddNewsServlet extends HttpServlet {
+@WebServlet(name = "GetMemberInfoServlet", urlPatterns = {"/GetMemberInfoServlet"})
+public class GetMemberInfoServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -40,36 +40,31 @@ public class AddNewsServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        String name = request.getParameter("txtNameOfNews");
-        LocalDate date = LocalDate.parse(request.getParameter("txtDate"));
-        String descrip = request.getParameter("txtDescription");
-        String link = request.getParameter("txtLink");
-        String photo = request.getParameter("txtPhotoPath");
+        String id = request.getParameter("txtMemberID");
         String url = "";
         try {
-            NewsDAO dao = new NewsDAO();
-            NewsDTO dto = new NewsDTO(name, date, link, photo);
-            boolean result = dao.addNews(name, date, descrip, link, photo);
-            if (result) {
 
-                String msg = "msg";
-                request.setAttribute("msg", msg);
-                url = "AdminPage/News.jsp";
+            MemberDAO dao = new MemberDAO();
+            MemberDTO result = dao.getUserInfo(id);
+
+            if (result != null) {
+                HttpSession session = request.getSession();
+                session.setAttribute("MEMBER", result);
+                url = "memberprofile.jsp";
             } else {
-                String msg = "fail";
-                request.setAttribute("msg", msg);
+                url = "biloi.html";
             }
         } catch (SQLException ex) {
-            Logger.getLogger(AddNewsServlet.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (NamingException ex) {
-            Logger.getLogger(AddNewsServlet.class.getName()).log(Level.SEVERE, null, ex);
+            log("Login_SQL: " + ex.getMessage());
+        } catch (ClassNotFoundException ex) {
+            log("Login_ClassNotFound: " + ex.getMessage());
         } finally {
             RequestDispatcher rd = request.getRequestDispatcher(url);
             rd.forward(request, response);
+            
         }
 
     }
-
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.

@@ -4,29 +4,29 @@
  */
 package com.birdcompetition.controller;
 
-import com.birdcompetition.location.LocationDAO;
-import com.birdcompetition.location.LocationDTO;
-import com.birdcompetition.news.NewsDAO;
-import com.birdcompetition.news.NewsDTO;
+import com.birdcompetition.member.MemberDAO;
+import com.birdcompetition.member.MemberDTO;
+import com.birdcompetition.model.User;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.sql.Date;
 import java.sql.SQLException;
-import java.time.LocalDate;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.naming.NamingException;
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
- * @author MSI
+ * @author 84366
  */
-public class AddNewsServlet extends HttpServlet {
+@WebServlet(name = "DeleteMemberServlet", urlPatterns = {"/DeleteMemberServlet"})
+public class DeleteMemberServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -40,34 +40,36 @@ public class AddNewsServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        String name = request.getParameter("txtNameOfNews");
-        LocalDate date = LocalDate.parse(request.getParameter("txtDate"));
-        String descrip = request.getParameter("txtDescription");
-        String link = request.getParameter("txtLink");
-        String photo = request.getParameter("txtPhotoPath");
-        String url = "";
+        String idMember = request.getParameter("txtMemberID");
+        String url = "biloi.html";
         try {
-            NewsDAO dao = new NewsDAO();
-            NewsDTO dto = new NewsDTO(name, date, link, photo);
-            boolean result = dao.addNews(name, date, descrip, link, photo);
+            //1. call method
+            //1.1. new DAO
+            MemberDAO dao = new MemberDAO();
+            //1.2 call DAO's method
+            boolean result = dao.deleteMember(idMember);
+            
+            //2. process Result
             if (result) {
-
-                String msg = "msg";
-                request.setAttribute("msg", msg);
-                url = "AdminPage/News.jsp";
-            } else {
-                String msg = "fail";
-                request.setAttribute("msg", msg);
-            }
+                //2.1 call the search function again using URL Rewriting
+                HttpSession session = request.getSession();
+                List<MemberDTO> birdList;
+                User user = (User) session.getAttribute("USER");
+                dao.getMemberById(user.getIdMember());
+                birdList = dao.getMemberList();
+                session.setAttribute("OWN_BIRD", birdList);
+                url = "showallbirds.jsp";
+                //2.2. go to error page
+            }//end delete action is successful
         } catch (SQLException ex) {
-            Logger.getLogger(AddNewsServlet.class.getName()).log(Level.SEVERE, null, ex);
+            ex.printStackTrace();
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(DeleteMemberServlet.class.getName()).log(Level.SEVERE, null, ex);
         } catch (NamingException ex) {
-            Logger.getLogger(AddNewsServlet.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(DeleteMemberServlet.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
-            RequestDispatcher rd = request.getRequestDispatcher(url);
-            rd.forward(request, response);
+            response.sendRedirect(url);
         }
-
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

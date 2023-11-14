@@ -40,70 +40,126 @@
 
     <body id="page-top">
         <jsp:include page="Menu.jsp"/>
+       <!-- Page Wrapper -->
         <div class="container-fluid">
 
             <!-- Page Heading -->
-            <h1 class="h3 mb-2 text-gray-800">Location Management</h1>
-            <p class="mb-4">Quản lý địa điểm thi đấu <a target="_blank">
+            <h1 class="h3 mb-2 text-gray-800">News Management</h1>
+            <p class="mb-4">Quản lý tin tức <a target="_blank">
             </p>
-            <a href="AdminPage/addLocation.jsp" class="btn btn-primary btn-user btn-block">
+            
+            <a href="AdminPage/addNews.jsp" class="btn btn-primary btn-user btn-block">
 
-                Thêm địa điểm thi đấu</a>
+                Thêm tin tức</a>
+            
             <!-- DataTales Example -->
             <div class="card shadow mb-4">
                 <div class="card-header py-3">
-                    <h6 class="m-0 font-weight-bold text-primary">All Location</h6>
+                    <h6 class="m-0 font-weight-bold text-primary">NEWS</h6>
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">
                         <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                             <thead>
                                 <tr>
-                                    <th>Location Id</th>
-                                    <th>Location Detail</th>
-                                    <th>Location Map</th>
-                                    <th></th>
+                                    <th>News Id</th>
+                                    <th>Name Of News</th>
+                                    <th>Date</th>
+                                    <th>Description</th>
+                                    <th>Link News</th>
+                                    <th>Photo Path</th>
+                                    <th>Option</th>
+                                    
+
 
                                 </tr>
                             </thead>
                             <tfoot>
                                 <tr>
-                                    <th>Location Id</th>
-                                    <th>Location Detail</th>
-                                    <th>Location Map</th>
-                                    
-                                    <th></th>
+                                    <th>News Id</th>
+                                    <th>Name Of News</th>
+                                    <th>Date</th>
+                                    <th>Description</th>
+                                    <th>Link News</th>
+                                    <th>Photo Path</th>
+                                    <th>Option</th>
+                                   
 
                                 </tr>
                             </tfoot>
+                            
                             <tbody>
                             
-                                <c:set var="location" value="${sessionScope.LOCATION}"/>
-                                <c:if test="${not empty location}">
-                                    <c:forEach var="l" items="${location}" varStatus="counter">
+
+
+                                <c:set var="newsData" value="${sessionScope.NEWS}"/>
+                                <c:if test="${not empty newsData}">
+                                    <c:forEach var="news" items="${newsData}" >
+                                    
+                                        
                                         <tr>
-                                            <td>${l.locationId}</td>
-                                            <td>${l.location}</td>
-                                            <td>${l.linkMap}</td>
-                                            
-                                            <td>
-                                                <c:url var="deleteLink" value="/DispatchServlet?btAction=DeleteLocation">
-                                                    <c:param name="txtID" value="${l.locationId}"/>
-                                                </c:url>
-                                                <a href="${deleteLink}">Delete</a>
+                                    <form action="DispatchServlet">
+                                        <td>${news.getIdNews()}
+                                                <input type="hidden" name ="txtID" value="${news.getIdNews()}">
                                             </td>
+                                            <td>
+                                                <input type="text" name="txtNameOfNews" 
+                                                       value="${news.getNameOfNews()}">
+                                            </td>
+                                            <td>
+                                                <input type="date" name="txtDate" 
+                                                       value="${news.getDate()}">
+                                            </td>
+                                            <td>
+                                                <input type="text" name="txtDescrip" 
+                                                       value="${news.getDescription()}">
+                                            </td>
+                                            <td>
+                                                <input type="text" name="txtLinkOfNews" 
+                                                       value="${news.getLinkOfNews()}">
+
+                                            </td>
+                                            <td>
+                                                <input type="text" name="txtPhoto" 
+                                                       value="${news.getPhoto()}">
+                                            </td>
+                                            <td>
+                                                <c:url var="deleteLink" value="DispatchServlet">
+                                                    <c:param name="btAction" value="DeleteNews"/>
+                                                    <c:param name="txtID" value="${news.getIdNews()}"/>
+                                                </c:url>
+                                                <a class="btn btn-primary mb-1" href="${deleteLink}">Delete</a>
+                                                <input class="btn btn-primary mb-1" type="submit" name="btAction" value="Update" />
+                                            </td>
+                                            
+                                    </form>
+                                            
                                         </tr>
+                                    
+                                        
+
 
                                     </c:forEach>
                                 </c:if>
+                                <c:if test="${empty newsData}">
+                                    <h1>Chưa có News!!!</h1>
+                                </c:if>
+
+
+                            
                             </tbody>
+
                         </table>
+
+
                     </div>
+
                 </div>
+
             </div>
 
+                                
         </div>
-
         <!-- /.container-fluid -->
 
     </div>

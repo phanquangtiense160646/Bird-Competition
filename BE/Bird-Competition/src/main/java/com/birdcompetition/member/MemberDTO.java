@@ -1,5 +1,7 @@
 package com.birdcompetition.member;
 
+import com.birdcompetition.bird.BirdDTO;
+
 /**
  *
  * @author admin
@@ -9,14 +11,16 @@ public class MemberDTO {
     private String fullName;
     private String dateOfBirth;
     private String country;
-    private int phoneNumber;
+    private String phoneNumber;
     private boolean status;
     private String gender;
+    private String username;
+    private String password;
 
     public MemberDTO() {
     }
 
-    public MemberDTO(String id, String fullName, String dateOfBirth, String country, int phoneNumber, boolean status, String gender) {
+    public MemberDTO(String id, String fullName, String dateOfBirth, String country, String phoneNumber, boolean status, String gender) {
         this.id = id;
         this.fullName = fullName;
         this.dateOfBirth = dateOfBirth;
@@ -25,6 +29,46 @@ public class MemberDTO {
         this.status = status;
         this.gender = gender;
     }
+
+    public MemberDTO(String id, String fullName, String dateOfBirth, String country, String phoneNumber, String gender) {
+        this.id = id;
+        this.fullName = fullName;
+        this.dateOfBirth = dateOfBirth;
+        this.country = country;
+        this.phoneNumber = phoneNumber;
+        this.gender = gender;
+    }
+
+    public MemberDTO(String id, String fullName, String dateOfBirth, String country, String phoneNumber, String gender, String username, String password) {
+        this.id = id;
+        this.fullName = fullName;
+        this.dateOfBirth = dateOfBirth;
+        this.country = country;
+        this.phoneNumber = phoneNumber;
+        this.gender = gender;
+        this.username = username;
+        this.password = password;
+    }
+
+    
+    
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+    
+    
 
     public String getId() {
         return id;
@@ -58,13 +102,15 @@ public class MemberDTO {
         this.country = country;
     }
 
-    public int getPhoneNumber() {
+    public String getPhoneNumber() {
         return phoneNumber;
     }
 
-    public void setPhoneNumber(int phoneNumber) {
+    public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
+
+
 
     public boolean isStatus() {
         return status;
@@ -81,6 +127,11 @@ public class MemberDTO {
     public void setGender(String gender) {
         this.gender = gender;
     }
+
+    @Override
+    public String toString() {
+        return "MemberDTO{" + "id=" + id + ", fullName=" + fullName + ", dateOfBirth=" + dateOfBirth + ", country=" + country + ", phoneNumber=" + phoneNumber + ", status=" + status + ", gender=" + gender + '}';
+    }
     
-            
+      
 }
