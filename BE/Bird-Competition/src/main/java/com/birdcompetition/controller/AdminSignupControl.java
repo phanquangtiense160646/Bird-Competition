@@ -44,20 +44,37 @@ public class AdminSignupControl extends HttpServlet {
         RegistrationCreateError errors = new RegistrationCreateError();
 
         String url = "AdminPage/adminsignup.jsp";
+        boolean foundErr = false;
+        RegistrationCreateError errors = new RegistrationCreateError();
         try {
-
-            //2. call DAO
-            DAO dao = new DAO();
+            if (username.trim().length() < 6 || username.trim().length() > 20) {
+                foundErr = true;
+                errors.setUsernameLengthErr("Username have to 6-20");
+            }
+            if (password.trim().length() < 8 || password.trim().length() > 30) {
+                foundErr = true;
+                errors.setPasswordLengthErr("Password 8-30");}
+//            } else if (!re_pass.trim().equals(pass.trim())) {
+//                foundErr = true;
+//                errors.setConfirmLengthErr("Confirm must match password");
+//            }
+            if (foundErr) {
+                request.setAttribute("CREATE_ERRORS", errors);
+            } else {
+                //2. call DAO
+                DAO dao = new DAO();
 
 //            User u = new User(username, password, "", role, "", "", "", "", 0, "", "");
-            User u = new User(username, password, role);
-            boolean result = dao.createAdminAccount(u);
-            //3. Process Result
-            if (result) {
-                url = "GetStaffMemberServlet";
-            }//create successful
+                User u = new User(username, password, role);
+                boolean result = dao.createAdminAccount(u);
+                //3. Process Result
+                if (result) {
+
+                    url = "GetMemberServlet";
+                }//create successful
+            }
         } catch (SQLException ex) {
-            log("AddMember_SQL " + ex.getMessage());
+            log("NewAccount_SQL " + ex.getMessage());
             errors.setUsernameIsExisted(username + " is existed");
             request.setAttribute("CREATE_ERRORS", errors);
         } catch (ClassNotFoundException ex) {
