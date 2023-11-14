@@ -292,15 +292,15 @@ public class DAO extends DBHelper {
                 rs = stm.executeQuery();
                 //5.Process
                 if (rs.next()) {
-                    String password = rs.getString("UserPassword");
-                    String gmail = rs.getString("UserGmail");
+                    String password = rs.getString("UserPassword").trim();
+                    String gmail = rs.getString("UserGmail").trim();
                     int role = rs.getInt("UserRole");
-                    String idmember = rs.getString("IdMember");
-                    String fullname = rs.getString("FullName");
-                    String dateofbirth = rs.getString("DateOfBirth");
-                    String country = rs.getString("Country");
-                    String phone = rs.getString("Phone");
-                    String gender = rs.getString("Gender");
+                    String idmember = rs.getString("IdMember").trim();
+                    String fullname = rs.getString("FullName").trim();
+                    String dateofbirth = rs.getString("DateOfBirth").trim();
+                    String country = rs.getString("Country").trim();
+                    String phone = rs.getString("Phone").trim();
+                    String gender = rs.getString("Gender").trim();
 
                     result = new User(username, password, gmail, role, idmember, fullname, dateofbirth, country, phone, gender, null);
                 }//end username and password is verified 
