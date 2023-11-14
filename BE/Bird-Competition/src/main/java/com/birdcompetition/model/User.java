@@ -20,7 +20,7 @@ public class User implements Serializable{
     private String fullName;
     private String dateOfBirth;
     private String country;
-    private int phone;
+    private String phone;
     private String gender;
     private String vipType;
     
@@ -28,12 +28,7 @@ public class User implements Serializable{
     public User() {
     }
 
-    public User(String userName, String userPassword) {
-        this.userName = userName;
-        this.userPassword = userPassword;
-    }
-
-    public User(String userName, String userPassword, String userGmail, int userRole, String idMember, String fullName, String dateOfBirth, String country, int phone, String gender, String vipType) {
+    public User(String userName, String userPassword, String userGmail, int userRole, String idMember, String fullName, String dateOfBirth, String country, String phone, String gender, String vipType) {
         this.userName = userName;
         this.userPassword = userPassword;
         this.userGmail = userGmail;
@@ -46,6 +41,16 @@ public class User implements Serializable{
         this.gender = gender;
         this.vipType = vipType;
     }
+
+    public User(String userName, String userPassword, int userRole) {
+        this.userName = userName;
+        this.userPassword = userPassword;
+        this.userRole = userRole;
+    }
+    
+    
+    
+    
 
     public String getUserName() {
         return userName;
@@ -119,11 +124,11 @@ public class User implements Serializable{
         this.country = country;
     }
 
-    public int getPhone() {
+    public String getPhone() {
         return phone;
     }
 
-    public void setPhone(int phone) {
+    public void setPhone(String phone) {
         this.phone = phone;
     }
 

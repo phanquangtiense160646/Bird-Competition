@@ -4,8 +4,19 @@
  */
 package com.birdcompetition.controller;
 
+import com.birdcompetition.location.LocationDAO;
+import com.birdcompetition.location.LocationDTO;
+import com.birdcompetition.news.NewsDAO;
+import com.birdcompetition.news.NewsDTO;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.Date;
+import java.sql.SQLException;
+import java.time.LocalDate;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.naming.NamingException;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -29,6 +40,33 @@ public class AddNewsServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
+        String name = request.getParameter("txtNameOfNews");
+        LocalDate date = LocalDate.parse(request.getParameter("txtDate"));
+        String descrip = request.getParameter("txtDescription");
+        String link = request.getParameter("txtLink");
+        String photo = request.getParameter("txtPhotoPath");
+        String url = "";
+        try {
+            NewsDAO dao = new NewsDAO();
+            NewsDTO dto = new NewsDTO(name, date, link, photo);
+            boolean result = dao.addNews(name, date, descrip, link, photo);
+            if (result) {
+
+                String msg = "msg";
+                request.setAttribute("msg", msg);
+                url = "AdminPage/News.jsp";
+            } else {
+                String msg = "fail";
+                request.setAttribute("msg", msg);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(AddNewsServlet.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (NamingException ex) {
+            Logger.getLogger(AddNewsServlet.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            RequestDispatcher rd = request.getRequestDispatcher(url);
+            rd.forward(request, response);
+        }
 
     }
 

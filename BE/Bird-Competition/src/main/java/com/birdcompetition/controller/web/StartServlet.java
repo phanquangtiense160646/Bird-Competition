@@ -53,6 +53,9 @@ public class StartServlet extends HttpServlet {
             List<BirdDTO> listBird = birdDao.getBirdList();
             request.setAttribute("LEADER_BOARD", listBird);
             
+            
+            
+            
         } catch (SQLException ex) {
             log("StartServlet_SQL");
         } catch (ClassNotFoundException ex) {

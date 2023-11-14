@@ -7,7 +7,6 @@ package com.birdcompetition.uploadimgbycloud;
 import com.cloudinary.Cloudinary;
 import com.cloudinary.Transformation;
 import com.cloudinary.utils.ObjectUtils;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
@@ -59,15 +58,15 @@ public class ImageUploadServlet extends HttpServlet {
         
         String contentType = filePart.getContentType();
         
-        
-        if (!"image/jpg".equals(contentType) || !"image/png".equals(contentType) || filePart == null) {
-            HttpSession session = request.getSession();
-            request.setAttribute("mes", "Chưa thêm ảnh hoặc sai định dạng");
-            
-        }else{
-            HttpSession session = request.getSession();
-            request.setAttribute("mes", "Cập nhật ảnh thành công");
-        }
+//        
+//        if (!"image/jpg".equals(contentType) || !"image/png".equals(contentType) || filePart == null) {
+//            HttpSession session = request.getSession();
+//            request.setAttribute("mes", "Chưa thêm ảnh hoặc sai định dạng");
+//            
+//        }else{
+//            HttpSession session = request.getSession();
+//            request.setAttribute("mes", "Cập nhật ảnh thành công");
+//        }
         
         try {
             // Read the file content into a byte array

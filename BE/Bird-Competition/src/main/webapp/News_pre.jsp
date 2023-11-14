@@ -97,7 +97,7 @@
                                         <a href= "#"class="dropdown-item">Tin Tức</a>
                                     </div>
                                 </div>
-                                <a href="contact.jsp" class="nav-item nav-link">Liên Hệ</a>
+                                <a href="contact_pre.jsp" class="nav-item nav-link">Liên Hệ</a>
                             </div>
                             <a href="login" class="btn btn-primary py-md-3 px-md-5 d-none d-lg-block">Login/Signup</a>
 
@@ -123,7 +123,7 @@
 
 
         <!-- Blog Start -->
-        <div class="col-lg-9">
+        <div class="col-lg-12">
             <div class="row g-5">
                 <!-- Blog list Start -->
                 <div class="col-lg-8">
@@ -131,11 +131,11 @@
                         <div class="col-md-6">
                             <div class="blog-item">
                                 <div class="position-relative overflow-hidden rounded-top">
-                                    <img class="img-fluid" src="FE/img/e745fc8013c0cd9e94d19-b01f3211820b45b4b954bac2e79b92b9.jpg" alt="">
+                                    <img class="img-fluid"style="width: 600px; height: 400px; object-fit: cover;" src="https://bbt.1cdn.vn/2023/10/30/202310301140531.jpeg" alt="">
                                 </div>
-                                <div class="bg-dark d-flex align-items-center rounded-bottom p-4">
-                                    <a href="http://anhp.vn/hoi-thi-chim-chao-mao-dau-hot-lien-tinh-lan-thu-vi-nam-2023-d53381.html">
-                                        <p class="text-light text-uppercase mb-0">Hội thi chim Chào Mào đấu hót liên tỉnh lần thứ VI năm 2023 thu hút đông đảo các nghệ nhân chơi chim cảnh</p>
+                                <div class="bg-dark d-flex align-items-center rounded-bottom p-4" style="height: 100px">
+                                    <a href="https://baobinhthuan.com.vn/hoi-thi-chim-chao-mao-chao-mung-le-hoi-van-hoa-du-lich-dinh-thay-thim-114280.html">
+                                        <p class="text-light text-uppercase mb-0">Hội Thi Chim Chào Mào MỪng Lễ Hội Văn Hóa - Du Lịch Dinh Thầy Thím</p>
                                     </a>
 
                                 </div>
@@ -144,11 +144,12 @@
                         <div class="col-md-6">
                             <div class="blog-item">
                                 <div class="position-relative overflow-hidden rounded-top">
-                                    <img class="img-fluid" src="FE/img/4d13efeb00abdef587ba8-f2eaaed080ef4a81bfc4e69d6d75a200.jpg" alt="">
+                                    <img class="img-fluid" style="width: 600px; height: 400px; object-fit: cover;" src="https://quanba.hagiang.gov.vn/documents/44741/0/%E1%BA%A2nh+2.+H%E1%BB%99i+thi+chim+ch%C3%A0o+m%C3%A0o+%C4%91%E1%BA%A5u%2C+h%C3%B3t.png/89433a1f-c975-c7de-1b30-e49ffe9309af?t=1677466952884
+" alt="">
                                 </div>
-                                <div class="bg-dark d-flex align-items-center rounded-bottom p-4">
-                                    <a href="https://truyenhinhnghean.vn/van-hoa-giai-tri/202302/hap-dan-hoi-thi-chim-chao-mao-dau-hot-tai-le-hoi-den-con-669118b/">
-                                        <p class="text-light text-uppercase mb-0">Hấp dẫn hội thi tiếng hót chim chào mào</p>
+                                <div class="bg-dark d-flex align-items-center rounded-bottom p-4" style="height: 100px">
+                                    <a href="https://quanba.hagiang.gov.vn/chi-tiet-tin-tuc/-/news/44741/quan-ba-hoi-thi-chim-chao-mao-dau-hot-lan-thu-nhat-nam-2023.html">
+                                        <p class="text-light text-uppercase mb-0"> Quản Bạ: Hội thi chim chào mào đấu hót lần thứ nhất năm 2023.</p>
                                     </a>
 
                                 </div>
@@ -157,10 +158,35 @@
                         <div class="col-md-6">
                             <div class="blog-item">
                                 <div class="position-relative overflow-hidden rounded-top">
-                                    <img class="img-fluid" src="FE/img/636915931.jpg" alt="">
+                                    <img class="img-fluid" style="width: 600px; height: 400px; object-fit: cover;" src="https://www.baokiengiang.vn/uploads/image/2023/10/09/KGO%20-%20%E1%BA%A3nh%201-.jpg" alt="">
                                 </div>
-                                <div class="bg-dark d-flex align-items-center rounded-bottom p-4">
-                                    <a href="https://thanhphohaiphong.gov.vn/hoi-thi-chim-chao-mao-dau-hot-lien-tinh-lan-thu-vi-nam-2023-thu-hut-dong-dao-cac-nghe-nhan-choi-chim-canh.html">
+                                <div class="bg-dark d-flex align-items-center rounded-bottom p-4" style="height: 100px">
+                                    <a href="https://www.baokiengiang.vn/le-hoi/hoi-thi-chim-hot-nghe-thuat-mo-rong-nam-2023-17028.html">
+                                        <p class="text-light text-uppercase mb-0">Hội thi chim hót nghệ thuật mở rộng năm 2023</p> </a>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="blog-item">
+                                <div class="position-relative overflow-hidden rounded-top">
+                                    <img class="img-fluid" style="width: 600px; height: 400px; object-fit: cover;" src="https://baobinhdinh.vn/viewimage.aspx?imgid=256485" alt="">
+                                </div>
+                                <div class="bg-dark d-flex align-items-center rounded-bottom p-4" style="height: 100px">
+                                    <a href="https://baobinhdinh.vn/viewer.aspx?macm=18&macmp=18&mabb=263604">
+                                        <p class="text-light text-uppercase mb-0">Sôi nổi Hội thi chim chào mào hót</p>
+                                    </a>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="blog-item">
+                                <div class="position-relative overflow-hidden rounded-top">
+                                    <img class="img-fluid" style="width: 600px; height: 400px; object-fit: cover;" src="https://haiphong.gov.vn/upload/haiphong/product/2023/5/e745fc8013c0cd9e94d19-b01f3211820b45b4b954bac2e79b92b9.jpg?maxwidth=2048" alt="">
+                                </div>
+                                <div class="bg-dark d-flex align-items-center rounded-bottom p-4" style="height: 100px">
+                                    <a href="https://haiphong.gov.vn/tin-tuc-su-kien/Hoi-thi-chim-Chao-Mao-dau-hot-lien-tinh-lan-thu-VI-nam-2023-thu-hut-dong-dao-cac-nghe-nhan-choi-chim-canh-118467.html">
                                         <p class="text-light text-uppercase mb-0">Hội thi chim Chào Mào đấu hót liên tỉnh lần thứ VI năm 2023 thu hút đông đảo các nghệ nhân chơi chim cảnh</p> </a>
 
                                 </div>
@@ -169,36 +195,19 @@
                         <div class="col-md-6">
                             <div class="blog-item">
                                 <div class="position-relative overflow-hidden rounded-top">
-                                    <img class="img-fluid" src="FE/img/050317 (1).jpg" alt="">
+                                    <img class="img-fluid" style="width: 600px; height: 400px; object-fit: cover;" src="http://media.anhp.vn:8081/files/2023/050317%20(1).jpg" alt="">
                                 </div>
-                                <div class="bg-dark d-flex align-items-center rounded-bottom p-4">
-                                    <a href="https://truyenhinhnghean.vn/van-hoa-giai-tri/202302/hap-dan-hoi-thi-chim-chao-mao-dau-hot-tai-le-hoi-den-con-669118b/">
-                                        <p class="text-light text-uppercase mb-0">Hấp dẫn hội thi chim chào mào đấu hót tại lễ hội đền Cờn</p>
-                                    </a>
+                                <div class="bg-dark d-flex align-items-center rounded-bottom p-4" style="height: 100px">
+                                    <a href="http://anhp.vn/hoi-thi-chim-chao-mao-dau-hot-lien-tinh-lan-thu-vi-nam-2023-d53381.html">
+                                        <p class="text-light text-uppercase mb-0">Hội thi chim Chào Mào đấu hót liên tỉnh lần thứ VI năm 2023</p> </a>
 
                                 </div>
                             </div>
                         </div>
+                       
+                       
 
-<!--                        <div class="col-12">
-                            <nav aria-label="Page navigation">
-                                <ul class="pagination pagination-lg justify-content-center m-0">
-                                    <li class="page-item disabled">
-                                        <a class="page-link" href="#" aria-label="Previous">
-                                            <span aria-hidden="true"><i class="bi bi-arrow-left"></i></span>
-                                        </a>
-                                    </li>
-                                    <li class="page-item active"><a class="page-link" href="#">1</a></li>
-                                    <li class="page-item"><a class="page-link" href="#">2</a></li>
-                                    <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                    <li class="page-item">
-                                        <a class="page-link" href="#" aria-label="Next">
-                                            <span aria-hidden="true"><i class="bi bi-arrow-right"></i></span>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </nav>
-                        </div>-->
+
                     </div>
                 </div>
                 <!-- Blog list End -->
@@ -277,7 +286,7 @@
                         <h3 class="text-uppercase mb-4">Đăng Ký VIP</h3>
                         <div class="bg-dark rounded text-center text-light" style="padding: 30px;">
                             <p>Trở thành hội viên VIP có nhiều đặc quyền riêng và có giá ưu đãi dành cho gói tháng.</p>
-                            <a href='<c:url value="Login2.jsp"/>' class="btn btn-primary py-2 px-4">Xem Thêm</a>
+<!--                            <a href='<c:url value=""/>' class="btn btn-primary py-2 px-4">Xem Thêm</a>-->
                         </div>
                     </div>
                     <!-- Plain Text End -->

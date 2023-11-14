@@ -66,9 +66,11 @@ public class SearchLeaderBoardServlet extends HttpServlet {
                     }
                 }
                 request.setAttribute("PERSIONAL_LB", persionalLb);
-            } else if (user == null) {
+                
+            }  else if (user == null) {
                 url = "leaderboard_pre.jsp";
             }
+
 
         } catch (SQLException ex) {
             Logger.getLogger(SearchLeaderBoardServlet.class.getName()).log(Level.SEVERE, null, ex);

@@ -95,7 +95,7 @@
     <!-- Give Feedback start -->
     <div class="row g-0, d-flex justify-content-center" id="feedback">
         <div class="col-lg-6">
-            <div class="bg-dark p-5">
+            <div class="bg-dark p-5" style="border-radius: 10px;">
                 <form action="AddFeedbackServlet" method="get">
                   
                     <div style="text-align: center">
@@ -114,12 +114,6 @@
 
         </div>
     </div>
-    <!-- <div class="col-lg-6">
-        <iframe class="w-100"
-            src="https://maps.google.com/maps?width=600&amp;height=400&amp;hl=en&amp;q=FPT University HCMC&amp;t=&amp;z=14&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"
-            frameborder="0" style="height: 457px; border:0;" allowfullscreen="" aria-hidden="false"
-            tabindex="0"></iframe>
-    </div> -->
 </div>
 <!-- Give Feedback end -->
 

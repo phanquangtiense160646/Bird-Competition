@@ -55,7 +55,7 @@ public class UpdateProfileServlet extends HttpServlet {
                 User tempresult = dao.GetUserInfo(username);
                 session.setAttribute("USER", tempresult);
                 request.setAttribute("msg", "success");
-                url = "userprofile.jsp";
+                url = "UserProfileServlet";
             }
             
            

@@ -4,7 +4,9 @@
  */
 package com.birdcompetition.news;
 
+import com.birdcompetition.bird.BirdDAO;
 import com.birdcompetition.bird.BirdDTO;
+import com.birdcompetition.location.LocationDTO;
 import com.birdcompetition.util.DBHelper;
 
 import java.sql.Connection;
@@ -12,8 +14,12 @@ import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.naming.NamingException;
 
 /**
  *
@@ -80,7 +86,6 @@ public class NewsDAO {
 //        }
 //
 //    }
-
     public List<NewsDTO> getNews()
             throws SQLException, ClassNotFoundException {
         Connection con = null;
@@ -111,7 +116,7 @@ public class NewsDAO {
                     String photo = rs.getString("PhotoPath");
                     String idUser = rs.getString("IdUser");
 
-                    NewsDTO dto = new NewsDTO(id, newsName, date, descrip, newsLink, photo, idUser);
+                    NewsDTO dto = new NewsDTO(id, newsName, date.toLocalDate(), descrip, newsLink, photo, idUser);
 
                     if (this.newsList == null) {
                         this.newsList = new ArrayList<>();
@@ -142,8 +147,7 @@ public class NewsDAO {
 //        }
 //    }
 
-
-    public NewsDTO getNewsById(int id)
+    public NewsDTO getNewsById(String id)
             throws SQLException, ClassNotFoundException {
         Connection con = null;
         PreparedStatement stm = null;
@@ -162,19 +166,19 @@ public class NewsDAO {
                 //3.Create Statement Object
                 stm = con.prepareStatement(sql);
 
-                stm.setInt(1, id);
+                stm.setString(1, id);
                 //4.Exercute Query
                 rs = stm.executeQuery();
                 //5.Process
                 while (rs.next()) {
 //                    String id = rs.getString("IdNews");
                     String newsName = rs.getString("NameOfNews");
-                    Date date = rs.getDate("date");
+                    Date date = rs.getDate("Date");
                     String descrip = rs.getString("Description");
                     String newsLink = rs.getString("LinkOfNews");
-                    String photo = rs.getString("Photo");
+                    String photo = rs.getString("PhotoPath");
 
-                    news = new NewsDTO(newsName, date, newsName, photo);
+                    news = new NewsDTO(newsName, date.toLocalDate(), newsName, photo);
                 }
             }
         } finally {
@@ -190,11 +194,128 @@ public class NewsDAO {
         }
         return news;
     }
-    public void insertNews(){
-        
+
+    public boolean addNews(String nameOfNews, LocalDate date, String description, String linkOfNews,
+            String photoPath)
+            throws SQLException, NamingException {
+        Connection con = null;
+        PreparedStatement stm = null;
+        boolean result = false;
+        try {
+            //1. Make connection
+            con = DBHelper.getConnection();
+            if (con != null) {
+                //2. Create SQL String 
+                String sql = "Insert into [dbo].[News]\n"
+                        + "Values(?,?,?,?,?,?)";
+                //3. Create Statement Object
+                stm = con.prepareStatement(sql);
+
+                stm.setString(1, nameOfNews);
+                stm.setDate(2, Date.valueOf(date));
+                stm.setString(3, description);
+                stm.setString(4, linkOfNews);
+                stm.setString(5, null);
+                stm.setString(6, photoPath);
+
+                //4. Execute Query
+                int effectRows = stm.executeUpdate();
+                //5. Process
+                if (effectRows > 0) {
+                    result = true;
+                }
+            }
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(NewsDTO.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            if (stm != null) {
+                stm.close();
+            }
+            if (con != null) {
+                con.close();
+            }
+        }
+        return result;
     }
-     public void updateNews(){
-        
+
+    public boolean deleteNews(String id)
+            throws SQLException, ClassNotFoundException {
+        Connection con = null;
+        PreparedStatement stm = null;
+        boolean result = false;
+        try {
+            //1.Make connection
+            con = DBHelper.getConnection();
+            if (con != null) {
+                //2. Create SQL String 
+                String sql = "Delete News\n"
+                        + "Where IdNews = ? ";
+                //3. Create Statement Object
+                stm = con.prepareStatement(sql);
+
+                stm.setString(1, id);
+
+                //4. Execute Query
+                int exercute = stm.executeUpdate();
+                //5. Process
+                if (exercute > 0) {
+                    return true;
+                }
+            }//end username and password is verified
+        }//end connection is available
+        finally {
+            if (stm != null) {
+                stm.close();
+            }
+            if (con != null) {
+                con.close();
+            }
+        }
+        return result;
+    }
+
+    public boolean UpdateNews(String id, String nameofnews,
+            String date, String linknews, String photopath, String description)
+            throws SQLException, ClassNotFoundException {
+        Connection con = null;
+        PreparedStatement stm = null;
+        boolean result = false;
+        try {
+            //1.Make connection
+            con = DBHelper.getConnection();
+            if (con != null) {
+                //2. Create SQL String 
+                String sql = "Update [dbo].[News]\n"
+                        + "set [NameOfNews] =  ?,[Date] = ?,\n"
+                        + "[Description] = ? ,[LinkOfNews] = ?,\n"
+                        + "[PhotoPath] = ?\n"
+                        + "where [IdNews] = ?";
+                //3. Create Statement Object
+                stm = con.prepareStatement(sql);
+                stm.setString(1, nameofnews);
+                stm.setString(2, date);
+                stm.setString(3, description);
+                stm.setString(4, linknews);
+                stm.setString(5, photopath);
+                stm.setString(6, id);
+
+                //4. Execute Query
+                int exercute = stm.executeUpdate();
+                //5. Process
+                if (exercute > 0) {
+                    return true;
+                }
+            }//end username and password is verified
+        }//end connection is available   
+        finally {
+            if (stm != null) {
+                stm.close();
+            }
+            if (con != null) {
+                con.close();
+            }
+        }
+        return result;
     }
 
 }
