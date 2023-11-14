@@ -1,4 +1,4 @@
-    /*
+/*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
@@ -16,6 +16,7 @@ import com.birdcompetition.model.User;
 import java.sql.SQLException;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.http.HttpSession;
+
 /**
  *
  * @author 84366
@@ -35,31 +36,34 @@ public class LoginControl extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-String username = request.getParameter("user");
+        String username = request.getParameter("user");
         String password = request.getParameter("pass");
         String url = "Login2.jsp";
-        
 
         try {
-        if(username != null && password != null){
-           DAO dao = new DAO();
-            User result = dao.checkLogin(username, password);
+            if (username != null && password != null) {
+                DAO dao = new DAO();
+                User result = dao.checkLogin(username, password);
 
-            if (result != null) {
-                HttpSession session = request.getSession();
-                if (result.getUserRole() == 4) {
-                    session.setAttribute("USER", result);
-                    url = "DispatchServlet?btAction=PostLogin";
-                } else if (result.getUserRole() == 1 || result.getUserRole() == 2 || result.getUserRole() == 3) {
-                    session.setAttribute("USER", result);
-                    url = "DispatchServlet?btAction=Dashboard";
+                if (result != null) {
+                    HttpSession session = request.getSession();
+                    if (result.getUserRole() == 4) {
+                        session.setAttribute("USER", result);
+                        url = "DispatchServlet?btAction=PostLogin";
+                    } else if (result.getUserRole() == 2 || result.getUserRole() == 3) {
+                        session.setAttribute("USER", result);
+                        url = "DispatchServlet?btAction=Dashboard";
+                    } else if (result.getUserRole() == 1) {
+                        session.setAttribute("USER", result);
+                        url = "DispatchServlet?btAction=Dashboard";
+                    }
+
+                } else {
+                    String msg = "Incorrect Username or Password";
+                    request.setAttribute("msg", msg);
                 }
-            } else {
-                String msg = "Incorrect Username or Password";
-                request.setAttribute("msg", msg);
-            } 
-        }
-            
+            }
+
         } catch (SQLException ex) {
             log("Login_SQL: " + ex.getMessage());
         } catch (ClassNotFoundException ex) {

@@ -62,7 +62,7 @@
                                             Empty
                                         </c:if>
                                         <c:if test="${not empty total}">
-                                            <p>${total/1000}00.000</p>
+                                            <p>${total/1000}00</p>
                                         </c:if>
 
                                     </div>
@@ -90,7 +90,7 @@
                                             Empty
                                         </c:if>
                                         <c:if test="${not empty total}">
-                                            <p>${total/1000}00.000</p>
+                                            <p>${total/1000}00</p>
                                         </c:if>
                                     </div>
                                 </div>
@@ -113,12 +113,12 @@
                                     <div class="row no-gutters align-items-center">
                                         <div class="h5 mb-0 font-weight-bold text-gray-800">
                                             <c:set var="totalmem" value="${requestScope.LISTMEM}"/>
-                                            <c:if test="${ empty totalmem}">
-                                                Rong
-                                            </c:if>
-                                            <c:if test="${not empty totalmem}">
-                                                <p>${totalmem}</p>
-                                            </c:if>
+                                        <c:if test="${ empty totalmem}">
+                                            Empty 
+                                        </c:if>
+                                        <c:if test="${not empty totalmem}">
+                                            <p>${totalmem}</p>
+                                        </c:if>
                                         </div>
 
 
@@ -142,13 +142,13 @@
                                         Total Birds</div>
                                     <div class="row no-gutters align-items-center">
                                         <div class="h5 mb-0 font-weight-bold text-gray-800">
-                                            <c:set var="totalbird" value="${requestScope.LISTBIRD}"/>
-                                            <c:if test="${ empty totalbird}">
-                                                Rong
-                                            </c:if>
-                                            <c:if test="${not empty totalbird}">
-                                                <p>${totalbird}</p>
-                                            </c:if>
+                                             <c:set var="totalbird" value="${requestScope.LISTBIRD}"/>
+                                        <c:if test="${ empty totalbird}">
+                                            Empty
+                                        </c:if>
+                                        <c:if test="${not empty totalbird}">
+                                            <p>${totalbird}</p>
+                                        </c:if>
                                         </div>
 
 

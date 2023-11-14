@@ -103,24 +103,24 @@
                                                 <input type="hidden" name ="txtID" value="${news.getIdNews()}">
                                             </td>
                                             <td>
-                                                <input type="text" name="txtNameOfNews" 
+                                                <input class="form-control" type="text" name="txtNameOfNews" 
                                                        value="${news.getNameOfNews()}">
                                             </td>
                                             <td>
-                                                <input type="date" name="txtDate" 
+                                                <input class="form-control" type="date" name="txtDate" 
                                                        value="${news.getDate()}">
                                             </td>
                                             <td>
-                                                <input type="text" name="txtDescrip" 
+                                                <input class="form-control" type="text" name="txtDescrip" 
                                                        value="${news.getDescription()}">
                                             </td>
                                             <td>
-                                                <input type="text" name="txtLinkOfNews" 
+                                                <input class="form-control" type="text" name="txtLinkOfNews" 
                                                        value="${news.getLinkOfNews()}">
 
                                             </td>
                                             <td>
-                                                <input type="text" name="txtPhoto" 
+                                                <input class="form-control" type="text" name="txtPhoto" 
                                                        value="${news.getPhoto()}">
                                             </td>
                                             <td>

@@ -5,9 +5,12 @@
 package com.birdcompetition.vnpay;
 
 import com.birdcompetition.bird.BirdContestDTO;
+import com.birdcompetition.model.User;
+import com.birdcompetition.payment.PaymentDAO;
 import com.birdcompetition.registerCompetition.CRegisterDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.Date;
 import java.sql.SQLException;
 import java.util.UUID;
 import java.util.logging.Level;
@@ -39,33 +42,47 @@ public class PostPayment extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
+        HttpSession session = request.getSession();
+
         String type = request.getParameter("payType");
+        double cost = Double.parseDouble(request.getParameter("cost"));
+
+//        String content = request.getParameter("paymentContent");
         String url = "ScheduleServlet";
         try {
+            User user = (User) session.getAttribute("USER");
+            PaymentDAO paymentDao = new PaymentDAO();
+            String memberId = user.getIdMember();
+            String orderName = "";
+
             String trueType = type.substring(0, 4);
-            HttpSession session = request.getSession();
             if (trueType.equals("DKTD")) {
                 CRegisterDAO dao = new CRegisterDAO();
                 String checkInCode = UUID.randomUUID().toString().substring(0, 10);
                 int id = (int) session.getAttribute("BIRD_ID");
                 int beforePoint = (int) session.getAttribute("BEFORE_POINT");
                 String contestId = (String) session.getAttribute("CONTEST_ID");
-                
+
                 BirdContestDTO dto = new BirdContestDTO(id, contestId,
                         0, beforePoint, 0, true, false, checkInCode);
                 dao.cRegisterInsert(dto);
                 String mes = "success";
                 request.setAttribute("MES", mes);
                 url = "ScheduleServlet";
-            }
-            else if (trueType.equals("DKMB")) {
+                orderName = "Đăng ký thi đấu";
+            } else if (trueType.equals("DKMB")) {
                 url = "MembershipRegisterServlet";
-            }
-            else if (trueType.equals("UDMB")) {
+                orderName = "Đăng ký membership";
+
+            } else if (trueType.equals("UDMB")) {
                 url = "MembershipUpdateServlet";
+                orderName = "Nâng cấp membership";
+
             }
-        }
-        catch (SQLException ex) {
+
+            paymentDao.CreatePayment(memberId, cost, orderName);
+
+        } catch (SQLException ex) {
             Logger.getLogger(PostPayment.class.getName()).log(Level.SEVERE, null, ex);
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(PostPayment.class.getName()).log(Level.SEVERE, null, ex);

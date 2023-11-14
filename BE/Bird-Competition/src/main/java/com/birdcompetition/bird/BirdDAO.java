@@ -431,7 +431,8 @@ public class BirdDAO implements Serializable {
             }
 
         }
-        System.out.println(" bird after match ok");
+        
+        
         return result;
     }
 

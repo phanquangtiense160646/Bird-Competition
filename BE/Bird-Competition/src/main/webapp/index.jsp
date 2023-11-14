@@ -93,9 +93,9 @@
                         <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
                             <div class="navbar-nav mr-auto py-0">
                                 <a href='<c:url value="/DispatchServlet?btAction=Home"/>' class="nav-item nav-link active">Home</a>
-                                <a href="#leaderboard" class="nav-item nav-link">Bảng xếp hạng</a>
-                                <a href="#schedule" class="nav-item nav-link">Lịch thi đấu</a>
-                                <a href="#member" class="nav-item nav-link">Hội viên</a>
+                                <a href='<c:url value="/DispatchServlet?btAction=LeaderBoard"/>' class="nav-item nav-link">Bảng xếp hạng</a>
+                                <a href='<c:url value="/DispatchServlet?btAction=Home"/>#schedule' class="nav-item nav-link">Lịch thi đấu</a>
+                                <a href='<c:url value="/DispatchServlet?btAction=Home"/>#member' class="nav-item nav-link">Hội viên</a>
                                 <div class="nav-item dropdown">
                                     <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
                                     <div class="dropdown-menu rounded-0 m-0">
@@ -318,11 +318,11 @@
                             ra</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link rounded-pill text-white active" data-bs-toggle="pill"
+                        <a class="nav-link rounded-pill text-white " data-bs-toggle="pill"
                            href="#tab-1">Đang diễn ra</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link rounded-pill text-white" data-bs-toggle="pill" href="#tab-2">Sắp diễn
+                        <a class="nav-link rounded-pill text-white active" data-bs-toggle="pill" href="#tab-2">Sắp diễn
                             ra</a>
                     </li>
                 </ul>
@@ -384,7 +384,7 @@
                             </c:if>
                         </div>
                     </div>
-                    <div id="tab-1" class="tab-pane fade show p-0 active">
+                    <div id="tab-1" class="tab-pane fade show p-0 ">
                         <div class="row g-5">
                             <c:set var="scheduleData" value="${requestScope.SCHEDULE}" />
                             <c:if test="${not empty scheduleData}">
@@ -437,7 +437,7 @@
                             </c:if>
                         </div>
                     </div>
-                    <div id="tab-2" class="tab-pane fade show p-0">
+                    <div id="tab-2" class="tab-pane fade show p-0 active">
                         <div class="row g-5">
                             <c:set var="scheduleData" value="${requestScope.SCHEDULE}" />
                             <c:if test="${not empty scheduleData}">
@@ -579,7 +579,7 @@
                         <i class="fa-solid fa-medal display-1 medal3"></i>
                         <h3 class="text-uppercase my-4">Bronze Member</h3>
                         <p>Gói thành viên Đồng</p>
-                        <a class="text-uppercase" href="memberShip.html#registration">Tham gia ngay<i
+                        <a class="text-uppercase" href="Login2.jsp">Tham gia ngay<i
                                 class="bi bi-arrow-right"></i></a>
                     </div>
                 </div>
@@ -588,7 +588,7 @@
                         <i class="fa-solid fa-medal display-1 medal1"></i>
                         <h1 class="text-uppercase my-4">Gold Member</h1>
                         <p>Gói thành viên Vàng</p>
-                        <a class="text-uppercase" href="memberShip.html#registration">Tham gia ngay<i
+                        <a class="text-uppercase" href="Login2.jsp">Tham gia ngay<i
                                 class="bi bi-arrow-right"></i></a>
                     </div>
                 </div>
@@ -597,7 +597,7 @@
                         <i class="fa-solid fa-medal display-1"></i>
                         <h3 class="text-uppercase my-4">Silver Member</h3>
                         <p>Gói thành viên Bạc</p>
-                        <a class="text-uppercase" href="memberShip.html#registration">Tham gia ngay<i
+                        <a class="text-uppercase" href="Login2.jsp">Tham gia ngay<i
                                 class="bi bi-arrow-right"></i></a>
                     </div>
                 </div>

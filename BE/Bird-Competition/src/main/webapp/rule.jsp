@@ -75,98 +75,100 @@
                         <br/>
                         <p class="text-primary">2. Quy tắc chấm điểm đạt hay không đạt trong cuộc thi chào mào </p>
                         <p class="text-black">Cơ bản để chấm đạt hay không phía TT cần thỏa thuận để thống nhất với nhau, tiêu chí đạt hay không sẽ chia ra 3 loại: Thái độ thi đấu-Giọng hót thi đấu-Dáng bộ thi đấu 
-                            2.1 Thái độ thi đấu 
-
-                            Đạt: Khi chim có thái độ thi đấu linh hoạt, nhanh nhẹn, nhảy-chuyền cầu, rê cầu, bung cánh, xòe đuôi, mặt nhìn vào đối thủ để đấu hù dọa.
-                            Không đạt: Đứng một chỗ, xù rũ, lơ là, mặt nhìn ra bên ngoài-mào tẹp-thái độ sợ sệt đối thủ, ăn-uống nước nhiều.
-                            2.2 Giọng hót thi đấu 
-
-                            Đạt: Khi chim ra bọng-họng liên tục, giọng đấu phải từ 3 âm tiết trở lên, giọng luyến hay-xoắn âm to-rõ ràng, giọng ché hù dọa đối thủ
-                            Không đạt: Chim ra giọng mái (Quýt Qìu, wuýt wìu, nhưng giọng chim mái hay ra), khi thi đấu không sổ giọng-ra bọng, giọng dưới 3 âm tiết, và những giọng âm ngắn cứ lui tới không thay đổi.
-                            2.3 Dáng bộ thi đấu 
-                            Đạt: Bộ chim to-dài, dáng đứng thi đấu đẹp(bung cánh-xòe đuôi-cúp C-Đuôi tôm), mào dựng đứng.
-                            Không đạt: Phình lông, thiếu đuôi cánh nhiều(trên 30%), xuất hiện lỗi: lộn, ngoái-ngữa, bu nóc, cắn chân, cắn lông, cắn nan
+                            </br>2.1 Thái độ thi đấu 
+                            </br>Đạt: Khi chim có thái độ thi đấu linh hoạt, nhanh nhẹn, nhảy-chuyền cầu, rê cầu, bung cánh, xòe đuôi, mặt nhìn vào đối thủ để đấu hù dọa.
+                            </br>Không đạt: Đứng một chỗ, xù rũ, lơ là, mặt nhìn ra bên ngoài-mào tẹp-thái độ sợ sệt đối thủ, ăn-uống nước nhiều.
+                            </br>
+                            </br>2.2 Giọng hót thi đấu 
+                            </br>Đạt: Khi chim ra bọng-họng liên tục, giọng đấu phải từ 3 âm tiết trở lên, giọng luyến hay-xoắn âm to-rõ ràng, giọng ché hù dọa đối thủ
+                            </br>Không đạt: Chim ra giọng mái (Quýt Qìu, wuýt wìu, nhưng giọng chim mái hay ra), khi thi đấu không sổ giọng-ra bọng, giọng dưới 3 âm tiết, và những giọng âm ngắn cứ lui tới không thay đổi.
+                            </br>
+                            </br>2.3 Dáng bộ thi đấu 
+                            </br>Đạt: Bộ chim to-dài, dáng đứng thi đấu đẹp(bung cánh-xòe đuôi-cúp C-Đuôi tôm), mào dựng đứng.
+                            </br>Không đạt: Phình lông, thiếu đuôi cánh nhiều(trên 30%), xuất hiện lỗi: lộn, ngoái-ngữa, bu nóc, cắn chân, cắn lông, cắn nan
                         </p>
                         <br/>
                         <p class="text-primary">3. Quy tắc đối với quý anh em nghệ nhân và khán giả </p>
                         <p class="text-black">
-                            Chủ chim: Kiểm tra và đảm bảo an toàn về chim-lồng. Thức ăn, thức uống đầy đủ cho chim trong suốt quá trình thi đấu cho đến vòng bắt tay(vào top 10) mới được chêm thêm hoặc lấy ra thức ăn thức uống trong lồng. 
-                            Không được vào khu vực mà BTC đã giăng dây hay lập rào chắn trước đó. Đặc biệt không động-chạm vào giàn treo chim, không tạo ra tiếng ồn làm kích động chim như: xù-xì-xuỵt.v.v. 
-                            Cần theo dõi tổng thể các chú chim trên giàn thi đấu để có nhìn nhận khách quan và chính xác hơn. 
-                            Tin tưởng-tôn trọng mọi quyết định của các trọng tài 
-                            Trường hợp có vấn đề thắc mắc-cần điều chỉnh hoặc có ý kiến khác cần gặp BTC để xác nhận, xem xét và giải quyết 
+                            </br>Chủ chim: Kiểm tra và đảm bảo an toàn về chim-lồng. Thức ăn, thức uống đầy đủ cho chim trong suốt quá trình thi đấu cho đến vòng bắt tay mới được chêm thêm hoặc lấy ra thức ăn thức uống trong lồng. 
+                            </br>Không được vào khu vực mà BTC đã giăng dây hay lập rào chắn trước đó. Đặc biệt không động-chạm vào giàn treo chim, không tạo ra tiếng ồn làm kích động chim như: xù-xì-xuỵt.v.v. 
+                            </br>Cần theo dõi tổng thể các chú chim trên giàn thi đấu để có nhìn nhận khách quan và chính xác hơn. 
+                            </br>Tin tưởng-tôn trọng mọi quyết định của các trọng tài 
+                            </br>Trường hợp có vấn đề thắc mắc-cần điều chỉnh hoặc có ý kiến khác cần gặp BTC để xác nhận, xem xét và giải quyết 
                         </p>
                         <br/>
                         <p class="text-primary">4. Cách chấm điểm-hạ chim trong các vòng </p>
                         <p class="text-black">
-                            Loại trực tiếp: Đối với những chú chim có tật lỗi sau: Lộn-ngoái-ngữa nặng, tắm cóng, tắm khô. 
-                            Vòng loại: Không hạn chế số vòng và số lượng chim hạ từng con trong các vòng. 
-                            Khoảng 10 phút đầu(khoảng 3 vòng): TT sẽ quan sát và ghi chú những chú chim nào đấu yếu, xỉa lông, bung lồng vì sợ, không ra giọng, xù lông vì sợ. Riêng những chú chim ngoái-ngữa-bu nóc-cắn chân-cắn lông từ 3 lần trở lên cũng sẽ bị loại. Cho dù thi đấu còn tốt trong quá trình đó. 
-                            Khi MC thông báo thời gian còn khoảng 30 giây của mỗi vòng, phía TT cần rà soát và chốt sổ các chú chim tật lỗi, chim không thi đấu vào biên bản để MC công bố. 
-                            Những vòng sơ loại tiếp theo: Tiếp tục đánh giá chim để hạ qua tật-lỗi và thái độ sợ sệt không thi đấu của các chú chim trên giàn. Nhưng có những quy tắc: nếu chim lỗi nhẹ và chỉ xuất hiện 1 lần nhưng thái độ thi đấu rất tốt(có thể bung-xòe và ché) thì cũng có thể đi tiếp 
-                            Những vòng lựa chọn sát top 40-30-20(tùy số lượng chim tham gia nhiều ít): Cần đánh giá khắt khe để lựa chọn những chú chim xứng đáng. Do vậy MC cần công khai ngay khi phía TT thông tin lỗi tiêu chí không đạt của mỗi chú chim để phía anh em nghệ nhân nắm tình hình. 
-                            Khi loại chim vòng sát top hoặc các vòng trong top: thì không được loại quá số lượng cho phép. Ví dụ trên giàn còn 32 con, thì không được loại quá 2 con để giữ đúng số chim trong top.
-                            Những vòng trong top, cần đưa chim ra 2 sào thi: Nếu chim đấu đều quá cũng có thể tăng thêm thời gian lên, không nhất thiết phải ép hạ chim dù chim đang đấu bình thường. 
-                            Khi vào top 10: Quý anh em trong 10 chú chim có thể lấy chim để chêm-lấy ra thức ăn trong lồng. Chăm chim trong vòng 1 phút, thời gian này phía TT cho các lồng bóc thăm để lựa chọn ví trí. 
-                            Mỗi lồng sẽ được bóc 1 số, số đó sẽ tùy thuộc vào vị trí của chú chim sẽ móc lên giàn đấu để lựa chọn 4 chú chim vào Chung kết.
-                            Từ top 10 để chọn 4 chú chim vào chung kết: TT chấm độc lập, công tâm với các tiêu chí Đạt-Không đạt rõ ràng. 
-                            Trường hợp có 2 hay nhiều chú chim bị lỗi giống nhau trong một vòng đấu top và hết thời gian thì cần đưa thêm tiêu chí: So kè để lựa chú chim xứng đáng được đi tiếp. Cần công khai đọc rõ ràng để anh em nghệ nhân không bị thắc mắc.
-                            Ở vòng chung kết: TT chấm độc lập, công tâm, so kè với nhiều tiêu chí nổi bật của mỗi chú chim: Cần đếm giọng hót-giọng ché-thái độ bung xòe-hình bộ với dáng đấu đẹp để lựa các chú chim Nhất-nhì-ba.
+                            </br>Loại trực tiếp: Đối với những chú chim có tật lỗi sau: Lộn-ngoái-ngữa nặng, tắm cóng, tắm khô. 
+                            </br>Vòng loại: Không hạn chế số vòng và số lượng chim hạ từng con trong các vòng. 
+                            </br>Khoảng 10 phút đầu(khoảng 3 vòng): TT sẽ quan sát và ghi chú những chú chim nào đấu yếu, xỉa lông, bung lồng vì sợ, không ra giọng, xù lông vì sợ. Riêng những chú chim ngoái-ngữa-bu nóc-cắn chân-cắn lông từ 3 lần trở lên cũng sẽ bị loại. Cho dù thi đấu còn tốt trong quá trình đó. 
+                            </br>Khi MC thông báo thời gian còn khoảng 30 giây của mỗi vòng, phía TT cần rà soát và chốt sổ các chú chim tật lỗi, chim không thi đấu vào biên bản để MC công bố. 
+                            </br>Những vòng sơ loại tiếp theo: Tiếp tục đánh giá chim để hạ qua tật-lỗi và thái độ sợ sệt không thi đấu của các chú chim trên giàn. Nhưng có những quy tắc: nếu chim lỗi nhẹ và chỉ xuất hiện 1 lần nhưng thái độ thi đấu rất tốt(có thể bung-xòe và ché) thì cũng có thể đi tiếp 
+                            </br>Những vòng lựa chọn sát top: Cần đánh giá khắt khe để lựa chọn những chú chim xứng đáng. Do vậy MC cần công khai ngay khi phía TT thông tin lỗi tiêu chí không đạt của mỗi chú chim để phía anh em nghệ nhân nắm tình hình. 
+                            </br>Khi loại chim vòng sát top hoặc các vòng trong top: thì không được loại quá số lượng cho phép. Ví dụ trên giàn còn 32 con, thì không được loại quá 2 con để giữ đúng số chim trong top.
+                            </br>Những vòng trong top, cần đưa chim ra 2 sào thi: Nếu chim đấu đều quá cũng có thể tăng thêm thời gian lên, không nhất thiết phải ép hạ chim dù chim đang đấu bình thường. 
+                            </br>Khi vào top 10: Quý anh em trong 10 chú chim có thể lấy chim để chêm-lấy ra thức ăn trong lồng. Chăm chim trong vòng 1 phút, thời gian này phía TT cho các lồng bóc thăm để lựa chọn ví trí. 
+                            </br>Mỗi lồng sẽ được bóc 1 số, số đó sẽ tùy thuộc vào vị trí của chú chim sẽ móc lên giàn đấu để lựa chọn 4 chú chim vào Chung kết.
+                            </br>Từ top 10 để chọn 4 chú chim vào chung kết: TT chấm độc lập, công tâm với các tiêu chí Đạt-Không đạt rõ ràng. 
+                            </br>Trường hợp có 2 hay nhiều chú chim bị lỗi giống nhau trong một vòng đấu top và hết thời gian thì cần đưa thêm tiêu chí: So kè để lựa chú chim xứng đáng được đi tiếp. Cần công khai đọc rõ ràng để anh em nghệ nhân không bị thắc mắc.
+                            </br>Ở vòng chung kết: TT chấm độc lập, công tâm, so kè với nhiều tiêu chí nổi bật của mỗi chú chim: Cần đếm giọng hót-giọng ché-thái độ bung xòe-hình bộ với dáng đấu đẹp để lựa các chú chim Nhất-nhì-ba.
                         </p>
 
                     </div>
                 </div>
                 <div class="tab-pane fade" id="pills-2">
                     <div class="mb-5">
-                        <h1 class="text-uppercase mb-4">Cách tính điểm</h1>
+                        <p class="text-primary">A: Điểm cố định</p>
 
-                        <p class="text-black"> A: Điểm cố định
+                        <p class="text-black"> 
                             Điểm cộng cố định sẽ là 5 cho người chơi đầu tiên có thứ hạng trên trung bình (0 cho người có thứ hạng trung bình) sau đó cộng 5 cho mỗi hạng tiếp theo, và cộng thêm 5 cho người chơi có thứ hạng cao nhất
                             Tương tự với điểm trừ, và cũng trừ thêm 5 với người đứng cuối
                         </p>
-                        <p class="text-black">B: Điểm hệ số elo
+                        <p class="text-primary">B: Điểm hệ số elo</p>
+                        <p class="text-black">
                             Người chơi sau khi có điểm cộng/ trừ cố định sẽ cộng/trừ thêm điểm hệ số elo
-
-                            Điểm hệ số elo sẽ được tính dựa theo điểm của người chơi so với điểm trung bình của các người chơi trong trận.
-                            Đầu tiên mỗi người chơi tham gia sẽ góp 5 điểm vào tổng điểm elo.
-                            Sau đó tổng điểm này sẽ được chia đều cho những người chơi trong Top và out Top theo tỉ lệ điểm của họ so với điểm trung bình.
+                            </br>Điểm hệ số elo sẽ được tính dựa theo điểm của người chơi so với điểm trung bình của các người chơi trong trận.
+                            </br>
+                            </br> Đầu tiên mỗi người chơi tham gia sẽ góp 5 điểm vào tổng điểm elo.
+                            </br> Sau đó tổng điểm này sẽ được chia đều cho những người chơi trong Top và out Top theo tỉ lệ điểm của họ so với điểm trung bình.
+                            </br> Điểm của bạn càng thấp so với điểm trung bình của lobby thì họ sẽ được cộng càng nhiều điểm khi thắng, 
+                            tương tự họ cũng sẽ bị trừ ít điểm hơn khi thua. Ngược lại điểm càng cao so với điểm trung bình thì số điểm bị trừ khi thua sẽ tăng lên và số điểm cộng thi thắng cũng giảm đi.
                         </p>
-                        <p class="text-black">C: Điểm sau cùng
+                        <p class="text-primary">C: Điểm cuối cùng</p>
+                        <p class="text-black">
                             Sau cùng, điểm cộng/trừ của mỗi người sẽ là tổng từ 2 phần A và B.
                         </p>
 
                     </div>      
-
-
                 </div>
             </div>
-
-            <!-- <div class="px-5">
-                <div class="row gx-3 d-flex justify-content-center">
-                    <div>
-                        
-                    </div>
+        </div>
+        <!-- <div class="px-5">
+            <div class="row gx-3 d-flex justify-content-center">
+                <div>
+                    
                 </div>
-            </div> -->
-            <!-- Rule End -->
+            </div>
+        </div> -->
+        <!-- Rule End -->
 
-            <!-- Footer Start -->
-            <jsp:include page="JspCommon/webfooter.jsp"/>
-            <!-- Footer End -->
-
-
-
+        <!-- Footer Start -->
+        <jsp:include page="JspCommon/webfooter.jsp"/>
+        <!-- Footer End -->
 
 
-            <!-- JavaScript Libraries -->
-            <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
-            <script src="lib/easing/easing.min.js"></script>
-            <script src="lib/waypoints/waypoints.min.js"></script>
-            <script src="lib/counterup/counterup.min.js"></script>
-            <script src="lib/owlcarousel/owl.carousel.min.js"></script>
 
-            <!-- Template Javascript -->
-            <script src="js/main.js"></script>
+
+
+        <!-- JavaScript Libraries -->
+        <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="lib/easing/easing.min.js"></script>
+        <script src="lib/waypoints/waypoints.min.js"></script>
+        <script src="lib/counterup/counterup.min.js"></script>
+        <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+
+        <!-- Template Javascript -->
+        <script src="js/main.js"></script>
     </body>
 </html>

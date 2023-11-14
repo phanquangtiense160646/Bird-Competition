@@ -1,13 +1,10 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package com.birdcompetition.member;
 
 import com.birdcompetition.bird.BirdDTO;
 import com.birdcompetition.model.User;
 import com.birdcompetition.user.UserDTO;
 import com.birdcompetition.util.DBHelper;
+import java.io.Serializable;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -21,7 +18,7 @@ import javax.naming.NamingException;
  *
  * @author admin
  */
-public class MemberDAO {
+public class MemberDAO implements Serializable {
 
     List<MemberDTO> memberList;
     List<User> userList;
@@ -38,14 +35,17 @@ public class MemberDAO {
         return userList;
     }
 
-    public List<MemberDTO> getProducts() {
+    public List<MemberDTO> getProducts() throws SQLException, ClassNotFoundException {
         List<MemberDTO> list = new ArrayList<>();
-        Connection cn = null;
+        Connection con = null;
+        PreparedStatement stm = null;
+        ResultSet rs = null;
+
         try {
-            cn = DBHelper.getConnection();
+            con = DBHelper.getConnection();
             String sql = "select * from Member";
-            PreparedStatement stm = cn.prepareStatement(sql);
-            ResultSet rs = stm.executeQuery();
+            stm = con.prepareStatement(sql);
+            rs = stm.executeQuery();
             while (rs.next()) {
                 MemberDTO p = new MemberDTO(rs.getString(1),
                         rs.getString(2),
@@ -57,9 +57,17 @@ public class MemberDAO {
                 list.add(p);
             }
             return list;
-        } catch (Exception e) {
+        } finally {
+            if (rs != null) {
+                rs.close();
+            }
+            if (stm != null) {
+                stm.close();
+            }
+            if (con != null) {
+                con.close();
+            }
         }
-        return null;
     }
 
     //list
@@ -119,7 +127,7 @@ public class MemberDAO {
         List<User> result = null;
 
         try {
-            con = new DBHelper().getConnection();
+            con = DBHelper.getConnection();
             if (con != null) {
                 String sql = "Select * From [dbo].[Member]  a right  join \n"
                         + "[dbo].[User] b on a.IdMember = b.UserName \n"
@@ -264,7 +272,7 @@ public class MemberDAO {
         List<MemberDTO> result = null;
 
         try {
-            con = new DBHelper().getConnection();
+            con = DBHelper.getConnection();
             if (con != null) {
                 String sql = "Select * From [dbo].[User]  "
                         + "Full outer join [dbo].[Member] "
@@ -273,8 +281,8 @@ public class MemberDAO {
                 stm = con.prepareStatement(sql);
                 rs = stm.executeQuery();
                 while (rs.next()) {
-                    String username = rs.getString("UserName");
-                    String password = rs.getString("UserPassword");
+                    String username = rs.getString("UserName").trim();
+                    String password = rs.getString("UserPassword").trim();
                     String gmail = rs.getString("UserGmail");
                     int role = rs.getInt("UserRole");
                     String memberId = rs.getString("IdMember");
@@ -283,9 +291,9 @@ public class MemberDAO {
                     String country = rs.getString("Country");
                     String phone = rs.getString("Phone");
 
-                    String gender = rs.getString("Gender");
 
-                    MemberDTO dto = new MemberDTO(memberId, fullname, dateofbirth, country, phone, gender, username, password);
+                    MemberDTO dto = new MemberDTO(memberId, fullname, 
+                            dateofbirth, country, phone, username, password, role);
                     if (this.memberList == null) {
                         this.memberList = new ArrayList<>();
                     }
@@ -370,7 +378,7 @@ public class MemberDAO {
                         + "Set FullName = ?, "
                         + "Country = ?, Phone = ? "
                         + "Where IdMember = ? ";
-                
+
                 //3. Create Statement Object
                 stm = con.prepareStatement(sql);
                 stm.setString(1, password);
@@ -383,7 +391,7 @@ public class MemberDAO {
                 int exercute = stm.executeUpdate();
                 //5. Process
                 if (exercute > 0) {
-                    return true;
+                    result = true;
                 }
             }//end username and password is verified
         }//end connection is available   
