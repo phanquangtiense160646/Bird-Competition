@@ -234,7 +234,7 @@
                                 <div class="col-md-12">
                                     <label class="small mb-1" for="inputPhone">Phone number</label>
                                     <input class="form-control" type="tel" placeholder="Enter your phone number"
-                                           value="${sessionScope.USER.phone}" name="txtPhone">
+                                           value="${sessionScope.USER.phone}" pattern="[0-9]{4}[0-9]{3}[0-9]{3}" name="txtPhone">
                                 </div>
 
                             </div>
