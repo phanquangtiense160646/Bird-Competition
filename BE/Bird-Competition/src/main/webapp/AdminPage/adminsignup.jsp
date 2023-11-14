@@ -44,16 +44,18 @@
                     <div class="text-center">
                         <h1 class="h4 text-gray-900 mb-4">Tạo tài khoản</h1>
                     </div>
-                    <form action='<c:url value="/DispatchServlet?btAction=AdminSignUp"/>' method="post">
+                                            <c:set var="errors" value="${requestScope.CREATE_ERRORS}"/>
 
+                    <form action='<c:url value="/DispatchServlet?btAction=AdminSignUp"/>' method="post">
                         <div class="form-group">
                             <label class="small mb-1">Username:</label>
                             <input type="text" class="form-control form-control-user" 
                                    name="txtUsername" placeholder="Input username">
+                            <small style="color: red;" id="username-error">${errors.usernameLengthErr}</small><br>
                             <label class="small mb-1">Password:</label>
                             <input type="password" class="form-control form-control-user" 
                                    placeholder="Input password" name="txtPassword">
-
+                            <small style="color: red;" id="password-error">${errors.passwordLengthErr}</small><br>
                             <label class="small mb-1">Confirm Password:</label>
                             <input type="password" class="form-control form-control-user" id="contestName"
                                    placeholder="Confirm Password" name="">
@@ -67,7 +69,6 @@
                         </div>
 
                         <hr>
-                        <c:set var="errors" value="${requestScope.CREATE_ERRORS}"/>
                         <span style="color: red;">${errors.usernameIsExisted}</span>
                         <button type="submit" class="btn btn-primary btn-user btn-block">
                             Đăng ký</button>
