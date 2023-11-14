@@ -149,7 +149,8 @@ public class DAO extends DBHelper {
                 //5.Process
                 if (rs.next()) {
 
-                    result = new User(username, username, username, 0, query, username, query, query, 0, query, null);
+                    result = new User(username, username, username, 0,
+                            query, username, query, query, 0, query, null);
                 }//end username and password is verified 
             }
         } finally {

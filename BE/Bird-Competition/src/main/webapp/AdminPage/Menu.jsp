@@ -164,18 +164,20 @@
 
 
                     <!-- Nav Item - User Information -->
-                    <li class="nav-item dropdown no-arrow  h-100">
-                        <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
-                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <span class="btn btn-primary h-50" style="width: 100px;">${user.userName}</span>
+                    <li class="nav-item dropdown no-arrow  h-100  d-inline-flex">
+                        <c:if test="${user.userRole == 1}">                          
+                            <p class="btn btn-secondary p-0 h-50" style="width: 70px; height: 50px;font-size: small; color: black; margin-top: 25px">Admin</p>
+                        </c:if>
+                        <c:if test="${user.userRole == 2}">
+                            <p class="btn btn-secondary p-0 h-50" style="width: 70px; height: 50px;font-size: small; color: black; margin-top: 25px">Manager</p>
 
-
-                            <%--<c:if test="${user.userRole == 1}">Admin</c:if>--%>
-                            <%--<c:if test="${user.userRole == 2}">Manager</c:if>--%>
-                            <%--<c:if test="${user.userRole == 3}">Staff</c:if>--%>
-                            <!--<div class="d-flex justify-content-center">
-                                <small class="">Admin</small>
-                            </div>-->
+                        </c:if>
+                        <c:if test="${user.userRole == 3}">
+                            <p class="btn btn-secondary p-0 h-50" style="width: 70px; height: 50px;font-size: small; color: black; margin-top: 25px">Staff</p>
+                        </c:if>
+                            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
+                               data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <span class="btn btn-primary h-50" style="width: 100px;">${user.userName}</span>
                         </a>
 
                         <!-- Dropdown - User Information -->

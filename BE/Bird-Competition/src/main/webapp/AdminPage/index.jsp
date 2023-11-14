@@ -144,7 +144,7 @@
                                         <div class="h5 mb-0 font-weight-bold text-gray-800">
                                              <c:set var="totalbird" value="${requestScope.LISTBIRD}"/>
                                         <c:if test="${ empty totalbird}">
-                                            Rong
+                                            Empty
                                         </c:if>
                                         <c:if test="${not empty totalbird}">
                                             <p>${totalbird}</p>

@@ -4,6 +4,7 @@
  */
 package com.birdcompetition.payment;
 
+import com.birdcompetition.birdInContest.BirdContestDTO;
 import com.birdcompetition.news.NewsDTO;
 import com.birdcompetition.util.DBHelper;
 import java.sql.Connection;
@@ -11,6 +12,7 @@ import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -86,14 +88,7 @@ public class PaymentDAO {
 
     }
 
-    public static void main(String[] args) throws SQLException, ClassNotFoundException {
-        PaymentDAO dao = new PaymentDAO();
-        List<PaymentDTO> list = dao.getPaymentList_price();
-        for (PaymentDTO newsDTO : list) {
-            System.out.println(newsDTO);
-        }
-    }
-     public int getParticipants()
+    public int getParticipants()
             throws SQLException, ClassNotFoundException {
         Connection con = null;
         PreparedStatement stm = null;
@@ -108,10 +103,10 @@ public class PaymentDAO {
                 //2.Creat SQL String 
                 String sql = "Select count(IdOrder) as Parcipants "
                         + "From OrderDetail ";
-                        
+
                 //3.Create Statement Object
                 stm = con.prepareStatement(sql);
-                
+
                 //4.Exercute Query
                 rs = stm.executeQuery();
 
@@ -187,4 +182,49 @@ public class PaymentDAO {
         return result;
     }
 
+    public boolean CreatePayment(String memberId, double price, String orderName) throws ClassNotFoundException, SQLException {
+        Connection con = null;
+        PreparedStatement stm = null;
+        boolean result = false;
+        Date currentDay = getCurrenDay();
+
+        BirdContestDTO dto = new BirdContestDTO();
+        try {
+            //1.Make connection
+            con = DBHelper.getConnection();
+            if (con != null) {
+                //2. Create SQL String 
+                String sql = "INSERT INTO OrderDetail (IdMember, Price, Status, OrderDate, OrderName) "
+                        + "VALUES (?, ?, 'true', ?, ? ) ";
+                //3. Create Statement Object
+                stm = con.prepareStatement(sql);
+                stm.setString(1, memberId);
+                stm.setDouble(2, price);
+                stm.setDate(3, currentDay);
+                stm.setString(4, orderName);
+
+                //4. Execute Query
+                int exercute = stm.executeUpdate();
+                //5. Process
+                if (exercute > 0) { 
+                    return true;
+                }
+            }//end username and password is verified
+        }//end connection is available   
+        finally {
+            if (stm != null) {
+                stm.close();
+            }
+            if (con != null) {
+                con.close();
+            }
+        }
+        return result;
+    }
+
+    public Date getCurrenDay() {
+        LocalDate localDate = LocalDate.now();
+        java.sql.Date date = Date.valueOf(localDate);
+        return date;
+    }
 }

@@ -5,9 +5,11 @@
 package com.birdcompetition.vnpay;
 
 import com.birdcompetition.bird.BirdContestDTO;
+import com.birdcompetition.payment.PaymentDAO;
 import com.birdcompetition.registerCompetition.CRegisterDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.Date;
 import java.util.UUID;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -37,8 +39,11 @@ public class ReturnServlet extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         String type = request.getParameter("payType");
+        
+        
         String url = "";
         try {
+         
             String trueType = type.substring(0, 4);
 
             if (trueType.equals("DKTD")) {
