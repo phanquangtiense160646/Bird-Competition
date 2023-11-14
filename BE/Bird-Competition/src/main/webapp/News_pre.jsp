@@ -92,9 +92,9 @@
                                     <a href="#" id="cactrangdropdown" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
                                     <div class="dropdown-menu rounded-0 m-0">
 
-                                        <a href= "rule_pre.jsp"class="dropdown-item">Luật thi đấu</a>
-                                        <a href= "feedback_pre.jsp"class="dropdown-item">Feedback</a>
-                                        <a href= "#"class="dropdown-item">Tin Tức</a>
+                                         <a href="rule_pre.jsp" class="dropdown-item">Luật thi đấu</a>
+                                        <a href='<c:url value="/DispatchServlet?btAction=FeedBack"/>' class="dropdown-item">Feedback</a>
+                                        <a href='<c:url value="/DispatchServlet?btAction=Blog"/>' class="dropdown-item">Tin Tức</a>
                                     </div>
                                 </div>
                                 <a href="contact_pre.jsp" class="nav-item nav-link">Liên Hệ</a>
@@ -226,60 +226,16 @@
                     <div class="mb-5">
                         <h3 class="text-uppercase mb-4">Thể Loại</h3>
                         <div class="d-flex flex-column justify-content-start bg-dark rounded p-4">
-                            <a class="fs-5 fw-bold text-light text-uppercase mb-2" href="#"><i class="bi bi-arrow-right text-primary me-2"></i>Chim Chào Mào</a>
-                            <a class="fs-5 fw-bold text-light text-uppercase mb-2" href="#"><i class="bi bi-arrow-right text-primary me-2"></i>Thi Hót</a>
-                            <a class="fs-5 fw-bold text-light text-uppercase mb-2" href="#"><i class="bi bi-arrow-right text-primary me-2"></i>Thi Bề Ngoài</a>
-                            <!-- <a class="fs-5 fw-bold text-light text-uppercase mb-2" href="#"><i class="bi bi-arrow-right text-primary me-2"></i>Keyword Research</a>
-                            <a class="fs-5 fw-bold text-light text-uppercase" href="#"><i class="bi bi-arrow-right text-primary me-2"></i>Email Marketing</a> -->
+                           <p class="fs-5 fw-bold text-light text-uppercase mb-2" >Chim Chào Mào</p>
+                            <p class="fs-5 fw-bold text-light text-uppercase mb-2" >Thi Hót</p>
+                            <p class="fs-5 fw-bold text-light text-uppercase mb-2" >Thi Bề Ngoài</p>
                         </div>
                     </div>
                     <!-- Category End -->
 
-                    <!-- Recent Post Start -->
-                    <!--             <div class="mb-5">
-                                    <h3 class="text-uppercase mb-4">Recent Post</h3>
-                                    <div class="bg-dark rounded p-4">
-                                        <div class="d-flex overflow-hidden mb-3">
-                                            <img class="img-fluid flex-shrink-0 rounded-start" src="img/blog-1.jpg" style="width: 75px;" alt="">
-                                            <a href="" class="d-flex align-items-center bg-light rounded-end h5 text-uppercase p-3 mb-0">Sed amet tempor amet sit kasd sea lorem
-                                            </a>
-                                        </div>
-                                        <div class="d-flex overflow-hidden mb-3">
-                                            <img class="img-fluid flex-shrink-0 rounded-start" src="img/blog-2.jpg" style="width: 75px;" alt="">
-                                            <a href="" class="d-flex align-items-center bg-light rounded-end h5 text-uppercase p-3 mb-0">Sed amet tempor amet sit kasd sea lorem
-                                            </a>
-                                        </div>
-                                        <div class="d-flex overflow-hidden mb-3">
-                                            <img class="img-fluid flex-shrink-0 rounded-start" src="img/blog-3.jpg" style="width: 75px;" alt="">
-                                            <a href="" class="d-flex align-items-center bg-light rounded-end h5 text-uppercase p-3 mb-0">Sed amet tempor amet sit kasd sea lorem
-                                            </a>
-                                        </div>
-                                        <div class="d-flex overflow-hidden mb-3">
-                                            <img class="img-fluid flex-shrink-0 rounded-start" src="img/blog-1.jpg" style="width: 75px;" alt="">
-                                            <a href="" class="d-flex align-items-center bg-light rounded-end h5 text-uppercase p-3 mb-0">Sed amet tempor amet sit kasd sea lorem
-                                            </a>
-                                        </div>
-                                        <div class="d-flex overflow-hidden">
-                                            <img class="img-fluid flex-shrink-0 rounded-start" src="img/blog-2.jpg" style="width: 75px;" alt="">
-                                            <a href="" class="d-flex align-items-center bg-light rounded-end h5 text-uppercase p-3 mb-0">Sed amet tempor amet sit kasd sea lorem
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div> -->
-                    <!-- Recent Post End -->
+                    
 
-                    <!-- Tags Start -->
-                    <div class="mb-5">
-                        <h3 class="text-uppercase mb-4">Tag Cloud</h3>
-                        <div class="d-flex flex-wrap m-n1">
-                            <a href="" class="btn btn-dark m-1">Thiết Kế</a>
-                            <a href="" class="btn btn-dark m-1">Hội Chim</a>
-                            <a href="" class="btn btn-dark m-1">Marketing</a>
-                            <a href="" class="btn btn-dark m-1">CEO</a>
 
-                        </div>
-                    </div>
-                    <!-- Tags End -->
 
                     <!-- Plain Text Start -->
                     <div>

@@ -6,6 +6,8 @@ package com.birdcompetition.controller.web;
 
 import com.birdcompetition.bird.BirdDAO;
 import com.birdcompetition.bird.BirdDTO;
+import com.birdcompetition.feedback.FeedBackDAO;
+import com.birdcompetition.feedback.FeedBackDTO;
 import com.birdcompetition.schedule.ScheduleDAO;
 import com.birdcompetition.schedule.ScheduleDTO;
 import java.io.IOException;
@@ -52,6 +54,11 @@ public class StartServlet extends HttpServlet {
             birdDao.getLeaderboard();
             List<BirdDTO> listBird = birdDao.getBirdList();
             request.setAttribute("LEADER_BOARD", listBird);
+            
+            FeedBackDAO feedbackDao = new FeedBackDAO();
+            feedbackDao.getFeedback();
+            List<FeedBackDTO> listFeedback = feedbackDao.getFeedback();
+            request.setAttribute("FEEDBACK", listFeedback);
             
         } catch (SQLException ex) {
             log("StartServlet_SQL");
