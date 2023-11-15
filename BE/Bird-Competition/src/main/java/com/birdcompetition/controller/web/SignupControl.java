@@ -47,10 +47,6 @@ public class SignupControl extends HttpServlet {
         String url = "dangKi.jsp";
         RegistrationCreateError errors = new RegistrationCreateError();
 
-//            if(!pass.equals(re_pass)){
-//            request.setAttribute("error_message", "Tên tài khoản đã tồn tại hoặc mật khẩu không khớp");
-//            RequestDispatcher dispatcher = request.getRequestDispatcher("SignupControl.jsp");
-//            dispatcher.forward(request, response);
         try {
             //1. Check all user's error
             if (user.trim().length() < 6 || user.trim().length() > 20) {

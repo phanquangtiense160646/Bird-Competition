@@ -50,6 +50,7 @@ public class UpdateProfileServlet extends HttpServlet {
             
             boolean result = dao.UpdateProfile(username, fullname, password, gmail, phone, idmember);
             
+//            System.out.println("result:" + result);
             if (result) {
                 HttpSession session = request.getSession();
                 User tempresult = dao.GetUserInfo(username);

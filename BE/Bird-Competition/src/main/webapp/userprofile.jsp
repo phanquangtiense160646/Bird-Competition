@@ -167,8 +167,9 @@
                 </div>
             </div>
         </section>
+                                
         <c:set var="msg" value="${requestScope.msg}"/>
-
+        <p>${msg}</p>
         <h6 id="toastmes">${msg}</h6>
         <div id="toast"></div>
 

@@ -45,7 +45,6 @@ public class AdminSignupControl extends HttpServlet {
 
         String url = "AdminPage/adminsignup.jsp";
         boolean foundErr = false;
-        RegistrationCreateError errors = new RegistrationCreateError();
         try {
             if (username.trim().length() < 6 || username.trim().length() > 20) {
                 foundErr = true;

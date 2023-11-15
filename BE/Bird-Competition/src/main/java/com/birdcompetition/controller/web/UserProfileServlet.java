@@ -4,7 +4,6 @@ package com.birdcompetition.controller.web;
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
  */
-
 import com.birdcompetition.bird.BirdDAO;
 import com.birdcompetition.bird.BirdDTO;
 import com.birdcompetition.model.User;
@@ -12,6 +11,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
 import java.util.List;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -39,7 +39,7 @@ public class UserProfileServlet extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         String url = "userprofile.jsp";
-try {
+        try {
             HttpSession session = request.getSession();
             List<BirdDTO> birdList;
 
@@ -55,13 +55,12 @@ try {
         } catch (ClassNotFoundException ex) {
             log("ScheduleServlet_ClassNotFound: " + ex.getMessage());
         } finally {
-            response.sendRedirect(url);
-//            RequestDispatcher rd = request.getRequestDispatcher(url);
-//            rd.forward(request, response);
+//            response.sendRedirect(url);
+            RequestDispatcher rd = request.getRequestDispatcher(url);
+            rd.forward(request, response);
         }
 
     }
-
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
