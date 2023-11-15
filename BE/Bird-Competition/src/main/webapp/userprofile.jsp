@@ -83,12 +83,12 @@
                                 </div>
                             </div>
                             <div class=" pt-5 pl-4 text-black" style="background-color: #f8f9fa;">
-                                <form action="#editprofile-dialog" style="z-index: 1;">
-                                    <button class="btn btn-outline-dark" data-mdb-ripple-color="dark"
+                                
+                                <a href="#editprofile-dialog" class="btn btn-outline-dark" data-mdb-ripple-color="dark"
                                             style="z-index: 0; margin-left: 17px;">
                                         Edit profile
-                                    </button>
-                                </form>
+                                </a>
+                                
                                 <form action="DispatchServlet" style="z-index: 1;">
                                     <button class="btn btn-outline-dark" data-mdb-ripple-color="dark"
                                             style="z-index: 0; margin-left: 17px;" 
@@ -169,7 +169,7 @@
         </section>
                                 
         <c:set var="msg" value="${requestScope.msg}"/>
-        <p>${msg}</p>
+        <!--<p>${msg}</p>-->
         <h6 id="toastmes">${msg}</h6>
         <div id="toast"></div>
 
@@ -235,7 +235,7 @@
                                 <div class="col-md-12">
                                     <label class="small mb-1" for="inputPhone">Phone number</label>
                                     <input class="form-control" type="tel" placeholder="Enter your phone number"
-                                           value="${sessionScope.USER.phone}" name="txtPhone">
+                                           value="${sessionScope.USER.phone}" pattern="[0-9]{4}[0-9]{3}[0-9]{3}" name="txtPhone">
                                 </div>
 
                             </div>

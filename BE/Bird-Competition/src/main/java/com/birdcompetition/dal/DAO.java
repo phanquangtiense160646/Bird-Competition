@@ -22,10 +22,7 @@ import javax.naming.NamingException;
  */
 public class DAO extends DBHelper{
     
-        Connection con = null;
-        PreparedStatement stm = null;
-        boolean result = false;
-        ResultSet rs = null;      
+       
         
     public User checkLogin(String username, String password)
             throws SQLException, ClassNotFoundException {
@@ -90,13 +87,13 @@ public class DAO extends DBHelper{
     public boolean UpdateProfile(String username, String fullname,
             String password, String email, String phone, String idmember)
             throws SQLException, ClassNotFoundException {
-        Connection con = null;
+        Connection cons = null;
         PreparedStatement stm = null;
         boolean result = false;
         try {
             //1.Make connection
-            con = DBHelper.getConnection();
-            if (con != null) {
+            cons = DBHelper.getConnection();
+            if (cons != null) {
                 //2. Create SQL String 
                 String sql = "UPDATE [dbo].[User] "
                         + "SET UserPassword = ?, UserGmail = ? "
@@ -105,7 +102,7 @@ public class DAO extends DBHelper{
                         + "SET FullName = ?, Phone = ? "
                         + "WHERE IdMember = ? ";
                 //3. Create Statement Object
-                stm = con.prepareStatement(sql);
+                stm = cons.prepareStatement(sql);
                 stm.setString(1, password);
                 stm.setString(2, email);
                 stm.setString(3, username);
@@ -125,8 +122,8 @@ public class DAO extends DBHelper{
             if (stm != null) {
                 stm.close();
             }
-            if (con != null) {
-                con.close();
+            if (cons != null) {
+                cons.close();
             }
         }
         return result;
@@ -242,7 +239,10 @@ public class DAO extends DBHelper{
     public boolean createAccount(UserDTO user)throws SQLException, 
             NamingException,
             ClassNotFoundException{
-
+Connection con = null;
+        PreparedStatement stm = null;
+        boolean result = false;
+        ResultSet rs = null;      
         try {
             con = DBHelper.getConnection();
             String query = "insert into [dbo].[User]\n"
@@ -319,7 +319,10 @@ public class DAO extends DBHelper{
 
         ResultSet rs = null;
         User result = null;
-
+        Connection con = null;
+        PreparedStatement stm = null;
+        
+             
         try {
             //1.Make connection
             con = DBHelper.getConnection();
@@ -342,12 +345,10 @@ public class DAO extends DBHelper{
                     int role = rs.getInt("UserRole");
                     String idmember = rs.getString("IdMember").trim();
                     String fullname = rs.getString("FullName").trim();
-                    String dateofbirth = rs.getString("DateOfBirth").trim();
-                    String country = rs.getString("Country").trim();
                     String phone = rs.getString("Phone").trim();
-                    String gender = rs.getString("Gender").trim();
+                    String gender = rs.getString("Gender");
 
-                    result = new User(username, password, gmail, role, idmember, fullname, dateofbirth, country, phone, gender, null);
+                    result = new User(username, password, gmail, role, idmember, fullname, null, "VietNam", phone, gender, null);
                 }//end username and password is verified 
             }
         } finally {
@@ -366,7 +367,10 @@ public class DAO extends DBHelper{
     
     public boolean insertAccount (UserDTO udto)
             throws SQLException, NamingException, ClassNotFoundException{
-
+Connection con = null;
+        PreparedStatement stm = null;
+        boolean result = false;
+        ResultSet rs = null;      
             try {
             con = DBHelper.getConnection();
             if (con != null){

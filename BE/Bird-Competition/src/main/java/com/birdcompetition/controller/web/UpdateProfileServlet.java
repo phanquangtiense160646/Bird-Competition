@@ -43,7 +43,7 @@ public class UpdateProfileServlet extends HttpServlet {
         String gmail = request.getParameter("txtGmail").trim();
         String phone = request.getParameter("txtPhone").trim();
         String idmember = request.getParameter("txtUsername").trim();
-        String url = "";
+        String url = "userprofile.jsp";
         try{
            
             DAO dao = new DAO();
@@ -58,6 +58,8 @@ public class UpdateProfileServlet extends HttpServlet {
                 
                 request.setAttribute("msg", "success");
                 url = "UserProfileServlet";
+            } else {
+                System.out.println(" ngu ");
             }
             
            

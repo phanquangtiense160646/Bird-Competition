@@ -46,9 +46,9 @@ public class AdminSignupControl extends HttpServlet {
         String url = "AdminPage/adminsignup.jsp";
         boolean foundErr = false;
         try {
-            if (username.trim().length() < 6 || username.trim().length() > 20) {
+            if (username.trim().length() < 3 || username.trim().length() > 20) {
                 foundErr = true;
-                errors.setUsernameLengthErr("Username have to 6-20");
+                errors.setUsernameLengthErr("Username have to 3-20");
             }
             if (password.trim().length() < 8 || password.trim().length() > 30) {
                 foundErr = true;

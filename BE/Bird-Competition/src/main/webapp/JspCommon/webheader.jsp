@@ -24,7 +24,7 @@
                     </div>
                     <div class="h-100 d-inline-flex align-items-center py-2">
                         <i class="fa fa-phone-alt text-primary me-2"></i>
-                        <h6 class="mb-0">+123 321 333</h6>
+                        <h6 class="mb-0">+8490 978 0107</h6>
                     </div>
                 </div>
                 <div class="col-lg-5 px-5 text-end">

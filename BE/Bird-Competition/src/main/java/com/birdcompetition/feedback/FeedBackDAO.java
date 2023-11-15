@@ -39,7 +39,8 @@ public class FeedBackDAO implements Serializable {
             con = DBHelper.getConnection();
             if (con != null) {
                 //2.Creat SQL String 
-                String sql = "select * from FeedBack ";
+                String sql = "select * from FeedBack "
+                        + "Order by IdFeedback desc";
                 //3.Create Statement Object
                 stm = con.prepareStatement(sql);
                 //4.Exercute Query
@@ -85,7 +86,8 @@ public class FeedBackDAO implements Serializable {
             if (con != null) {
                 //2.Creat SQL String 
                 String sql = "Select * "
-                        + "From FeedBack\n";
+                        + "From FeedBack\n"
+                        + "Order by IdFeedback desc";
                 //3.Create Statement Object
                 stm = con.prepareStatement(sql);
 
